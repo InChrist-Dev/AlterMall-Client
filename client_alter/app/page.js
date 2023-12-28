@@ -22,20 +22,22 @@ const HomePage = () => {
         <img src="/logo.png" alt="로고" style={{ width: '180px', height: 'auto' }} />
 
         {/* 검색 창 */}
-        <div style={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
-          <input
-            type="text"
-            placeholder="검색어를 입력하세요"
-            style={{
-              padding: '10px',
-              fontSize: '16px',
-              border: '2px solid #f12711',
-              borderRadius: '5px',
-              marginRight: '10px',
-              backgroundColor: 'white',
-              width: '300px',
-            }}
-          />
+     
+<div style={{ display: 'flex', alignItems: 'center', marginRight: '20px', width: '80%' }}>
+  <input
+    type="text"
+    placeholder="검색어를 입력하세요"
+    style={{
+      padding: '10px',
+      fontSize: '16px',
+      border: '2px solid #f12711',
+      borderRadius: '5px',
+      margin: ' 0 10px',
+      backgroundColor: 'white',
+      width: '100%', // 검색창이 부모 컨테이너의 80%를 차지하도록 수정
+      maxWidth: '1000px', // 필요에 따라 최대 너비 설정
+    }}
+  />
           <button
             style={{
               background: 'linear-gradient(to left, #f12711, #f5af19)',
@@ -47,18 +49,20 @@ const HomePage = () => {
               cursor: 'pointer',
               fontWeight: 'bold',
               display: 'flex',
+              height:'45px',
               alignItems: 'center',
+              minWidth:'80px'
             }}
           >
-            <FontAwesomeIcon icon={faSearch} style={{ marginRight: '5px' }} />
+            <FontAwesomeIcon icon={faSearch}  />
             검색
           </button>
         </div>
 
         {/* 장바구니 및 유저 아이콘 */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '24px', cursor: 'pointer', color: '#f12711', marginRight: '10px' }} />
-          <FontAwesomeIcon icon={faUser} style={{ fontSize: '24px', cursor: 'pointer', color: '#f12711' }} />
+          <FontAwesomeIcon icon={faShoppingCart} style={{ fontSize: '24px', cursor: 'pointer', color: '#f12711', margin: '12px' }} />
+          <FontAwesomeIcon icon={faUser} style={{ fontSize: '24px', cursor: 'pointer', color: '#f12711',margin:'12px' }} />
         </div>
       </div>
 
@@ -93,8 +97,9 @@ const HomePage = () => {
             position: 'absolute',
             left: '0',
             top: '50%',
+            padding:'10px',
             transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+            backgroundColor: 'rgba(255, 255, 255, 0.4)', 
           }}
           onClick={handlePrev}
         />
@@ -107,12 +112,27 @@ const HomePage = () => {
             position: 'absolute',
             right: '0',
             top: '50%',
+            padding:'10px',
             transform: 'translateY(-50%)',
-            backgroundColor: 'rgba(255, 255, 255, 0.5)', 
+            backgroundColor: 'rgba(255, 255, 255, 0.4)', 
           }}
           onClick={handleNext}
         />
       </div>
+{/* 이미지 버튼 */}
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', width: '100%', marginBottom: '20px' }}>
+  {/* 첫 번째 줄 */}
+  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightblue' }}>빵</button>
+  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightblue' }}>쿠키</button>
+  
+  <button style={{ width: '100%', height: '340px', backgroundColor: 'lightcoral',gridRow:'span 2' }}>장인의 추천음식</button>
+
+  {/* 두 번째 줄 */}
+  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightgreen' }}>샐러드</button>
+  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightgreen' }}>락토프리</button>
+
+</div>
+
     </div>
   );
 };
