@@ -67,12 +67,13 @@ const HomePage = () => {
       </div>
 
        {/* 이미지 슬라이더 */}
-        {/* 이미지 슬라이더 */}
-      <div style={{ width: '100%', overflow: 'hidden', position: 'relative', margin: '20px 0' }}>
+     
+      <div style={{ maxWidth:'900px',backgroundColor:'grey',overflow:'hidden', position: 'relative', margin: '20px 0' }}>
         <div
           style={{
             display: 'flex',
             transition: 'transform 0.5s',
+            
             width: '100%',  // 부모 컨테이너의 너비를 이미지의 실제 너비와 일치시킴
             transform: `translateX(-${currentIndex * 100}%)`, // 이미지를 이동시키는 부분
           }}
@@ -120,19 +121,34 @@ const HomePage = () => {
         />
       </div>
 {/* 이미지 버튼 */}
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', width: '100%', marginBottom: '20px' }}>
+<h1>카테고리</h1>
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', width: '85%', marginBottom: '20px' }}>
   {/* 첫 번째 줄 */}
-  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightblue' }}>빵</button>
-  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightblue' }}>쿠키</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightblue' }}>디저트</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightblue' }}>샐러드</button>
   
-  <button style={{ width: '100%', height: '340px', backgroundColor: 'lightcoral',gridRow:'span 2' }}>장인의 추천음식</button>
+  <button style={{ width: '100%', height: '420px', backgroundColor: 'lightcoral',gridRow:'span 2' }}>건강관련</button>
 
   {/* 두 번째 줄 */}
-  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightgreen' }}>샐러드</button>
-  <button style={{ width: '100%', height: '160px', backgroundColor: 'lightgreen' }}>락토프리</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightgreen' }}>움료</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightgreen' }}>락토프리</button>
 
 </div>
+<h1>장인의 추천</h1>
+{/* 장인 버튼 */}
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',backgroundColor:'blue', gap: '100px', width: '80%', marginBottom: '20px',margin:'100px' }}>
+  {/* 첫 번째 줄 */}
+  <button style={{ width: '100%', height: '500px', backgroundColor: 'lightcoral',gridRow:'span 2' }}>장인사진</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightblue' }}>음식1</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightblue' }}>음식2</button>
+  
+ 
 
+  {/* 두 번째 줄 */}
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightgreen' }}>움식3</button>
+  <button style={{ width: '100%', height: '200px', backgroundColor: 'lightgreen' }}>음식4</button>
+
+</div>
     </div>
   );
 };
