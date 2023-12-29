@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -16,7 +17,8 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>   {/* 상단 내비게이션 */}
       <div className="navigation">
         {/* 로고 이미지 */}
-        <img src="/logo1.jpg" alt="로고" className="logo" />
+        <a href='/'><img src="/logo1.jpg" alt="로고" className="logo" /></a>
+        
 
         {/* 검색 창 */}
         <div className="searchContainer">
@@ -33,8 +35,11 @@ export default function RootLayout({ children }) {
 
         {/* 장바구니 및 유저 아이콘 */}
         <div className="cartUserIcons">
-          <FontAwesomeIcon icon={faShoppingCart} className="cartIcon" />
+          <a href='/user/1'>
           <FontAwesomeIcon icon={faUser} className="userIcon" />
+          </a>
+          <FontAwesomeIcon icon={faShoppingCart} className="cartIcon" />
+          
         </div>
       </div>
       {children}</body>

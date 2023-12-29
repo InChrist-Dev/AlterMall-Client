@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import ImageButton from './component/imagebutton';
 import styles from './page.module.css';
+import Link from 'next/link';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,26 +54,66 @@ const HomePage = () => {
 
       {/* 이미지 버튼 */}
       <div style={{width:'90%',margin:'0 auto',}}>
-      <p className={styles.categoryTitle}>카테고리</p>
+      <p className={styles.categoryTitle}>카테고리<span className={styles.categorySub}>|건강식품</span></p>
       <div className={styles.imageButtonGrid}>
-        <ImageButton imagePath="dessert.jpg" altText="버튼 이미지" />
-        <ImageButton imagePath="salad.jpg" altText="버튼 이미지" />
-        <button className={styles.largeButton}>사장님이 추천하는 건강음식</button>
-        <ImageButton imagePath="free.jpg" altText="버튼 이미지" />
-        <ImageButton imagePath="drink.jpg" altText="버튼 이미지" />
+        <Link href='/category/dessert'>
+        <ImageButton imagePath="dessert.jpg" altText="디저트" />
+        </Link>
+        <Link href='/category/salad'>
+        <ImageButton imagePath="salad.jpg" altText="샐러드" />
+        </Link>
+        
+         <button className={styles.largeButton}> <img
+        src='recommend.png'  // imagePath에 이미지 파일의 경로를 전달
+        
+        style={{ width: '100%', height: '100%', objectFit: 'fill', borderRadius: '7px' }}
+      /></button>
+        
+       
+        <Link href='/category/free'>
+        <ImageButton imagePath="free.jpg" altText=" 락토프리" />
+        </Link>
+        <Link href='/category/drink'>
+        <ImageButton imagePath="drink.jpg" altText="음료" />
+        </Link>
+        
+        
+       
       </div>
       </div>
      
-
-      <h1 className={styles.categoryTitle}>장인의 추천</h1>
+      <div style={{width:'90%',margin:'0 auto',}}>
+      <h1 className={styles.categoryTitle}>장인의 오마카세</h1>
       {/* 장인 버튼 */}
       <div className={styles.artisanButtons}>
-        <button className={styles.largeButton}>장인사진</button>
-        <button className={styles.smallButton}>음식1</button>
-        <button className={styles.smallButton}>음식2</button>
-        <button className={styles.smallButton}>음식3</button>
-        <button className={styles.smallButton}>음식4</button>
+        <button className={styles.re_largeButton}>"고등어 장인, 고등어님"
+        <img href="pro.jpg"></img></button>
+        
+        <div style={{marginLeft:'50px'}}>
+        <button className={styles.re_smallButton}></button>
+        <div className={styles.recommend_title}>낙곱새</div>
+        <div className={styles.recommend_price}>100,000원</div>
+        <div>글루텐프리여부</div>
+</div><div style={{marginLeft:'50px'}}>
+        <button className={styles.re_smallButton}></button>
+        <div className={styles.recommend_title}>상품이름</div>
+        <div className={styles.recommend_price}>상품가격</div>
+        <div>글루텐프리여부</div>
+        </div> <div style={{marginLeft:'50px'}}>
+        <button className={styles.re_smallButton}></button>
+        <div className={styles.recommend_title}>상품이름</div>
+        <div>상품가격</div>
+        <div>글루텐프리여부</div>
+ </div><div style={{marginLeft:'50px'}}>
+        <button className={styles.re_smallButton}></button>
+        <div className={styles.recommend_title}>상품이름</div>
+        <div>상품가격</div>
+        <div>글루텐프리여부</div>
+        </div>
+    
       </div>
+      </div>
+     
     </div>
   );
 };
