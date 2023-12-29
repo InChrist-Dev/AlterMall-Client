@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [categoryName,setCategoryName] = useState(['낙곱새','피자','치킨','햄버거']);
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
   };
@@ -88,28 +88,18 @@ const HomePage = () => {
       <div className={styles.artisanButtons}>
         <button className={styles.re_largeButton}>"고등어 장인, 고등어님"
         <img href="pro.jpg"></img></button>
-        
-        <div style={{marginLeft:'50px'}}>
+        {categoryName.map((categoryName, i) => {
+              return (
+                 <div style={{marginLeft:'50px'}}>
         <button className={styles.re_smallButton}></button>
-        <div className={styles.recommend_title}>낙곱새</div>
+        <div className={styles.recommend_title}>{categoryName}</div>
         <div className={styles.recommend_price}>100,000원</div>
         <div>글루텐프리여부</div>
-</div><div style={{marginLeft:'50px'}}>
-        <button className={styles.re_smallButton}></button>
-        <div className={styles.recommend_title}>상품이름</div>
-        <div className={styles.recommend_price}>상품가격</div>
-        <div>글루텐프리여부</div>
-        </div> <div style={{marginLeft:'50px'}}>
-        <button className={styles.re_smallButton}></button>
-        <div className={styles.recommend_title}>상품이름</div>
-        <div>상품가격</div>
-        <div>글루텐프리여부</div>
- </div><div style={{marginLeft:'50px'}}>
-        <button className={styles.re_smallButton}></button>
-        <div className={styles.recommend_title}>상품이름</div>
-        <div>상품가격</div>
-        <div>글루텐프리여부</div>
-        </div>
+</div>
+              )
+
+            })}
+
     
       </div>
       </div>
