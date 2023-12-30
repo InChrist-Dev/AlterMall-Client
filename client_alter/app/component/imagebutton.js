@@ -3,7 +3,7 @@ import React from 'react';
 const ImageButton = ({ imagePath, altText, onClick }) => {
   return (
     <button
-      style={{ width: '100%', height: '250px',  overflow: 'hidden', position: 'relative' ,border:'0'}}
+      style={{ width: '100%', height: '90%',  overflow: 'hidden', position: 'relative' ,border:'0'}}
       onClick={onClick}
     >
       <img

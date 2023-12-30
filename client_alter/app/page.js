@@ -57,7 +57,7 @@ const HomePage = () => {
       </div>
 
       {/* 이미지 버튼 */}
-      <div style={{width:'90%',margin:'0 auto',}}>
+      <div style={{width:'80%',margin:'0 auto',}}>
       <p className={styles.categoryTitle}>카테고리<span className={styles.categorySub}>|건강식품</span></p>
       <div className={styles.imageButtonGrid}>
         <Link href='/category/dessert'>
@@ -86,7 +86,7 @@ const HomePage = () => {
       </div>
       </div>
      
-      <div style={{width:'90%',margin:'0 auto',}}>
+      <div style={{width:'80%',margin:'0 auto',}}>
       <p className={styles.categoryTitle}>장인의 추천<span className={styles.categorySub}> |얼터몰 인증 건강장인의 추천음식!</span></p>
       {/* 장인 버튼 */}
       <div className={styles.artisanButtons}>
