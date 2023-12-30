@@ -11,8 +11,8 @@
   .scrollButtons button {
     padding: 10px;
     font-size: 14px;
-    background-color: #3498db;
-    color: #fff;
+    background-color: #fff;
+    color: #464646;
     border: none;
     margin-right: 10px;
     cursor: pointer;
@@ -20,7 +20,7 @@
   
   .sortButtons button:hover,
   .scrollButtons button:hover {
-    background-color: #2980b9;
+    background-color: #cecece;
   }
   
   .productContainer {
@@ -29,10 +29,10 @@
   }
   
   .productCard {
-    width: calc(50% - 20px);
+  
     margin: 10px;
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 5px;
     transition: transform 0.3s ease-in-out;
   }
   
@@ -41,21 +41,22 @@
   }
   
   .productCard h3 {
-    font-size: 18px;
+    font-size: 24px;
     margin-bottom: 10px;
     color: #333;
   }
   
   .productCard img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+    width:250px;
+    height: 250px;
+    
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .productCard p {
-    font-size: 14px;
-    color: #555;
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
     margin: 5px 0;
   }
   

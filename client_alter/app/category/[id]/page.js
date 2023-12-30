@@ -41,6 +41,15 @@ const ItemPage = (props) => {
     // Update state accordingly
   };
 
+  const formatCurrency = (value) => {
+    const formatter = new Intl.NumberFormat('ko-KR', {
+      style: 'currency',
+      currency: 'KRW',
+      minimumFractionDigits: 0,
+    });
+  
+    return formatter.format(value);
+  };
   return (
     <div>
       <h1>Category: {props.params.id}</h1>
@@ -61,10 +70,11 @@ const ItemPage = (props) => {
       <div className={styles.productContainer}>
         {categoryName.slice(0, displayCount).map((name, index) => (
           <div key={index} className={styles.productCard}>
-            <h3>{name}</h3>
+            
             <img src={categoryImage[index]} alt={name} />
-            <p>Price: {categoryPrice[index]}</p>
-            <p>Stock: {categoryS[index]}</p>
+            <h3>{name}</h3>
+            <p>{categoryPrice[index]}</p>
+            <p> {categoryS[index]}</p>
             <button>Add to Cart</button>
           </div>
         ))}
