@@ -5,10 +5,14 @@ import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from 
 import ImageButton from './component/imagebutton';
 import styles from './page.module.css';
 import Link from 'next/link';
+import { NextURL } from 'next/dist/server/web/next-url';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [categoryName,setCategoryName] = useState(['낙곱새','피자','치킨','햄버거']);
+  const [categoryPrice,setCategoryPrice] = useState([10000,2000,30000,30000]);
+  const [categoryS,setCategoryS] = useState([1,2,3,4]);
+  const [categoryImage, SetCategoryImage] = useState( ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg']);
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
   };
@@ -83,18 +87,19 @@ const HomePage = () => {
       </div>
      
       <div style={{width:'90%',margin:'0 auto',}}>
-      <h1 className={styles.categoryTitle}>장인의 오마카세</h1>
+      <p className={styles.categoryTitle}>장인의 추천<span className={styles.categorySub}> |얼터몰 인증 건강장인의 추천음식!</span></p>
       {/* 장인 버튼 */}
       <div className={styles.artisanButtons}>
-        <button className={styles.re_largeButton}>"고등어 장인, 고등어님"
+        <button className={styles.re_largeButton}>
         <img href="pro.jpg"></img></button>
         {categoryName.map((categoryName, i) => {
               return (
                  <div style={{marginLeft:'50px'}}>
-        <button className={styles.re_smallButton}></button>
+        <button className={styles.re_smallButton} style={{ backgroundImage: `url(${categoryImage[i]})` }}></button>
+
         <div className={styles.recommend_title}>{categoryName}</div>
-        <div className={styles.recommend_price}>100,000원</div>
-        <div>글루텐프리여부</div>
+        <div className={styles.recommend_price}>{categoryPrice[i]}</div>
+        <div>{categoryS[i]}</div>
 </div>
               )
 

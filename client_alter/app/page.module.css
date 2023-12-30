@@ -111,9 +111,9 @@
   
 }.categorySub {
   margin-bottom: 10px;
-
+  font-weight: 600;
   font-size: 20px;
-
+  color: grey;
   
 }
 
@@ -152,9 +152,9 @@
 }
 
 .re_smallButton {
-  width: 70%;
-  height: 180px;
-  background-image:url('../public/nack.jpg');
+  width: 240px;
+  height: 190px;
+
   background-size: cover; /* 배경 이미지 크기 조절 */
   margin:  40px 20px 0px 0px;
 }
