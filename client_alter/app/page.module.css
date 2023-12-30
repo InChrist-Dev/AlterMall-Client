@@ -133,6 +133,13 @@
   background-color: lightcoral;
   grid-row: span 2;
   border: 0;
+  transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+
+  /* Initial styling */
+  filter: brightness(100%);
+}
+.largeButton:hover{
+  filter: brightness(80%);
 }
 
 .smallButton {

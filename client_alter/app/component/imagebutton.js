@@ -1,15 +1,16 @@
 import React from 'react';
-
+import styles from './component.module.css'
 const ImageButton = ({ imagePath, altText, onClick }) => {
   return (
     <button
-      style={{ width: '100%', height: '90%',  overflow: 'hidden', position: 'relative' ,border:'0'}}
+      className={styles.imageButton}
       onClick={onClick}
+      
     >
       <img
         src={imagePath}  // imagePath에 이미지 파일의 경로를 전달
         alt={altText}
-        style={{ width: '100%', height: '100%', objectFit: 'fill' }}
+        className={styles.buttonImage}
       />
     </button>
   );

@@ -1,0 +1,22 @@
+.imageButton{
+    width: 100%;
+    height: 90%;  
+    overflow: hidden;
+    position: relative;
+    border:0;
+}
+.imageButton:hover{
+    background-color: aliceblue;
+}
+.buttonImage{ 
+    width: 100%;
+    height:100%;
+    object-fit: fill;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+
+    /* Initial styling */
+    filter: brightness(100%);
+}
+.buttonImage:hover{
+    filter: brightness(80%);
+}
