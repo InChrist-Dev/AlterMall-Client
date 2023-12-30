@@ -6,7 +6,7 @@ const sampleData = {
   categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
   categoryPrice: [10000, 20000, 30000, 40000],
   categoryS: [1, 2, 3, 4],
-  categoryImage: ['/food/nack.jpg', '/food/pizza.jpg', 3, 4],
+  categoryImage:['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg'],
 };
 
 export default function ItemPage(props) {
@@ -31,7 +31,7 @@ export default function ItemPage(props) {
           <div key={index} style={{ width: '300px', margin: '10px', border: '1px solid #ddd', padding: '10px' }}>
            
             <h3>{name}</h3>
-            <img style={{width:'270px'}} src='/food/nack.jpg'></img>
+            <img style={{width:'275px', height:'275px'}} src={categoryImage[index]}></img>
             <p>Price: {categoryPrice[index]}</p>
             <p>Stock: {categoryS[index]}</p>
             {/* You can add more details or customize the product card as needed */}
