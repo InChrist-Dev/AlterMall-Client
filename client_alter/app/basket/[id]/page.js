@@ -103,16 +103,17 @@ const ItemPage = (props) => {
                     onChange={() => toggleItemSelection(index)}
                   />
                 </td>
-                <td>
+                <td style={{display:'flex' , alignItems: 'center',}}>
+                  
                   <img
                     src={categoryImage[index]}
                     alt={name}
                     className={styles.productImage}
                   />
-                  <div className={styles.productDetails}>
-                    <h3>{name}</h3>
+                
+                    {name}
                    
-                  </div>
+                 
                 </td>
                 <td>
                   <p>{categoryPrice[index]}원</p>
