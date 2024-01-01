@@ -1,75 +1,167 @@
-/* category.module.css */
+.title{
+  margin: 30px auto;
+  width: 80%;
+}
+.basketContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 80%;
+}
 
-.sortAndScroll {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productTable th,
+.productTable td {
+  padding: 10px;
+  text-align: left;
+  border: none; /* 이 부분을 수정하여 표시선을 없앴습니다 */
+}
+
+.productTable th {
+  background-color: #f2f2f2;
+}
+
+.headerRow {
+  display: flex;
   
-  .sortButtons button,
-  .scrollButtons button {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #464646;
-    border: none;
-    margin-right: 10px;
-    cursor: pointer;
-  }
+  justify-content: start;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.headerRow div{
+  margin-left: 60px;
+}.headerRow div{
+  margin-left: 60px;
+}
+
+.productContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+.productCard img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
   
-  .sortButtons button:hover,
-  .scrollButtons button:hover {
-    background-color: #cecece;
-  }
+  margin-right: 60px;
+}
+
+.productDetails {
+  display: flex;
+
+}
+
+.productDetails h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+  margin-right: 60px;
+}
+
+.productDetails p {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  margin: 5px 0;
+  margin-right: 60px;
+}
+
+.checkbox {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 0px;
   
-  .productContainer {
-    display: flex;
-    flex-wrap: wrap;
-  }
+}
+
+.totalPrice {
+  margin-top: 20px;
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  color: red;
+}
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productTable th{
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.productTable th {
+  background-color: #f2f2f2;
+}
+/* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable th:first-child {
+  width: 14%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.productCard td:first-child {
+  text-align: center; /* 가로 중앙 정렬을 추가합니다. */
+}
+/* basket.module.css */
+
+/* 기존 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable td {
+  border: none;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+
+}
+
+.quantityControl button {
+  width: 40px;
+  padding: 5px 10px;
+  font-size: 30px;
+  background-color: #fff;
+  color: #686868;
+  border: 1px solid #686868;
+  cursor: pointer;
+}
+
+.quantityControl button:hover {
+  background-color: #fff;
+}
+
+.quantityControl span {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+/* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable th:last-child,
+.productTable td:last-child {
+  text-align: center;
+  width: 10px;
+}
+
+.productTable th:nth-child(4),
+.productTable td:nth-child(4) {
+  text-align: center;
   
-  .productCard {
-  
-    margin: 10px;
-    border: 1px solid #ddd;
-    padding: 5px;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .productCard:hover {
-    transform: scale(1.05);
-  }
-  
-  .productCard h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .productCard img {
-    width:250px;
-    height: 250px;
-    
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .productCard p {
-    font-size: 20px;
-    font-weight: bold;
-    color: red;
-    margin: 5px 0;
-  }
-  
-  .productCard button {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .productCard button:hover {
-    background-color: #218c54;
-  }
-  
+}
+
+.productTable th:nth-child(5),
+.productTable td:nth-child(5) {
+  text-align: center;
+}

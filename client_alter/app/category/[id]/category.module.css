@@ -1,28 +1,45 @@
 /* category.module.css */
 
+/* YourComponent.module.css */
 .sortAndScroll {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sortButtons button,
+.scrollButtons button {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #fff;
+  color: #464646;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
   
-  .sortButtons button,
-  .scrollButtons button {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #464646;
-    border: none;
-    margin-right: 10px;
-    cursor: pointer;
-  }
+}
+.sortButtons button.activeButton,
+.scrollButtons button.activeButton {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #ffbb6e;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 5px;
   
-  .sortButtons button:hover,
-  .scrollButtons button:hover {
-    background-color: #cecece;
-  }
-  
+}
+
+
+.sortButtons button:hover,
+.scrollButtons button:hover {
+  background-color: #ffbb6e;
+}
+
+
+
   .productContainer {
     display: flex;
     flex-wrap: wrap;
@@ -78,4 +95,6 @@
   .productCard button:hover {
     background-color: #218c54;
   }
-  
+  .activeButton {
+  background-color: #1d1212;
+}

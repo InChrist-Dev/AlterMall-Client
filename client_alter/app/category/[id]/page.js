@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import styles from './category.module.css'; // Create a CSS module for styling
 import Link from 'next/link';
 // Sample data
@@ -17,7 +17,7 @@ const ItemPage = (props) => {
   const [categoryPrice, setCategoryPrice] = useState([]);
   const [categoryS, setCategoryS] = useState([]);
   const [categoryImage, setCategoryImage] = useState([]);
-  const [displayCount, setDisplayCount] = useState(10);
+
   const [categoryId,setCategoryId] = useState([]);
 
   useEffect(() => {
@@ -28,39 +28,65 @@ const ItemPage = (props) => {
     setCategoryImage(sampleData.categoryImage);
     setCategoryId(sampleData.categoryId);
   }, []);
+  const [sortBy, setSortBy] = useState('latest'); // 'latest', 'lowest', 'highest'
+  const [displayCount, setDisplayCount] = useState(10);
 
   const sortByLowestPrice = () => {
-    // Implement sorting logic for lowest price
-    // Update state accordingly
+    setSortBy('lowest');
+    // 다른 처리 로직 추가
   };
 
   const sortByHighestPrice = () => {
-    // Implement sorting logic for highest price
-    // Update state accordingly
+    setSortBy('highest');
+    // 다른 처리 로직 추가
   };
 
   const sortByLatest = () => {
-    // Implement sorting logic for latest
-    // Update state accordingly
+    setSortBy('latest');
+    // 다른 처리 로직 추가
+    console.log(sortBy)
   };
-
-
   return (
     <div>
       <h1>Category: {props.params.id}</h1>
       <div></div>
       <div className={styles.sortAndScroll}>
-        <div className={styles.sortButtons}>
-          <button onClick={sortByLowestPrice}>낮은 가격순</button>
-          <button onClick={sortByHighestPrice}>높은 가격순</button>
-          <button onClick={sortByLatest}>최신순</button>
-        </div>
-
-        <div className={styles.scrollButtons}>
-          <button onClick={() => setDisplayCount(10)}>10개 보기</button>
-          <button onClick={() => setDisplayCount(30)}>30개 보기</button>
-        </div>
+      <div className={styles.sortButtons}>
+        <button
+          onClick={sortByLowestPrice}
+          className={sortBy == 'lowest' ? styles.activeButton : ''}
+        >
+          낮은 가격순
+        </button>
+        <button
+          onClick={sortByHighestPrice}
+          className={sortBy == 'highest' ? styles.activeButton : ''}
+        >
+          높은 가격순
+        </button>
+        <button
+          onClick={sortByLatest}
+          className={sortBy == 'latest' ? styles.activeButton : ''}
+        >
+          최신순
+        </button>
       </div>
+
+      <div className={styles.scrollButtons}>
+        <button
+          onClick={() => setDisplayCount(10)}
+          className={displayCount == 10 ? styles.activeButton : ''}
+        >
+          10개 보기
+        </button>
+        <button
+          onClick={() => setDisplayCount(30)}
+          className={displayCount == 30 ? styles.activeButton : ''}
+        >
+          30개 보기
+        </button>
+      </div>
+    </div>
 
       <div className={styles.productContainer}>
       {categoryName.slice(0, displayCount).map((name, index) => (
