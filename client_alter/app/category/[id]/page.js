@@ -2,13 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './category.module.css'; // Create a CSS module for styling
-
+import Link from 'next/link';
 // Sample data
 const sampleData = {
   categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
-  categoryPrice: [10000, 20000, 30000, 40000],
+  categoryPrice: [10000, 20000, 300000000, 40000],
   categoryS: [1, 2, 3, 4],
   categoryImage:['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg'],
+  categoryId:[13212,5345,25253, 235235],
 };
 
 const ItemPage = (props) => {
@@ -17,6 +18,7 @@ const ItemPage = (props) => {
   const [categoryS, setCategoryS] = useState([]);
   const [categoryImage, setCategoryImage] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
+  const [categoryId,setCategoryId] = useState([]);
 
   useEffect(() => {
     // Simulating API fetch with sample data
@@ -24,6 +26,7 @@ const ItemPage = (props) => {
     setCategoryPrice(sampleData.categoryPrice);
     setCategoryS(sampleData.categoryS);
     setCategoryImage(sampleData.categoryImage);
+    setCategoryId(sampleData.categoryId);
   }, []);
 
   const sortByLowestPrice = () => {
@@ -45,7 +48,7 @@ const ItemPage = (props) => {
   return (
     <div>
       <h1>Category: {props.params.id}</h1>
-
+      <div></div>
       <div className={styles.sortAndScroll}>
         <div className={styles.sortButtons}>
           <button onClick={sortByLowestPrice}>낮은 가격순</button>
@@ -60,16 +63,20 @@ const ItemPage = (props) => {
       </div>
 
       <div className={styles.productContainer}>
-        {categoryName.slice(0, displayCount).map((name, index) => (
-          <div key={index} className={styles.productCard}>
-            
-            <img src={categoryImage[index]} alt={name} />
-            <h3>{name}</h3>
-            <p>{categoryPrice[index]}</p>
-            <p> {categoryS[index]}</p>
-            <button>Add to Cart</button>
-          </div>
-        ))}
+      {categoryName.slice(0, displayCount).map((name, index) => (
+
+  <div key={index} className={styles.productCard}>
+           <Link href={`/products/${categoryId[index]}`}>
+    <img src={categoryImage[index]} alt={name} />
+    <h3>{name}</h3>
+    <p>{categoryPrice[index].toLocaleString()}원</p>
+    <p>{categoryS[index]}</p>
+    <button>Add to Cart</button>
+    </Link>
+  </div>
+
+))}
+
       </div>
     </div>
   );

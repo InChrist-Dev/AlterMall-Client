@@ -41,6 +41,35 @@ export default function RootLayout({ children }) {
           </a>
         </div>
       </div>
+      <div style={{borderBottom:'0.5px solid #ddd'}}></div>
+          {/* 네비게이션 바 */}
+          <div className="navigation">
+          <nav className="navbar">
+            <ul className="nav-list">
+            <li className="category-dropdown">
+                <a href="/">카테고리</a>
+                <div className="category-menu">
+                  <ul>
+                    <li><a href="/category/desserts">디저트</a></li>
+                    <li><a href="/category/salads">샐러드</a></li>
+                    <li><a href="/category/lactose-free">락토프리</a></li>
+                    <li><a href="/category/drinks">음료</a></li>
+                  </ul>
+                  
+                </div>
+              </li>
+              <li><a href="/">랭킹</a></li>
+              <li><a href="/">이벤트</a></li>
+              <li><a href="/">이달의 특가</a></li>
+              <li><a href="/">건강정보</a></li>
+              <li><a href="/">사장님스토리</a></li>
+           
+            </ul>
+            
+          </nav>
+          
+          </div>
+          <div style={{borderBottom:'0.5px solid #ddd'}}></div>
       {children}</body>
     </html>
   )
