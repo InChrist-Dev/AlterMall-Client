@@ -86,7 +86,7 @@ const ItemPage = (props) => {
                   checked={selectedItems.length === categoryName.length}
                   onChange={toggleAllItemsSelection}
                 />
-                전체선택
+                
               </th>
               <th>상품</th>
               <th>가격</th>
@@ -144,10 +144,11 @@ const ItemPage = (props) => {
             ))}
           </tbody>
         </table>
-        <div className={styles.totalPrice}>
+     
+      </div>
+      <div className={styles.totalPrice}>
           총 가격: {calculateTotalPrice()}원
         </div>
-      </div>
     </div>
   );
 };
