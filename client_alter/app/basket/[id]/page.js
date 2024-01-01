@@ -67,9 +67,11 @@ const ItemPage = (props) => {
   };
 
   const handleQuantityChange = (index, value) => {
-    setQuantity((prevQuantity) => ({ ...prevQuantity, [index]: value }));
+    // Prevent quantity from going below 1
+    const newQuantity = Math.max(0, value);
+    setQuantity((prevQuantity) => ({ ...prevQuantity, [index]: newQuantity }));
   };
-
+  
   return (
     <div>
       <h1 className={styles.title}>장바구니</h1>

@@ -181,9 +181,11 @@
   padding: 5px 10px;
   font-size: 30px;
   background-color: #fff;
-  color: #686868;
-  border: 1px solid #686868;
+  color: #868686;
+  border: 1px solid #868686;
+  border-radius: 5px;
   cursor: pointer;
+  margin: 0 10px;
 }
 
 .quantityControl button:hover {
