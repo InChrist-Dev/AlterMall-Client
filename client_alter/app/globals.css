@@ -114,7 +114,7 @@ html{
 }
 
 .nav-list a:hover {
-  color: #ffcc00;
+  color: #ff5e00;
 }
 
 
@@ -127,6 +127,8 @@ html{
   top: 100%;
   left: 0;
   display: none;
+  order: 0;
+  z-index: 2; /* slider에 z-index 값을 추가 */
 }
 
 .category-dropdown:hover .category-menu {
@@ -142,7 +144,7 @@ html{
 .category-menu li {
   margin: 0;
   padding: 10px;
-  background-color: #333;
+  background-color: #fff;
 }
 
 .category-menu a {
