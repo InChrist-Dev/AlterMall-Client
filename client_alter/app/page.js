@@ -6,6 +6,8 @@ import ImageButton from './component/imagebutton';
 import styles from './page.module.css';
 import Link from 'next/link';
 import { NextURL } from 'next/dist/server/web/next-url';
+import ImageSlider from './component/ImageSlider';
+import CategoryButtons from './component/category';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,67 +26,8 @@ const HomePage = () => {
   return (
     <div >
   
-
-      {/* 이미지 슬라이더 */}
-      <div className={styles.slider}>
-        <div
-          className={styles.imageSlider}
-          style={{
-            transform: `translateX(-${currentIndex * 100}%)`,
-          }}
-        >
-          {/* 이미지 1 */}
-          <img src="/1.jpg" alt="이미지1" className={styles.sliderImage} />
-
-          {/* 이미지 2 */}
-          <img src="/2.jpg" alt="이미지2" className={styles.sliderImage} />
-
-          {/* 이미지 3 */}
-          <img src="/3.jpg" alt="이미지3" className={styles.sliderImage} />
-        </div>
-
-        {/* 화살표 버튼 */}
-        <FontAwesomeIcon
-          icon={faChevronLeft}
-          className={styles.leftArrow}
-          onClick={handlePrev}
-        />
-        <FontAwesomeIcon
-          icon={faChevronRight}
-          className={styles.rightArrow}
-          onClick={handleNext}
-        />
-      </div>
-
-      {/* 이미지 버튼 */}
-      <div style={{width:'80%',margin:'0 auto',}}>
-      <p className={styles.categoryTitle}>카테고리<span className={styles.categorySub}>|건강식품</span></p>
-      <div className={styles.imageButtonGrid}>
-        <Link href='/category/dessert'>
-        <ImageButton imagePath="dessert.jpg" altText="디저트" />
-        </Link>
-        <Link href='/category/salad'>
-        <ImageButton imagePath="salad.jpg" altText="샐러드" />
-        </Link>
-        
-         <button className={styles.largeButton}><Link href='/foodstory'> <img
-        src='recommend.png'  // imagePath에 이미지 파일의 경로를 전달
-        
-        style={{ width: '100%', height: '100%', objectFit: 'fill'}}
-      /></Link></button>
-        
-       
-        <Link href='/category/free'>
-        <ImageButton imagePath="free.jpg" altText=" 락토프리" />
-        </Link>
-        <Link href='/category/drink'>
-        <ImageButton imagePath="drink.jpg" altText="음료" />
-        </Link>
-        
-        
-       
-      </div>
-      </div>
+      <ImageSlider/>
+<CategoryButtons/>
      
       <div style={{width:'80%',margin:'0 auto',}}>
       <p className={styles.categoryTitle}>장인의 추천<span className={styles.categorySub}> |얼터몰 인증 건강장인의 추천음식!</span></p>

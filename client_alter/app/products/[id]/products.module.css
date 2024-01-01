@@ -2,7 +2,7 @@
 
 .productDetailContainer {
     display: flex;
-    width: 1200px;
+    width: 80%;
     padding-top: 100px;
     margin: 0 auto;
   }

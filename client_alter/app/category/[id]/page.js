@@ -7,7 +7,7 @@ import Link from 'next/link';
 const sampleData = {
   categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
   categoryPrice: [10000, 20000, 300000000, 40000],
-  categoryS: [1, 2, 3, 4],
+  categoryS: ['글루텐프리마크', '소금프리마크', '락토프리마크', 4],
   categoryImage:['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg'],
   categoryId:[13212,5345,25253, 235235],
 };
@@ -64,18 +64,19 @@ const ItemPage = (props) => {
 
       <div className={styles.productContainer}>
       {categoryName.slice(0, displayCount).map((name, index) => (
-
   <div key={index} className={styles.productCard}>
-           <Link href={`/products/${categoryId[index]}`}>
-    <img src={categoryImage[index]} alt={name} />
-    <h3>{name}</h3>
-    <p>{categoryPrice[index].toLocaleString()}원</p>
-    <p>{categoryS[index]}</p>
-    <button>Add to Cart</button>
+    <Link href={`/products/${categoryId[index]}`} style={{ textDecoration: "none" }}>
+      <div className={styles.productLink}>
+        <img src={categoryImage[index]} alt={name} />
+        <h3>{name}</h3>
+        <p>{categoryPrice[index].toLocaleString()}원</p>
+        <p>{categoryS[index]}</p>
+        <button>Add to Cart</button>
+      </div>
     </Link>
   </div>
-
 ))}
+
 
       </div>
     </div>
