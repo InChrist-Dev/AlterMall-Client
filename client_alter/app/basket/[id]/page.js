@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './category.module.css'; // Create a CSS module for styling
+import styles from '../../category/[id]/category.module.css'; // Create a CSS module for styling
 
 // Sample data
 const sampleData = {

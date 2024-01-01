@@ -159,9 +159,9 @@
 }
 
 .re_smallButton {
-  width: 240px;
-  height: 190px;
-
+  width: 250px;
+  height: 200px;
+  border: 3px solid black;
   background-size: cover; /* 배경 이미지 크기 조절 */
   margin:  40px 20px 0px 0px;
 }

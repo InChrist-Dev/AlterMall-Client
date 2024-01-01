@@ -1,0 +1,87 @@
+/* category.module.css */
+
+.sortAndScroll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .sortButtons button,
+  .scrollButtons button {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #464646;
+    border: none;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .sortButtons button:hover,
+  .scrollButtons button:hover {
+    background-color: #cecece;
+  }
+  
+  .productContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .productCard {
+  
+    margin: 10px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .productCard:hover {
+    transform: scale(1.05);
+  }
+  
+  .productCard h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .productCard img {
+    width:250px;
+    height: 250px;
+    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .productCard p {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin: 5px 0;
+  }
+  
+  .productCard button {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #27ae60;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .productCard button:hover {
+    background-color: #218c54;
+  }
+  .cartUserIcons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cartIcon,
+  .userIcon {
+    font-size: 24px;
+    cursor: pointer;
+    margin: 14px;
+    color: #D91801;
+  }
+  
