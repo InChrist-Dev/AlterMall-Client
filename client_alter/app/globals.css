@@ -81,6 +81,7 @@ html{
 .navbar {
   display: flex;
   margin: 0 auto;
+  width: 100%;
 }
 
 /* navigation.css */
@@ -90,7 +91,7 @@ html{
   display: flex;
   margin: 0;
   padding: 0;
-  width: 1300px;
+  width: 100%;
 }
 
 .nav-list li {
