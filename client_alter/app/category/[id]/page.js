@@ -19,7 +19,8 @@ const ItemPage = (props) => {
   const [categoryImage, setCategoryImage] = useState([]);
 
   const [categoryId,setCategoryId] = useState([]);
-
+  const id  = props.params.id;
+  console.log(id);
   useEffect(() => {
     // Simulating API fetch with sample data
     setCategoryName(sampleData.categoryName);
@@ -30,6 +31,10 @@ const ItemPage = (props) => {
   }, []);
   const [sortBy, setSortBy] = useState('latest'); // 'latest', 'lowest', 'highest'
   const [displayCount, setDisplayCount] = useState(10);
+
+  const handleDisplayCountChange = (e) => {
+    setDisplayCount(Number(e.target.value));
+  };
 
   const sortByLowestPrice = () => {
     setSortBy('lowest');
@@ -46,10 +51,28 @@ const ItemPage = (props) => {
     // 다른 처리 로직 추가
     console.log(sortBy)
   };
+
+    // id에 따라 다른 단어를 설정
+    let displayWord;
+    switch (id) {
+      case 'dessert':
+        displayWord = '디저트';
+        break;
+      case 'salad':
+        displayWord = '샐러드';
+        break;
+      case 'free':
+        displayWord = '락토프리';
+        break;
+      case 'drink':
+        displayWord = '음료';
+        break;
+      default:
+        displayWord = '알 수 없는 카테고리';
+    }
   return (
     <div>
-      <h1>Category: {props.params.id}</h1>
-      <div></div>
+      <h1 className={styles.caTitle}>{displayWord}</h1>
       <div className={styles.sortAndScroll}>
       <div className={styles.sortButtons}>
         <button
@@ -58,12 +81,14 @@ const ItemPage = (props) => {
         >
           낮은 가격순
         </button>
+        ㅣ
         <button
           onClick={sortByHighestPrice}
           className={sortBy == 'highest' ? styles.activeButton : ''}
         >
           높은 가격순
         </button>
+        ㅣ
         <button
           onClick={sortByLatest}
           className={sortBy == 'latest' ? styles.activeButton : ''}
@@ -73,19 +98,18 @@ const ItemPage = (props) => {
       </div>
 
       <div className={styles.scrollButtons}>
-        <button
-          onClick={() => setDisplayCount(10)}
-          className={displayCount == 10 ? styles.activeButton : ''}
-        >
-          10개 보기
-        </button>
-        <button
-          onClick={() => setDisplayCount(30)}
-          className={displayCount == 30 ? styles.activeButton : ''}
-        >
-          30개 보기
-        </button>
-      </div>
+      
+      <select
+        id="displayCount"
+        className={styles.dropInput}
+        value={displayCount}
+        onChange={handleDisplayCountChange}
+      >
+        <option value={10}>10개씩 보기</option>
+        <option value={30}>30개씩 보기</option>
+      </select>
+      <label htmlFor="displayCount"></label>
+    </div>
     </div>
 
       <div className={styles.productContainer}>
