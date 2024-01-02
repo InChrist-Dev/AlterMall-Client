@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './basket.module.css'; // Import the CSS module
 
-// Sample data
 const sampleData = {
   categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
   categoryPrice: [10000, 20000, 30000, 40000],
@@ -149,6 +148,11 @@ const ItemPage = (props) => {
       <div className={styles.totalPrice}>
           총 가격: {calculateTotalPrice()}원
         </div>
+        <div className={styles.Buttons}>
+        <button className={styles.addToCartButton} onClick={()=>{location.href='/'}}>쇼핑 계속하기</button>
+        <button className={styles.BuyButton}>바로구매</button>
+        </div>
+        
     </div>
   );
 };

@@ -79,7 +79,7 @@
   }
   
   .addToCartButton:hover {
-    background-color: #d14d18;
+    background-color: #e4e4e4;
   }
   
   .BuyButton {
@@ -95,4 +95,7 @@
     transition: background-color 0.3s ease;
     font-weight: 500;
   }
-  
+
+  .BuyButton:hover {
+    background-color: #cf4b17;
+  }
