@@ -1,0 +1,61 @@
+/* seller.module.css */
+
+.container {
+    position: relative;
+  }
+  
+  .backgroundImage {
+ 
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%; /* 조절 필요 */
+    filter: brightness(60%);
+  }
+
+  
+  .content {
+    position: absolute;
+    top: 20%;
+    padding-left: 50px;
+
+    
+    color: white;
+
+  }
+  
+  .title {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .subscribeButton {
+    background-color: #e50914;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 4px;
+    font-size: 25px;
+    font-weight: 800;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .description {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  
+  .carousel {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 30px;
+  }
+  
+  .episodeItem {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    margin-right: 10px;
+    /* 추가적인 에피소드 아이템 스타일 지정 */
+  }
+  

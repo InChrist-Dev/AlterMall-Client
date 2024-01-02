@@ -55,7 +55,7 @@ const NavigationBar = () => {
             <li><a href="/">이벤트</a></li>
             <li><a href="/">이달의 특가</a></li>
             <li><a href="/">건강정보</a></li>
-            <li><a href="/">사장님스토리</a></li>
+            <li><a href="/foodstory">푸드스토리</a></li>
           </ul>
         </nav>
       </div>

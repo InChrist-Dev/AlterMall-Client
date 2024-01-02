@@ -1,7 +1,6 @@
-'use client'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Link } from 'react-router-dom';
 import NavigationBar from './component/navigation';
 import Footer from './component/footer';
 
