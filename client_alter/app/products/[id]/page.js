@@ -25,8 +25,8 @@ const ItemPage = (props) => {
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
           <h1 >햄버거{props.params.id} </h1>
-          <p>배달방법: 영욱배달</p>
-          <p>제품구성: 태성,영욱,수빈10%포함</p>
+          <p>배달방법: 특급배달</p>
+          <p>제품구성: 밀가루, 버터, 우유, 달걀, 설탕포함</p>
           <p>보관법: 냉동보관</p>
           <p>안내: 해당제품은 보관 후 3일 안에 드셔주세요</p>
         </div>
