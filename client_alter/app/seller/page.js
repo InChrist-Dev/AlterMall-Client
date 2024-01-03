@@ -32,10 +32,10 @@ const DramaDetailPage = () => {
     <div className={styles.container}>
       <div className={styles.background}></div>
       <div className={styles.content}>
-        <h1 className={styles.title}>타고난 고기 전문가: 백종찬 사장님</h1>
+        <h1 className={styles.title}><img  className={styles.logo} src='/logos.png'></img> 김프리 사장님</h1>
         <button className={styles.subscribeButton}>구독</button>
         <p className={styles.description}>
-        우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.우리 고깃집은 육류 프리 고기만 취급합니다.
+        저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.
         </p>
         <div className={styles.episodeContainer}>
           <h2 className={styles.episodeTitle}>음식 목록</h2>

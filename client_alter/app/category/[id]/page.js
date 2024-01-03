@@ -5,8 +5,8 @@ import styles from './category.module.css'; // Create a CSS module for styling
 import Link from 'next/link';
 // Sample data
 const sampleData = {
-  categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
-  categoryPrice: [10000, 20000, 300000000, 40000],
+  categoryName: ['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'],
+  categoryPrice: [10000, 20000, 30000, 40000],
   categoryS: ['글루텐프리마크', '소금프리마크', '락토프리마크', 4],
   categoryImage:['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg'],
   categoryId:[13212,5345,25253, 235235],
