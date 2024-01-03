@@ -2,18 +2,20 @@
 'use client'
 import React, { useState } from 'react';
 import styles from './seller.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+
 
 const DramaDetailPage = () => {
   const [episodes, setEpisodes] = useState([
-    '햄버거',
-    '치킨',
-    '낙곱새','피자',
-    '햄버거',
-    '치킨',
-    '낙곱새','피자',
+    '사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크','사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'
     
   ]);
-
+  const [isSubscribed, setSubscribed] = useState(false);
+  const handleSubscribeClick = () => {
+    setSubscribed(!isSubscribed);
+  };
   const [episodesImage, setEpisodesImage] = useState([
     '/food/ham.jpg','/food/chicken.jpg','/food/nack.jpg', '/food/pizza.jpg',  '/food/ham.jpg','/food/chicken.jpg','/food/nack.jpg', '/food/pizza.jpg', 
   ]);
@@ -33,7 +35,12 @@ const DramaDetailPage = () => {
       <div className={styles.background}></div>
       <div className={styles.content}>
         <h1 className={styles.title}><img  className={styles.logo} src='/logos.png'></img> 김프리 사장님</h1>
-        <button className={styles.subscribeButton}>구독</button>
+        <button
+      className={styles.subscribeButton}
+      onClick={handleSubscribeClick}
+    >
+      <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
+    </button>
         <p className={styles.description}>
         저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.
         </p>

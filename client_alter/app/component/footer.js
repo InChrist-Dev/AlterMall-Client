@@ -13,9 +13,9 @@ const Footer = () => {
       <div className={styles.column}>
         <p className={styles.title}>회사소개</p>
         <p>상호명 및 호스팅 서비스 제공: InC개발팀</p>
-        <p>대표이사: 편수빈 마케팅,회계,디자인 팀장</p>
+        <p>대표이사: 이정훈</p>
         <p>경기도 의정부시 민락동 692-8 A동 5층</p>
-        <p>사업자 등록번호: 723-88-00767</p>
+        <p>사업자 등록번호: 723-30-01491</p>
         {/* Add more information as needed */}
       </div>
       <div className={styles.column}>

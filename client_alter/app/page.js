@@ -11,9 +11,9 @@ import CategoryButtons from './component/category';
 
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [categoryName,setCategoryName] = useState(['낙곱새','피자','치킨','햄버거']);
-  const [categoryPrice,setCategoryPrice] = useState([10000,2000,30000,30000]);
-  const [categoryS,setCategoryS] = useState([1,2,3,4]);
+  const [categoryName,setCategoryName] = useState(['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크']);
+  const [categoryPrice,setCategoryPrice] = useState(['10,000원','10,000원','10,000원','10,000원',]);
+  const [categoryS,setCategoryS] = useState(['Top 음료','Top디저트','Top샐러드','Top 케이크']);
   const [categoryImage, SetCategoryImage] = useState( ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg']);
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
@@ -37,12 +37,13 @@ const HomePage = () => {
         <img href="pro.jpg"></img></button>
         {categoryName.map((categoryName, i) => {
               return (
-                 <div style={{marginLeft:'50px'}}>
+                 <div className={styles.re_container}>
         <button className={styles.re_smallButton} style={{ backgroundImage: `url(${categoryImage[i]})` }}></button>
 
         <div className={styles.recommend_title}>{categoryName}</div>
+        <div className={styles.recommend_image}>{categoryS[i]}</div>
         <div className={styles.recommend_price}>{categoryPrice[i]}</div>
-        <div>{categoryS[i]}</div>
+       
 </div>
               )
 

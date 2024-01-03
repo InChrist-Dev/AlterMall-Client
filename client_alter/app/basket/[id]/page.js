@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './basket.module.css'; // Import the CSS module
 
 const sampleData = {
-  categoryName: ['낙곱새', '피자', '치킨', '햄버거'],
+  categoryName: ['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'],
   categoryPrice: [10000, 20000, 30000, 40000],
   categoryS: [1, 2, 3, 4],
   categoryImage: [

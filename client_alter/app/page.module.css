@@ -150,7 +150,7 @@
 
 .re_largeButton {
   width: 100%;
-  height: 500px;
+  height: 450px;
   background-color: rgba(255, 255, 255, 0);
   grid-row: span 2;
   margin: 50px;
@@ -159,19 +159,27 @@
 }
 
 .re_smallButton {
-  width: 250px;
+  width: 100%;
   height: 200px;
-  border: 3px solid black;
+  border-radius: 5px;
   background-size: cover; /* 배경 이미지 크기 조절 */
-  margin:  40px 20px 0px 0px;
+  border: 3px solid #fff;
+  margin:  10px 20px 0px 0px;
 }
-
+.re_container{
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  width:300px;
+  height:300px;
+  background-color: #fff
+}
 .artisanButtons {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  
+  padding: 60px 20px;
   width: 100%;
-
+  height: 800px;
   margin: 0 auto;
   background-image:url('../public/pro.jpg');
   border-radius: 50px;
@@ -179,12 +187,18 @@
 }
 
 .recommend_title{
-  color: #fff;
+  color: #000;
   font-weight: bold;
   font-size: 20px;
 }.recommend_price{
-  color: #fff;
+  color: #000;
   
   font-size: 17px;
+}
+
+.recommend_image{
+  color: #000;
+  font-weight: bold;
+  font-size: 13px;
 }
 /* Add more styles as needed */
