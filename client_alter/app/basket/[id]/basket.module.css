@@ -20,7 +20,7 @@
 .productTable td {
   padding: 5px;
   text-align: left;
-  border: none; /* 이 부분을 수정하여 표시선을 없앴습니다 */
+ 
 }
 
 .productTable th {
@@ -39,7 +39,9 @@
 
 .headerRow div{
   margin-left: 60px;
-}.headerRow div{
+}
+
+.headerRow div{
   margin-left: 60px;
 }
 
@@ -168,10 +170,6 @@
 }
 
 
-/* 기존 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
-.productTable td {
-  border: none;
-}
 
 .quantityControl {
   display: flex;
@@ -217,6 +215,11 @@
 .productTable th:nth-child(5),
 .productTable td:nth-child(5) {
   text-align: center;
+}
+
+.productTable tr{
+  border: 1px #ddd dotted;
+  border-collapse: collapse;
 }
 
 .addToCartButton {
