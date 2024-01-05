@@ -9,7 +9,7 @@ export default function Recommend(){
     const [categoryImage, SetCategoryImage] = useState( ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg']);
     return (
     
-    <div style={{width:'80%',margin:'0 auto',}}>
+    <div style={{width:'80%',margin:'0 auto', paddingTop:'300px'}}>
     <p className={styles.categoryTitle}>장인의 추천<span className={styles.categorySub}> |얼터몰 인증 건강장인의 추천음식!</span></p>
     {/* 장인 버튼 */}
     <div className={styles.artisanButtons}>
