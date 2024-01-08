@@ -118,3 +118,29 @@
   color: #7c7c7c;
   font-weight: bold;
 }
+
+/* category.module.css */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pageNumber {
+  cursor: pointer;
+  padding: 5px;
+  margin: 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.activePage {
+  background-color: #ff9100;
+  color: #fff;
+  cursor: default;
+  padding: 5px;
+  margin: 0 5px;
+  border: 1px solid #ff9100;
+  border-radius: 5px;
+}
