@@ -1,8 +1,8 @@
 // UserInfo.jsx
 import React from 'react';
-import styles from './user.module.css';
+import styles from '../user.module.css';
 
-const UserInfo = () => {
+const OrderHistory = () => {
   return (
     <div className={styles.topArea}>
     <div className={styles.greeting}>
@@ -34,4 +34,4 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+export default OrderHistory;

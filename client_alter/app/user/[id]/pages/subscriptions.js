@@ -1,13 +1,13 @@
 // UserInfo.jsx
 import React from 'react';
-import styles from './user.module.css';
+import styles from '../user.module.css';
 
-const UserInfo = () => {
+const CancellationHistory = () => {
   return (
     <div className={styles.topArea}>
     <div className={styles.greeting}>
       <div className={styles.lank}>프로건강러</div>
-      <div><b>홍길동</b>님, 안녕하세요!</div>
+      <div><b>홍길동sss</b>님, 안녕하세요!</div>
     </div>
     <div className={styles.couInfo}>
       주문배송
@@ -34,4 +34,4 @@ const UserInfo = () => {
   );
 };
 
-export default UserInfo;
+export default CancellationHistory;
