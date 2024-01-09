@@ -5,7 +5,8 @@ import SideMenu from './SideMenu';
 import UserInfo from './UserInfo';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import OrderHistory from './pages/orders';
-import CancellationHistory from './pages/subscriptions';
+import CancellationHistory from './pages/cancel';
+import Subscription from './pages/subscriptions';
 const MyPage = () => {
   return (
     <Router>
@@ -20,8 +21,8 @@ const MyPage = () => {
       <Routes>
       
         <Route path='/user/orders' exact element={<OrderHistory />} />
-        <Route path='/user/subscriptions' element={<CancellationHistory />} />
-       
+        <Route path='/user/subscriptions' element={<Subscription />} />
+        <Route path='/user/cancel' element={<CancellationHistory />} />
       </Routes>
  
           </div>

@@ -1,40 +1,40 @@
 import React from 'react';
 import styles from './user.module.css';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 
 const SideMenu = () => {
   return (
     <div className={styles.sideMenu}>
-    <div className={styles.menuCategory}>주문관리</div>
-    <ul>
-      <li><Link href="/user/orders">주문내역</Link></li>
-      <li><Link href="/user/subscriptions">취소/반품내역</Link></li>
-      <li>정기배송 관리</li>
-      <li>재입고 알림상품</li>
-    </ul>
+      <div className={styles.menuCategory}>주문관리</div>
+      <ul>
+        <li><Link to="/user/orders" className={styles.menuItem}>주문내역</Link></li>
+        <li><Link to="/user/cancel" className={styles.menuItem}>취소/반품내역</Link></li>
+        <li><Link to="/user/subscriptions" className={styles.menuItem}>정기배송 관리</Link></li>
+        <li><Link to="/user/restock-alerts" className={styles.menuItem}>재입고 알림상품</Link></li>
+      </ul>
   
-    <div className={styles.menuCategory}>혜택관리</div>
-    <ul>
-      <li>쿠폰</li>
-      <li>포인트</li>
-    </ul>
+      <div className={styles.menuCategory}>혜택관리</div>
+      <ul>
+        <li><Link to="/user/coupons" className={styles.menuItem}>쿠폰</Link></li>
+        <li><Link to="/user/points" className={styles.menuItem}>포인트</Link></li>
+      </ul>
   
-    <div className={styles.menuCategory}>활동관리</div>
-    <ul>
-      <li>최근 본 상품</li>
-      <li>찜한 상품</li>
-      <li>관심 브랜드</li>
-      <li>1:1문의</li>
-      <li>상품 후기</li>
-      <li>상품 문의내역</li>
-    </ul>
+      <div className={styles.menuCategory}>활동관리</div>
+      <ul>
+        <li><Link to="/user/recent-products" className={styles.menuItem}>최근 본 상품</Link></li>
+        <li><Link to="/user/favorite-products" className={styles.menuItem}>찜한 상품</Link></li>
+        <li><Link to="/user/favorite-brands" className={styles.menuItem}>관심 브랜드</Link></li>
+        <li><Link to="/user/inquiries" className={styles.menuItem}>1:1문의</Link></li>
+        <li><Link to="/user/product-reviews" className={styles.menuItem}>상품 후기</Link></li>
+        <li><Link to="/user/product-questions" className={styles.menuItem}>상품 문의내역</Link></li>
+      </ul>
   
-    <div className={styles.menuCategory}>회원정보관리</div>
-    <ul>
-      <li>배송지 관리</li>
-      <li>정보 수정</li>
-    </ul>
-  </div>
+      <div className={styles.menuCategory}>회원정보관리</div>
+      <ul>
+        <li><Link to="/user/shipping-address" className={styles.menuItem}>배송지 관리</Link></li>
+        <li><Link to="/user/profile" className={styles.menuItem}>정보 수정</Link></li>
+      </ul>
+    </div>
   );
 };
 

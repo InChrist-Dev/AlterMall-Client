@@ -2,13 +2,13 @@
 import React from 'react';
 import styles from './pages.module.css';
 
-const Subscription = () => {
+const CancellationHistory = () => {
   return (
     <div className={styles.topArea}>
-      정기배송 관리
+      취소/반품 내역
    
   </div>
   );
 };
 
-export default Subscription;
+export default CancellationHistory;

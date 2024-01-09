@@ -7,6 +7,14 @@
   margin: 0 auto;
 }
 
+.menuItem{
+  text-decoration-line: none;
+  color: #111;
+}
+.menuItem:hover{
+  color: #f5af19;
+}
+
 .topArea {
   display: flex;
   justify-content: center;
