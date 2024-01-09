@@ -18,7 +18,23 @@
   width: 180px;
   height: auto;
 }
+.moreButton{
+  background-color: #ffffff;
+  border: 0;
+  padding: 15px;
+  color: #777;
+  font-weight: bold;
+  font-size: 15px;
+}
 
+.moreButton:hover{
+  background-color: #ffffff;
+  border: 0;
+  padding: 15px;
+  color: #f5af19;
+  font-weight: bold;
+  font-size: 15px;
+}
 .searchContainer {
   display: flex;
   align-items: center;
