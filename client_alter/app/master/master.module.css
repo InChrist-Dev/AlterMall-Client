@@ -6,103 +6,7 @@
     flex-direction: column;
     align-items: center;
   }
-  
-  .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
-  .logo {
-    width: 180px;
-    height: auto;
-  }
-  
-  .searchContainer {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    width: 80%;
-  }
-  
-  .searchInput {
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #D91801;
-    border-radius: 5px;
-    margin: 0 10px;
-    background-color: white;
-    width: 100%;
-    max-width: 1000px;
-  }
-  
-  .searchButton {
-    background: linear-gradient(to left, #D91801, #f5af19);
-    color: #fff;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    display: flex;
-    height: 45px;
-    align-items: center;
-    min-width: 80px;
-  }
-  
-  .cartUserIcons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .cartIcon,
-  .userIcon {
-    font-size: 24px;
-    cursor: pointer;
-    margin: 14px;
-    color: #D91801;
-  }
-  
-  .slider {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    margin: 0px 0;
-    z-index: 1; /* slider에 z-index 값을 추가 */
-  }
-  
-  .imageSlider {
-    display: flex;
-    transition: transform 0.5s;
-    width: 100%;
-    margin-bottom: 40px;
-  }
-  
-  .sliderImage {
-    width: 100%;
-    height: 450px;
-    flex: 0 0 auto;
-    object-fit: cover;
-  }
-  
-  .leftArrow,
-  .rightArrow {
-    font-size: 20px;
-    cursor: pointer;
-    color: #D91801;
-    position: absolute;
-    top: 50%;
-    padding: 10px;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.4);
-  }
-  
-  .rightArrow {
-    right: 0;
-  }
-  
+
   .categoryTitle {
     margin-bottom: 20px;
   
@@ -117,69 +21,36 @@
     
   }
   
-  .imageButtonGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  
-    align-items: center;
-    margin: 0 auto;
-    margin-bottom: 20px;
+  .masterContainer{
+    margin-top: 100px;
   }
-  
-  .largeButton {
-    width: 100%;
-    height: 100%;
-    background-color: lightcoral;
-    grid-row: span 2;
-    border: 0;
-    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
-  
-    /* Initial styling */
-    filter: brightness(100%);
-  }
-  .largeButton:hover{
-    filter: brightness(80%);
-  }
-  
-  .smallButton {
-    width: 100%;
-    height: 300px;
-    background-color: lightblue;
-  }
-  
-  .re_largeButton {
-    width: 100%;
-    height: 450px;
-    background-color: rgba(255, 255, 255, 0);
-    grid-row: span 2;
-    margin: 50px;
-    border: 0px;
-    
-  }
+
+
+
+
   
   .re_smallButton {
     width: 100%;
-    height: 200px;
+    height: 240px;
     border-radius: 5px;
     background-size: cover; /* 배경 이미지 크기 조절 */
     border: 3px solid #fff;
-    margin:  10px 20px 0px 0px;
+ 
   }
   .re_container{
     margin: 0 auto;
-    padding: 10px;
+    background-color: #fff;
     border-radius: 10px;
-    width:300px;
-    height:300px;
-    background-color: #fff
+    
+    height:330px;
+  
   }
   .artisanButtons {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 60px 20px;
+    display: flex;
+    background-color: #cccccc;
+    padding: 60px 100px;
     width: 100%;
-    height: 800px;
+    height: 500px;
     margin: 0 auto;
   
     border-radius: 50px;
