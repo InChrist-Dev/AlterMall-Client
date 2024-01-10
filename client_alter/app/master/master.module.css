@@ -1,7 +1,7 @@
 /* page.module.css */
 .container {
     background-color: white;
-    padding: 20px;
+    padding: 100px;
     
     flex-direction: column;
     align-items: center;
@@ -22,41 +22,66 @@
   }
   
   .masterContainer{
+    position: relative;
+    overflow: hidden;
     margin-top: 100px;
   }
 
-
+  .leftArrow,
+  .rightArrow {
+    font-size: 50px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+ 
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
 
 
   
   .re_smallButton {
-    width: 100%;
-    height: 240px;
+    width: 248px;
+    height: 280px;
     border-radius: 2px;
     background-size: cover; /* 배경 이미지 크기 조절 */
     border: 0px solid #fff;
- 
-  }
-  .re_container{
-    margin: 0 auto;
-    background-color: #fff;
-    border-radius: 2px;
-    width: 220px;
-    height:330px;
-  
+    
   }
   .artisanButtons {
     display: flex;
-    background-color: #cccccc;
-    padding: 60px 100px;
-    width: 100%;
-    height: 500px;
+    padding: 60px 10px;
+    width: 90%;
     margin: 0 auto;
-  
     border-radius: 50px;
     background-size: cover; /* 배경 이미지 크기 조절 */
+    overflow-x: hidden; /* 가로 방향으로 overflow 시 숨기기 */
   }
   
+  .re_container {
+    margin: 0 10px; /* 좌우 간격을 조정합니다. */
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid black;
+    width: 250px;
+    height: 360px;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+  }
+  .artisanButtons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+ 
+
+
   .recommend_title{
     color: #000;
     font-weight: bold;
