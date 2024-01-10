@@ -32,16 +32,16 @@
   .re_smallButton {
     width: 100%;
     height: 240px;
-    border-radius: 5px;
+    border-radius: 2px;
     background-size: cover; /* 배경 이미지 크기 조절 */
-    border: 3px solid #fff;
+    border: 0px solid #fff;
  
   }
   .re_container{
     margin: 0 auto;
     background-color: #fff;
-    border-radius: 10px;
-    
+    border-radius: 2px;
+    width: 220px;
     height:330px;
   
   }
