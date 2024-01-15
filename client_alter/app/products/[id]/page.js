@@ -54,7 +54,7 @@ const ItemPage = (props) => {
           <div className={styles.price}>
             <p>{price.toLocaleString()}원</p>
           </div>
-          <button className={styles.addToCartButton}>장바구니</button>
+          <button className={styles.addToCartButton} onClick={()=>{location.href='/basket/salad'}}>장바구니</button>
           <button className={styles.BuyButton}>바로구매</button>
         </div>
       </div>

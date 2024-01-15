@@ -25,7 +25,7 @@ const HomePage = () => {
     <div >
   
       <ImageSlider/>
-<CategoryButtons/>
+      <CategoryButtons/>
      <Recommend/>
   
      
