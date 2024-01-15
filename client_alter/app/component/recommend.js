@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import styles from '../page.module.css';
 export default function Recommend(){
-    const [categoryName,setCategoryName] = useState(['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크']);
+  const [categoryName,setCategoryName] = useState(['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크']);
+  const [categoryId,setCategoryId] = useState([13212, 5345, 25253, 235235]);
     const [categoryPrice,setCategoryPrice] = useState(['10,000원','10,000원','10,000원','10,000원',]);
     const [categoryS,setCategoryS] = useState(['Top 음료','Top디저트','Top샐러드','Top 케이크']);
     const [categoryImage, SetCategoryImage] = useState( ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg']);
@@ -26,7 +27,7 @@ export default function Recommend(){
       <button className={styles.re_largeButton}>
       <img href="pro.jpg"></img></button>
       {categoryName.map((categoryName, i) => {
-            return (
+            return (<a href={`/products/${categoryId[i]}`}>
                <div className={styles.re_container}>
       <button className={styles.re_smallButton} style={{ backgroundImage: `url(${categoryImage[i]})` }}></button>
     
@@ -35,6 +36,7 @@ export default function Recommend(){
       <div className={styles.recommend_price}>{categoryPrice[i]}</div>
      
     </div>
+    </a>
             )
     
           })}
