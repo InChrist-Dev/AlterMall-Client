@@ -67,7 +67,7 @@
     margin: 0 10px; /* 좌우 간격을 조정합니다. */
     background-color: #fff;
     border-radius: 2px;
-    border: 1px solid black;
+    
     width: 250px;
     height: 360px;
     gap: 20px;
@@ -80,7 +80,6 @@
     font-size: 20px;
   }
  
-
 
   .recommend_title{
     color: #000;

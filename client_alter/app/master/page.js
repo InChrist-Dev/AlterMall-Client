@@ -1,4 +1,3 @@
-
 'use client'
 import React, { useState } from 'react';
 import styles from './master.module.css';
@@ -35,13 +34,14 @@ const goToNextSlide = () => {
             <div className={styles.artisanButtons}>
 
               {masterName.map((masterName, i) => {
-                return (
+                return (<a href='/seller'>
                   <div className={styles.re_container} key={i} style={{ transform: `translateX(${-currentIndex * 100}%)` }}>
-  <button className={styles.re_smallButton} style={{ backgroundImage: `url(${categoryImage[i]})` }}></button>
-  <div className={styles.recommend_title}>{masterName}</div>
-  <div className={styles.recommend_image}>{categoryS[i]}</div>
-  <div className={styles.recommend_price}>{categoryPrice[i]}</div>
-</div>
+                    <button className={styles.re_smallButton} style={{ backgroundImage: `url(${categoryImage[i]})` }}></button>
+                    <div className={styles.recommend_title}>{masterName}</div>
+                    <div className={styles.recommend_image}>{categoryS[i]}</div>
+                    <div className={styles.recommend_price}>{categoryPrice[i]}</div>
+                  </div>
+                </a>
 
                 )
 
