@@ -25,12 +25,18 @@ const ItemPage = (props) => {
   const id = props.params.id;
 
   useEffect(() => {
-    // API 페치를 시뮬레이션하기 위해 샘플 데이터 사용
-    setCategoryName(sampleData.categoryName);
-    setCategoryPrice(sampleData.categoryPrice);
-    setCategoryS(sampleData.categoryS);
-    setCategoryImage(sampleData.categoryImage);
-    setCategoryId(sampleData.categoryId);
+    fetch("http://211.45.170.37:3000/category", {
+      method: "get",
+      headers: {
+        "content-type": "application/json",
+      },
+      
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        
+        console.log(json);
+      });
   }, []);
 
   const indexOfLastProduct = currentPage * displayCount;
