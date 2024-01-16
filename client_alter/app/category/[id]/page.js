@@ -24,20 +24,26 @@ const ItemPage = (props) => {
 
   const id = props.params.id;
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://211.45.170.37:3000/category');
+      const data = await response.json();
+  
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      console.log(data);
+  
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+  
+  // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
-    fetch("http://211.45.170.37:3000/category", {
-      method: "get",
-      headers: {
-        "content-type": "application/json",
-      },
-      
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        
-        console.log(json);
-      });
-  }, []);
+    fetchData();
+  }, []); 
 
   const indexOfLastProduct = currentPage * displayCount;
   const indexOfFirstProduct = indexOfLastProduct - displayCount;

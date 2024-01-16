@@ -1,0 +1,35 @@
+/* styles/Checkout.module.css */
+
+.checkoutContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    
+  }
+  
+.infoTitle{
+    font-size: 30px;
+    font-weight: bold;
+}
+  
+  .verticalInfo {
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .deliveryInfo,
+  .orderItems {
+    width: 700px;
+  }
+  
+  .stickySidebar {
+    width: 300px;
+    position: sticky;
+    top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
