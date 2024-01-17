@@ -4,13 +4,7 @@ import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 // 샘플 데이터
-const sampleData = {
-  categoryName: ['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'],
-  categoryPrice: [10000, 20000, 30000, 40000],
-  categoryS: ['글루텐프리마크', '소금프리마크', '락토프리마크', 4],
-  categoryImage: ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg'],
-  categoryId: [13212, 5345, 25253, 235235],
-};
+
 
 const ItemPage = (props) => {
   const [categoryName, setCategoryName] = useState([]);
@@ -21,6 +15,7 @@ const ItemPage = (props) => {
   const [sortBy, setSortBy] = useState('latest');
   const [displayCount, setDisplayCount] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+  const [categoryList,setCategoryList] = useState([])
 
   const id = props.params.id;
 
@@ -30,7 +25,8 @@ const ItemPage = (props) => {
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data);
+      setCategoryList(data.data.items);
+      console.log(data.data.items)
   
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -47,10 +43,10 @@ const ItemPage = (props) => {
 
   const indexOfLastProduct = currentPage * displayCount;
   const indexOfFirstProduct = indexOfLastProduct - displayCount;
-  const currentProducts = categoryName.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = categoryList.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(categoryName.length / displayCount); i++) {
+  for (let i = 1; i <= Math.ceil(categoryList.length / displayCount); i++) {
     pageNumbers.push(i);
   }
 
@@ -139,22 +135,25 @@ const ItemPage = (props) => {
         </div>
       </div>
       <div className={styles.productContainer}>
-  {currentProducts.map((name, index) => {
-    const currentIndex = indexOfFirstProduct + index; // 현재 데이터의 실제 인덱스 계산
+  {currentProducts.map((item, i) => {
+    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
     return (
-      <div key={currentIndex} className={styles.productCard}>
-        <Link href={`/products/${categoryId[currentIndex]}`} style={{ textDecoration: "none" }}>
+      <>
+      <div key={item} className={styles.productCard}>
+        <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
-            <img src={categoryImage[currentIndex]} alt={name} />
-            <h3>{name}</h3>
-            <p>{categoryPrice[currentIndex].toLocaleString()}원</p>
+            <img src={`http://211.45.170.37:3000/${item.img}`} alt={name} />
+            <h3> {item.item_name}</h3>
+            <p>{item.price.toLocaleString()}원</p>
             <p>{categoryS[currentIndex]}</p>
             <button>Add to Cart</button>
           </div>
         </Link>
       </div>
+      </>
     );
   })}
+ 
 </div>
 
       <div className={styles.pagination}>
