@@ -5,9 +5,11 @@ import styles from './seller.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-
+import YouTube, {YouTubeProps} from 'react-youtube';
 
 const DramaDetailPage = () => {
+
+
   const [episodes, setEpisodes] = useState([
     '사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크','사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'
     
@@ -26,6 +28,7 @@ const DramaDetailPage = () => {
     setCurrentSlide((prevSlide) => (prevSlide === episodes.length - 1 ? 0 : prevSlide + 1));
   };
 
+
   const prevSlide = () => {
     setCurrentSlide((prevSlide) => (prevSlide === 0 ? episodes.length - 1 : prevSlide - 1));
   };
@@ -34,8 +37,10 @@ const DramaDetailPage = () => {
     <div className={styles.container}>
       <div className={styles.background}></div>
       <div className={styles.content}>
-        <h1 className={styles.title}><img  className={styles.logo} src='/logos.png'></img> 김프리 사장님</h1>
-        <button
+        <div style={{display:'flex',justifyContent:'space-between'}}>
+          <div>
+          <h1 className={styles.title}><img  className={styles.logo} src='/logos.png'></img> 김프리 사장님</h1>
+          <button
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}
     >
@@ -44,6 +49,21 @@ const DramaDetailPage = () => {
         <p className={styles.description}>
         저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.저희 카페는 글루텐프리 쿠키와 케이크, 제로 음료만을 취급합니다. 제가 이 가게를 차리게 된 계기는 이러이러합니다.
         </p>
+
+          </div>
+
+        <YouTube className={styles.youtube}
+    videoId="2g811Eo7K8U"
+    opts={{width: "610",
+    height: "350",}}
+    onEnd={(e) => {
+      e.target.stopVideo(0);
+    }}
+/>
+
+        </div>
+    
+    
         <div className={styles.episodeContainer}>
           <h2 className={styles.episodeTitle}>음식 목록</h2>
           <div className={styles.episodeSlider} style={{ transform: transformValue }}>

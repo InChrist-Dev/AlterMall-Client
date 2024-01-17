@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './user.module.css';
 import SideMenu from './SideMenu';
 import UserInfo from './UserInfo';
+import { useEffect,useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import OrderHistory from './pages/orders';
 import CancellationHistory from './pages/cancel';
@@ -18,11 +19,35 @@ import ProductReviewsPage from './pages/review';
 import ProductQuestionsPage from './pages/question';
 import ShippingAddressPage from './pages/address';
 import ProfilePage from './pages/profile';
+
+
+
 const MyPage = () => {
+  const [name,setName]= useState('');
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://211.45.170.37:3000/user/080e2550-b3a3-11ee-aa99-992d88953757`);
+      const data = await response.json();
+  
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      setName(data.data.name);
+     
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+  
+  // useEffect 안에서 fetchData 함수를 호출합니다.
+  useEffect(() => {
+    fetchData();
+  }, []); 
   return (
     <Router>
       <div className={styles.myPageContainer}>
-        <UserInfo />
+        <UserInfo name={name}/>
 
         <div className={styles.middleArea}>
           <SideMenu />
