@@ -19,7 +19,7 @@ const CategoryButtons = () => {
           <ImageButton imagePath="salad.jpg" altText="샐러드" />
         </Link>
         <button className={styles.largeButton}>
-          <Link href='/foodstory'>
+          <Link href='/master'>
             <img
               src='recommend.png' // imagePath에 이미지 파일의 경로를 전달
               style={{ width: '100%', height: '100%', objectFit: 'fill' }}

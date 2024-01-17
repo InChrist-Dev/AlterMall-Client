@@ -1,34 +1,61 @@
 // ItemPage.js
 'use client'
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 const ItemPage = (props) => {
-  const [quantity, setQuantity] = useState(1);
+  const [name, setName] = useState('');
+  const [img, setImg] = useState('');
+  const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(20000); // Assume an initial price
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://211.45.170.37:3000/category/${props.params.id}`);
+      const data = await response.json();
+  
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      console.log(data);
+      setPrice(data.price);
+      setName(data.item_name);
+      setImg(data.img);
+      setStock(data.stock);
+  
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+
+  // useEffect 안에서 fetchData 함수를 호출합니다.
+  useEffect(() => {
+    fetchData();
+  }, []); 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
     // Adjust the price based on quantity (you can implement your own logic)
-    setPrice(newQuantity * 20000); // Adjust the price based on your business logic
+    setPrice(newQuantity * price); // Adjust the price based on your business logic
   };
 
   return (
     <div className={styles.productDetailContainer}>
       <div className={styles.productImage}>
         {/* Assume productImage is a prop passed from parent component */}
-        <img src='/food/ham.jpg' alt="Product Image" />
+        <img src={`http://211.45.170.37:3000/${img}`} alt="Product Image" />
       </div>
 
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
-          <h1 >햄버거{props.params.id} </h1>
+          <h1 >{name}</h1>
           <p>배달방법: 특급배달</p>
           <p>제품구성: 밀가루, 버터, 우유, 달걀, 설탕포함</p>
           <p>보관법: 냉동보관</p>
           <p>안내: 해당제품은 보관 후 3일 안에 드셔주세요</p>
+          <p>재고: {stock}</p>
         </div>
 
         <div className={styles.productOptions}>

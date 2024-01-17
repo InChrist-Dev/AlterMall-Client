@@ -41,7 +41,7 @@ const NavigationBar = () => {
         <nav className="navbar">
           <ul className="nav-list">
             <li className="category-dropdown">
-              <a href="/">카테고리</a>
+              <a>카테고리</a>
               <div className="category-menu">
                 <ul>
                   <li><a href="/category/dessert">디저트</a></li>

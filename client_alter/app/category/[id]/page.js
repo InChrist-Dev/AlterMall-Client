@@ -7,26 +7,24 @@ import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 
 
 const ItemPage = (props) => {
-  const [categoryName, setCategoryName] = useState([]);
-  const [categoryPrice, setCategoryPrice] = useState([]);
   const [categoryS, setCategoryS] = useState([]);
-  const [categoryImage, setCategoryImage] = useState([]);
-  const [categoryId, setCategoryId] = useState([]);
   const [sortBy, setSortBy] = useState('latest');
-  const [displayCount, setDisplayCount] = useState(1);
+  const [displayCount, setDisplayCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const [page, setPage] = useState(1);
   const [categoryList,setCategoryList] = useState([])
 
-  const id = props.params.id;
+  const category = props.params.id;
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://211.45.170.37:3000/category');
+      const response = await fetch(`http://211.45.170.37:3000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setCategoryList(data.data.items);
-      console.log(data.data.items)
+      setPage(data.data.totalPages);
+
   
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -39,19 +37,21 @@ const ItemPage = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, [currentPage,sortBy,displayCount]); 
 
   const indexOfLastProduct = currentPage * displayCount;
   const indexOfFirstProduct = indexOfLastProduct - displayCount;
   const currentProducts = categoryList.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(categoryList.length / displayCount); i++) {
+  for (let i = 1; i <= page; i++) {
     pageNumbers.push(i);
   }
 
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
+    fetchData();
+
   };
 
   const handleDisplayCountChange = (e) => {
@@ -77,7 +77,7 @@ const ItemPage = (props) => {
 
   // id에 따라 다른 단어를 설정
   let displayWord;
-  switch (id) {
+  switch (category) {
     case 'dessert':
       displayWord = '디저트';
       break;
@@ -128,14 +128,14 @@ const ItemPage = (props) => {
             value={displayCount}
             onChange={handleDisplayCountChange}
           >
-            <option value={1}>1개씩 보기</option>
-            <option value={3}>3개씩 보기</option>
+            <option value={10}>10개씩 보기</option>
+            <option value={30}>30개씩 보기</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
       </div>
       <div className={styles.productContainer}>
-  {currentProducts.map((item, i) => {
+  {categoryList.map((item, i) => {
     const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
     return (
       <>

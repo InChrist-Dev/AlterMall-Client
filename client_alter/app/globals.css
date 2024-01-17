@@ -120,6 +120,20 @@ a{
 .nav-list a:hover {
   color: #ff5e00;
 }
+.nav-list a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  font-size: 20px;
+
+  transition: color 0.3s ease;
+  display: block; /* inline 요소가 너비를 차지하도록 함 */
+  padding: 10px; /* 내부 여백 추가 */
+}
+
+.nav-list a:hover {
+  color: #ff5e00;
+}
 
 
 .category-dropdown {
