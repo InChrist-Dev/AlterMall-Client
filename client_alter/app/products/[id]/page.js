@@ -1,6 +1,6 @@
 // ItemPage.js
 'use client'
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect,useCallback } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -10,19 +10,24 @@ const ItemPage = (props) => {
   const [img, setImg] = useState('');
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(20000); // Assume an initial price
-
+  const [newprice, setNewPrice] = useState(20000); // Assume an initial price
+  const [quantity, setQuantity] = useState(1);
+  const [id, setId] = useState('');
   const fetchData = async () => {
     try {
       const response = await fetch(`http://211.45.170.37:3000/category/${props.params.id}`);
       const data = await response.json();
-  
+
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
       setPrice(data.price);
+      setNewPrice(data.price);
       setName(data.item_name);
       setImg(data.img);
       setStock(data.stock);
-  
+      setId(data.item_id);
+
+
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
@@ -34,13 +39,49 @@ const ItemPage = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, []); 
+  }, []);
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    // Adjust the price based on quantity (you can implement your own logic)
-    setPrice(newQuantity * price); // Adjust the price based on your business logic
+    setPrice(newQuantity * newprice); // Adjust the price based on your business logic
   };
+  const Quantity = () => {
+    const result = [];
+    for (let i = 1; i <= 30; i++) {
+      result.push(<option key={i} value={i}>{i}</option>);
+    }
+    return result;
+  };
+  const handleSubmit = useCallback(
+    (event) => {
+      const formData = new FormData();
+      formData.append('amount', quantity); // title 媛� 異붽��
+      formData.append('item_id', id); // description 媛� 異붽��
+      
+      formData.append('customer_id', 'c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e');
 
+      fetch(`http://211.45.170.37:3000/customer/cart/`, {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ amount: quantity ,item_id: id,customer_id: 'c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e'}),
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert('컨텐츠 저장에 실패하였습니다');
+          } else if (response.status == 201) {
+            alert('저장되었습니다');
+          }
+
+
+        })
+        .finally(() => {
+        
+        });
+
+    },
+    [quantity, id, newprice],
+  );
   return (
     <div className={styles.productDetailContainer}>
       <div className={styles.productImage}>
@@ -71,9 +112,8 @@ const ItemPage = (props) => {
           <div className={styles.dropdown}>
             <label>주문수량</label>
             <select onChange={(e) => handleQuantityChange(e.target.value)}>
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
+
+              {Quantity()}
               {/* Add more quantity options as needed */}
             </select>
           </div>
@@ -81,7 +121,7 @@ const ItemPage = (props) => {
           <div className={styles.price}>
             <p>{price.toLocaleString()}원</p>
           </div>
-          <button className={styles.addToCartButton} onClick={()=>{location.href='/basket/salad'}}>장바구니</button>
+          <button className={styles.addToCartButton} onClick={handleSubmit}>장바구니</button>
           <button className={styles.BuyButton}>바로구매</button>
         </div>
       </div>

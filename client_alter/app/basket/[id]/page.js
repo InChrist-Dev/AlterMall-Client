@@ -1,6 +1,6 @@
 // ItemPage.jsx
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './basket.module.css'; // Import the CSS module
 
@@ -24,22 +24,35 @@ const ItemPage = (props) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState({});
+  const [items,setItems] = useState([]);
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://211.45.170.37:3000/customer/cart/c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e`);
+      const data = await response.json();
+
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      console.log(data.data.rows);
+      setCategoryName(sampleData.categoryName);
+      setCategoryPrice(sampleData.categoryPrice);
+      setCategoryS(sampleData.categoryS);
+      setItems(data.data.rows);
+  
+
+
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+
+  // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
-    // Simulating API fetch with sample data
-    setCategoryName(sampleData.categoryName);
-    setCategoryPrice(sampleData.categoryPrice);
-    setCategoryS(sampleData.categoryS);
-    setCategoryImage(sampleData.categoryImage);
-
-    // Initialize quantity state
-    const initialQuantity = {};
-    sampleData.categoryName.forEach((name, index) => {
-      initialQuantity[index] = 1;
-    });
-    setQuantity(initialQuantity);
+    fetchData();
   }, []);
-
+ 
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];
     if (newSelectedItems.includes(index)) {
@@ -60,7 +73,7 @@ const ItemPage = (props) => {
 
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
-      (total, index) => total + categoryPrice[index] * quantity[index],
+      (total, index) => total + items[index].Item.price * quantity[index],
       0
     );
   };
@@ -70,7 +83,29 @@ const ItemPage = (props) => {
     const newQuantity = Math.max(0, value);
     setQuantity((prevQuantity) => ({ ...prevQuantity, [index]: newQuantity }));
   };
-  
+  const Cancel = useCallback(
+    (id) => {
+     
+      fetch(`http://211.45.170.37:3000/customer/cart/${id}`, {
+        method: 'DELETE',
+    
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert('삭제 실패하였습니다');
+          } else if (response.status == 201) {
+            alert('삭제되었습니다');
+          }
+
+
+        })
+        .finally(() => {
+        
+        });
+
+    },
+    [],
+  );
   return (
     <div>
       <h1 className={styles.title}>장바구니</h1>
@@ -89,12 +124,12 @@ const ItemPage = (props) => {
               </th>
               <th>상품</th>
               <th>가격</th>
-              <th>글루텐프리 여부</th>
+              <th>취소</th>
               <th>수량</th>
             </tr>
           </thead>
           <tbody>
-            {categoryName.slice(0, displayCount).map((name, index) => (
+            {items.slice(0, displayCount).map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -107,30 +142,35 @@ const ItemPage = (props) => {
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
                   <img
-                    src={categoryImage[index]}
-                    alt={name}
+                    src={`http://211.45.170.37:3000/${items.Item.img}`}
+                    alt={items.Item.item_name}
                     className={styles.productImage}
                   />
                 
-                    {name}
+                    {items.Item.item_name}
                    
                  
                 </td>
                 <td>
-                  <p>{categoryPrice[index]}원</p>
+                  <p>{items.Item.price}원</p>
                 </td>
                 <td>
-                  <p>{categoryS[index]}</p>
+                <button className={styles.deleteButton}
+                      onClick={() =>
+                        {Cancel(items.id)}
+                      }
+                    >X
+                    </button>
                 </td>
                 <td>
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, quantity[index] - 1)
+                        handleQuantityChange(index, items.amount - 1)
                       }
                     >-
                     </button>
-                    <span>{quantity[index]}</span>
+                    <span>{items.amount}</span>
                     <button
                       onClick={() =>
                         handleQuantityChange(index, quantity[index] + 1)
