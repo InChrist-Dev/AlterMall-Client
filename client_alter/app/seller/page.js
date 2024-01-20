@@ -24,6 +24,7 @@ const DramaDetailPage = () => {
 const [sellerName, setSellerName] = useState('');
   const [sellerDescription, setSellerDescription] = useState('');
   const [sellerImage, setSellerImage] = useState('');
+  const [sellerLogo, setSellerLogo] = useState('');
   const transformValue = `translateX(${-currentSlide * 420}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
 
   const fetchData = async () => {
@@ -38,6 +39,7 @@ const [sellerName, setSellerName] = useState('');
       setSellerName(data.data.User.name);
       setSellerDescription(data.data.SellerDetail.content);
       setSellerImage(data.data.SellerDetail.img);
+      setSellerLogo(data.data.SellerDetail.logo);
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
@@ -65,7 +67,7 @@ const nextSlide = () => {
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-          <h1 className={styles.title}><img className={styles.logo} src='/logos.png'></img> {sellerName} 사장님</h1>
+          <h1 className={styles.title}><img className={styles.logo} src={`http://211.45.170.37:3000/${sellerLogo}`}></img> {sellerName} 사장님</h1>
           <button
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}
