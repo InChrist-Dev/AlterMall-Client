@@ -86,7 +86,7 @@ return (
                      </div>
                     
 
-                    <div className={styles.recommend_price}>{categoryPrice[j]}</div>
+                    <div className={styles.recommend_price}>{master.slogan}</div>
                   </div>
                
               );
