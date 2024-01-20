@@ -23,7 +23,7 @@ const ItemPage = (props) => {
   const [categoryImage, setCategoryImage] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
-  const [quantity, setQuantity] = useState({});
+  const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
 
   const fetchData = async () => {
@@ -37,8 +37,10 @@ const ItemPage = (props) => {
       setCategoryPrice(sampleData.categoryPrice);
       setCategoryS(sampleData.categoryS);
       setItems(data.data.rows);
-  
-
+      
+      const initialQuantity = data.data.rows.map((item) => item.amount );
+    
+      setQuantity(initialQuantity);
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -64,10 +66,10 @@ const ItemPage = (props) => {
   };
 
   const toggleAllItemsSelection = () => {
-    if (selectedItems.length === categoryName.length) {
+    if (selectedItems.length === items.length) {
       setSelectedItems([]);
     } else {
-      setSelectedItems([...Array(categoryName.length).keys()]);
+      setSelectedItems([...Array(items.length).keys()]);
     }
   };
 
@@ -78,11 +80,16 @@ const ItemPage = (props) => {
     );
   };
 
-  const handleQuantityChange = (index, value) => {
-    // Prevent quantity from going below 1
-    const newQuantity = Math.max(0, value);
-    setQuantity((prevQuantity) => ({ ...prevQuantity, [index]: newQuantity }));
+  const handleQuantityChange = (index, newAmount) => {
+    const newQuantity = { ...quantity };
+    newQuantity[index] = newAmount;
+    setQuantity(newQuantity);
+
+    const updatedItems = [...items];
+    updatedItems[index].amount = newAmount;
+    setItems(updatedItems);
   };
+
   const Cancel = useCallback(
     (id) => {
      
@@ -117,7 +124,7 @@ const ItemPage = (props) => {
                 <input
                   type="checkbox"
                   className={styles.checkbox}
-                  checked={selectedItems.length === categoryName.length}
+                  checked={selectedItems.length === items.length}
                   onChange={toggleAllItemsSelection}
                 />
                 
@@ -173,7 +180,7 @@ const ItemPage = (props) => {
                     <span>{items.amount}</span>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, quantity[index] + 1)
+                        handleQuantityChange(index,  items.amount + 1)
                       }
                     >+
                     </button>
