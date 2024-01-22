@@ -7,7 +7,7 @@ import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 
 const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
-    const [name, setName] = useState('');
+    const [addressname, setAddressName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
     const [detailAddress, setDetailAddress] = useState('');
@@ -42,6 +42,9 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
       <div className={styles.modalContent}>
         
       <h2>배송지 정보 추가</h2>
+      <label>배송지 구분</label>
+        <input type="text" value={name} onChange={(e) => setAddressName(e.target.value)} />
+
         <label>이름</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
