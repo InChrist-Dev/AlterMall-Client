@@ -1,21 +1,53 @@
 // seller.js
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styles from './order.module.css';
-
+import DeliveryInfoModal from './Modal';
 const Checkout = () => {
+  const [showModal, setShowModal] = useState(false);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState({
     address: '',
     method: 'standard',
   });
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [displayCount, setDisplayCount] = useState(10);
+  const [quantity, setQuantity] = useState([]);
+  const [items,setItems] = useState([]);
 
-  const [orderItems, setOrderItems] = useState([
-    { name: '상품1', price: 20000 },
-    { name: '상품2', price: 30000 },
-    // ... 다른 상품들
-  ]);
+    // Function to open the modal
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+  const toggleItemSelection = (index) => {
+    const newSelectedItems = [...selectedItems];
+    if (newSelectedItems.includes(index)) {
+      newSelectedItems.splice(newSelectedItems.indexOf(index), 1);
+    } else {
+      newSelectedItems.push(index);
+    }
+    setSelectedItems(newSelectedItems);
+  };
+  const calculateTotalPrice = () => {
+    return selectedItems.reduce(
+      (total, index) => total + items[index].Item.price * quantity[index],
+      0
+    );
+  };
+
+  const toggleAllItemsSelection = () => {
+    if (selectedItems.length === items.length) {
+      setSelectedItems([]);
+    } else {
+      setSelectedItems([...Array(items.length).keys()]);
+    }
+  };
 
   // 함수를 통해 배송 정보 업데이트
   const updateDeliveryInfo = (key, value) => {
@@ -23,19 +55,57 @@ const Checkout = () => {
   };
 
   // 전체 주문 가격 계산
-  const totalAmount = orderItems.reduce((sum, item) => sum + item.price, 0);
 
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://211.45.170.37:3000/customer/cart/c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e`);
+      const data = await response.json();
+
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      console.log(data.data.rows);
+    
+      setItems(data.data.rows);
+      
+      const initialQuantity = data.data.rows.map((item) => item.amount );
+    
+      setQuantity(initialQuantity);
+
+
+      
+
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+
+  // useEffect 안에서 fetchData 함수를 호출합니다.
+  useEffect(() => {
+    fetchData();
+  }, []);
   return (
     <div className={styles.checkoutContainer}>
+        <div style={{ display: showModal ? 'block' : 'none' }}>
+        <DeliveryInfoModal closeModal={closeModal} />
+      </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>주문/결제</div>
           <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
           <div className={styles.deliveryInfo}>
-            <h2>배송지 정보</h2>
+          <div style={{display:'flex',justifyContent:'space-between'}}>
+      <h2 className={styles.categoryTitle}>배송지 정보</h2>
+    {/* 장인 버튼 */} <button className={styles.moreButton} onClick={openModal}>
+        배송지 변경 ▶
+      </button></div>
+            <div className={styles.AddressBox}>
             홍길동
             <div>경기도 의정부시 00로 00동00호</div>
             <div>010-0000-0000</div>
+            </div>
+            <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <label>배송방법</label>
             <select
               value={deliveryInfo.method}
@@ -48,13 +118,79 @@ const Checkout = () => {
 
           <div className={styles.orderItems}>
             <h2>주문 물품 정보</h2>
-            <ul>
-              {orderItems.map((item, index) => (
-                <li key={index}>
-                  {item.name} - {item.price.toLocaleString()}원
-                </li>
-              ))}
-            </ul>
+            <table className={styles.productTable}>
+          <thead>
+            <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  className={styles.checkbox}
+                  checked={selectedItems.length === items.length}
+                  onChange={toggleAllItemsSelection}
+                />
+                
+              </th>
+              <th>상품</th>
+              <th>가격</th>
+              <th>취소</th>
+              <th>수량</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.slice(0, displayCount).map((items, index) => (
+              <tr key={index} className={styles.productCard}>
+                <td>
+                  <input
+                    type="checkbox"
+                    className={styles.checkbox}
+                    checked={selectedItems.includes(index)}
+                    onChange={() => toggleItemSelection(index)}
+                  />
+                </td>
+                <td style={{display:'flex' , alignItems: 'center',}}>
+                  
+                  <img
+                    src={`http://211.45.170.37:3000/${items.Item.img}`}
+                    alt={items.Item.item_name}
+                    className={styles.productImage}
+                  />
+                
+                    {items.Item.item_name}
+                   
+                 
+                </td>
+                <td>
+                  <p>{items.Item.price}원</p>
+                </td>
+                <td>
+                <button className={styles.deleteButton}
+                      onClick={() =>
+                        {Cancel(items.id)}
+                      }
+                    >X
+                    </button>
+                </td>
+                <td>
+                  <div className={styles.quantityControl}>
+                    <button
+                      onClick={() =>
+                        handleQuantityChange(index, items.amount - 1)
+                      }
+                    >-
+                    </button>
+                    <span>{items.amount}</span>
+                    <button
+                      onClick={() =>
+                        handleQuantityChange(index,  items.amount + 1)
+                      }
+                    >+
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
           </div>
         </div>
       </div>
@@ -65,9 +201,9 @@ const Checkout = () => {
         <div>할인금액: 0원</div>
         <div>상품권: 0원</div>
         <div>
-          <strong>총 주문 가격:</strong> {totalAmount.toLocaleString()}원
+          <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
         </div>
-        {/* 추가적인 결제 정보 */}
+        <button className={styles.BuyButton}>{calculateTotalPrice().toLocaleString()}원 결제하기</button>
       </div>
     </div>
   );

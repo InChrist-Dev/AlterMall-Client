@@ -197,7 +197,7 @@ const ItemPage = (props) => {
         </div>
         <div className={styles.Buttons}>
         <button className={styles.addToCartButton} onClick={()=>{location.href='/'}}>쇼핑 계속하기</button>
-        <button className={styles.BuyButton}>바로구매</button>
+        <button className={styles.BuyButton} onClick={()=>{location.href='/order'}}>바로구매</button>
         </div>
         
     </div>
