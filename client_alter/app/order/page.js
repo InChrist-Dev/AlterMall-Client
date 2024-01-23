@@ -4,6 +4,7 @@
 import React, { useState,useEffect } from 'react';
 import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
+import { loadTossPayments } from '@tosspayments/payment-sdk';
 const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
   // 간단한 상태 관리를 위해 useState 사용
@@ -16,6 +17,22 @@ const Checkout = () => {
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
 
+  const handleClick = async () => {
+    const tosspayments = await loadTossPayments(
+      process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
+    );
+
+    await tosspayments.requestPayment('카드',{
+      amount: 5000,
+      orderId: "1W_pCfO4rzG9szJEcThKe",
+      orderName: "토스 티셔츠 외 2건",
+      successUrl: window.location.origin + "/api/payments",
+      failUrl: window.location.origin + "/fail",
+      customerEmail: "customer123@gmail.com",
+      customerName: "김토스",
+      customerMobilePhone: "01012341234",
+    });
+  }
     // Function to open the modal
   const openModal = () => {
     setShowModal(true);
@@ -220,7 +237,7 @@ const Checkout = () => {
         <div>
           <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
         </div>
-        <button className={styles.BuyButton}>{calculateTotalPrice().toLocaleString()}원 결제하기</button>
+        <button className={styles.BuyButton} onClick={handleClick}>{calculateTotalPrice().toLocaleString()}원 결제하기</button>
       </div>
     </div>
   );
