@@ -26,7 +26,7 @@ const ImageSlider = () => {
       >
         {/* Images */}
         <img src="/1.jpg" alt="이미지1" className={styles.sliderImage} />
-        <img src="/1.jpg" alt="이미지2" className={styles.sliderImage} />
+        <img src="/2.jpg" alt="이미지2" className={styles.sliderImage} />
        
       </div>
 

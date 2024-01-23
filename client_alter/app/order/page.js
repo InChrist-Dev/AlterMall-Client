@@ -52,6 +52,17 @@ const Checkout = () => {
   // 함수를 통해 배송 정보 업데이트
   const updateDeliveryInfo = (key, value) => {
     setDeliveryInfo((prevInfo) => ({ ...prevInfo, [key]: value }));
+   
+  };
+
+  const getImageUrl = () => {
+    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
+    if (deliveryInfo.method === 'standard') {
+      return './post.jpg';
+    } else if (deliveryInfo.method === 'express') {
+      return './today.jpg';
+    }
+    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
 
   // 전체 주문 가격 계산
@@ -106,14 +117,20 @@ const Checkout = () => {
             <div>010-0000-0000</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
+            <div className={styles.postBox}>
             <label>배송방법</label>
             <select
+              className={styles.postOption}
               value={deliveryInfo.method}
               onChange={(e) => updateDeliveryInfo('method', e.target.value)}
             >
               <option value="standard">일반 배송</option>
-              <option value="express">퀵 배송</option>
+              <option value="express">당일 배송</option>
             </select>
+            <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
+
+            </div>
+        
           </div>
 
           <div className={styles.orderItems}>
