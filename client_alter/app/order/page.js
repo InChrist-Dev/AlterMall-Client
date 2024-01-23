@@ -24,7 +24,7 @@ const Checkout = () => {
 
     await tosspayments.requestPayment('카드',{
       amount: 5000,
-      orderId: "1W_pCfO4rzG9szJEcThKe",
+      orderId: "wdasdawdsdwa",
       orderName: "토스 티셔츠 외 2건",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin + "/fail",
@@ -86,11 +86,11 @@ const Checkout = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/customer/cart/c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e`);
+      const response = await fetch(`http://211.45.170.37:3000/customer/order/89122e30-b9c5-11ee-9d01-07fefcbd1ba0?p=1`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data.data.rows);
+      console.log(data);
     
       setItems(data.data.rows);
       
