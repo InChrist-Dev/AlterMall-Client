@@ -83,7 +83,15 @@ const Checkout = () => {
   };
 
   // 전체 주문 가격 계산
+  const handleQuantityChange = (index, newAmount) => {
+    const newQuantity = { ...quantity };
+    newQuantity[index] = newAmount;
+    setQuantity(newQuantity);
 
+    const updatedItems = [...items];
+    updatedItems[index].amount = newAmount;
+    setItems(updatedItems);
+  };
   const fetchData = async () => {
     try {
       const response = await fetch(`http://211.45.170.37:3000/customer/order/89122e30-b9c5-11ee-9d01-07fefcbd1ba0?p=1`);
