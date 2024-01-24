@@ -4,6 +4,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 const NavigationBar = () => {
+  const handleSearch = async () => {
+    // 검색어를 가져오기
+    const searchInput = document.querySelector('.searchInput');
+    const searchTerm = searchInput.value;
+
+    // 서버로 검색어 전송
+    try {
+      const response = await fetch('/api/search', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ searchTerm }),
+      });
+
+      if (response.ok) {
+        // 서버 응답을 처리하는 로직 추가
+        const searchData = await response.json();
+        console.log('검색 결과:', searchData);
+      } else {
+        console.error('검색 요청이 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('에러 발생:', error);
+    }
+  };
+  
   return (
     <span>
      <div className="navigation">
@@ -19,7 +46,7 @@ const NavigationBar = () => {
             className="searchInput"
           />
           <button className="searchButton">
-            <FontAwesomeIcon icon={faSearch} />
+            <FontAwesomeIcon icon={faSearch} onClick={handleSearch}/>
             검색
           </button>
         </div>
