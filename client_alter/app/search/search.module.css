@@ -1,0 +1,147 @@
+/* category.module.css */
+
+/* YourComponent.module.css */
+.sortAndScroll {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #eee;
+    padding:5px;
+    color: #7c7c7c;
+  }
+  
+  .sortButtons button,
+  .scrollButtons button {
+    padding: 10px;
+    font-size: 15px;
+    background-color: #eee;
+    color: #7c7c7c;
+    border: none;
+  
+    cursor: pointer;
+    
+  }
+  .sortButtons button.activeButton,
+  .scrollButtons button.activeButton {
+  
+    font-weight: bold;
+  
+    color: #ff9100;
+    border: none;
+  
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  
+  
+  .sortButtons button:hover,
+  .scrollButtons button:hover {
+  
+    color: #ff9100;
+  }
+  
+  
+  
+    .productContainer {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .productLink {
+      text-decoration: none; /* Remove underline from links */
+      color: inherit; /* Use the default text color */
+    }
+    .productCard {
+      text-decoration: none;
+      margin: 25px;
+  
+      
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .productCard:hover {
+      transform: scale(1.05);
+    }
+    
+    .productCard h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      
+    }
+  
+    .productCard img {
+      width:300px;
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .productCard p {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+      margin: 5px 0;
+    }
+    
+    .productCard button {
+      padding: 10px;
+      font-size: 14px;
+      background-color: #27ae60;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .productCard button:hover {
+      background-color: #218c54;
+    }
+    .activeButton {
+    background-color: #1d1212;
+  }
+  
+  .caTitle{
+    font-size: 36px;
+    padding: 10px;
+  }
+  
+  .dropInput{
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    border: 0;
+    background-color: #eee;
+    color: #7c7c7c;
+    font-weight: bold;
+  }
+  
+  /* category.module.css */
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pageNumber {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .activePage {
+    background-color: #ff9100;
+    color: #fff;
+    cursor: default;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ff9100;
+    border-radius: 5px;
+  }
+  

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
+import styles from './search.module.css'; // 스타일링을 위한 CSS 모듈
 // 샘플 데이터
 
 
