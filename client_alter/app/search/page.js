@@ -142,7 +142,7 @@ const ItemPage = (props) => {
       <div key={item} className={styles.productCard}>
         <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
-            <img src={`http://211.45.170.37:3000/${item.img}`} alt={name} />
+            <img src={`http://211.45.170.37:3000/${item.img}`}  />
             <h3> {item.item_name}</h3>
             <p>{item.price.toLocaleString()}원</p>
             <p>{categoryS[currentIndex]}</p>

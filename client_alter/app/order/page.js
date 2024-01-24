@@ -24,7 +24,7 @@ const Checkout = () => {
 
     await tosspayments.requestPayment('카드',{
       amount: 5000,
-      orderId: "wdasdawdsdwa",
+      orderId: "wdasdawdsdswa",
       orderName: "토스 티셔츠 외 2건",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin + "/fail",
