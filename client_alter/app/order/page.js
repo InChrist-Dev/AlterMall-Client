@@ -27,7 +27,7 @@ const Checkout = () => {
       orderId: "wdasdawdsdswa",
       orderName: "토스 티셔츠 외 2건",
       successUrl: window.location.origin + "/api/payments",
-      failUrl: window.location.origin + "/fail",
+      failUrl: window.location.origin,
       customerEmail: "customer123@gmail.com",
       customerName: "김토스",
       customerMobilePhone: "01012341234",
