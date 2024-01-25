@@ -83,7 +83,7 @@ const NavigationBar = (session) => {
               </div>
             </li>
             <li><a href="/master">장인소개</a></li>
-            <li><a href="/">랭킹</a></li>
+            <li><a href="/lanking">랭킹</a></li>
             <li><a href="/">이벤트</a></li>
             <li><a href="/">이달의 특가</a></li>
             
