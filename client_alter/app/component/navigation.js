@@ -2,8 +2,10 @@
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-
-const NavigationBar = () => {
+import { LogOutBtn } from '../logout';
+import { LoginBtn } from '../login';
+const NavigationBar = (session) => {
+  console.log(session)
   const handleSearch = async () => {
     // 검색어를 가져오기
     const searchInput = document.querySelector('.searchInput');
@@ -53,9 +55,11 @@ const NavigationBar = () => {
 
         {/* 장바구니 및 유저 아이콘 */}
         <div className="cartUserIcons">
-          <a href='/user/salad'>
-          <FontAwesomeIcon   className="userIcon"icon={faUser} />
-          </a>
+        {
+              session.session
+                ? <span className='session'><img className='userImg' src={session.session.user.image}/>{session.session.user.name}님, 반갑습니다 <LogOutBtn /> </span>
+                : <LoginBtn></LoginBtn>
+            }
           <a href='/basket/salad'>
           <FontAwesomeIcon icon={faShoppingCart} className="cartIcon" />
           </a>
