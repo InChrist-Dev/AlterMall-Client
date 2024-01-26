@@ -1,4 +1,5 @@
 'use client'
+import { useState,useEffect } from 'react';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -6,6 +7,18 @@ import { LogOutBtn } from '../logout';
 import { LoginBtn } from '../login';
 const NavigationBar = (session) => {
   console.log(session)
+  const [search, setSearch] = useState('');
+  const [relatedKeywords, setRelatedKeywords] = useState(['dd','dd']);
+  useEffect(() => {
+    fetch(`http://211.45.170.37:3000/category/search?name=${search}`, {
+      
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        setRelatedKeywords(json.data.items);
+        console.log(json.data.items);
+      });
+  }, [search]);
   const handleSearch = async () => {
     // 검색어를 가져오기
     const searchInput = document.querySelector('.searchInput');
@@ -42,15 +55,37 @@ const NavigationBar = (session) => {
 
         {/* 검색 창 */}
         <div className="searchContainer">
-          <input
-            type="text"
-            placeholder="검색어를 입력하세요"
-            className="searchInput"
-          />
+        <ul className="nav-list">
+            <li className="category-dropdown">
+            <input type="text" className="searchInput" placeholder="검색어를 입력하세요"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)} />
+              <div className="category-menu">
+                <ul>
+                {relatedKeywords.map((keyword, index) => (
+          <li key={index}>{keyword.item_name}</li>
+        ))}
+                </ul>
+              </div>
+            </li>
+           
+            
+           
+          </ul>
+          <div>
+        
+                   <ul className="related-keywords">
+       
+      </ul> 
+          </div>
+           
           <button className="searchButton">
+            
             <FontAwesomeIcon icon={faSearch} onClick={handleSearch}/>
             검색
           </button>
+          
+
         </div>
 
         {/* 장바구니 및 유저 아이콘 */}

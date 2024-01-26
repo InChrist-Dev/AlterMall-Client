@@ -66,6 +66,23 @@ a{
   align-items: center;
   min-width: 80px;
 }
+.related-keywords {
+  
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.related-keywords li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
 
 .cartUserIcons {
   display: flex;

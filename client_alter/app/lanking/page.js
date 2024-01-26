@@ -96,7 +96,7 @@ const ItemPage = (props) => {
 
   return (
     <div>
-      <h1 className={styles.caTitle}>{displayWord}</h1>
+      <h1 className={styles.caTitle}>랭킹</h1>
       <div className={styles.sortAndScroll}>
         <div className={styles.sortButtons}>
           <button
