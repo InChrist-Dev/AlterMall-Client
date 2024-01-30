@@ -266,7 +266,7 @@
 }
 .call{
   display: flex;
-  vertical-align:middle;
+  align-items:center; 
   padding: 5px;
 }
 /* Add this to your existing CSS file or create a new one */

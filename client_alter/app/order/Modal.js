@@ -9,7 +9,12 @@ import DaumPostcode from 'react-daum-postcode';
 const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState({
+    part1: '',
+    part2: '',
+    part3: '',
+  });
+  const [phone,setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
   const [isAddress, setIsAddress] = useState(false);
@@ -39,6 +44,7 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
   };
 
 
+
   const handleSubmit = async () => {
     try {
       const response = await fetch('http://211.45.170.37:3000/customer/deliver', {
@@ -50,7 +56,7 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
           "customer_id": "89122e30-b9c5-11ee-9d01-07fefcbd1ba0",
           "addr": address,
           "addr_detail": detailAddress,
-          "phone": phoneNumber,
+          "phone": phone,
           "post": "string",
           "name": name
         }), 
@@ -61,9 +67,9 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
   
       } else if (response.status == 201) {
         alert('저장되었습니다');
-      
+        closeModal();
       } else {
-        console.error('Failed to send like request', error);
+        
       }
     } catch (error) {
       // 에러 처리
