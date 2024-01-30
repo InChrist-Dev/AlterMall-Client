@@ -9,11 +9,11 @@ const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 1 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 1 ? 0 : prevIndex + 1));
   };
 
   return (

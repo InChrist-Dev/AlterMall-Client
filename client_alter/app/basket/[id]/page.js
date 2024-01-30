@@ -28,7 +28,7 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/customer/cart/c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e`);
+      const response = await fetch(`http://211.45.170.37:3000/customer/cart/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -54,7 +54,34 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
- 
+  
+  const handleSubmit = async () =>{
+    await fetch('http://211.45.170.37:3000/customer/order',{
+      method:'post',
+      body:JSON.stringify({
+        "order_id":"wdasdawdsdwa",
+        "addr":"rich building",
+        "addr_detail":"5th floor",
+        "post":"11032",
+        "requests":"빠르게 배송해 주세요",
+        "state":"wait",
+        "amount":1,
+        "createdAt":"2024-01-23T08:11:41.000Z",
+        "item_id":"e8f12213-5585-4c3d-ac52-89ce9bf9440f",}),
+      headers:{
+    
+          "Content-Type":"application/json",
+      },
+  }).then((response) => {
+    if (response.status == 405) {
+      alert('삭제 실패하였습니다');
+    } else if (response.status == 201) {
+      alert('삭제되었습니다');
+    }
+
+
+  })
+  }
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];
     if (newSelectedItems.includes(index)) {
@@ -107,7 +134,7 @@ const ItemPage = (props) => {
 
         })
         .finally(() => {
-        
+          window.location.reload();
         });
 
     },
@@ -197,7 +224,7 @@ const ItemPage = (props) => {
         </div>
         <div className={styles.Buttons}>
         <button className={styles.addToCartButton} onClick={()=>{location.href='/'}}>쇼핑 계속하기</button>
-        <button className={styles.BuyButton} onClick={()=>{location.href='/order'}}>바로구매</button>
+        <button className={styles.BuyButton} onClick={()=>{handleSubmit()}}>바로구매</button>
         </div>
         
     </div>

@@ -203,6 +203,10 @@ a{
   padding: 10px;
   background-color: #fff;
 }
+.keyword-menu li:hover {
+  cursor: pointer;
+  color: #f5af19;
+}
 
 .keyword-menu a {
   color: black;

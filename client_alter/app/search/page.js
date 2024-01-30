@@ -14,11 +14,11 @@ const ItemPage = (props) => {
   const [page, setPage] = useState(1);
   const [categoryList,setCategoryList] = useState([])
 
-  const category = props.params.id;
-
+  const name = props.searchParams.search;
+  console.log(props.searchParams.search);
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await   fetch(`http://211.45.170.37:3000/category/search?name=${name}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -76,27 +76,12 @@ const ItemPage = (props) => {
   };
 
   // id에 따라 다른 단어를 설정
-  let displayWord;
-  switch (category) {
-    case 'dessert':
-      displayWord = '디저트';
-      break;
-    case 'salad':
-      displayWord = '샐러드';
-      break;
-    case 'free':
-      displayWord = '락토프리';
-      break;
-    case 'drink':
-      displayWord = '음료';
-      break;
-    default:
-      displayWord = '알 수 없는 카테고리';
-  }
+  const displayWord = name;
+
 
   return (
     <div>
-      <h1 className={styles.caTitle}>{displayWord}</h1>
+      <h1 className={styles.caTitle}>{displayWord} 검색결과</h1>
       <div className={styles.sortAndScroll}>
         <div className={styles.sortButtons}>
           <button

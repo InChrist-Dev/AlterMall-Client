@@ -52,14 +52,6 @@ export const authOptions = {
       clientId: '1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com',
       clientSecret: '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',
     }),
-    GithubProvider({
-      clientId: '8680b522180d7613d4e7',
-      clientSecret: '5ede58f88caacf1265dfb30a667873654bc59ce5',
-    }),
-    NaverProvider({
-      clientId: '8680b522180d7613d4e7',
-      clientSecret: '5ede58f88caacf1265dfb30a667873654bc59ce5',
-    }), 
     KakaoProvider({
       clientId: '01bebeb081942efbb3f9e67c04ea339b',
       clientSecret: 'dkasdhfjahsdfjhskdfhaksdhfakjsdddddssaa',

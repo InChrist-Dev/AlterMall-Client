@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { LogOutBtn } from '../logout';
 import { LoginBtn } from '../login';
+import { UserBtn } from './userIcon';
 const NavigationBar = (session) => {
   console.log(session)
   const [search, setSearch] = useState('');
@@ -30,29 +31,7 @@ const NavigationBar = (session) => {
   const handleSearch = async () => {
     // 검색어를 가져오기
    
-    const searchInput = document.querySelector('.searchInput');
-    const searchTerm = searchInput.value;
-
-    // 서버로 검색어 전송
-    try {
-      const response = await fetch('/api/search', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ searchTerm }),
-      });
-
-      if (response.ok) {
-        // 서버 응답을 처리하는 로직 추가
-        const searchData = await response.json();
-        console.log('검색 결과:', searchData);
-      } else {
-        console.error('검색 요청이 실패했습니다.');
-      }
-    } catch (error) {
-      console.error('에러 발생:', error);
-    }
+    window.location.href = `/search?search=${search}`;
   };
 
   return (
@@ -77,7 +56,10 @@ const NavigationBar = (session) => {
               <div className="keyword-menu" style={{'display':'block'}}>
               <ul>
                 {relatedKeywords.map((keyword, index) => (
-                  <li key={index}>{keyword.item_name}</li>
+                
+                    <li onClick={()=>{ window.location.href = `/products/${keyword.item_id}`;}}key={index}>{keyword.item_name}</li>
+               
+                  
                 ))}
               </ul>
             </div>}
@@ -86,9 +68,9 @@ const NavigationBar = (session) => {
           <div>
           </div>
 
-          <button className="searchButton">
+          <button className="searchButton" onClick={handleSearch}>
 
-            <FontAwesomeIcon icon={faSearch} onClick={handleSearch} />
+            <FontAwesomeIcon icon={faSearch}  />
             검색
           </button>
 
@@ -99,7 +81,7 @@ const NavigationBar = (session) => {
         <div className="cartUserIcons">
           {
             session.session
-              ? <span className='session'><img className='userImg' src={session.session.user.image} />{session.session.user.name}님, 반갑습니다 <LogOutBtn /> </span>
+              ? <span className='session'> <UserBtn session={session.session.user.email} /> </span>
               : <LoginBtn></LoginBtn>
           }
           <a href='/basket/salad'>

@@ -64,7 +64,7 @@ const ItemPage = (props) => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ amount: quantity ,item_id: id,customer_id: 'c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e'}),
+        body: JSON.stringify({ amount: quantity ,item_id: id,customer_id: '89122e30-b9c5-11ee-9d01-07fefcbd1ba0'}),
       })
         .then((response) => {
           if (response.status == 405) {
@@ -76,7 +76,7 @@ const ItemPage = (props) => {
 
         })
         .finally(() => {
-        
+          console.log("저장완료")
         });
 
     },

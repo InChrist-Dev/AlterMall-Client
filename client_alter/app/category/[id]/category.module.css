@@ -50,10 +50,28 @@
     width: 100%;
     margin: 0 auto;
   }
-  .productLink {
-    text-decoration: none; /* Remove underline from links */
-    color: inherit; /* Use the default text color */
-  }
+.productLink {
+  position: relative;
+}
+
+.cartBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
+  width: 40px; /* 버튼의 너비 조정 */
+  height: 40px; /* 버튼의 높이 조정 */
+  border: 2px;
+
+  background-color: #ff9100;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  /* 다른 스타일 조정이 필요하면 추가하세요 */
+}
+.productCard button:hover {
+  background-color: #e48202;
+}
   .productCard {
     text-decoration: none;
     margin: 25px;
@@ -78,6 +96,7 @@
     height: 300px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
   }
   
   .productCard p {
@@ -87,18 +106,9 @@
     margin: 5px 0;
   }
   
-  .productCard button {
-    padding: 10px;
-    font-size: 14px;
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
+
   
-  .productCard button:hover {
-    background-color: #218c54;
-  }
+ 
   .activeButton {
   background-color: #1d1212;
 }
