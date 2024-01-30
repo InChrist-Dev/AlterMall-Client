@@ -24,7 +24,7 @@ export default async function RootLayout({ children }) {
     
             
       {children}</body>
-      <div style={{border:'0.5px solid #ddd',marginTop:'200px'}}></div>
+      
       <Footer/>
     </html>
   )

@@ -53,12 +53,6 @@ const ItemPage = (props) => {
   };
   const handleSubmit = useCallback(
     (event) => {
-      const formData = new FormData();
-      formData.append('amount', quantity); // title 媛� 異붽��
-      formData.append('item_id', id); // description 媛� 異붽��
-      
-      formData.append('customer_id', 'c5d09ba0-b46a-11ee-a85d-8b9962d6ed6e');
-
       fetch(`http://211.45.170.37:3000/customer/cart/`, {
         method: 'POST',
         headers: {
@@ -80,9 +74,13 @@ const ItemPage = (props) => {
         });
 
     },
-    [quantity, id, newprice],
+    [quantity, id],
   );
-  return (
+
+  const handleBuy = (itemId,amount)=>{
+    window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
+  };
+ return(
     <div className={styles.productDetailContainer}>
       <div className={styles.productImage}>
         {/* Assume productImage is a prop passed from parent component */}
@@ -100,14 +98,14 @@ const ItemPage = (props) => {
         </div>
 
         <div className={styles.productOptions}>
-          <div className={styles.dropdown}>
+          {/* <div className={styles.dropdown}>
             <label>옵션</label>
             <select>
               <option>Option 1</option>
               <option>Option 2</option>
-              {/* Add more options as needed */}
+              {/* Add more options as needed 
             </select>
-          </div>
+          </div> */}
 
           <div className={styles.dropdown}>
             <label>주문수량</label>
@@ -121,8 +119,8 @@ const ItemPage = (props) => {
           <div className={styles.price}>
             <p>{price.toLocaleString()}원</p>
           </div>
-          <button className={styles.addToCartButton} onClick={handleSubmit}>장바구니</button>
-          <button className={styles.BuyButton}>바로구매</button>
+          <button className={styles.addToCartButton} onClick={()=>{handleSubmit}}>장바구니</button>
+          <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
       </div>
     </div>

@@ -24,7 +24,7 @@ const ItemPage = (props) => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setCategoryList(data.data.items);
       setPage(data.data.totalPages);
-
+      console.log(data.data.items)
   
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -76,24 +76,27 @@ const ItemPage = (props) => {
   };
 
   // id에 따라 다른 단어를 설정
-  let displayWord;
-  switch (category) {
-    case 'dessert':
-      displayWord = '디저트';
-      break;
-    case 'salad':
-      displayWord = '샐러드';
-      break;
-    case 'free':
-      displayWord = '락토프리';
-      break;
-    case 'drink':
-      displayWord = '음료';
-      break;
-    default:
-      displayWord = '알 수 없는 카테고리';
-  }
-
+  const getCategory= (category) =>{
+    let displayWord;
+    switch (category) {
+      case 'dessert':
+        displayWord = '디저트';
+        break;
+      case 'salad':
+        displayWord = '샐러드';
+        break;
+      case 'free':
+        displayWord = '락토프리';
+        break;
+      case 'drink':
+        displayWord = '음료';
+        break;
+      default:
+        displayWord = '알 수 없는 카테고리';
+    }
+    return displayWord;
+  };
+ 
   return (
     <div>
       <h1 className={styles.caTitle}>랭킹</h1>
@@ -134,41 +137,54 @@ const ItemPage = (props) => {
           <label htmlFor="displayCount"></label>
         </div>
       </div>
-      <div className={styles.productContainer}>
-  {categoryList.map((item, i) => {
-    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
-    return (
-      <>
-      <div key={item} className={styles.productCard}>
-        <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
-          <div className={styles.productLink}>
-            <img src={`http://211.45.170.37:3000/${item.img}`} alt={name} />
-            <h3> {item.item_name}</h3>
-            <p>{item.price.toLocaleString()}원</p>
-            <p>{categoryS[currentIndex]}</p>
-            <button>Add to Cart</button>
-          </div>
-        </Link>
-      </div>
-      </>
-    );
-  })}
- 
-</div>
+
+      <table className={styles.rankTable}>
+        <thead>
+          <tr>
+            <th>순위</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>카테고리</th>
+        
+          </tr>
+        </thead>
+        <tbody>
+          {categoryList.map((item, i) => {
+            const currentIndex = indexOfFirstProduct + i;
+            return (
+              <tr key={item}>
+                <td>{currentIndex + 1}</td>
+                <td>
+                  <Link href={`/products/${item.item_id}`} className={styles.productLink} style={{ textDecoration: 'none' }}>
+                  
+                      <img src={`http://211.45.170.37:3000/${item.img}`} className={styles.img} />
+                      <h3>{item.item_name}</h3>
+                   
+                  </Link>
+                </td>
+                <td>{item.price.toLocaleString()}원</td>
+                <td>{getCategory(item.category)}</td>
+             
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
 
       <div className={styles.pagination}>
-  {pageNumbers.map((number) => (
-    <span
-      key={number}
-      className={currentPage === number ? styles.activePage : styles.pageNumber}
-      onClick={() => handlePageClick(number)}
-    >
-      {number}
-    </span>
-  ))}
-</div>
+        {pageNumbers.map((number) => (
+          <span
+            key={number}
+            className={currentPage === number ? styles.activePage : styles.pageNumber}
+            onClick={() => handlePageClick(number)}
+          >
+            {number}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
+
 
 export default ItemPage;

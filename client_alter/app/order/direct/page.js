@@ -2,10 +2,11 @@
 'use client'
 
 import React, { useState,useEffect } from 'react';
-import styles from './order.module.css';
-import DeliveryInfoModal from './Modal';
+import styles from './direct.module.css';
+import DeliveryInfoModal from '../Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
-const Checkout = () => {
+import { v4 as uuidv4 } from 'uuid';
+const Checkout = (props) => {
   const [showModal, setShowModal] = useState(false);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState({
@@ -13,18 +14,19 @@ const Checkout = () => {
     method: 'standard',
   });
   const [selectedItems, setSelectedItems] = useState([]);
-  const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
-
+  const myUuid = uuidv4();
+  console.log(myUuid);
+  console.log(props);
   const handleClick = async () => {
     const tosspayments = await loadTossPayments(
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     );
 
     await tosspayments.requestPayment('카드',{
-      amount: 5000,
-      orderId: "wdasdawdsdswa",
+      amount: 5300,
+      orderId: myUuid,
       orderName: "토스 티셔츠 외 2건",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
@@ -52,10 +54,9 @@ const Checkout = () => {
     setSelectedItems(newSelectedItems);
   };
   const calculateTotalPrice = () => {
-    return selectedItems.reduce(
-      (total, index) => total + items[index].Item.price * quantity[index],
-      0
-    );
+    return items.price * quantity;
+   
+    
   };
 
   const toggleAllItemsSelection = () => {
@@ -75,9 +76,9 @@ const Checkout = () => {
   const getImageUrl = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo.method === 'standard') {
-      return './post.jpg';
+      return '../post.jpg';
     } else if (deliveryInfo.method === 'express') {
-      return './today.jpg';
+      return '../today.jpg';
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -92,22 +93,23 @@ const Checkout = () => {
     updatedItems[index].amount = newAmount;
     setItems(updatedItems);
   };
+ 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/customer/cart/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
+      const response = await fetch(`http://211.45.170.37:3000/category/${props.searchParams.itemId}`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
     
-      setItems(data.data.rows);
+      setItems(data);
       
-      const initialQuantity = data.data.rows.map((item) => item.amount );
+      const initialQuantity = parseInt(props.searchParams.amount);
     
       setQuantity(initialQuantity);
 
 
-      
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -116,6 +118,7 @@ const Checkout = () => {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
   };
+
 
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
@@ -179,30 +182,30 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.slice(0, displayCount).map((items, index) => (
-              <tr key={index} className={styles.productCard}>
+          
+              <tr  className={styles.productCard}>
                 <td>
                   <input
                     type="checkbox"
                     className={styles.checkbox}
-                    checked={selectedItems.includes(index)}
+                  
                     onChange={() => toggleItemSelection(index)}
                   />
                 </td>
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
                   <img
-                    src={`http://211.45.170.37:3000/${items.Item.img}`}
-                    alt={items.Item.item_name}
+                    src={`http://211.45.170.37:3000/${items.img}`}
+                    alt={items.item_name}
                     className={styles.productImage}
                   />
                 
-                    {items.Item.item_name}
+                    {items.item_name}
                    
                  
                 </td>
                 <td>
-                  <p>{items.Item.price}원</p>
+                  <p>{items.price}원</p>
                 </td>
                 <td>
                 <button className={styles.deleteButton}
@@ -216,21 +219,21 @@ const Checkout = () => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.amount - 1)
+                        setQuantity(quantity - 1)
                       }
                     >-
                     </button>
-                    <span>{items.amount}</span>
+                    <span>{quantity}</span>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index,  items.amount + 1)
+                        setQuantity(quantity + 1)
                       }
                     >+
                     </button>
                   </div>
                 </td>
               </tr>
-            ))}
+            
           </tbody>
         </table>
           </div>

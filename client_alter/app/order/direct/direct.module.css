@@ -1,0 +1,424 @@
+/* styles/Checkout.module.css */
+
+.checkoutContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    width: 1300px;
+    margin: 0 auto;
+    margin-top: 100px;
+    
+  }
+  
+  .postBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .postOption{
+    height: 40px;
+    margin: 20px;
+    width: 110px;
+    font-size: 18px;
+  }
+.postImage{
+  width: 200px;
+  
+}
+.infoTitle{
+    font-size: 30px;
+    font-weight: bold;
+}
+  
+  .verticalInfo {
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .deliveryInfo,
+  .orderItems {
+    width: 900px;
+    padding-top: 50px;
+  }
+  
+  .stickySidebar {
+    width: 300px;
+    position: sticky;
+    top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+
+  .title{
+  margin: 30px auto;
+  width: 80%;
+}
+
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+ 
+}
+
+.productTable th,
+.productTable td {
+  padding: 5px;
+  text-align: left;
+ 
+}
+
+.productTable th {
+  background-color: #ffffff;
+}
+
+.headerRow {
+  display: flex;
+  background-color: #333;
+  justify-content: start;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.headerRow div{
+  margin-left: 60px;
+}
+
+.headerRow div{
+  margin-left: 60px;
+}
+
+
+
+
+.productCard img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  
+  margin-right: 60px;
+}
+
+.productDetails {
+  display: flex;
+
+}
+
+.productDetails h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+  margin-right: 60px;
+  
+}
+
+.productDetails p {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  margin: 5px 0;
+  margin-right: 60px;
+}
+
+/* basket.module.css */
+
+/* 기존 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+
+.checkbox {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 2px solid #d97401;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox::before {
+  content: '\2713';
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.checkbox:checked::before {
+  opacity: 1;
+}
+
+.checkbox:checked {
+  background-color: #d97401;
+  border: 1px solid #d97401;
+}
+
+.checkbox:hover {
+  background-color: #d97401;
+  border: 1px solid #d97401;
+}
+
+/* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable th:first-child,
+.productTable td:first-child {
+  width: 14%;
+}
+
+.productCard td:first-child {
+  text-align: center;
+}
+
+/* 나머지 스타일은 그대로 둡니다. */
+
+
+.totalPrice {
+  margin-top: 20px auto;
+  text-align: right;
+  font-size: 26px;
+  font-weight: bold;
+  color: red;
+  width: 90%;
+}
+.productTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.productTable th{
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.productTable th {
+  background-color: #fff;
+}
+/* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable th:first-child {
+  width: 14%;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.productCard td:first-child {
+  text-align: center; /* 가로 중앙 정렬을 추가합니다. */
+}
+
+
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+
+}
+
+.quantityControl button {
+  width: 40px;
+  padding: 5px 10px;
+  font-size: 30px;
+  background-color: #fff;
+  color: #868686;
+  border: 1px solid #868686;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.quantityControl button:hover {
+  background-color: #fff;
+}
+
+.quantityControl span {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+/* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+.productTable th:last-child,
+.productTable td:last-child {
+  text-align: center;
+  width: 10px;
+}
+
+.productTable th:nth-child(4),
+.productTable td:nth-child(4) {
+  text-align: center;
+  
+}
+
+.productTable th:nth-child(5),
+.productTable td:nth-child(5) {
+  text-align: center;
+}
+
+.productTable tr{
+  border: 1px #ddd dotted;
+  border-collapse: collapse;
+}
+
+/* Add this to your existing CSS file or create a new one */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
+}
+
+.modalContent {
+  background: white;
+  width: 550px;
+  height: 750px;
+  padding: 20px;
+ 
+}
+
+.modalContent h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.daum{
+  width: 100px;
+  height: 100px;
+}
+
+.modalContent label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #d97401;
+  font-size: 17px;
+}
+.addressButton{
+  display: flex;
+  padding: 0 10px 0 0px;
+}
+
+.addressButton button{
+  height: 45px;
+  width: 80px;
+  margin: 0px 10px;
+  border-radius: 30px;
+}
+.modalContent input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 2px solid #bbb;
+
+  border-radius: 20px;
+}
+.modalContent input:hover{
+  border: #d97401 2px solid;
+}
+
+.modalContent button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  margin-right: 10px;
+}
+
+.modalContent button:last-child {
+  background-color: #f44336; /* Red color for cancel button */
+
+}
+/* ... (other styles) */
+
+
+.addToCartButton {
+  background-color: #fff;
+  color: grey;
+  width: 49%;
+  padding: 15px 15px;
+  font-size: 35px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: 500;
+  border: 1px grey solid;
+  margin-right: 2%;
+  
+}
+
+.addToCartButton:hover {
+  background-color: #e4e4e4;
+}
+.moreButton{
+  background-color: #ffffff;
+  border: 0;
+  padding: 15px;
+  color: #777;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.moreButton:hover{
+  background-color: #ffffff;
+  border: 0;
+  padding: 15px;
+  color: #f5af19;
+  font-weight: bold;
+  font-size: 15px;
+}
+.BuyButton {
+  background-color: #f0571b;
+  color: #fff;
+  width: 98%;
+  padding: 15px 15px;
+  right: 0;
+  font-size: 24px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.BuyButton:hover {
+  background-color: #cf4b17;
+}
+.deleteButton{
+  padding: 10px 15px;
+  font-size: 20px;
+  background-color: #f0571b;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 0px;
+}
+
+.Buttons{
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+  padding-top: 100px;
+}
+
+.AddressBox{
+  border-radius: 10px;
+  border: #ccc 1px solid;
+  padding: 20px;
+  margin: 20px 0;
+}

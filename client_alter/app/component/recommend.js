@@ -44,7 +44,7 @@ export default function Recommend(){
     };
     return (
     
-    <div style={{width:'80%',margin:'0 auto', paddingTop:'200px'}}>
+    <div style={{width:'80%',margin:'0 auto', paddingTop:'200px',marginBottom:'200px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitle}>장인의 추천<span className={styles.categorySub}> |얼터몰 인증 건강장인의 추천음식!</span></p>
     {/* 장인 버튼 */} <button onClick={toggleShowMore} className={styles.moreButton}>

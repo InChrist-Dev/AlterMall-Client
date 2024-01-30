@@ -3,18 +3,9 @@
 import React, { useEffect, useState,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './basket.module.css'; // Import the CSS module
+import { v4 as uuidv4 } from 'uuid';
 
-const sampleData = {
-  categoryName: ['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크'],
-  categoryPrice: [10000, 20000, 30000, 40000],
-  categoryS: [1, 2, 3, 4],
-  categoryImage: [
-    '/food/nack.jpg',
-    '/food/pizza.jpg',
-    '/food/chicken.jpg',
-    '/food/ham.jpg',
-  ],
-};
+
 
 const ItemPage = (props) => {
   const [categoryName, setCategoryName] = useState([]);
@@ -25,7 +16,8 @@ const ItemPage = (props) => {
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
-
+  const myUuid = uuidv4();
+  console.log(myUuid);
   const fetchData = async () => {
     try {
       const response = await fetch(`http://211.45.170.37:3000/customer/cart/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
@@ -33,9 +25,6 @@ const ItemPage = (props) => {
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data.data.rows);
-      setCategoryName(sampleData.categoryName);
-      setCategoryPrice(sampleData.categoryPrice);
-      setCategoryS(sampleData.categoryS);
       setItems(data.data.rows);
       
       const initialQuantity = data.data.rows.map((item) => item.amount );
@@ -59,12 +48,10 @@ const ItemPage = (props) => {
     await fetch('http://211.45.170.37:3000/customer/order',{
       method:'post',
       body:JSON.stringify({
-        "order_id":"wdasdawdsdwa",
+        "order_id":myUuid,
         "addr":"rich building",
         "addr_detail":"5th floor",
-        "post":"11032",
-        "requests":"빠르게 배송해 주세요",
-        "state":"wait",
+        "customer_id":"89122e30-b9c5-11ee-9d01-07fefcbd1ba0",
         "amount":1,
         "createdAt":"2024-01-23T08:11:41.000Z",
         "item_id":"e8f12213-5585-4c3d-ac52-89ce9bf9440f",}),
@@ -72,15 +59,20 @@ const ItemPage = (props) => {
     
           "Content-Type":"application/json",
       },
-  }).then((response) => {
+  }).then(async (response) => {
     if (response.status == 405) {
       alert('삭제 실패하였습니다');
     } else if (response.status == 201) {
-      alert('삭제되었습니다');
+      alert('주문페이지로 넘어갑니다');
+      console.log(response);
+      const data = await response.json();
+      console.log(data)
     }
 
 
-  })
+  }).finally(
+
+  )
   }
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];

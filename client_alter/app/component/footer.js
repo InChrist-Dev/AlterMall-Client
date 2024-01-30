@@ -5,8 +5,13 @@ import styles from './component.module.css';  // Create a separate CSS module fo
 
 const Footer = () => {
   return (
+    <span>
+      <div style={{border:'0.5px solid #ddd'}}></div>
+   
     <footer className={styles.footer}>
+ 
           <div className={styles.column}>
+            
         <img className={styles.logo} src='/logo1.jpg'></img>
       </div>
   
@@ -27,6 +32,7 @@ const Footer = () => {
       </div>
       {/* Add more columns or sections as needed */}
     </footer>
+    </span>
   );
 };
 
