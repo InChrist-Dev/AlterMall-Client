@@ -16,6 +16,7 @@ const Checkout = (props) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
+  
   const myUuid = uuidv4();
   console.log(myUuid);
   console.log(props);
@@ -25,9 +26,9 @@ const Checkout = (props) => {
     );
 
     await tosspayments.requestPayment('카드',{
-      amount: 5300,
+      amount: calculateTotalPrice(),
       orderId: myUuid,
-      orderName: "토스 티셔츠 외 2건",
+      orderName: items.item_name,
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
       customerEmail: "customer123@gmail.com",
@@ -54,6 +55,7 @@ const Checkout = (props) => {
     setSelectedItems(newSelectedItems);
   };
   const calculateTotalPrice = () => {
+
     return items.price * quantity;
    
     
