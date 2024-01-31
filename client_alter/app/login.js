@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const fetchData = async () => {
   try {
     const response = await fetch(`https://udtown.site/auth/google/login`);
-
+    console.log(response);
 
    
 

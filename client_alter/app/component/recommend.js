@@ -59,7 +59,7 @@ export default function Recommend(){
 
             return (<a  key={Items} href={`products/${Items.data.items[0].item_id}`}>
                <div className={styles.re_container}>
-      <button className={styles.re_smallButton} style={{ backgroundImage: `url('http://211.45.170.37:3000/${Items.data.items[0].img}')` }}></button>
+      <button className={styles.re_smallButton} style={{ backgroundImage: `url('https://udtown.site/${Items.data.items[0].img}')` }}></button>
     
       <div className={styles.recommend_title}>{Items.data.items[0].item_name}</div>
       <div className={styles.recommend_image}>{categoryS[i]}</div>
