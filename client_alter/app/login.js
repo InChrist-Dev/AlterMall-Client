@@ -5,7 +5,7 @@ const fetchData = async () => {
   try {
     const response = await fetch('https://udtown.site/auth/google/login', {
       method: 'GET',
-      
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
