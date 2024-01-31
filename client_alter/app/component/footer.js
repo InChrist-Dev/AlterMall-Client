@@ -16,15 +16,16 @@ const Footer = () => {
       </div>
   
       <div className={styles.column}>
-        <p className={styles.title}>회사소개</p>
+        <h3 className={styles.title}>회사소개</h3>
         <p>상호명 및 호스팅 서비스 제공: InC개발팀</p>
         <p>대표이사: 이정훈</p>
         <p>경기도 의정부시 민락동 692-8 A동 5층</p>
         <p>사업자 등록번호: 723-30-01491</p>
+        <p>유선번호: 010-8933-8962</p>
         {/* Add more information as needed */}
       </div>
       <div className={styles.column}>
-        <p className={styles.title}>Contact Us</p>
+        <h3 className={styles.title}>Contact Us</h3>
         
         <p>경기도 의정부시 민락동 692-8 A동 5층</p>
         <p>Email: altermall@naver.com</p>

@@ -133,7 +133,7 @@ const ItemPage = (props) => {
     [],
   );
   return (
-    <div>
+    <div style={{'marginBottom':'100px'}}>
       <h1 className={styles.title}>장바구니</h1>
       <div className={styles.basketContainer}>
         <table className={styles.productTable}>
