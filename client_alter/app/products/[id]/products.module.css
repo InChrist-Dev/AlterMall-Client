@@ -4,7 +4,7 @@
     display: flex;
     width: 1300px;
     padding-top: 100px;
-    margin: 0 auto;
+    margin: 100px auto;
   }
   
   .productImage {
@@ -33,6 +33,11 @@
   .productInfo p {
     font-size: 18px;
     margin-bottom: 10px;
+  }
+  .productInfo span{
+    font-size: 22px;
+    font-weight: bold;
+    color: #aaa;
   }
   
   .productOptions {

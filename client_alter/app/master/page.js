@@ -46,12 +46,12 @@ const toggleFavorite = (index) => {
 };
 // 좌우 이동 함수 추가
 const goToPrevSlide = () => {
-  const newIndex = (currentIndex - 1 + masterName.length) % masterName.length;
+  const newIndex = (currentIndex - 1 + master.length) % master.length;
   setCurrentIndex(newIndex);
 };
 
 const goToNextSlide = () => {
-  const newIndex = (currentIndex + 1) % masterName.length;
+  const newIndex = (currentIndex + 1) % master.length;
   setCurrentIndex(newIndex);
 };
 console.log(master)

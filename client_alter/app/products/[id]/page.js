@@ -81,7 +81,10 @@ const ItemPage = (props) => {
     window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
  return(
-    <div className={styles.productDetailContainer}>
+    <div>
+      <div className={styles.productDetailContainer}>
+
+     
       <div className={styles.productImage}>
         {/* Assume productImage is a prop passed from parent component */}
         <img src={`http://211.45.170.37:3000/${img}`} alt="Product Image" />
@@ -90,11 +93,11 @@ const ItemPage = (props) => {
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
           <h1 >{name}</h1>
-          <p>배달방법: 특급배달</p>
-          <p>제품구성: 밀가루, 버터, 우유, 달걀, 설탕포함</p>
-          <p>보관법: 냉동보관</p>
-          <p>안내: 해당제품은 보관 후 3일 안에 드셔주세요</p>
-          <p>재고: {stock}</p>
+          <p><span>배달방법 </span> 특급배달</p>
+          <p><span>제품구성 </span> 밀가루, 버터, 우유, 달걀, 설탕포함</p>
+          <p><span>보관법 </span> 냉동보관</p>
+          <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p>
+          <p><span>재고 </span> {stock}</p>
         </div>
 
         <div className={styles.productOptions}>
@@ -123,6 +126,9 @@ const ItemPage = (props) => {
           <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
       </div>
+    </div>
+    <div>
+    </div>
     </div>
   );
 };
