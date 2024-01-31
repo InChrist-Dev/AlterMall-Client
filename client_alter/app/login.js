@@ -5,10 +5,11 @@ const fetchData = async () => {
   try {
     const response = await fetch('https://udtown.site/auth/google/login', {
       method: 'GET',
+      
       headers: {
         'Content-Type': 'application/json',
       },
-     
+      redirect: 'follow',
     });
 
     if (response.status == 200) {
