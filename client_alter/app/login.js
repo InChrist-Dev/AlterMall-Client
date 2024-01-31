@@ -3,7 +3,7 @@ import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const fetchData = async () => {
   try {
-    const response = await fetch(`http://211.45.170.37:3000/login`);
+    const response = await fetch(`https://udtown.site/auth/google/login`);
 
 
    
@@ -16,5 +16,5 @@ const fetchData = async () => {
 
 
 export function LoginBtn() {
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { }}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {fetchData(); }}/>)
 } 
