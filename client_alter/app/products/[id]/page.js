@@ -15,7 +15,7 @@ const ItemPage = (props) => {
   const [id, setId] = useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/category/${props.params.id}`);
+      const response = await fetch(`https://udtown.site/category/${props.params.id}`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -53,7 +53,7 @@ const ItemPage = (props) => {
   };
   const handleSubmit = useCallback(
     (event) => {
-      fetch(`http://211.45.170.37:3000/customer/cart/`, {
+      fetch(`https://udtown.site/customer/cart/`, {
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -87,7 +87,7 @@ const ItemPage = (props) => {
      
       <div className={styles.productImage}>
         {/* Assume productImage is a prop passed from parent component */}
-        <img src={`http://211.45.170.37:3000/${img}`} alt="Product Image" />
+        <img src={`https://udtown.site/${img}`} alt="Product Image" />
       </div>
 
       <div className={styles.productDetails}>
