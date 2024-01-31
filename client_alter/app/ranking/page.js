@@ -151,7 +151,7 @@ const ItemPage = (props) => {
                   <Link href={`/products/${item.item_id}`} className={styles.productLink} style={{ textDecoration: 'none' }}>
                   
                       <img src={`http://211.45.170.37:3000/${item.img}`} className={styles.img} />
-                      <h3>{item.item_name}</h3>
+                      <h3 >{item.item_name}</h3>
                    
                   </Link>
                 </td>

@@ -52,6 +52,10 @@
   text-align: center;
   font-size: 20px;
 }
+
+.productLink h3{
+  margin-left: 70px;
+}
 .cartIcon{
   font-size: 20px;
   color: #ccc;

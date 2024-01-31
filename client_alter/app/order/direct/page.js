@@ -16,6 +16,7 @@ const Checkout = (props) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
+  const [deliver,setDeliver] = useState([]);
   
   const myUuid = uuidv4();
   console.log(myUuid);
@@ -121,10 +122,26 @@ const Checkout = (props) => {
     }
   };
 
-
+  const fetchDeliver = async () => {
+    try {
+      const response = await fetch(`http://211.45.170.37:3000/customer/deliver/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
+      const data = await response.json();
+  
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+   
+      setDeliver(data.data.rows[0]);
+     
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
+    fetchDeliver();
   }, []);
   return (
     <div className={styles.checkoutContainer}>
@@ -142,9 +159,9 @@ const Checkout = (props) => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            홍길동
-            <div>경기도 의정부시 00로 00동00호</div>
-            <div>010-0000-0000</div>
+            {deliver.name}
+            <div>{deliver.addr} {deliver.addr_detail}</div>
+            <div>{deliver.phone}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>

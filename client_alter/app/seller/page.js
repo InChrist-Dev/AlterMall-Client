@@ -29,7 +29,7 @@ const [sellerName, setSellerName] = useState('');
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://211.45.170.37:3000/user/seller/detail/080e2550-b3a3-11ee-aa99-992d88953757`);
+      const response = await fetch(`http://211.45.170.37:3000/user/seller/detail/6dbffab0-c00d-11ee-95ba-414444fa9552`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
