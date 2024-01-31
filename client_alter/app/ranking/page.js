@@ -1,8 +1,9 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
-import styles from './lanking.module.css'; // 스타일링을 위한 CSS 모듈
+import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import styles from './ranking.module.css'; // 스타일링을 위한 CSS 모듈
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // 샘플 데이터
 
 
@@ -98,27 +99,27 @@ const ItemPage = (props) => {
   };
  
   return (
-    <div>
+    <div className={styles.Container}>
       <h1 className={styles.caTitle}>랭킹</h1>
       <div className={styles.sortAndScroll}>
-        <div className={styles.sortButtons}>
+        <div >
           <button
             onClick={sortByLowestPrice}
-            className={sortBy === 'lowest' ? styles.activeButton : ''}
+            className={sortBy === 'lowest' ? styles.activeButton : styles.sortButtons}
           >
-            낮은 가격순
+            건강순
           </button>
           ㅣ
           <button
             onClick={sortByHighestPrice}
-            className={sortBy === 'highest' ? styles.activeButton : ''}
+            className={sortBy === 'highest' ? styles.activeButton : styles.sortButtons}
           >
-            높은 가격순
+            인기순
           </button>
           ㅣ
           <button
             onClick={sortByLatest}
-            className={sortBy === 'latest' ? styles.activeButton : ''}
+            className={sortBy === 'latest' ? styles.activeButton : styles.sortButtons}
           >
             최신순
           </button>
@@ -139,21 +140,13 @@ const ItemPage = (props) => {
       </div>
 
       <table className={styles.rankTable}>
-        <thead>
-          <tr>
-            <th>순위</th>
-            <th>상품명</th>
-            <th>가격</th>
-            <th>카테고리</th>
-        
-          </tr>
-        </thead>
+     
         <tbody>
           {categoryList.map((item, i) => {
             const currentIndex = indexOfFirstProduct + i;
             return (
               <tr key={item}>
-                <td>{currentIndex + 1}</td>
+                <td className={styles.rank}>{currentIndex + 1}</td>
                 <td>
                   <Link href={`/products/${item.item_id}`} className={styles.productLink} style={{ textDecoration: 'none' }}>
                   
@@ -162,8 +155,9 @@ const ItemPage = (props) => {
                    
                   </Link>
                 </td>
-                <td>{item.price.toLocaleString()}원</td>
+                <td><b>{item.price.toLocaleString()}</b>원</td>
                 <td>{getCategory(item.category)}</td>
+                <td><FontAwesomeIcon icon={faShoppingCart} className={styles.cartIcon}/></td>
              
               </tr>
             );

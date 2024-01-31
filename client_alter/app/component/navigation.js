@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { LogOutBtn } from '../logout';
+
 import { LoginBtn } from '../login';
 import { UserBtn } from './userIcon';
 const NavigationBar = (session) => {
@@ -48,8 +48,8 @@ const NavigationBar = (session) => {
                 onChange={(e) => setSearch(e.target.value)} />
               {isKeywordMenu?<div className="keyword-menu">
                 <ul>
-                  {relatedKeywords.map((keyword, index) => (
-                    <li key={index}>{keyword.item_name}</li>
+                {relatedKeywords.map((keyword, index) => (
+                      <li key={index}>{keyword.item_name}</li>
                   ))}
                 </ul>
               </div>:
@@ -64,16 +64,15 @@ const NavigationBar = (session) => {
               </ul>
             </div>}
             </li>
+            <button className="searchButton" onClick={handleSearch}>
+
+<FontAwesomeIcon icon={faSearch}  />
+검색
+</button>
+
           </ul>
-          <div>
-          </div>
-
-          <button className="searchButton" onClick={handleSearch}>
-
-            <FontAwesomeIcon icon={faSearch}  />
-            검색
-          </button>
-
+        
+        
 
         </div>
 
@@ -107,7 +106,7 @@ const NavigationBar = (session) => {
                 </div>
               </li>
               <li><a href="/master">장인소개</a></li>
-              <li><a href="/lanking">랭킹</a></li>
+              <li><a href="/ranking">랭킹</a></li>
               <li><a href="/">이벤트</a></li>
               <li><a href="/">이달의 특가</a></li>
 

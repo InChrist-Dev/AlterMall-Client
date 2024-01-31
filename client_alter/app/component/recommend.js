@@ -40,7 +40,7 @@ export default function Recommend(){
   }, []); 
 
     const toggleShowMore = () => {
-      window.location.href = '/category';
+      window.location.href = '/ranking';
     };
     return (
     
