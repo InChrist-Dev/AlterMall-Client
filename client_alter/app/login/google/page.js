@@ -3,9 +3,10 @@ import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { signOut } from 'next-auth/react'
 
-export default function LogOutBtn(req,res){
+export default async function LogOutBtn(req,res){
   try{
-    return ( <div>{req.query}</div>)
+    const query = await req.query;
+    return ( <div>{query}</div>)
   }
   catch(error){
     console.error(error);
