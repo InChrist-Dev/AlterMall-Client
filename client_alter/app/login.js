@@ -1,24 +1,26 @@
 'use client';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { signIn } from 'next-auth/react';
 const fetchData = async () => {
   try {
-    const response = await fetch('https://udtown.site/auth/google/login', {
+    const response = await fetch('https://accounts.google.com/o/oauth2/v2/auth?client_id=531194003469-j54ppl86mr4a8orolgdbfia6asho979m.apps.googleusercontent.com&redirect_uri=http://localhost:8000/auth/google/login/redirect&response_type=code&scope=email profile', {
       method: 'GET',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json',
       },
+    
       redirect: 'follow',
     });
-
+    const data = await response.json();
     if (response.status == 200) {
-     console.log(response.json);
+     console.log(data);
 
     } else if (response.status == 201) {
-      console.log(response.json);
+      console.log(data);
     } else {
-      console.log(response.json);
+     
+      console.log(data);
     }
 
   } catch (error) {
@@ -28,5 +30,5 @@ const fetchData = async () => {
 
 
 export function LoginBtn() {
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {fetchData(); }}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {window.location.href='https://accounts.google.com/o/oauth2/v2/auth?client_id=1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com&redirect_uri=https://udtown.site/auth/google/login/redirect&response_type=code&scope=email profile'}}/>)
 } 
