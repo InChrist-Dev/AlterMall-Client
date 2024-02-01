@@ -5,5 +5,5 @@ import { signOut } from 'next-auth/react'
 
 export default function LogOutBtn(req,res){
   
-  return ( <div>로그인페이지</div>)
+  return ( <div>{req.query}</div>)
   } 
