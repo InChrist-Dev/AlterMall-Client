@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 let url = 'https://accounts.google.com/o/oauth2/v2/auth';
     url += `?client_id=1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com`
-    url += `&redirect_uri=http://localhost:3000/login/google`
+    url += `&redirect_uri=https://altermall.shop/login/google`
     url += '&response_type=code'
     url += '&scope=email profile' 
 	 
