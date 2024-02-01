@@ -1,17 +1,9 @@
 'use client';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { redirect } from 'next/dist/server/api-utils';
-let url = 'https://accounts.google.com/o/oauth2/v2/auth';
-url += `?client_id=1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com`
-url += `&redirect_uri=https://altermall.shop/login/google`
-url += '&response_type=code'
-url += '&scope=email profile' 
-
 const fetchData = async () => {
   try {
-    redirect(url);
-    console.log(response);
+    const response = await fetch(`http://211.45.170.37:3000/login`);
 
 
    
@@ -24,6 +16,5 @@ const fetchData = async () => {
 
 
 export function LoginBtn() {
-  console.log(url)
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {window.location.href = `${url}`}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { }}/>)
 } 
