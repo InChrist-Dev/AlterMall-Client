@@ -41,7 +41,7 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
 
   const handleSubmit = async () => {
     try {
-      const response = await fetch('http://211.45.170.37:3000/customer/deliver', {
+      const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

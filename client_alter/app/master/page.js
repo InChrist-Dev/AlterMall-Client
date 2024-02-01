@@ -18,7 +18,7 @@ const [favorites, setFavorites] = useState([false, false, false, false]); // Ini
 
 const fetchData = async () => {
   try {
-    const response = await fetch(`http://211.45.170.37:3000/User/seller`);
+    const response = await fetch(`https://udtown.site/User/seller`);
     const data = await response.json();
 
     // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.

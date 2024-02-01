@@ -16,7 +16,7 @@ const NavigationBar = (session) => {
     if(search.length==0){
       setIsKeywordMenu(true);
     }else{
-      fetch(`http://211.45.170.37:3000/category/search?name=${search}`, {
+      fetch(`https://udtown.site/category/search?name=${search}`, {
 
     })
       .then((res) => res.json())

@@ -51,6 +51,30 @@ export const authOptions = {
     GoogleProvider({
       clientId: '1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com',
       clientSecret: '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',
+      async authorize(credentials, req) {
+        const res = await fetch(`https://udtown.site/auth/google/login/redirect`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+        const user = await res.json();
+        console.log(user);
+
+        if (user) {
+          // Any object returned will be saved in `user` property of the JWT
+          return user;
+        } else {
+          // If you return null then an error will be displayed advising the user to check their details.
+          return null;
+
+          // You can also Reject this callback with an Error thus the user will be sent to the error page with the error message as a query parameter
+        }
+      },
     }),
     KakaoProvider({
       clientId: '01bebeb081942efbb3f9e67c04ea339b',
