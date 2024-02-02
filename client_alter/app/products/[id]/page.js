@@ -4,6 +4,8 @@ import React, { useState, useEffect,useCallback } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Link, scroll } from 'react-scroll';
+
 
 const ItemPage = (props) => {
   const [name, setName] = useState('');
@@ -127,7 +129,43 @@ const ItemPage = (props) => {
         </div>
       </div>
     </div>
-    <div>
+    <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+  
+        <div className="navigation">
+      <nav className="navbar">
+        <ul className="nav-list">
+          <li className="category-dropdown">
+            <Link to="image1" smooth={true} duration={500}>
+              상품정보
+            </Link>
+          </li>
+          <li>
+            <Link to="image2" smooth={true} duration={500}>
+              구매후기
+            </Link>
+          </li>
+          <li>
+            <Link to="image3" smooth={true} duration={500} onClick={() => scrollToImage(2)}>
+              상품문의
+            </Link>
+          </li>
+          <li>
+            <Link to="image4" smooth={true} duration={500} onClick={() => scrollToImage(3)}>
+              구매정보
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </div>
+        <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+        <div>
+      <div className={styles.detail} id="image1">
+        <img src="/back1.jpg" />
+      </div>
+      <div className={styles.detail} id="image2">
+        <img src="/back2.jpg" />
+      </div>
+      {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
     </div>
     </div>
   );

@@ -104,3 +104,11 @@
   .BuyButton:hover {
     background-color: #cf4b17;
   }
+.detail{
+  width: 80%;
+  margin: 0 auto;
+}
+.detail img{
+  width: 100%;
+
+}
