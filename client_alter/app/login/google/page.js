@@ -21,7 +21,7 @@ export default async function handler(){
 
 
     });
-    const data = await response.json();
+    const data = await response.status;
     console.log(data);
   };
     fetchData();
