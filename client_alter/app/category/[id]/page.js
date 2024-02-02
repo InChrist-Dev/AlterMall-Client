@@ -24,7 +24,7 @@ const ItemPage = (props) => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setCategoryList(data.data.items);
       setPage(data.data.totalPages);
-
+      console.log(data.data)
   
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));

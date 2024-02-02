@@ -45,7 +45,7 @@ const ItemPage = (props) => {
   }, []);
   
   const handleSubmit = async () =>{
-    await fetch('http://211.45.170.37:3000/customer/order',{
+    await fetch('https://udtown.site/customer/order',{
       method:'post',
       body:JSON.stringify({
         "order_id":myUuid,
@@ -61,7 +61,7 @@ const ItemPage = (props) => {
       },
   }).then(async (response) => {
     if (response.status == 405) {
-      alert('삭제 실패하였습니다');
+      alert('주문 실패하였습니다');
     } else if (response.status == 201) {
       alert('주문페이지로 넘어갑니다');
       console.log(response);
