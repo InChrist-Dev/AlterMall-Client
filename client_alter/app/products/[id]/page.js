@@ -15,6 +15,8 @@ const ItemPage = (props) => {
   const [newprice, setNewPrice] = useState(20000); // Assume an initial price
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState('');
+  const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
+
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/category/${props.params.id}`);
@@ -133,31 +135,67 @@ const ItemPage = (props) => {
   
         <div className="navigation">
       <nav className="navbar">
-        <ul className="nav-list">
+        <ul className={styles.navList}>
           <li className="category-dropdown">
-            <Link to="image1" smooth={true} duration={500}>
-              상품정보
-            </Link>
-          </li>
-          <li>
-            <Link to="image2" smooth={true} duration={500}>
-              구매후기
-            </Link>
-          </li>
-          <li>
-            <Link to="image3" smooth={true} duration={500} onClick={() => scrollToImage(2)}>
-              상품문의
-            </Link>
-          </li>
-          <li>
-            <Link to="image4" smooth={true} duration={500} onClick={() => scrollToImage(3)}>
-              구매정보
-            </Link>
+          <Link
+                to="image1"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image1");
+                 
+                }}
+                className={activeLink == "image1" ? styles.activeLink : styles.Link}
+              >
+                상품정보
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="image2"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image2");
+                  
+                }}
+                className={activeLink == "image2" ? styles.activeLink : styles.Link}
+              >
+                구매후기
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="image3"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image3");
+                  
+                }}
+                className={activeLink == "image3" ? styles.activeLink : styles.Link}
+              >
+                상품문의
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="image4"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image4");
+                 
+                }}
+                className={activeLink == "image4" ? styles.activeLink : styles.Link}
+              >
+                구매정보
+              </Link>
           </li>
         </ul>
       </nav>
     </div>
-        <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+       
         <div>
       <div className={styles.detail} id="image1">
         <img src="/back1.jpg" />

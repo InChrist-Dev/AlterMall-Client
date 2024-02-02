@@ -47,7 +47,53 @@
   .dropdown {
     margin-bottom: 15px;
   }
+
+  .activeLink {
+    text-decoration: none;
+    text-align: center;
+    color: #222;
+    font-weight: bold;
+    font-size: 22px;
+    border-bottom: #222 3px solid;
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 20px; /* 내부 여백 추가 */
+  }
+
+  .Link:hover{
+    font-weight: bold;
+    font-size: 22px;
+  }
+  .Link {
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 22px;
   
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 20px; /* 내부 여백 추가 */
+  }
+  .navList {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .navList li {
+    flex: 1; /* 동일한 너비로 설정 */
+    margin-right: 20px;
+  }
+  
+  .navList li:last-child {
+    margin-right: 0;
+  }
+  
+ 
+
   .productOptions label {
     display: block;
     font-size: 14px;

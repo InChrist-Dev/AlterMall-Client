@@ -1,0 +1,226 @@
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: 2px dashed #37b8df;
+    border-radius: 4px;
+    background-color: #ecf8fb;
+    color: #2d8daa;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    margin: 70px 20px;
+  }
+  
+  .dropzone:hover {
+    border-color:  #37b8df;
+    background-color: #d6f7ff;
+  }
+
+  .addImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    width: 400px;
+    border: 2px dashed #37b8df;
+    border-radius: 4px;
+    background-color: #ecf8fb;
+    color: #2d8daa;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    margin: 10px 10px;
+  }
+  
+  .addImage:hover {
+    border-color:  #37b8df;
+    background-color: #d6f7ff;
+  }
+  
+  .image-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  
+  .image-item {
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .preview {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .preview img {
+    max-width: 100px;
+    height: auto;
+    margin: 10px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .modalContent {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+  }
+  
+  .modalTitle {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+
+  
+  
+  .modalButton {
+    padding: 8px 12px;
+    background-color: #27b7e3;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .modalButton:hover {
+    background-color: #1b6d86;
+  }
+  
+  .modalButton:focus {
+    outline: none;
+  }
+  .page{
+    background-color: #fff;
+    display: flex;
+    width: 400.1px;
+    padding-bottom: 12.5px;
+    font-weight: bold;
+    color: #707070;
+    
+  }
+.page11{
+    padding: 13px 30px 13px 20px;
+    background-color: #fff;
+    color: #37bce5;
+}
+.page21:hover{
+    color: #2a98b9;
+}
+.page21{
+    padding: 13px 30px 13px 20px;
+    
+    color: #707070;
+    background-color: #d3d3d3;
+}
+
+.page12{
+    padding: 13px 30px 13px 20px;
+    background-color: #d3d3d3;
+    
+    color: #707070;
+}
+.page12:hover{
+    color: #2a98b9;
+}
+.page22{
+    padding: 13px 30px 13px 20px;
+    background-color: #fff;
+    color: #37bce5;
+   
+}
+.button{
+    background-color: #3ccdf9;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.table{
+    border: #2a98b9 solid 1px;
+    width: 98%;
+    text-align: center;
+    margin: 0 auto;
+    color: #2a98b9;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+.tableImg{
+    width: 60px;
+    
+}
+
+.inputName{
+    width: 270px;
+    margin: 0 auto;
+}
+.inputUnit{
+    width: 150px;
+    margin: 0 auto;
+}
+
+.dropzone{
+    height: 80px;
+}
+
+.cancel{
+    background-color: red;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+.select{
+    height: 40px;
+    width: 70px;
+    font-size: 20px;
+    text-align: center;
+    color:#2a98b9;
+    padding: 0 10px;
+    
+    margin: 0 10px;
+}
+
+.conpage{
+    font-size: 20px;
+    display: inline;
+    text-align: left;
+    width: 10px;
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.form form label input{
+    width: 1000px;
+    padding: 10px;
+    margin: 20px;
+}
