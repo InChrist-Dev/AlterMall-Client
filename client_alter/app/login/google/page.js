@@ -5,10 +5,10 @@ import { useSearchParams } from "next/navigation";
 export default async function handler(){
   try{
     const router = useSearchParams();
-    const query = router;
-    console.log(`${query.code} query is`)
+    const query = router.query.code;
+    console.log(`${query} query is`)
 
-    const url = `https://udtown.site/auth/google/login/redirect/${query.code}`;
+    const url = `https://udtown.site/auth/google/login/redirect/${query}`;
     const fetchData = async () => {
       const response = await fetch(url, {
       method:'get',
