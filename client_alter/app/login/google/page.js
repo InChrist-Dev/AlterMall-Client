@@ -1,8 +1,8 @@
-
+'use client'
 import { useSearchParams } from "next/navigation";
 
 
-export default async function handler(req,res){
+export default async function handler(){
   try{
     const router = useSearchParams();
     const query = router;
@@ -10,18 +10,22 @@ export default async function handler(req,res){
 
     const url = `https://udtown.site/auth/google/login/redirect`;
     const fetchData = async () => {
-      await fetch(url, {
+      const response = await fetch(url, {
       method:'post',
       headers: {
         'Content-Type': 'application/json',
       },
       redirect:'follow',
-      body: 'router',
+      body: query,
 
 
 
-    })};
+    });
+    const data = await response.json();
+    console.log(data);
+  };
     fetchData();
+    console.log('dd');
     return (<div>success</div>);
   }
   catch(error){

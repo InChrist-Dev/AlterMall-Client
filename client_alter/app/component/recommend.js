@@ -23,12 +23,10 @@ export default function Recommend(){
       const drink_data = await res_drink.json();
       const salad_data = await res_salad.json();
   
-      setRecommend([dessert_data,salad_data,drink_data,free_data])
+      setRecommend([dessert_data,]) //salad_data,drink_data,free_data 심사통과 후 추가해주기
    
   
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
+
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
