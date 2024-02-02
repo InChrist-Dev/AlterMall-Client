@@ -13,24 +13,24 @@ const NavigationBar = (session) => {
   const [isKeywordMenu, setIsKeywordMenu] = useState(true);
 
   useEffect(() => {
-    if(search.length==0){
+    if (search.length == 0) {
       setIsKeywordMenu(true);
-    }else{
+    } else {
       fetch(`https://udtown.site/category/search?name=${search}`, {
 
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        setRelatedKeywords(json.data.items);
-        setIsKeywordMenu(false);
-        console.log(json.data.items);
-      });
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          setRelatedKeywords(json.data.items);
+          setIsKeywordMenu(false);
+          console.log(json.data.items);
+        });
     }
-   
+
   }, [search]);
   const handleSearch = async () => {
     // 검색어를 가져오기
-   
+
     window.location.href = `/search?search=${search}`;
   };
 
@@ -46,33 +46,34 @@ const NavigationBar = (session) => {
               <input type="text" className="searchInput" placeholder="검색어를 입력하세요"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)} />
-              {isKeywordMenu?<div className="keyword-menu">
+              {isKeywordMenu ? <div className="keyword-menu">
                 <ul>
-                {relatedKeywords.map((keyword, index) => (
-                      <li key={index}>{keyword.item_name}</li>
+                  {relatedKeywords.map((keyword, index) => (
+                    <li key={index}>{keyword.item_name}</li>
                   ))}
                 </ul>
-              </div>:
-              <div className="keyword-menu" style={{'display':'block'}}>
-              <ul>
-                {relatedKeywords.map((keyword, index) => (
-                
-                    <li onClick={()=>{ window.location.href = `/products/${keyword.item_id}`;}}key={index}>{keyword.item_name}</li>
-               
-                  
-                ))}
-              </ul>
-            </div>}
+              </div> :
+                <div className="keyword-menu" style={{ 'display': 'block' }}>
+                  <ul>
+                    {relatedKeywords.map((keyword, index) => (
+
+                      <li onClick={() => { window.location.href = `/products/${keyword.item_id}`; }} key={index}>{keyword.item_name}</li>
+
+
+                    ))}
+                  </ul>
+                </div>}
+
             </li>
             <button className="searchButton" onClick={handleSearch}>
 
-<FontAwesomeIcon icon={faSearch}  />
-검색
-</button>
+              <FontAwesomeIcon icon={faSearch} />
+              검색
+            </button>
 
           </ul>
-        
-        
+
+
 
         </div>
 
