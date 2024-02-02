@@ -26,7 +26,7 @@ const HomePage = () => {
   
       <ImageSlider/>
       <CategoryButtons/>
-     <Recommend/>
+     {/* <Recommend/> */}
   
      
     </div>
