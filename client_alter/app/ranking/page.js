@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import Link from 'next/link';
 import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import styles from './ranking.module.css'; // 스타일링을 위한 CSS 모듈
@@ -54,7 +54,34 @@ const ItemPage = (props) => {
     fetchData();
 
   };
+  const handleSubmit= useCallback(
+    (id) => {
+    
+     
 
+      fetch(`https://udtown.site/customer/cart/`, {
+        method: 'POST',
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ amount: 1 ,item_id: id,customer_id: '89122e30-b9c5-11ee-9d01-07fefcbd1ba0'}),
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert('다시시도해주세요 ');
+          } else if (response.status == 201) {
+            alert('해당 상품을 장바구니에 담았습니다');
+          }
+
+
+        })
+        .finally(() => {
+          console.log("저장완료")
+        });
+
+    },
+    [],
+  );
   const handleDisplayCountChange = (e) => {
     setDisplayCount(Number(e.target.value));
     setCurrentPage(1); // 페이지 수 변경시 현재 페이지를 1로 리셋
@@ -157,7 +184,7 @@ const ItemPage = (props) => {
                 </td>
                 <td><b>{item.price.toLocaleString()}</b>원</td>
                 <td>{getCategory(item.category)}</td>
-                <td><FontAwesomeIcon icon={faShoppingCart} className={styles.cartIcon}/></td>
+                <td><FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/></td>
              
               </tr>
             );

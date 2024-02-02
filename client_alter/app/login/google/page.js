@@ -14,9 +14,7 @@ export default async function handler(){
     const fetchData = async () => {
       const response = await fetch(url, {
       method:'get',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+   
       redirect:'follow',
      
 
