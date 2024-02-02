@@ -18,8 +18,6 @@ export default async function handler(){
       redirect:'follow',
      
 
-
-
     });
     const data = await response.status;
     console.log(data);
