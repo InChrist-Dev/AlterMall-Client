@@ -1,11 +1,13 @@
 'use client'
+
 import { useSearchParams } from "next/navigation";
+
 
 
 export default async function handler(){
   try{
-    const router = useSearchParams();
-    const query = router.query.code;
+    const params = useSearchParams();
+    const query = params.get('code');
     console.log(`${query} query is`)
 
     const url = `https://udtown.site/auth/google/login/redirect/${query}`;
