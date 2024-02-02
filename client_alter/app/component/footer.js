@@ -13,8 +13,9 @@ const Footer = () => {
           <div className={styles.column}>
             
         <img className={styles.logo} src='/logo1.jpg'></img>
+        <div className={styles.privacy}><a href='/privacy.html'>개인정보처리방침</a>|<a href='/service.html'>이용약관</a></div>
       </div>
-  
+    
       <div className={styles.column}>
         <h3 className={styles.title}>회사소개</h3>
         <p>상호명 및 호스팅 서비스 제공: InC개발팀</p>
