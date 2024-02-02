@@ -10,7 +10,7 @@ export default async function handler(){
     const query = params.get('code');
     console.log(`${query} query is`)
 
-    const url = `https://udtown.site/auth/google/login/redirect/${query}`;
+    const url = `https://udtown.site/auth/google/login/redirect?code=${query}`;
     const fetchData = async () => {
       const response = await fetch(url, {
       method:'get',
