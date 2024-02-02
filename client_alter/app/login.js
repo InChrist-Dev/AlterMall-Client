@@ -10,10 +10,10 @@ let url = 'https://accounts.google.com/o/oauth2/v2/auth';
 	 
 const fetchData = async () => {
   try {
-    const response = await fetch(`http://211.45.170.37:3000/login`);
+    
 
 
-   
+    window.location.href= url
 
 
   } catch (error) {
@@ -23,5 +23,5 @@ const fetchData = async () => {
 
 
 export function LoginBtn() {
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { window.location.href= url}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {fetchData();}}/>)
 } 
