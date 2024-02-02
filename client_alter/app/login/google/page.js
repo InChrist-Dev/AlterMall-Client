@@ -8,15 +8,15 @@ export default async function handler(){
     const query = router;
     console.log(`${query} query is`)
 
-    const url = `https://udtown.site/auth/google/login/redirect`;
+    const url = `https://udtown.site/auth/google/login/redirect?${query}`;
     const fetchData = async () => {
       const response = await fetch(url, {
-      method:'post',
+      method:'get',
       headers: {
         'Content-Type': 'application/json',
       },
       redirect:'follow',
-      body: query,
+     
 
 
 
