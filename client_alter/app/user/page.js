@@ -33,6 +33,7 @@ const MyPage = () => {
       const data = await response.status;
       const data2 = await response.json();
       console.log(data)
+      console.log(data2)
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       
       
