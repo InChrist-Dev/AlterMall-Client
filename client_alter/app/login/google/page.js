@@ -22,7 +22,7 @@ export default async function handler(){
   //   const data = await response.status;
   //   console.log(data);
   // };
-    fetchData();
+    // fetchData();
     console.log('dd');
     return (<div>success</div>);
   }
