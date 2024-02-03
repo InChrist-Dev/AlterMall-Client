@@ -18,7 +18,7 @@ export default async function handler(){
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
-   
+      withCredentials: true,
       redirect:'follow',
      
 
