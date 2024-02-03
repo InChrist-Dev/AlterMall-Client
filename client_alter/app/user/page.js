@@ -28,12 +28,13 @@ const MyPage = () => {
     try {
       const response = await fetch(`https://udtown.site/user/mypage`, {
         credentials: 'include',
+        
       });
-      const data = await response.json();
-  
+      const data = await response.status;
+      console.log(data)
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setName(data.data.name);
-      console.log(data)
+      
      
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
