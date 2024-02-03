@@ -2,7 +2,7 @@
   "name": "client_alter",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://211.45.170.37:3000",
+  "proxy": "https://udtown.site",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,6 +16,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@tosspayments/payment-sdk": "^1.7.0",
     "@tosspayments/payment-widget-sdk": "^0.10.2",
+    "axios": "^1.6.7",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "react": "^18",
