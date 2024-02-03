@@ -6,7 +6,17 @@ import { useState } from 'react';
 
 import DaumPostcode from 'react-daum-postcode';
 
-const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
+const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
+  const [showAllAddresses, setShowAllAddresses] = useState(false);
+
+
+  const showAllAddressesModal = () => {
+    setShowAllAddresses(true);
+  };
+
+  const closeAllAddressesModal = () => {
+    setShowAllAddresses(false);
+  };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState({
@@ -75,6 +85,29 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
+      {showAllAddresses ? (
+          // 새로운 배송지 목록을 보여주는 모달
+          <div>
+            <h3>전체 배송지 목록</h3>
+            <ul>
+              {deliveryList.map((delivery) => (
+                <li key={delivery.id}>
+                  {delivery.name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
+                </li>
+              ))}
+            </ul>
+            <button onClick={closeAllAddressesModal}>닫기</button>
+          </div>
+        ) : (
+          // 기존 배송지 정보를 입력하는 모달
+          <>
+         
+            {/* ... (기존 코드) */}
+            <button onClick={showAllAddressesModal}>배송지 목록 보기</button>
+            {/* ... (기존 코드) */}
+          </>
+        )}
+    
 
         <h2>배송지 정보 추가</h2>
         <label>배송지 구분</label>
@@ -89,21 +122,21 @@ const DeliveryInfoModal = ({ closeModal, saveDeliveryInfo }) => {
         type="text"
         maxLength="3"
         value={phoneNumber.part1}
-        onChange={(e) => handlePhoneNumberChange(e, 'part1')}
+        onChange={(e) => setPhoneNumber(e, 'part1')}
       />
       -
       <input
         type="text"
         maxLength="4"
         value={phoneNumber.part2}
-        onChange={(e) => handlePhoneNumberChange(e, 'part2')}
+        onChange={(e) => setPhoneNumber(e, 'part2')}
       />
       -
       <input
         type="text"
         maxLength="4"
         value={phoneNumber.part3}
-        onChange={(e) => handlePhoneNumberChange(e, 'part3')}
+        onChange={(e) => setPhoneNumber(e, 'part3')}
       />
         </div>
        

@@ -7,6 +7,8 @@ import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showAllDeliveryInfoModal, setShowAllDeliveryInfoModal] = useState(false);
+  const [allDeliveryInfo, setAllDeliveryInfo] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState({
     address: '',

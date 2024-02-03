@@ -8,6 +8,7 @@ import { loadTossPayments } from '@tosspayments/payment-sdk';
 import { v4 as uuidv4 } from 'uuid';
 const Checkout = (props) => {
   const [showModal, setShowModal] = useState(false);
+  const [deliveryList, setDeliveryList] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState({
     address: '',
@@ -19,8 +20,10 @@ const Checkout = (props) => {
   const [deliver,setDeliver] = useState([]);
   
   const myUuid = uuidv4();
-  console.log(myUuid);
-  console.log(props);
+  const showAllAddressesModal = () => {
+    fetchAllAddresses();
+    setShowModal(true);
+  };
   const handleClick = async () => {
     const tosspayments = await loadTossPayments(
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
@@ -130,7 +133,7 @@ const Checkout = (props) => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
    
       setDeliver(data.data.rows[0]);
-     
+      console.log(data.data.rows);
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
@@ -146,7 +149,7 @@ const Checkout = (props) => {
   return (
     <div className={styles.checkoutContainer}>
         <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal closeModal={closeModal} />
+        <DeliveryInfoModal  closeModal={() => setShowModal(false)}  deliveryList={deliveryList} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
