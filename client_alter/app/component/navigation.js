@@ -4,7 +4,7 @@ import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-import { LoginBtn } from '../login';
+import { LoginBtn } from '../logins';
 import { UserBtn } from './userIcon';
 import { LogOutBtn } from '../logout';
 const NavigationBar = (session) => {
