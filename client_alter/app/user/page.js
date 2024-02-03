@@ -28,7 +28,6 @@ const MyPage = () => {
     try {
       const response = await fetch(`https://udtown.site/user/mypage`, {
         credentials: 'include',
-        
       });
       const data = await response.status;
       const data2 = await response.json();
