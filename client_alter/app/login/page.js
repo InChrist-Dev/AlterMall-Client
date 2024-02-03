@@ -15,7 +15,7 @@ export default async function handler(){
       const response = await fetch(url, {
     
       headers: {
-        Authorization: `Bearer  ${basicToken}`,
+        Authorization: `Bearer  ${query}`,
         'Content-Type': 'application/json',
       },
    
