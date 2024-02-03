@@ -31,5 +31,5 @@ export function LoginBtn() {
    
   
  
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { fetchData();}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { window.location.href='https://udtown.site/auth/google'}}/>)
 } 
