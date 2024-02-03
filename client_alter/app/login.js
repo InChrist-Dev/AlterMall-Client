@@ -14,20 +14,17 @@ export function LoginBtn() {
     // const query = params.get('code');
     // console.log(`${query} query is`)
 
-    const url = `https://udtown.site/auth/google/login/`;
+    const url = 'https://udtown.site/auth/google';
     const fetchData = async () => {
       const response = await fetch(url, {
-      method:'get',
-   
-      redirect:'follow',
-     
 
     });
     const data = await response.status;
     console.log(data);
+    console.log('dd');
   };
    
-    console.log('dd');
+    
    
   
  
