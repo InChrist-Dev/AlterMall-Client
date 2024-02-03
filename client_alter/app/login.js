@@ -19,7 +19,7 @@ export function LoginBtn() {
       const response = await fetch(url, {
 
     });
-    const data = await response.status;
+    const data = await response.json();
     console.log(data);
     console.log('dd');
   };
