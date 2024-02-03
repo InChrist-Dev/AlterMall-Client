@@ -2,35 +2,18 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 
-
+import Cookies from 'js-cookie';
 
 export default async function handler(){
   try{
     const parsedHash = new URLSearchParams(window.location.search.substring(1));
     const accessToken = parsedHash.get("accessToken");
     console.log(`${accessToken} query is`)
-
+    Cookies.set('accessToken', accessToken, { expires: 7 });  // 7일 동안 유지되도록 설정
     const url = `https://udtown.site/auth/google`;
-    const fetchData = async () => {
-      const response = await fetch(url, {
-    
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      credentials:'include',
-      redirect:'follow',
-     
 
-    }).then((res) => console.log(res.json()));
-    const data = await response.status;
-    console.log(data);
-    const data1 = await response.status;
-    console.log(data1);
-  };
-    fetchData();
-    console.log('dd');
-    return (<div>success</div>);
+   
+    return (<button onClick={window.location.href='https://altermall.shop'}/>);
   }
   catch(error){
     console.error(error);

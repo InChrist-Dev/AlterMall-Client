@@ -17,6 +17,7 @@
     "@tosspayments/payment-sdk": "^1.7.0",
     "@tosspayments/payment-widget-sdk": "^0.10.2",
     "axios": "^1.6.7",
+    "js-cookie": "^3.0.5",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
     "react": "^18",

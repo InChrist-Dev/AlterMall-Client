@@ -20,13 +20,20 @@ import ProductQuestionsPage from './[id]/pages/question';
 import ShippingAddressPage from './[id]/pages/address';
 import ProfilePage from './[id]/pages/profile';
 
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 
 const MyPage = () => {
   const [name,setName]= useState('');
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/user/mypage`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
         credentials: 'include',
       });
       const data = await response.status;
