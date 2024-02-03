@@ -30,10 +30,10 @@ const MyPage = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/user/mypage`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
+        // headers: {
+        //   Authorization: `Bearer ${accessToken}`,
+        //   'Content-Type': 'application/json',
+        // },
         credentials: 'include',
       });
       const data = await response.status;
