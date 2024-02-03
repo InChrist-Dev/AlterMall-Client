@@ -6,11 +6,11 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default async function handler(){
   try{
-    const parsedHash = new URLSearchParams(window.location.hash.substring(1));
+    const parsedHash = new URLSearchParams(window.location.search.substring(1));
     const accessToken = parsedHash.get("accessToken");
     console.log(`${accessToken} query is`)
 
-    const url = `https://udtown.site/auth/google/`;
+    const url = `https://udtown.site/auth/google`;
     const fetchData = async () => {
       const response = await fetch(url, {
     
