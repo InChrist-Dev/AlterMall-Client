@@ -2,26 +2,34 @@
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-let url = 'https://accounts.google.com/o/oauth2/v2/auth';
-    url += `?client_id=1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com`
-    url += `&redirect_uri=https://udtown.site/login/google`
-    url += '&response_type=code'
-    url += '&scope=email profile' 
-	 
-const fetchData = async () => {
-  try {
-    
 
 
-    window.location.href= url
-
-
-  } catch (error) {
-    console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
-  }
-};
+ 
+  
 
 
 export function LoginBtn() {
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {window.location.href= 'https://udtown.site/auth/google/login'}}/>)
+ 
+    // const params = useSearchParams();
+    // const query = params.get('code');
+    // console.log(`${query} query is`)
+
+    const url = `https://udtown.site/auth/google/login/`;
+    const fetchData = async () => {
+      const response = await fetch(url, {
+      method:'get',
+   
+      redirect:'follow',
+     
+
+    });
+    const data = await response.status;
+    console.log(data);
+  };
+   
+    console.log('dd');
+   
+  
+ 
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { fetchData();}}/>)
 } 
