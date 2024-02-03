@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 export default async function handler(){
   try{
-    const params = URLSearchParams(window.location.hash.substring(1));
+    const params = new URLSearchParams(window.location.hash.substring(1));
     const query = params.get('access_token');
     console.log(`${query} query is`)
 
