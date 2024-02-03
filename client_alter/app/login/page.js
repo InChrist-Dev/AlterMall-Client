@@ -1,21 +1,21 @@
 'use client'
 
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 
 export default async function handler(){
   try{
-    const params = new URLSearchParams(window.location.hash.substring(1));
-    const query = params.get('accessToken');
-    console.log(`${query} query is`)
+    const parsedHash = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = parsedHash.get("accessToken");
+    console.log(`${accessToken} query is`)
 
-    const url = `https://udtown.site/auth/google/login/`;
+    const url = `https://udtown.site/auth/google/`;
     const fetchData = async () => {
       const response = await fetch(url, {
     
       headers: {
-        Authorization: `Bearer  ${query}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
    
