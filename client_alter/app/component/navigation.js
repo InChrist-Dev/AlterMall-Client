@@ -6,6 +6,7 @@ import React from 'react';
 
 import { LoginBtn } from '../login';
 import { UserBtn } from './userIcon';
+import { LogOutBtn } from '../logout';
 const NavigationBar = (session) => {
   console.log(session)
   const [search, setSearch] = useState('');
@@ -81,7 +82,7 @@ const NavigationBar = (session) => {
         <div className="cartUserIcons">
           {
             session.session
-              ? <span className='session'> <UserBtn session={session.session.user.email} /> </span>
+              ? <span className='session'> <LogOutBtn/> </span>
               : <LoginBtn></LoginBtn>
           }
           <a href='/basket/salad'>
