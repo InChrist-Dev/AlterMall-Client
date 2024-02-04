@@ -4,7 +4,10 @@ import React, { useEffect, useState,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './basket.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 
 
 const ItemPage = (props) => {
@@ -47,14 +50,22 @@ const ItemPage = (props) => {
   const handleSubmit = async () =>{
     await fetch('https://udtown.site/customer/order',{
       method:'post',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
       body:JSON.stringify({
-        "order_id":myUuid,
-        "addr":"rich building",
-        "addr_detail":"5th floor",
-        "customer_id":"89122e30-b9c5-11ee-9d01-07fefcbd1ba0",
-        "amount":1,
-        "createdAt":"2024-01-23T08:11:41.000Z",
-        "item_id":"e8f12213-5585-4c3d-ac52-89ce9bf9440f",}),
+        items: [
+          {
+           "seller_id":"",
+            "amount":1222, //가격
+            "stock":3, //총 주문량
+            "order_id":myUuid,
+            "item_id": 
+            "img":
+          }
+        ]
+        }),
       headers:{
     
           "Content-Type":"application/json",

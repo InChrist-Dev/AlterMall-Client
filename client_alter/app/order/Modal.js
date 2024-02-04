@@ -5,7 +5,10 @@ import styles from './order.module.css'
 import { useState } from 'react';
 
 import DaumPostcode from 'react-daum-postcode';
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
@@ -54,10 +57,11 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
       const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
         headers: {
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
-          "customer_id": "89122e30-b9c5-11ee-9d01-07fefcbd1ba0",
           "addr": address,
           "addr_detail": detailAddress,
           "phone": phone,
