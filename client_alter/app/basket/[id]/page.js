@@ -63,7 +63,7 @@ const ItemPage = (props) => {
         items: [items.map((item) => {  return{
            "seller_id":item.Item.seller_id,
            "amount":item.Item.price, //가격
-           "stock":item.Item.amount, //총 주문량
+           "stock":item.amount, //총 주문량
            "order_id":myUuid,
            "item_id": item.Item.item_id,
          }})
