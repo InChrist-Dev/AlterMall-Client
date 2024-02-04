@@ -4,7 +4,10 @@ import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 // 샘플 데이터
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
   const [categoryS, setCategoryS] = useState([]);
@@ -62,8 +65,10 @@ const ItemPage = (props) => {
         method: 'POST',
         headers: {
           "content-type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ amount: 1 ,item_id: id,customer_id: '89122e30-b9c5-11ee-9d01-07fefcbd1ba0'}),
+        credentials: 'include',
+        body: JSON.stringify({ amount: 1 ,item_id: id}),
       })
         .then((response) => {
           if (response.status == 405) {
