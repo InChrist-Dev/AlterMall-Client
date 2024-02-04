@@ -23,7 +23,12 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/cart/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
+      const response = await fetch(`https://udtown.site/customer/cart/`,{
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        }});
+      
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -58,18 +63,14 @@ const ItemPage = (props) => {
         items: [items.map((item) => {  return{
            "seller_id":item.seller_id,
            "amount":item.price, //가격
-           "stock":item.stock, //총 주문량
+           "stock":item.amount, //총 주문량
            "order_id":myUuid,
            "item_id": item.item_id,
-           "img": item.img,
          }})
         
         ]
         }),
-      headers:{
-    
-          "Content-Type":"application/json",
-      },
+  
   }).then(async (response) => {
     if (response.status == 405) {
       alert('주문 실패하였습니다');
