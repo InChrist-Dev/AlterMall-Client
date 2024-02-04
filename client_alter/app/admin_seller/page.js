@@ -2,7 +2,7 @@
 'use client'
 import React, { useEffect, useState,useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './basket.module.css'; // Import the CSS module
+// import styles from './basket.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
 
 
