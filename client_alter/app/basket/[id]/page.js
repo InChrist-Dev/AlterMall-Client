@@ -55,15 +55,15 @@ const ItemPage = (props) => {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({
-        items: [
-          {
-           "seller_id":"",
-            "amount":1222, //가격
-            "stock":3, //총 주문량
-            "order_id":myUuid,
-            "item_id": 
-            "img":
-          }
+        items: [items.map((item) => {  return{
+           "seller_id":item.seller_id,
+           "amount":item.price, //가격
+           "stock":item.stock, //총 주문량
+           "order_id":myUuid,
+           "item_id": item.item_id,
+           "img": item.img,
+         }})
+        
         ]
         }),
       headers:{
