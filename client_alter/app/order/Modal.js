@@ -65,7 +65,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         body: JSON.stringify({
           "addr": address,
           "addr_detail": detailAddress,
-          "phone": phoneNumber,
+          "phone": phoneNumber.part1,
           "address_name":addressname,
           "name": name
         }), 
@@ -169,7 +169,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         type="text"
         maxLength="4"
         value={phoneNumber.part3}
-        onChange={(e) => setPhoneNumber(e, 'part3')}
+        onChange={(e) => console.log(phoneNumber)}
       />
         </div>
        
