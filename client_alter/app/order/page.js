@@ -206,7 +206,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.OrederDetails.slice(0, displayCount).map((items, index) => (
+            {items.OrederDetails.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
