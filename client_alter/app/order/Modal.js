@@ -3,13 +3,12 @@
 import React from 'react';
 import styles from './order.module.css'
 import { useState } from 'react';
-import selDeliver from './page'
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
+const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
 
