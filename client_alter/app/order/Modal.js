@@ -85,6 +85,32 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
     }
   };
 
+  const delDeliver = async (id) => {
+    try {
+      const response = await fetch(`https://udtown.site/customer/deliver/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      
+      });
+
+      if (response.status == 200) {
+       
+  
+      } else if (response.status == 201) {
+        alert('삭제되었습니다');
+        closeModal();
+      } else {
+        
+      }
+    } catch (error) {
+      // 에러 처리
+      console.error('Failed to send like request', error);
+    }
+  };
 
   return (
     <div className={styles.modalOverlay}>
@@ -96,7 +122,8 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
             <ul>
               {deliveryList.length>0?deliveryList.map((delivery) => (
                 <li key={delivery.id}>
-                  {delivery.name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
+                  {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
+                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
                 </li>
               )):''}
             </ul>
