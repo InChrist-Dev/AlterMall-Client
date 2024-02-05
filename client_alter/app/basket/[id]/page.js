@@ -63,13 +63,13 @@ const ItemPage = (props) => {
         'Content-Type': 'application/json',
       },
       body:JSON.stringify({
-        items: items.map((item) => {  return{
+        items: [items.map((item) => {  return{
            "seller_id":item.Item.seller_id,
            "amount": 5000, //가격
            "stock":item.amount, //총 주문량
            "order_id":myUuid,
            "item_id": item.Item.item_id,
-         }})
+         }})]
         
         
         }),
