@@ -61,8 +61,8 @@ const ItemPage = (props) => {
         "price": item.Item.price, //가격
         "item_id": item.Item.item_id,
       };
-    });
-    await fetchs('https://udtown.site/customer/order',{
+    });      
+    await fetch('https://udtown.site/customer/order',{
       method:'post',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -70,7 +70,26 @@ const ItemPage = (props) => {
       },
       body: JSON.stringify({
         'order_id':myUuid,
-      }),})
+      }),
+        
+        
+      
+  
+  }).then(async (response) => {
+    if (response.status == 405) {
+      alert('주문 실패하였습니다');
+    } else if (response.status == 201) {
+      alert('주문페이지로 넘어갑니다');
+      console.log(response);
+      const data = await response.json();
+      console.log(data)
+    }
+
+
+  }).finally(
+
+  )
+    
     await fetch('https://udtown.site/customer/orderdetail',{
       method:'post',
       headers: {
@@ -84,7 +103,7 @@ const ItemPage = (props) => {
         
       
   
-  .then(async (response) => {
+  }).then(async (response) => {
     if (response.status == 405) {
       alert('주문 실패하였습니다');
     } else if (response.status == 201) {
