@@ -12,7 +12,7 @@ const accessToken = Cookies.get('accessToken');
 const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
   const [showAllDeliveryInfoModal, setShowAllDeliveryInfoModal] = useState(false);
-  const [allDeliveryInfo, setAllDeliveryInfo] = useState([]);
+  const [deliveryList, setDeliveryList] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState({
     address: '',
@@ -22,16 +22,18 @@ const Checkout = () => {
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
-
+  const amount = 0;
   const handleClick = async () => {
     const tosspayments = await loadTossPayments(
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     );
-
+    items.OrederDetails.map((item)=>{
+      amount = amount+ item.price*item.stock;
+    })
     await tosspayments.requestPayment('카드',{
-      amount: 5000,
-      orderId: "wdasdawdsdswa",
-      orderName: "토스 티셔츠 외 2건",
+      amount: amount,
+      orderId: items.order_id,
+      orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
       customerEmail: "customer123@gmail.com",
@@ -111,8 +113,8 @@ const Checkout = () => {
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data);
-     
+      console.log(data.data.rows[0]);
+      setItems(data.data.rows[0]);
 
       const response2 = await fetch(`https://udtown.site/customer/deliver`,{
         headers: {
