@@ -148,6 +148,7 @@ const Checkout = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
         <div style={{ display: showModal ? 'block' : 'none' }}>
@@ -165,8 +166,8 @@ const Checkout = () => {
       </button></div>
             <div className={styles.AddressBox}>
             {deliveryList[0]}
-            {/* <div>{deliveryList[0].addr} {deliveryList[0].addr_detail}</div>
-            <div>{deliveryList[0].phone}</div> */}
+            <div>{deliveryList[0].addr} {deliveryList[0].addr_detail}</div>
+            <div>{deliveryList[0].phone}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
