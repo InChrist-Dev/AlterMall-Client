@@ -32,8 +32,9 @@ const Checkout = () => {
       amount = amount+ item.price*item.stock;
     })
     await tosspayments.requestPayment('카드',{
+      orderId: 'asdasd',
       amount: 33333,
-      orderId: items.order_id,
+     
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
