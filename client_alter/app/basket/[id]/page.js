@@ -62,6 +62,15 @@ const ItemPage = (props) => {
         "item_id": item.Item.item_id,
       };
     });
+    await fetchs('https://udtown.site/customer/order',{
+      method:'post',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        'order_id':myUuid,
+      }),})
     await fetch('https://udtown.site/customer/orderdetail',{
       method:'post',
       headers: {
@@ -75,7 +84,7 @@ const ItemPage = (props) => {
         
       
   
-  }).then(async (response) => {
+  .then(async (response) => {
     if (response.status == 405) {
       alert('주문 실패하였습니다');
     } else if (response.status == 201) {

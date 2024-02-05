@@ -7,6 +7,10 @@ import React from 'react';
 import { LoginBtn } from '../logins';
 import { UserBtn } from './userIcon';
 import { LogOutBtn } from '../logout';
+import Cookies from 'js-cookie';
+
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const NavigationBar = (session) => {
   console.log(session)
   const [search, setSearch] = useState('');
@@ -81,7 +85,7 @@ const NavigationBar = (session) => {
         {/* 장바구니 및 유저 아이콘 */}
         <div className="cartUserIcons">
           {
-            session.session
+            accessToken
               ? <span className='session'> <LogOutBtn/> </span>
               : <LoginBtn></LoginBtn>
           }
