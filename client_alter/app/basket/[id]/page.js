@@ -62,7 +62,7 @@ const ItemPage = (props) => {
         "item_id": item.Item.item_id,
       };
     });      
-    await fetchs('https://udtown.site/customer/order',{
+    await fetch('https://udtown.site/customer/order',{
       method:'post',
       headers: {
         Authorization: `Bearer ${accessToken}`,
