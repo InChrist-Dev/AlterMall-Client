@@ -14,7 +14,10 @@ const Checkout = () => {
   const [showAllDeliveryInfoModal, setShowAllDeliveryInfoModal] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
-  const [deliveryInfo, setDeliveryInfo] = useState([]);
+  const [deliveryInfo, setDeliveryInfo] = useState({
+    address: '',
+    method: 'standard',
+  });
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
@@ -87,7 +90,7 @@ const Checkout = () => {
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
   const selDeliver=(id)=>{
-    setDeliveryInfo(deliveryList[id])
+    setDeliveryInfo()
   }
   // 전체 주문 가격 계산
   const handleQuantityChange = (index, newAmount) => {
@@ -125,7 +128,6 @@ const Checkout = () => {
       });
       const data2 = await response2.json();
       console.log(data2);
-      setDeliveryInfo(data2.data.rows[0]);
       setDeliveryList(data2.data.rows);
       // setItems(data.data.rows);
       
@@ -165,9 +167,9 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {deliveryInfo.length > 0? deliveryInfo[0].name:''}
-            <div>{deliveryInfo.length > 0? deliveryInfo[0].addr:''} {deliveryInfo.length > 0?deliveryInfo[0].addr_detail:''}</div>
-            <div>{deliveryInfo.length > 0? deliveryInfo[0].phone:''}</div>
+            {deliveryList.length > 0? deliveryList[0].name:''}
+            <div>{deliveryList.length > 0? deliveryList[0].addr:''} {deliveryList.length > 0?deliveryList[0].addr_detail:''}</div>
+            <div>{deliveryList.length > 0? deliveryList[0].phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
