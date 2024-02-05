@@ -169,7 +169,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         type="text"
         maxLength="4"
         value={phoneNumber.part3}
-        onChange={(e) => console.log(phoneNumber)}
+        onChange={(e) => setPhoneNumber(e, 'part3')}
       />
         </div>
        
