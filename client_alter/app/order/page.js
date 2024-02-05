@@ -29,6 +29,7 @@ const Checkout = () => {
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     );
     items.OrederDetails.map((item)=>{
+      console.log(item)
       amount = amount+ item.price*item.stock;
     })
     await tosspayments.requestPayment('카드',{
@@ -206,7 +207,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.OrederDetails.map((items, index) => (
+            {/* {items.OrederDetails.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -257,7 +258,7 @@ const Checkout = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
           </div>
