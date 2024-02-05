@@ -112,17 +112,7 @@ const Checkout = () => {
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
-      const response1 = await fetch(`https://udtown.site/customer/orderdetail`,{
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-      
-      });
-      const data1 = await response1.json();
-
-      console.log(data1);
+     
 
       const response2 = await fetch(`https://udtown.site/customer/deliver`,{
         headers: {
