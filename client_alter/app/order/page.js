@@ -282,4 +282,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;selDeliver();
+export default Checkout;
