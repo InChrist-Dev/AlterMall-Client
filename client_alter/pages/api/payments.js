@@ -39,7 +39,7 @@ export default async function handler(req, res){
             "addr_detail":"5th floor",
             "name":name,
             "amount": amount,
-            "phone": customerMobilePhone
+            "phone": '2121921'
          
         }),
         headers:{
