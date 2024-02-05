@@ -94,11 +94,11 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
           <div>
             <h3>전체 배송지 목록</h3>
             <ul>
-              {deliveryList.map((delivery) => (
+              {deliveryList.length>0?deliveryList.map((delivery) => (
                 <li key={delivery.id}>
                   {delivery.name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
                 </li>
-              ))}
+              )):''}
             </ul>
             <button onClick={closeAllAddressesModal}>닫기</button>
           </div>
