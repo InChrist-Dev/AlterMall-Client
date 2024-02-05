@@ -37,7 +37,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   const handleSave = () => {
     // Validation logic can be added here
 
-    saveDeliveryInfo({ name, phoneNumber, address, detailAddress});
+    saveDeliveryInfo({ name, phone, address, detailAddress});
 
     // Close the modal after saving
     closeModal();
