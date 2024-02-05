@@ -22,11 +22,9 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState({
-    part1: '',
-    part2: '',
-    part3: '',
-  });
+  const [phoneNumber1, setPhoneNumber1] = useState('');
+  const [phoneNumber2, setPhoneNumber2] = useState('');
+  const [phoneNumber3, setPhoneNumber3] = useState('');
   const [phone,setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
@@ -154,22 +152,22 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         <input
         type="text"
         maxLength="3"
-        value={phoneNumber.part1}
-        onChange={(e) => setPhoneNumber(e.target.value, 'part1')}
+        value={phoneNumber1}
+        onChange={(e) => setPhoneNumber1(e.target.value)}
       />
       -
       <input
         type="text"
         maxLength="4"
-        value={phoneNumber.part2}
-        onChange={(e) => setPhoneNumber(e.target.value, 'part2')}
+        value={phoneNumber2}
+        onChange={(e) => setPhoneNumber2(e.target.value)}
       />
       -
       <input
         type="text"
         maxLength="4"
-        value={phoneNumber.part3}
-        onChange={(e) => setPhoneNumber(e.target.value, 'part3')}
+        value={phoneNumber3}
+        onChange={(e) => setPhoneNumber3(e.target.value)}
       />
         </div>
        
