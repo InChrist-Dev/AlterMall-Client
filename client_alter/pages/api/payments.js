@@ -1,3 +1,8 @@
+
+import Cookies from 'js-cookie';
+
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 export default async function handler(req, res){
     const { orderId, paymentKey, amount,name,customerMobilePhone} = req.query;
     console.log(req.query)
@@ -7,6 +12,25 @@ export default async function handler(req, res){
 
  
     await fetch('https://udtown.site/customer/confirm',{
+        method:'post',
+        body:JSON.stringify({
+            "order_id": orderId,
+            "payment_key": paymentKey,
+            "addr": "rich building",
+            "addr_detail":"5th floor",
+            "name":name,
+            "amount": amount,
+            "phone": customerMobilePhone
+         
+        }),
+        headers:{
+            Authorization:`Bearer ${accessToken}`,
+            "Content-Type":"application/json",
+        },
+        credentials:'include',
+    }).then((res)=> res.json());
+
+    await fetch(url,{
         method:'post',
         body:JSON.stringify({
             "order_id": orderId,
