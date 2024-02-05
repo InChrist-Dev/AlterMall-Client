@@ -25,23 +25,23 @@ const Checkout = () => {
  
   const handleClick = async () => {
     let amount = 0;
-    // const tosspayments = await loadTossPayments(
-    //   process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
-    // );
+    const tosspayments = await loadTossPayments(
+      'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
+    );
     items.OrederDetails.map((item)=>{
       console.log(item)
       amount = amount+ item.price*item.stock;
     })
-    // await tosspayments.requestPayment('카드',{
-    //   orderId: 'asdasd',
-    //   amount: 33333,
-    //   orderName: "알아서 조합해봄",
-    //   successUrl: window.location.origin + "/api/payments",
-    //   failUrl: window.location.origin,
-    //   customerEmail: "customer123@gmail.com",
-    //   customerName: "김토스",
-    //   customerMobilePhone: "01012341234",
-    // });
+    await tosspayments.requestPayment('카드',{
+      orderId: 'asdasd',
+      amount: 33333,
+      orderName: "알아서 조합해봄",
+      successUrl: window.location.origin + "/api/payments",
+      failUrl: window.location.origin,
+      customerEmail: "customer123@gmail.com",
+      customerName: "김토스",
+      customerMobilePhone: "01012341234",
+    });
   }
     // Function to open the modal
   const openModal = () => {
