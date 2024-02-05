@@ -11,24 +11,24 @@ export default async function handler(req, res){
     const basicToken = Buffer.from(`${secretKey}:`,`utf-8`).toString("base64");
 
  
-    await fetch('https://udtown.site/customer/confirm',{
-        method:'post',
-        body:JSON.stringify({
-            "order_id": orderId,
-            "payment_key": paymentKey,
-            "addr": "rich building",
-            "addr_detail":"5th floor",
-            "name":name,
-            "amount": amount,
-            "phone": customerMobilePhone
+    // await fetch('https://udtown.site/customer/confirm',{
+    //     method:'post',
+    //     body:JSON.stringify({
+    //         "order_id": orderId,
+    //         "payment_key": paymentKey,
+    //         "addr": "rich building",
+    //         "addr_detail":"5th floor",
+    //         "name":name,
+    //         "amount": amount,
+    //         "phone": customerMobilePhone
          
-        }),
-        headers:{
-            Authorization:`Bearer ${accessToken}`,
-            "Content-Type":"application/json",
-        },
-        credentials:'include',
-    }).then((res)=> res.json());
+    //     }),
+    //     headers:{
+    //         Authorization:`Bearer ${accessToken}`,
+    //         "Content-Type":"application/json",
+    //     },
+    //     credentials:'include',
+    // }).then((res)=> res.json());
 
     await fetch(url,{
         method:'post',
