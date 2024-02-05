@@ -167,7 +167,7 @@ const Checkout = () => {
             <div className={styles.AddressBox}>
             {deliveryList? deliveryList[0].name:''}
             <div>{deliveryList? deliveryList[0].addr:''} {deliveryList?deliveryList[0].addr_detail:''}</div>
-            <div>{deliveryList[0].phone}</div>
+            <div>{deliveryList? deliveryList[0].phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
