@@ -156,7 +156,7 @@ const Checkout = () => {
   return (
     <div className={styles.checkoutContainer}>
         <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} />
+        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver}/>
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
