@@ -30,23 +30,23 @@ export default async function handler(req, res){
     //     credentials:'include',
     // }).then((res)=> res.json());
 
-    await fetch(url,{
-        method:'post',
-        body:JSON.stringify({
-            "order_id": orderId,
-            "payment_key": paymentKey,
-            "addr": "rich building",
-            "addr_detail":"5th floor",
-            "name":name,
-            "amount": amount,
-            "phone": '2121921'
+    // await fetch(url,{
+    //     method:'post',
+    //     body:JSON.stringify({
+    //         "order_id": orderId,
+    //         "payment_key": paymentKey,
+    //         "addr": "rich building",
+    //         "addr_detail":"5th floor",
+    //         "name":name,
+    //         "amount": amount,
+    //         "phone": '2121921'
          
-        }),
-        headers:{
-            Authorization:`Basic ${basicToken}`,
-            "Content-Type":"application/json",
-        },
-    }).then((res)=> res.json());
+    //     }),
+    //     headers:{
+    //         Authorization:`Basic ${basicToken}`,
+    //         "Content-Type":"application/json",
+    //     },
+    // }).then((res)=> res.json());
 
     //TODO: DB처리
     res.redirect(`/payments/complete?orderId=${orderId}`);
