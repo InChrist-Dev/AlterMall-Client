@@ -63,7 +63,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         body: JSON.stringify({
           "addr": address,
           "addr_detail": detailAddress,
-          "phone": phone,
+          "phone": phoneNumber1+'-'+phoneNumber2+'-'+phoneNumber3,
           "address_name":addressname,
           "name": name
         }), 
