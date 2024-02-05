@@ -22,9 +22,9 @@ const Checkout = () => {
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
-
+  let amount = 0;
   const handleClick = async () => {
-    const amount = 0;
+    
     const tosspayments = await loadTossPayments(
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     );
