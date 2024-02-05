@@ -31,7 +31,7 @@ const Checkout = () => {
     items.OrderDetails.map((item)=>{
       amount += item.price*item.stock;
     });
-    setOrderName(items[0].)
+    
     await tosspayments.requestPayment('카드',{
       orderId: items.order_id,
       amount: amount,
