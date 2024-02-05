@@ -22,11 +22,9 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState({
-    part1: '',
-    part2: '',
-    part3: '',
-  });
+  const [phoneNumber1, setPhoneNumber1] = useState('');
+  const [phoneNumber2, setPhoneNumber2] = useState('');
+  const [phoneNumber3, setPhoneNumber3] = useState('');
   const [phone,setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
@@ -53,7 +51,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
 
 
   const handleSubmit = async () => {
-    setPhone(`${phoneNumber.part1}-${phoneNumber.part2}-${phoneNumber.part3}`);
+    setPhone(`${phoneNumber1}-${phoneNumber2}-${phoneNumber3}`);
     try {
       const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
@@ -155,21 +153,21 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         type="text"
         maxLength="3"
         value={phoneNumber.part1}
-        onChange={(e) => setPhoneNumber(e, 'part1')}
+        onChange={(e) => setPhoneNumber1(e)}
       />
       -
       <input
         type="text"
         maxLength="4"
         value={phoneNumber.part2}
-        onChange={(e) => setPhoneNumber(e, 'part2')}
+        onChange={(e) => setPhoneNumber2(e)}
       />
       -
       <input
         type="text"
         maxLength="4"
         value={phoneNumber.part3}
-        onChange={(e) => setPhoneNumber(e, 'part3')}
+        onChange={(e) => setPhoneNumber3(e)}
       />
         </div>
        
