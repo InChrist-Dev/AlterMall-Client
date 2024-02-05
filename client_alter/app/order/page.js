@@ -166,7 +166,7 @@ const Checkout = () => {
       </button></div>
             <div className={styles.AddressBox}>
             {deliveryInfo.length > 0? deliveryInfo[0].name:''}
-            <div>{deliveryInfo.length > 0? deliveryInfo[0].addr:''} {deliveryInfo ==''?deliveryInfo[0].addr_detail:''}</div>
+            <div>{deliveryInfo.length > 0? deliveryInfo[0].addr:''} {deliveryInfo.length > 0?deliveryInfo[0].addr_detail:''}</div>
             <div>{deliveryInfo.length > 0? deliveryInfo[0].phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
