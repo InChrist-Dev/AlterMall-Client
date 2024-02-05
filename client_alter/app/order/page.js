@@ -170,8 +170,8 @@ const Checkout = () => {
       </button></div>
             <div className={styles.AddressBox}>
             {delivery !=''? delivery.name:''}
-            <div>{delivery.length > 0? delivery[0].addr:''} {delivery.length > 0?delivery[0].addr_detail:''}</div>
-            <div>{delivery.length > 0? delivery[0].phone:''}</div>
+            <div>{delivery !=''? delivery.addr:''} {delivery !=''?delivery.addr_detail:''}</div>
+            <div>{delivery !=''? delivery.phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
