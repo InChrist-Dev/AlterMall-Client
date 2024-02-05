@@ -51,7 +51,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
 
 
   const handleSubmit = async () => {
-    setPhone(phoneNumber1+'-'+phoneNumber2+'-'+phoneNumber3);
+    
     try {
       const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
@@ -122,8 +122,8 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
               {deliveryList.length>0?deliveryList.map((delivery) => (
                 <li key={delivery.id}>
                   {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
-                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
-                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
+                  <button onClick={()=>{delDeliver(delivery.id)}}>선택</button>
+                  <button onClick={()=>{selDeliver(delivery.id)}}>X</button>
                 </li>
               )):''}
             </ul>
