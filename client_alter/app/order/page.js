@@ -34,7 +34,6 @@ const Checkout = () => {
     await tosspayments.requestPayment('카드',{
       orderId: 'asdasd',
       amount: 33333,
-     
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
@@ -207,7 +206,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {items.slice(0, displayCount).map((items, index) => (
+            {items.OrederDetails.slice(0, displayCount).map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -258,7 +257,7 @@ const Checkout = () => {
                   </div>
                 </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
           </div>
