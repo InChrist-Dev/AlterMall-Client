@@ -25,9 +25,9 @@ const Checkout = () => {
  
   const handleClick = async () => {
     let amount = 0;
-    const tosspayments = await loadTossPayments(
-      process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
-    );
+    // const tosspayments = await loadTossPayments(
+    //   process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
+    // );
     items.OrederDetails.map((item)=>{
       console.log(item)
       amount = amount+ item.price*item.stock;
