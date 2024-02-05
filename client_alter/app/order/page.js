@@ -39,7 +39,7 @@ const Checkout = () => {
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
-      addr: delivery.addr,
+      phone:'123213'
     });
   }
     // Function to open the modal
