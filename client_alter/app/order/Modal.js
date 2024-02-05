@@ -122,8 +122,8 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
               {deliveryList.length>0?deliveryList.map((delivery,i) => (
                 <li key={delivery.id}>
                   {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
-                  <button onClick={()=>{delDeliver(delivery.id)}}>선택</button>
-                  <button onClick={()=>{selDeliver(i)}}>X</button>
+                  <button onClick={()=>{selDeliver(i)}}>선택</button>
+                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
                 </li>
               )):''}
             </ul>
