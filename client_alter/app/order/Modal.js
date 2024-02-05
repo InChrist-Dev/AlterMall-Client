@@ -53,7 +53,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
 
 
   const handleSubmit = async () => {
-    setPhone(phoneNumber.part1+'-'+phoneNumber.part2+'-'+phoneNumber.part3);
+    setPhone(`${phoneNumber.part1}-${phoneNumber.part2}-${phoneNumber.part3}`);
     try {
       const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
@@ -65,7 +65,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         body: JSON.stringify({
           "addr": address,
           "addr_detail": detailAddress,
-          "phone": phoneNumber.part1,
+          "phone": phone,
           "address_name":addressname,
           "name": name
         }), 
