@@ -126,7 +126,7 @@ const Checkout = () => {
       });
       const data2 = await response2.json();
       console.log(data2);
-      setDeliveryList(data2.data.rows[0]);
+      setDeliveryList(data2.data.rows);
       // setItems(data.data.rows);
       
       // const initialQuantity = data.data.rows.map((item) => item.amount );
@@ -165,9 +165,9 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {/* {deliveryList[0]}
+            {deliveryList[0].name}
             <div>{deliveryList[0].addr} {deliveryList[0].addr_detail}</div>
-            <div>{deliveryList[0].phone}</div> */}
+            <div>{deliveryList[0].phone}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
