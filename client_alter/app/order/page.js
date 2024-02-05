@@ -169,7 +169,7 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {delivery.length > 0? delivery[0].name:''}
+            {delivery ==''? delivery[0].name:''}
             <div>{delivery.length > 0? delivery[0].addr:''} {delivery.length > 0?delivery[0].addr_detail:''}</div>
             <div>{delivery.length > 0? delivery[0].phone:''}</div>
             </div>
