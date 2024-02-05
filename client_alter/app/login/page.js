@@ -17,7 +17,7 @@ export default async function handler(){
   }
   catch(error){
     console.error(error);
-    return (<div>fail</div>);
+    return (<div>loading...</div>);
   }
  
   } 

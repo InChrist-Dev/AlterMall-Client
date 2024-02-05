@@ -53,38 +53,41 @@ const ItemPage = (props) => {
   }, []);
   
   const handleSubmit = async () =>{
-    await fetch('https://udtown.site/customer/order',{
-      method:'post',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      body:JSON.stringify({
-        items: [items.map((item) => {  return{
-           "seller_id":item.Item.seller_id,
-           "amount":item.Item.price, //가격
-           "stock":item.amount, //총 주문량
-           "order_id":myUuid,
-           "item_id": item.Item.item_id,
-         }})
+    items.map((item)=>{
+      console.log(item);
+    })
+  //   await fetch('https://udtown.site/customer/order',{
+  //     method:'post',
+  //     headers: {
+  //       Authorization: `Bearer ${accessToken}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body:JSON.stringify({
+  //       items: [items.map((item) => {  return{
+  //          "seller_id":item.Item.seller_id,
+  //          "amount":item.Item.price, //가격
+  //          "stock":item.amount, //총 주문량
+  //          "order_id":myUuid,
+  //          "item_id": item.Item.item_id,
+  //        }})
         
-        ]
-        }),
+  //       ]
+  //       }),
   
-  }).then(async (response) => {
-    if (response.status == 405) {
-      alert('주문 실패하였습니다');
-    } else if (response.status == 201) {
-      alert('주문페이지로 넘어갑니다');
-      console.log(response);
-      const data = await response.json();
-      console.log(data)
-    }
+  // }).then(async (response) => {
+  //   if (response.status == 405) {
+  //     alert('주문 실패하였습니다');
+  //   } else if (response.status == 201) {
+  //     alert('주문페이지로 넘어갑니다');
+  //     console.log(response);
+  //     const data = await response.json();
+  //     console.log(data)
+  //   }
 
 
-  }).finally(
+  // }).finally(
 
-  )
+  // )
   }
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];
