@@ -22,9 +22,11 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
-  const [phoneNumber1, setPhoneNumber1] = useState();
-  const [phoneNumber2, setPhoneNumber2] = useState();
-  const [phoneNumber3, setPhoneNumber3] = useState();
+  const [phoneNumber, setPhoneNumber] = useState({
+    part1: '',
+    part2: '',
+    part3: '',
+  });
   const [phone,setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
@@ -37,7 +39,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   const handleSave = () => {
     // Validation logic can be added here
 
-    saveDeliveryInfo({ name, phone, address, detailAddress});
+    saveDeliveryInfo({ name, phoneNumber, address, detailAddress});
 
     // Close the modal after saving
     closeModal();
@@ -51,7 +53,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
 
 
   const handleSubmit = async () => {
-    setPhone(`${phoneNumber1}-${phoneNumber2}-${phoneNumber3}`);
+    setPhone(phoneNumber.part1+'-'+phoneNumber.part2+'-'+phoneNumber.part3);
     try {
       const response = await fetch('https://udtown.site/customer/deliver', {
         method: 'POST',
@@ -150,24 +152,24 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         <label>전화번호</label>
         <div className={styles.call}>
         <input
-        type="number"
+        type="text"
         maxLength="3"
-        value={phoneNumber1}
-        onChange={(e) => setPhoneNumber1(e)}
+        value={phoneNumber.part1}
+        onChange={(e) => setPhoneNumber(e.target.value, 'part1')}
       />
       -
       <input
-        type="number"
+        type="text"
         maxLength="4"
-        value={phoneNumber2}
-        onChange={(e) => setPhoneNumber2(e)}
+        value={phoneNumber.part2}
+        onChange={(e) => setPhoneNumber(e.target.value, 'part2')}
       />
       -
       <input
-        type="number"
+        type="text"
         maxLength="4"
-        value={phoneNumber3}
-        onChange={(e) => setPhoneNumber3(e)}
+        value={phoneNumber.part3}
+        onChange={(e) => setPhoneNumber(e.target.value, 'part3')}
       />
         </div>
        
