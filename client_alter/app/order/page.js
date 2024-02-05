@@ -113,11 +113,11 @@ const Checkout = () => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
     
-      setItems(data.data.rows);
+      // setItems(data.data.rows);
       
-      const initialQuantity = data.data.rows.map((item) => item.amount );
+      // const initialQuantity = data.data.rows.map((item) => item.amount );
     
-      setQuantity(initialQuantity);
+      // setQuantity(initialQuantity);
 
 
       
@@ -192,7 +192,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.slice(0, displayCount).map((items, index) => (
+            {/* {items.slice(0, displayCount).map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -243,7 +243,7 @@ const Checkout = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
           </div>

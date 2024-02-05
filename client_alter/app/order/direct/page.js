@@ -6,6 +6,10 @@ import styles from './direct.module.css';
 import DeliveryInfoModal from '../Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import { v4 as uuidv4 } from 'uuid';
+import Cookies from 'js-cookie';
+
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const Checkout = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
