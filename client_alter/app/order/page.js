@@ -96,7 +96,7 @@ const Checkout = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/cart/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
+      const response = await fetch(`https://udtown.site/customer/order/`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
