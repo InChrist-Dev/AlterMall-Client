@@ -6,7 +6,7 @@ export default async function handler(req, res){
     const basicToken = Buffer.from(`${secretKey}:`,`utf-8`).toString("base64");
 
  
-    await fetch('http://211.45.170.37:3000/customer/confirm',{
+    await fetch('https://udtown.site/customer/confirm',{
         method:'post',
         body:JSON.stringify({
             "order_id": orderId,
