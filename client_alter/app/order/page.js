@@ -28,7 +28,9 @@ const Checkout = () => {
     const tosspayments = await loadTossPayments(
       'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
     );
-    console.log(items.OrderDetails);
+    items.OrderDetails.map((item)=>{
+      console.log(item.price);
+    });
     await tosspayments.requestPayment('카드',{
       orderId: 'asdasd',
       amount: 33333,
