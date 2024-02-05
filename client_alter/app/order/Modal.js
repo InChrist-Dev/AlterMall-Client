@@ -65,7 +65,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
           "addr": address,
           "addr_detail": detailAddress,
           "phone": phone,
-          "post": "string",
+          "address_name":addressname,
           "name": name
         }), 
       });
