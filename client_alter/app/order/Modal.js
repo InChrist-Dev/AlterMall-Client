@@ -152,21 +152,21 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
         <input
         type="text"
         maxLength="3"
-        value={phoneNumber.part1}
+        value={phoneNumber1}
         onChange={(e) => setPhoneNumber1(e)}
       />
       -
       <input
         type="text"
         maxLength="4"
-        value={phoneNumber.part2}
+        value={phoneNumber2}
         onChange={(e) => setPhoneNumber2(e)}
       />
       -
       <input
         type="text"
         maxLength="4"
-        value={phoneNumber.part3}
+        value={phoneNumber3}
         onChange={(e) => setPhoneNumber3(e)}
       />
         </div>
