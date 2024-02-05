@@ -62,7 +62,7 @@ const ItemPage = (props) => {
         "item_id": item.Item.item_id,
       });
     })
-    await fetch('https://udtown.site/customer/order',{
+    await fetch('https://udtown.site/customer/orderdetail',{
       method:'post',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -73,7 +73,7 @@ const ItemPage = (props) => {
            "order_id":myUuid,
            "seller_id":item.Item.seller_id,
            "stock":item.amount, //총 주문량
-           "amount": 5000, //가격
+           "amount": item.Item.price*item.amount, //가격
            "item_id": item.Item.item_id,
          }})]
         
