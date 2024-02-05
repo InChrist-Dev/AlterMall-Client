@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './order.module.css'
 import { useState } from 'react';
-
+import selDeliver from './page'
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
 
@@ -37,7 +37,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
   const handleSave = () => {
     // Validation logic can be added here
 
-    saveDeliveryInfo({ name, phoneNumber, address, detailAddress});
+    saveDeliveryInfo({ name, address, detailAddress});
 
     // Close the modal after saving
     closeModal();
@@ -119,11 +119,11 @@ const DeliveryInfoModal = ({ closeModal,deliveryList  }) => {
           <div>
             <h3>전체 배송지 목록</h3>
             <ul>
-              {deliveryList.length>0?deliveryList.map((delivery) => (
+              {deliveryList.length>0?deliveryList.map((delivery,i) => (
                 <li key={delivery.id}>
                   {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
                   <button onClick={()=>{delDeliver(delivery.id)}}>선택</button>
-                  <button onClick={()=>{selDeliver(delivery.id)}}>X</button>
+                  <button onClick={()=>{selDeliver(i)}}>X</button>
                 </li>
               )):''}
             </ul>

@@ -90,7 +90,7 @@ const Checkout = () => {
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
   const selDeliver=(id)=>{
-    setDeliveryInfo()
+    setDeliveryInfo(deliveryList[id])
   }
   // 전체 주문 가격 계산
   const handleQuantityChange = (index, newAmount) => {
@@ -128,6 +128,7 @@ const Checkout = () => {
       });
       const data2 = await response2.json();
       console.log(data2);
+      setDeliveryInfo(data2.data.rows[0]);
       setDeliveryList(data2.data.rows);
       // setItems(data.data.rows);
       
@@ -281,4 +282,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export default Checkout;selDeliver();
