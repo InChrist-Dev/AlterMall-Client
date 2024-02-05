@@ -58,7 +58,7 @@ const ItemPage = (props) => {
         "order_id":myUuid,
         "seller_id":item.Item.seller_id,
         "stock":item.amount, //총 주문량
-        "amount": 5000, //가격
+        "price": item.Item.price, //가격
         "item_id": item.Item.item_id,
       });
     })
