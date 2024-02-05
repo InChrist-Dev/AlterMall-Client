@@ -1,7 +1,7 @@
 export default async function handler(req, res){
     const { orderId, paymentKey, amount,name,customerMobilePhone} = req.query;
     console.log(req.query)
-    const secretKey = process.env.TOSS_SECRET_KEY;
+    const secretKey = 'test_sk_24xLea5zVAoPKMyLlpbm8QAMYNwW';
     const url = `https://api.tosspayments.com/v1/payments/confirm`;
     const basicToken = Buffer.from(`${secretKey}:`,`utf-8`).toString("base64");
 
