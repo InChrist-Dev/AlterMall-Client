@@ -1,5 +1,5 @@
 export default async function handler(req, res){
-    const { orderId, paymentKey, amount,name,phone} = req.query;
+    const { orderId, paymentKey, amount,name,customerMobilePhone} = req.query;
     console.log(req.query)
     const secretKey = process.env.TOSS_SECRET_KEY;
     const url = `https://api.tosspayments.com/v1/payments/confirm`;
@@ -15,7 +15,7 @@ export default async function handler(req, res){
             "addr_detail":"5th floor",
             "name":name,
             "amount": amount,
-            "phone": phone
+            "phone": customerMobilePhone
          
         }),
         headers:{
