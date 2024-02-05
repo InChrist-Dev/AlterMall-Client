@@ -22,24 +22,23 @@ const Checkout = () => {
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
- 
+  const [orderName,setOrderName] = useState('');
   const handleClick = async () => {
     let amount = 0;
     const tosspayments = await loadTossPayments(
       'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
     );
     items.OrderDetails.map((item)=>{
-      console.log(item.price);
+      amount += item.price*item.stock;
     });
+    setOrderName(items[0].)
     await tosspayments.requestPayment('카드',{
-      orderId: 'asdasd',
-      amount: 33333,
+      orderId: items.order_id,
+      amount: amount,
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
-      customerEmail: "customer123@gmail.com",
-      customerName: "김토스",
-      customerMobilePhone: "01012341234",
+     
     });
   }
     // Function to open the modal
@@ -127,6 +126,7 @@ const Checkout = () => {
       });
       const data2 = await response2.json();
       console.log(data2);
+      setDeliveryList(data2.data.rows[0]);
       // setItems(data.data.rows);
       
       // const initialQuantity = data.data.rows.map((item) => item.amount );
@@ -164,9 +164,9 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            홍길동
-            <div>경기도 의정부시 00로 00동00호</div>
-            <div>010-0000-0000</div>
+            {deliveryList[0].name}
+            <div>{deliveryList[0].addr} {deliveryList[0].addr_detail}</div>
+            <div>{deliveryList[0].phone}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
