@@ -14,10 +14,7 @@ const Checkout = () => {
   const [showAllDeliveryInfoModal, setShowAllDeliveryInfoModal] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
-  const [deliveryInfo, setDeliveryInfo] = useState({
-    address: '',
-    method: 'standard',
-  });
+  const [deliveryInfo, setDeliveryInfo] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
@@ -168,9 +165,9 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {deliveryInfo.name}
-            <div>{ deliveryInfo.addr} {deliveryInfo.addr_detail}</div>
-            <div>{deliveryInfo.phone}</div>
+            {deliveryInfo.length > 0? deliveryInfo[0].name:''}
+            <div>{deliveryInfo.length > 0? deliveryInfo[0].addr:''} {deliveryInfo ==''?deliveryInfo[0].addr_detail:''}</div>
+            <div>{deliveryInfo.length > 0? deliveryInfo[0].phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
