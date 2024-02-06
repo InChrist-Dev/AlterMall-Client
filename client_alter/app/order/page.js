@@ -197,9 +197,9 @@ const Checkout = () => {
       setDelivery(data2.data.rows[0])
       // setItems(data.data.rows);
       
-      // const initialQuantity = data.data.rows.map((item) => item.amount );
+      const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
     
-      // setQuantity(initialQuantity);
+      setQuantity(initialQuantity);
 
 
       
@@ -275,7 +275,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {/* {items.OrederDetails.map((items, index) => (
+            {items.OrderDetails.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -287,18 +287,18 @@ const Checkout = () => {
                 </td>
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
-                  <img
+                  {/* <img
                     src={`https://udtown.site/${items.Item.img}`}
                     alt={items.Item.item_name}
                     className={styles.productImage}
-                  />
-                
-                    {items.Item.item_name}
+                  /> */}
+{/*                 
+                    {items.Item.item_name} */}
                    
                  
                 </td>
                 <td>
-                  <p>{items.Item.price}원</p>
+                  <p>{items.price}원</p>
                 </td>
                 <td>
                 <button className={styles.deleteButton}
@@ -312,21 +312,21 @@ const Checkout = () => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.amount - 1)
+                        handleQuantityChange(index, items.stock - 1)
                       }
                     >-
                     </button>
-                    <span>{items.amount}</span>
+                    <span>{items.stock}</span>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index,  items.amount + 1)
+                        handleQuantityChange(index,  items.stock + 1)
                       }
                     >+
                     </button>
                   </div>
                 </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
         </table>
           </div>
