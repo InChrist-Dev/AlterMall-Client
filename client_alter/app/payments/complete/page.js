@@ -4,18 +4,19 @@ import React from 'react';
 import styles from './complete.module.css';
 
 export default async function Complete({ searchParams }) {
-  const secretKey = process.env.TOSS_SECRET_KEY || '';
-  const basicToken = Buffer.from(`${secretKey}:`, 'utf-8').toString('base64');
-
-  const url = `https://api.tosspayments.com/v1/payments/orders/${searchParams.orderId}`;
-  const payments = await fetch(url, {
+  const response = await fetch(`https://udtown.site/customer/order/`,{
     headers: {
-      Authorization: `Basic ${basicToken}`,
+      Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
     },
-  }).then((res) => res.json());
+    credentials: 'include',
+  
+  });
+  const data = await response.json();
 
-  const { card } = payments;
+  // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+  console.log(data.data.rows[0]);
+  const { card } = data.data.rows[0];
 
   return (
   <div  className={styles.back}>
@@ -25,11 +26,11 @@ export default async function Complete({ searchParams }) {
       <ul className={styles.infoList}>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제 상품:</span>
-          {payments.orderName}
+          {searchParams.orderId}
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>주문번호:</span>
-          {payments.orderId}
+          {searchParams.orderId}
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제승인날짜:</span>
