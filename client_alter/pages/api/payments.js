@@ -1,8 +1,5 @@
 
-import Cookies from 'js-cookie';
 
-// 쿠키에서 토큰을 가져오기
-const accessToken = Cookies.get('accessToken');
 export default async function handler(req, res) {
     const { orderId, paymentKey, amount } = req.query;
     console.log(req.query)
@@ -34,11 +31,11 @@ export default async function handler(req, res) {
 
 
             }),
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
+            // headers: {
+            //     "Content-Type": "application/json",
+            //     Authorization: `Bearer ${accessToken}`,
                
-            },
+            // },
             credentials: 'include',
         }).then((res) => console.log(res.json()));
     } catch (error) {
