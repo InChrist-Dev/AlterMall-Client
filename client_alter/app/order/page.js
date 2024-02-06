@@ -72,20 +72,20 @@ const Checkout = () => {
         
       
   
-  }).then(async (response) => {
-    if (response.status == 405) {
-      alert('주문 실패하였습니다');
-    } else if (response.status == 201) {
-      alert('주문페이지로 넘어갑니다');
-      console.log(response);
-      const data = await response.json();
-      console.log(data)
-    }
+  // }).then(async (response) => {
+  //   if (response.status == 405) {
+  //     alert('주문 실패하였습니다');
+  //   } else if (response.status == 201) {
+  //     alert('주문페이지로 넘어갑니다');
+  //     console.log(response);
+  //     const data = await response.json();
+  //     console.log(data)
+  //   }
 
 
-  }).finally(
+  // }).finally(
 
-  )
+  // )
   }
 
     // Function to open the modal
