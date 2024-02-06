@@ -12,9 +12,9 @@ export default async function handler(req, res) {
     await fetch(url,{
         method:'post',
         body:JSON.stringify({
-            "order_id": orderId,
-            "payment_key": paymentKey, 
-            "amount": amount,
+           orderId,
+            paymentKey, 
+             amount,
 
         }),
         headers:{
@@ -27,9 +27,9 @@ export default async function handler(req, res) {
         await fetch('https://udtown.site/customer/confirm/', {
             method: 'patch',
             body: JSON.stringify({
-                orderId,
-                paymentKey,
-                 amount,
+                "order_id": orderId,
+                "payment_key": paymentKey,
+                "amount": amount,
 
 
             }),
