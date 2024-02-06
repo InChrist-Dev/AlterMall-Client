@@ -215,7 +215,7 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {delivery.length !== 0 ? (
+            {delivery? (
   <>
     <div>{delivery.name}</div>
     <div>{delivery.addr} {delivery.addr_detail}</div>
