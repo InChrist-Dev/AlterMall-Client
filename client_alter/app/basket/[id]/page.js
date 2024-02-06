@@ -60,6 +60,8 @@ const ItemPage = (props) => {
         "stock": item.amount,//총 주문량
         "price": item.Item.price, //가격
         "item_id": item.Item.item_id,
+        "item_name":item.Item.item_name,
+        "img":item.Item.img
       };
     });      
     await fetch('https://udtown.site/customer/order',{
