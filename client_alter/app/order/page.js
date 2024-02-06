@@ -282,7 +282,7 @@ const Checkout = () => {
                   
                   <img
                     src={`https://udtown.site/${items.img}`}
-                    alt={items.Item.item_name}
+                    alt={items.item_name}
                     className={styles.productImage}
                   /> 
               
