@@ -280,13 +280,13 @@ const Checkout = () => {
                 </td>
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
-                  {/* <img
+                  <img
                     src={`https://udtown.site/${items.Item.img}`}
                     alt={items.Item.item_name}
                     className={styles.productImage}
-                  /> */}
-{/*                 
-                    {items.Item.item_name} */}
+                  /> 
+              
+                    {items.Item.item_name}
                    
                  
                 </td>
