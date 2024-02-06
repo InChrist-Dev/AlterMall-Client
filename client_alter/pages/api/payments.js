@@ -12,18 +12,19 @@ export default async function handler(req, res) {
 
    
     try {
-        await fetch('https://udtown.site/customer/confirm', {
+        await fetch('https://udtown.site/customer/confirm/', {
             method: 'patch',
             body: JSON.stringify({
                 "order_id": orderId,
-                "paymenKey": paymentKey,
+                "payment_key": paymentKey,
                 "amount": amount,
 
 
             }),
             headers: {
-                Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
+               
             },
             credentials: 'include',
         }).then((res) => console.log(res.json()));
