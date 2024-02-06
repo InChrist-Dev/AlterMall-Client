@@ -32,15 +32,6 @@ const Checkout = () => {
     items.OrderDetails.map((item)=>{
       amount += item.price*item.stock;
     });
-    
-    await tosspayments.requestPayment('카드',{
-      orderId: items.order_id,
-      amount: amount,
-      orderName: "알아서 조합해봄",
-      successUrl: window.location.origin + "/api/payments",
-      failUrl: window.location.origin,
-  
-    });
     await fetch('https://udtown.site/customer/order',{
       method:'patch',
       headers: {
@@ -53,10 +44,19 @@ const Checkout = () => {
         'addr_detail':delivery.addr_detail,
         'requests':'빨리주세요 ㅅㅂ',
         'amount': amount,
-        
 
 
-      }),
+
+      }),  });
+    await tosspayments.requestPayment('카드',{
+      orderId: items.order_id,
+      amount: amount,
+      orderName: "알아서 조합해봄",
+      successUrl: window.location.origin + "/api/payments",
+      failUrl: window.location.origin,
+  
+  
+   
         
         
       
