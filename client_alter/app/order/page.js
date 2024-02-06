@@ -29,7 +29,7 @@ const Checkout = () => {
     const tosspayments = await loadTossPayments(
       'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
     );
-    items.OrderDetails.map((item)=>{
+    items.map((item)=>{
       amount += item.price*item.stock;
     });
     await fetch('https://udtown.site/customer/order',{
@@ -186,7 +186,7 @@ const Checkout = () => {
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data.data.rows[0]);
-      setItems(data.data.rows[0]);
+      setItems(data.data.rows[0].OrderDetails);
 
       const response2 = await fetch(`https://udtown.site/customer/deliver`,{
         headers: {
@@ -280,7 +280,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.length > 0?items.OrderDetails.map((items, index) => (
+            {items.length > 0?items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
