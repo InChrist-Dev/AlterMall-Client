@@ -280,7 +280,7 @@ const Checkout = () => {
             </tr>
           </thead>
           <tbody>
-            {items.OrderDetails.map((items, index) => (
+            {items?items.OrderDetails.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -331,7 +331,7 @@ const Checkout = () => {
                   </div>
                 </td>
               </tr>
-            ))}
+            )):''}
           </tbody>
         </table>
           </div>
