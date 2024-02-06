@@ -169,7 +169,7 @@ const Checkout = () => {
     setQuantity(newQuantity);
 
     const updatedItems = [...items];
-    updatedItems[index].amount = newAmount;
+    updatedItems[index].stock = newAmount;
     setItems(updatedItems);
   };
   const fetchData = async () => {
