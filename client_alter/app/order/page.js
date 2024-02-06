@@ -55,7 +55,7 @@ const Checkout = () => {
       orderId: 'saddvsdfvdsas',
       amount: 5000,
       orderName: "알아서 조합해봄",
-      successUrl: window.location.origin + "/api/payments",
+      successUrl:'https://udtown.site/customer/confirm',
       failUrl: window.location.origin,
   });
     
