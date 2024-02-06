@@ -1,7 +1,7 @@
 
 
 export default async function handler(req, res) {
-    const { orderId, paymentKey, amount } = req.query;
+    // const { orderId, paymentKey, amount } = req.query;
     console.log(req.query)
     // const secretKey = 'test_sk_24xLea5zVAoPKMyLlpbm8QAMYNwW';
     // const url = `https://api.tosspayments.com/v1/payments/confirm`;
@@ -31,11 +31,11 @@ export default async function handler(req, res) {
 
 
             }),
-            // headers: {
-            //     "Content-Type": "application/json",
-            //     Authorization: `Bearer ${accessToken}`,
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${accessToken}`,
                
-            // },
+            },
             credentials: 'include',
         }).then((res) => console.log(res.json()));
     } catch (error) {
