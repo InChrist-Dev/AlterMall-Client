@@ -178,6 +178,7 @@ const Checkout = () => {
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
+      setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
       
       // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
     
