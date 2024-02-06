@@ -52,7 +52,7 @@ const Checkout = () => {
 
       }),  });
     await tosspayments.requestPayment('카드',{
-      orderId: 'sadas',
+      orderId: 'saddvsdfvdsas',
       amount: 5000,
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
