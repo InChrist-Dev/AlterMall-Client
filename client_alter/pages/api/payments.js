@@ -23,11 +23,8 @@ export default async function handler(req, res,{Data}){
     await fetch('https://udtown.site/customer/confirm',{
         method:'post',
         body:JSON.stringify({
-            "order_id": data.data.row[0].order_id,
-            "payment_key": paymentKey,
-            "addr": data.data.row[0].addr,
-            "addr_detail":data.data.row[0].addr_detail,
-       
+            "order_id": orderId,
+            "payment_key": paymentKey,                 
             "amount": amount,
             
          
