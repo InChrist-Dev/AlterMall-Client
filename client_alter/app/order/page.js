@@ -50,16 +50,7 @@ const Checkout = () => {
 
 
 
-      }),  }).then(async (response) => {
-        if (response.status == 405) {
-         
-        } else if (response.status == 201) {
-   
-          console.log(response);
-          const data = await response.json();
-          console.log(data)
-        }});
-     
+      }),  });
     await tosspayments.requestPayment('카드',{
       orderId: info.order_id,
       amount: amount,
