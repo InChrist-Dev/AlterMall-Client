@@ -215,9 +215,9 @@ const Checkout = () => {
         배송지 변경 ▶
       </button></div>
             <div className={styles.AddressBox}>
-            {data2.data.rows[0].length > 0? delivery.name:''}
-            <div>{data2.data.rows[0].length > 0? delivery.addr:''} {data2.data.rows[0].length > 0?delivery.addr_detail:''}</div>
-            <div>{data2.data.rows[0].length > 0? delivery.phone:''}</div>
+            {data2? delivery.name:''}
+            <div>{data2? delivery.addr:''} {data2?delivery.addr_detail:''}</div>
+            <div>{data2? delivery.phone:''}</div>
             </div>
             <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
             <div className={styles.postBox}>
