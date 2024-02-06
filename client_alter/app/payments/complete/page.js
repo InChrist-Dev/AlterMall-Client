@@ -34,7 +34,7 @@ export default async function Complete({ searchParams }) {
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제승인날짜:</span>
-          {Intl.DateTimeFormat().format(new Date(payments.approvedAt))}
+          {/* {Intl.DateTimeFormat().format(new Date(payments.approvedAt))} */}
         </li>
       </ul>
     </div>
