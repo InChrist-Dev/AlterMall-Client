@@ -35,7 +35,7 @@ const Checkout = () => {
     console.log(info);
     const orderItems = items.map((item) => {
       return {
-        "order_id": myUuid,
+        "order_id": info.order_id,
         "seller_id": item.Item.seller_id,
         "stock": item.amount,//총 주문량
         "price": item.Item.price, //가격
