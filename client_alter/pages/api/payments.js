@@ -51,5 +51,5 @@ export default async function handler(req, res) {
     // }).then((res)=> res.json());
 
     //TODO: DB처리
-    res.redirect(`/payments/complete?orderId=${orderId}`);
+    // res.redirect(`/payments/complete?orderId=${orderId}`);
 }
