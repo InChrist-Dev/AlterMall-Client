@@ -33,7 +33,7 @@ const Checkout = () => {
       amount += item.price*item.stock;
     });
     await fetch('https://udtown.site/customer/order',{
-      method:'PUT',
+      method:'PATCH',
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
