@@ -10,15 +10,7 @@ export default async function handler(req, res) {
     const url = `https://api.tosspayments.com/v1/payments/confirm`;
     const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString("base64");
 
-    const response = await fetch(`https://udtown.site/customer/order/`, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-
-    });
-    const data = await response.json();
+   
     try {
         await fetch('https://udtown.site/customer/confirm', {
             method: 'patch',
