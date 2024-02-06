@@ -36,12 +36,12 @@ const Checkout = () => {
     const orderItems = items.map((item) => {
       return {
         "order_id": info.order_id,
-        "seller_id": item.Item.seller_id,
-        "stock": item.amount,//총 주문량
-        "price": item.Item.price, //가격
-        "item_id": item.Item.item_id,
-        "item_name":item.Item.item_name,
-        "img":item.Item.img
+        "seller_id": item.seller_id,
+        "stock": item.stock,//총 주문량
+        "price": item.price, //가격
+        "item_id": item.item_id,
+        "item_name":item.item_name,
+        "img":item.img
       };
     });    
     if(delivery){
