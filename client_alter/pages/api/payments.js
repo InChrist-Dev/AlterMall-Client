@@ -3,38 +3,41 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-export default async function handler(req, res,{Data}){
-    const { orderId, paymentKey, amount} = req.query;
+export default async function handler(req, res, { Data }) {
+    const { orderId, paymentKey, amount } = req.query;
     console.log(req.query)
     const secretKey = 'test_sk_24xLea5zVAoPKMyLlpbm8QAMYNwW';
     const url = `https://api.tosspayments.com/v1/payments/confirm`;
-    const basicToken = Buffer.from(`${secretKey}:`,`utf-8`).toString("base64");
+    const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString("base64");
 
-    const response = await fetch(`https://udtown.site/customer/order/`,{
+    const response = await fetch(`https://udtown.site/customer/order/`, {
         headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
         },
         credentials: 'include',
-      
-      });
-      const data = await response.json();
 
-    await fetch('https://udtown.site/customer/confirm',{
-        method:'post',
-        body:JSON.stringify({
-            "order_id": orderId,
-            "payment_key": paymentKey,                 
-            "amount": amount,
-            
-         
-        }),
-        headers:{
-            Authorization:`Bearer ${accessToken}`,
-            "Content-Type":"application/json",
-        },
-        credentials:'include',
-    }).then((res)=> console.log(res.json()));
+    });
+    const data = await response.json();
+    try {
+        await fetch('https://udtown.site/customer/confirm', {
+            method: 'post',
+            body: JSON.stringify({
+                "order_id": orderId,
+                "payment_key": paymentKey,
+                "amount": amount,
+
+
+            }),
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            credentials: 'include',
+        }).then((res) => console.log(res.json()));
+    } catch (error) {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
 
     // await fetch(url,{
     //     method:'post',
@@ -46,7 +49,7 @@ export default async function handler(req, res,{Data}){
     //         "name":name,
     //         "amount": amount,
     //         "phone": '2121921'
-         
+
     //     }),
     //     headers:{
     //         Authorization:`Basic ${basicToken}`,
