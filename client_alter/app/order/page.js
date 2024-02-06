@@ -33,6 +33,7 @@ const Checkout = () => {
     items.map((item)=>{
       amount += item.price*item.stock;
     });
+    console.log(info);
     await fetch('https://udtown.site/customer/order',{
       method:'PATCH',
       headers: {
