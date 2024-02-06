@@ -131,7 +131,7 @@ const Checkout = () => {
   };
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
-      (total, index) => total + items[index].Item.price * quantity[index],
+      (total, index) => total + items[index].price * quantity[index],
       0
     );
   };
