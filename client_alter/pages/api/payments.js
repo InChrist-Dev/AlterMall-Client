@@ -21,7 +21,7 @@ export default async function handler(req, res, { Data }) {
     const data = await response.json();
     try {
         await fetch('https://udtown.site/customer/confirm', {
-            method: 'post',
+            method: 'patch',
             body: JSON.stringify({
                 "order_id": orderId,
                 "payment_key": paymentKey,
