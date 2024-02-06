@@ -52,22 +52,22 @@ const Checkout = () => {
 
       }),  });
     await tosspayments.requestPayment('카드',{
-      orderId: info.order_id,
-      amount: amount,
+      orderId: 'sadas',
+      amount: 5000,
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
   });
     
-    await fetch('https://udtown.site/customer/orderdetail',{
-      method:'post',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        items: orderItems,
-      }),
+    // await fetch('https://udtown.site/customer/orderdetail',{
+    //   method:'post',
+    //   headers: {
+    //     Authorization: `Bearer ${accessToken}`,
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify({
+    //     items: orderItems,
+    //   }),
         
         
       
