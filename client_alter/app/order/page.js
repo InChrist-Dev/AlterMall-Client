@@ -52,8 +52,8 @@ const Checkout = () => {
 
       }),  });
     await tosspayments.requestPayment('카드',{
-      orderId: 'saddvsdfvdsas',
-      amount: 5000,
+      orderId: info.order_id,
+      amount: amount,
       orderName: "알아서 조합해봄",
       successUrl:'https://udtown.site/customer/confirm',
       failUrl: window.location.origin,
