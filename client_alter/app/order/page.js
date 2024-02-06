@@ -53,6 +53,7 @@ const Checkout = () => {
       }),  });
     await tosspayments.requestPayment('카드',{
       orderId: info.order_id,
+      amount: amount,
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
       failUrl: window.location.origin,
