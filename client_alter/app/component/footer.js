@@ -18,7 +18,7 @@ const Footer = () => {
     
       <div className={styles.column}>
         <h3 className={styles.title}>회사소개</h3>
-        <p>상호명 및 호스팅 서비스 제공: InC개발팀</p>
+        <p>상호명 및 호스팅 서비스 제공: 아이엔씨 개발팀</p>
         <p>대표이사: 이정훈</p>
         <p>경기도 의정부시 용현로42 104동 1003호</p>
         <p>사업자 등록번호: 723-30-01491</p>
