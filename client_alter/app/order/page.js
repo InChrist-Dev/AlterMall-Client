@@ -50,12 +50,16 @@ const Checkout = () => {
 
 
 
-      }),  });
-      if (response.ok) {
-        console.log('데이터가 성공적으로 업데이트되었습니다.');
-      } else {
-        console.error('데이터 업데이트 실패:', response.statusText);
-      }
+      }),  }).then(async (response) => {
+        if (response.status == 405) {
+         
+        } else if (response.status == 201) {
+   
+          console.log(response);
+          const data = await response.json();
+          console.log(data)
+        }});
+     
     await tosspayments.requestPayment('카드',{
       orderId: info.order_id,
       amount: amount,
