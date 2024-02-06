@@ -80,6 +80,7 @@ const ItemPage = (props) => {
       alert('주문 실패하였습니다');
     } else if (response.status == 201) {
       alert('주문페이지로 넘어갑니다');
+      window.location.href='/order';
       console.log(response);
       const data = await response.json();
       console.log(data)
