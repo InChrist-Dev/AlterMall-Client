@@ -34,7 +34,7 @@ export default async function handler(req, res,{Data}){
             "Content-Type":"application/json",
         },
         credentials:'include',
-    }).then((res)=> res.json());
+    }).then((res)=> console.log(res.json()));
 
     // await fetch(url,{
     //     method:'post',
