@@ -38,6 +38,7 @@ const Checkout = () => {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
+      credentials:'include',
       body: JSON.stringify({
         'order_id':items.order_id,
         'addr': delivery.addr,
