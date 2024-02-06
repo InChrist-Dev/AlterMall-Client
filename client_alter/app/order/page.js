@@ -20,11 +20,10 @@ const Checkout = () => {
     method: 'standard',
   });
   const [selectedItems, setSelectedItems] = useState([]);
-  const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
-  const [orderName,setOrderName] = useState('');
   const [info,setInfo] = useState([]);
+  const [request,setRequest] = useState('');
   const handleClick = async () => {
     let amount = 0;
     const tosspayments = await loadTossPayments(
@@ -34,6 +33,17 @@ const Checkout = () => {
       amount += item.price*item.stock;
     });
     console.log(info);
+    const orderItems = items.map((item) => {
+      return {
+        "order_id": myUuid,
+        "seller_id": item.Item.seller_id,
+        "stock": item.amount,//총 주문량
+        "price": item.Item.price, //가격
+        "item_id": item.Item.item_id,
+        "item_name":item.Item.item_name,
+        "img":item.Item.img
+      };
+    });    
     if(delivery){
       await fetch('https://udtown.site/customer/order',{
         method:'PATCH',
@@ -52,27 +62,29 @@ const Checkout = () => {
   
   
         }),  });
+        await fetch('https://udtown.site/customer/orderdetail',{
+          method:'post',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: orderItems,
+          }),});
+        await tosspayments.requestPayment('카드',{
+          orderId: info.order_id,
+          amount: amount,
+          orderName: "알아서 조합해봄",
+          successUrl:'https://udtown.site/customer/confirm',
+          failUrl: window.location.origin,
+      });
+        
     }else{
       alert('배송지를 먼저 등록해주세요')
     }
  
-    await tosspayments.requestPayment('카드',{
-      orderId: info.order_id,
-      amount: amount,
-      orderName: "알아서 조합해봄",
-      successUrl:'https://udtown.site/customer/confirm',
-      failUrl: window.location.origin,
-  });
-    
-    // await fetch('https://udtown.site/customer/orderdetail',{
-    //   method:'post',
-    //   headers: {
-    //     Authorization: `Bearer ${accessToken}`,
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({
-    //     items: orderItems,
-    //   }),
+
+ 
         
         
       
@@ -146,13 +158,24 @@ const Checkout = () => {
   }
   // 전체 주문 가격 계산
   const handleQuantityChange = (index, newAmount) => {
-    const newQuantity = { ...quantity };
-    newQuantity[index] = newAmount;
-    setQuantity(newQuantity);
-
-    const updatedItems = [...items];
-    updatedItems[index].stock = newAmount;
-    setItems(updatedItems);
+    if(newAmount>=0){
+      const newQuantity = { ...quantity };
+      newQuantity[index] = newAmount;
+      setQuantity(newQuantity);
+  
+      const updatedItems = [...items];
+      updatedItems[index].stock = newAmount;
+      setItems(updatedItems);
+    }else{
+      const newQuantity = { ...quantity };
+      newQuantity[index] = 0;
+      setQuantity(newQuantity);
+  
+      const updatedItems = [...items];
+      updatedItems[index].stock = 0;
+      setItems(updatedItems);
+    }
+  
   };
   const fetchData = async () => {
     try {
