@@ -11,25 +11,25 @@ export default async function handler(req, res) {
     // const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString("base64");
 
    
-    // try {
-    //     await fetch('https://udtown.site/customer/confirm', {
-    //         method: 'patch',
-    //         body: JSON.stringify({
-    //             "order_id": orderId,
-    //             "payment_key": paymentKey,
-    //             "amount": amount,
+    try {
+        await fetch('https://udtown.site/customer/confirm', {
+            method: 'patch',
+            body: JSON.stringify({
+                "order_id": orderId,
+                "paymenKey": paymentKey,
+                "amount": amount,
 
 
-    //         }),
-    //         headers: {
-    //             Authorization: `Bearer ${accessToken}`,
-    //             "Content-Type": "application/json",
-    //         },
-    //         credentials: 'include',
-    //     }).then((res) => console.log(res.json()));
-    // } catch (error) {
-    //     console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
-    // }
+            }),
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+                "Content-Type": "application/json",
+            },
+            credentials: 'include',
+        }).then((res) => console.log(res.json()));
+    } catch (error) {
+        console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
 
     // await fetch(url,{
     //     method:'post',
