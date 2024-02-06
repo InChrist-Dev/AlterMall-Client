@@ -33,7 +33,7 @@ const Checkout = () => {
       amount += item.price*item.stock;
     });
     await fetch('https://udtown.site/customer/order',{
-      method:'patch',
+      method:'PUT',
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
@@ -49,6 +49,11 @@ const Checkout = () => {
 
 
       }),  });
+      if (response.ok) {
+        console.log('데이터가 성공적으로 업데이트되었습니다.');
+      } else {
+        console.error('데이터 업데이트 실패:', response.statusText);
+      }
     await tosspayments.requestPayment('카드',{
       orderId: items.order_id,
       amount: amount,
