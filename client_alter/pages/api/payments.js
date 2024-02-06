@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-export default async function handler(req, res, { Data }) {
+export default async function handler(req, res) {
     const { orderId, paymentKey, amount } = req.query;
     console.log(req.query)
     const secretKey = 'test_sk_24xLea5zVAoPKMyLlpbm8QAMYNwW';
