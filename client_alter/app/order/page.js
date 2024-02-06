@@ -56,7 +56,7 @@ const Checkout = () => {
         console.error('데이터 업데이트 실패:', response.statusText);
       }
     await tosspayments.requestPayment('카드',{
-      orderId: items.order_id,
+      orderId: info.order_id,
       amount: amount,
       orderName: "알아서 조합해봄",
       successUrl: window.location.origin + "/api/payments",
