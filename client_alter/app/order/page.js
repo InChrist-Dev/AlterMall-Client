@@ -24,6 +24,7 @@ const Checkout = () => {
   const [quantity, setQuantity] = useState([]);
   const [items,setItems] = useState([]);
   const [orderName,setOrderName] = useState('');
+  const [info,setInfo] = useState([]);
   const handleClick = async () => {
     let amount = 0;
     const tosspayments = await loadTossPayments(
@@ -40,7 +41,7 @@ const Checkout = () => {
       },
       credentials:'include',
       body: JSON.stringify({
-        'order_id':items.order_id,
+        'order_id':info.order_id,
         'addr': delivery.addr,
         'addr_detail':delivery.addr_detail,
         'requests':'빨리주세요 ㅅㅂ',
@@ -200,7 +201,7 @@ const Checkout = () => {
       console.log(data2);
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
-      // setItems(data.data.rows);
+      setInfo(data.data.rows);
       
       // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
     
