@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
  
   
 
-Cookies.remove('accessToken');
+
 export function LogOutBtn() {
  
     // const params = useSearchParams();
@@ -20,9 +20,7 @@ export function LogOutBtn() {
     });
     const data2 = await response.status;
     const data = await response.json();
-    console.log(data2);
-    console.log(data);
-    console.log('dd');
+    Cookies.remove('accessToken');
   };
    
     

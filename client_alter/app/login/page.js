@@ -1,6 +1,5 @@
 'use client'
-
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from 'react';
 
 import Cookies from 'js-cookie';
 
@@ -10,9 +9,11 @@ export default async function handler(){
     const accessToken = parsedHash.get("accessToken");
 
     Cookies.set('accessToken', accessToken, { expires: 7 });  // 7일 동안 유지되도록 설정
+    useEffect(()=>{
+      alert('로그인 되었습니다');
+      window.location.href='https://altermall.shop';
+    })
 
-    alert('로그인 되었습니다');
-    window.location.href='https://altermall.shop';
     
   }
   catch(error){
