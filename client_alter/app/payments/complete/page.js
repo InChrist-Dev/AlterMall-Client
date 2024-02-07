@@ -2,8 +2,11 @@
 
 import React from 'react';
 import styles from './complete.module.css';
+import Cookies from 'js-cookie';
 
-export default async function Complete({searchParams}) {
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
+export default async function Complete(req,res) {
   // const response = await fetch(`https://udtown.site/customer/order/${searchParams.orderId}`,{
   //   headers: {
   //     Authorization: `Bearer ${accessToken}`,
@@ -15,7 +18,7 @@ export default async function Complete({searchParams}) {
   // const data = await response.json();
 
   // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-  console.log(searchParams.orderId);
+  console.log(req.query);
   // const { card } = data.data.rows[0];
 
   return (
