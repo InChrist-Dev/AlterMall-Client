@@ -1,27 +1,7 @@
 
 
 export default async function handler(req, res) {
-    // const { orderId, paymentKey, amount } = req.query;
-    console.log(req.query)
-    // const secretKey = 'test_sk_24xLea5zVAoPKMyLlpbm8QAMYNwW';
-    // const url = `https://api.tosspayments.com/v1/payments/confirm`;
-    // const basicToken = Buffer.from(`${secretKey}:`, `utf-8`).toString("base64");
-    // await fetch(url,{
-    //     method:'post',
-    //     body:JSON.stringify({
-    //        orderId,
-    //         paymentKey, 
-    //          amount,
-
-    //     }),
-    //     headers:{
-    //         Authorization:`Basic ${basicToken}`,
-    //         "Content-Type":"application/json",
-    //     },
-    // }).then((res)=> res.json());
-   
     try {
-        console.log(req.query)
         await fetch('https://udtown.site/customer/confirm/', {
             method: 'patch',
             body: JSON.stringify({
@@ -41,9 +21,6 @@ export default async function handler(req, res) {
     } catch (error) {
         console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
-
-
-
     //TODO: DB처리
     res.redirect(`/payments/complete?orderId=${orderId}`);
 }
