@@ -17,7 +17,7 @@ export default async function handler(){
     }
 
    
-    return (<button onClick={successLogin();}/>);
+    return (<button onClick={successLogin}/>);
   }
   catch(error){
     console.error(error);
