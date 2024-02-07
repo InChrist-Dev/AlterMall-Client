@@ -1,7 +1,7 @@
 // seller.js
 'use client'
 
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
@@ -21,16 +21,22 @@ const Checkout = () => {
   });
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
-  const [items,setItems] = useState([]);
-  const [info,setInfo] = useState([]);
-  const [request,setRequest] = useState('');
+  const [items, setItems] = useState([]);
+  const [info, setInfo] = useState([]);
+  const [request, setRequest] = useState('');
   const handleClick = async () => {
     let amount = 0;
+    // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
+    const firstItemName = items.length > 0 ? items[0].item_name : '';
+
+    // 첫 번째 상품 이외의 상품 개수를 계산합니다.
+    const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
+
     const tosspayments = await loadTossPayments(
       'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
     );
-    items.map((item)=>{
-      amount += item.price*item.stock;
+    items.map((item) => {
+      amount += item.price * item.stock;
     });
     console.log(info);
     const orderItems = items.map((item) => {
@@ -40,72 +46,74 @@ const Checkout = () => {
         "stock": item.stock,//총 주문량
         "price": item.price, //가격
         "item_id": item.item_id,
-        "item_name":item.item_name,
-        "img":item.img
+        "item_name": item.item_name,
+        "img": item.img
       };
-    });    
-    if(delivery){
-      await fetch('https://udtown.site/customer/order',{
-        method:'PATCH',
+    });
+    if (delivery) {
+      await fetch('https://udtown.site/customer/order', {
+        method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
-        credentials:'include',
+        credentials: 'include',
         body: JSON.stringify({
-          'order_id':info.order_id,
+          'order_id': info.order_id,
           'addr': delivery.addr,
-          'addr_detail':delivery.addr_detail,
-          'requests':'빨리주세요 ㅅㅂ',
+          'addr_detail': delivery.addr_detail,
+          'requests': request,
           'amount': amount,
-  
-  
-  
-        }),  });
-        await fetch('https://udtown.site/customer/orderdetail',{
-          method:'post',
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            items: orderItems,
-          }),});
-        await tosspayments.requestPayment('카드',{
-          orderId: info.order_id,
-          amount: amount,
-          orderName: "알아서 조합해봄",
-          successUrl:'https://udtown.site/customer/confirm',
-          failUrl: window.location.origin,
+
+
+
+        }),
       });
-        
-    }else{
+      await fetch('https://udtown.site/customer/orderdetail', {
+        method: 'post',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: orderItems,
+        }),
+      });
+      await tosspayments.requestPayment('카드', {
+        orderId: info.order_id,
+        amount: amount,
+        orderName: `${firstItemName}외 ${otherItemsCount}건`,
+        successUrl: 'https://udtown.site/customer/confirm',
+        failUrl: window.location.origin,
+      });
+
+    } else {
       alert('배송지를 먼저 등록해주세요')
     }
- 
-
- 
-        
-        
-      
-  
-  // }).then(async (response) => {
-  //   if (response.status == 405) {
-  //     alert('주문 실패하였습니다');
-  //   } else if (response.status == 201) {
-  //     alert('주문페이지로 넘어갑니다');
-  //     console.log(response);
-  //     const data = await response.json();
-  //     console.log(data)
-  //   }
 
 
-  // }).finally(
 
-  // )
+
+
+
+
+    // }).then(async (response) => {
+    //   if (response.status == 405) {
+    //     alert('주문 실패하였습니다');
+    //   } else if (response.status == 201) {
+    //     alert('주문페이지로 넘어갑니다');
+    //     console.log(response);
+    //     const data = await response.json();
+    //     console.log(data)
+    //   }
+
+
+    // }).finally(
+
+    // )
   }
 
-    // Function to open the modal
+  // Function to open the modal
   const openModal = () => {
     setShowModal(true);
   };
@@ -141,7 +149,7 @@ const Checkout = () => {
   // 함수를 통해 배송 정보 업데이트
   const updateDeliveryInfo = (key, value) => {
     setDeliveryInfo((prevInfo) => ({ ...prevInfo, [key]: value }));
-   
+
   };
 
   const getImageUrl = () => {
@@ -153,39 +161,39 @@ const Checkout = () => {
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
-  const selDeliver=(id)=>{
+  const selDeliver = (id) => {
     setDelivery(deliveryList[id])
   }
   // 전체 주문 가격 계산
   const handleQuantityChange = (index, newAmount) => {
-    if(newAmount>=0){
+    if (newAmount >= 0) {
       const newQuantity = { ...quantity };
       newQuantity[index] = newAmount;
       setQuantity(newQuantity);
-  
+
       const updatedItems = [...items];
       updatedItems[index].stock = newAmount;
       setItems(updatedItems);
-    }else{
+    } else {
       const newQuantity = { ...quantity };
       newQuantity[index] = 0;
       setQuantity(newQuantity);
-  
+
       const updatedItems = [...items];
       updatedItems[index].stock = 0;
       setItems(updatedItems);
     }
-  
+
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/order/`,{
+      const response = await fetch(`https://udtown.site/customer/order/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-      
+
       });
       const data = await response.json();
 
@@ -193,13 +201,13 @@ const Checkout = () => {
       console.log(data.data.rows[0]);
       setItems(data.data.rows[0].OrderDetails);
 
-      const response2 = await fetch(`https://udtown.site/customer/deliver`,{
+      const response2 = await fetch(`https://udtown.site/customer/deliver`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-      
+
       });
       const data2 = await response2.json();
       console.log(data2);
@@ -207,13 +215,13 @@ const Checkout = () => {
       setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
       setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
-      
+
       // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
-    
+
       // setQuantity(initialQuantity);
 
 
-      
+
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -230,134 +238,138 @@ const Checkout = () => {
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
-        <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver}/>
+      <div style={{ display: showModal ? 'block' : 'none' }}>
+        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>주문/결제</div>
-          <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
+          <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
           <div className={styles.deliveryInfo}>
-          <div style={{display:'flex',justifyContent:'space-between'}}>
-      <h2 className={styles.categoryTitle}>배송지 정보</h2>
-    {/* 장인 버튼 */} <button className={styles.moreButton} onClick={openModal}>
-        배송지 변경 ▶
-      </button></div>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+              <h2 className={styles.categoryTitle}>배송지 정보</h2>
+              {/* 장인 버튼 */} <button className={styles.moreButton} onClick={openModal}>
+                배송지 변경 ▶
+              </button></div>
             <div className={styles.AddressBox}>
-            {delivery? (
-  <>
-    <div>{delivery.name}</div>
-    <div>{delivery.addr} {delivery.addr_detail}</div>
-    <div>{delivery.phone}</div>
-  </>
-) : (
-  <>
-    <div></div>
-    <div></div>
-    <div></div>
-  </>
-)}
+              {delivery ? (
+                <>
+                  <div>{delivery.name}</div>
+                  <div>{delivery.addr} {delivery.addr_detail}</div>
+                  <div>{delivery.phone}</div>
+                </>
+              ) : (
+                <>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </>
+              )}
 
             </div>
-            <div style={{border:'1px solid #ccc',marginTop:'50px',marginBottom:'20px'}}></div>
+            <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
             <div className={styles.postBox}>
-            <label>배송방법</label>
-            <select
-              className={styles.postOption}
-              value={deliveryInfo.method}
-              onChange={(e) => updateDeliveryInfo('method', e.target.value)}
-            >
-              <option value="standard">일반 배송</option>
-              <option value="express">당일 배송</option>
-            </select>
-            <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
+              <label>배송방법</label>
+              <select
+                className={styles.postOption}
+                value={deliveryInfo.method}
+                onChange={(e) => updateDeliveryInfo('method', e.target.value)}
+              >
+                <option value="standard">일반 배송</option>
+                <option value="express">당일 배송</option>
+              </select>
+              <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
 
             </div>
-        
+            <div className={styles.requestBox}>
+              <label>배송시 요청사항</label>
+              <input className={styles.request}
+                value={request}
+                onChange={(e) => setRequest(e.target.value)}></input>
+            </div>
           </div>
 
           <div className={styles.orderItems}>
             <h2>주문 물품 정보</h2>
             <table className={styles.productTable}>
-          <thead>
-            <tr>
-              <th>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={selectedItems.length === items.length}
-                  onChange={toggleAllItemsSelection}
-                />
-                
-              </th>
-              <th>상품</th>
-              <th>가격</th>
-              <th>취소</th>
-              <th>수량</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.length > 0?items.map((items, index) => (
-              <tr key={index} className={styles.productCard}>
-                <td>
-                  <input
-                    type="checkbox"
-                    className={styles.checkbox}
-                    checked={selectedItems.includes(index)}
-                    onChange={() => toggleItemSelection(index)}
-                  />
-                </td>
-                <td style={{display:'flex' , alignItems: 'center',}}>
-                  
-                  <img
-                    src={`https://udtown.site/${items.img}`}
-                    alt={items.item_name}
-                    className={styles.productImage}
-                  /> 
-              
-                    {items.item_name}
-                   
-                 
-                </td>
-                <td>
-                  <p>{items.price}원</p>
-                </td>
-                <td>
-                <button className={styles.deleteButton}
-                      onClick={() =>
-                        {Cancel(items.id)}
-                      }
-                    >X
-                    </button>
-                </td>
-                <td>
-                  <div className={styles.quantityControl}>
-                    <button
-                      onClick={() =>
-                        handleQuantityChange(index, items.stock - 1)
-                      }
-                    >-
-                    </button>
-                    <span>{items.stock}</span>
-                    <button
-                      onClick={() =>
-                        handleQuantityChange(index,  items.stock + 1)
-                      }
-                    >+
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            )):''}
-          </tbody>
-        </table>
+              <thead>
+                <tr>
+                  <th>
+                    <input
+                      type="checkbox"
+                      className={styles.checkbox}
+                      checked={selectedItems.length === items.length}
+                      onChange={toggleAllItemsSelection}
+                    />
+
+                  </th>
+                  <th>상품</th>
+                  <th>가격</th>
+                  <th>취소</th>
+                  <th>수량</th>
+                </tr>
+              </thead>
+              <tbody>
+                {items.length > 0 ? items.map((items, index) => (
+                  <tr key={index} className={styles.productCard}>
+                    <td>
+                      <input
+                        type="checkbox"
+                        className={styles.checkbox}
+                        checked={selectedItems.includes(index)}
+                        onChange={() => toggleItemSelection(index)}
+                      />
+                    </td>
+                    <td style={{ display: 'flex', alignItems: 'center', }}>
+
+                      <img
+                        src={`https://udtown.site/${items.img}`}
+                        alt={items.item_name}
+                        className={styles.productImage}
+                      />
+
+                      {items.item_name}
+
+
+                    </td>
+                    <td>
+                      <p>{items.price}원</p>
+                    </td>
+                    <td>
+                      <button className={styles.deleteButton}
+                        onClick={() => { Cancel(items.id) }
+                        }
+                      >X
+                      </button>
+                    </td>
+                    <td>
+                      <div className={styles.quantityControl}>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(index, items.stock - 1)
+                          }
+                        >-
+                        </button>
+                        <span>{items.stock}</span>
+                        <button
+                          onClick={() =>
+                            handleQuantityChange(index, items.stock + 1)
+                          }
+                        >+
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )) : ''}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
 
       <div className={styles.stickySidebar}>
         <h2 >주문 결제 금액</h2>
-        <div style={{border:'1px solid #ddd',marginTop:'20px',marginBottom:'20px'}}></div>
+        <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
         <div>할인금액: 0원</div>
         <div>상품권: 0원</div>
         <div>

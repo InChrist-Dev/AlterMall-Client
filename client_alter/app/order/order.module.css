@@ -426,3 +426,14 @@
   padding: 20px;
   margin: 20px 0;
 }
+
+.request{
+  width: 90%;
+  margin: 20px 0;
+  height: 30px;
+}
+.requestBox{
+  font-size: 25px;
+  font-weight: bold;
+  color: #333;
+}
