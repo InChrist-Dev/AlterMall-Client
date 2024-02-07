@@ -1,5 +1,5 @@
 // Complete.js
-
+'use client'
 import React from 'react';
 import styles from './complete.module.css';
 import Cookies from 'js-cookie';
