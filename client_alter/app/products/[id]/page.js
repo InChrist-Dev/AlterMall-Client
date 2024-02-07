@@ -83,7 +83,7 @@ const ItemPage = (props) => {
 
   const handleBuy = (itemId,amount)=>{
     // window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
-    alert('준비중입니다. 장바구니 결제를 이용해주세요')
+    alert('해당 서비스는 점검중입니다. 장바구니 결제를 이용해주세요')
   };
  return(
     <div>
