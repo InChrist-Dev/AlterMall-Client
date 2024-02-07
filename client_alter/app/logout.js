@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
  
   
 
-Cookies.delete('accessToken');
+Cookies.remove('accessToken');
 export function LogOutBtn() {
  
     // const params = useSearchParams();
