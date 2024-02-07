@@ -3,26 +3,46 @@
 import React from 'react';
 import styles from './complete.module.css';
 import Cookies from 'js-cookie';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-export default async function Complete() {
+export default function Complete() {
   const [order,setOrder] = useState([]);
-  const response = await fetch(`https://udtown.site/customer/order/`,{
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
-  
-  });
-  const data = await response.json();
-  console.log(data.data.rows[0]);
-  // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-  setOrder(data.data.rows[0]);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`https://udtown.site/customer/order/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
 
-  // const { card } = data.data.rows[0];
+      });
+      const data = await response.json();
+
+      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+      console.log(data)
+      setOrder(data.data.rows[0]);
+
+
+      // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
+
+      // setQuantity(initialQuantity);
+
+
+
+
+      // 데이터를 state로 업데이트하는 로직을 추가합니다.
+      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
+      // 필요한 모든 state를 업데이트해야 합니다.
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
   <div  className={styles.back}>
