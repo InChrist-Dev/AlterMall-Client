@@ -85,7 +85,7 @@ const NavigationBar = (session) => {
         {/* 장바구니 및 유저 아이콘 */}
         <div className="cartUserIcons">
           {
-            accessToken
+            accessToken.length > 0
               ?   <a href='/user'>
               <FontAwesomeIcon icon={faUser} className="cartIcon" />
             </a>
