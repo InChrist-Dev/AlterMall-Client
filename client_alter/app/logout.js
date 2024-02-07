@@ -1,14 +1,12 @@
 'use client';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-
-
+import Cookies from 'js-cookie';
 
  
   
 
-
+Cookies.delete('accessToken');
 export function LogOutBtn() {
  
     // const params = useSearchParams();
