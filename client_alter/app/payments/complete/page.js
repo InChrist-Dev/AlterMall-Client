@@ -4,18 +4,18 @@ import React from 'react';
 import styles from './complete.module.css';
 
 export default async function Complete({searchParams}) {
-  const response = await fetch(`https://udtown.site/customer/order/${searchParams.orderId}`,{
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
+  // const response = await fetch(`https://udtown.site/customer/order/${searchParams.orderId}`,{
+  //   headers: {
+  //     Authorization: `Bearer ${accessToken}`,
+  //     'Content-Type': 'application/json',
+  //   },
+  //   credentials: 'include',
   
-  });
-  const data = await response.json();
+  // });
+  // const data = await response.json();
 
   // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-  console.log(data.data.rows[0]);
+  console.log(searchParams);
   // const { card } = data.data.rows[0];
 
   return (
