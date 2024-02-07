@@ -52,11 +52,11 @@ export default function Complete() {
       <ul className={styles.infoList}>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제 상품:</span>
-          {searchParams.orderId}
+       
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>주문번호:</span>
-          {searchParams.orderId}
+        
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제승인날짜:</span>
