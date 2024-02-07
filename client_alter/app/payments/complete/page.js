@@ -3,20 +3,20 @@
 import React from 'react';
 import styles from './complete.module.css';
 
-export default async function Complete({ searchParams }) {
-  const response = await fetch(`https://udtown.site/customer/order/`,{
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
-      'Content-Type': 'application/json',
-    },
-    credentials: 'include',
+export default async function Complete() {
+  // const response = await fetch(`https://udtown.site/customer/order/`,{
+  //   headers: {
+  //     Authorization: `Bearer ${accessToken}`,
+  //     'Content-Type': 'application/json',
+  //   },
+  //   credentials: 'include',
   
-  });
-  const data = await response.json();
+  // });
+  // const data = await response.json();
 
-  // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-  console.log(data.data.rows[0]);
-  const { card } = data.data.rows[0];
+  // // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+  // console.log(data.data.rows[0]);
+  // const { card } = data.data.rows[0];
 
   return (
   <div  className={styles.back}>
