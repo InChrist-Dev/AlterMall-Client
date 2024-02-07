@@ -15,10 +15,7 @@ const Checkout = () => {
   const [deliveryList, setDeliveryList] = useState([]);
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
-  const [deliveryInfo, setDeliveryInfo] = useState({
-    address: '',
-    method: 'standard',
-  });
+  const [deliveryInfo, setDeliveryInfo] = useState('normal');
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -64,6 +61,7 @@ const Checkout = () => {
           'addr_detail': delivery.addr_detail,
           'requests': request,
           'amount': amount,
+          'delivery_type': deliveryInfo,
 
 
 
@@ -146,17 +144,12 @@ const Checkout = () => {
     }
   };
 
-  // 함수를 통해 배송 정보 업데이트
-  const updateDeliveryInfo = (key, value) => {
-    setDeliveryInfo((prevInfo) => ({ ...prevInfo, [key]: value }));
-
-  };
 
   const getImageUrl = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
-    if (deliveryInfo.method === 'standard') {
+    if (deliveryInfo == 'normal') {
       return './post.jpg';
-    } else if (deliveryInfo.method === 'express') {
+    } else if (deliveryInfo == 'daily') {
       return './today.jpg';
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
@@ -272,11 +265,11 @@ const Checkout = () => {
               <label>배송방법</label>
               <select
                 className={styles.postOption}
-                value={deliveryInfo.method}
-                onChange={(e) => updateDeliveryInfo('method', e.target.value)}
+                value={deliveryInfo}
+                onChange={(e) => setDeliveryInfo(e.target.value)}
               >
-                <option value="standard">일반 배송</option>
-                <option value="express">당일 배송</option>
+                <option value="normal">일반 배송</option>
+                <option value="daily">당일 배송</option>
               </select>
               <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
 
