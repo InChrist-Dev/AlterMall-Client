@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   try{
-    const fetchData = async()=>{
+    const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -21,13 +21,13 @@ const OrderHistory = () => {
       console.log(data)
      
     }
-  
+    useEffect(()=>{
+      fetchData();
+    })
   }catch{
 
   }
-  useEffect(()=>{
-    fetchData();
-  })
+ 
   return (
     <div>
       <div className={styles.topArea}>
