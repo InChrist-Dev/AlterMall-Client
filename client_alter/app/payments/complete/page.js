@@ -3,7 +3,7 @@
 import React from 'react';
 import styles from './complete.module.css';
 
-export default async function Complete() {
+export default async function Complete({searchParams}) {
   // const response = await fetch(`https://udtown.site/customer/order/`,{
   //   headers: {
   //     Authorization: `Bearer ${accessToken}`,
