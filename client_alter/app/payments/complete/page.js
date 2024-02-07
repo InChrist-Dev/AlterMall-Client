@@ -25,7 +25,7 @@ export default async function Complete({ searchParams }) {
       <h1 className={styles.title}>결제가 완료되었습니다</h1>
       <ul className={styles.infoList}>
         <li className={styles.infoListItem}>
-          <span className={styles.label}>결제 상품:</span>
+          {/* <span className={styles.label}>결제 상품:</span>
           {searchParams.orderId}
         </li>
         <li className={styles.infoListItem}>
@@ -33,7 +33,7 @@ export default async function Complete({ searchParams }) {
           {searchParams.orderId}
         </li>
         <li className={styles.infoListItem}>
-          <span className={styles.label}>결제승인날짜:</span>
+          <span className={styles.label}>결제승인날짜:</span> */}
           {/* {Intl.DateTimeFormat().format(new Date(payments.approvedAt))} */}
         </li>
       </ul>

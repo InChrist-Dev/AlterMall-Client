@@ -11,7 +11,6 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showAllDeliveryInfoModal, setShowAllDeliveryInfoModal] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
@@ -35,7 +34,6 @@ const Checkout = () => {
     items.map((item) => {
       amount += item.price * item.stock;
     });
-    console.log(info);
     const orderItems = items.map((item) => {
       return {
         "order_id": info.order_id,
@@ -191,7 +189,7 @@ const Checkout = () => {
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data.data.rows[0]);
+
       setItems(data.data.rows[0].OrderDetails);
 
       const response2 = await fetch(`https://udtown.site/customer/deliver`, {
@@ -203,7 +201,7 @@ const Checkout = () => {
 
       });
       const data2 = await response2.json();
-      console.log(data2);
+     
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
