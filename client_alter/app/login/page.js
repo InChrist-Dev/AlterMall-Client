@@ -9,7 +9,7 @@ export default async function handler(){
     const parsedHash = new URLSearchParams(window.location.search.substring(1));
     const accessToken = parsedHash.get("accessToken");
     console.log(`${accessToken} query is`)
-    Cookies.set('accessToken', accessToken, { expires: 7 });  // 7일 동안 유지되도록 설정
+    Cookies.set('accessToken', accessToken, { expires: 1 });  // 7일 동안 유지되도록 설정
     const url = `https://udtown.site/auth/google`;
 
    
