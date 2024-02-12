@@ -1,8 +1,8 @@
 'use client'
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Cookies from 'js-cookie';
 
-export default async function handler() {
+export default function LoginPage() {
   useEffect(() => {
     try {
       const parsedHash = new URLSearchParams(window.location.search.substring(1));
@@ -19,5 +19,7 @@ export default async function handler() {
     } catch (error) {
       console.error(error);
     }
-  }, []); // 빈 배열을 전달하여 useEffect가 컴포넌트가 처음으로 마운트될 때 한 번만 실행되도록 함
+  }, []);
+
+  return null; // 로그인 페이지는 아무것도 렌더링하지 않습니다.
 }
