@@ -8,10 +8,13 @@ export default async function handler(){
     const parsedHash = new URLSearchParams(window.location.search.substring(1));
     const accessToken = parsedHash.get("accessToken");
 
-    Cookies.set('accessToken', accessToken, { expires: 1 });  // 7일 동안 유지되도록 설정
-    useEffect(()=>{
+    Cookies.set('accessToken', accessToken, { expires: 1 });  // 7일 동안 유지되도록 설정]
+    const login = ()=>{
       alert('로그인 되었습니다');
       window.location.href='https://altermall.shop';
+    }
+    useEffect(()=>{
+      login;
     },[])
 
     
