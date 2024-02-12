@@ -3,6 +3,7 @@ import styles from './user.module.css';
 import { Link } from 'react-router-dom';
 
 import { signOut } from 'next-auth/react';
+import Cookies from 'js-cookie';
 
 const SideMenu = () => {
   return (
@@ -35,7 +36,7 @@ const SideMenu = () => {
       <ul>
         <li><Link to="/user/shipping-address" className={styles.menuItem}>배송지 관리</Link></li>
         <li><Link to="/user/profile" className={styles.menuItem}>정보 수정</Link></li>
-        <li><span onClick={()=>{window.location.href='https://udtown.site/auth/logout'}}className={styles.menuItem}>로그아웃</span></li>
+        <li><span onClick={()=>{ Cookies.remove('accessToken');}}className={styles.menuItem}>로그아웃</span></li>
       </ul>
     </div>
   );
