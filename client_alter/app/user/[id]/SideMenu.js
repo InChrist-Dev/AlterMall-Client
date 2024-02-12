@@ -9,7 +9,7 @@ const SideMenu = () => {
   const logout=()=>{
     Cookies.remove('accessToken');
     alert("로그아웃 되었습니다");
-    window.location.href('https://altermall.shop')
+    window.location.href='https://altermall.shop';
 
   }
   return (
