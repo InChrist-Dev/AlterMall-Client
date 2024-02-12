@@ -13,10 +13,7 @@ export default async function handler(){
       alert('로그인 되었습니다');
       window.location.href='https://altermall.shop';
     }
-    useEffect(()=>{
       login();
-    },[])
-
     
   }
   catch(error){
