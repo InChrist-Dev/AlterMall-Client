@@ -24,7 +24,7 @@ const Footer = () => {
         <p>사업자 등록번호: 723-30-01491</p>
         <p>유선번호: 010-8933-8962</p>
         <p>통신판매업 신고번호: 2024-의정부송산-0014</p>
-        {/* Add more information as needed */}
+     
       </div>
       <div className={styles.column}>
         <h3 className={styles.title}>Contact Us</h3>
@@ -32,9 +32,9 @@ const Footer = () => {
         <p>경기도 의정부시 민락동 692-8 A동 5층</p>
         <p>Email: altermall@naver.com</p>
        
-        {/* Add more information as needed */}
+      
       </div>
-      {/* Add more columns or sections as needed */}
+     얼터몰은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 얼터몰은 상품,거래정보 및 거래 등에 대하여 책임을 지지 않습니다.
     </footer>
     </span>
   );
