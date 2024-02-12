@@ -27,5 +27,5 @@ export function LogOutBtn() {
    
   
  
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { window.location.href='https://udtown.site/auth/logout'}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {  Cookies.remove('accessToken');}}/>)
 } 
