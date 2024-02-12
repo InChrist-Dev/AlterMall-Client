@@ -217,27 +217,29 @@ const ItemPage = (props) => {
       <div className={styles.detail} id="image3">
         <img src="/back2.jpg" />
       </div>
-      <div>
-      <h1>리뷰 게시판</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">제목:</label>
+      <div className={styles.container}> {/* 스타일 적용 */}
+      <h1 className={styles.title}>리뷰 게시판</h1> {/* 스타일 적용 */}
+      <form onSubmit={handleSubmit} className={styles.form}> {/* 스타일 적용 */}
+        <div className={styles.formGroup}> {/* 스타일 적용 */}
+          <label htmlFor="title" className={styles.label}>제목:</label> {/* 스타일 적용 */}
           <input
             type="text"
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className={styles.input} {/* 스타일 적용 */}
           />
         </div>
-        <div>
-          <label htmlFor="content">내용:</label>
+        <div className={styles.formGroup}> {/* 스타일 적용 */}
+          <label htmlFor="content" className={styles.label}>내용:</label> {/* 스타일 적용 */}
           <textarea
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
+            className={styles.textarea} {/* 스타일 적용 */}
           />
         </div>
-        <button type="submit">저장</button>
+        <button type="submit" className={styles.button}>저장</button> {/* 스타일 적용 */}
       </form>
     </div>
       {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
