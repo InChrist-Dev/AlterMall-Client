@@ -62,7 +62,7 @@ const ItemPage = (props) => {
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify({ amount: quantity ,item_id: id,customer_id: '89122e30-b9c5-11ee-9d01-07fefcbd1ba0'}),
+        body: JSON.stringify({ amount: quantity ,item_id: id}),
       })
         .then((response) => {
           if (response.status == 405) {
@@ -153,20 +153,6 @@ const ItemPage = (props) => {
             </li>
             <li>
               <Link
-                to="image2"
-                smooth={true}
-                duration={500}
-                onClick={() => {
-                  setActiveLink("image2");
-                  
-                }}
-                className={activeLink == "image2" ? styles.activeLink : styles.Link}
-              >
-                구매후기
-              </Link>
-            </li>
-            <li>
-              <Link
                 to="image3"
                 smooth={true}
                 duration={500}
@@ -192,6 +178,20 @@ const ItemPage = (props) => {
               >
                 구매정보
               </Link>
+              <li>
+              <Link
+                to="image2"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image2");
+                  
+                }}
+                className={activeLink == "image2" ? styles.activeLink : styles.Link}
+              >
+                구매후기
+              </Link>
+            </li>
           </li>
         </ul>
       </nav>
