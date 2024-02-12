@@ -227,7 +227,7 @@ const ItemPage = (props) => {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className={styles.input} {/* 스타일 적용 */}
+            className={styles.input} 
           />
         </div>
         <div className={styles.formGroup}> {/* 스타일 적용 */}
@@ -236,7 +236,7 @@ const ItemPage = (props) => {
             id="content"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className={styles.textarea} {/* 스타일 적용 */}
+            className={styles.textarea}
           />
         </div>
         <button type="submit" className={styles.button}>저장</button> {/* 스타일 적용 */}
