@@ -14,7 +14,7 @@ export default async function handler(){
       window.location.href='https://altermall.shop';
     }
     useEffect(()=>{
-      login;
+      login();
     },[])
 
     
