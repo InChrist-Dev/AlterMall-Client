@@ -16,6 +16,16 @@ const ItemPage = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState('');
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   // 여기에 서버에 데이터를 전송하는 코드를 추가합니다.
+  //   const data = { title, content };
+  //   console.log(data); // 임시로 데이터를 콘솔에 출력합니다.
+  //   // 서버에 데이터를 전송하는 API 호출 등의 코드를 추가해야 합니다.
+  // };
 
   const fetchData = async () => {
     try {
@@ -207,7 +217,29 @@ const ItemPage = (props) => {
       <div className={styles.detail} id="image3">
         <img src="/back2.jpg" />
       </div>
-      
+      <div>
+      <h1>리뷰 게시판</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="title">제목:</label>
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="content">내용:</label>
+          <textarea
+            id="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+        </div>
+        <button type="submit">저장</button>
+      </form>
+    </div>
       {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
     </div>
     </div>
