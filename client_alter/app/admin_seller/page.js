@@ -70,8 +70,12 @@ const ItemPage = (props) => {
   const Cancel = useCallback(
     (id) => {
      
-      fetch(`http://211.45.170.37:3000/customer/cart/${id}`, {
+      fetch(`https://udtown.site/category/${id}`, {
         method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
     
       })
         .then((response) => {
@@ -90,18 +94,50 @@ const ItemPage = (props) => {
     },
     [],
   );
+
+  const Update = useCallback(
+    (id,stock) => {
+     
+      fetch(`https://udtown.site/category/${id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          'stock': stock,
+        }),
+    
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert('수정 실패하였습니다');
+          } else if (response.status == 201) {
+            alert('수정되었습니다');
+          }
+
+
+        })
+        .finally(() => {
+          window.location.reload();
+        });
+
+    },
+    [],
+  );
   return (
     <div style={{'marginBottom':'100px'}}>
-      <h1 className={styles.title}>관리자주문조회</h1>
+      <h1 className={styles.title}>관리자 주문/조회</h1>
       <div className={styles.basketContainer}>
         <table className={styles.productTable}>
           <thead>
             <tr>
            
               <th>상품</th>
+              <th>카테고리</th>
               <th>가격</th>
               <th>취소</th>
-              <th>수량</th>
+              <th>재고</th>
             </tr>
           </thead>
           <tbody>
@@ -115,7 +151,10 @@ const ItemPage = (props) => {
                     alt={items.item_name}
                     className={styles.productImage}
                   />
-                    {items.category}
+                  <td>
+                  {items.category}
+                  </td>
+                   
                     {items.item_name}
                   
                     
@@ -148,17 +187,18 @@ const ItemPage = (props) => {
                       }
                     >+
                     </button>
+                    <button
+                      onClick={() =>
+                        Update(items.id,items.stock)
+                      }
+                    >재고저장
+                    </button>
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
-          <button
-                      onClick={() =>
-                        handleQuantityChange(index,  items.stock + 1)
-                      }
-                    >저장
-                    </button>
+          
         </table>
         <table className={styles.orderTable}>
         <thead>
