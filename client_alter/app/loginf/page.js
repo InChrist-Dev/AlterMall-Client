@@ -14,8 +14,8 @@ export default function LoginPage() {
         const response = await fetch('https://udtown.site/auth/seller', {
           method: 'POST',
           body: JSON.stringify({
-            'id':username,
-            'pw': password,
+            'id':'rabe',
+            'pw': 'raberabe',
           }), 
         });
   
