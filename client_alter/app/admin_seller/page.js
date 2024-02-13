@@ -160,7 +160,7 @@ const ItemPage = (props) => {
                 <td>
                   <button
                     className={styles.cancelButton}
-                    onClick={() => cancelOrder(order.id)}
+                    
                   >
                     취소
                   </button>
@@ -169,9 +169,7 @@ const ItemPage = (props) => {
             ))}
           </tbody>
       </div>
-      <div className={styles.totalPrice}>
-          총 가격: {calculateTotalPrice()}원
-        </div>
+      
       
         
     </div>
