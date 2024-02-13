@@ -170,7 +170,7 @@ const ItemPage = (props) => {
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
                   <img
-                    src={`http://211.45.170.37:3000/${items.Item.img}`}
+                    src={`https://udtown.site/${items.Item.img}`}
                     alt={items.Item.item_name}
                     className={styles.productImage}
                   />
