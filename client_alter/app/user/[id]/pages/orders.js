@@ -28,15 +28,12 @@ const OrderHistory = () => {
   }catch{
 
   }
-  const firstItemName = orders.OrderDetails.length > 0 ? orders.OrderDetails[0].item_name : '';
-
-  // 첫 번째 상품 이외의 상품 개수를 계산합니다.
-  const otherItemsCount =  orders.OrderDetails.length > 1 ?  orders.OrderDetails.length - 1 : 0;
+ 
   return (
     <div>
       <div className={styles.topArea}>
       주문내역
-   
+    
   </div>
   {orders.map((items, index) => (
               <tr key={index} className={styles.productCard}>
@@ -48,7 +45,7 @@ const OrderHistory = () => {
                     alt={items.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                   ${firstItemName}외 ${otherItemsCount}건
+                   {orders.OrderDetails[0].item_name}외 {orders.OrderDetails.length - 1}건
                     
                    
                  
