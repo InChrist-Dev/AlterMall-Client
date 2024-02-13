@@ -8,7 +8,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    console.log(username,password)
    
     try {
         const response = await fetch('https://udtown.site/auth/seller', {
