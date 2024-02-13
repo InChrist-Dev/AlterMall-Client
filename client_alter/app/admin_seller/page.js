@@ -141,10 +141,11 @@ const ItemPage = (props) => {
         <table className={styles.orderTable}>
         <thead>
             <tr>
+            <th>이미지</th>
               <th>주문 ID</th>
               <th>상품명</th>
               <th>가격</th>
-              <th>주문량</th>
+              
               <th>주문 일자</th>
               <th>주문자 정보</th>
               <th>배송 정보</th>
@@ -163,7 +164,7 @@ const ItemPage = (props) => {
                 <td>{order.Order.order_id}</td>
                 <td>{order.Item.item_name}</td>
                 <td>{order.Item.price}원</td>
-                <td>{order.Order.amount}</td>
+              
                 <td>{order.Order.createdAt}</td>
                 <td>
                   <p>주문자명: {order.Order.customer_name}</p>
