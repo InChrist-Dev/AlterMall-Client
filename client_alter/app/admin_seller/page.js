@@ -31,7 +31,21 @@ const ItemPage = (props) => {
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
+    try {
+      const response = await fetch(`https://udtown.site/seller/items`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setItems(data.data.rows);
 
+
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
 
   };
 
@@ -78,7 +92,7 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.map((items, index) => (
+            {/* {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
@@ -121,7 +135,7 @@ const ItemPage = (props) => {
                   </div>
                 </td>
               </tr>
-            ))}
+            ))} */}
           </tbody>
         </table>
         <thead>
