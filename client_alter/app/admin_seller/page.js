@@ -61,7 +61,7 @@ const ItemPage = (props) => {
       const updatedItems = [...items];
       updatedItems[index].stock = 0;
       setItems(updatedItems);
-    }
+    }};
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
