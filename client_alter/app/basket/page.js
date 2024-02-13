@@ -159,7 +159,7 @@ const ItemPage = (props) => {
   const Cancel = useCallback(
     (id) => {
      
-      fetch(`https://udtown.site/customer/cart/${id}`, {
+      fetch(`https://udtown.site/customer/cart?id=${id}`, {
         method: 'DELETE',
     
       })
