@@ -1,20 +1,21 @@
 'use client'
-import { useState } from 'react';
+import { useState,useCallback } from 'react';
 import styles from './loginf.module.css';
+
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    
     console.log(username,password)
    
     try {
         const response = await fetch('https://udtown.site/auth/seller', {
           method: 'POST',
           body: JSON.stringify({
-            'id':username,
+            'id': username,
             'pw': password,
           }), 
         });
