@@ -147,13 +147,14 @@ const ItemPage = (props) => {
   };
 
   const handleQuantityChange = (index, newAmount) => {
+   
     if (newAmount >= 0) {
       const newQuantity = { ...quantity };
       newQuantity[index] = newAmount;
       setQuantity(newQuantity);
 
       const updatedItems = [...items];
-      updatedItems[index].stock = newAmount;
+      updatedItems[index].amount = newAmount;
       setItems(updatedItems);
     } else {
       const newQuantity = { ...quantity };
@@ -161,7 +162,7 @@ const ItemPage = (props) => {
       setQuantity(newQuantity);
 
       const updatedItems = [...items];
-      updatedItems[index].stock = 0;
+      updatedItems[index].amount = 0;
       setItems(updatedItems);
     }
   };
