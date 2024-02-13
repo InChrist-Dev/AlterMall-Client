@@ -22,8 +22,11 @@ export default function LoginPage() {
             "pw": password,
            
           }), 
-        }) .then((res) => console.log(res)
-        );
+        }) .then((res) => res.json())
+        .then((json) => {
+       
+          console.log(json);
+        });
       } catch (error) {
         // 에러 처리
         console.error('Failed to send like request', error);
