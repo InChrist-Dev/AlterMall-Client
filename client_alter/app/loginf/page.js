@@ -24,8 +24,7 @@ export default function LoginPage() {
           }), 
         }) .then((res) => res.json())
         .then((json) => {
-       
-          console.log(json);
+          Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
         });
       } catch (error) {
         // 에러 처리
