@@ -51,9 +51,16 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-  
+
   const handleSubmit = async () =>{
-    const orderItems = items.map((item) => {
+    const selectedOrderItems = items.filter((item, index) => selectedItems.includes(index));
+
+    // 선택된 상품이 없으면 아무 동작도 하지 않습니다.
+    if (selectedOrderItems.length === 0) {
+      alert('주문할 상품을 선택해주세요.');
+      return;
+    }
+    const orderItems = selectedOrderItems.map((item) => {
       return {
         "order_id": myUuid,
         "seller_id": item.Item.seller_id,
