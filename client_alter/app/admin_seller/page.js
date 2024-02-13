@@ -142,7 +142,7 @@ const ItemPage = (props) => {
               <tr key={index} className={styles.orderRow}>
                    <img
                     src={`https://udtown.site/${order.Item.img}`}
-                    alt={items.Item.item_name}
+                    alt={order.Item.item_name}
                     className={styles.productImage}
                   />
                 <td>{order.Order.order_id}</td>
