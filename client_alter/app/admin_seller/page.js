@@ -5,7 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from '../basket/basket.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
 
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
 
@@ -17,7 +20,12 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/seller/order`);
+      const response = await fetch(`https://udtown.site/seller/order`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        });
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
