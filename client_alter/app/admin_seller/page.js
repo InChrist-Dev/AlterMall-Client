@@ -136,7 +136,7 @@ const ItemPage = (props) => {
               <th>상품</th>
               <th>카테고리</th>
               <th>가격</th>
-              <th>취소</th>
+              {/* <th>취소</th> */}
               <th>재고</th>
             </tr>
           </thead>
@@ -155,8 +155,9 @@ const ItemPage = (props) => {
                   {items.category}
                   </td>
                    
-                    {items.item_name}
-                  
+                  <td>
+                  {items.item_name}
+                  </td>
                     
                    
                  
@@ -164,14 +165,14 @@ const ItemPage = (props) => {
                 <td>
                   <p>{items.price}원</p>
                 </td>
-                <td>
+                {/* <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
                         {Cancel(items.id)}
                       }
                     >X
                     </button>
-                </td>
+                </td> */}
                 <td>
                   <div className={styles.quantityControl}>
                   <button
@@ -212,7 +213,7 @@ const ItemPage = (props) => {
               <th>주문자 정보</th>
               <th>배송 정보</th>
               <th>상태</th>
-              <th>취소</th>
+              <th>수락</th>
             </tr>
           </thead>
           <tbody>
@@ -236,15 +237,15 @@ const ItemPage = (props) => {
                 </td>
                 <td>
                   <p>배송 유형: {order.Order.delivery_type}</p>
-                  <p>특별 요청: {order.Order.requests}</p>
+                  <p>요청 사항: {order.Order.requests}</p>
                 </td>
-                <td>{order.Order.state}</td>
+                <td>{order.state}</td>
                 <td>
                   <button
                     className={styles.cancelButton}
                     
                   >
-                    취소
+                    수락
                   </button>
                 </td>
               </tr>
