@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import styles from './loginf.module.css';
+import Cookies from 'js-cookie';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -21,17 +22,11 @@ export default function LoginPage() {
             "pw": password,
            
           }), 
+        }) .then((res) => res.json())
+        .then((json) => {
+        
+          console.log(json);
         });
-  
-        if (response.status == 200) {
-         
-    
-        } else if (response.status == 201) {
-          alert('저장되었습니다');
-     
-        } else {
-          
-        }
       } catch (error) {
         // 에러 처리
         console.error('Failed to send like request', error);
