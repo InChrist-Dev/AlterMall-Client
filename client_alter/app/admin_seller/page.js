@@ -27,15 +27,10 @@ const ItemPage = (props) => {
         },
         });
       const data = await response.json();
-
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data.data.rows);
       setItems(data.data.rows);
 
 
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -45,71 +40,6 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-  
-  const handleSubmit = async () =>{
-    await fetch('https://udtown.site/customer/order',{
-      method:'post',
-      body:JSON.stringify({
-        "order_id":myUuid,
-        "addr":"rich building",
-        "addr_detail":"5th floor",
-        "customer_id":"89122e30-b9c5-11ee-9d01-07fefcbd1ba0",
-        "amount":1,
-        "createdAt":"2024-01-23T08:11:41.000Z",
-        "item_id":"e8f12213-5585-4c3d-ac52-89ce9bf9440f",}),
-      headers:{
-    
-          "Content-Type":"application/json",
-      },
-  }).then(async (response) => {
-    if (response.status == 405) {
-      alert('주문 실패하였습니다');
-    } else if (response.status == 201) {
-      alert('주문페이지로 넘어갑니다');
-      console.log(response);
-      const data = await response.json();
-      console.log(data)
-    }
-
-
-  }).finally(
-
-  )
-  }
-  const toggleItemSelection = (index) => {
-    const newSelectedItems = [...selectedItems];
-    if (newSelectedItems.includes(index)) {
-      newSelectedItems.splice(newSelectedItems.indexOf(index), 1);
-    } else {
-      newSelectedItems.push(index);
-    }
-    setSelectedItems(newSelectedItems);
-  };
-
-  const toggleAllItemsSelection = () => {
-    if (selectedItems.length === items.length) {
-      setSelectedItems([]);
-    } else {
-      setSelectedItems([...Array(items.length).keys()]);
-    }
-  };
-
-  const calculateTotalPrice = () => {
-    return selectedItems.reduce(
-      (total, index) => total + items[index].Item.price * quantity[index],
-      0
-    );
-  };
-
-  const handleQuantityChange = (index, newAmount) => {
-    const newQuantity = { ...quantity };
-    newQuantity[index] = newAmount;
-    setQuantity(newQuantity);
-
-    const updatedItems = [...items];
-    updatedItems[index].amount = newAmount;
-    setItems(updatedItems);
-  };
 
   const Cancel = useCallback(
     (id) => {
@@ -141,15 +71,7 @@ const ItemPage = (props) => {
         <table className={styles.productTable}>
           <thead>
             <tr>
-              <th>
-                <input
-                  type="checkbox"
-                  className={styles.checkbox}
-                  checked={selectedItems.length === items.length}
-                  onChange={toggleAllItemsSelection}
-                />
-                
-              </th>
+           
               <th>상품</th>
               <th>가격</th>
               <th>취소</th>
@@ -159,14 +81,7 @@ const ItemPage = (props) => {
           <tbody>
             {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
-                <td>
-                  <input
-                    type="checkbox"
-                    className={styles.checkbox}
-                    checked={selectedItems.includes(index)}
-                    onChange={() => toggleItemSelection(index)}
-                  />
-                </td>
+              
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
                   <img
@@ -184,8 +99,9 @@ const ItemPage = (props) => {
                     {items.Order.post}
                     {items.Order.requests}
                     {items.Order.state}
+                    
                     {items.Order.delivery_type}
-                    {items.stock}
+                    
                    
                  
                 </td>
@@ -202,14 +118,56 @@ const ItemPage = (props) => {
                 </td>
                 <td>
                   <div className={styles.quantityControl}>
-                
+                  {items.stock}
                   </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-     
+        <thead>
+            <tr>
+              <th>주문 ID</th>
+              <th>상품명</th>
+              <th>가격</th>
+              <th>주문량</th>
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>취소</th>
+            </tr>
+          </thead>
+          <tbody>
+            {items.map((order, index) => (
+              <tr key={index} className={styles.orderRow}>
+                <td>{order.Order.order_id}</td>
+                <td>{order.Item.item_name}</td>
+                <td>{order.Item.price}원</td>
+                <td>{order.Order.amount}</td>
+                <td>{order.Order.createdAt}</td>
+                <td>
+                  <p>주문자명: {order.Order.customer_name}</p>
+                  <p>연락처: {order.Order.phone}</p>
+                  <p>우편번호: {order.Order.post}</p>
+                  <p>주소: {order.Order.addr} {order.Order.addr_detail}</p>
+                </td>
+                <td>
+                  <p>배송 유형: {order.Order.delivery_type}</p>
+                  <p>특별 요청: {order.Order.requests}</p>
+                </td>
+                <td>{order.Order.state}</td>
+                <td>
+                  <button
+                    className={styles.cancelButton}
+                    onClick={() => cancelOrder(order.id)}
+                  >
+                    취소
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
       </div>
       <div className={styles.totalPrice}>
           총 가격: {calculateTotalPrice()}원
