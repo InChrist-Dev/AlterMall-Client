@@ -38,7 +38,7 @@ const ItemPage = (props) => {
       const initialQuantity = data.data.rows.map((item) => item.amount );
     
       setQuantity(initialQuantity);
-
+      setSelectedItems([...Array(data.data.rows.length).keys()]);
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
