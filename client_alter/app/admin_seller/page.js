@@ -151,17 +151,18 @@ const ItemPage = (props) => {
                     alt={items.item_name}
                     className={styles.productImage}
                   />
-                  <td>
-                  {items.category}
-                  </td>
+                 
                    
-                  <td>
+                 
                   {items.item_name}
-                  </td>
+                  
                     
                    
                  
                 </td>
+                <td>
+                  {items.category}
+                  </td>
                 <td>
                   <p>{items.price}원</p>
                 </td>
