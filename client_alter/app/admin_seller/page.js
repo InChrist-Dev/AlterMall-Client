@@ -8,10 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 
 const ItemPage = (props) => {
-  const [categoryName, setCategoryName] = useState([]);
-  const [categoryPrice, setCategoryPrice] = useState([]);
-  const [categoryS, setCategoryS] = useState([]);
-  const [categoryImage, setCategoryImage] = useState([]);
+
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
@@ -20,16 +17,13 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/user/seller/detail/89122e30-b9c5-11ee-9d01-07fefcbd1ba0`);
+      const response = await fetch(`https://udtown.site/user/seller/order`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
       setItems(data.data.rows);
-      
-      const initialQuantity = data.data.rows.map((item) => item.amount );
-    
-      setQuantity(initialQuantity);
+
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));

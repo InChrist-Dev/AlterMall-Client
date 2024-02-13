@@ -25,6 +25,7 @@ export default function LoginPage() {
         }) .then((res) => res.json())
         .then((json) => {
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
+          window.location.href="https://altermall.shop/admin_seller"
         });
       } catch (error) {
         // 에러 처리
