@@ -1,7 +1,6 @@
 'use client'
-import { useState,useCallback } from 'react';
+import { useState } from 'react';
 import styles from './loginf.module.css';
-
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -15,7 +14,7 @@ export default function LoginPage() {
         const response = await fetch('https://udtown.site/auth/seller', {
           method: 'POST',
           body: JSON.stringify({
-            'id': username,
+            'id':username,
             'pw': password,
           }), 
         });
@@ -39,7 +38,7 @@ export default function LoginPage() {
   return (
     <div className={styles.container}>
       <h1>로그인</h1>
-      <form onSubmit={handleSubmit} className={styles.form}>
+      <span  className={styles.form}>
         <label className={styles.label} htmlFor="username">아이디</label>
         <input className={styles.input}
           type="text"
@@ -54,8 +53,8 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className={styles.button} type="submit">확인</button>
-      </form>
+        <button className={styles.button}  onClick={handleSubmit}>확인</button>
+      </span>
     </div>
   );
 }
