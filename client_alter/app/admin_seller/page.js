@@ -29,7 +29,7 @@ const ItemPage = (props) => {
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data);
+      console.log(data.data.rows);
       setItems(data.data.rows);
 
 
@@ -174,8 +174,18 @@ const ItemPage = (props) => {
                     alt={items.Item.item_name}
                     className={styles.productImage}
                   />
-                
+                    {items.Item.category}
                     {items.Item.item_name}
+                    {items.Item.stock}
+                    {items.Order.addr}{items.Order.addr_detail}
+                    {items.Order.amount}
+                    {items.Order.order_id}
+                    {items.Order.phone}
+                    {items.Order.post}
+                    {items.Order.requests}
+                    {items.Order.state}
+                    {items.Order.delivery_type}
+                    
                    
                  
                 </td>
