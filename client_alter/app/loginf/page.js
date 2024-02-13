@@ -8,9 +8,8 @@ export default function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // 여기에서는 로그인 정보를 확인하고 처리하는 로직을 추가해야 합니다.
-    console.log("Username:", username);
-    console.log("Password:", password);
+  
+   
     try {
         const response = await fetch('https://udtown.site/auth/seller', {
           method: 'POST',
@@ -25,7 +24,7 @@ export default function LoginPage() {
     
         } else if (response.status == 201) {
           alert('저장되었습니다');
-          closeModal();
+     
         } else {
           
         }

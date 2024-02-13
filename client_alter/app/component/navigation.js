@@ -39,6 +39,15 @@ const NavigationBar = (session) => {
     window.location.href = `/search?search=${search}`;
   };
 
+  const handleKeyDown = (event) => {
+    const key = event.code;
+    switch(key){
+        case 'Enter':
+          handleSearch();
+        break;
+        default:
+    }
+}
   return (
     <span>
       <div className="navigation">
@@ -50,7 +59,9 @@ const NavigationBar = (session) => {
             <li className="keyword-dropdown">
               <input type="text" className="searchInput" placeholder="검색어를 입력하세요"
                 value={search}
-                onChange={(e) => setSearch(e.target.value)} />
+                
+                onChange={(e) => setSearch(e.target.value)}
+                onKeyDown={handleKeyDown} />
               {isKeywordMenu ? <div className="keyword-menu">
                 <ul>
                   {relatedKeywords.map((keyword, index) => (
