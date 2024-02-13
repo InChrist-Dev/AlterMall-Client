@@ -123,7 +123,7 @@ const ItemPage = (props) => {
                  
                 </td>
                 <td>
-                  <p>{items.Item.price}원</p>
+                  <p>{items.price}원</p>
                 </td>
                 <td>
                 <button className={styles.deleteButton}
