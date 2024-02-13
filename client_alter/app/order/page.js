@@ -65,16 +65,7 @@ const Checkout = () => {
 
         }),
       });
-      await fetch('https://udtown.site/customer/orderdetail', {
-        method: 'post',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          items: orderItems,
-        }),
-      });
+    
       await tosspayments.requestPayment('카드', {
         orderId: info.order_id,
         amount: amount,
@@ -303,14 +294,14 @@ const Checkout = () => {
               <tbody>
                 {items.length > 0 ? items.map((items, index) => (
                   <tr key={index} className={styles.productCard}>
-                    <td>
+                    {/* <td>
                       <input
                         type="checkbox"
                         className={styles.checkbox}
                         checked={selectedItems.includes(index)}
                         onChange={() => toggleItemSelection(index)}
                       />
-                    </td>
+                    </td> */}
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
@@ -335,19 +326,19 @@ const Checkout = () => {
                     </td>
                     <td>
                       <div className={styles.quantityControl}>
-                        <button
+                        {/* <button
                           onClick={() =>
                             handleQuantityChange(index, items.stock - 1)
                           }
                         >-
-                        </button>
+                        </button> */}
                         <span>{items.stock}</span>
-                        <button
+                        {/* <button
                           onClick={() =>
                             handleQuantityChange(index, items.stock + 1)
                           }
                         >+
-                        </button>
+                        </button> */}
                       </div>
                     </td>
                   </tr>
