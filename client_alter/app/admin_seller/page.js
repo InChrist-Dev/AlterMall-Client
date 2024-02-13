@@ -17,7 +17,7 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/user/seller/order`);
+      const response = await fetch(`https://udtown.site/seller/order`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
