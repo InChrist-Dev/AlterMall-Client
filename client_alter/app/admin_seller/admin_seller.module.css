@@ -15,6 +15,10 @@
     border-collapse: collapse;
    
   }
+  .productImage {
+    width: 100px;
+   
+  }
   
   .productTable th,
   .productTable td {

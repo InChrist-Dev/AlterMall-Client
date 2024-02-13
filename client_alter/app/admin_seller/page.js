@@ -138,6 +138,7 @@ const ItemPage = (props) => {
             ))} */}
           </tbody>
         </table>
+        <table className={styles.orderTable}>
         <thead>
             <tr>
               <th>주문 ID</th>
@@ -186,6 +187,7 @@ const ItemPage = (props) => {
               </tr>
             ))}
           </tbody>
+          </table>
       </div>
       
       
