@@ -45,7 +45,7 @@ const OrderHistory = () => {
                     alt={items.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                   {orders.OrderDetails[0].item_name}외 {orders.OrderDetails.length - 1}건
+                   {orders.OrderDetails[0].item_name}외 건
                     
                    
                  
