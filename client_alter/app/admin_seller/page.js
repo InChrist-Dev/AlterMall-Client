@@ -157,7 +157,7 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.slice(0, displayCount).map((items, index) => (
+            {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td>
                   <input
@@ -176,7 +176,7 @@ const ItemPage = (props) => {
                   />
                     {items.Item.category}
                     {items.Item.item_name}
-                    {items.Item.stock}
+                    
                     {items.Order.addr}{items.Order.addr_detail}
                     {items.Order.amount}
                     {items.Order.order_id}
@@ -185,7 +185,7 @@ const ItemPage = (props) => {
                     {items.Order.requests}
                     {items.Order.state}
                     {items.Order.delivery_type}
-                    
+                    {items.stock}
                    
                  
                 </td>
@@ -202,19 +202,7 @@ const ItemPage = (props) => {
                 </td>
                 <td>
                   <div className={styles.quantityControl}>
-                    <button
-                      onClick={() =>
-                        handleQuantityChange(index, items.amount - 1)
-                      }
-                    >-
-                    </button>
-                    <span>{items.amount}</span>
-                    <button
-                      onClick={() =>
-                        handleQuantityChange(index,  items.amount + 1)
-                      }
-                    >+
-                    </button>
+                
                   </div>
                 </td>
               </tr>
@@ -226,10 +214,7 @@ const ItemPage = (props) => {
       <div className={styles.totalPrice}>
           총 가격: {calculateTotalPrice()}원
         </div>
-        <div className={styles.Buttons}>
-        <button className={styles.addToCartButton} onClick={()=>{location.href='/'}}>쇼핑 계속하기</button>
-        <button className={styles.BuyButton} onClick={()=>{handleSubmit()}}>바로구매</button>
-        </div>
+      
         
     </div>
   );
