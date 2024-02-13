@@ -147,19 +147,29 @@ const ItemPage = (props) => {
   };
 
   const handleQuantityChange = (index, newAmount) => {
-    const newQuantity = { ...quantity };
-    newQuantity[index] = newAmount;
-    setQuantity(newQuantity);
+    if (newAmount >= 0) {
+      const newQuantity = { ...quantity };
+      newQuantity[index] = newAmount;
+      setQuantity(newQuantity);
 
-    const updatedItems = [...items];
-    updatedItems[index].amount = newAmount;
-    setItems(updatedItems);
+      const updatedItems = [...items];
+      updatedItems[index].stock = newAmount;
+      setItems(updatedItems);
+    } else {
+      const newQuantity = { ...quantity };
+      newQuantity[index] = 0;
+      setQuantity(newQuantity);
+
+      const updatedItems = [...items];
+      updatedItems[index].stock = 0;
+      setItems(updatedItems);
+    }
   };
 
   const Cancel = useCallback(
     (id) => {
      
-      fetch(`https://udtown.site/customer/cart?id=${id}`, {
+      fetch(`https://udtown.site/customer/cart/${id}`, {
         method: 'DELETE',
     
       })
@@ -173,7 +183,7 @@ const ItemPage = (props) => {
 
         })
         .finally(() => {
-          // window.location.reload();
+          window.location.reload();
         });
 
     },
