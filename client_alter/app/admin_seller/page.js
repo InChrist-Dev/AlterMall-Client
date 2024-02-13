@@ -11,16 +11,29 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
-
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [displayCount, setDisplayCount] = useState(10);
-  const [quantity, setQuantity] = useState([]);
+  const [orders,setOrders] = useState([]);
   const [items,setItems] = useState([]);
   const myUuid = uuidv4();
   console.log(myUuid);
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/seller/order`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setOrders(data.data.rows);
+
+
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+
+    try {
+      const response = await fetch(`https://udtown.site/seller/detail`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -139,8 +152,13 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.map((order, index) => (
+            {orders.map((order, index) => (
               <tr key={index} className={styles.orderRow}>
+                   <img
+                    src={`https://udtown.site/${order.Item.img}`}
+                    alt={items.Item.item_name}
+                    className={styles.productImage}
+                  />
                 <td>{order.Order.order_id}</td>
                 <td>{order.Item.item_name}</td>
                 <td>{order.Item.price}원</td>
