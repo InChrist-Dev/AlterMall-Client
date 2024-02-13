@@ -172,6 +172,10 @@ const ItemPage = (props) => {
      
       fetch(`https://udtown.site/customer/cart/${id}`, {
         method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
     
       })
         .then((response) => {
