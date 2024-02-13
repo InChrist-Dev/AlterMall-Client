@@ -32,22 +32,7 @@ const ItemPage = (props) => {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
 
-    try {
-      const response = await fetch(`https://udtown.site/seller/detail`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        });
-      const data = await response.json();
-      console.log(data.data.rows);
-      setItems(data.data.rows);
 
-
-    } catch (error) {
-      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
-    }
-  };
 
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
