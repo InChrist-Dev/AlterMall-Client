@@ -48,7 +48,20 @@ const ItemPage = (props) => {
     }
 
   };
+  const handleQuantityChange = (index, newAmount) => {
+   
+    if (newAmount >= 0) {
+   
+      const updatedItems = [...items];
+      updatedItems[index].stock = newAmount;
+      setItems(updatedItems);
+    } else {
+    
 
+      const updatedItems = [...items];
+      updatedItems[index].stock = 0;
+      setItems(updatedItems);
+    }
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
@@ -79,7 +92,7 @@ const ItemPage = (props) => {
   );
   return (
     <div style={{'marginBottom':'100px'}}>
-      <h1 className={styles.title}>장바구니</h1>
+      <h1 className={styles.title}>관리자주문조회</h1>
       <div className={styles.basketContainer}>
         <table className={styles.productTable}>
           <thead>
@@ -92,28 +105,19 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {/* {items.map((items, index) => (
+            {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
                   <img
-                    src={`https://udtown.site/${items.Item.img}`}
+                    src={`https://udtown.site/${items.img}`}
                     alt={items.Item.item_name}
                     className={styles.productImage}
                   />
-                    {items.Item.category}
-                    {items.Item.item_name}
-                    
-                    {items.Order.addr}{items.Order.addr_detail}
-                    {items.Order.amount}
-                    {items.Order.order_id}
-                    {items.Order.phone}
-                    {items.Order.post}
-                    {items.Order.requests}
-                    {items.Order.state}
-                    
-                    {items.Order.delivery_type}
+                    {items.category}
+                    {items.item_name}
+                  
                     
                    
                  
@@ -131,12 +135,30 @@ const ItemPage = (props) => {
                 </td>
                 <td>
                   <div className={styles.quantityControl}>
-                  {items.stock}
+                  <button
+                      onClick={() =>
+                        handleQuantityChange(index, items.stock - 1)
+                      }
+                    >-
+                    </button>
+                    <span>{items.stock}</span>
+                    <button
+                      onClick={() =>
+                        handleQuantityChange(index,  items.stock + 1)
+                      }
+                    >+
+                    </button>
                   </div>
                 </td>
               </tr>
-            ))} */}
+            ))}
           </tbody>
+          <button
+                      onClick={() =>
+                        handleQuantityChange(index,  items.stock + 1)
+                      }
+                    >저장
+                    </button>
         </table>
         <table className={styles.orderTable}>
         <thead>
