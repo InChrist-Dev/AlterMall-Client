@@ -48,7 +48,7 @@ export default function LoginPage() {
         />
         <label className={styles.label} htmlFor="password">비밀번호</label>
         <input className={styles.input}
-          type="text"
+          type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
