@@ -231,14 +231,14 @@ const ItemPage = (props) => {
               
                 <td>{order.Order.createdAt}</td>
                 <td>
-                  <p>주문자명: {order.Order.customer_name}</p>
-                  <p>연락처: {order.Order.phone}</p>
-                  <p>우편번호: {order.Order.post}</p>
-                  <p>주소: {order.Order.addr} {order.Order.addr_detail}</p>
+                  <p>주문자명: {order.customer_name}</p>
+                  <p>연락처: {order.phone}</p>
+                  <p>우편번호: {order.post}</p>
+                  <p>주소: {order.addr} {order.addr_detail}</p>
                 </td>
                 <td>
-                  <p>배송 유형: {order.Order.delivery_type}</p>
-                  <p>요청 사항: {order.Order.requests}</p>
+                  <p>배송 유형: {order.delivery_type}</p>
+                  <p>요청 사항: {order.requests}</p>
                 </td>
                 <td>{order.state}</td>
                 <td>
