@@ -27,19 +27,19 @@ const [sellerName, setSellerName] = useState('');
   const [sellerLogo, setSellerLogo] = useState('');
   const transformValue = `translateX(${-currentSlide * 420}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
 
-  const fetchData = async () => {
+  const fetchData = async (props) => {
     try {
-      const response = await fetch(`https://udtown.site/user/seller/6dbffab0-c00d-11ee-95ba-414444fa9552`);
+      const response = await fetch(`https://udtown.site/user/seller/${props.params.id}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       
       console.log(data.data)
-      setProducts(data.data.Items)
-      setSellerName(data.data.User.name);
-      setSellerDescription(data.data.SellerDetail.content);
-      setSellerImage(data.data.SellerDetail.img);
-      setSellerLogo(data.data.SellerDetail.logo);
+      // setProducts(data.data.Items)
+      // setSellerName(data.data.User.name);
+      // setSellerDescription(data.data.SellerDetail.content);
+      // setSellerImage(data.data.SellerDetail.img);
+      // setSellerLogo(data.data.SellerDetail.logo);
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
