@@ -37,6 +37,7 @@ const Footer = () => {
  
     </footer>
     <p className={styles.tong}>얼터몰은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 얼터몰은 상품,거래정보 및 거래 등에 대하여 책임을 지지 않습니다.</p>
+    <button onClick={()=>{window.location.href='https://altermall.shop/login_seller';}}>판매자 로그인</button>
     </span>
   );
 };
