@@ -154,7 +154,7 @@ const ItemPage = (props) => {
                  
                    
                  
-                  {items.item_name}
+                 <p>{items.item_name}</p>
                   
                     
                    

@@ -128,13 +128,14 @@
   }
   
   /* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
-  .productTable th:first-child,
-  .productTable td:first-child {
+  .productTable th,
+  .productTable td {
     width: 14%;
   }
   
-  .productCard td:first-child {
+  .productCard td {
     text-align: center;
+    width: 14%;
   }
   
   /* 나머지 스타일은 그대로 둡니다. */
