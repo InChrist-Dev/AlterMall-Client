@@ -270,7 +270,7 @@ const ItemPage = (props) => {
                 <tr key={index}>
                   <td>{detail.item_name}</td>
                   <td>{detail.price}원</td>
-                  <td>{detail.quantity}</td>
+                  <td>{detail.stock}</td>
                 </tr>
               ))}
             </tbody>

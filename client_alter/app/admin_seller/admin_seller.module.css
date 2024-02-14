@@ -128,11 +128,7 @@
   }
   
   /* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
-  .productTable th,
-  .productTable td {
-    width: 40%;
-  }
-  
+ 
   .productCard td {
     text-align: center;
     width: 40%;
