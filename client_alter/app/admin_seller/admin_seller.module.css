@@ -133,16 +133,10 @@
     width: 14%;
   }
   
-  .productCard td:first-child {
-    text-align: center;
-    width: 50%;
-  }
-
-  .productCard td:first-child {
+  .productCard td {
     text-align: center;
     width: 40%;
   }
-  
   
   /* 나머지 스타일은 그대로 둡니다. */
   
