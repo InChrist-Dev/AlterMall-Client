@@ -229,7 +229,7 @@ const ItemPage = (props) => {
                 <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
                 <td>{order.amount}원</td>
               
-                <td>{order.createdAt}</td>
+                <td>{order.updatedAt}</td>
                 <td>
                   <p>주문자명: {order.customer_name}</p>
                   <p>연락처: {order.phone}</p>
