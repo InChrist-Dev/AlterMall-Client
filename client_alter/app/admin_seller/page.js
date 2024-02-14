@@ -134,7 +134,7 @@ const ItemPage = (props) => {
             <tr>
            
               <th>상품</th>
-              <th>카테고리</th>
+             
               <th>가격</th>
               {/* <th>취소</th> */}
               <th>재고</th>
@@ -160,9 +160,6 @@ const ItemPage = (props) => {
                    
                  
                 </td>
-                <td>
-                  {items.category}
-                  </td>
                 <td>
                   <p>{items.price}원</p>
                 </td>
@@ -243,7 +240,7 @@ const ItemPage = (props) => {
                 <td>{order.state}</td>
                 <td>
                   <button
-                    className={styles.cancelButton}
+                    className={styles.accessButton}
                     
                   >
                     수락
