@@ -10,9 +10,7 @@ export default function Recommend() {
   const [masterCategory, setMasterCategory] = useState(['글루텐 장인', '슈가 장인', '락토 장인', '알러지 장인']);
 
   const [master, setMaster] = useState([]);
-  const [categoryPrice, setCategoryPrice] = useState(['맛으로 승부하겠습니다', '건강으로 승부하겠습니다', '건강한 음식, 맛있는 음식', '아이들 안성맞춤 건강식',]);
-  const [categoryS, setCategoryS] = useState(['Top 음료', 'Top디저트', 'Top샐러드', 'Top 케이크']);
-  const [categoryImage, SetCategoryImage] = useState(['/chef/chef1.jpg', '/chef/chef2.jpg', '/chef/chef3.jpg', '/chef/chef4.jpg']);
+ 
 const [currentIndex, setCurrentIndex] = useState(0);
 const [favorites, setFavorites] = useState([false, false, false, false]); // Initialize with false for each master
 
@@ -70,8 +68,8 @@ return (
               return (
              
                   <div className={styles.re_container} style={{ transform: `translateX(${-currentIndex * 110}%)` }}>
-                       <a href='/seller' key={j}>
-                    <button className={styles.re_smallButton} style={{ backgroundImage: `url('http://211.45.170.37:3000/${master.User.profile}')` }}>
+                       <a href={`/seller/${master.id}`} key={j}>
+                    <button className={styles.re_smallButton} style={{ backgroundImage: `url('https://udtown.site/${master.User.profile}')` }}>
                       {/* Heart icon with conditional style based on favorite status */}
                   
                     </button>
