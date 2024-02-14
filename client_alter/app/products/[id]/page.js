@@ -188,6 +188,7 @@ const ItemPage = (props) => {
               >
                 구매정보
               </Link>
+              </li>
               <li>
               <Link
                 to="image2"
@@ -201,7 +202,7 @@ const ItemPage = (props) => {
               >
                 구매후기
               </Link>
-            </li>
+          
           </li>
         </ul>
       </nav>
