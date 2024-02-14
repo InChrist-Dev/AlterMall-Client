@@ -22,9 +22,8 @@ const DramaDetailPage = (props) => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
 const [sellerName, setSellerName] = useState('');
-  const [sellerDescription, setSellerDescription] = useState('');
-  const [sellerImage, setSellerImage] = useState('');
-  const [sellerLogo, setSellerLogo] = useState('');
+const [seller, setSeller] = useState([]);
+
   const transformValue = `translateX(${-currentSlide * 420}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
 
   const fetchData = async () => {
@@ -34,7 +33,7 @@ const [sellerName, setSellerName] = useState('');
    
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
     
-      console.log(data.data)
+      setSeller(data.data)
       setProducts(data.data.Items)
       setSellerName(data.data.User.name);
       // setSellerDescription(data.data.SellerDetail.content);
@@ -75,10 +74,10 @@ const nextSlide = () => {
       <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
     </button>
     <p className={styles.slogan}>
-        "{data.data.slogan}"
+        "{seller.slogan}"
         </p>
         <p className={styles.description}>
-        "{data.data.slogan}"
+        "{seller.slogan}"
         </p>
 
           </div>
