@@ -26,7 +26,7 @@ export default async function RootLayout({ children }) {
       {children}</body>
       
       <Footer/>
-      <button onClick={()=>{window.location.href='https://altermall.shop/login_seller';}}>판매자 로그인</button>
+      <button>판매자 로그인</button>
     </html>
   )
 }
