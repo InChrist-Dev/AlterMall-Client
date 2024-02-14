@@ -8,7 +8,7 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import YouTube from 'react-youtube';
 
 
-const DramaDetailPage = () => {
+const DramaDetailPage = (props) => {
       
   
   const [products, setProducts] = useState(['dd','dd']);
@@ -27,7 +27,7 @@ const [sellerName, setSellerName] = useState('');
   const [sellerLogo, setSellerLogo] = useState('');
   const transformValue = `translateX(${-currentSlide * 420}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
 
-  const fetchData = async (props) => {
+  const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/user/seller/${props.params.id}`);
       const data = await response.json();
