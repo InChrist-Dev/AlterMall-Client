@@ -83,7 +83,9 @@
   margin-bottom: 20px;
   width: 900px;
 }
-
+.slogan {
+  font-size: 30px;
+}
 .episodeContainer {
   margin-top: 30px;
 }

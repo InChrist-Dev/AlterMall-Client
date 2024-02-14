@@ -74,8 +74,11 @@ const nextSlide = () => {
     >
       <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
     </button>
+    <p className={styles.slogan}>
+        "{data.data.slogan}"
+        </p>
         <p className={styles.description}>
-        {sellerDescription}
+        "{data.data.slogan}"
         </p>
 
           </div>
