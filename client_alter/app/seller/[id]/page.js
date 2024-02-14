@@ -100,7 +100,7 @@ const nextSlide = () => {
             {products.map((products, i) => (
               <div key={i} className={styles.episodeCard}>
                 <a href={`/products/${products.item_id}`}>
-                <img className={styles.episodeImage} src={`http://211.45.170.37:3000/${products.img}`} />
+                <img className={styles.episodeImage} src={`https://udtown.site/${products.img}`} />
 </a>
               </div>
             ))}
