@@ -5,8 +5,8 @@ import styles from './seller.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-import YouTube, { YouTubeProps } from 'react-youtube';
-import { Link } from 'react-router-dom';
+import YouTube from 'react-youtube';
+
 
 const DramaDetailPage = () => {
       
