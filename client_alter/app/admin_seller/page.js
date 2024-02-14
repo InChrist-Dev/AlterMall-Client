@@ -13,6 +13,7 @@ const accessToken = Cookies.get('accessToken');
 const ItemPage = (props) => {
   const [orders,setOrders] = useState([]);
   const [items,setItems] = useState([]);
+  const [selectedOrder, setSelectedOrder] = useState(false); 
   const myUuid = uuidv4();
   console.log(myUuid);
   const fetchData = async () => {
@@ -41,7 +42,7 @@ const ItemPage = (props) => {
       const data = await response.json();
       console.log(data.data.rows);
       setItems(data.data.rows);
-
+   
 
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
@@ -245,8 +246,39 @@ const ItemPage = (props) => {
                   >
                     수락
                   </button>
+                  <button
+                  className={styles.accessButton}
+                  onClick={() => setSelectedOrder(true)}
+                >
+                  상세보기
+                </button>
                 </td>
+              {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+      {selectedOrder && (
+        <div className={styles.detailTable}>
+          <h2>주문 상세 정보</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>상품명</th>
+                <th>가격</th>
+                <th>갯수</th>
               </tr>
+            </thead>
+            <tbody>
+              {order.OrderDetails.map((detail, index) => (
+                <tr key={index}>
+                  <td>{detail.item_name}</td>
+                  <td>{detail.price}원</td>
+                  <td>{detail.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+              </tr>
+              
             ))}
           </tbody>
           </table>
