@@ -221,13 +221,13 @@ const ItemPage = (props) => {
             {orders.map((order, index) => (
               <tr key={index} className={styles.orderRow}>
                    <img
-                    src={`https://udtown.site/${order.Item.img}`}
-                    alt={order.Item.item_name}
+                    src={`https://udtown.site/${order.OrderDetails[0].img}`}
+                    alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                <td>{order.Order.order_id}</td>
-                <td>{order.Item.item_name}</td>
-                <td>{order.Item.price}원</td>
+                <td>{order.order_id}</td>
+                <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
+                <td>{order.amount}원</td>
               
                 <td>{order.Order.createdAt}</td>
                 <td>
