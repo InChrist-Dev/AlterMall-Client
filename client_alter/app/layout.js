@@ -26,7 +26,7 @@ export default async function RootLayout({ children }) {
       {children}</body>
       
       <Footer/>
-      <button>판매자 로그인</button>
+    
     </html>
   )
 }
