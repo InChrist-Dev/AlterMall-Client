@@ -11,7 +11,7 @@ import YouTube from 'react-youtube';
 const DramaDetailPage = (props) => {
       
   
-  const [products, setProducts] = useState(['dd','dd']);
+  const [products, setProducts] = useState([]);
   const [isSubscribed, setSubscribed] = useState(false);
   const handleSubscribeClick = () => {
     setSubscribed(!isSubscribed);
@@ -35,8 +35,8 @@ const [sellerName, setSellerName] = useState('');
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
     
       console.log(data.data)
-      // setProducts(data.data.Items)
-      // setSellerName(data.data.User.name);
+      setProducts(data.data.Items)
+      setSellerName(data.data.User.name);
       // setSellerDescription(data.data.SellerDetail.content);
       // setSellerImage(data.data.SellerDetail.img);
       // setSellerLogo(data.data.SellerDetail.logo);
