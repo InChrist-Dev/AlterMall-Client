@@ -15,9 +15,9 @@ const CategoryButtons = () => {
         <Link href='/category/dessert'>
           <ImageButton imagePath="dessert.jpg" altText="디저트" />
         </Link>
-        {/* <Link href='/category/salad'>
+        <Link href='/'>
           <ImageButton imagePath="salad.jpg" altText="샐러드" />
-        </Link> */}
+        </Link>
         <button className={styles.largeButton}>
           <Link href='/master'>
             <img
@@ -26,12 +26,12 @@ const CategoryButtons = () => {
             />
           </Link>
         </button>
-        {/* <Link href='/category/free'>
+        <Link href='/'>
           <ImageButton imagePath="free.jpg" altText=" 락토프리" />
         </Link>
-        <Link href='/category/drink'>
+        <Link href='/'>
           <ImageButton imagePath="drink.jpg" altText="음료" />
-        </Link> */}
+        </Link>
       </div>
     </div>
   );
