@@ -242,7 +242,7 @@ const ItemPage = (props) => {
                     수락
                   </button>
                   <button
-                  className={styles.accessButton}
+                  className={styles.detailBtn}
                   onClick={() => setSelectedOrder(!selectedOrder)}
                 >
                   상세보기
