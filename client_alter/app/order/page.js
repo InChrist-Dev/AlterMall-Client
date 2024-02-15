@@ -287,6 +287,7 @@ const Checkout = () => {
               <label>배송시 요청사항</label>
               <input className={styles.request}
                 value={request}
+                placeholder='ex)노크x,문앞에 두고 가주세요. 공동현관문 번호는 OOOO입니다'
                 onChange={(e) => setRequest(e.target.value)}></input>
             </div>
           </div>
