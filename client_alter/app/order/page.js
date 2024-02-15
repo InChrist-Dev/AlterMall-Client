@@ -15,6 +15,7 @@ const Checkout = () => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
+  const [deliveryPay,setDeliveryPay] = useState(3500);
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -286,7 +287,8 @@ const Checkout = () => {
                     />
 
                   </th> */}
-                  <th>상품</th>
+                  <th>이미지</th>
+                  <th>상품명</th>
                   <th>가격</th>
                   <th>취소</th>
                   <th>수량</th>
@@ -311,9 +313,12 @@ const Checkout = () => {
                         className={styles.productImage}
                       />
 
-                      {items.item_name}
+                    
 
 
+                    </td>
+                    <td>
+                    {items.item_name}
                     </td>
                     <td>
                       <p>{items.price}원</p>
@@ -355,6 +360,7 @@ const Checkout = () => {
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
         <div>할인금액: 0원</div>
         <div>상품권: 0원</div>
+        <div>배송비: 원</div>
         <div>
           <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
         </div>
