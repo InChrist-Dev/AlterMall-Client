@@ -268,7 +268,11 @@ const ItemPage = (props) => {
             <tbody>
               {order.OrderDetails.map((detail, index) => (
                 <tr key={index}>
-                  <td>{detail.img}</td>
+                  <td>  <img
+                    src={`https://udtown.site/${detail.img} `}
+                    alt={detail.item_name} 
+                    className={styles.productImage}
+                  /></td>
                   <td>{detail.item_name}</td>
                   <td>{detail.price}원</td>
                   <td>{detail.stock}</td>
