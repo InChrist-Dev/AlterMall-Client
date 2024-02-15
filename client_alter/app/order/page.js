@@ -124,7 +124,7 @@ const Checkout = () => {
     return selectedItems.reduce(
       (total, index) => total + items[index].price * items[index].stock,
       0
-    )+deliveryPay;
+    );
   };
 
   const toggleAllItemsSelection = () => {
@@ -379,7 +379,7 @@ const Checkout = () => {
         <div> 상품금액:{calculateTotalPrice().toLocaleString()}원</div>
         {/* <div>할인금액: 0원</div>
         <div>상품권: 0원</div> */}
-        <div>배송비: {getSub()}원</div>
+        <div>배송비: {getSub().toLocaleString()}원</div>
         <div>
           <strong>총 주문 가격:</strong> {getPay().toLocaleString()}원
         </div>
