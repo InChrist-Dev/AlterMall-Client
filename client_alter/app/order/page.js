@@ -122,9 +122,9 @@ const Checkout = () => {
   };
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
-      (total, index) => total + items[index].price * items[index].stock+deliveryPay,
+      (total, index) => total + items[index].price * items[index].stock,
       0
-    );
+    )+deliveryPay;
   };
 
   const toggleAllItemsSelection = () => {
