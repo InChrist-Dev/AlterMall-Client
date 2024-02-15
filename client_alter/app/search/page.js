@@ -135,7 +135,7 @@ const ItemPage = (props) => {
                         <h3> {item.item_name}</h3>
                         <p>{item.price.toLocaleString()}원</p>
                         <p>{categoryS[currentIndex]}</p>
-                        <button>Add to Cart</button>
+                     
                       </div>
                     </Link>
                   </div>
