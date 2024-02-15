@@ -97,7 +97,7 @@ const ItemPage = (props) => {
   );
 
   const Update = useCallback(
-     (id,stock) => {
+    (id,stock) => {
      
       fetch(`https://udtown.site/category/${id}`, {
         method: 'PATCH',
@@ -107,7 +107,7 @@ const ItemPage = (props) => {
         },
         body: JSON.stringify({
           'stock': stock,
-        
+     
         }),
     
       })
