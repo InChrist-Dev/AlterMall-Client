@@ -107,7 +107,7 @@ const ItemPage = (props) => {
         },
         body: JSON.stringify({
           'stock': stock,
-          'id': id,
+          'item_id': id,
         }),
     
       })
