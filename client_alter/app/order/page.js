@@ -369,7 +369,7 @@ const Checkout = () => {
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
         <div>할인금액: 0원</div>
         <div>상품권: 0원</div>
-        <div>배송비: 원</div>
+        <div>배송비: {getPay()}원</div>
         <div>
           <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
         </div>
