@@ -252,7 +252,7 @@ const ItemPage = (props) => {
      
               </tr>
               {selectedOrder && (
-        <div className={styles.orderTable}>
+        <div aria-colspan='3'className={styles.orderTable}>
 
           <table>
             <thead>
