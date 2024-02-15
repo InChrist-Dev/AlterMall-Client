@@ -55,7 +55,7 @@ export default function LoginPage() {
         <button className={styles.button}  onClick={handleSubmit}>확인</button>
       </span>
 
-      <button>구글로그인</button>
+      <button  onClick={()=>{window.location.href="https://udtown.site/auth/google"}}>구글로그인</button>
     </div>
   );
 }
