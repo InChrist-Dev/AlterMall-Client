@@ -210,6 +210,7 @@ const ItemPage = (props) => {
           </thead>
           <tbody>
             {orders.map((order, index) => (
+              <>
               <tr key={index} className={styles.orderRow}>
                    <img
                     src={`https://udtown.site/${order.OrderDetails[0].img}`}
@@ -247,7 +248,9 @@ const ItemPage = (props) => {
                 </button>
                 </td>
               {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
-      {selectedOrder && (
+     
+              </tr>
+              {selectedOrder && (
         <div className={styles.detailTable}>
           <h2>주문 상세 정보</h2>
           <table>
@@ -270,8 +273,7 @@ const ItemPage = (props) => {
           </table>
         </div>
       )}
-              </tr>
-              
+              </>
             ))}
           </tbody>
           </table>
