@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import styles from './login_seller.module.css';
+import styles from './login_selller.module.css';
 import Cookies from 'js-cookie';
 
 export default function LoginPage() {
