@@ -254,9 +254,9 @@ const ItemPage = (props) => {
               <tr>
                 <td colSpan="9">
                 {selectedOrder && (
-        <div className={styles.orderTable}>
+        <div >
 
-          <table>
+          <table className={styles.detailTable}>
             <thead>
               <tr>
               <th>이미지</th>

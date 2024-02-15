@@ -349,4 +349,9 @@
     background-color: #dfdfdf;
   }
   
+    
+  .detailTable {
+    width: 1000px;
+    border-collapse: collapse;
+  }
   
