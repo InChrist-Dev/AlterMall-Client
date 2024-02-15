@@ -251,11 +251,12 @@ const ItemPage = (props) => {
      
               </tr>
               {selectedOrder && (
-        <div className={styles.detailTable}>
-          <h2>주문 상세 정보</h2>
+        <div className={styles.orderTable}>
+
           <table>
             <thead>
               <tr>
+              <th>이미지</th>
                 <th>상품명</th>
                 <th>가격</th>
                 <th>갯수</th>
@@ -264,6 +265,7 @@ const ItemPage = (props) => {
             <tbody>
               {order.OrderDetails.map((detail, index) => (
                 <tr key={index}>
+                  <td>{detail.img}</td>
                   <td>{detail.item_name}</td>
                   <td>{detail.price}원</td>
                   <td>{detail.stock}</td>
