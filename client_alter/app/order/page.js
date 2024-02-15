@@ -148,6 +148,15 @@ const Checkout = () => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
+      return 3500+calculateTotalPrice();
+    } else if (deliveryInfo == 'daily') {
+      return 4000+calculateTotalPrice();
+    }
+    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
+  };
+  const getSub = () => {
+    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
+    if (deliveryInfo == 'normal') {
       return 3500;
     } else if (deliveryInfo == 'daily') {
       return 4000;
@@ -367,13 +376,14 @@ const Checkout = () => {
       <div className={styles.stickySidebar}>
         <h2 >주문 결제 금액</h2>
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
-        <div>할인금액: 0원</div>
-        <div>상품권: 0원</div>
-        <div>배송비: {getPay()}원</div>
+        <div> 상품금액:{calculateTotalPrice().toLocaleString()}원</div>
+        {/* <div>할인금액: 0원</div>
+        <div>상품권: 0원</div> */}
+        <div>배송비: {getSub()}원</div>
         <div>
-          <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
+          <strong>총 주문 가격:</strong> {getPay().toLocaleString()}원
         </div>
-        <button className={styles.BuyButton} onClick={handleClick}>{calculateTotalPrice().toLocaleString()}원 결제하기</button>
+        <button className={styles.BuyButton} onClick={handleClick}>{getPay().toLocaleString()}원 결제하기</button>
       </div>
     </div>
   );
