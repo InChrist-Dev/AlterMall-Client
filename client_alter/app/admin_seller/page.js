@@ -251,8 +251,10 @@ const ItemPage = (props) => {
               {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
      
               </tr>
-              {selectedOrder && (
-        <div aria-colspan='3'className={styles.orderTable}>
+              <tr>
+                <td colSpan="9">
+                {selectedOrder && (
+        <div className={styles.orderTable}>
 
           <table>
             <thead>
@@ -276,6 +278,9 @@ const ItemPage = (props) => {
           </table>
         </div>
       )}
+                </td>
+              </tr>
+         
               </>
             ))}
           </tbody>
