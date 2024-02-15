@@ -97,9 +97,9 @@ const ItemPage = (props) => {
   );
 
   const Update = useCallback(
-    (id,stock) => {
+    async (id,stock) => {
      
-      fetch(`https://udtown.site/category`, {
+     await fetch(`https://udtown.site/category`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
