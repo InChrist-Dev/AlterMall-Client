@@ -15,6 +15,7 @@ const Checkout = () => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
+  const [deliveryPay,setDeliveryPay] = useState(3500);
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -34,6 +35,7 @@ const Checkout = () => {
     items.map((item) => {
       amount += item.price * item.stock;
     });
+    amount += deliveryPay;
     const orderItems = items.map((item) => {
       return {
         "order_id": info.order_id,
@@ -121,7 +123,7 @@ const Checkout = () => {
   };
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
-      (total, index) => total + items[index].price * items[index].stock,
+      (total, index) => total + items[index].price * items[index].stock+deliveryPay,
       0
     );
   };
@@ -141,6 +143,17 @@ const Checkout = () => {
       return './post.jpg';
     } else if (deliveryInfo == 'daily') {
       return './today.jpg';
+    }
+    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
+  };
+  const getPay = () => {
+    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
+    if (deliveryInfo == 'normal') {
+      setDeliveryPay(3500);
+      return 3500;
+    } else if (deliveryInfo == 'daily') {
+      setDeliveryPay(4000);
+      return 4000;
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -286,7 +299,8 @@ const Checkout = () => {
                     />
 
                   </th> */}
-                  <th>상품</th>
+                  <th>이미지</th>
+                  <th>상품명</th>
                   <th>가격</th>
                   <th>취소</th>
                   <th>수량</th>
@@ -311,9 +325,12 @@ const Checkout = () => {
                         className={styles.productImage}
                       />
 
-                      {items.item_name}
+                    
 
 
+                    </td>
+                    <td>
+                    {items.item_name}
                     </td>
                     <td>
                       <p>{items.price}원</p>
@@ -355,6 +372,7 @@ const Checkout = () => {
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
         <div>할인금액: 0원</div>
         <div>상품권: 0원</div>
+        <div>배송비: {getPay()}원</div>
         <div>
           <strong>총 주문 가격:</strong> {calculateTotalPrice().toLocaleString()}원
         </div>
