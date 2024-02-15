@@ -60,6 +60,7 @@ const Checkout = () => {
           'requests': request,
           'amount': amount,
           'delivery_type': deliveryInfo,
+          'phone': delivery.phone,
           
 
 
@@ -276,7 +277,7 @@ const Checkout = () => {
             <table className={styles.productTable}>
               <thead>
                 <tr>
-                  <th>
+                  {/* <th>
                     <input
                       type="checkbox"
                       className={styles.checkbox}
@@ -284,7 +285,7 @@ const Checkout = () => {
                       onChange={toggleAllItemsSelection}
                     />
 
-                  </th>
+                  </th> */}
                   <th>상품</th>
                   <th>가격</th>
                   <th>취소</th>

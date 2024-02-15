@@ -333,5 +333,25 @@
   .accessButton:hover {
     background-color: #569dd6;
   }
+
+  .detailBtn{
+    background-color: #ffffff;
+    color: #333;
+    border: none;
   
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .detailBtn:hover {
+    background-color: #dfdfdf;
+  }
+  
+    
+  .detailTable {
+    width: 900px;
+    border-collapse: collapse;
+  }
   

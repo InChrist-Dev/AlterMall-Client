@@ -16,9 +16,6 @@ const DramaDetailPage = (props) => {
   const handleSubscribeClick = () => {
     setSubscribed(!isSubscribed);
   };
-  const [episodesImage, setEpisodesImage] = useState([
-    '/food/ham.jpg', '/food/chicken.jpg', '/food/nack.jpg', '/food/pizza.jpg', '/food/ham.jpg', '/food/chicken.jpg', '/food/nack.jpg', '/food/pizza.jpg', 
-  ]);
 
   const [currentSlide, setCurrentSlide] = useState(0);
 const [sellerName, setSellerName] = useState('');
@@ -62,11 +59,11 @@ const nextSlide = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('http://211.45.170.37:3000/${sellerImage}') center/cover`}}></div>
+      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('http://211.45.170.37:3000/') center/cover`}}></div>
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-          <h1 className={styles.title}><img className={styles.logo} src={`http://211.45.170.37:3000/${sellerLogo}`}></img> {sellerName} 사장님</h1>
+          <h1 className={styles.title}><img className={styles.logo} src={`http://211.45.170.37:3000/`}></img> {sellerName} 사장님</h1>
           <button
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}

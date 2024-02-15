@@ -107,13 +107,14 @@ const ItemPage = (props) => {
         },
         body: JSON.stringify({
           'stock': stock,
+     
         }),
     
       })
         .then((response) => {
           if (response.status == 405) {
             alert('수정 실패하였습니다');
-          } else if (response.status == 201) {
+          } else if (response.status == 200) {
             alert('수정되었습니다');
           }
 
@@ -134,8 +135,8 @@ const ItemPage = (props) => {
           <thead>
             <tr>
            
-              <th>상품</th>
-             
+              <th>이미지</th>
+             <th>상품명</th>
               <th>가격</th>
               {/* <th>취소</th> */}
               <th>재고</th>
@@ -152,15 +153,8 @@ const ItemPage = (props) => {
                     alt={items.item_name}
                     className={styles.productImage}
                   />
-                 
-                   
-                 
-                 <p>{items.item_name}</p>
-                  
-                    
-                   
-                 
                 </td>
+                <td><p>{items.item_name}</p></td>
                 <td>
                   <p>{items.price}원</p>
                 </td>
@@ -189,7 +183,7 @@ const ItemPage = (props) => {
                     </button>
                     <button
                       onClick={() =>
-                        Update(items.id,items.stock)
+                        Update(items.item_id,items.stock)
                       }
                     >재고저장
                     </button>
@@ -217,6 +211,7 @@ const ItemPage = (props) => {
           </thead>
           <tbody>
             {orders.map((order, index) => (
+              <>
               <tr key={index} className={styles.orderRow}>
                    <img
                     src={`https://udtown.site/${order.OrderDetails[0].img}`}
@@ -247,19 +242,24 @@ const ItemPage = (props) => {
                     수락
                   </button>
                   <button
-                  className={styles.accessButton}
-                  onClick={() => setSelectedOrder(true)}
+                  className={styles.detailBtn}
+                  onClick={() => setSelectedOrder(!selectedOrder)}
                 >
                   상세보기
                 </button>
                 </td>
               {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
-      {selectedOrder && (
-        <div className={styles.detailTable}>
-          <h2>주문 상세 정보</h2>
-          <table>
+     
+              </tr>
+              <tr>
+                <td colSpan="9">
+                {selectedOrder && (
+        <div >
+
+          <table className={styles.detailTable}>
             <thead>
               <tr>
+              <th>이미지</th>
                 <th>상품명</th>
                 <th>가격</th>
                 <th>갯수</th>
@@ -268,6 +268,11 @@ const ItemPage = (props) => {
             <tbody>
               {order.OrderDetails.map((detail, index) => (
                 <tr key={index}>
+                  <td>  <img
+                    src={`https://udtown.site/${detail.img} `}
+                    alt={detail.item_name} 
+                    className={styles.productImage}
+                  /></td>
                   <td>{detail.item_name}</td>
                   <td>{detail.price}원</td>
                   <td>{detail.stock}</td>
@@ -277,8 +282,10 @@ const ItemPage = (props) => {
           </table>
         </div>
       )}
+                </td>
               </tr>
-              
+         
+              </>
             ))}
           </tbody>
           </table>
