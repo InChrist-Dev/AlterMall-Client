@@ -183,7 +183,7 @@ const ItemPage = (props) => {
                     </button>
                     <button
                       onClick={() =>
-                        Update(items.id,items.stock)
+                        Update(items.item_id,items.stock)
                       }
                     >재고저장
                     </button>
