@@ -114,14 +114,14 @@ const ItemPage = (props) => {
         .then((response) => {
           if (response.status == 405) {
             alert('수정 실패하였습니다');
-          } else if (response.status == 201) {
+          } else if (response.status == 200) {
             alert('수정되었습니다');
           }
 
 
         })
         .finally(() => {
-         // window.location.reload();
+          window.location.reload();
         });
 
     },
