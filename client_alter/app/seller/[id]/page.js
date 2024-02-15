@@ -68,7 +68,7 @@ const nextSlide = () => {
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}
     >
-      <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
+      {/* <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} /> */}
     </button>
     <p className={styles.slogan}>
         "{seller.slogan}"

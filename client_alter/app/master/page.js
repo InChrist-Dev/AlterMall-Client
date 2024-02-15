@@ -76,11 +76,11 @@ return (
                      </a>
                      <div style={{display:'flex',justifyContent:'space-between',padding:'2px',verticalAlign:'middle'}}>
                      <div className={styles.recommend_title}>{master.User.name}</div>
-                    <FontAwesomeIcon
+                    {/* <FontAwesomeIcon
                         icon={favorites[j]? solidHeart: regularHeart}
                         className={favorites[j] ? styles.favoriteIcon : ''}
                         onClick={() => toggleFavorite(j)}
-                      />
+                      /> */}
                      </div>
                     
 
