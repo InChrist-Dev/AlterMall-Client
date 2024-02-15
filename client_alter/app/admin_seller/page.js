@@ -134,8 +134,8 @@ const ItemPage = (props) => {
           <thead>
             <tr>
            
-              <th>상품</th>
-             
+              <th>이미지</th>
+             <th>상품명</th>
               <th>가격</th>
               {/* <th>취소</th> */}
               <th>재고</th>
@@ -152,15 +152,8 @@ const ItemPage = (props) => {
                     alt={items.item_name}
                     className={styles.productImage}
                   />
-                 
-                   
-                 
-                 <p>{items.item_name}</p>
-                  
-                    
-                   
-                 
                 </td>
+                <td><p>{items.item_name}</p></td>
                 <td>
                   <p>{items.price}원</p>
                 </td>
