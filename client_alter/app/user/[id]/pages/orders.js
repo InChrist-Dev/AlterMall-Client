@@ -70,6 +70,22 @@ const OrderHistory = () => {
   </div>
   {orders.map((order, index) => (
               <>
+               <table className={styles.orderTable}>
+          <thead>
+            <tr>
+              <th>이미지</th>
+              <th>주문 ID</th>
+              <th>상품명</th>
+              <th>가격</th>
+
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>수락</th>
+            </tr>
+          </thead>
+          <tbody>
                 <tr key={index} className={styles.orderRow}>
                
                   <img
@@ -77,8 +93,9 @@ const OrderHistory = () => {
                     alt={orderdetail.item_name}
                     className={styles.productImage}
                   />
-                  <td>{order.amount}원</td>
+                 
                   <td>{orderdetail.item_name}외 {orderdetail.length}건</td>
+                  <td>{order.amount}원</td>
                   <td>{order.updatedAt}</td>
                   <td>
                     <p>주문자명: {order.customer_name}</p>
@@ -102,7 +119,8 @@ const OrderHistory = () => {
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
 
                 </tr>
-            
+                </tbody>
+                </table>
 
               </>
             ))}
