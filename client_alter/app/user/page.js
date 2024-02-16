@@ -4,7 +4,7 @@ import styles from './[id]/user.module.css';
 import SideMenu from './[id]/SideMenu';
 import UserInfo from './[id]/UserInfo';
 import { useEffect,useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import OrderHistory from './[id]/pages/orders';
 import CancellationHistory from './[id]/pages/cancel';
 import Subscription from './[id]/pages/subscriptions';
