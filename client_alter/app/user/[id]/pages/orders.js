@@ -52,7 +52,7 @@ const OrderHistory = () => {
 
         })
         .finally(() => {
-          window.location.reload();
+          // window.location.reload();
         });
 
     },
