@@ -76,7 +76,7 @@ const ItemPage = (props) => {
           "content-type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
+        body: JSON.stringify({ amount: 1 ,item_id: props.params.id}),
       })
         .then((response) => {
           console.log(response)
