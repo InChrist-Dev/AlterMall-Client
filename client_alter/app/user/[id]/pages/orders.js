@@ -65,7 +65,7 @@ const OrderHistory = () => {
       주문내역
     
   </div>
-  {orders.length>0 ?orders.map((order, index) => (
+  {orders.OrderDetails?orders.map((order, index) => (
               <tr key={index} className={styles.productCard}>
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
