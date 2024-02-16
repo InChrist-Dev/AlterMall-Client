@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './user.module.css';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 import { signOut } from 'next-auth/react';
 import Cookies from 'js-cookie';
