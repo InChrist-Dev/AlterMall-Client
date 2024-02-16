@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
+  const [orderdetail,setOrderdetail] = useState([]);
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -21,6 +22,7 @@ const OrderHistory = () => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
+      setOrderdetail(data.data.rows[0].OrderDetails[0])
     }
     useEffect(()=>{
       fetchData();
@@ -69,10 +71,13 @@ const OrderHistory = () => {
               <>
                 <tr key={index} className={styles.orderRow}>
                
-                  <td>{order.order_id}</td>
-                 
+                  <img
+                    src={`https://udtown.site/${orderdetail.img}`}
+                    alt={order.OrderDetails[0].item_name}
+                    className={styles.productImage}
+                  />
                   <td>{order.amount}원</td>
-
+                  <td>{orderdetail.item_name}외 {orderdetail.length}건</td>
                   <td>{order.updatedAt}</td>
                   <td>
                     <p>주문자명: {order.customer_name}</p>
