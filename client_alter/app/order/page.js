@@ -30,7 +30,7 @@ const Checkout = () => {
     const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
 
     const tosspayments = await loadTossPayments(
-      'test_ck_yZqmkKeP8gyQllO0EnM4VbQRxB9l'
+      'live_gck_GePWvyJnrKv2Qb2W6yy7VgLzN97E'
     );
     items.map((item) => {
       amount += item.price * item.stock;
@@ -38,7 +38,7 @@ const Checkout = () => {
     amount += getSub();
    
     if (delivery) {
-      console.log(delivery);
+      console.log(delivery.phone);
 
       await fetch('https://udtown.site/customer/order', {
         method: 'PATCH',
