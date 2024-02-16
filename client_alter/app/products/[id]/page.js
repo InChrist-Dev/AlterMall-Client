@@ -5,7 +5,10 @@ import styles from './products.module.css'; // Ensure the correct path to your C
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Link, scroll } from 'react-scroll';
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
   const [name, setName] = useState('');
@@ -71,14 +74,15 @@ const ItemPage = (props) => {
         method: 'POST',
         headers: {
           "content-type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
         body: JSON.stringify({ amount: quantity ,item_id: id}),
       })
         .then((response) => {
           if (response.status == 405) {
-            alert('컨텐츠 저장에 실패하였습니다');
+            alert('실패하였습니다');
           } else if (response.status == 201) {
-            alert('저장되었습니다');
+            alert('장바구니에 담겼습니다');
           }
 
 
