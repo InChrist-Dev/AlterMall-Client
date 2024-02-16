@@ -65,39 +65,38 @@ const OrderHistory = () => {
       주문내역
     
   </div>
-  {orders[0].OrderDetails && orders[0].OrderDetails[0] ?orders.map((order, index) => (
+  {orders.map((order, index) => (
               <>
-              <tr key={index} className={styles.productCard}>
-              
-                <td style={{display:'flex' , alignItems: 'center',}}>
-                  
+                <tr key={index} className={styles.orderRow}>
                   <img
                     src={`https://udtown.site/${order.OrderDetails[0].img}`}
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                   {order.OrderDetails[0].item_name}외 건
-                    
-                   
+                  <td>{order.order_id}</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
+                  <td>{order.amount}원</td>
+
+                  <td>{order.updatedAt}</td>
+                  <td>
+                    <p>주문자명: {order.customer_name}</p>
+                    <p>연락처: {order.phone}</p>
+                    <p>우편번호: {order.post}</p>
+                    <p>주소: {order.addr} {order.addr_detail}</p>
+                  </td>
+                  <td>
+                    <p>배송 유형: {order.delivery_type}</p>
+                    <p>요청 사항: {order.requests}</p>
+                  </td>
+                  <td>{order.state}</td>
                  
-                </td>
-                <td>
-                  <p>{order.amount}원</p>
-                </td>
-                <td>
-                <button className={styles.deleteButton}
-                      onClick={() =>
-                        {Cancel(order.order_id)}
-                      }
-                    >X
-                    </button>
-                </td>
-                <td>
+                  {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+
+                </tr>
             
-                </td>
-              </tr>
+
               </>
-            )):''}
+            ))}
   </div>
   );
 };
