@@ -20,7 +20,9 @@
     margin-bottom: 20px;
     background-color: #fff; /* 추가: 전체 배경색 회색 설정 */
   }
-  
+  .productImage{
+    width: 150px;
+  }
   .greeting {
     font-size: 1.5rem;
     font-weight: 500;
