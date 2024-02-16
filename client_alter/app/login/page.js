@@ -11,7 +11,7 @@ export default function LoginPage() {
       Cookies.set('accessToken', accessToken, { expires: 1 });  // 7일 동안 유지되도록 설정
 
       const login = () => {
-        alert('로그인 되었습니다');
+       
         window.location.href = 'https://altermall.shop';
       };
 

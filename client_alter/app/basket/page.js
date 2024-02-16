@@ -118,7 +118,7 @@ const ItemPage = (props) => {
     }).finally(
   
     )
-      alert('주문페이지로 넘어갑니다');
+    
       window.location.href='/order';
       console.log(response);
       const data = await response.json();
