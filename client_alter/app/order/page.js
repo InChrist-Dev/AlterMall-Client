@@ -54,7 +54,7 @@ const Checkout = () => {
           'requests': request,
           'amount': amount,
           'delivery_type': deliveryInfo,
-          'phone': delivery.phone,
+          'phone': '010-3892-3939',
           'customer_name':delivery.name,
         
         }),
