@@ -70,7 +70,9 @@
   color:#111
 }
 
-
+.productImage{
+  width: 200px;
+}
   .middleArea {
     display: flex;
     gap: 20px;
