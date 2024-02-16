@@ -69,14 +69,14 @@ const ItemPage = (props) => {
     return result;
   };
   const handleSubmit = useCallback(
-    (event) => {
+    (id) => {
       fetch(`https://udtown.site/customer/cart/`, {
         method: 'POST',
         headers: {
           "content-type": "application/json",
           Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ amount: quantity ,item_id: id}),
+        body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
       })
         .then((response) => {
           if (response.status == 405) {
