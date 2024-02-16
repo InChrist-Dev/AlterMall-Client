@@ -71,16 +71,16 @@ const ItemPage = (props) => {
         body: JSON.stringify({ amount: 1 ,item_id: id}),
       })
         .then((response) => {
-          if (response.status == 405) {
-            alert('컨텐츠 저장에 실패하였습니다');
+          if (response.status == 400) {
+            alert('장바구니에 존재하는 메뉴입니다.');
           } else if (response.status == 201) {
-            alert('저장되었습니다');
+            alert('장바구니에 담겼습니다');
           }
 
 
         })
         .finally(() => {
-          console.log("저장완료")
+        
         });
 
     },

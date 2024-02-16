@@ -81,10 +81,9 @@ const ItemPage = (props) => {
         credentials: 'include',
         body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
       })
-        .then(async(response) => {
-          const data = await response.json().result;
-          console.log(data)
-          if (data == 'false') {
+        .then((response) => {
+    
+          if (response.status == 400) {
             alert('장바구니에 존재하는 메뉴입니다.');
           } else if (response.status == 201) {
             alert('장바구니에 담겼습니다');
