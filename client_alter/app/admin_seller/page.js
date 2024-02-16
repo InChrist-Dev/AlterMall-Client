@@ -110,9 +110,9 @@ const ItemPage = (props) => {
         .then((response) => {
           console.log(response)
           if (response.status == 405) {
-            alert('삭제 실패하였습니다');
+            alert('수락 실패하였습니다');
           } else if (response.status == 201) {
-            alert('삭제되었습니다');
+            alert('해당 주문을 수락하였습니다');
           }
 
 
