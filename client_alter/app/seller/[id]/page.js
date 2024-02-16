@@ -64,12 +64,12 @@ const nextSlide = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
           <h1 className={styles.title}><img className={styles.logo} src={`http://211.45.170.37:3000/`}></img> {sellerName} 사장님</h1>
-          <button
+          {/* <button
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}
     >
-      {/* <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} /> */}
-    </button>
+      <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
+    </button> */}
     <p className={styles.slogan}>
         "{seller.slogan}"
         </p>
@@ -78,7 +78,7 @@ const nextSlide = () => {
         </p>
 
           </div>
-
+{/* 
         <YouTube className={styles.youtube}
     videoId="2g811Eo7K8U"
     opts={{
@@ -88,7 +88,7 @@ const nextSlide = () => {
     onEnd={(e) => {
       e.target.stopVideo(0);
     }}
-/>
+/> */}
 
         </div>
     
