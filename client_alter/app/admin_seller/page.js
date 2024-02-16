@@ -64,6 +64,20 @@ const ItemPage = (props) => {
       setItems(updatedItems);
     }
   };
+  const handleNameChange = (index, newName) => {
+
+      const updatedItems = [...items];
+      updatedItems[index].item_name = newName;
+      setItems(updatedItems);
+  
+  };
+  const handlePriceChange = (index, newPrice) => {
+
+    const updatedItems = [...items];
+      updatedItems[index].price = newPrice;
+      setItems(updatedItems);
+  
+  };
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
@@ -204,9 +218,12 @@ return formattedDate;
                     className={styles.productImage}
                   />
                 </td>
-                <td><p>{items.item_name}</p></td>
+                <td><p>  <input className={styles.quantityInput} placeholder={items.item_name} onChange={(e)=>
+                     handleNameChange(index, e.target.value)}></input></p></td>
                 <td>
-                  <p>{items.price}원</p>
+                <td><p>  <input className={styles.quantityInput} placeholder={items.price+'원'} onChange={(e)=>
+                     handlePriceChange(index, e.target.value)}></input></p></td>
+                
                 </td>
                 {/* <td>
                 <button className={styles.deleteButton}
