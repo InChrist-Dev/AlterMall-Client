@@ -91,9 +91,7 @@ const OrderHistory = () => {
                     </button>
                 </td>
                 <td>
-                  <div className={styles.quantityControl}>
-                  {items.stock}
-                  </div>
+            
                 </td>
               </tr>
             )):''}
