@@ -10,7 +10,7 @@ const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   const [orderdetail,setOrderdetail] = useState([]);
-  const [ordername,setOrdername] = useState('');
+
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -23,7 +23,7 @@ const OrderHistory = () => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
-      setOrdername(data.data.rows[0].OrderDetails[0].item_name)
+      
     }
     useEffect(()=>{
       fetchData();
@@ -74,7 +74,7 @@ const OrderHistory = () => {
                
                   <img
                     src={`https://udtown.site/${orderdetail.img}`}
-                    alt={order.OrderDetails[0].item_name}
+                    alt={orderdetail.item_name}
                     className={styles.productImage}
                   />
                   <td>{order.amount}원</td>
