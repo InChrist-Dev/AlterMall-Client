@@ -38,7 +38,7 @@ const OrderHistory = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          'order_id':id
+          'order_id':id,
         })
 
       })
@@ -85,7 +85,7 @@ const OrderHistory = () => {
                 <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
-                        {Cancel(orders.order_id)}
+                        {Cancel(order.order_id)}
                       }
                     >X
                     </button>
