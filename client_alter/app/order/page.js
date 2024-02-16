@@ -38,7 +38,7 @@ const Checkout = () => {
     amount += getSub();
    
     if (delivery) {
-      console.log(delivery.phone);
+      console.log(items);
 
       await fetch('https://udtown.site/customer/order', {
         method: 'PATCH',
