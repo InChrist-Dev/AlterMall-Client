@@ -79,6 +79,7 @@ const ItemPage = (props) => {
       },
       body: JSON.stringify({
         'order_id':myUuid,
+        'seller_id':selectedItems[0].Item.seller_id,
       }),
         
         
