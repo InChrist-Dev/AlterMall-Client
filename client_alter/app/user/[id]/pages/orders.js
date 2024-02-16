@@ -33,7 +33,7 @@ const OrderHistory = () => {
   }
   const Cancel = useCallback(
     (id) => {
-
+      alert('주문을 취소하시겠습니까? 판매자가 수락했을 경우 취소가 불가능합니다.')
       fetch(`https://udtown.site/customer/cancel`, {
         method: 'PATCH',
         headers: {

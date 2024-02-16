@@ -15,7 +15,7 @@ const Checkout = () => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
-  const [deliveryPay,setDeliveryPay] = useState(3500);
+  const [deliveryPay,setDeliveryPay] = useState(4000);
   const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -141,7 +141,7 @@ const Checkout = () => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 3500+calculateTotalPrice();
+      return 4000+calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
       return 4000+calculateTotalPrice();
     }
@@ -150,7 +150,7 @@ const Checkout = () => {
   const getSub = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 3500;
+      return 4000;
     } else if (deliveryInfo == 'daily') {
       return 4000;
     }
