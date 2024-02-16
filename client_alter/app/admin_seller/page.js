@@ -247,6 +247,7 @@ return formattedDate;
         </table>
         </div>
         <h1 className={styles.title}>관리자 주문 조회</h1>
+        <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
             <tr>
@@ -353,7 +354,7 @@ return formattedDate;
     
 
 
-
+        </div>
     </div>
   );
 };
