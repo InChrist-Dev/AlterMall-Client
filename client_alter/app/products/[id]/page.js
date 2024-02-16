@@ -145,7 +145,7 @@ const ItemPage = (props) => {
           <div className={styles.price}>
             <p>{price.toLocaleString()}원</p>
           </div>
-          <button className={styles.addToCartButton} onClick={()=>{handleSubmit}}>장바구니</button>
+          <button className={styles.addToCartButton} onClick={()=>{handleSubmit();}}>장바구니</button>
           <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
       </div>
