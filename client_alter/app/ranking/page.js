@@ -130,13 +130,13 @@ const ItemPage = (props) => {
       <h1 className={styles.caTitle}>랭킹</h1>
       <div className={styles.sortAndScroll}>
         <div >
-          <button
+          {/* <button
             onClick={sortByLowestPrice}
             className={sortBy === 'lowest' ? styles.activeButton : styles.sortButtons}
           >
             건강순
           </button>
-          ㅣ
+          ㅣ */}
           <button
             onClick={sortByHighestPrice}
             className={sortBy === 'highest' ? styles.activeButton : styles.sortButtons}

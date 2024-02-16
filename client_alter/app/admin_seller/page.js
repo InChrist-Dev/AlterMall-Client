@@ -224,7 +224,8 @@ return formattedDate;
                       }
                     >-
                     </button>
-                    <span>{items.stock}</span>
+                    <input placeholder={items.stock} onChange={(e)=>
+                     handleQuantityChange(index, e.target.value)}></input>
                     <button
                       onClick={() =>
                         handleQuantityChange(index, items.stock + 1)
