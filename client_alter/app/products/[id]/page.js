@@ -79,7 +79,7 @@ const ItemPage = (props) => {
           Authorization: `Bearer ${accessToken}`,
         },
         credentials: 'include',
-        body: JSON.stringify({ amount: quantity ,item_id: id}),
+        body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
       })
         .then((response) => {
           console.log(response)
