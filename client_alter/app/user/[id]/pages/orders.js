@@ -70,11 +70,11 @@ const OrderHistory = () => {
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
-                  <img
+                  {/* <img
                     src={`https://udtown.site/${order.OrderDetails[0].img}`}
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
-                  />
+                  /> */}
                    {order.OrderDetails[0].item_name}외 건
                     
                    
