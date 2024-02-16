@@ -10,6 +10,7 @@ const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   const [orderdetail,setOrderdetail] = useState([]);
+  const [ordername,setOrdername] = useState('');
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -22,7 +23,7 @@ const OrderHistory = () => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
-      setOrderdetail(data.data.rows[0].OrderDetails[0])
+      setOrdername(data.data.rows[0].OrderDetails[0].item_name)
     }
     useEffect(()=>{
       fetchData();
@@ -90,7 +91,14 @@ const OrderHistory = () => {
                     <p>요청 사항: {order.requests}</p>
                   </td>
                   <td>{order.state}</td>
-                 
+                  <td>
+                <button className={styles.deleteButton}
+                      onClick={() =>
+                        {Cancel(order.order_id)}
+                      }
+                    >X
+                    </button>
+                </td>
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
 
                 </tr>
