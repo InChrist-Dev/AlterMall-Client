@@ -54,7 +54,7 @@ export default function LoginPage() {
         />
         <button className={styles.button}  onClick={handleSubmit}>확인</button>
       </span>
-
+      <h3>소셜 로그인</h3>
       <img className={styles.google} src='/google.png'  onClick={()=>{window.location.href="https://udtown.site/auth/google"}}/>
     </div>
   );
