@@ -70,7 +70,7 @@ const OrderHistory = () => {
   </div>
   {orders.map((order, index) => (
               <>
-              <h3>{order.createdAt[0,9]}</h3>
+              <h3>{order.createdAt.slice(0,9)}</h3>
                <table className={styles.orderTable}>
        
           <tbody>
