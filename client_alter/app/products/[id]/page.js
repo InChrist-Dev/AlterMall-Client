@@ -70,6 +70,8 @@ const ItemPage = (props) => {
   };
   const handleSubmit = useCallback(
     (id) => {
+      console.log(props.params.id);
+      console.log(id)
       fetch(`https://udtown.site/customer/cart/`, {
         method: 'POST',
         headers: {
