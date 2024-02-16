@@ -64,23 +64,23 @@ const OrderHistory = () => {
       주문내역
     
   </div>
-  {orders.length>0 ?orders.map((items, index) => (
+  {orders.length>0 ?orders.map((order, index) => (
               <tr key={index} className={styles.productCard}>
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
-                  <img
-                    src={`https://udtown.site/${items.OrderDetails[0].img}`}
-                    alt={items.OrderDetails[0].item_name}
+                  {/* <img
+                    src={`https://udtown.site/${order.OrderDetails[0].img}`}
+                    alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                   {orders.OrderDetails[0].item_name}외 건
-                    
+                   {order.OrderDetails[0].item_name}외 건
+                     */}
                    
                  
                 </td>
                 <td>
-                  <p>{items.Item.price}원</p>
+                  <p>{order.amount}원</p>
                 </td>
                 <td>
                 <button className={styles.deleteButton}
