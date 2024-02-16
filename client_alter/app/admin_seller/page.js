@@ -224,7 +224,7 @@ return formattedDate;
                       }
                     >-
                     </button>
-                    <input placeholder={items.stock} onChange={(e)=>
+                    <input className={styles.quantityInput} placeholder={items.stock} onChange={(e)=>
                      handleQuantityChange(index, e.target.value)}></input>
                     <button
                       onClick={() =>

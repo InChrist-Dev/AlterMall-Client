@@ -237,7 +237,10 @@
   .addToCartButton:hover {
     background-color: #e4e4e4;
   }
-  
+  .quantityInput{
+    width: 100px;
+    height: 60px;
+  }
   .BuyButton {
     background-color: #f0571b;
     color: #fff;
