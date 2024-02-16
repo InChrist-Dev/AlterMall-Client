@@ -85,7 +85,8 @@ const ItemPage = (props) => {
       
   
   }).then(async (response) => {
-    console.log(response.json());
+    const data =await  response.json()
+    console.log(data);
     if (response.status == 405) {
       alert('주문 실패하였습니다');
     } else if (response.status == 201) {
