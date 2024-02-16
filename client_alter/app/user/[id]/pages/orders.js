@@ -71,20 +71,7 @@ const OrderHistory = () => {
   {orders.map((order, index) => (
               <>
                <table className={styles.orderTable}>
-          <thead>
-            <tr>
-              <th>이미지</th>
-              <th>주문 ID</th>
-              <th>상품명</th>
-              <th>가격</th>
-
-              <th>주문 일자</th>
-              <th>주문자 정보</th>
-              <th>배송 정보</th>
-              <th>상태</th>
-              <th>수락</th>
-            </tr>
-          </thead>
+       
           <tbody>
                 <tr key={index} className={styles.orderRow}>
                
