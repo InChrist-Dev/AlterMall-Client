@@ -105,7 +105,7 @@ const ItemPage = (props) => {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
-        
+
 
       })
         .then(async(response) => {
@@ -229,7 +229,7 @@ const ItemPage = (props) => {
           <thead>
             <tr>
               <th>이미지</th>
-              <th>주문 ID</th>
+            
               <th>상품명</th>
               <th>가격</th>
 
@@ -249,7 +249,7 @@ const ItemPage = (props) => {
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
-                  <td>{order.order_id}</td>
+                
                   <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
                   <td>{order.amount}원</td>
 
