@@ -10,7 +10,7 @@ const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   const [orderdetail,setOrderdetail] = useState([]);
-
+  const [ordername,setOrdername] = useState('');
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -23,7 +23,7 @@ const OrderHistory = () => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
-      
+      setOrderdetail(data.data.rows[0].OrderDetails[0])
     }
     useEffect(()=>{
       fetchData();
