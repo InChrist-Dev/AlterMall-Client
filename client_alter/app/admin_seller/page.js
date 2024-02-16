@@ -96,8 +96,8 @@ const ItemPage = (props) => {
     },
     [],
   );
-  const setDate = (date)=>{
-    const dateString = date;
+  const setDate = (data)=>{
+    const dateString = data;
 
 // 문자열을 Date 객체로 파싱
 const date = new Date(dateString);
