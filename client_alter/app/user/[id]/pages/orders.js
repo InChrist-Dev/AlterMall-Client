@@ -70,6 +70,7 @@ const OrderHistory = () => {
   </div>
   {orders.map((order, index) => (
               <>
+              <h3>{order.createdAt}</h3>
                <table className={styles.orderTable}>
        
           <tbody>
@@ -83,7 +84,7 @@ const OrderHistory = () => {
                  
                   <td>{orderdetail.item_name}외 {orderdetail.length}건</td>
                   <td>{order.amount}원</td>
-                  <td>{order.updatedAt}</td>
+                  
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
