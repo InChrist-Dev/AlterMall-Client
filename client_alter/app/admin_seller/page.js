@@ -96,6 +96,25 @@ const ItemPage = (props) => {
     },
     [],
   );
+  const setDate = (date)=>{
+    const dateString = date;
+
+// 문자열을 Date 객체로 파싱
+const date = new Date(dateString);
+
+// 날짜 및 시간을 원하는 형식으로 변환
+const formattedDate = date.toLocaleString('ko-KR', {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false, // 24시간 형식으로 표시
+  timeZone: 'Asia/Seoul', // 한국 표준시로 설정
+});
+return formattedDate;
+  }
   const setPaid =  useCallback(
     (order) => {
 
@@ -253,7 +272,7 @@ const ItemPage = (props) => {
                   <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails[0].length:''}건</td>
                   <td>{order.amount}원</td>
 
-                  <td>{order.updatedAt}</td>
+                  <td>{setDate(order.updatedAt)}</td>
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
