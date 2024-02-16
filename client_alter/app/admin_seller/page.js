@@ -219,10 +219,10 @@ return formattedDate;
                     className={styles.productImage}
                   />
                 </td>
-                <td><p>  <input className={styles.quantityInput} placeholder={items.item_name} onChange={(e)=>
+                <td><p>  <input className={styles.nameInput} placeholder={items.item_name} onChange={(e)=>
                      handleNameChange(index, e.target.value)}></input></p></td>
                 <td>
-                <td><p>  <input className={styles.quantityInput} placeholder={items.price+'원'} onChange={(e)=>
+                <td><p>  <input className={styles.nameInput} placeholder={items.price+'원'} onChange={(e)=>
                      handlePriceChange(index, e.target.value)}></input></p></td>
                 
                 </td>
