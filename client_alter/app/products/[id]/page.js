@@ -63,7 +63,7 @@ const ItemPage = (props) => {
   };
   const Quantity = () => {
     const result = [];
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= stock; i++) {
       result.push(<option key={i} value={i}>{i}</option>);
     }
     return result;
@@ -116,10 +116,10 @@ const ItemPage = (props) => {
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
           <h1 >{name}</h1>
-          <p><span>배달방법 </span> 특급배달</p>
+          {/* <p><span>배달방법 </span> 특급배달</p>
           <p><span>제품구성 </span> 밀가루, 버터, 우유, 달걀, 설탕포함</p>
           <p><span>보관법 </span> 냉동보관</p>
-          <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p>
+          <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
         </div>
 
