@@ -10,21 +10,21 @@ const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   try{
-    // const fetchData = async() =>{
-    //   const response = await fetch(`https://udtown.site/customer/order`, {
-    //     headers: {
-    //       Authorization: `Bearer ${accessToken}`,
-    //       'Content-Type': 'application/json',
-    //     },
-    //     credentials: 'include',
-    //   });
-    //   const data = await response.json();
-    //   console.log(data.data.rows);
-    //   setOrders(data.data.rows);
-    // }
-    // useEffect(()=>{
-    //   fetchData();
-    // })
+    const fetchData = async() =>{
+      const response = await fetch(`https://udtown.site/customer/order/`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setOrders(data.data.rows);
+    }
+    useEffect(()=>{
+      fetchData();
+    })
   }catch{
 
   }
