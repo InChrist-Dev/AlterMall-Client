@@ -68,13 +68,9 @@ const OrderHistory = () => {
   {orders.map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
-                  <img
-                    src={`https://udtown.site/${order.OrderDetails[0].img}`}
-                    alt={order.OrderDetails[0].item_name}
-                    className={styles.productImage}
-                  />
+               
                   <td>{order.order_id}</td>
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
+                 
                   <td>{order.amount}원</td>
 
                   <td>{order.updatedAt}</td>
