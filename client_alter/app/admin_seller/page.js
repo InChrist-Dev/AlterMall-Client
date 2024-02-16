@@ -236,7 +236,7 @@ return formattedDate;
                       onClick={() =>
                         Update(items.item_id, items.stock)
                       }
-                    >재고저장
+                    >저장
                     </button>
                   </div>
                 </td>
@@ -245,6 +245,7 @@ return formattedDate;
           </tbody>
 
         </table>
+        <h1 className={styles.title}>관리자 주문/조회</h1>
         <table className={styles.orderTable}>
           <thead>
             <tr>
