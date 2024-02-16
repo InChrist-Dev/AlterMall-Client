@@ -259,6 +259,7 @@ return formattedDate;
               <th>배송 정보</th>
               <th>상태</th>
               <th>수락</th>
+              <th>상세</th>
             </tr>
           </thead>
           <tbody>
@@ -296,13 +297,17 @@ return formattedDate;
                         완료
                       </button>
                     ) : null}
+                 
+                   
+                  </td>
+                  <td>
                     <button
                       className={styles.detailBtn}
                       onClick={() => setSelectedOrder(!selectedOrder)}
                     >
                       상세보기
                     </button>
-                  </td>
+                    </td>
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
 
                 </tr>
