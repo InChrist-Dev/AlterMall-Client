@@ -19,7 +19,7 @@ const OrderHistory = () => {
         credentials: 'include',
       });
       const data = await response.json();
-      console.log(data.data.rows);
+      console.log(data.data.rows[0].OrderDetails[0].item_name);
       setOrders(data.data.rows);
     }
     useEffect(()=>{
@@ -75,7 +75,7 @@ const OrderHistory = () => {
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   /> */}
-                   {order.OrderDetails}외 건
+                /
                     
                    
                  
