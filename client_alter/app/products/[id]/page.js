@@ -79,6 +79,7 @@ const ItemPage = (props) => {
         body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
       })
         .then((response) => {
+          console.log(response)
           if (response.status == 405) {
             alert('실패하였습니다');
           } else if (response.status == 201) {
