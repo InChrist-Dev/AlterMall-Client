@@ -5,8 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 import { LoginBtn } from '../logins';
-import { UserBtn } from './userIcon';
-import { LogOutBtn } from '../logout';
+
 import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
