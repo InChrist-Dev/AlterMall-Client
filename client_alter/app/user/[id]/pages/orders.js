@@ -24,7 +24,7 @@ const OrderHistory = () => {
     }
     useEffect(()=>{
       fetchData();
-    })
+    },[])
   }catch{
 
   }
