@@ -54,7 +54,7 @@ const Checkout = () => {
           'requests': request,
           'amount': amount,
           'delivery_type': deliveryInfo,
-       
+          'seller_id':items[0].seller_id
         
         }),
       });

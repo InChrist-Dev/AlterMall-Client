@@ -105,6 +105,7 @@ const ItemPage = (props) => {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
+        
 
       })
         .then(async(response) => {
