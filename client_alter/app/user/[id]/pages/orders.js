@@ -65,7 +65,7 @@ const OrderHistory = () => {
       주문내역
     
   </div>
-  {orders.OrderDetails && orders.OrderDetails[0] ?orders.map((order, index) => (
+  {orders[0].OrderDetails && orders[0].OrderDetails[0] ?orders.map((order, index) => (
               <>
               <tr key={index} className={styles.productCard}>
               
