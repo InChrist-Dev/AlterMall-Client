@@ -49,14 +49,12 @@ const Checkout = () => {
         credentials: 'include',
         body: JSON.stringify({
           'order_id': info.order_id,
-          'phone': '010-3892-3939',
-          'post':'32432',
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
           'requests': request,
           'amount': amount,
           'delivery_type': deliveryInfo,
-        
+          'phone': delivery.phone,
           'customer_name':delivery.name,
         
         }),
