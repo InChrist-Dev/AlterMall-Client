@@ -35,17 +35,8 @@ const Checkout = () => {
     items.map((item) => {
       amount += item.price * item.stock;
     });
-    const orderItems = items.map((item) => {
-      return {
-        "order_id": info.order_id,
-        "seller_id": item.seller_id,
-        "stock": item.stock,//총 주문량
-        "price": item.price, //가격
-        "item_id": item.item_id,
-        "item_name": item.item_name,
-        "img": item.img
-      };
-    });
+    amount += getSub();
+   
     if (delivery) {
       await fetch('https://udtown.site/customer/order', {
         method: 'PATCH',
