@@ -179,7 +179,7 @@ return formattedDate;
   );
   return (
     <div style={{ 'marginBottom': '100px' }}>
-      <h1 className={styles.title}>관리자 주문/조회</h1>
+      <h1 className={styles.title}>상품 관리</h1>
       <div className={styles.basketContainer}>
         <table className={styles.productTable}>
           <thead>
@@ -245,7 +245,8 @@ return formattedDate;
           </tbody>
 
         </table>
-        <h1 className={styles.title}>관리자 주문/조회</h1>
+        </div>
+        <h1 className={styles.title}>관리자 주문 조회</h1>
         <table className={styles.orderTable}>
           <thead>
             <tr>
@@ -349,7 +350,7 @@ return formattedDate;
             ))}
           </tbody>
         </table>
-      </div>
+    
 
 
 
