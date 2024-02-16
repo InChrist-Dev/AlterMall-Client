@@ -96,7 +96,34 @@ const ItemPage = (props) => {
     },
     [],
   );
+  const setPaid =  useCallback(
+    (order) => {
 
+      fetch(`https://udtown.site/seller/order/${order.order_id}`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+
+      })
+        .then((response) => {
+          console.log(response)
+          if (response.status == 405) {
+            alert('삭제 실패하였습니다');
+          } else if (response.status == 201) {
+            alert('삭제되었습니다');
+          }
+
+
+        })
+        .finally(() => {
+          window.location.reload();
+        });
+
+    },
+    [],
+  );
   const Update = useCallback(
     (id, stock) => {
 
@@ -237,7 +264,7 @@ const ItemPage = (props) => {
                   <td>{order.state}</td>
                   <td>
                     {order.state === 'paid' ? (
-                      <button className={styles.accessButton}>
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
                         수락
                       </button>
                     ) : order.state === 'accept' ? (
