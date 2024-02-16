@@ -38,7 +38,7 @@ const Checkout = () => {
     amount += getSub();
    
     if (delivery) {
-      console.log(phone);
+      console.log(delivery.phone);
       await fetch('https://udtown.site/customer/order', {
         method: 'PATCH',
         headers: {
@@ -54,7 +54,7 @@ const Checkout = () => {
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
-          'name':
+          'name': delivery.name,
           
 
 
