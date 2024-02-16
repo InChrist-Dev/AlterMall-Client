@@ -161,7 +161,7 @@ return formattedDate;
     [],
   );
   const Update = useCallback(
-    (id, stock) => {
+    (id, stock,name,price) => {
 
       fetch(`https://udtown.site/category/${id}`, {
         method: 'PATCH',
@@ -171,6 +171,8 @@ return formattedDate;
         },
         body: JSON.stringify({
           'stock': stock,
+          'item_name':name,
+          'price':price,
 
         }),
 
@@ -180,13 +182,12 @@ return formattedDate;
             alert('수정 실패하였습니다');
           } else if (response.status == 200) {
             alert('수정되었습니다');
+            fetchData();
           }
 
 
         })
-        .finally(() => {
-          window.location.reload();
-        });
+
 
     },
     [],
@@ -251,7 +252,7 @@ return formattedDate;
                     </button>
                     <button
                       onClick={() =>
-                        Update(items.item_id, items.stock)
+                        Update(items.item_id, items.stock,items.item_name,items.price)
                       }
                     >저장
                     </button>
