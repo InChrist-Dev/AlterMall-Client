@@ -54,7 +54,7 @@ const Checkout = () => {
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
-          'name': delivery.name,
+          'customer_name': delivery.name,
           
 
 
