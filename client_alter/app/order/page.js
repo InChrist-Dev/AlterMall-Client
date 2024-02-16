@@ -30,7 +30,7 @@ const Checkout = () => {
     const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
 
     const tosspayments = await loadTossPayments(
-      'live_gck_GePWvyJnrKv2Qb2W6yy7VgLzN97E'
+      'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
     );
     items.map((item) => {
       amount += item.price * item.stock;
@@ -54,8 +54,7 @@ const Checkout = () => {
           'requests': request,
           'amount': amount,
           'delivery_type': deliveryInfo,
-          'phone': delivery.phone,
-          'customer_name': delivery.name,
+       
         
         }),
       });
