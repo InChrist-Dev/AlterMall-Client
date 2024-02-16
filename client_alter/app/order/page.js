@@ -55,6 +55,7 @@ const Checkout = () => {
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': '010-3892-3939',
+          'post':'32432'
           'customer_name':delivery.name,
         
         }),
