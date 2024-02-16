@@ -55,9 +55,7 @@ const Checkout = () => {
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name': delivery.name,
-          
-
-
+          'post':"24444"
         }),
       });
     
