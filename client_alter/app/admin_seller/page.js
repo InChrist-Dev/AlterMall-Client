@@ -109,6 +109,7 @@ const ItemPage = (props) => {
       })
         .then((response) => {
           console.log(response)
+          console.log(response.msg)
           if (response.status == 405) {
             alert('수락 실패하였습니다');
           } else if (response.status == 201) {
