@@ -19,7 +19,7 @@ const OrderHistory = () => {
         credentials: 'include',
       });
       const data = await response.json();
-      console.log(data.data.rows[0].OrderDetails[0].item_name);
+      console.log(data.data.rows);
       setOrders(data.data.rows);
     }
     useEffect(()=>{
@@ -66,16 +66,17 @@ const OrderHistory = () => {
     
   </div>
   {orders.length>0?orders.map((order, index) => (
+              <>
               <tr key={index} className={styles.productCard}>
               
                 <td style={{display:'flex' , alignItems: 'center',}}>
                   
-                  {/* <img
+                  <img
                     src={`https://udtown.site/${order.OrderDetails[0].img}`}
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
-                  /> */}
-                /
+                  />
+                   {order.OrderDetails[0].item_name}외 건
                     
                    
                  
@@ -95,6 +96,7 @@ const OrderHistory = () => {
             
                 </td>
               </tr>
+              </>
             )):''}
   </div>
   );
