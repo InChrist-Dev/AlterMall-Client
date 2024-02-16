@@ -250,7 +250,7 @@ const ItemPage = (props) => {
                     className={styles.productImage}
                   />
                 
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails[0].length}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails[0].length:''}건</td>
                   <td>{order.amount}원</td>
 
                   <td>{order.updatedAt}</td>
