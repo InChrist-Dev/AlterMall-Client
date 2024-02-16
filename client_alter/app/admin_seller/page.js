@@ -118,7 +118,7 @@ const ItemPage = (props) => {
 
         })
         .finally(() => {
-          window.location.reload();
+     
         });
 
     },
