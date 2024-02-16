@@ -1,6 +1,6 @@
 'use client'
 // UserInfo.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useCallback } from 'react';
 import styles from './pages.module.css';
 import { fetchData } from 'next-auth/client/_utils';
 import Cookies from 'js-cookie';
@@ -28,7 +28,36 @@ const OrderHistory = () => {
   }catch{
 
   }
- 
+  const Cancel = useCallback(
+    (id) => {
+
+      fetch(`https://udtown.site/customer/cancel`, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          'order_id':id
+        })
+
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert('삭제 실패하였습니다');
+          } else if (response.status == 201) {
+            alert('삭제되었습니다');
+          }
+
+
+        })
+        .finally(() => {
+          window.location.reload();
+        });
+
+    },
+    [],
+  );
   return (
     <div>
       <div className={styles.topArea}>
@@ -56,7 +85,7 @@ const OrderHistory = () => {
                 <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
-                        {Cancel(items.id)}
+                        {Cancel(orders.order_id)}
                       }
                     >X
                     </button>

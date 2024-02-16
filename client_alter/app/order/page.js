@@ -309,7 +309,7 @@ const Checkout = () => {
                   <th>이미지</th>
                   <th>상품명</th>
                   <th>가격</th>
-                  <th>취소</th>
+              
                   <th>수량</th>
                 </tr>
               </thead>
@@ -342,13 +342,7 @@ const Checkout = () => {
                     <td>
                       <p>{items.price}원</p>
                     </td>
-                    <td>
-                      <button className={styles.deleteButton}
-                        onClick={() => { Cancel(items.id) }
-                        }
-                      >X
-                      </button>
-                    </td>
+                 
                     <td>
                       <div className={styles.quantityControl}>
                         {/* <button
