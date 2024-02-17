@@ -20,6 +20,8 @@ const DeliveryInfoModal = ({ closeModal  }) => {
   const [isAddress, setIsAddress] = useState(false);
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const addressClick = () => {
     const newIsAddress = !isAddress;
     setIsAddress(newIsAddress);
@@ -44,7 +46,7 @@ const DeliveryInfoModal = ({ closeModal  }) => {
   const handleSubmit = async () => {
     
     try {
-      const response = await fetch('https://udtown.site/customer/deliver', {
+      const response = await fetch('https://udtown.site/auth/local/signin', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -52,11 +54,11 @@ const DeliveryInfoModal = ({ closeModal  }) => {
         },
         credentials: 'include',
         body: JSON.stringify({
-          "addr": address,
-          "addr_detail": detailAddress,
-          
-          "address_name":addressname,
-          "name": name
+          "id": id,
+          "name": name,
+          "phone":phone,
+          "email":email,
+          "pw": pw
         }), 
       });
 
@@ -108,18 +110,19 @@ const DeliveryInfoModal = ({ closeModal  }) => {
       <div className={styles.modalContent}>
     
 
-        <h2>배송지 정보 추가</h2>
-        <label>배송지 구분</label>
-        <input type="text" value={addressname} onChange={(e) => setAddressName(e.target.value)} />
-
+        <h2>간편 회원가입</h2>
+      
         <label>이름</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         <label>아이디</label>
         <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
         <label>비밀번호</label>
         <input type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
-        <label>비밀번호 확인</label>
-        <input type="text" value={pw} onChange={(e) => setPwCheck(e.target.value)} />
+        <label>전화번호</label>
+        <input type="text" value={pw} onChange={(e) => setPhone(e.target.value)} />
+        <label>이메일</label>
+        <input type="text" value={pw} onChange={(e) => setEmail(e.target.value)} />
+        
 
         
        
