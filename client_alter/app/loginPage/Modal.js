@@ -12,13 +12,7 @@ const DeliveryInfoModal = ({ closeModal  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
 
-  const showAllAddressesModal = () => {
-    setShowAllAddresses(true);
-  };
 
-  const closeAllAddressesModal = () => {
-    setShowAllAddresses(false);
-  };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
   const [address, setAddress] = useState('');

@@ -7,11 +7,12 @@ import DeliveryInfoModal from './Modal';
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showModal, setShowModal] = useState(false);
   const openModal = () => {
     setShowModal(true);
   };
   const handleSubmit = async () => {
-    const [showModal, setShowModal] = useState(false);
+  
     console.log(username,password)
    
     try {
