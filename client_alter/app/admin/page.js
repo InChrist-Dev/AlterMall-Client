@@ -5,7 +5,10 @@ import ImageWithAnimation from './image';
 import Link from 'next/link';
 import style from './admin.module.css';
 
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const ImageUploader = (props) => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +67,10 @@ const ImageUploader = (props) => {
   const handleConfirm = (item) => {
     fetch(`https://udtown.site/category/${item}`, {
               method: 'DELETE',
-           
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
             })
               .then((response) => {
                 console.log(response.status);
@@ -139,6 +145,10 @@ const ImageUploader = (props) => {
       
             fetch('https://udtown.site/category', {
               method: 'POST',
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
               body: formData,
             })
               .then((response) => {
