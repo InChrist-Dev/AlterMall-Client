@@ -147,9 +147,9 @@ const Checkout = (props) => {
   const getImageUrl = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return './post.jpg';
+      return '../post.jpg';
     } else if (deliveryInfo == 'daily') {
-      return './today.jpg';
+      return '../today.jpg';
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
