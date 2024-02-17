@@ -295,26 +295,13 @@ const Checkout = () => {
             <div className={styles.requestBox}>
       <label>배송시 요청사항</label>
       <div>
-        {/* 라디오 버튼으로 선택 */}
-        <input
-          type="radio"
-          value="노크x"
-          checked={requestOption === '노크x'}
-          onChange={handleOptionChange}
-        /> 노크x
-        <input
-          type="radio"
-          value="문앞에 두고 가주세요"
-          checked={requestOption === '문앞에 두고 가주세요'}
-          onChange={handleOptionChange}
-        /> 문앞에 두고 가주세요
-        {/* 직접 입력 선택 */}
-        <input
-          type="radio"
-          value="직접입력"
-          checked={requestOption === '직접입력'}
-          onChange={handleOptionChange}
-        /> 직접입력
+       {/* 옵션 선택 */}
+       <select value={requestOption} onChange={handleOptionChange}>
+          <option value="">선택하세요</option>
+          <option value="노크x">노크x</option>
+          <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
+          <option value="직접입력">직접입력</option>
+        </select>
         {/* 직접 입력 창 */}
         {requestOption === '직접입력' && (
           <input
