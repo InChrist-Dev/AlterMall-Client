@@ -271,7 +271,7 @@ const Checkout = () => {
                 </>
               ) : (
                 <>
-                  <div></div>
+                  <div>배송지 정보가 없습니다. 배송지를 변경해주세요</div>
                   <div></div>
                   <div></div>
                 </>
