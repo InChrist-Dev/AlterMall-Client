@@ -328,7 +328,7 @@ return formattedDate;
           >
             <option value={'paid'}>결제완료</option>
             <option value={'accept'}>제조중</option>
-            <option value={'delivery'}>배송완료</option>
+            <option value={'deliver'}>전송완료</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
@@ -382,8 +382,8 @@ return formattedDate;
                       <td>결제완료</td>
                     ) : order.state === 'accept' ? (
                       <td>제조중</td>
-                    ) : order.state === 'delivery' ? (
-                      <td>배송시작</td>
+                    ) : order.state === 'deliver' ? (
+                      <td>전송완료</td>
                     ): null}
                  
                   <td>
