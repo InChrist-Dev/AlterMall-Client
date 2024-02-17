@@ -306,14 +306,19 @@ return formattedDate;
                     <p>배송 유형: {order.delivery_type}</p>
                     <p>요청 사항: {order.requests}</p>
                   </td>
-                  <td>{order.state}</td>
+                  {order.state === 'paid' ? (
+                      <td>결제완료</td>
+                    ) : order.state === 'accept' ? (
+                      <td>제조중</td>
+                    ) : null}
+                 
                   <td>
                     {order.state === 'paid' ? (
                       <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
                         수락
                       </button>
                     ) : order.state === 'accept' ? (
-                      <button className={styles.accessButton}>
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
                         완료
                       </button>
                     ) : null}
