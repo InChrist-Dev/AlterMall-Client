@@ -51,7 +51,8 @@ const DeliveryInfoModal = ({ closeModal  }) => {
       } else {
         
       }
-      console.log(response.json())
+      const data = await response.json();
+      console.log(data)
     } catch (error) {
       // 에러 처리
       console.error('Failed to send like request', error);
