@@ -98,7 +98,8 @@ const ImageUploader = (props) => {
     setUploadDisabled(true);
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = 
+    (event) => {
       try{
           if(item_name == ''){
             setIsModalOpen(true);
@@ -175,10 +176,8 @@ const ImageUploader = (props) => {
         alert('컨텐츠 저장에 실패하였습니다')
       }
       
-    },
-
-
-
+    };
+   
   const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
 
  
