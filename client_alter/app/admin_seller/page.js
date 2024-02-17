@@ -4,6 +4,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './admin_seller.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
+import { useDropzone } from 'react-dropzone';
+import ImageWithAnimation from '../admin/image';
 
 import Cookies from 'js-cookie';
 
@@ -11,11 +13,17 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
+  const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
   const [items, setItems] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(false);
   const myUuid = uuidv4();
   console.log(myUuid);
+  const handleDrop = useCallback((acceptedFiles) => {
+    // 기존 파일과 새로 받은 파일을 합친 새로운 배열 생성
+    const combinedFiles = [...files, ...acceptedFiles];
+    setFiles(combinedFiles);
+  }, [files]);
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/seller/order`, {
@@ -162,7 +170,10 @@ return formattedDate;
   );
   const Update = useCallback(
     (id, stock,name,price) => {
-
+      files.forEach((file, index) => {
+        formData.append(`img`, file);
+     
+      });
       fetch(`https://udtown.site/category/${id}`, {
         method: 'PATCH',
         headers: {
@@ -173,7 +184,7 @@ return formattedDate;
           'stock': stock,
           'item_name':name,
           'price':price,
-
+          'img':files[0]
         }),
 
       })
@@ -192,6 +203,8 @@ return formattedDate;
     },
     [],
   );
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
   return (
     <div style={{ 'marginBottom': '100px' }}>
       <h1 className={styles.title}>상품 관리</h1>
@@ -212,6 +225,21 @@ return formattedDate;
               <tr key={index} className={styles.productCard}>
 
                 <td style={{ display: 'flex', alignItems: 'center', }}>
+                <div {...getRootProps()} className={style.dropzone}>
+            <input {...getInputProps()} />
+            {files.length > 0 ? (
+              <div className={style.preview}>
+                {files.map((file, index) => (
+                  <div key={file.name} className={style.imageContainer}>
+                    <ImageWithAnimation src={URL.createObjectURL(file)} alt={file.name} className={style.image} />
+                    <button type="button" className={style.cancel} onClick={() => handleCancel(index)}>X</button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
+            )}
+          </div>
 
                   <img
                     src={`https://udtown.site/${items.img}`}
