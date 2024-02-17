@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const Checkout = () => {
+const Checkout = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
   const [delivery, setDelivery] = useState([]);
@@ -135,13 +135,13 @@ const Checkout = () => {
     );
   };
 
-  const toggleAllItemsSelection = () => {
-    if (selectedItems.length === items.length) {
-      setSelectedItems([]);
-    } else {
-      setSelectedItems([...Array(items.length).keys()]);
-    }
-  };
+  // const toggleAllItemsSelection = () => {
+  //   if (selectedItems.length === items.length) {
+  //     setSelectedItems([]);
+  //   } else {
+  //     setSelectedItems([...Array(items.length).keys()]);
+  //   }
+  // };
 
 
   const getImageUrl = () => {
@@ -247,7 +247,7 @@ const Checkout = () => {
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
-      setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
+      
 
       // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
 
