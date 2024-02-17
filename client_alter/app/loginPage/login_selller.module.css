@@ -28,9 +28,9 @@
   .sellerButton {
     padding: 10px;
     height: 60px;
-    background:#f57c19;
-    color: #fff;
-    border: none;
+    background:hsl(0, 0%, 100%);
+    color: #ccc;
+    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     width: 49%;
@@ -39,7 +39,7 @@
     display: flex;
   }
   .sellerButton:hover {
-    background:#df7117;
+    background:#d1d1d1;
   }
   .localButton {
     padding: 10px;
