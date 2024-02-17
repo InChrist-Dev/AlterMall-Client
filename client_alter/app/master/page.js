@@ -7,12 +7,12 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faChevronLeft,faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Recommend() {
-  const [masterCategory, setMasterCategory] = useState(['글루텐 장인', '슈가 장인', '락토 장인', '알러지 장인']);
+  const [masterCategory, setMasterCategory] = useState(['글루텐 장인']); //, '슈가 장인', '락토 장인', '알러지 장인'
 
   const [master, setMaster] = useState([]);
  
 const [currentIndex, setCurrentIndex] = useState(0);
-const [favorites, setFavorites] = useState([false, false, false, false]); // Initialize with false for each master
+const [favorites, setFavorites] = useState([false]); // Initialize with false for each master  false, false, false
 
 const fetchData = async () => {
   try {
