@@ -98,8 +98,7 @@ const ImageUploader = (props) => {
     setUploadDisabled(true);
   }, []);
 
-  const handleSubmit = useCallback(
-    (event) => {
+  const handleSubmit = (event) => {
       try{
           if(item_name == ''){
             setIsModalOpen(true);
@@ -177,8 +176,8 @@ const ImageUploader = (props) => {
       }
       
     },
-    [files, item_name,category,seller_id,price],
-  );
+
+
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
 
