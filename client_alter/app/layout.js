@@ -19,7 +19,7 @@ export default async function RootLayout({ children }) {
   return (
     
     <html className="container" lang="ko">
-      <body className={inter.className}> 
+      <body style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('./rabe.png') center/cover`}}className={inter.className}> 
       <NavigationBar session={session? session:''}/>
     
             
