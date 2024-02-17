@@ -32,7 +32,7 @@ export default function LoginPage() {
         }) .then((res) => res.json())
         .then((json) => {
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-          if(json)
+      
           window.location.href="https://altermall.shop/admin_seller"
         });
       } catch (error) {
@@ -63,10 +63,11 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-         <button className={styles.registerButton} onClick={openModal}>
+         <button className={styles.registerBtn} onClick={openModal}>
                 회원가입
               </button>
         <button className={styles.button}  onClick={handleSubmit}>확인</button>
+        
       </span>
       <h3>소셜 로그인</h3>
       <img className={styles.google} src='/google.png'  onClick={()=>{window.location.href="https://udtown.site/auth/google"}}/>
