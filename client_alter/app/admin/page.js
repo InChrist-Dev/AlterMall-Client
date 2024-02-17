@@ -232,7 +232,7 @@ const ImageUploader = (props) => {
               <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
             )}
           </div>
-          <button className={style.button} onClick={()=>{handleSubmit}}>저장</button>
+          <button className={style.button} onClick={()=>{handleSubmit()}}>저장</button>
         <label>
               아이템삭제
               <input type="text" value={item} placeholder="아이템ID를 적어주세요" onChange={(event) => setItem(event.target.value)} />
