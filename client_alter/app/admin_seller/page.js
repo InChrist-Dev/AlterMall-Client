@@ -19,6 +19,7 @@ const ItemPage = (props) => {
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
   const [deliveryType, setDeliveryType] = useState('daily');
+  const [orderState, setOrderState] = useState('paid');
   const myUuid = uuidv4();
   console.log(myUuid);
   const handleDrop = useCallback((acceptedFiles) => {
@@ -311,6 +312,19 @@ return formattedDate;
           >
             <option value={'daily'}>당일배송</option>
             <option value={'normal'}>일반배송</option>
+          </select>
+          <label htmlFor="displayCount"></label>
+        </div>
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={orderState}
+            onChange={handleDisplayCountChange}
+          >
+            <option value={'paid'}>결제완료</option>
+            <option value={'accept'}>제조중</option>
+            <option value={'accept'}>배송완료</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
