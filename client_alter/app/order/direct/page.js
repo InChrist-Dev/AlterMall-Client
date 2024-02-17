@@ -208,7 +208,7 @@ const Checkout = () => {
       const data = await response.json();
       console.log(data)
        
-  const fetchData = async () => {
+
     try {
       const response = await fetch(`https://udtown.site/category/${props.searchParams.itemId}`);
       const data = await response.json();
@@ -219,9 +219,7 @@ const Checkout = () => {
     
       setItems(data);
       
-      const initialQuantity = parseInt(props.searchParams.amount);
     
-      setQuantity(initialQuantity);
 
 
 
@@ -231,11 +229,10 @@ const Checkout = () => {
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
-  };
+  
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
 
-      setItems(data.data.rows[0].OrderDetails);
 
       const response2 = await fetch(`https://udtown.site/customer/deliver`, {
         headers: {
