@@ -93,8 +93,8 @@ const ItemPage = (props) => {
     fetchData();
   }, []);
   const handleDisplayCountChange = (e) => {
-    setDisplayCount(Number(e.target.value));
-    setCurrentPage(1); // 페이지 수 변경시 현재 페이지를 1로 리셋
+    setDeliveryType(e.target.value);
+    
   };
   const Cancel = useCallback(
     (id) => {
