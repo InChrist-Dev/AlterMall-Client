@@ -4,6 +4,8 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './admin_seller.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
+import { useDropzone } from 'react-dropzone';
+import ImageWithAnimation from '../admin/image';
 
 import Cookies from 'js-cookie';
 
@@ -11,11 +13,20 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
+  const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
   const [items, setItems] = useState([]);
+  const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
+  const [deliveryType, setDeliveryType] = useState('daily');
+  const [orderState, setOrderState] = useState('paid');
   const myUuid = uuidv4();
   console.log(myUuid);
+  const handleDrop = useCallback((acceptedFiles) => {
+    // 기존 파일과 새로 받은 파일을 합친 새로운 배열 생성
+    const combinedFiles = [...files, ...acceptedFiles];
+    setFiles(combinedFiles);
+  }, [files]);
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/seller/order`, {
@@ -82,7 +93,10 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const handleDisplayCountChange = (e) => {
+    setDeliveryType(e.target.value);
+    
+  };
   const Cancel = useCallback(
     (id) => {
 
@@ -115,6 +129,7 @@ const ItemPage = (props) => {
 
 // 문자열을 Date 객체로 파싱
 const date = new Date(dateString);
+
 
 // 날짜 및 시간을 원하는 형식으로 변환
 const formattedDate = date.toLocaleString('ko-KR', {
@@ -162,7 +177,10 @@ return formattedDate;
   );
   const Update = useCallback(
     (id, stock,name,price) => {
-
+      files.forEach((file, index) => {
+        formData.append(`img`, file);
+     
+      });
       fetch(`https://udtown.site/category/${id}`, {
         method: 'PATCH',
         headers: {
@@ -173,7 +191,7 @@ return formattedDate;
           'stock': stock,
           'item_name':name,
           'price':price,
-
+          // 'img':files[0]
         }),
 
       })
@@ -192,6 +210,8 @@ return formattedDate;
     },
     [],
   );
+
+  const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
   return (
     <div style={{ 'marginBottom': '100px' }}>
       <h1 className={styles.title}>상품 관리</h1>
@@ -212,6 +232,21 @@ return formattedDate;
               <tr key={index} className={styles.productCard}>
 
                 <td style={{ display: 'flex', alignItems: 'center', }}>
+                {/* <div {...getRootProps()} className={styles.dropzone}>
+            <input {...getInputProps()} />
+            {files.length > 0 ? (
+              <div className={styles.preview}>
+                {files.map((file, index) => (
+                  <div key={file.name} className={styles.imageContainer}>
+                    <ImageWithAnimation src={URL.createObjectURL(file)} alt={file.name} className={styles.image} />
+                    <button type="button" className={styles.cancel} onClick={() => handleCancel(index)}>X</button>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
+            )}
+          </div> */}
 
                   <img
                     src={`https://udtown.site/${items.img}`}
@@ -265,6 +300,35 @@ return formattedDate;
         </table>
         </div>
         <h1 className={styles.title}>관리자 주문 조회</h1>
+        <div className={styles.sortAndScroll}>
+    
+
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={deliveryType}
+            onChange={handleDisplayCountChange}
+          >
+            <option value={'daily'}>당일배송</option>
+            <option value={'normal'}>일반배송</option>
+          </select>
+          <label htmlFor="displayCount"></label>
+        </div>
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={orderState}
+            onChange={handleDisplayCountChange}
+          >
+            <option value={'paid'}>결제완료</option>
+            <option value={'accept'}>제조중</option>
+            <option value={'accept'}>배송완료</option>
+          </select>
+          <label htmlFor="displayCount"></label>
+        </div>
+      </div>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -283,7 +347,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, index) => (
+            {orders.filter(order => order.delivery_type === deliveryType).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img

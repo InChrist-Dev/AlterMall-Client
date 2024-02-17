@@ -100,8 +100,7 @@ const ItemPage = (props) => {
   );
 
   const handleBuy = (itemId,amount)=>{
-    // window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
-    alert('해당 서비스는 점검중입니다. 장바구니 결제를 이용해주세요')
+    window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
  return(
     <div>
@@ -218,12 +217,30 @@ const ItemPage = (props) => {
        
         <div>
         <div className={styles.detail} id="image1">
-        <img src="/example.jpg" />
+        <img src="/11.jpg" />
       </div>
       <div className={styles.detail} id="image2">
-        <img src="/back1.jpg" />
+        <img src="/22.jpg" />
       </div>
       <div className={styles.detail} id="image3">
+        <img src="/33.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/44.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/55.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/66.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/77.jpg" />
+      </div>
+    
+      <div className={styles.detail} id="image3">
+        <img src="/back1.jpg" />
+      </div> <div className={styles.detail} id="image3">
         <img src="/back2.jpg" />
       </div>
       <div className={styles.container}> {/* 스타일 적용 */}

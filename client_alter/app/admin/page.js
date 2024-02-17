@@ -5,7 +5,10 @@ import ImageWithAnimation from './image';
 import Link from 'next/link';
 import style from './admin.module.css';
 
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const ImageUploader = (props) => {
   
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +67,10 @@ const ImageUploader = (props) => {
   const handleConfirm = (item) => {
     fetch(`https://udtown.site/category/${item}`, {
               method: 'DELETE',
-           
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
             })
               .then((response) => {
                 console.log(response.status);
@@ -92,7 +98,7 @@ const ImageUploader = (props) => {
     setUploadDisabled(true);
   }, []);
 
-  const handleSubmit = useCallback(
+  const handleSubmit = 
     (event) => {
       try{
           if(item_name == ''){
@@ -125,13 +131,13 @@ const ImageUploader = (props) => {
 
           }else{
             confirm('업다운 컨텐츠를 저장하시겠습니까?');
-            event.preventDefault();
+            
             const formData = new FormData();
             formData.append('item_name', item_name); // title 媛� 異붽��
-            formData.append('seller_id', seller_id); // description 媛� 異붽��
             formData.append('price', price);
             formData.append('stock',stock);
             formData.append('category',category);
+            console.log(category,stock,price,item_name)
             files.forEach((file, index) => {
               formData.append(`img`, file);
            
@@ -139,10 +145,17 @@ const ImageUploader = (props) => {
       
             fetch('https://udtown.site/category', {
               method: 'POST',
-              body: formData,
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
+              credentials: 'include',
+              body: formData
             })
-              .then((response) => {
-                console.log(response.status);
+              .then(async(response) => {
+                const data = await response.json();
+                console.log(data)
+                console.log(response)
                 if(response.status == 404){
                    
                   alert('컨텐츠 저장에 실패하였습니다');
@@ -164,10 +177,8 @@ const ImageUploader = (props) => {
         alert('컨텐츠 저장에 실패하였습니다')
       }
       
-    },
-    [files, item_name,category,seller_id,price],
-  );
-
+    };
+   
   const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
 
  
@@ -176,7 +187,7 @@ const ImageUploader = (props) => {
      
 
       <div className={style.form}>
-        <form onSubmit={handleSubmit}>
+       
           <div>
             <label>
               상품명
@@ -220,8 +231,8 @@ const ImageUploader = (props) => {
               <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
             )}
           </div>
-          <button className={style.button}type="submit">저장</button>
-        </form><label>
+          <button className={style.button} onClick={()=>{handleSubmit()}}>저장</button>
+        <label>
               아이템삭제
               <input type="text" value={item} placeholder="아이템ID를 적어주세요" onChange={(event) => setItem(event.target.value)} />
             </label>
