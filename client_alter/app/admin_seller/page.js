@@ -304,9 +304,9 @@ return formattedDate;
                   </td>
                   <td>
                     <p>배송 유형:   {order.delivery_type === 'daily' ? (
-                      당일배송
+                     <span>당일배송</span>
                     ) : order.delivery_type === 'normal' ? (
-                      일반배송
+                      <span>일반배송</span>
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
                   </td>
