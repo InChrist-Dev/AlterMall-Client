@@ -237,6 +237,17 @@ const ItemPage = (props) => {
       <div className={styles.detail} id="image3">
         <img src="/77.jpg" />
       </div>
+      <div className={styles.detail} id="image3">
+        <img src="/77.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/77.jpg" />
+      </div>
+      <div className={styles.detail} id="image3">
+        <img src="/back1.jpg" />
+      </div> <div className={styles.detail} id="image3">
+        <img src="/back2.jpg" />
+      </div>
       <div className={styles.container}> {/* 스타일 적용 */}
       <h1 className={styles.title}>리뷰 게시판</h1> {/* 스타일 적용 */}
 
