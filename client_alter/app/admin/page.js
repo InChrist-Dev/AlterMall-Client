@@ -132,16 +132,16 @@ const ImageUploader = (props) => {
           }else{
             confirm('업다운 컨텐츠를 저장하시겠습니까?');
             event.preventDefault();
-            // const formData = new FormData();
-            // formData.append('item_name', item_name); // title 媛� 異붽��
+            const formData = new FormData();
+            formData.append('item_name', item_name); // title 媛� 異붽��
            
-            // formData.append('price', price);
-            // formData.append('stock',stock);
-            // formData.append('category',category);
-            // files.forEach((file, index) => {
-            //   formData.append(`img`, file);
+            formData.append('price', price);
+            formData.append('stock',stock);
+            formData.append('category',category);
+            files.forEach((file, index) => {
+              formData.append(`img`, file);
            
-            // });
+            });
       
             fetch('https://udtown.site/category', {
               method: 'POST',
@@ -150,13 +150,7 @@ const ImageUploader = (props) => {
                 'Content-Type': 'application/json',
               },
               credentials: 'include',
-              body: JSON.stringify({
-                'item_name':item_name,
-                'price':price,
-                'stock':stock,
-                'category': category,
-                'img': files[0],
-              }),
+              body: formData
             })
               .then(async(response) => {
                 const data = await response.json();
