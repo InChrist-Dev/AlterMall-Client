@@ -113,7 +113,7 @@ const ItemPage = (props) => {
         alert('주문 실패하였습니다');
       } else if (response.status == 201) {
       
-        console.log(response);
+       
         const data = await response.json();
         console.log(data)
       }
