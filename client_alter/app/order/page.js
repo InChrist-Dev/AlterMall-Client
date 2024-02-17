@@ -197,7 +197,7 @@ const Checkout = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/order/`, {
+      const response = await fetch(`https://udtown.site/customer/payproduct`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',

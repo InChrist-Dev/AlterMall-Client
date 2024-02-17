@@ -2,13 +2,16 @@
 import { useState } from 'react';
 import styles from './login_selller.module.css';
 import Cookies from 'js-cookie';
+import DeliveryInfoModal from './Modal';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const openModal = () => {
+    setShowModal(true);
+  };
   const handleSubmit = async () => {
-    
+    const [showModal, setShowModal] = useState(false);
     console.log(username,password)
    
     try {
@@ -36,6 +39,9 @@ export default function LoginPage() {
 
   return (
     <div className={styles.container}>
+       <div style={{ display: showModal ? 'block' : 'none' }}>
+        <DeliveryInfoModal closeModal={closeModal} />
+      </div>
       <h1>로그인</h1>
       <span  className={styles.form}>
         <label className={styles.label} htmlFor="username">아이디</label>
@@ -52,6 +58,9 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+         <button className={styles.moreButton} onClick={openModal}>
+                배송지 변경 ▶
+              </button>
         <button className={styles.button}  onClick={handleSubmit}>확인</button>
       </span>
       <h3>소셜 로그인</h3>

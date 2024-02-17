@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
+const DeliveryInfoModal = ({ closeModal  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
 
@@ -110,30 +110,6 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-      {showAllAddresses ? (
-          // 새로운 배송지 목록을 보여주는 모달
-          <div>
-            <h3>전체 배송지 목록</h3>
-            <ul>
-              {deliveryList.length>0?deliveryList.map((delivery,i) => (
-                <li key={delivery.id}>
-                  {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
-                  <button onClick={()=>{selDeliver(i)}}>선택</button>
-                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
-                </li>
-              )):''}
-            </ul>
-            <button onClick={closeAllAddressesModal}>닫기</button>
-          </div>
-        ) : (
-          // 기존 배송지 정보를 입력하는 모달
-          <>
-         
-            {/* ... (기존 코드) */}
-            <button onClick={showAllAddressesModal}>배송지 목록 보기</button>
-            {/* ... (기존 코드) */}
-          </>
-        )}
     
 
         <h2>배송지 정보 추가</h2>
