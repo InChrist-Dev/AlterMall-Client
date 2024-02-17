@@ -185,7 +185,7 @@ return formattedDate;
           'stock': stock,
           'item_name':name,
           'price':price,
-          'img':files[0]
+          // 'img':files[0]
         }),
 
       })
@@ -226,7 +226,7 @@ return formattedDate;
               <tr key={index} className={styles.productCard}>
 
                 <td style={{ display: 'flex', alignItems: 'center', }}>
-                <div {...getRootProps()} className={styles.dropzone}>
+                {/* <div {...getRootProps()} className={styles.dropzone}>
             <input {...getInputProps()} />
             {files.length > 0 ? (
               <div className={styles.preview}>
@@ -240,7 +240,7 @@ return formattedDate;
             ) : (
               <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
             )}
-          </div>
+          </div> */}
 
                   <img
                     src={`https://udtown.site/${items.img}`}
