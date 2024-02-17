@@ -2,8 +2,8 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import styles from './order.module.css';
-import DeliveryInfoModal from './Modal';
+import styles from './direct.module.css';
+import DeliveryInfoModal from '../Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 
