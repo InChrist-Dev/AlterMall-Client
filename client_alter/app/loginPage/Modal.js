@@ -37,20 +37,8 @@ const DeliveryInfoModal = ({ closeModal  }) => {
   };
   const checkId = async(id) => {
     try {
-      const response = await fetch('https://udtown.site/auth/local/signin', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          "id": id,
-          "name": name,
-          "phone":phone,
-          "email":email,
-          "pw": pw
-        }), 
+      const response = await fetch(`https://udtown.site/auth/idcheck?id=${id}`, {
+      
       });
 
       if (response.status == 200) {
@@ -63,6 +51,7 @@ const DeliveryInfoModal = ({ closeModal  }) => {
       } else {
         
       }
+      console.log(response.json())
     } catch (error) {
       // 에러 처리
       console.error('Failed to send like request', error);
