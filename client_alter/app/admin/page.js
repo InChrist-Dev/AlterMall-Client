@@ -137,7 +137,7 @@ const ImageUploader = (props) => {
             formData.append('price', price);
             formData.append('stock',stock);
             formData.append('category',category);
-            console.log(category)
+            console.log(category,stock,price,item_name)
             files.forEach((file, index) => {
               formData.append(`img`, file);
            
