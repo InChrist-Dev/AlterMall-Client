@@ -134,7 +134,7 @@ const ImageUploader = (props) => {
             event.preventDefault();
             const formData = new FormData();
             formData.append('item_name', item_name); // title 媛� 異붽��
-            formData.append('seller_id', seller_id); // description 媛� 異붽��
+           
             formData.append('price', price);
             formData.append('stock',stock);
             formData.append('category',category);
