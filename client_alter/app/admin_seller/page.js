@@ -16,6 +16,7 @@ const ItemPage = (props) => {
   const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
   const [items, setItems] = useState([]);
+  const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
   const myUuid = uuidv4();
   console.log(myUuid);
