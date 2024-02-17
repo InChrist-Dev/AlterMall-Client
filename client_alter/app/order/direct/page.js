@@ -197,19 +197,10 @@ const Checkout = (props) => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/order/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-
-      });
-      const data = await response.json();
-      console.log(data)
+    
        
 
-    try {
+
       const response = await fetch(`https://udtown.site/category/${props.searchParams.itemId}`);
       const data = await response.json();
 
@@ -223,13 +214,7 @@ const Checkout = (props) => {
 
 
 
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
-    } catch (error) {
-      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
-    }
-  
+
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
 
@@ -243,6 +228,7 @@ const Checkout = (props) => {
 
       });
       const data2 = await response2.json();
+      console.log(data2)
      
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
@@ -359,8 +345,8 @@ const Checkout = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {items.length > 0 ? items.map((items, index) => (
-                  <tr key={index} className={styles.productCard}>
+                
+                  <tr className={styles.productCard}>
                     {/* <td>
                       <input
                         type="checkbox"
@@ -406,7 +392,7 @@ const Checkout = (props) => {
                       </div>
                     </td>
                   </tr>
-                )) : ''}
+              
               </tbody>
             </table>
           </div>
