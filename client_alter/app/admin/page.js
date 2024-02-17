@@ -151,8 +151,9 @@ const ImageUploader = (props) => {
               },
               body: formData,
             })
-              .then((response) => {
-                console.log(response.status);
+              .then(async(response) => {
+                const data = await response.json();
+                console.log(data)
                 if(response.status == 404){
                    
                   alert('컨텐츠 저장에 실패하였습니다');
