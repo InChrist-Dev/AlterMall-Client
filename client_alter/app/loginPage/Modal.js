@@ -35,15 +35,46 @@ const DeliveryInfoModal = ({ closeModal  }) => {
     // Close the modal after saving
     closeModal();
   };
-  const handleComplete = (data) => {
-    let fullAddress = data.address;
-    setAddress(fullAddress);
+  const checkId = async(id) => {
+    try {
+      const response = await fetch('https://udtown.site/auth/local/signin', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          "id": id,
+          "name": name,
+          "phone":phone,
+          "email":email,
+          "pw": pw
+        }), 
+      });
+
+      if (response.status == 200) {
+       
+  
+      } else if (response.status == 201) {
+        alert('저장되었습니다');
+        closeModal();
+        window.location.reload;
+      } else {
+        
+      }
+    } catch (error) {
+      // 에러 처리
+      console.error('Failed to send like request', error);
+    }
 
   };
 
 
 
   const handleSubmit = async () => {
+
+
     
     try {
       const response = await fetch('https://udtown.site/auth/local/signin', {
@@ -114,14 +145,14 @@ const DeliveryInfoModal = ({ closeModal  }) => {
       
         <label>이름</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <label>아이디</label>
+        <label>아이디</label><button onClick={()=>{checkId(id)}}>중복확인</button>
         <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
         <label>비밀번호</label>
         <input type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
         <label>전화번호</label>
-        <input type="text" value={pw} onChange={(e) => setPhone(e.target.value)} />
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <label>이메일</label>
-        <input type="text" value={pw} onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         
 
         
