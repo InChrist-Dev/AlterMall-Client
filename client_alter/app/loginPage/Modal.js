@@ -1,7 +1,7 @@
 // DeliveryInfoModal.js
 'use client'
 import React from 'react';
-import styles from './order.module.css'
+import styles from '../order/order.module.css'
 import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
