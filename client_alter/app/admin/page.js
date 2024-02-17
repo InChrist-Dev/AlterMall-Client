@@ -6,7 +6,6 @@ import Link from 'next/link';
 import style from './admin.module.css';
 
 import Cookies from 'js-cookie';
-import { json } from 'body-parser';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
