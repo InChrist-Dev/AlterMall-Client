@@ -59,7 +59,7 @@ const nextSlide = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('../../../public/1.jpg') center/cover`}}></div>
+      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('./1.jpg') center/cover`}}></div>
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
