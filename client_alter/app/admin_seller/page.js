@@ -97,6 +97,10 @@ const ItemPage = (props) => {
     setDeliveryType(e.target.value);
     
   };
+  const handleDisplayChange = (e) => {
+    setOrderState(e.target.value);
+    
+  };
   const Cancel = useCallback(
     (id) => {
 
@@ -320,7 +324,7 @@ return formattedDate;
             id="displayCount"
             className={styles.dropInput}
             value={orderState}
-            onChange={handleDisplayCountChange}
+            onChange={handleDisplayChange}
           >
             <option value={'paid'}>결제완료</option>
             <option value={'accept'}>제조중</option>
