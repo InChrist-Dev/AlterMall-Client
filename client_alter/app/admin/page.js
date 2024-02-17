@@ -131,13 +131,13 @@ const ImageUploader = (props) => {
 
           }else{
             confirm('업다운 컨텐츠를 저장하시겠습니까?');
-            event.preventDefault();
+            
             const formData = new FormData();
             formData.append('item_name', item_name); // title 媛� 異붽��
-           
             formData.append('price', price);
             formData.append('stock',stock);
             formData.append('category',category);
+            console.log(category)
             files.forEach((file, index) => {
               formData.append(`img`, file);
            
