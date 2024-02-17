@@ -303,7 +303,11 @@ return formattedDate;
                     <p>주소: {order.addr} {order.addr_detail}</p>
                   </td>
                   <td>
-                    <p>배송 유형: {order.delivery_type}</p>
+                    <p>배송 유형:   {order.delivery_type === 'daily' ? (
+                      당일배송
+                    ) : order.delivery_type === 'normal' ? (
+                      일반배송
+                    ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
                   </td>
                   {order.state === 'paid' ? (
