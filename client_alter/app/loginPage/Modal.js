@@ -18,6 +18,8 @@ const DeliveryInfoModal = ({ closeModal  }) => {
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
   const [isAddress, setIsAddress] = useState(false);
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
   const addressClick = () => {
     const newIsAddress = !isAddress;
     setIsAddress(newIsAddress);
@@ -74,9 +76,9 @@ const DeliveryInfoModal = ({ closeModal  }) => {
     }
   };
 
-  const delDeliver = async (id) => {
+  const delDeliver = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/deliver/${id}`, {
+      const response = await fetch(`https://udtown.site/customer/deliver/}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
