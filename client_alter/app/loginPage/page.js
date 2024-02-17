@@ -63,8 +63,8 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-         <button className={styles.moreButton} onClick={openModal}>
-                배송지 변경 ▶
+         <button className={styles.registerBtn} onClick={openModal}>
+                회원가입
               </button>
         <button className={styles.button}  onClick={handleSubmit}>확인</button>
       </span>

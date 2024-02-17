@@ -43,3 +43,8 @@
     width: 450px;
     height: 150px;
   }
+  .registerBtn{
+    background-color: #fff;
+    border: none;
+    color: #aaa;
+  }
