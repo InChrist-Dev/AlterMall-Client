@@ -226,14 +226,14 @@ return formattedDate;
               <tr key={index} className={styles.productCard}>
 
                 <td style={{ display: 'flex', alignItems: 'center', }}>
-                <div {...getRootProps()} className={style.dropzone}>
+                <div {...getRootProps()} className={styles.dropzone}>
             <input {...getInputProps()} />
             {files.length > 0 ? (
-              <div className={style.preview}>
+              <div className={styles.preview}>
                 {files.map((file, index) => (
-                  <div key={file.name} className={style.imageContainer}>
-                    <ImageWithAnimation src={URL.createObjectURL(file)} alt={file.name} className={style.image} />
-                    <button type="button" className={style.cancel} onClick={() => handleCancel(index)}>X</button>
+                  <div key={file.name} className={styles.imageContainer}>
+                    <ImageWithAnimation src={URL.createObjectURL(file)} alt={file.name} className={styles.image} />
+                    <button type="button" className={styles.cancel} onClick={() => handleCancel(index)}>X</button>
                   </div>
                 ))}
               </div>
