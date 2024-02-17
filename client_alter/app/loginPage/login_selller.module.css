@@ -30,6 +30,7 @@
     height: 60px;
     background:hsl(0, 0%, 100%);
     color: #ccc;
+    margin-left: 1px;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
