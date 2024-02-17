@@ -33,15 +33,12 @@ const Checkout = (props) => {
       process.env.NEXT_PUBLIC_TOSS_CLIENT_KEY
     );
 
-    await tosspayments.requestPayment('카드',{
-      amount: calculateTotalPrice(),
-      orderId: myUuid,
-      orderName: items.item_name,
-      successUrl: window.location.origin + "/api/payments",
+    await tosspayments.requestPayment('카드', {
+      orderId: info.order_id,
+      amount: amount,
+      orderName: `${firstItemName}외 ${otherItemsCount}건`,
+      successUrl: 'https://udtown.site/customer/confirm',
       failUrl: window.location.origin,
-      customerEmail: "customer123@gmail.com",
-      customerName: "김토스",
-      customerMobilePhone: "01012341234",
     });
   }
     // Function to open the modal

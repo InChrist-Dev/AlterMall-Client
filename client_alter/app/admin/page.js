@@ -149,6 +149,7 @@ const ImageUploader = (props) => {
                 Authorization: `Bearer ${accessToken}`,
                 'Content-Type': 'application/json',
               },
+              credentials: 'include',
               body: formData,
             })
               .then(async(response) => {
