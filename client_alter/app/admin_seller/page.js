@@ -314,7 +314,9 @@ return formattedDate;
                       <td>결제완료</td>
                     ) : order.state === 'accept' ? (
                       <td>제조중</td>
-                    ) : null}
+                    ) : order.state === 'delivery' ? (
+                      <td>배송시작</td>
+                    ): null}
                  
                   <td>
                     {order.state === 'paid' ? (
