@@ -312,7 +312,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.map((order, index) => (
+            {orders.filter(order => order.delivery_type === 'daily').map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img
