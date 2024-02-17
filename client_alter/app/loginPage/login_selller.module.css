@@ -25,7 +25,7 @@
     border: 1px solid #ccc;
   }
   
-  .button {
+  .sellerButton {
     padding: 10px;
     height: 60px;
     background:#f57c19;
@@ -33,9 +33,26 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 49%;
+  }
+  .groupBtn{
+    display: flex;
+  }
+  .sellerButton:hover {
+    background:#df7117;
+  }
+  .localButton {
+    padding: 10px;
+    height: 60px;
+    width: 49%;
+    background:#f57c19;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
   
-  .button:hover {
+  .localButton:hover {
     background:#df7117;
   }
   .google{
