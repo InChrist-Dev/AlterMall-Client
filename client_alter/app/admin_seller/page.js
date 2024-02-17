@@ -18,6 +18,7 @@ const ItemPage = (props) => {
   const [items, setItems] = useState([]);
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
+  const [deliveryType, setDeliveryType] = useState('daily');
   const myUuid = uuidv4();
   console.log(myUuid);
   const handleDrop = useCallback((acceptedFiles) => {
@@ -91,7 +92,10 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const handleDisplayCountChange = (e) => {
+    setDisplayCount(Number(e.target.value));
+    setCurrentPage(1); // 페이지 수 변경시 현재 페이지를 1로 리셋
+  };
   const Cancel = useCallback(
     (id) => {
 
@@ -124,6 +128,7 @@ const ItemPage = (props) => {
 
 // 문자열을 Date 객체로 파싱
 const date = new Date(dateString);
+
 
 // 날짜 및 시간을 원하는 형식으로 변환
 const formattedDate = date.toLocaleString('ko-KR', {
@@ -294,6 +299,22 @@ return formattedDate;
         </table>
         </div>
         <h1 className={styles.title}>관리자 주문 조회</h1>
+        <div className={styles.sortAndScroll}>
+    
+
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={deliveryType}
+            onChange={handleDisplayCountChange}
+          >
+            <option value={'daily'}>당일배송</option>
+            <option value={'normal'}>일반배송</option>
+          </select>
+          <label htmlFor="displayCount"></label>
+        </div>
+      </div>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -312,7 +333,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.filter(order => order.delivery_type === 'normal').map((order, index) => (
+            {orders.filter(order => order.delivery_type === deliveryType).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img
