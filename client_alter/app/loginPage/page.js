@@ -34,8 +34,12 @@ export default function LoginPage() {
           console.log(json.accessToken)
           console.log(json.position)
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-
-          window.location.href="https://altermall.shop/admin_seller"
+          if(json.position == 'seller'){
+            window.location.href="https://altermall.shop/admin_seller"
+          }else{
+            alert('사장님 계정이 아닙니다. 다시 확인해주세요')
+          }
+         
         });
       } catch (error) {
         // 에러 처리
@@ -62,8 +66,12 @@ export default function LoginPage() {
           console.log(json)
          
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-
-          window.location.href="https://altermall.shop/user"
+          if(json.position == 'seller'){
+            window.location.href="https://altermall.shop/user"
+          }else{
+            alert('사장님 계정이 아닙니다. 다시 확인해주세요')
+          }
+       
         });
       } catch (error) {
         // 에러 처리
