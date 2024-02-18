@@ -66,10 +66,10 @@ export default function LoginPage() {
           console.log(json)
          
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-          if(json.position == 'seller'){
+          if(json.position == 'customer'){
             window.location.href="https://altermall.shop/user"
           }else{
-            alert('사장님 계정이 아닙니다. 다시 확인해주세요')
+            alert('구매자 계정이 아닙니다. 다시 확인해주세요')
           }
        
         });
