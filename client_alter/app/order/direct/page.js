@@ -46,8 +46,7 @@ const Checkout = (props) => {
     // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
     const firstItemName = items.length > 0 ? items[0].item_name : '';
 
-    // 첫 번째 상품 이외의 상품 개수를 계산합니다.
-    const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
+
 
     const tosspayments = await loadTossPayments('live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ');
 
@@ -101,7 +100,7 @@ const Checkout = (props) => {
           await tosspayments.requestPayment('카드', {
             orderId: myUuid,
             amount: amount,
-            orderName: `${firstItemName}외 ${otherItemsCount}건`,
+            orderName: `${firstItemName}`,
             successUrl: 'https://udtown.site/customer/confirm',
             failUrl: window.location.origin,
           });
