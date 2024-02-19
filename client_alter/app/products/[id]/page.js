@@ -271,11 +271,11 @@ const ItemPage = (props) => {
       <div className={styles.reviewContainer} id="image4">
       <h2>리뷰</h2>
       <div className={styles.reviews}>
-        {reviewsData.map((review) => (
+        {review.map((review) => (
           <div key={review.id} className={styles.review}>
             <h2>{review.title}</h2>
-            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.content)}</p>
-            <img src={review.image} alt="리뷰 사진" className={styles.image} />
+            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.User.name)}</p>
+            <img src={`https://udtown.site/${review.img}`} alt="리뷰 사진" className={styles.image} />
             <p>{review.content}</p>
           </div>
         ))}
