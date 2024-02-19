@@ -277,18 +277,25 @@
   margin-bottom: 8px;
 }
 
-.reviewFormContainer input[type="file"],
+.reviewFormContainer input[type="file"]{
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+}
 .reviewFormContainer textarea {
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 500px;
+  height: 400px;
 }
 
 .reviewFormContainer button[type="submit"] {
   padding: 10px 20px;
-  width: 500px;
-  height: 400px;
+
   background-color: #f0571b;
   color: #fff;
   border: none;
