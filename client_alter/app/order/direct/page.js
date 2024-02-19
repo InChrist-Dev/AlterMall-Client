@@ -20,7 +20,7 @@ const Checkout = (props) => {
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
   const [info, setInfo] = useState([]);
-  const [amount, setAmount] = useState(1);
+  const [amounts, setAmounts] = useState(1);
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
 
@@ -129,7 +129,7 @@ const Checkout = (props) => {
     setSelectedItems(newSelectedItems);
   };
   const calculateTotalPrice = () => {
-    return items.price * amount;
+    return items.price * amounts;
    
     
   };
@@ -206,7 +206,7 @@ const Checkout = (props) => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
-      setAmount(props.searchParams.amount)
+      setAmounts(props.searchParams.amount)
       setItems(data);
       
     
