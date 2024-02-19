@@ -106,7 +106,7 @@ const ItemPage = (props) => {
     {
       id: '234234',
       title: '맛집 리뷰 (사용자1)',
-      image: `https://udtown.site/${review[0].img}`,
+      image: `https://udtown.site/${review.length>0?review[0].img:''}`,
       content: '음식이 정말 맛있어요! 서비스도 훌륭합니다.',
     },
     {
@@ -270,10 +270,10 @@ const ItemPage = (props) => {
       <div className={styles.reviewContainer}>
       <h1>리뷰 페이지</h1>
       <div className={styles.reviews}>
-        {reviewsData.map((review) => (
+        {review.map((review) => (
           <div key={review.id} className={styles.review}>
             <h2>{review.title}</h2>
-            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.id)}</p>
+            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.user_id)}</p>
             <img src={review.image} alt="리뷰 사진" className={styles.image} />
             <p>{review.content}</p>
           </div>
