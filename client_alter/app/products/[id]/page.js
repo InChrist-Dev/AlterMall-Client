@@ -142,8 +142,8 @@ const ItemPage = (props) => {
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
   const handleBuy = (itemId,amount)=>{
-
-    window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
+    alert('서비스 점검중입니다.');
+    // window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
  return(
     <div>
