@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React,{useEffect} from 'react';
 import cron from 'node-cron';
 import { LoginBtn } from '../logins';
 import { UserBtn } from './userIcon';
@@ -13,10 +13,16 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 console.log('ddd')
 if(accessToken){
-  console.log('fff')
-  cron.schedule('1 * * * *', () => {
-    alert('2분마다 작업 실행 : ')
-  })
+  useEffect(() => {
+    // 1분(60초)마다 실행되는 함수
+    const interval = setInterval(() => {
+      // 메시지 업데이트
+      console.log('1분이 지났습니다!');
+    }, 6000); // 60000밀리초 = 1분
+
+    // 컴포넌트가 언마운트될 때 interval 정리
+    return () => clearInterval(interval);
+  }, []); // useEffect의 두 번째 인자로 빈 배열을 전달하여 한 번만 실행되도록 설정
 }
 const NavigationBar = (session) => {
   console.log(session)
