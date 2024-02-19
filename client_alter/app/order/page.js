@@ -244,9 +244,11 @@ const Checkout = () => {
   useEffect(() => {
     fetchData();
   }, [showModal]);
-  useEffect(() => {
+
+  setTimeout(() => {
     setDelivery(deliveryList[0]);
-  }, []);
+  }, 1000); // 3초를 밀리초 단위로 나타냅니다.
+  
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
