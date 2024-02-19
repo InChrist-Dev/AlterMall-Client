@@ -222,7 +222,7 @@
 
 .reviews {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+  width: 370px;
   gap: 20px;
 }
 
