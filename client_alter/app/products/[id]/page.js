@@ -277,8 +277,8 @@ const ItemPage = (props) => {
       <div className={styles.detail}>
       <img src={`https://udtown.site/${data.desc2}`} />
       </div>
-      <div className={styles.detail} >
-      <img src={`https://udtown.site/${data.desc3}`} id="image3" />
+      <div className={styles.detail}id="image3" >
+      <img src={`https://udtown.site/${data.desc3}`}  />
       </div>
       <div className={styles.detail} >
       <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
