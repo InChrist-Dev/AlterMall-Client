@@ -20,10 +20,11 @@ export async function Session() {
 export default async function RootLayout({ children }) {
   let session = await getServerSession(authOptions)
   if(accessToken){
-    cron.schedule('1 * * * * *', () => {
-      console.log('2분마다 작업 실행 : ', new Date().toString())
-    })
+   
   }
+  cron.schedule('1 * * * * *', () => {
+    console.log('2분마다 작업 실행 : ', new Date().toString())
+  })
   return (
     
     <html className="container" lang="ko">
