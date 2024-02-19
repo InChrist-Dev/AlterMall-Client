@@ -291,17 +291,16 @@ const ItemPage = (props) => {
         {review.map((review) => (
           <div key={review.id} className={styles.review}>
           
-            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.User.name)}</p>
+            <p className={styles.maskedId}>작성자: {maskUserId(review.User.name)}</p>
             <img src={`https://udtown.site/${review.img}`} alt="리뷰 사진" className={styles.image} />
             <p>{review.content}</p>
           </div>
         ))}
       </div>
     </div>
-    <div>
+    <div className={styles.reviewFormContainer}>
       <h1>리뷰 작성 폼</h1>
-      <form onSubmit={handleReview}>
-      
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="image">이미지:</label>
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
