@@ -102,7 +102,26 @@ const ItemPage = (props) => {
     },
     [quantity, id],
   );
-
+  const maskUserId = (userId) => {
+    const maskedLength = Math.ceil(userId.length / 2);
+    const masked = '*'.repeat(maskedLength);
+    return userId.substring(0, userId.length - maskedLength) + masked;
+  };
+  const reviewsData = [
+    {
+      id: 1,
+      title: '맛집 리뷰 (사용자1)',
+      image: '/images/review1.jpg',
+      content: '음식이 정말 맛있어요! 서비스도 훌륭합니다.',
+    },
+    {
+      id: 2,
+      title: '괜찮은 가게 (사용자2)',
+      image: '/images/review2.jpg',
+      content: '가격 대비 음식의 퀄리티가 좋아요. 분위기도 좋습니다.',
+    },
+    // 추가적인 리뷰 데이터는 필요에 따라 추가해주세요.
+  ];
   const handleBuy = (itemId, amount) => {
     alert('서비스 준비중입니다')
     //window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
