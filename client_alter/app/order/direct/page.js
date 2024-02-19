@@ -18,7 +18,8 @@ const Checkout = (props) => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
-
+  const [deliveryPay, setDeliveryPay] = useState(4000);
+  const [selectedItems, setSelectedItems] = useState([]);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
   const [info, setInfo] = useState([]);
@@ -46,11 +47,12 @@ const Checkout = (props) => {
     // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
     const firstItemName = items.length > 0 ? items[0].item_name : '';
 
-
+    // 첫 번째 상품 이외의 상품 개수를 계산합니다.
+    const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
 
     const tosspayments = await loadTossPayments('live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ');
 
-    amount += 4000;
+    amount += getSub();
 
     if (delivery) {
       console.log(items);
@@ -100,7 +102,7 @@ const Checkout = (props) => {
           await tosspayments.requestPayment('카드', {
             orderId: myUuid,
             amount: amount,
-            orderName: `${firstItemName}`,
+            orderName: `${firstItemName}외 ${otherItemsCount}건`,
             successUrl: 'https://udtown.site/customer/confirm',
             failUrl: window.location.origin,
           });
@@ -157,8 +159,24 @@ const Checkout = (props) => {
     setDelivery(deliveryList[id]);
   };
 
-  const calculateTotalPrice = () => {
-    return items.price*amounts;
+  const handleQuantityChange = (index, newAmount) => {
+    if (newAmount >= 0) {
+      const newQuantity = { ...quantity };
+      newQuantity[index] = newAmount;
+      setQuantity(newQuantity);
+
+      const updatedItems = [...items];
+      updatedItems[index].stock = newAmount;
+      setItems(updatedItems);
+    } else {
+      const newQuantity = { ...quantity };
+      newQuantity[index] = 0;
+      setQuantity(newQuantity);
+
+      const updatedItems = [...items];
+      updatedItems[index].stock = 0;
+      setItems(updatedItems);
+    }
   };
 
   const fetchData = async () => {
