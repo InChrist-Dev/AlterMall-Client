@@ -87,7 +87,13 @@ const Checkout = (props) => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              items: orderItems,
+              items: {"order_id": myUuid,
+              "seller_id": items.seller_id,
+              "stock": items.amount,//총 주문량
+              "price": items.price, //가격
+              "item_id": items.item_id,
+              "item_name":items.item_name,
+              "img":items.img},
             }),
               
               

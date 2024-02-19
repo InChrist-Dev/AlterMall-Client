@@ -11,10 +11,7 @@ const accessToken = Cookies.get('accessToken');
 
 
 const ItemPage = (props) => {
-  const [categoryName, setCategoryName] = useState([]);
-  const [categoryPrice, setCategoryPrice] = useState([]);
-  const [categoryS, setCategoryS] = useState([]);
-  const [categoryImage, setCategoryImage] = useState([]);
+
   const [selectedItems, setSelectedItems] = useState([]);
   const [displayCount, setDisplayCount] = useState(10);
   const [quantity, setQuantity] = useState([]);
