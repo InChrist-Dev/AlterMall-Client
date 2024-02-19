@@ -370,4 +370,29 @@ font-size: 20px;
     width: 900px;
     border-collapse: collapse;
   }
-  
+  /* styles/CustomStyles.module.css */
+
+.sortAndScroll {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.scrollButtons {
+  margin-right: 10px;
+}
+
+.dropInput {
+  padding: 5px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* 선택된 옵션에 대한 스타일 */
+.dropInput:focus {
+  outline: none;
+  border-color: dodgerblue;
+  box-shadow: 0 0 3px dodgerblue;
+}
