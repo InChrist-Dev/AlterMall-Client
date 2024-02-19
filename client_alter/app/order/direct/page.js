@@ -111,7 +111,14 @@ const Checkout = (props) => {
       
       
         }).finally(
-      
+       
+          await tosspayments.requestPayment('카드', {
+            orderId: myUuid,
+            amount: amount,
+            orderName: `${firstItemName}외 ${otherItemsCount}건`,
+            successUrl: 'https://udtown.site/customer/confirm',
+            failUrl: window.location.origin,
+          })
         )
         
          
@@ -123,14 +130,7 @@ const Checkout = (props) => {
     
       })
         
-    
-      await tosspayments.requestPayment('카드', {
-        orderId: myUuid,
-        amount: amount,
-        orderName: `${firstItemName}외 ${otherItemsCount}건`,
-        successUrl: 'https://udtown.site/customer/confirm',
-        failUrl: window.location.origin,
-      });
+   
 
     } else {
       alert('배송지를 먼저 등록해주세요')
