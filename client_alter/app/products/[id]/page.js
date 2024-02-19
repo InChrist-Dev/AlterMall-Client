@@ -19,10 +19,10 @@ const ItemPage = (props) => {
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState('');
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
-  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [image,setImage] = useState(null);
-  const [review, setReview] = useState('');
-  
+  const [review, setReview] = useState([]);
+  const [rate, setRate] = useState(10);
   const [data, setData] = useState([]);
 
 
@@ -33,7 +33,30 @@ const ItemPage = (props) => {
   //   console.log(data); // 임시로 데이터를 콘솔에 출력합니다.
   //   // 서버에 데이터를 전송하는 API 호출 등의 코드를 추가해야 합니다.
   // };
+  const handleReview = async (e) => {
+    e.preventDefault();
 
+
+
+    try {
+      const response = await fetch('https://udtown.site/review', {
+        method: 'POST',
+        body: JSON.stringify({
+          'img':image,
+          'content':content,
+          'rate':rate,
+          'item_id':props.params.id,
+        }),
+      });
+      if (response.ok) {
+        console.log('리뷰가 성공적으로 제출되었습니다.');
+        // 리뷰가 성공적으로 제출되었을 때 사용자를 다른 페이지로 이동시킬 수 있습니다.
+      } else {
+        console.error('리뷰 제출에 실패하였습니다.');
+      }
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/category/${props.params.id}`);
