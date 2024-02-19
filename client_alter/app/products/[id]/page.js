@@ -208,7 +208,7 @@ const ItemPage = (props) => {
                 }}
                 className={activeLink == "image1" ? styles.activeLink : styles.Link}
               >
-                상품정보
+                배송안내
               </Link>
             </li>
             <li>
@@ -222,7 +222,7 @@ const ItemPage = (props) => {
                 }}
                 className={activeLink == "image2" ? styles.activeLink : styles.Link}
               >
-                상품문의
+                상품상세
               </Link>
             </li>
             <li>
@@ -272,7 +272,7 @@ const ItemPage = (props) => {
         <img src="/444.jpg" />
       </div>
       <div className={styles.detail}>
-        <img src={`https://udtown.site/${data.desc1}`} />
+        <img src={`https://udtown.site/${data.desc1}`}id="image2" />
       </div>
       <div className={styles.detail}>
       <img src={`https://udtown.site/${data.desc2}`} />
