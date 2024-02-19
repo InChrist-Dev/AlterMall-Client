@@ -91,14 +91,15 @@ const OrderHistory = () => {
                 
                     <p>주소: {order.addr} {order.addr_detail}</p>
                     <p>전화번호: {order.phone}</p>
+                    <p>요청사항: {order.requests}</p>
                   </td>
                   <td>
                     <p>배송 유형: {order.delivery_type === 'daily' ? (
-                     <span>당일배송</span>
+                     <span>따끈배송</span>
                     ) : order.delivery_type === 'normal' ? (
                       <span>일반배송</span>
                     ) : null}</p>
-                    <p>요청 사항:  {order.state === 'paid' ? (
+                    <p>  {order.state === 'paid' ? (
                       <span>결제완료</span>
                     ) : order.state === 'accept' ? (
                       <span>제조중</span>
@@ -106,7 +107,7 @@ const OrderHistory = () => {
                       <span>전송완료</span>
                     ): null}</p>
                   </td>
-                  <td>{order.state}</td>
+                  
                   <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
