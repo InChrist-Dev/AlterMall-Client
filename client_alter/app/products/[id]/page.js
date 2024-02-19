@@ -21,6 +21,7 @@ const ItemPage = (props) => {
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [data, setData] = useState([]);
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -43,6 +44,7 @@ const ItemPage = (props) => {
       setImg(data.img);
       setStock(data.stock);
       setId(data.item_id);
+      setData(data);
 
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
@@ -224,7 +226,7 @@ const ItemPage = (props) => {
         <img src="/22.jpg" />
       </div>
       <div className={styles.detail} id="image3">
-        <img src="/33.jpg" />
+        <img src={`https://udtown.site/${data.ItemImages[0].desc1}`} />
       </div>
       <div className={styles.detail} id="image3">
         <img src="/44.jpg" />
