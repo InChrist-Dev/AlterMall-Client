@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React,{useEffect} from 'react';
+import React from 'react';
 import cron from 'node-cron';
 import { LoginBtn } from '../logins';
 import { UserBtn } from './userIcon';
