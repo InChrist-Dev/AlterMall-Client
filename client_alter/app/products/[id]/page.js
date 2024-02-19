@@ -48,6 +48,7 @@ const ItemPage = (props) => {
 
       const response2 = await fetch(`https://udtown.site/review/${props.params.id}`);
       const data2 = await response2.json();
+      console.log(data2)
       setReview(data2.data.rows)
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
