@@ -129,10 +129,9 @@ const Checkout = (props) => {
     setSelectedItems(newSelectedItems);
   };
   const calculateTotalPrice = () => {
-    return selectedItems.reduce(
-      (total, index) => total + items.price * amount,
-      0
-    );
+    return items.price * amount;
+   
+    
   };
 
   // const toggleAllItemsSelection = () => {
