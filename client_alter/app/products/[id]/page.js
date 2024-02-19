@@ -124,8 +124,8 @@ const ItemPage = (props) => {
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
   const handleBuy = (itemId,amount)=>{
-    alert('서비스 준비중입니다')
-    //window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
+
+    window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
  return(
     <div>
@@ -269,7 +269,7 @@ const ItemPage = (props) => {
         <img src="/back2.jpg" />
       </div>
       <div className={styles.reviewContainer} id="image4">
-      <h1>리뷰 페이지</h1>
+      <h2>리뷰</h2>
       <div className={styles.reviews}>
         {reviewsData.map((review) => (
           <div key={review.id} className={styles.review}>
