@@ -56,25 +56,7 @@ const Checkout = (props) => {
     if (delivery) {
       console.log(items);
 
-      await fetch('https://udtown.site/customer/order', {
-        method: 'post',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          'order_id':myUuid,
-          'addr': delivery.addr,
-          'addr_detail': delivery.addr_detail,
-          'requests': requestOption,
-          'amount': amount,
-          'delivery_type': deliveryInfo,
-          'phone': delivery.phone,
-          'customer_name':delivery.name,
-        
-        }),
-      });
+    
       await fetch('https://udtown.site/customer/order',{
         method:'post',
         headers: {
