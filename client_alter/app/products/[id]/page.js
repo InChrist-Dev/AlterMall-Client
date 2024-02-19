@@ -43,11 +43,8 @@ const ItemPage = (props) => {
       formData.append('content', content); // title 媛� 異붽��
       formData.append('rate', rate);
       formData.append('item_id',props.params.id);
-  
-      files.forEach((file, index) => {
-        formData.append(`img`, file);
-     
-      });
+      formData.append(`img`, image);
+
       const response = await fetch('https://udtown.site/review', {
         method: 'POST',
         headers: {
