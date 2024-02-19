@@ -315,7 +315,7 @@ const Checkout = (props) => {
                 onChange={(e) => setDeliveryInfo(e.target.value)}
               >
                 <option value="normal">일반 배송</option>
-                <option value="daily">당일 배송</option>
+                <option value="daily">따끈 배송</option>
               </select>
               <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
 
