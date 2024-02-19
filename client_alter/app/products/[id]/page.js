@@ -231,13 +231,13 @@ const ItemPage = (props) => {
         <img src={`https://udtown.site/${data.desc1}`} />
       </div>
       <div className={styles.detail} id="image3">
-        <img src="/44.jpg" />
+      <img src={`https://udtown.site/${data.desc2}`} />
       </div>
       <div className={styles.detail} id="image3">
-        <img src="/55.jpg" />
+      <img src={`https://udtown.site/${data.desc3}`} />
       </div>
       <div className={styles.detail} id="image3">
-        <img src="/66.jpg" />
+      <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
       </div>
       <div className={styles.detail} id="image3">
         <img src="/77.jpg" />
