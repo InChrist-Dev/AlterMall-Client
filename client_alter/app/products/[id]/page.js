@@ -248,10 +248,7 @@ const ItemPage = (props) => {
       </div> <div className={styles.detail} id="image3">
         <img src="/back2.jpg" />
       </div>
-      <div className={styles.container}> {/* 스타일 적용 */}
-      <h1 className={styles.title}>리뷰 게시판</h1> {/* 스타일 적용 */}
-
-    </div>
+    
       {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
     </div>
     </div>
