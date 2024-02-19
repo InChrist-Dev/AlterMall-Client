@@ -6,7 +6,7 @@ import Footer from './component/footer';
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth";
 import Cookies from 'js-cookie';
-import cron from 'node-cron';
+
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 const inter = Inter({ subsets: ['latin'] })
