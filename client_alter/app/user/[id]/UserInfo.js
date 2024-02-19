@@ -1,8 +1,24 @@
+'use client'
 // UserInfo.jsx
 import React from 'react';
 import styles from './user.module.css';
 
 const UserInfo = (props) => {
+  const fetchData = async() =>{
+    const response = await fetch(`https://udtown.site/customer/order/`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+    });
+    const data = await response.json();
+    console.log(data.data.rows);
+    setOrderLength(data.data.rows.length);
+  }
+  useEffect(()=>{
+    fetchData();
+  },[])
   console.log(props)
   return (
     <div className={styles.topArea}>
