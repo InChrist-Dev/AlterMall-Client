@@ -43,7 +43,7 @@ const ItemPage = (props) => {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
         credentials: 'include',
         body: JSON.stringify({
