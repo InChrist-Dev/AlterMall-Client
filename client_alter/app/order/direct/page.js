@@ -89,7 +89,7 @@ const Checkout = (props) => {
             body: JSON.stringify({
               items: {"order_id": myUuid,
               "seller_id": items.seller_id,
-              "stock": items.amount,//총 주문량
+              "stock": amounts,//총 주문량
               "price": items.price, //가격
               "item_id": items.item_id,
               "item_name":items.item_name,
@@ -168,15 +168,7 @@ const Checkout = (props) => {
     setShowModal(false);
    
   };
-  const toggleItemSelection = (index) => {
-    const newSelectedItems = [...selectedItems];
-    if (newSelectedItems.includes(index)) {
-      newSelectedItems.splice(newSelectedItems.indexOf(index), 1);
-    } else {
-      newSelectedItems.push(index);
-    }
-    setSelectedItems(newSelectedItems);
-  };
+
   const calculateTotalPrice = () => {
     return items.price * amounts;
    
@@ -222,27 +214,7 @@ const Checkout = (props) => {
   const selDeliver = (id) => {
     setDelivery(deliveryList[id])
   }
-  // 전체 주문 가격 계산
-  const handleQuantityChange = (index, newAmount) => {
-    if (newAmount >= 0) {
-      const newQuantity = { ...quantity };
-      newQuantity[index] = newAmount;
-      setQuantity(newQuantity);
 
-      const updatedItems = [...items];
-      updatedItems[index].stock = newAmount;
-      setItems(updatedItems);
-    } else {
-      const newQuantity = { ...quantity };
-      newQuantity[index] = 0;
-      setQuantity(newQuantity);
-
-      const updatedItems = [...items];
-      updatedItems[index].stock = 0;
-      setItems(updatedItems);
-    }
-
-  };
   const fetchData = async () => {
     try {
     
@@ -430,7 +402,7 @@ const Checkout = (props) => {
                           }
                         >-
                         </button> */}
-                        <span>{items.stock}</span>
+                        <span>{amounts}</span>
                         {/* <button
                           onClick={() =>
                             handleQuantityChange(index, items.stock + 1)
