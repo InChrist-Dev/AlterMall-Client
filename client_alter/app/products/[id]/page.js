@@ -42,7 +42,7 @@ const ItemPage = (props) => {
       const formData = new FormData();
       formData.append('content', content); // title 媛� 異붽��
       formData.append('rate', rate);
-      formData.append('item_id',item_id);
+      formData.append('item_id',props.params.id);
   
       files.forEach((file, index) => {
         formData.append(`img`, file);
