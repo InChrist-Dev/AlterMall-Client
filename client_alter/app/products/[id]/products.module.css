@@ -234,9 +234,7 @@
   transition: transform 0.3s ease;
 }
 
-.review:hover {
-  transform: translateY(-5px);
-}
+
 
 .review h2 {
   margin-bottom: 10px;
