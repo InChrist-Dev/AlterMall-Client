@@ -18,8 +18,16 @@ const NavigationBar = (session) => {
     useEffect(() => {
       // 1분(60초)마다 실행되는 함수
       const interval = setInterval(() => {
-        // 메시지 업데이트
-        alert('1분이 지났습니다!');
+   
+        const result = confirm('토큰 만료 30분전입니다. 다시 로그인 하시겠습니까?');
+        if (result) {
+          Cookies.remove('accessToken');
+          window.location.href('https://altermall.shop/loginPage');
+        } else {
+          // 사용자가 "취소" 버튼을 클릭한 경우 또는 대화 상자를 닫은 경우
+          console.log('사용자가 취소를 선택했거나 대화 상자를 닫았습니다.');
+        }
+
       }, 3.5*60*60000); // 60000밀리초 = 1분
   
       // 컴포넌트가 언마운트될 때 interval 정리
