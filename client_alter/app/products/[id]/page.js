@@ -248,14 +248,28 @@ const ItemPage = (props) => {
       </div> <div className={styles.detail} id="image3">
         <img src="/back2.jpg" />
       </div>
-      <div className={styles.container}> {/* 스타일 적용 */}
-      <h1 className={styles.title}>리뷰 게시판</h1> {/* 스타일 적용 */}
-
+      <div className={styles.reviewContainer}>
+      <h1>리뷰 페이지</h1>
+      <div className={styles.reviews}>
+        {reviewsData.map((review) => (
+          <div key={review.id} className={styles.review}>
+            <h2>{review.title}</h2>
+            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.id)}</p>
+            <img src={review.image} alt="리뷰 사진" className={styles.image} />
+            <p>{review.content}</p>
+          </div>
+        ))}
+      </div>
     </div>
       {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
     </div>
     </div>
   );
+};
+const maskUserId = (userId) => {
+  const maskedLength = Math.ceil(userId.length / 2);
+  const masked = '*'.repeat(maskedLength);
+  return userId.substring(0, userId.length - maskedLength) + masked;
 };
 
 export default ItemPage;
