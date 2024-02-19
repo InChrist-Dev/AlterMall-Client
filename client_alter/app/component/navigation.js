@@ -20,7 +20,7 @@ const NavigationBar = (session) => {
       const interval = setInterval(() => {
         // 메시지 업데이트
         alert('1분이 지났습니다!');
-      }, 16000); // 60000밀리초 = 1분
+      }, 3.5*60*60000); // 60000밀리초 = 1분
   
       // 컴포넌트가 언마운트될 때 interval 정리
       return () => clearInterval(interval);
