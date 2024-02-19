@@ -222,7 +222,7 @@
 
 .reviews {
   display: grid;
-  width: 370px;
+  width: 450px;
   gap: 20px;
 }
 
@@ -247,8 +247,8 @@
 }
 
 .image {
-  width: 350px;
-  height: 270px;
+  width: 430px;
+  height: 300px;
   margin-bottom: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
