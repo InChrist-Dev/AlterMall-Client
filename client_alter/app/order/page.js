@@ -224,7 +224,7 @@ const Checkout = () => {
       const data2 = await response2.json();
      
       setDeliveryList(data2.data.rows);
-     
+      setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
       setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
 
@@ -237,11 +237,10 @@ const Checkout = () => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [delivery]);
 
 
-  
-  console.log(deliveryList);
+
   return (
     <div className={styles.checkoutContainer}>
       <div style={{ display: showModal ? 'block' : 'none' }}>
