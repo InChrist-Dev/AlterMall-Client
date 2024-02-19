@@ -224,16 +224,13 @@ const Checkout = () => {
       const data2 = await response2.json();
      
       setDeliveryList(data2.data.rows);
-      setDelivery(data2.data.rows[0])
+     
       setInfo(data.data.rows[0]);
       setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
 
       // const initialQuantity = data.data.rows[0].OrderDetails.map((item) => item.amount );
 
       // setQuantity(initialQuantity);
-
-
-
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -247,6 +244,7 @@ const Checkout = () => {
   useEffect(() => {
     fetchData();
   }, [showModal]);
+  setDelivery(deliveryList[0]);
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
