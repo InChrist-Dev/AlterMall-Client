@@ -11,6 +11,14 @@ import Cookies from 'js-cookie';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 console.log('ddd')
+useEffect(() => {
+  // 1분마다 실행되는 cron 작업 설정
+  cron.schedule('* * * * *', () => {
+    // 여기에 1분마다 실행될 코드를 작성합니다.
+    console.log('1분마다 메시지가 출력됩니다.');
+  });
+}, []);
+
 if(accessToken){
     // 1분(60초)마다 실행되는 함수
     const interval = setInterval(() => {
