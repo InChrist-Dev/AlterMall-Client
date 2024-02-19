@@ -274,7 +274,7 @@ const ItemPage = (props) => {
         {reviewsData.map((review) => (
           <div key={review.id} className={styles.review}>
             <h2>{review.title}</h2>
-            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.User.name)}</p>
+            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.content)}</p>
             <img src={review.image} alt="리뷰 사진" className={styles.image} />
             <p>{review.content}</p>
           </div>
