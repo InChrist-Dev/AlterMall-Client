@@ -243,7 +243,7 @@ const Checkout = () => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, [save]);
+  }, [save,fetchData]);
 
   setTimeout(() => {
     setDelivery(deliveryList[0]);
