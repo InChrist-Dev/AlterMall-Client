@@ -20,7 +20,7 @@ const ItemPage = (props) => {
   const [id, setId] = useState('');
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [review, setReview] = useState('');
   const [data, setData] = useState([]);
 
   // const handleSubmit = async (e) => {
@@ -48,7 +48,7 @@ const ItemPage = (props) => {
 
       const response2 = await fetch(`https://udtown.site/review/${props.params.id}`);
       const data2 = await response2.json();
-      console.log(data2)
+      setReview(data2.data.rows)
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
@@ -106,7 +106,7 @@ const ItemPage = (props) => {
     {
       id: '234234',
       title: '맛집 리뷰 (사용자1)',
-      image: '/images/review1.jpg',
+      image: `https://udtown.site/${review[0].img}`,
       content: '음식이 정말 맛있어요! 서비스도 훌륭합니다.',
     },
     {
