@@ -98,11 +98,11 @@ const OrderHistory = () => {
                       <span>일반배송</span>
                     ) : null}</p>
                     <p>요청 사항:  {order.state === 'paid' ? (
-                      <td>결제완료</td>
+                      <span>결제완료</span>
                     ) : order.state === 'accept' ? (
-                      <td>제조중</td>
+                      <span>제조중</span>
                     ) : order.state === 'deliver' ? (
-                      <td>전송완료</td>
+                      <span>전송완료</span>
                     ): null}</p>
                   </td>
                   <td>{order.state}</td>
