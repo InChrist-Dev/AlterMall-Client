@@ -51,7 +51,7 @@ const Checkout = (props) => {
 
     const tosspayments = await loadTossPayments('live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ');
 
-    amount += getSub();
+    amount += 4000;
 
     if (delivery) {
       console.log(items);
