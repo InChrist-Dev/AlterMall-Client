@@ -38,7 +38,7 @@ const Checkout = (props) => {
     setCustomRequest(e.target.value);
   };
   const handleClick = async () => {
-    let amount = 0;
+    let amount = amounts;
     // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
     const firstItemName = items.length > 0 ? items[0].item_name : '';
 
@@ -48,9 +48,7 @@ const Checkout = (props) => {
     const tosspayments = await loadTossPayments(
       'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
     );
-    items.map((item) => {
-      amount += item.price * item.stock;
-    });
+   
     amount += getSub();
    
     if (delivery) {
@@ -67,7 +65,7 @@ const Checkout = (props) => {
           'order_id': info.order_id,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': request,
+          'requests': requestOption,
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
