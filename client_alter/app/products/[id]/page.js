@@ -39,6 +39,15 @@ const ItemPage = (props) => {
 
 
     try {
+      const formData = new FormData();
+      formData.append('content', content); // title 媛� 異붽��
+      formData.append('rate', rate);
+      formData.append('item_id',item_id);
+  
+      files.forEach((file, index) => {
+        formData.append(`img`, file);
+     
+      });
       const response = await fetch('https://udtown.site/review', {
         method: 'POST',
         headers: {
@@ -46,12 +55,7 @@ const ItemPage = (props) => {
      
         },
         credentials: 'include',
-        body: JSON.stringify({
-          'img':image,
-          'content':content,
-          'rate':rate,
-          'item_id':props.params.id,
-        }),
+        body: formData,
       });
       if (response.ok) {
         console.log('리뷰가 성공적으로 제출되었습니다.');
