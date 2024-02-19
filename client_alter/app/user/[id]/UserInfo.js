@@ -2,6 +2,7 @@
 // UserInfo.jsx
 import React from 'react';
 import styles from './user.module.css';
+import { useEffect } from 'react';
 
 const UserInfo = (props) => {
   const fetchData = async() =>{
