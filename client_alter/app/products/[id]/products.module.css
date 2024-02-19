@@ -212,6 +212,8 @@
 
 /* styles/Reviews.module.css */
 
+/* styles/CustomStyles.module.css */
+
 .reviewContainer {
   max-width: 800px;
   margin: 0 auto;
@@ -225,8 +227,20 @@
 }
 
 .review {
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
   padding: 20px;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease;
+}
+
+.review:hover {
+  transform: translateY(-5px);
+}
+
+.review h2 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 .maskedId {
@@ -238,4 +252,14 @@
   width: 100%;
   height: auto;
   margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image:hover {
+  transform: scale(1.05);
+}
+
+.review p {
+  line-height: 1.6;
 }
