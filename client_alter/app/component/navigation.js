@@ -12,7 +12,6 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 console.log('ddd')
 if(accessToken){
-  useEffect(() => {
     // 1분(60초)마다 실행되는 함수
     const interval = setInterval(() => {
       // 메시지 업데이트
@@ -21,7 +20,6 @@ if(accessToken){
 
     // 컴포넌트가 언마운트될 때 interval 정리
     return () => clearInterval(interval);
-  }, []); // useEffect의 두 번째 인자로 빈 배열을 전달하여 한 번만 실행되도록 설정
 }
 const NavigationBar = (session) => {
   console.log(session)
