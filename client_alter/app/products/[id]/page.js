@@ -217,7 +217,7 @@ const ItemPage = (props) => {
                 smooth={true}
                 duration={500}
                 onClick={() => {
-                  setActiveLink("image3");
+                  setActiveLink("image2");
                   
                 }}
                 className={activeLink == "image2" ? styles.activeLink : styles.Link}
@@ -231,7 +231,7 @@ const ItemPage = (props) => {
                 smooth={true}
                 duration={500}
                 onClick={() => {
-                  setActiveLink("image4");
+                  setActiveLink("image3");
                  
                 }}
                 className={activeLink == "image3" ? styles.activeLink : styles.Link}
@@ -241,11 +241,11 @@ const ItemPage = (props) => {
               </li>
               <li>
               <Link
-                to="image2"
+                to="image4"
                 smooth={true}
                 duration={500}
                 onClick={() => {
-                  setActiveLink("image2");
+                  setActiveLink("image4");
                   
                 }}
                 className={activeLink == "image4" ? styles.activeLink : styles.Link}
