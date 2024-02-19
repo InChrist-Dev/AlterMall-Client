@@ -3,8 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import NavigationBar from './component/navigation';
 import Footer from './component/footer';
-import { authOptions } from "@/pages/api/auth/[...nextauth].js"
-import { getServerSession } from "next-auth";
+
 import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
