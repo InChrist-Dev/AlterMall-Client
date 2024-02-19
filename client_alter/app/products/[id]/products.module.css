@@ -287,6 +287,8 @@
 
 .reviewFormContainer button[type="submit"] {
   padding: 10px 20px;
+  width: 500px;
+  height: 400px;
   background-color: #007bff;
   color: #fff;
   border: none;

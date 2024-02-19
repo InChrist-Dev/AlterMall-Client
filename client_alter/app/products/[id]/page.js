@@ -299,8 +299,8 @@ const ItemPage = (props) => {
       </div>
     </div>
     <div className={styles.reviewFormContainer}>
-      <h1>리뷰 작성 폼</h1>
-      <form onSubmit={handleSubmit}>
+      <h1>리뷰 작성</h1>
+      <form onSubmit={handleReview}>
         <div>
           <label htmlFor="image">이미지:</label>
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
