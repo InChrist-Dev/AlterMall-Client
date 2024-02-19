@@ -244,7 +244,9 @@ const Checkout = () => {
   useEffect(() => {
     fetchData();
   }, [showModal]);
-  setDelivery(deliveryList[0]);
+  useEffect(() => {
+    setDelivery(deliveryList[0]);
+  }, [deliveryList]);
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
