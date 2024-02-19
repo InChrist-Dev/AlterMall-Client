@@ -172,7 +172,7 @@ const Checkout = () => {
   };
   const selDeliver = (id) => {
     setDelivery(deliveryList[id])
-    setSave(!save);
+    window.location.reload;
     closeModal();
   }
   // 전체 주문 가격 계산
