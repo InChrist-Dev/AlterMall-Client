@@ -14,7 +14,7 @@ const UserInfo = (props) => {
       credentials: 'include',
     });
     const data = await response.json();
-    console.log(data.data.rows);
+    console.log(data);
     setOrderLength(data.data.rows.length);
   }
   useEffect(()=>{
