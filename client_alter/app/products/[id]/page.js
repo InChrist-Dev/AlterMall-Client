@@ -100,7 +100,8 @@ const ItemPage = (props) => {
   );
 
   const handleBuy = (itemId,amount)=>{
-    window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
+    alert('서비스 준비중입니다')
+    //window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
  return(
     <div>
