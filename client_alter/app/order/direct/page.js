@@ -6,8 +6,10 @@ import styles from './direct.module.css';
 import DeliveryInfoModal from '../Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
-
+import { v4 as uuidv4 } from 'uuid';
 // 쿠키에서 토큰을 가져오기
+const myUuid = uuidv4();
+  console.log(myUuid);
 const accessToken = Cookies.get('accessToken');
 const Checkout = (props) => {
   const [showModal, setShowModal] = useState(false);
@@ -62,7 +64,7 @@ const Checkout = (props) => {
         },
         credentials: 'include',
         body: JSON.stringify({
-          'order_id': info.order_id,
+          'order_id':myUuid,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
           'requests': requestOption,
@@ -75,7 +77,7 @@ const Checkout = (props) => {
       });
     
       await tosspayments.requestPayment('카드', {
-        orderId: info.order_id,
+        orderId: myUuid,
         amount: amount,
         orderName: `${firstItemName}외 ${otherItemsCount}건`,
         successUrl: 'https://udtown.site/customer/confirm',
