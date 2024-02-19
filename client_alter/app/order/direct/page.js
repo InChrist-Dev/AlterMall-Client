@@ -18,8 +18,7 @@ const Checkout = (props) => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
-  const [deliveryPay, setDeliveryPay] = useState(4000);
-  const [selectedItems, setSelectedItems] = useState([]);
+
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
   const [info, setInfo] = useState([]);
@@ -159,24 +158,8 @@ const Checkout = (props) => {
     setDelivery(deliveryList[id]);
   };
 
-  const handleQuantityChange = (index, newAmount) => {
-    if (newAmount >= 0) {
-      const newQuantity = { ...quantity };
-      newQuantity[index] = newAmount;
-      setQuantity(newQuantity);
-
-      const updatedItems = [...items];
-      updatedItems[index].stock = newAmount;
-      setItems(updatedItems);
-    } else {
-      const newQuantity = { ...quantity };
-      newQuantity[index] = 0;
-      setQuantity(newQuantity);
-
-      const updatedItems = [...items];
-      updatedItems[index].stock = 0;
-      setItems(updatedItems);
-    }
+  const calculateTotalPrice = () => {
+    return items.price*amounts;
   };
 
   const fetchData = async () => {
