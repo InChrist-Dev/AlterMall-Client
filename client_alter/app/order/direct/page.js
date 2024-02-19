@@ -114,7 +114,7 @@ const Checkout = (props) => {
       
         )
         
-          window.location.href='/order';
+         
           console.log(response);
           const data = await response.json();
           console.log(data)
