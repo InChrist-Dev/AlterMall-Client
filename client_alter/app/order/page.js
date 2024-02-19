@@ -67,7 +67,7 @@ const Checkout = () => {
           'order_id': info.order_id,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': request,
+          'requests': requestOption,
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
