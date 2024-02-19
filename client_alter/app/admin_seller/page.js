@@ -314,6 +314,7 @@ return formattedDate;
             value={deliveryType}
             onChange={handleDisplayCountChange}
           >
+              <option value={'all'}>모두보기</option>
             <option value={'daily'}>당일배송</option>
             <option value={'normal'}>일반배송</option>
           </select>
