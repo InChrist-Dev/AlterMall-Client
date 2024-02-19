@@ -68,7 +68,7 @@ const Checkout = (props) => {
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
           'requests': requestOption,
-          'amount': amount,
+          'amount': calculateTotalPrice(),
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name':delivery.name,
@@ -114,8 +114,8 @@ const Checkout = (props) => {
        
           await tosspayments.requestPayment('카드', {
             orderId: myUuid,
-            amount: amount,
-            orderName: `${firstItemName}외 ${otherItemsCount}건`,
+            amount: calculateTotalPrice(),
+            orderName: `${items.item_name}`,
             successUrl: 'https://udtown.site/customer/confirm',
             failUrl: window.location.origin,
           })
