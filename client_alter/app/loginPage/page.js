@@ -33,6 +33,7 @@ export default function LoginPage() {
         .then((json) => {
           console.log(json.accessToken)
           console.log(json.position)
+          Cookies.set('position', json.position, { expires: 1 });  // 1일 동안 유지되도록 설정
           Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
           if(json.position == 'seller'){
             window.location.href="https://altermall.shop/admin_seller"
