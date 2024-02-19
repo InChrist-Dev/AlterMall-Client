@@ -75,7 +75,61 @@ const Checkout = (props) => {
         
         }),
       });
+      await fetch('https://udtown.site/customer/order',{
+        method:'post',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          
+          'seller_id': items.seller_id,
+          'order_id':myUuid,
+          'addr': delivery.addr,
+          'addr_detail': delivery.addr_detail,
+          'requests': requestOption,
+          'amount': amount,
+          'delivery_type': deliveryInfo,
+          'phone': delivery.phone,
+          'customer_name':delivery.name,
+        }),
+          
+          
+        
     
+    }).then(async (response) => {
+      const data =await  response.json();
+      console.log(data);
+      if (response.status == 405) {
+        alert('주문 실패하였습니다');
+      } else if (response.status == 201) {
+        await fetch('https://udtown.site/customer/orderdetail',{
+          method:'post',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: orderItems,
+          }),
+            
+            
+          
+      
+      }).then(async (response) => {
+        if (response.status == 405) {
+          alert('주문 실패하였습니다');
+        } else if (response.status == 201) {
+        
+         
+          const data = await response.json();
+          console.log(data)
+        }
+    
+    
+      }).finally(
+    
+      )
       await tosspayments.requestPayment('카드', {
         orderId: myUuid,
         amount: amount,
