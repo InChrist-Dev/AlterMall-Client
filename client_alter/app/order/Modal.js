@@ -102,7 +102,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   
       } else if (response.status == 201) {
         alert('삭제되었습니다');
-        closeModal();
+        window.location.href('https://altermall.shop/order');
       } else {
         
       }
