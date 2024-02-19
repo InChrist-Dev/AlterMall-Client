@@ -92,8 +92,18 @@ const OrderHistory = () => {
                     <p>전화번호: {order.phone}</p>
                   </td>
                   <td>
-                    <p>배송 유형: {order.delivery_type}</p>
-                    <p>요청 사항: {order.requests}</p>
+                    <p>배송 유형: {order.delivery_type === 'daily' ? (
+                     <span>당일배송</span>
+                    ) : order.delivery_type === 'normal' ? (
+                      <span>일반배송</span>
+                    ) : null}</p>
+                    <p>요청 사항:  {order.state === 'paid' ? (
+                      <td>결제완료</td>
+                    ) : order.state === 'accept' ? (
+                      <td>제조중</td>
+                    ) : order.state === 'deliver' ? (
+                      <td>전송완료</td>
+                    ): null}</p>
                   </td>
                   <td>{order.state}</td>
                   <td>
