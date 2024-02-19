@@ -72,7 +72,7 @@ const Checkout = (props) => {
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name':delivery.name,
-        
+          'seller_id':items.seller_id
         }),
       }).then(async (response) => {
         const data =await  response.json();
