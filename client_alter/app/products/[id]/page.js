@@ -201,7 +201,7 @@ const ItemPage = (props) => {
                   setActiveLink("image3");
                   
                 }}
-                className={activeLink == "image3" ? styles.activeLink : styles.Link}
+                className={activeLink == "image2" ? styles.activeLink : styles.Link}
               >
                 상품문의
               </Link>
@@ -215,7 +215,7 @@ const ItemPage = (props) => {
                   setActiveLink("image4");
                  
                 }}
-                className={activeLink == "image4" ? styles.activeLink : styles.Link}
+                className={activeLink == "image3" ? styles.activeLink : styles.Link}
               >
                 구매정보
               </Link>
@@ -229,7 +229,7 @@ const ItemPage = (props) => {
                   setActiveLink("image2");
                   
                 }}
-                className={activeLink == "image2" ? styles.activeLink : styles.Link}
+                className={activeLink == "image4" ? styles.activeLink : styles.Link}
               >
                 구매후기
               </Link>
@@ -243,31 +243,31 @@ const ItemPage = (props) => {
         <div className={styles.detail} id="image1">
         <img src="/11.jpg" />
       </div>
-      <div className={styles.detail} id="image2">
+      <div className={styles.detail} >
         <img src="/22.jpg" />
       </div>
-      <div className={styles.detail} id="image3">
+      <div className={styles.detail}>
         <img src={`https://udtown.site/${data.desc1}`} />
       </div>
-      <div className={styles.detail} id="image3">
+      <div className={styles.detail}>
       <img src={`https://udtown.site/${data.desc2}`} />
       </div>
-      <div className={styles.detail} id="image3">
-      <img src={`https://udtown.site/${data.desc3}`} />
+      <div className={styles.detail} >
+      <img src={`https://udtown.site/${data.desc3}`} id="image3" />
       </div>
-      <div className={styles.detail} id="image3">
+      <div className={styles.detail} >
       <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
       </div>
-      <div className={styles.detail} id="image3">
+      <div className={styles.detail}>
         <img src="/77.jpg" />
       </div>
     
-      <div className={styles.detail} id="image3">
+      <div className={styles.detail}>
         <img src="/back1.jpg" />
-      </div> <div className={styles.detail} id="image3">
+      </div> <div className={styles.detail} >
         <img src="/back2.jpg" />
       </div>
-      <div className={styles.reviewContainer}>
+      <div className={styles.reviewContainer} id="image4">
       <h1>리뷰 페이지</h1>
       <div className={styles.reviews}>
         {reviewsData.map((review) => (
