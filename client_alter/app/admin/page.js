@@ -147,7 +147,7 @@ const ImageUploader = (props) => {
               method: 'POST',
               headers: {
                 Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'multipart/form-data',
+        
               },
               credentials: 'include',
               body: formData
