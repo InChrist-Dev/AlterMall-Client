@@ -17,7 +17,7 @@ export async function Session() {
   return session;
 }
 if(accessToken){
-  cron.schedule('*/1 * * * *', () => {
+  cron.schedule('1 * * * * *', () => {
     console.log('2분마다 작업 실행 : ', new Date().toString())
   })
 }
