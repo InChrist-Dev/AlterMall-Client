@@ -11,7 +11,7 @@ const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
   const [categoryS, setCategoryS] = useState([]);
-  const [sortBy, setSortBy] = useState('latest');
+  const [sortBy, setSortBy] = useState('lowest');
   const [displayCount, setDisplayCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
