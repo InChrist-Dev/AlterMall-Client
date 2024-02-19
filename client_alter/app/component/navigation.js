@@ -11,6 +11,13 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
+console.log('ddd')
+if(accessToken){
+  console.log('fff')
+  cron.schedule('1 * * * *', () => {
+    alert('2분마다 작업 실행 : ')
+  })
+}
 const NavigationBar = (session) => {
   console.log(session)
   const [search, setSearch] = useState('');
