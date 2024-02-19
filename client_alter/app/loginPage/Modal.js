@@ -8,7 +8,7 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const DeliveryInfoModal = ({ closeModal  }) => {
+const DeliveryInfoModal = ({ closeModal,refresh  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
 
@@ -117,6 +117,7 @@ const DeliveryInfoModal = ({ closeModal  }) => {
       } else if (response.status == 201) {
         alert('삭제되었습니다');
         closeModal();
+        setRefresh(!refresh)
       } else {
         
       }

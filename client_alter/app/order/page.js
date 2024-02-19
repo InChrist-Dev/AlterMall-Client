@@ -23,7 +23,7 @@ const Checkout = () => {
   const [request, setRequest] = useState('');
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
-
+  const [refresh,setRefresh] = useState(false);
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -118,6 +118,7 @@ const Checkout = () => {
   // Function to close the modal
   const closeModal = () => {
     setShowModal(false);
+    setRefresh(!refresh)
   };
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];

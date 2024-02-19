@@ -55,7 +55,7 @@ const Checkout = (props) => {
       console.log(items);
 
       await fetch('https://udtown.site/customer/order', {
-        method: 'PATCH',
+        method: 'post',
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const Checkout = (props) => {
   // Function to close the modal
   const closeModal = () => {
     setShowModal(false);
-    setRefresh(!refresh)
+   
   };
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];
@@ -251,12 +251,12 @@ const Checkout = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [refresh]);
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
       <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
+        <DeliveryInfoModal refresh={refresh} closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
