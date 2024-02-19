@@ -326,6 +326,7 @@ return formattedDate;
             value={orderState}
             onChange={handleDisplayChange}
           >
+            <option value={'all'}>모두보기</option>
             <option value={'paid'}>결제완료</option>
             <option value={'accept'}>제조중</option>
             <option value={'deliver'}>전송완료</option>
@@ -351,7 +352,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.filter(order => order.delivery_type === deliveryType && order.state === orderState).map((order, index) => (
+            {orders.filter(order =>filter.orderState === 'all' ||  order.delivery_type === deliveryType && order.state === orderState).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img
