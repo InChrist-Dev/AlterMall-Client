@@ -19,8 +19,8 @@ const NavigationBar = (session) => {
       // 1분(60초)마다 실행되는 함수
       const interval = setInterval(() => {
         // 메시지 업데이트
-        console.log('1분이 지났습니다!');
-      }, 6000); // 60000밀리초 = 1분
+        alert('1분이 지났습니다!');
+      }, 16000); // 60000밀리초 = 1분
   
       // 컴포넌트가 언마운트될 때 interval 정리
       return () => clearInterval(interval);
