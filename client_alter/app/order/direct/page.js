@@ -123,8 +123,7 @@ const Checkout = (props) => {
     } else {
       alert('배송지를 먼저 등록해주세요')
     }
-
-
+  })
 
 
 
