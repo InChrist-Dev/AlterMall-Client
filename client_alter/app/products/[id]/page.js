@@ -265,6 +265,12 @@ const ItemPage = (props) => {
       <div className={styles.detail} >
         <img src="/22.jpg" />
       </div>
+      <div className={styles.detail} >
+        <img src="/333.jpg" />
+      </div>
+      <div className={styles.detail} >
+        <img src="/444.jpg" />
+      </div>
       <div className={styles.detail}>
         <img src={`https://udtown.site/${data.desc1}`} />
       </div>
