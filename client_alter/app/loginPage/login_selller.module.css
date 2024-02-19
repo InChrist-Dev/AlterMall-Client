@@ -25,9 +25,27 @@
     border: 1px solid #ccc;
   }
   
-  .button {
+  .sellerButton {
     padding: 10px;
     height: 60px;
+    background:hsl(0, 0%, 100%);
+    color: #828181;
+    margin-left: 1px;
+    border: 1px solid #828181;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 49%;
+  }
+  .groupBtn{
+    display: flex;
+  }
+  .sellerButton:hover {
+    background:#d1d1d1;
+  }
+  .localButton {
+    padding: 10px;
+    height: 60px;
+    width: 49%;
     background:#f57c19;
     color: #fff;
     border: none;
@@ -35,11 +53,16 @@
     cursor: pointer;
   }
   
-  .button:hover {
+  .localButton:hover {
     background:#df7117;
   }
   .google{
     padding: 30px;
     width: 450px;
     height: 150px;
+  }
+  .registerBtn{
+    background-color: #fff;
+    border: none;
+    color: #aaa;
   }

@@ -97,6 +97,10 @@ const ItemPage = (props) => {
     setDeliveryType(e.target.value);
     
   };
+  const handleDisplayChange = (e) => {
+    setOrderState(e.target.value);
+    
+  };
   const Cancel = useCallback(
     (id) => {
 
@@ -320,11 +324,11 @@ return formattedDate;
             id="displayCount"
             className={styles.dropInput}
             value={orderState}
-            onChange={handleDisplayCountChange}
+            onChange={handleDisplayChange}
           >
             <option value={'paid'}>결제완료</option>
             <option value={'accept'}>제조중</option>
-            <option value={'accept'}>배송완료</option>
+            <option value={'deliver'}>전송완료</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
@@ -347,7 +351,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.filter(order => order.delivery_type === deliveryType).map((order, index) => (
+            {orders.filter(order => order.delivery_type === deliveryType && order.state === orderState).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img
@@ -378,7 +382,9 @@ return formattedDate;
                       <td>결제완료</td>
                     ) : order.state === 'accept' ? (
                       <td>제조중</td>
-                    ) : null}
+                    ) : order.state === 'deliver' ? (
+                      <td>전송완료</td>
+                    ): null}
                  
                   <td>
                     {order.state === 'paid' ? (

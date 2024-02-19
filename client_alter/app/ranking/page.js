@@ -19,13 +19,13 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/category?p=${currentPage}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await fetch(`https://udtown.site/category/ranking`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      setCategoryList(data.data.items);
+      setCategoryList(data.data);
       setPage(data.data.totalPages);
-      console.log(data.data.items)
+      console.log(data.data)
   
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
@@ -137,7 +137,7 @@ const ItemPage = (props) => {
             건강순
           </button>
           ㅣ */}
-          <button
+          {/* <button
             onClick={sortByHighestPrice}
             className={sortBy === 'highest' ? styles.activeButton : styles.sortButtons}
           >
@@ -149,7 +149,7 @@ const ItemPage = (props) => {
             className={sortBy === 'latest' ? styles.activeButton : styles.sortButtons}
           >
             최신순
-          </button>
+          </button> */}
         </div>
 
         <div className={styles.scrollButtons}>

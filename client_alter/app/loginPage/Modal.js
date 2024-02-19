@@ -1,29 +1,27 @@
 // DeliveryInfoModal.js
 'use client'
 import React from 'react';
-import styles from './order.module.css'
+import styles from '../order/order.module.css'
 import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
+const DeliveryInfoModal = ({ closeModal  }) => {
   const [showAllAddresses, setShowAllAddresses] = useState(false);
 
 
-  const showAllAddressesModal = () => {
-    setShowAllAddresses(true);
-  };
 
-  const closeAllAddressesModal = () => {
-    setShowAllAddresses(false);
-  };
   const [addressname, setAddressName] = useState('');
   const [name,setName] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
   const [isAddress, setIsAddress] = useState(false);
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const addressClick = () => {
     const newIsAddress = !isAddress;
     setIsAddress(newIsAddress);
@@ -37,18 +35,39 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
     // Close the modal after saving
     closeModal();
   };
-  const handleComplete = (data) => {
-    let fullAddress = data.address;
-    setAddress(fullAddress);
+  const checkId = async(id) => {
+    try {
+      const response = await fetch(`https://udtown.site/auth/idcheck?id=${id}`, {
+      
+      });
+
+      if (response.status == 200) {
+       
+  
+      } else if (response.status == 201) {
+        alert('저장되었습니다');
+        closeModal();
+        window.location.reload;
+      } else {
+        
+      }
+      const data = await response.json();
+      console.log(data)
+    } catch (error) {
+      // 에러 처리
+      console.error('Failed to send like request', error);
+    }
 
   };
 
 
 
   const handleSubmit = async () => {
+
+
     
     try {
-      const response = await fetch('https://udtown.site/customer/deliver', {
+      const response = await fetch('https://udtown.site/auth/local/signin', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -56,11 +75,11 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
         },
         credentials: 'include',
         body: JSON.stringify({
-          "addr": address,
-          "addr_detail": detailAddress,
-          
-          "address_name":addressname,
-          "name": name
+          "id": id,
+          "name": name,
+          "phone":phone,
+          "email":email,
+          "pw": pw
         }), 
       });
 
@@ -80,9 +99,9 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
     }
   };
 
-  const delDeliver = async (id) => {
+  const delDeliver = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/deliver/${id}`, {
+      const response = await fetch(`https://udtown.site/customer/deliver/}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -110,44 +129,21 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
-      {showAllAddresses ? (
-          // 새로운 배송지 목록을 보여주는 모달
-          <div>
-            <h3>전체 배송지 목록</h3>
-            <ul>
-              {deliveryList.length>0?deliveryList.map((delivery,i) => (
-                <li key={delivery.id}>
-                  {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
-                  <button onClick={()=>{selDeliver(i)}}>선택</button>
-                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
-                </li>
-              )):''}
-            </ul>
-            <button onClick={closeAllAddressesModal}>닫기</button>
-          </div>
-        ) : (
-          // 기존 배송지 정보를 입력하는 모달
-          <>
-         
-            {/* ... (기존 코드) */}
-            <button onClick={showAllAddressesModal}>배송지 목록 보기</button>
-            {/* ... (기존 코드) */}
-          </>
-        )}
     
 
-        <h2>배송지 정보 추가</h2>
-        <label>배송지 구분</label>
-        <input type="text" value={addressname} onChange={(e) => setAddressName(e.target.value)} />
-
+        <h2>간편 회원가입</h2>
+      
         <label>이름</label>
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <label>아이디</label>
+        <label>아이디</label><button onClick={()=>{checkId(id)}}>중복확인</button>
         <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
         <label>비밀번호</label>
         <input type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
-        <label>비밀번호 확인</label>
-        <input type="text" value={pw} onChange={(e) => setPwCheck(e.target.value)} />
+        <label>전화번호</label>
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <label>이메일</label>
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        
 
         
        
