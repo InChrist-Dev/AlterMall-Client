@@ -270,7 +270,7 @@ const ItemPage = (props) => {
       <div className={styles.reviewContainer}>
       <h1>리뷰 페이지</h1>
       <div className={styles.reviews}>
-        {review.map((review) => (
+        {reviewsData.map((review) => (
           <div key={review.id} className={styles.review}>
             <h2>{review.title}</h2>
             <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.user_id)}</p>
