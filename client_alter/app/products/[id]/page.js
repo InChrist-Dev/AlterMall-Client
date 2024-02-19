@@ -1,6 +1,6 @@
 // ItemPage.js
 'use client'
-import React, { useState, useEffect,useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
@@ -83,10 +83,10 @@ const ItemPage = (props) => {
           Authorization: `Bearer ${accessToken}`,
         },
         credentials: 'include',
-        body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
+        body: JSON.stringify({ amount: quantity, item_id: props.params.id }),
       })
         .then((response) => {
-    
+
           if (response.status == 400) {
             alert('장바구니에 존재하는 메뉴입니다.');
           } else if (response.status == 201) {
@@ -103,32 +103,32 @@ const ItemPage = (props) => {
     [quantity, id],
   );
 
-  const handleBuy = (itemId,amount)=>{
+  const handleBuy = (itemId, amount) => {
     alert('서비스 준비중입니다')
     //window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
   };
- return(
+  return (
     <div>
       <div className={styles.productDetailContainer}>
 
-     
-      <div className={styles.productImage}>
-        {/* Assume productImage is a prop passed from parent component */}
-        <img src={`https://udtown.site/${img}`} alt="Product Image" />
-      </div>
 
-      <div className={styles.productDetails}>
-        <div className={styles.productInfo}>
-          <h1 >{name}</h1>
-          {/* <p><span>배달방법 </span> 특급배달</p>
+        <div className={styles.productImage}>
+          {/* Assume productImage is a prop passed from parent component */}
+          <img src={`https://udtown.site/${img}`} alt="Product Image" />
+        </div>
+
+        <div className={styles.productDetails}>
+          <div className={styles.productInfo}>
+            <h1 >{name}</h1>
+            {/* <p><span>배달방법 </span> 특급배달</p>
           <p><span>제품구성 </span> 밀가루, 버터, 우유, 달걀, 설탕포함</p>
           <p><span>보관법 </span> 냉동보관</p>
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
-          <p><span>재고 </span> {stock}</p>
-        </div>
+            <p><span>재고 </span> {stock}</p>
+          </div>
 
-        <div className={styles.productOptions}>
-          {/* <div className={styles.dropdown}>
+          <div className={styles.productOptions}>
+            {/* <div className={styles.dropdown}>
             <label>옵션</label>
             <select>
               <option>Option 1</option>
@@ -137,36 +137,36 @@ const ItemPage = (props) => {
             </select>
           </div> */}
 
-          <div className={styles.dropdown}>
-            <label>주문수량</label>
-            <select onChange={(e) => handleQuantityChange(e.target.value)}>
+            <div className={styles.dropdown}>
+              <label>주문수량</label>
+              <select onChange={(e) => handleQuantityChange(e.target.value)}>
 
-              {Quantity()}
-              {/* Add more quantity options as needed */}
-            </select>
-          </div>
+                {Quantity()}
+                {/* Add more quantity options as needed */}
+              </select>
+            </div>
 
-          <div className={styles.price}>
-            <p>{price.toLocaleString()}원</p>
+            <div className={styles.price}>
+              <p>{price.toLocaleString()}원</p>
+            </div>
+            <button className={styles.addToCartButton} onClick={() => { handleSubmit(); }}>장바구니</button>
+            <button className={styles.BuyButton} onClick={() => { handleBuy(id, quantity) }}>바로구매</button>
           </div>
-          <button className={styles.addToCartButton} onClick={()=>{handleSubmit();}}>장바구니</button>
-          <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
       </div>
-    </div>
-    <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
-  
-        <div className="navigation">
-      <nav className="navbar">
-        <ul className={styles.navList}>
-          <li className="category-dropdown">
-          <Link
+      <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+
+      <div className="navigation">
+        <nav className="navbar">
+          <ul className={styles.navList}>
+            <li className="category-dropdown">
+              <Link
                 to="image1"
                 smooth={true}
                 duration={500}
                 onClick={() => {
                   setActiveLink("image1");
-                 
+
                 }}
                 className={activeLink == "image1" ? styles.activeLink : styles.Link}
               >
@@ -180,7 +180,7 @@ const ItemPage = (props) => {
                 duration={500}
                 onClick={() => {
                   setActiveLink("image3");
-                  
+
                 }}
                 className={activeLink == "image3" ? styles.activeLink : styles.Link}
               >
@@ -194,66 +194,74 @@ const ItemPage = (props) => {
                 duration={500}
                 onClick={() => {
                   setActiveLink("image4");
-                 
+
                 }}
                 className={activeLink == "image4" ? styles.activeLink : styles.Link}
               >
                 구매정보
               </Link>
-              </li>
-              <li>
+            </li>
+            <li>
               <Link
                 to="image2"
                 smooth={true}
                 duration={500}
                 onClick={() => {
                   setActiveLink("image2");
-                  
+
                 }}
                 className={activeLink == "image2" ? styles.activeLink : styles.Link}
               >
                 구매후기
               </Link>
-          
-          </li>
-        </ul>
-      </nav>
-    </div>
-       
-        <div>
-        <div className={styles.detail} id="image1">
-        <img src="/11.jpg" />
-      </div>
-      <div className={styles.detail} id="image2">
-        <img src="/22.jpg" />
-      </div>
-      <div className={styles.detail} id="image3">
-        <img src={`https://udtown.site/${data.desc1}`} />
-      </div>
-      <div className={styles.detail} id="image3">
-      <img src={`https://udtown.site/${data.desc2}`} />
-      </div>
-      <div className={styles.detail} id="image3">
-      <img src={`https://udtown.site/${data.desc3}`} />
-      </div>
-      <div className={styles.detail} id="image3">
-      <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
-      </div>
-      <div className={styles.detail} id="image3">
-        <img src="/77.jpg" />
-      </div>
-    
-      <div className={styles.detail} id="image3">
-        <img src="/back1.jpg" />
-      </div> <div className={styles.detail} id="image3">
-        <img src="/back2.jpg" />
-      </div>
-      <div className={styles.container}> {/* 스타일 적용 */}
-      <h1 className={styles.title}>리뷰 게시판</h1> {/* 스타일 적용 */}
 
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <div>
+        <div className={styles.detail} id="image1">
+          <img src="/11.jpg" />
+        </div>
+        <div className={styles.detail} id="image2">
+          <img src="/22.jpg" />
+        </div>
+        <div className={styles.detail} id="image3">
+          <img src={`https://udtown.site/${data.desc1}`} />
+        </div>
+        <div className={styles.detail} id="image3">
+          <img src={`https://udtown.site/${data.desc2}`} />
+        </div>
+        <div className={styles.detail} id="image3">
+          <img src={`https://udtown.site/${data.desc3}`} />
+        </div>
+        <div className={styles.detail} id="image3">
+          <img src={data.desc4 ? `https://udtown.site/${data.desc4}` : ''} />
+        </div>
+        <div className={styles.detail} id="image3">
+          <img src="/77.jpg" />
+        </div>
+
+        <div className={styles.detail} id="image3">
+          <img src="/back1.jpg" />
+        </div> <div className={styles.detail} id="image3">
+          <img src="/back2.jpg" />
+        </div>
+        <div className={styles.container}>
+      <h1>리뷰 페이지</h1>
+      <div className={styles.reviews}>
+        {reviewsData.map((review) => (
+          <div key={review.id} className={styles.review}>
+            <h2>{review.title}</h2>
+            <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.id)}</p>
+            <img src={review.image} alt="리뷰 사진" className={styles.image} />
+            <p>{review.content}</p>
+          </div>
+        ))}
+      </div>
     </div>
-      {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
-    </div>
+      </div>
     </div>
   );
 };
