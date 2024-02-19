@@ -20,8 +20,11 @@ const ItemPage = (props) => {
   const [id, setId] = useState('');
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
   const [title, setTitle] = useState('');
+  const [image,setImage] = useState(null);
   const [review, setReview] = useState('');
+  
   const [data, setData] = useState([]);
+
 
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
@@ -281,7 +284,24 @@ const ItemPage = (props) => {
         ))}
       </div>
     </div>
-      {/* 추가적인 이미지나 섹션을 필요에 따라 계속 추가할 수 있습니다. */}
+    <div>
+      <h1>리뷰 작성 폼</h1>
+      <form onSubmit={handleReview}>
+        <div>
+          <label htmlFor="title">제목:</label>
+          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
+        </div>
+        <div>
+          <label htmlFor="image">이미지:</label>
+          <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
+        </div>
+        <div>
+          <label htmlFor="content">내용:</label>
+          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+        </div>
+        <button type="submit">제출</button>
+      </form>
+    </div>
     </div>
     </div>
   );
