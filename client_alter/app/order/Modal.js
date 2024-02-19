@@ -73,7 +73,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   
       } else if (response.status == 201) {
         alert('저장되었습니다');
-        window.location.href('https://altermall.shop/order');
+        window.location.href='https://altermall.shop/order';
         closeModal();
       
       } else {
@@ -102,7 +102,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   
       } else if (response.status == 201) {
         alert('삭제되었습니다');
-        window.location.href('https://altermall.shop/order');
+        window.location.href='https://altermall.shop/order';
       } else {
         
       }
