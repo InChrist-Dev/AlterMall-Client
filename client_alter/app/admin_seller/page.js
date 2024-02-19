@@ -352,7 +352,7 @@ return formattedDate;
             </tr>
           </thead>
           <tbody>
-            {orders.filter(order =>filter.orderState === 'all' ||  order.delivery_type === deliveryType && order.state === orderState).map((order, index) => (
+            {orders.filter(order =>orderState === 'all' ||  order.delivery_type === deliveryType && order.state === orderState).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
                   <img
