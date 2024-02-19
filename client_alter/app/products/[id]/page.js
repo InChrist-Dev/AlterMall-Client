@@ -290,7 +290,7 @@ const ItemPage = (props) => {
       <div className={styles.reviews}>
         {review.map((review) => (
           <div key={review.id} className={styles.review}>
-            <h2>{review.title}</h2>
+          
             <p className={styles.maskedId}>리뷰 작성자: {maskUserId(review.User.name)}</p>
             <img src={`https://udtown.site/${review.img}`} alt="리뷰 사진" className={styles.image} />
             <p>{review.content}</p>
@@ -301,10 +301,7 @@ const ItemPage = (props) => {
     <div>
       <h1>리뷰 작성 폼</h1>
       <form onSubmit={handleReview}>
-        <div>
-          <label htmlFor="title">제목:</label>
-          <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        </div>
+      
         <div>
           <label htmlFor="image">이미지:</label>
           <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
