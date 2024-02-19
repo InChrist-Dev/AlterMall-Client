@@ -44,7 +44,7 @@ const ItemPage = (props) => {
       setImg(data.img);
       setStock(data.stock);
       setId(data.item_id);
-      setData(data);
+      setData(data.ItemImages[0]);
 
 
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
@@ -226,7 +226,7 @@ const ItemPage = (props) => {
         <img src="/22.jpg" />
       </div>
       <div className={styles.detail} id="image3">
-        <img src={`https://udtown.site/${data.ItemImages[0].desc1}`} />
+        <img src={`https://udtown.site/${data.desc1}`} />
       </div>
       <div className={styles.detail} id="image3">
         <img src="/44.jpg" />
