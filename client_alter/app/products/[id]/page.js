@@ -203,20 +203,7 @@ const ItemPage = (props) => {
         <div className="navigation">
       <nav className="navbar">
         <ul className={styles.navList}>
-          <li className="category-dropdown">
-          <Link
-                to="image1"
-                smooth={true}
-                duration={500}
-                onClick={() => {
-                  setActiveLink("image1");
-                 
-                }}
-                className={activeLink == "image1" ? styles.activeLink : styles.Link}
-              >
-                배송안내
-              </Link>
-            </li>
+          
             <li>
               <Link
                 to="image2"
@@ -245,6 +232,20 @@ const ItemPage = (props) => {
                 구매정보
               </Link>
               </li>
+              <li className="category-dropdown">
+          <Link
+                to="image1"
+                smooth={true}
+                duration={500}
+                onClick={() => {
+                  setActiveLink("image1");
+                 
+                }}
+                className={activeLink == "image1" ? styles.activeLink : styles.Link}
+              >
+                배송안내
+              </Link>
+            </li>
               <li>
               <Link
                 to="image4"
