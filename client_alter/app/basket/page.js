@@ -31,6 +31,11 @@ const ItemPage = (props) => {
         if(data.loginFail){
           alert('토큰이 만료되었습니다. 다시 로그인 해주세요.');
           Cookies.remove('accessToken');
+         
+        }
+
+        if(!accessToken){
+          alert('로그인 후 이용가능한 서비스 입니다. 먼저 로그인을 해주세요');
           window.location.href='https://altermall.shop/loginPage';
         }
 
