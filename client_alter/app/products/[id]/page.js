@@ -213,7 +213,7 @@ const ItemPage = (props) => {
             </li>
             <li>
               <Link
-                to="image3"
+                to="image2"
                 smooth={true}
                 duration={500}
                 onClick={() => {
@@ -227,7 +227,7 @@ const ItemPage = (props) => {
             </li>
             <li>
               <Link
-                to="image4"
+                to="image3"
                 smooth={true}
                 duration={500}
                 onClick={() => {
