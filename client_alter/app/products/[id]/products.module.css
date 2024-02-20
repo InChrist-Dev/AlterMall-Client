@@ -307,7 +307,7 @@
 .reviewFormContainer button[type="submit"]:hover {
   background-color: #c74816;
 }
-.itemImage{
+.itemImg{
   width: 150px;
   height: 150px;
 }
