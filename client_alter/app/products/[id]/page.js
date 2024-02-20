@@ -192,9 +192,9 @@ const ItemPage = (props) => {
         </div>
         <div className={styles.imageContainer}>
         <img className={styles.itemImg}src={data.img1?`https://udtown.site/${data.img1}`:''}/>
-        <img className={styles.itemImg}src={data.img3?`https://udtown.site/${data.img2}`:''}/>
-        <img className={styles.itemImg}src={data.img2?`https://udtown.site/${data.img3}`:''}/>
- 
+        {data.img2?<img className={styles.itemImg}src={data.img2?`https://udtown.site/${data.img2}`:''}/>:''}
+        {data.img3?<img className={styles.itemImg}src={data.img3?`https://udtown.site/${data.img3}`:''}/>:''}
+        {data.img4?<img className={styles.itemImg}src={data.img4?`https://udtown.site/${data.img4}`:''}/>:''}
         </div>
       </div>
     </div>
