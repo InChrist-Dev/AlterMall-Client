@@ -11,7 +11,7 @@ import Cookies from 'js-cookie';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 const position = Cookies.get('position');
-console.log('ddd')
+
 
 const NavigationBar = () => {
   if(accessToken){
