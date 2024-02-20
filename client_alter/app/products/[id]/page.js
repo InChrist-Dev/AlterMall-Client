@@ -265,18 +265,7 @@ const ItemPage = (props) => {
     </div>
        
         <div>
-        <div className={styles.detail} id="image1">
-        <img src="/11.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/22.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/333.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/444.jpg" />
-      </div>
+     
       <div className={styles.detail} id="image2" >
         <img src={`https://udtown.site/${data.desc1}`}/>
       </div>
@@ -292,7 +281,18 @@ const ItemPage = (props) => {
       <div className={styles.detail}>
         <img src="/77.jpg" />
       </div>
-    
+      <div className={styles.detail} id="image1">
+        <img src="/11.jpg" />
+      </div>
+      <div className={styles.detail} >
+        <img src="/22.jpg" />
+      </div>
+      <div className={styles.detail} >
+        <img src="/333.jpg" />
+      </div>
+      <div className={styles.detail} >
+        <img src="/444.jpg" />
+      </div>
       <div className={styles.detail}>
         <img src="/back1.jpg" />
       </div> <div className={styles.detail} >
