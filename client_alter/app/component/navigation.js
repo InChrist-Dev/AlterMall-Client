@@ -13,7 +13,7 @@ const accessToken = Cookies.get('accessToken');
 const position = Cookies.get('position');
 console.log('ddd')
 
-const NavigationBar = (session) => {
+const NavigationBar = () => {
   if(accessToken){
     useEffect(() => {
       // 1분(60초)마다 실행되는 함수
@@ -34,7 +34,7 @@ const NavigationBar = (session) => {
       return () => clearInterval(interval);
     }, []); // useEffect의 두 번째 인자로 빈 배열을 전달하여 한 번만 실행되도록 설정
   }
-  console.log(session)
+
   const [search, setSearch] = useState('');
   const [relatedKeywords, setRelatedKeywords] = useState([]);
   const [isKeywordMenu, setIsKeywordMenu] = useState(true);
