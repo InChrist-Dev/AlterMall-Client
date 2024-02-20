@@ -312,6 +312,7 @@
   height: 150px;
 }
 .imageContainer{
+  padding-top: 10px;
   display: flex;
   gap: 10px;
   margin: 0 auto;
