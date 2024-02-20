@@ -140,9 +140,9 @@ const NavigationBar = () => {
                 <div className="category-menu">
                   <ul>
                     <li><a href="/category/dessert">디저트</a></li>
-                    {/* <li><a href="/category/salad">샐러드</a></li>
+                    <li><a href="/category/salad">샐러드</a></li>
                     <li><a href="/category/free">락토프리</a></li>
-                    <li><a href="/category/drink">음료</a></li> */}
+                    <li><a href="/category/drink">음료</a></li>
                   </ul>
                 </div>
               </li>
