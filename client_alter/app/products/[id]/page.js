@@ -190,6 +190,12 @@ const ItemPage = (props) => {
           <button className={styles.addToCartButton} onClick={()=>{handleSubmit();}}>장바구니</button>
           <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
+        <div className={styles.imageContainer}>
+        <img className={styles.itemImg}src={data.img1?`https://udtown.site/${data.img1}`:''}/>
+        <img className={styles.itemImg}src={data.img3?`https://udtown.site/${data.img2}`:''}/>
+        <img className={styles.itemImg}src={data.img2?`https://udtown.site/${data.img3}`:''}/>
+ 
+        </div>
       </div>
     </div>
     <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
