@@ -63,20 +63,22 @@ const ItemPage = (props) => {
         method: 'POST',
         headers: {
           "content-type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
-        body: JSON.stringify({ amount: 1 ,item_id: id,customer_id: '89122e30-b9c5-11ee-9d01-07fefcbd1ba0'}),
+        credentials: 'include',
+        body: JSON.stringify({ amount: 1 ,item_id: id}),
       })
         .then((response) => {
-          if (response.status == 405) {
-            alert('다시시도해주세요 ');
+          if (response.status == 400) {
+            alert('장바구니에 존재하는 메뉴입니다.');
           } else if (response.status == 201) {
-            alert('해당 상품을 장바구니에 담았습니다');
+            alert('장바구니에 담겼습니다');
           }
 
 
         })
         .finally(() => {
-          console.log("저장완료")
+        
         });
 
     },
