@@ -8,7 +8,7 @@ import styles from './search.module.css'; // 스타일링을 위한 CSS 모듈
 
 const ItemPage = (props) => {
   const [categoryS, setCategoryS] = useState([]);
-  const [sortBy, setSortBy] = useState('latest');
+  const [sortBy, setSortBy] = useState('lowest');
   const [displayCount, setDisplayCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [page, setPage] = useState(1);
