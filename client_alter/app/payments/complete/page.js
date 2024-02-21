@@ -26,6 +26,7 @@ export default function Complete() {
       console.log(data)
       setOrder(data.data.rows[0]);
       setOrderDetail(data.data.rows[0].OrderDetails)
+      console.log(data.data.rows[0].OrderDetails[0].item_name)
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
