@@ -420,14 +420,7 @@ return formattedDate;
                       <div >
 
                         <table className={styles.detailTable}>
-                          <thead>
-                            <tr>
-                              <th>이미지</th>
-                              <th>상품명</th>
-                              <th>가격</th>
-                              <th>갯수</th>
-                            </tr>
-                          </thead>
+                        
                           <tbody>
                             {order.OrderDetails.map((detail, index) => (
                               <tr key={index}>
