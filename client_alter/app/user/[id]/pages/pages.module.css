@@ -162,4 +162,6 @@
     .detailBtn:hover {
       background-color: #dfdfdf;
     }
-    
+    .postImage{
+      width: 100px;
+    }

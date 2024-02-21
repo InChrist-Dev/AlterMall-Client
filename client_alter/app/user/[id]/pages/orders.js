@@ -102,10 +102,10 @@ const OrderHistory = () => {
                     <p>요청사항: {order.requests}</p>
                   </td>
                   <td>
-                    <p>배송 유형: {order.delivery_type === 'daily' ? (
-                     <span>따끈배송</span>
+                    <p>{order.delivery_type === 'daily' ? (
+                      <img src='../../today.jpg' className={styles.postImage} alt="따끈 배송" />
                     ) : order.delivery_type === 'normal' ? (
-                      <span>일반배송</span>
+                      <img src='../../post.jpg' className={styles.postImage} alt="일반 배송" />
                     ) : null}</p>
                     <p>  {order.state === 'paid' ? (
                       <span>결제완료</span>
