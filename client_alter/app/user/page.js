@@ -38,7 +38,7 @@ const MyPage = () => {
       });
       const data2 = await response.json();
       if(data2.loginFail){
-        alert('토큰이 만료되었습니다. 다시 로그인 해주세요.');
+      
         Cookies.remove('accessToken');
         window.location.href='https://altermall.shop/loginPage';
       }
