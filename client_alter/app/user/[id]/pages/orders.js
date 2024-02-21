@@ -136,6 +136,39 @@ const OrderHistory = () => {
                     </button>
                     </td>
                 </tr>
+                <tr>
+                  <td colSpan="9">
+                    {selectedOrder && (
+                      <div >
+
+                        <table className={styles.detailTable}>
+                          <thead>
+                            <tr>
+                              <th>이미지</th>
+                              <th>상품명</th>
+                              <th>가격</th>
+                              <th>갯수</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {order.OrderDetails.map((detail, index) => (
+                              <tr key={index}>
+                                <td>  <img
+                                  src={`https://udtown.site/${detail.img} `}
+                                  alt={detail.item_name}
+                                  className={styles.productImage}
+                                /></td>
+                                <td>{detail.item_name}</td>
+                                <td>{detail.price}원</td>
+                                <td>{detail.stock}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </td>
+                </tr>
                 </tbody>
                 </table>
 
