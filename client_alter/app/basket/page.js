@@ -85,7 +85,7 @@ const ItemPage = (props) => {
         setIsStock(!isStock)
       }
     })     
-    if(isStock){
+    if(isStock == true){
       await fetch('https://udtown.site/customer/order',{
       method:'post',
       headers: {
