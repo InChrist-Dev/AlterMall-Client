@@ -139,7 +139,7 @@
       margin-bottom: 10px;
     }
     
-    deleteButton{
+    .deleteButton{
       background-color: red;
       color: #fff;
       font-weight: bold;
