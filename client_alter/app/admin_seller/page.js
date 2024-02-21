@@ -142,7 +142,6 @@ const formattedDate = date.toLocaleString('ko-KR', {
   day: '2-digit',
   hour: '2-digit',
   minute: '2-digit',
-  second: '2-digit',
   hour12: false, // 24시간 형식으로 표시
   timeZone: 'Asia/Seoul', // 한국 표준시로 설정
 });
