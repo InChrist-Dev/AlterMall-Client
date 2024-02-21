@@ -79,12 +79,15 @@ const ItemPage = (props) => {
         "img":item.Item.img
       };
     }); 
-    orderItems.map((item,i)=>{
-      if(item.stock > items[i].Item.stock){
+    for (let i = 0; i < orderItems.length; i++) {
+      const item = orderItems[i];
+      if (item.stock > items[i].Item.stock) {
         alert(`${item.item_name} 주문량이 재고보다 많습니다. 수정해주세요`);
-        setIsStock(!isStock)
+        return; // 함수를 빠져나옴
       }
-    })     
+    }
+     
+ 
     if(isStock == true){
       await fetch('https://udtown.site/customer/order',{
       method:'post',
