@@ -6,9 +6,12 @@ import styles from './ranking.module.css'; // 스타일링을 위한 CSS 모듈
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // 샘플 데이터
 
+import Cookies from 'js-cookie';
 
+// 쿠키에서 토큰을 가져오기
+const accessToken = Cookies.get('accessToken');
 const ItemPage = (props) => {
-  const [categoryS, setCategoryS] = useState([]);
+
   const [sortBy, setSortBy] = useState('latest');
   const [displayCount, setDisplayCount] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
