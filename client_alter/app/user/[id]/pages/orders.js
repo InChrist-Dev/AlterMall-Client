@@ -81,21 +81,7 @@ const OrderHistory = () => {
               <>
               <h3>{order.createdAt.slice(0,10)}</h3>
                <table className={styles.orderTable}>
-               <thead>
-            <tr>
-              <th>이미지</th>
-            
-              <th>상품명</th>
-              <th>가격</th>
-
-              <th>주문 일자</th>
-              <th>주문자 정보</th>
-              <th>배송 정보</th>
-              <th>상태</th>
-              <th>수락</th>
-              <th>상세</th>
-            </tr>
-          </thead>
+           
           <tbody>
                 <tr key={index} className={styles.orderRow}>
                
