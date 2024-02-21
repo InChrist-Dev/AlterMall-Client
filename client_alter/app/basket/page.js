@@ -122,7 +122,7 @@ const ItemPage = (props) => {
       if (response.status == 405) {
         alert('주문 실패하였습니다');
       } else if (response.status == 201) {
-      
+        window.location.href='/order';
        
         const data = await response.json();
         console.log(data)
@@ -133,7 +133,7 @@ const ItemPage = (props) => {
   
     )
     
-      window.location.href='/order';
+  
       console.log(response);
       const data = await response.json();
       console.log(data)
