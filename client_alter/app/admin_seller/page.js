@@ -374,7 +374,7 @@ return formattedDate;
                   </td>
                   <td>
                     <p>배송 유형:   {order.delivery_type === 'daily' ? (
-                       <img src="/daily.jpg" className={styles.postImage} alt="따끈 배송" />
+                       <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
                       <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
