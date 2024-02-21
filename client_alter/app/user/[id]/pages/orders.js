@@ -112,16 +112,18 @@ const OrderHistory = () => {
                       <span>제조중</span>
                     ) : order.state === 'deliver' ? (
                       <span>전송완료</span>
+                    ):order.state === 'cancelled' ? (
+                      <span>결제취소</span>
                     ): null}</p>
                   </td>
                   
                   <td>
-                <button className={styles.deleteButton}
+                {order.state!='cancelled'?<button className={styles.deleteButton}
                       onClick={() =>
                         {Cancel(order.order_id)}
                       }
                     >X
-                    </button>
+                    </button>:''}
                 </td>
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
 
