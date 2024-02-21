@@ -18,8 +18,8 @@ const ItemPage = (props) => {
   const [items, setItems] = useState([]);
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
-  const [deliveryType, setDeliveryType] = useState('daily');
-  const [orderState, setOrderState] = useState('paid');
+  const [deliveryType, setDeliveryType] = useState('all');
+  const [orderState, setOrderState] = useState('all');
   const myUuid = uuidv4();
   console.log(myUuid);
   const handleDrop = useCallback((acceptedFiles) => {
