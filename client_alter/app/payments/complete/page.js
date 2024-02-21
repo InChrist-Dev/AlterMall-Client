@@ -25,7 +25,7 @@ export default function Complete() {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data)
       setOrder(data.data.rows[0]);
-      setOrderDetail(data.data.rows[0].OrderDetail)
+      setOrderDetail(data.data.rows[0].OrderDetails)
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
