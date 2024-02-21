@@ -381,7 +381,7 @@ return formattedDate;
                     <p>요청 사항: {order.requests}</p>
                   </td>
                   {order.state === 'paid' ? (
-                      <td style={{'color':'biack','fontWeight':'bold'}}>결제완료</td>
+                      <td style={{'color':'green','fontWeight':'bold'}}>결제완료</td>
                     ) : order.state === 'accept' ? (
                       <td style={{'color':'red','fontWeight':'bold'}}>제조중</td>
                     ) : order.state === 'deliver' ? (
