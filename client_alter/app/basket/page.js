@@ -82,7 +82,7 @@ const ItemPage = (props) => {
     orderItems.map((item,i)=>{
       if(item.stock > items[i].Item.stock){
         alert(`${item.item_name} 주문량이 재고보다 많습니다. 수정해주세요`);
-        window.location.href='/basket';
+        window.location.href='/s';
       }
     })     
     await fetch('https://udtown.site/customer/order',{
