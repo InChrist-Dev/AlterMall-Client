@@ -34,6 +34,7 @@ const ItemPage = (props) => {
           window.location.href='https://altermall.shop/loginPage';
         }
 
+
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data.data.rows);
       setItems(data.data.rows);

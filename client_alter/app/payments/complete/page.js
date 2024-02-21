@@ -9,6 +9,8 @@ import { useState,useEffect } from 'react';
 const accessToken = Cookies.get('accessToken');
 export default function Complete() {
   const [order,setOrder] = useState([]);
+  const [orderDetail,setOrderDetail] = useState([]);
+  const [name,setName] = useState('');
   const fetchData = async () => {
     try {
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -24,6 +26,8 @@ export default function Complete() {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data)
       setOrder(data.data.rows[0]);
+      setOrderDetail(data.data.rows[0].OrderDetails)
+      setName(data.data.rows[0].OrderDetails[0].item_name)
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -40,16 +44,26 @@ export default function Complete() {
       <ul className={styles.infoList}>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제 상품:</span>
-
+          {orderDetail? `${name}외 ${orderDetail.length-1}건`:''}
+        </li>
+        <li className={styles.infoListItem}>
+          <span className={styles.label}>구매자명:</span>
+          {order? order.customer_name:''}
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>주문번호:</span>
           {order? order.order_id:''}
         </li>
+      
         <li className={styles.infoListItem}>
-          <span className={styles.label}>결제승인날짜:</span>
-          {/* {Intl.DateTimeFormat().format(new Date(payments.approvedAt))} */}
+          <span className={styles.label}>배송지:</span>
+          {order? order.addr:''}  {order? order.addr_detail:''}
         </li>
+        <li className={styles.infoListItem}>
+          <span className={styles.label}>요청사항:</span>
+          {order? order.requests:''}
+        </li>
+      
       </ul>
     </div>
   </div>

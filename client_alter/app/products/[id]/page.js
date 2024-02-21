@@ -183,7 +183,7 @@ const ItemPage = (props) => {
               {/* Add more quantity options as needed */}
             </select>
           </div>
-
+          <div className={styles.buy}>(10,000원 이상 구매가능)</div>
           <div className={styles.price}>
             <p>{price.toLocaleString()}원</p>
           </div>
@@ -289,10 +289,10 @@ const ItemPage = (props) => {
         <img src="/22.jpg" />
       </div>
       <div className={styles.detail} >
-        <img src="/333.jpg" />
+        <img src="/3333.jpg" />
       </div>
       <div className={styles.detail} >
-        <img src="/444.jpg" />
+        <img src="/4444.jpg" />
       </div>
       <div className={styles.detail}>
         <img src="/back1.jpg" />

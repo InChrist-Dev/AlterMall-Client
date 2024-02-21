@@ -24,7 +24,6 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   const [phoneNumber1, setPhoneNumber1] = useState('');
   const [phoneNumber2, setPhoneNumber2] = useState('');
   const [phoneNumber3, setPhoneNumber3] = useState('');
-  const [phone,setPhone] = useState('');
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
   const [isAddress, setIsAddress] = useState(false);

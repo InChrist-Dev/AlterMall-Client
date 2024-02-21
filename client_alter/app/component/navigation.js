@@ -22,7 +22,7 @@ const NavigationBar = () => {
         const result = confirm('토큰 만료 30분전입니다. 다시 로그인 하시겠습니까?');
         if (result) {
           Cookies.remove('accessToken');
-          window.location.href('https://altermall.shop/loginPage');
+          window.location.href='https://altermall.shop/loginPage';
         } else {
           // 사용자가 "취소" 버튼을 클릭한 경우 또는 대화 상자를 닫은 경우
           console.log('사용자가 취소를 선택했거나 대화 상자를 닫았습니다.');

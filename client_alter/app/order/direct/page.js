@@ -232,7 +232,11 @@ const Checkout = (props) => {
       console.log(data);
       setAmounts(props.searchParams.amount)
       setItems(data);
-      
+      if(data.loginFail){
+        alert('다시 로그인 해주세요.');
+        Cookies.remove('accessToken');
+        window.location.href='https://altermall.shop/loginPage';
+      }
     
 
 
