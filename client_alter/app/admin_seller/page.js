@@ -373,7 +373,7 @@ return formattedDate;
                     <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
                   </td>
                   <td>
-                    <p>배송 유형:   {order.delivery_type === 'daily' ? (
+                    <p>{order.delivery_type === 'daily' ? (
                        <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
