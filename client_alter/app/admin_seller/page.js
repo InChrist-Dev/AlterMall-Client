@@ -381,11 +381,11 @@ return formattedDate;
                     <p>요청 사항: {order.requests}</p>
                   </td>
                   {order.state === 'paid' ? (
-                      <td>결제완료</td>
+                      <td style={{'color':'biack','fontWeight':'bold'}}>결제완료</td>
                     ) : order.state === 'accept' ? (
-                      <td>제조중</td>
+                      <td style={{'color':'red','fontWeight':'bold'}}>제조중</td>
                     ) : order.state === 'deliver' ? (
-                      <td>전송완료</td>
+                      <td style={{'color':'blue','fontWeight':'bold'}}>전송완료</td>
                     ): null}
                  
                   <td>
