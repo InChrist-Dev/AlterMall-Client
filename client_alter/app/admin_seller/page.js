@@ -374,9 +374,11 @@ return formattedDate;
                   </td>
                   <td>
                     <p>배송 유형:   {order.delivery_type === 'daily' ? (
-                     <span>당일배송</span>
+                       <img src="/daily.jpg" className={styles.postImage} alt="따끈 배송" />
+
                     ) : order.delivery_type === 'normal' ? (
-                      <span>일반배송</span>
+                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
                   </td>

@@ -398,3 +398,6 @@ font-size: 20px;
   border-color: dodgerblue;
   box-shadow: 0 0 3px dodgerblue;
 }
+.postImage{
+  width: 100px;
+}
