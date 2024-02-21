@@ -368,7 +368,7 @@ return formattedDate;
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
-                    <p>우편번호: {order.post}</p>
+                    {/* <p>우편번호: {order.post}</p> */}
                     <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
                   </td>
                   <td>
