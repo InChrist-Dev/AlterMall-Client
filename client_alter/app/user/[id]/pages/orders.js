@@ -10,7 +10,7 @@ const accessToken = Cookies.get('accessToken');
 const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   const [orderdetail,setOrderdetail] = useState([]);
-
+  const [name,setName] = useState([]);
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
@@ -23,8 +23,8 @@ const OrderHistory = () => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
-
-      setOrderdetail(data.data.rows[0].OrderDetails[0])
+      setName(data.data.rows[0].OrderDetails[0])
+      setOrderdetail(data.data.rows[0].OrderDetails)
     }
     useEffect(()=>{
       fetchData();
@@ -85,12 +85,12 @@ const OrderHistory = () => {
                 <tr key={index} className={styles.orderRow}>
                
                   <img
-                    src={`https://udtown.site/${orderdetail.img}`}
-                    alt={orderdetail.item_name}
+                    src={`https://udtown.site/${name.img}`}
+                    alt={name.item_name}
                     className={styles.productImage}
                   />
                  
-                  <td>{orderdetail.item_name}외 {orderdetail.length}건</td>
+                  <td>{name.item_name}외 {orderdetail.length}건</td>
                   <td>{order.amount}원</td>
                   
                   <td>
