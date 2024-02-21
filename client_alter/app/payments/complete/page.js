@@ -42,7 +42,7 @@ export default function Complete() {
       <ul className={styles.infoList}>
         <li className={styles.infoListItem}>
           <span className={styles.label}>결제 상품:</span>
-          {orderDetail? `${orderDetail.item_name}외 ${orderDetail.length}건`:''}
+          {orderDetail? `${orderDetail[0].item_name}외 ${orderDetail.length}건`:''}
         </li>
         <li className={styles.infoListItem}>
           <span className={styles.label}>구매자명:</span>
