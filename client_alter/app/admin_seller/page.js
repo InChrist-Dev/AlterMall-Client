@@ -370,7 +370,7 @@ return formattedDate;
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
                     <p>우편번호: {order.post}</p>
-                    <p>주소: {order.addr} {order.addr_detail}</p>
+                    <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
                   </td>
                   <td>
                     <p>배송 유형:   {order.delivery_type === 'daily' ? (
