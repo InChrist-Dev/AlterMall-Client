@@ -11,6 +11,7 @@ const OrderHistory = () => {
   const [orders,setOrders] = useState([]);
   const [orderdetail,setOrderdetail] = useState([]);
   const [name,setName] = useState([]);
+  const [selectedOrder,setSelectedOrder] = useState(false)
   try{
     const fetchData = async() =>{
       const response = await fetch(`https://udtown.site/customer/order/`, {
