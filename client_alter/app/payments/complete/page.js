@@ -52,10 +52,7 @@ export default function Complete() {
           <span className={styles.label}>주문번호:</span>
           {order? order.order_id:''}
         </li>
-        <li className={styles.infoListItem}>
-          <span className={styles.label}>결제승인날짜:</span>
-           {Intl.DateTimeFormat().format(new Date(payments.approvedAt))}
-        </li>
+      
         <li className={styles.infoListItem}>
           <span className={styles.label}>배송지:</span>
           {order? order.addr:''}  {order? order.addr_detail:''}
