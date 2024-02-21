@@ -135,6 +135,7 @@ const NavigationBar = () => {
         <div className="navigation">
           <nav className="navbar">
             <ul className="nav-list">
+            <li><a href="/master">장인소개</a></li>
               <li className="category-dropdown">
                 <a>카테고리</a>
                 <div className="category-menu">
@@ -146,7 +147,7 @@ const NavigationBar = () => {
                   </ul>
                 </div>
               </li>
-              <li><a href="/master">장인소개</a></li>
+            
               <li><a href="/ranking">랭킹</a></li>
               <li><a href="/">이벤트</a></li>
               <li><a href="/">건강정보</a></li>
