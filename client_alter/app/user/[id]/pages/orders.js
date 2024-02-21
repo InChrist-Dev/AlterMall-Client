@@ -85,12 +85,12 @@ const OrderHistory = () => {
                 <tr key={index} className={styles.orderRow}>
                
                   <img
-                    src={`https://udtown.site/${name.img}`}
-                    alt={name.item_name}
+                    src={`https://udtown.site/${orderdetail[0].img}`}
+                    alt={orderdetail[0].item_name}
                     className={styles.productImage}
                   />
                  
-                  <td>{name.item_name}외 {orderdetail.length}건</td>
+                  <td>{orderdetail[0].item_name}외 {orderdetail.length}건</td>
                   <td>{order.amount}원</td>
                   
                   <td>
@@ -126,7 +126,14 @@ const OrderHistory = () => {
                     </button>:''}
                 </td>
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
-
+                  <td>
+                    <button
+                      className={styles.detailBtn}
+                      onClick={() => setSelectedOrder(!selectedOrder)}
+                    >
+                      상세보기
+                    </button>
+                    </td>
                 </tr>
                 </tbody>
                 </table>
