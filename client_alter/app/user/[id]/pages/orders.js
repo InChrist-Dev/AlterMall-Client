@@ -86,12 +86,12 @@ const OrderHistory = () => {
                 <tr key={index} className={styles.orderRow}>
                
                   <img
-                    src={`https://udtown.site/${order.OrderDetail[0].img}`}
-                    alt={order.OrderDetail[0].item_name}
+                    src={`https://udtown.site/${order.OrderDetails[0].img}`}
+                    alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
                  
-                  <td>{order.OrderDetail[0].item_name}외 {orderdetail.length}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {orderdetail.length}건</td>
                   <td>{order.amount}원</td>
                   
                   <td>
