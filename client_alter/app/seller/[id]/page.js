@@ -13,6 +13,7 @@ const DramaDetailPage = (props) => {
   
   const [products, setProducts] = useState([]);
   const [isSubscribed, setSubscribed] = useState(false);
+  const [sellerDetail,setSellerDetail] = useState([]);
   const handleSubscribeClick = () => {
     setSubscribed(!isSubscribed);
   };
@@ -34,7 +35,7 @@ const [seller, setSeller] = useState([]);
       setProducts(data.data.Items)
       setSellerName(data.data.User.name);
 
-      // setSellerDescription(data.data.SellerDetail.content);
+      setSellerDetail(data.data.SellerDetail);
       // setSellerImage(data.data.SellerDetail.img);
       // setSellerLogo(data.data.SellerDetail.logo);
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
@@ -64,7 +65,7 @@ const nextSlide = () => {
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-          {/* <img className={styles.logo} src={`https://udtown.site/${seller.SellerDetail.logo}`}></img> */}
+          <img className={styles.logo} src={`https://udtown.site/${sellerDetail.logo}`}></img>
           <h1 className={styles.title}> {sellerName} 사장님</h1>
           {/* <button
       className={styles.subscribeButton}
@@ -73,7 +74,7 @@ const nextSlide = () => {
       <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
     </button> */}
     <p className={styles.slogan}>
-        "{seller.slogan}"
+        "{sellerDetail.title}"
         </p>
         <p className={styles.description}>
         <h3>Q. “사장님! 라베(RaBe)매장을 시작하게된 계기가 무엇인가요?”</h3>
