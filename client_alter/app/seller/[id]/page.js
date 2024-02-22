@@ -29,10 +29,11 @@ const [seller, setSeller] = useState([]);
       const data = await response.json();
    
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-    
+      console.log(data.data)
       setSeller(data.data)
       setProducts(data.data.Items)
       setSellerName(data.data.User.name);
+
       // setSellerDescription(data.data.SellerDetail.content);
       // setSellerImage(data.data.SellerDetail.img);
       // setSellerLogo(data.data.SellerDetail.logo);
@@ -63,7 +64,7 @@ const nextSlide = () => {
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-          <img className={styles.logo} src={`https://udtown.site/${seller.SellerDetail.logo}`}></img>
+          {/* <img className={styles.logo} src={`https://udtown.site/${seller.SellerDetail.logo}`}></img> */}
           <h1 className={styles.title}> {sellerName} 사장님</h1>
           {/* <button
       className={styles.subscribeButton}
