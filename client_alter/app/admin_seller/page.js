@@ -15,6 +15,7 @@ const accessToken = Cookies.get('accessToken');
 const ItemPage = (props) => {
   const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [next, setNext] = useState([]);
   const [items, setItems] = useState([]);
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
@@ -29,7 +30,7 @@ const ItemPage = (props) => {
   }, [files]);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/seller/order`, {
+      const response = await fetch(`https://udtown.site/seller/order?time=today`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -38,6 +39,21 @@ const ItemPage = (props) => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
+
+
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+    try {
+      const response = await fetch(`https://udtown.site/seller/order?time=next`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setNext(data.data.rows);
 
 
     } catch (error) {
@@ -334,6 +350,7 @@ return formattedDate;
           <label htmlFor="displayCount"></label>
         </div>
       </div>
+      <h2 className={styles.title}>당일 주문</h2>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -351,6 +368,111 @@ return formattedDate;
           </thead>
           <tbody>
           {orders.filter(order => (orderState === 'all' || order.state === orderState) && (deliveryType === 'all' || order.delivery_type === deliveryType)).map((order, index) => (
+              <>
+                <tr key={index} className={styles.orderRow}>
+              
+                
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
+            
+
+                  <td>{setDate(order.updatedAt)}</td>
+                  <td>
+                    <p>주문자명: {order.customer_name}</p>
+                    <p>연락처: {order.phone}</p>
+                    {/* <p>우편번호: {order.post}</p> */}
+                    <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
+                  </td>
+                  <td>
+                    <p>{order.delivery_type === 'daily' ? (
+                       <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
+
+                    ) : order.delivery_type === 'normal' ? (
+                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+
+                    ) : null}</p>
+                    <p>요청 사항: {order.requests}</p>
+                  </td>
+                  {order.state === 'paid' ? (
+                      <td style={{'color':'green','fontWeight':'bold'}}>결제완료</td>
+                    ) : order.state === 'accept' ? (
+                      <td style={{'color':'red','fontWeight':'bold'}}>제조중</td>
+                    ) : order.state === 'deliver' ? (
+                      <td style={{'color':'blue','fontWeight':'bold'}}>전송완료</td>
+                    ): null}
+                 
+                  <td>
+                    {order.state === 'paid' ? (
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
+                        수락
+                      </button>
+                    ) : order.state === 'accept' ? (
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
+                        완료
+                      </button>
+                    ) : null}
+                 
+                   
+                  </td>
+                  <td>
+                    <button
+                      className={styles.detailBtn}
+                      onClick={() => setSelectedOrder(!selectedOrder)}
+                    >
+                      상세보기
+                    </button>
+                    </td>
+                  {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+
+                </tr>
+                <tr>
+                  <td colSpan="9">
+                    {selectedOrder && (
+                      <div >
+
+                        <table className={styles.detailTable}>
+                        
+                          <tbody>
+                            {order.OrderDetails.map((detail, index) => (
+                              <tr key={index}>
+                            
+                                <td>{detail.item_name}</td>
+                                <td>{detail.price}원</td>
+                                <td>{detail.stock}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+
+              </>
+            ))}
+          </tbody>
+        </table>
+    
+
+
+        </div>
+        <h2 className={styles.title}>내일 주문</h2>
+        <div className={styles.basketContainer}>
+        <table className={styles.orderTable}>
+          <thead>
+            <tr>
+           
+            
+              <th>상품명</th>
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>수락</th>
+              <th>상세</th>
+            </tr>
+          </thead>
+          <tbody>
+          {next.filter(order => (orderState === 'all' || order.state === orderState) && (deliveryType === 'all' || order.delivery_type === deliveryType)).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
               
