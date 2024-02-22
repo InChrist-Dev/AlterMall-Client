@@ -341,8 +341,6 @@ return formattedDate;
            
             
               <th>상품명</th>
-              <th>가격</th>
-
               <th>주문 일자</th>
               <th>주문자 정보</th>
               <th>배송 정보</th>
@@ -358,7 +356,7 @@ return formattedDate;
               
                 
                   <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
-                  <td>{order.amount}원</td>
+            
 
                   <td>{setDate(order.updatedAt)}</td>
                   <td>
