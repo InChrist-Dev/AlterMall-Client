@@ -338,7 +338,7 @@ return formattedDate;
         <table className={styles.orderTable}>
           <thead>
             <tr>
-              <th>이미지</th>
+           
             
               <th>상품명</th>
               <th>가격</th>
@@ -355,13 +355,9 @@ return formattedDate;
           {orders.filter(order => (orderState === 'all' || order.state === orderState) && (deliveryType === 'all' || order.delivery_type === deliveryType)).map((order, index) => (
               <>
                 <tr key={index} className={styles.orderRow}>
-                  <img
-                    src={`https://udtown.site/${order.OrderDetails[0].img}`}
-                    alt={order.OrderDetails[0].item_name}
-                    className={styles.productImage}
-                  />
+              
                 
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails[0].length:''}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
                   <td>{order.amount}원</td>
 
                   <td>{setDate(order.updatedAt)}</td>
@@ -423,11 +419,7 @@ return formattedDate;
                           <tbody>
                             {order.OrderDetails.map((detail, index) => (
                               <tr key={index}>
-                                <td>  <img
-                                  src={`https://udtown.site/${detail.img} `}
-                                  alt={detail.item_name}
-                                  className={styles.productImage}
-                                /></td>
+                            
                                 <td>{detail.item_name}</td>
                                 <td>{detail.price}원</td>
                                 <td>{detail.stock}</td>
