@@ -178,86 +178,86 @@ const ImageUploader = (props) => {
       }
       
     };
-    const handleSubmit = 
-    (event) => {
-      try{
-          if(item_name == ''){
-            setIsModalOpen(true);
-            setModal('제품의 이름을 입력해주세요')
-            event.preventDefault(); // 페이지 새로고침 방지
-          }else if (seller_id == '') {
-            setIsModalOpen(true);
-            setModal('판매자id를 입력해주세요')
-            event.preventDefault(); // 페이지 새로고침 방지
+    // const handleSubmit = 
+    // (event) => {
+    //   try{
+    //       if(item_name == ''){
+    //         setIsModalOpen(true);
+    //         setModal('제품의 이름을 입력해주세요')
+    //         event.preventDefault(); // 페이지 새로고침 방지
+    //       }else if (seller_id == '') {
+    //         setIsModalOpen(true);
+    //         setModal('판매자id를 입력해주세요')
+    //         event.preventDefault(); // 페이지 새로고침 방지
          
 
-          }else if (price == '') {
-            setIsModalOpen(true);
-            setModal('제품의 가격을 입력해주세요')
-            event.preventDefault(); // 페이지 새로고침 방지
+    //       }else if (price == '') {
+    //         setIsModalOpen(true);
+    //         setModal('제품의 가격을 입력해주세요')
+    //         event.preventDefault(); // 페이지 새로고침 방지
          
 
-          }else if (category == '') {
-            setIsModalOpen(true);
-            setModal('제품의 카테고리를 입력해주세요')
-            event.preventDefault(); // 페이지 새로고침 방지
+    //       }else if (category == '') {
+    //         setIsModalOpen(true);
+    //         setModal('제품의 카테고리를 입력해주세요')
+    //         event.preventDefault(); // 페이지 새로고침 방지
          
 
-          }else if (files.length == 0) {
-            setIsModalOpen(true);
-            setModal('컨텐츠의 이미지를 넣어주세요')
-            event.preventDefault(); // 페이지 새로고침 방지
+    //       }else if (files.length == 0) {
+    //         setIsModalOpen(true);
+    //         setModal('컨텐츠의 이미지를 넣어주세요')
+    //         event.preventDefault(); // 페이지 새로고침 방지
          
 
-          }else{
-            confirm('업다운 컨텐츠를 저장하시겠습니까?');
+    //       }else{
+    //         confirm('업다운 컨텐츠를 저장하시겠습니까?');
             
-            const formData = new FormData();
-            formData.append('item_name', item_name); // title 媛� 異붽��
-            formData.append('price', price);
-            formData.append('stock',stock);
-            formData.append('category',category);
-            console.log(category,stock,price,item_name)
-            files.forEach((file, index) => {
-              formData.append(`img`, file);
+    //         const formData = new FormData();
+    //         formData.append('item_name', item_name); // title 媛� 異붽��
+    //         formData.append('price', price);
+    //         formData.append('stock',stock);
+    //         formData.append('category',category);
+    //         console.log(category,stock,price,item_name)
+    //         files.forEach((file, index) => {
+    //           formData.append(`img`, file);
            
-            });
+    //         });
       
-            fetch('https://udtown.site/category/image', {
-              method: 'patch',
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
+    //         fetch('https://udtown.site/category/image', {
+    //           method: 'patch',
+    //           headers: {
+    //             Authorization: `Bearer ${accessToken}`,
         
-              },
-              credentials: 'include',
-              body: formData
-            })
-              .then(async(response) => {
-                const data = await response.json();
-                console.log(data)
-                console.log(response)
-                if(response.status == 404){
+    //           },
+    //           credentials: 'include',
+    //           body: formData
+    //         })
+    //           .then(async(response) => {
+    //             const data = await response.json();
+    //             console.log(data)
+    //             console.log(response)
+    //             if(response.status == 404){
                    
-                  alert('컨텐츠 저장에 실패하였습니다');
-                }else if(response.status == 200){
-                  alert('저장되었습니다');
-                }
+    //               alert('컨텐츠 저장에 실패하였습니다');
+    //             }else if(response.status == 200){
+    //               alert('저장되었습니다');
+    //             }
                
                
-              })
-              .finally(() => {
-                setUploadDisabled(false);
-              });
-          }
+    //           })
+    //           .finally(() => {
+    //             setUploadDisabled(false);
+    //           });
+    //       }
     
                  
         
-      }catch(error){
+    //   }catch(error){
         
-        alert('컨텐츠 저장에 실패하였습니다')
-      }
+    //     alert('컨텐츠 저장에 실패하였습니다')
+    //   }
       
-    };
+    // };
   const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
 
  
