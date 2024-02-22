@@ -350,7 +350,7 @@ return formattedDate;
           <label htmlFor="displayCount"></label>
         </div>
       </div>
-      <h2 className={styles.title}>당일 주문(내일 준비)</h2>
+      <h2 className={styles.title}>당일 주문</h2>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -455,7 +455,7 @@ return formattedDate;
 
 
         </div>
-        <h2 className={styles.title}>내일 주문(모레 준비)</h2>
+        <h2 className={styles.title}>내일 주문</h2>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
