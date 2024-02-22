@@ -63,10 +63,11 @@ const nextSlide = () => {
     <div className={styles.container}>
       <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('../../rabe.jpg') center/cover`}}></div>
       <div className={styles.content}>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <div>
-          <img className={styles.logo} src={`https://udtown.site/${sellerDetail.logo}`}></img>
+        <div style={{ display: 'flex'}}>
+        <img className={styles.logo} src={`https://udtown.site/${sellerDetail.logo}`}></img>
           <h1 className={styles.title}> {sellerName} 사장님</h1>
+          <div>
+          
           {/* <button
       className={styles.subscribeButton}
       onClick={handleSubscribeClick}
