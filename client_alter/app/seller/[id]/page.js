@@ -63,7 +63,7 @@ const nextSlide = () => {
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
-          {/* <img className={styles.logo} src={`http://211.45.170.37:3000/`}></img> */}
+          <img className={styles.logo} src={`https://udtown.site/${seller.SellerDetail.logo}`}></img>
           <h1 className={styles.title}> {sellerName} 사장님</h1>
           {/* <button
       className={styles.subscribeButton}
