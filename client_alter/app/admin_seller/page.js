@@ -331,7 +331,7 @@ return formattedDate;
           >
               <option value={'all'}>모두보기</option>
             <option value={'daily'}>당일배송</option>
-            <option value={'normal'}>일반배송</option>
+            <option value={'normal'}>택배배송</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
@@ -350,7 +350,7 @@ return formattedDate;
           <label htmlFor="displayCount"></label>
         </div>
       </div>
-      <h2 className={styles.title}>당일 주문(내일 준비)</h2>
+      <h2 className={styles.title}>당일 주문</h2>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -372,7 +372,7 @@ return formattedDate;
                 <tr key={index} className={styles.orderRow}>
               
                 
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length-1:''}건</td>
             
 
                   <td>{setDate(order.updatedAt)}</td>
@@ -387,7 +387,7 @@ return formattedDate;
                        <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
-                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+                      <img src='post.jpg' className={styles.postImage} alt="택배 배송" />
 
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
@@ -455,7 +455,7 @@ return formattedDate;
 
 
         </div>
-        <h2 className={styles.title}>내일 주문(모레 준비)</h2>
+        <h2 className={styles.title}>내일 주문</h2>
         <div className={styles.basketContainer}>
         <table className={styles.orderTable}>
           <thead>
@@ -492,7 +492,7 @@ return formattedDate;
                        <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
-                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+                      <img src='post.jpg' className={styles.postImage} alt="택배 배송" />
 
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
