@@ -1,0 +1,145 @@
+ .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    align-items: center;
+  }
+  
+  .modalContent {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    width: 550px;
+    height: 750px;
+    padding: 40px;
+  }
+
+  .addressContainer {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-block: 4px;
+    width: 100%;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #acacac;
+    border-style: solid;
+    border-radius: 5px;
+  }
+
+  .deliverName{
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .elseInfo{
+    font-size: 14px;
+  }
+
+  .deleteText{
+    color: #f71e58;
+  }
+
+  .deliverContainer{
+    display: flex;
+    flex-direction: row;
+  }
+  .paddingDeliver{
+    flex-grow: 10;;
+  }
+
+  .showDeliver {
+    flex-grow: 0;
+    align-content: center;
+    margin-block: 10px;
+    font-size: 20px;
+  }
+  
+  .label {
+    margin-bottom: 5px;
+    color: #191919;
+  }
+  
+  .input {
+    margin-bottom: 20px;
+    padding: 10px;
+    height: 40px;
+    font-size: 20px;
+    border-color: #acacac;
+    border-width: 0 0 1px;
+  }
+  .input:focus {
+    outline: none;
+  }
+
+  .call{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .inputCall {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-inline: 2px;
+    height: 40px;
+    font-size: 20px;
+    border-color: #acacac;
+    border-width: 0 0 1px;
+  }
+  .inputCall:focus {
+    outline: none;
+  }
+
+  
+  .serchButton{
+      width: 20%;
+      margin-block: 10px;
+      margin-inline: 10px;
+      height: 50%;
+      background:#f57c19;
+      color: #fff;
+      border: none;
+      font-size: 18px;
+    }
+    
+  .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    height: wrap;
+    align-items: center;
+  }
+
+  .acceptButton{
+    width: 50%;
+    height: 54px;
+    margin-block: 5px;
+    background:#f57c19;
+    color: #fff;
+    border: none;
+    font-size: 20px;
+    align-items: center;
+  }
+
+  .cancelButton{
+    width: 50%;
+    height: 54px;
+    border: 1px;
+    margin-block: 5px;
+    border-color: #191919;
+    background: #fff;
+    color: #191919;
+    font-size: 20px;
+    border: none;
+    align-items: center;
+  }
