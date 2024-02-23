@@ -9,60 +9,113 @@
   .form {
     display: flex;
     flex-direction: column;
-    width: 600px;
+    width: 30%;
   }
   
   .label {
     margin-bottom: 5px;
+    color: #acacac;
   }
   
   .input {
     margin-bottom: 40px;
     padding: 10px;
-    height: 60px;
+    height: 40px;
     font-size: 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    border-color: #acacac;
+    border-width: 0 0 1px;
+  }
+
+  .input:focus {
+    outline: none;
   }
   
   .sellerButton {
-    padding: 10px;
-    height: 60px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 2px;
     background:hsl(0, 0%, 100%);
-    color: #828181;
-    margin-left: 1px;
+    font-weight: bold;
+    color: #191919;
     border: 1px solid #828181;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
-    width: 49%;
   }
   .groupBtn{
     display: flex;
+    justify-content: right;
   }
   .sellerButton:hover {
     background:#d1d1d1;
   }
   .localButton {
-    padding: 10px;
-    height: 60px;
-    width: 49%;
+    height: 40px;
     background:#f57c19;
     color: #fff;
+    font-weight: bold;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px;
     cursor: pointer;
   }
   
   .localButton:hover {
     background:#df7117;
   }
-  .google{
-    padding: 30px;
-    width: 450px;
-    height: 150px;
-  }
-  .registerBtn{
+
+  .registerText{
+    margin-top: 10px;
     background-color: #fff;
     border: none;
-    color: #aaa;
+    font-size: 14px;
+    color: #acacac;
+  }
+  .registerBtn{
+    margin-top: 10px;
+    margin-inline: 10px;
+    background-color: #fff;
+    border: none;
+    font-size: 14px;
+    color: #191919;
+  }
+  
+  .icon_img{
+    width: 44px;
+    height: 44px;
+    text-align: 0;
+  }
+
+  .socialBox {
+    display: flex;
+    padding-inline: 10px;
+    justify-content: left;
+    height: 44px;
+    align-items: center;
+    border-radius: 20px;
+    border-color: #191919;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #828181;
+  }
+
+  .socialText {
+    flex-grow: 1;
+    text-align: center;
+    margin-right: 44px;
+  }
+
+  .division {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    color: #acacac;
+  }
+  .division::before,
+  .division::after {
+    content: '';
+    margin-inline: 5px;
+    height: 1px;
+    background-color: #acacac;
+    flex-grow: 1;
   }
