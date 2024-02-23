@@ -375,7 +375,7 @@ return formattedDate;
                   <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length-1:''}건</td>
             
 
-                  <td>{setDate(order.createdAt)}</td>
+                  <td>{setDate(order.updatedAt)}</td>
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
