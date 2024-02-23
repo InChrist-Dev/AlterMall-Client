@@ -372,7 +372,7 @@ return formattedDate;
                 <tr key={index} className={styles.orderRow}>
               
                 
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length-1:''}건</td>
             
 
                   <td>{setDate(order.updatedAt)}</td>
