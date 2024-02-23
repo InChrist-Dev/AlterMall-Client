@@ -43,6 +43,7 @@
   }
   .groupBtn{
     display: flex;
+    justify-content: right;
   }
   .sellerButton:hover {
     background:#d1d1d1;
@@ -60,13 +61,21 @@
   .localButton:hover {
     background:#df7117;
   }
-  .registerBtn{
+
+  .registerText{
+    margin-top: 10px;
     background-color: #fff;
-    text-align: right;
-    
     border: none;
     font-size: 14px;
     color: #acacac;
+  }
+  .registerBtn{
+    margin-top: 10px;
+    margin-inline: 10px;
+    background-color: #fff;
+    border: none;
+    font-size: 14px;
+    color: #191919;
   }
   
   .icon_img{

@@ -107,8 +107,10 @@ export default function LoginPage() {
          <button className={styles.sellerButton}  onClick={handleSubmit}>사장님 로그인</button>
         
         <div className={styles.groupBtn}>
-
-          <button className={styles.registerBtn} onClick={openModal}>회원가입</button>
+          <div className={styles.registerText}>
+            아직회원이 아니신가요?
+            <button className={styles.registerBtn} onClick={openModal}> 회원가입</button>
+          </div>
         </div>
       
         
