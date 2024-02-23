@@ -264,11 +264,7 @@
   border: 1px #ddd dotted;
   border-collapse: collapse;
 }
-.call{
-  display: flex;
-  align-items:center; 
-  padding: 5px;
-}
+
 /* Add this to your existing CSS file or create a new one */
 .modalOverlay {
   position: fixed;

@@ -1,7 +1,7 @@
 // DeliveryInfoModal.js
 'use client'
 import React from 'react';
-import styles from './order.module.css'
+import styles from './delivery.module.css'
 import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
@@ -117,53 +117,65 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
       {showAllAddresses ? (
           // 새로운 배송지 목록을 보여주는 모달
           <div>
-            <h3>전체 배송지 목록</h3>
+            <div className={styles.deliverContainer}>
+              <div className={styles.paddingDeliver}></div>
+              <div className={styles.showDeliver} onClick={closeAllAddressesModal}>닫기 ▶</div>
+            </div>
             <ul>
               {deliveryList.length>0?deliveryList.map((delivery,i) => (
                 <li key={delivery.id}>
-                  {delivery.address_name} - {delivery.addr} {delivery.addr_detail} - {delivery.phone}
-                  <button onClick={()=>{selDeliver(i)}}>선택</button>
-                  <button onClick={()=>{delDeliver(delivery.id)}}>X</button>
+
+                  <div className={styles.addressContainer} onClick={()=>{selDeliver(i)}}>
+                    <div className={styles.deliverName}>{delivery.address_name}</div>
+                    <div className={styles.elseInfo}>{delivery.addr}, {delivery.addr_detail}</div>
+                    <div className={styles.elseInfo}>{delivery.phone}</div>
+                    <div className={styles.deleteText} onClick={()=>{delDeliver(delivery.id)}}>배송지 삭제</div>
+                  </div>
                 </li>
               )):''}
             </ul>
-            <button onClick={closeAllAddressesModal}>닫기</button>
+
+            <div className={styles.deliverContainer}>
+
+              <div className={styles.paddingDeliver}></div>
+            </div>
+
           </div>
         ) : (
           // 기존 배송지 정보를 입력하는 모달
-          <>
-         
-            {/* ... (기존 코드) */}
-            <button onClick={showAllAddressesModal}>배송지 목록 보기</button>
-            {/* ... (기존 코드) */}
-          </>
+          <div className={styles.deliverContainer}>
+            <div className={styles.paddingDeliver}></div>
+            <div className={styles.showDeliver} onClick={showAllAddressesModal}>배송지 목록 보기 ▶</div>
+          </div>
         )}
-    
 
-        <h2>배송지 정보 추가</h2>
-        <label>배송지 구분</label>
-        <input type="text" value={addressname} onChange={(e) => setAddressName(e.target.value)} />
+        <h2>배송지 정보 추가</h2><br/>
+        <label className={styles.label}>배송지 구분</label>
+        <input className={styles.input} type="text" value={addressname} onChange={(e) => setAddressName(e.target.value)} />
 
-        <label>이름</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <label className={styles.label}>이름</label>
+        <input className={styles.input}type="text" value={name} onChange={(e) => setName(e.target.value)} />
 
-        <label>전화번호</label>
+        <label className={styles.label}>전화번호</label>
         <div className={styles.call}>
         <input
+        className={styles.inputCall}
         type="text"
         maxLength="3"
         value={phoneNumber1}
         onChange={(e) => setPhoneNumber1(e.target.value)}
       />
-      -
+      
       <input
+        className={styles.inputCall}
         type="text"
         maxLength="4"
         value={phoneNumber2}
         onChange={(e) => setPhoneNumber2(e.target.value)}
       />
-      -
+      
       <input
+        className={styles.inputCall}
         type="text"
         maxLength="4"
         value={phoneNumber3}
@@ -171,18 +183,17 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
       />
         </div>
        
-        <label>주소</label>
+        <label className={styles.label}>주소</label>
         <div className={styles.addressButton}>
-          <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-          <button onClick={() => { addressClick() }}> 검색</button>
-
-
+          <input className= {styles.input} type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
+          <button className={styles.serchButton} onClick={() => { addressClick() }}>주소 검색</button>
         </div>
         {isAddress ? <span><DaumPostcode onComplete={handleComplete} /></span> : ''}
-        <input type="text" value={detailAddress} onChange={(e) => setDetailAddress(e.target.value)} />
-
-        <button onClick={handleSubmit}>저장</button>
-        <button onClick={closeModal}>취소</button>
+        <input className={styles.input} type="text" value={detailAddress} onChange={(e) => setDetailAddress(e.target.value)} />
+        <div className={styles.buttonContainer}>
+          <button className={styles.acceptButton} onClick={handleSubmit}>저장</button>
+          <button className={styles.cancelButton} onClick={closeModal}>취소</button>
+        </div>
       </div>
     </div>
   );
