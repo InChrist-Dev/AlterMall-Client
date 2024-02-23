@@ -31,6 +31,7 @@ export default function LoginPage() {
           }), 
         }) .then((res) => res.json())
         .then((json) => {
+          console.log(json);
           console.log(json.accessToken)
           console.log(json.position)
           Cookies.set('position', json.position, { expires: 1 });  // 1일 동안 유지되도록 설정
