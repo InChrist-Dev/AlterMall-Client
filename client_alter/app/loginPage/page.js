@@ -102,18 +102,26 @@ export default function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-         <button className={styles.registerBtn} onClick={openModal}>
-                회원가입
-              </button>
-              <div className={styles.groupBtn}>
-              <button className={styles.sellerButton}  onClick={handleSubmit}>사장님 로그인</button>
-        <button className={styles.localButton}  onClick={handleSubmit1}>회원 로그인</button>
-              </div>
+
+         <button className={styles.localButton}  onClick={handleSubmit1}>회원 로그인</button>
+         <button className={styles.sellerButton}  onClick={handleSubmit}>사장님 로그인</button>
+        
+        <div className={styles.groupBtn}>
+
+          <button className={styles.registerBtn} onClick={openModal}>회원가입</button>
+        </div>
       
         
       </span>
-      <h3>소셜 로그인</h3>
-      <img className={styles.google} src='/google.png'  onClick={()=>{window.location.href="https://udtown.site/auth/google"}}/>
+
+      <div className={styles.division}> 소셜 로그인</div>
+
+      <div className={styles.form}>
+        <div className={styles.socialBox} onClick={()=>{window.location.href="https://udtown.site/auth/google"}}>
+          <img className={styles.icon_img} src='/google_logo.webp'/>
+          <div className={styles.socialText}>구글 계정으로 로그인</div>
+        </div>
+      </div>
     </div>
   );
 }
