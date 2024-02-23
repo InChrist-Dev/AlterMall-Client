@@ -331,7 +331,7 @@ return formattedDate;
           >
               <option value={'all'}>모두보기</option>
             <option value={'daily'}>당일배송</option>
-            <option value={'normal'}>일반배송</option>
+            <option value={'normal'}>택배배송</option>
           </select>
           <label htmlFor="displayCount"></label>
         </div>
@@ -387,7 +387,7 @@ return formattedDate;
                        <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
-                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+                      <img src='post.jpg' className={styles.postImage} alt="택배 배송" />
 
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>
@@ -492,7 +492,7 @@ return formattedDate;
                        <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
 
                     ) : order.delivery_type === 'normal' ? (
-                      <img src='post.jpg' className={styles.postImage} alt="일반 배송" />
+                      <img src='post.jpg' className={styles.postImage} alt="택배 배송" />
 
                     ) : null}</p>
                     <p>요청 사항: {order.requests}</p>

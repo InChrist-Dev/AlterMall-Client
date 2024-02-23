@@ -105,7 +105,7 @@ const OrderHistory = () => {
                     <p>{order.delivery_type === 'daily' ? (
                       <img src='../../today.jpg' className={styles.postImage} alt="따끈 배송" />
                     ) : order.delivery_type === 'normal' ? (
-                      <img src='../../post.jpg' className={styles.postImage} alt="일반 배송" />
+                      <img src='../../post.jpg' className={styles.postImage} alt="택배 배송" />
                     ) : null}</p>
                     <p>  {order.state === 'paid' ? (
                       <span>결제완료</span>
