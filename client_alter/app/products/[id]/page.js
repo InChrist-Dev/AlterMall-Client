@@ -265,68 +265,69 @@ const ItemPage = (props) => {
       </nav>
     </div>
        
-        <div>
-     
-      <div className={styles.detail} id="image2" >
-        <img src={`https://udtown.site/${data.desc1}`}/>
-      </div>
-      <div className={styles.detail}>
-      <img src={`https://udtown.site/${data.desc2}`} />
-      </div>
-      <div className={styles.detail}id="image3" >
-      <img src={`https://udtown.site/${data.desc3}`}  />
-      </div>
-      <div className={styles.detail} >
-      <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
-      </div>
-      <div className={styles.detail}>
-        <img src="/77.jpg" />
-      </div>
-      <div className={styles.detail} id="image1">
-        <img src="/11.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/22.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/3333.jpg" />
-      </div>
-      <div className={styles.detail} >
-        <img src="/4444.jpg" />
-      </div>
-      <div className={styles.detail}>
-        <img src="/back1.jpg" />
-      </div> <div className={styles.detail} >
-        <img src="/back2.jpg" />
-      </div>
-      <div className={styles.reviewContainer} id="image4">
-      <h2>리뷰</h2>
-      <div className={styles.reviews}>
-        {review.map((review) => (
-          <div key={review.id} className={styles.review}>
-          
-            <p className={styles.maskedId}>작성자: {maskUserId(review.User.name)}</p>
-            <img src={`https://udtown.site/${review.img}`} alt="리뷰 사진" className={styles.image} />
-            <p>{review.content}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-    <div className={styles.reviewFormContainer}>
-      <h1>리뷰 작성</h1>
-      <form onSubmit={handleReview}>
-        <div>
-          <label htmlFor="image">이미지:</label>
-          <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
+      <div>
+        <div className={styles.detail} id="image2" >
+          <img src={`https://udtown.site/${data.desc1}`}/>
         </div>
-        <div>
-          <label htmlFor="content">내용:</label>
-          <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+        <div className={styles.detail}>
+        <img src={`https://udtown.site/${data.desc2}`} />
         </div>
-        <button type="submit">제출</button>
-      </form>
-    </div>
-    </div>
+        <div className={styles.detail}id="image3" >
+        <img src={`https://udtown.site/${data.desc3}`}  />
+        </div>
+        <div className={styles.detail} >
+        <img src={data.desc4?`https://udtown.site/${data.desc4}`:''} />
+        </div>
+        <div className={styles.detail}>
+          <img src="/77.jpg" />
+        </div>
+        <div className={styles.detail} id="image1">
+          <img src="/11.jpg" />
+        </div>
+        <div className={styles.detail} >
+          <img src="/22.jpg" />
+        </div>
+        <div className={styles.detail} >
+          <img src="/3333.jpg" />
+        </div>
+        <div className={styles.detail} >
+          <img src="/4444.jpg" />
+        </div>
+        <div className={styles.detail}>
+          <img src="/back1.jpg" />
+        </div> <div className={styles.detail} >
+          <img src="/back2.jpg" />
+        </div>
+
+        <div className={styles.reviewContainer} id="image4">
+          <h2 className={styles.division}>리뷰</h2>
+            <div className={styles.reviews}>
+              {review.map((review) => (
+                <div key={review.id} className={styles.review}>
+                  <img src={`https://udtown.site/${review.img}`} alt="이미지 없음" className={styles.reviewImg} />
+                  <p className={styles.reviewContent}>{review.content}</p>
+                  <p className={styles.maskedId}>{maskUserId(review.User.name)}</p>
+                </div>
+              ))}
+            </div>
+        </div>
+
+        <div className={styles.reviewFormContainer}>
+          <h1>리뷰 작성</h1>
+          <form onSubmit={handleReview}>
+            <div>
+              <label htmlFor="image">이미지:</label>
+              <input type="file" id="image" onChange={(e) => setImage(e.target.files[0])} />
+            </div>
+            <div>
+              <label htmlFor="content">내용:</label>
+              <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+            </div>
+            <button type="submit">제출</button>
+          </form>
+        </div>
+
+      </div>
     </div>
   );
 };

@@ -214,27 +214,65 @@
 
 /* styles/CustomStyles.module.css */
 
+.division {
+  grid-area: title;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #acacac;
+}
+.division::before,
+.division::after {
+  content: '';
+  margin-inline: 10px;
+  height: 1px;
+  background-color: #acacac;
+  flex-grow: 1;
+}
+
 .reviewContainer {
+  row-gap: 10px;
+  column-gap: 10px;
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  justify-items: center;
 }
 
 .reviews {
   display: grid;
-  width: 720px;
-  gap: 20px;
+  grid-column: 3;
+  grid-row: 2;
+  grid-template-rows: 1fr, 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  gap: 10px;
+  align-content: start;
 }
 
 .review {
-  border: 1px solid #e0e0e0;
+  border: 1px solid #acacac;
   border-radius: 10px;
   padding: 20px;
   background-color: #fff;
-  transition: transform 0.3s ease;
 }
 
+.reviewContent{
+  font-size: 14px;
+  margin-bottom: 6px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  height: 50px;
+  width: 100%;
+}
 
+.reviewImg {
+  width: 200px;
+  height: 200px;
+}
 
 .review h2 {
   margin-bottom: 10px;
