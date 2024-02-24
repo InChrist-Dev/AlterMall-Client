@@ -21,11 +21,12 @@ export function LogOutBtn() {
     const data2 = await response.status;
     const data = await response.json();
     Cookies.remove('accessToken');
+    Cookies.remove('accessToken');
   };
    
     
    
   
  
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {  Cookies.remove('accessToken');}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => {  Cookies.remove('accessToken');  Cookies.remove('position');}}/>)
 } 
