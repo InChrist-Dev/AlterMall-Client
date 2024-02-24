@@ -215,7 +215,8 @@ return formattedDate;
 
       })
         .then(async(response) => {
-          const data = await response.json())
+          const data = await response.json();
+          console.log(data)
           if (response.status == 405) {
             alert('수정 실패하였습니다');
           } else if (response.status == 200) {
