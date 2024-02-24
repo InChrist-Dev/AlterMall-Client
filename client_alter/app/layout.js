@@ -27,7 +27,6 @@ export default async function RootLayout({ children }) {
       <body className={inter.className}> 
       <NavigationBar session={session? session:''}/>
     
-            
       {children}</body>
       
       <Footer/>
