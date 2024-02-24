@@ -214,7 +214,9 @@ return formattedDate;
         }),
 
       })
-        .then((response) => {
+        .then(async(response) => {
+          const data = await response.json();
+          console.log(data)
           if (response.status == 405) {
             alert('수정 실패하였습니다');
           } else if (response.status == 200) {
@@ -477,10 +479,10 @@ return formattedDate;
                 <tr key={index} className={styles.orderRow}>
               
                 
-                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length:''}건</td>
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length-1:''}건</td>
             
 
-                  <td>{setDate(order.updatedAt)}</td>
+                  <td>{setDate(order.createdAt)}</td>
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
