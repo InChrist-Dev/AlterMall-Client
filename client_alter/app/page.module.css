@@ -105,7 +105,8 @@
 
 .leftArrow,
 .rightArrow {
-  font-size: 20px;
+  max-width: 30px;
+  max-height: 30px;
   cursor: pointer;
   color: #D91801;
   position: absolute;
