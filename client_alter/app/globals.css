@@ -221,8 +221,9 @@ a{
     min-width: 500px;
   }
   .searchContainer{
-    width: 400px;
+    width: 420px;
     margin: 0 auto;
+    align-self: stretch; /* searchContainer를 너비를 최대로 늘려서 가로 전체에 표시합니다. */
   }
   .searchInput{
     width: 100%;
@@ -232,12 +233,19 @@ a{
     width: 120px;
     margin: 0 auto;
     align-items: center;
+    order: -1;
+    align-self: flex-start; /* logo를 왼쪽에 정렬합니다. */
   }
   .navigation {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding: 0;
     width: 90%;
     
+  }
+  .cartUserIcons{
+    order: -1; /* cartUserIcons를 첫 번째로 배치합니다. */
+    align-self: flex-end; /* cartUserIcons를 오른쪽에 정렬합니다. */
   }
   .container{
     margin: 0;
@@ -245,5 +253,8 @@ a{
   }
   .searchButton {
     display: none; /* 화면 너비가 800px 이하일 때 버튼 숨깁니다. */
+  }
+  .searchInput{
+    margin: 0 auto;
   }
 }
