@@ -200,7 +200,7 @@ return formattedDate;
         formData.append(`img`, file);
      
       });
-      fetch(`https://udtown.site/category`, {
+      fetch(`https://udtown.site/category/item`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
