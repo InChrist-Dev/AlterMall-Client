@@ -196,10 +196,7 @@ return formattedDate;
   );
   const Update = useCallback(
     (id, stock,name,price) => {
-      files.forEach((file, index) => {
-        formData.append(`img`, file);
-     
-      });
+   
       fetch(`https://udtown.site/category/${id}`, {
         method: 'PATCH',
         headers: {
@@ -207,7 +204,7 @@ return formattedDate;
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          'stock': stock,
+          'stock': 5,
           'item_name':name,
           'price':price,
           // 'img':files[0]
