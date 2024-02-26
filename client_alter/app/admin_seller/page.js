@@ -196,17 +196,21 @@ return formattedDate;
   );
   const Update = useCallback(
     (id, stock,name,price) => {
-   
-      fetch(`https://udtown.site/category/${id}`, {
+      files.forEach((file, index) => {
+        formData.append(`img`, file);
+     
+      });
+      fetch(`https://udtown.site/category`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          'stock': 5,
+          'stock': stock,
           'item_name':name,
           'price':price,
+          'item_id': id,
           // 'img':files[0]
         }),
 
