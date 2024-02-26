@@ -283,7 +283,18 @@ const Checkout = () => {
                 <option value="normal">택배 배송</option>
                 <option value="daily">따끈 배송</option>
               </select>
-              <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
+              
+              <div className={styles.deliverContainer}> 
+                <img className ={styles.deliverIcon} src="./post.jpg" alt="배송 이미지" /> 
+                <div className={styles.deliverText}>택배로 배송받습니다.</div>
+              </div>
+
+              <div className={styles.deliverContainer}> 
+                <img className ={styles.deliverIcon} src="./today.jpg" alt="배송 이미지" /> 
+                <div className={styles.deliverText}>(의정부만 가능) 제작 당일 직접 배송해드립니다.</div>
+              </div>
+
+              {/* <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" /> */}
 
             </div>
             <div className={styles.requestBox}>
