@@ -200,7 +200,7 @@ return formattedDate;
         formData.append(`img`, file);
      
       });
-      fetch(`https://udtown.site/category/${id}`, {
+      fetch(`https://udtown.site/category/item`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -210,6 +210,7 @@ return formattedDate;
           'stock': stock,
           'item_name':name,
           'price':price,
+          'item_id': id,
           // 'img':files[0]
         }),
 
