@@ -178,6 +178,8 @@ a{
   padding: 10px 20px;
 }
 
+
+
 .keyword-dropdown {
   position: relative;
 }
@@ -212,4 +214,36 @@ a{
 .keyword-menu a {
   color: black;
   text-decoration: none;
+}
+
+@media screen and (max-width: 500px) {
+  html{
+    min-width: 500px;
+  }
+  .searchContainer{
+    width: 400px;
+    margin: 0 auto;
+  }
+  .searchInput{
+    width: 100%;
+    border-radius: 30px;
+  }
+  .logo{
+    width: 120px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  .navigation {
+    display: block;
+    padding: 0;
+    width: 90%;
+    
+  }
+  .container{
+    margin: 0;
+    padding: 10px;
+  }
+  .searchButton {
+    display: none; /* 화면 너비가 800px 이하일 때 버튼 숨깁니다. */
+  }
 }
