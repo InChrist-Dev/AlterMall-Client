@@ -1,260 +1,430 @@
 
 
 
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-
-}
-html{
-  min-width: 1200px;
-}
-.container {
-  background-color: white;
-  padding: 20px;
+@media screen and (min-width: 401px) {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   
-  flex-direction: column;
-  align-items: center;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.logo {
-  width: 180px;
-  height: auto;
-}
-
-.searchContainer {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  width: 80%;
-}
-
-.searchInput {
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #D91801;
-  border-radius: 5px;
-  margin: 0 10px;
-  background-color: white;
-  width: 100%;
-  max-width: 2000px;
-}
-
-a{
-  text-decoration-line: none;
-  
-}
-.searchButton {
-  background: linear-gradient(to left, #D91801, #f5af19);
-  color: #fff;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  height: 45px;
-  align-items: center;
-  min-width: 80px;
-}
-
-.cartUserIcons {
-  display: flex;
-  align-items: center;
-}
-
-.cartIcon,
-.userIcon {
-  font-size: 24px;
-  cursor: pointer;
-  margin: 14px;
-  color: #D91801;
-}
-
-
-.navbar {
-  display: flex;
-  margin: 0 auto;
-  width: 85%;
-}
-
-/* navigation.css */
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-
-.nav-list li {
-  flex: 1; /* 동일한 너비로 설정 */
-  margin-right: 20px;
-}
-
-.nav-list li:last-child {
-  margin-right: 0;
-}
-
-.nav-list a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  font-size: 20px;
-
-  transition: color 0.3s ease;
-  display: block; /* inline 요소가 너비를 차지하도록 함 */
-  padding: 10px; /* 내부 여백 추가 */
-}
-
-.nav-list a:hover {
-  color: #ff5e00;
-}
-.nav-list a {
-  text-decoration: none;
-  color: #222;
-  font-weight: 500;
-  font-size: 20px;
-
-  transition: color 0.3s ease;
-  display: block; /* inline 요소가 너비를 차지하도록 함 */
-  padding: 10px; /* 내부 여백 추가 */
-}
-
-.nav-list a:hover {
-  color: #ff5e00;
-}
-
-
-.category-dropdown {
-  position: relative;
-}
-
-.category-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  order: 0;
-  z-index: 2; /* slider에 z-index 값을 추가 */
-}
-
-.category-dropdown:hover .category-menu {
-  display: block;
-}
-
-.category-menu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.category-menu li {
-  margin: 0;
-  padding: 10px;
-  background-color: #fff;
-}
-
-.category-menu a {
-  color: black;
-  text-decoration: none;
-}
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  
-  padding: 10px 20px;
-}
-
-
-
-.keyword-dropdown {
-  position: relative;
-}
-
-.keyword-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  order: 0;
-  z-index: 2; /* slider에 z-index 값을 추가 */
-}
-
-
-.keyword-menu ul {
-  list-style: none;
-  padding: 10px;
-  margin: 0;
-  width: 1020px;
-}
-
-.keyword-menu li {
-  margin: 0;
-  padding: 10px;
-  background-color: #fff;
-}
-.keyword-menu li:hover {
-  cursor: pointer;
-  color: #f5af19;
-}
-
-.keyword-menu a {
-  color: black;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 500px) {
+  }
   html{
-    min-width: 500px;
+    min-width: 1200px;
   }
-  .searchContainer{
-    width: 420px;
-    margin: 0 auto;
-    align-self: stretch; /* searchContainer를 너비를 최대로 늘려서 가로 전체에 표시합니다. */
-  }
-  .searchInput{
-    width: 100%;
-    border-radius: 30px;
-  }
-  .logo{
-    width: 120px;
-    margin: 0 auto;
+  .container {
+    background-color: white;
+    padding: 20px;
+    
+    flex-direction: column;
     align-items: center;
-    order: -1;
-    align-self: flex-start; /* logo를 왼쪽에 정렬합니다. */
   }
+  
   .navigation {
     display: flex;
-    flex-direction: column;
-    padding: 0;
-    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    padding: 10px 20px;
+  }
+  
+  .navigation-mobile {
+    display: none;
+
     
   }
-  .cartUserIcons{
-    order: -1; /* cartUserIcons를 첫 번째로 배치합니다. */
-    align-self: flex-end; /* cartUserIcons를 오른쪽에 정렬합니다. */
+  .logo {
+    width: 180px;
+    height: auto;
   }
-  .container{
-    margin: 0;
+  
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    width: 80%;
+  }
+  
+  .searchInput {
     padding: 10px;
+    font-size: 16px;
+    border: 2px solid #D91801;
+    border-radius: 5px;
+    margin: 0 10px;
+    background-color: white;
+    width: 100%;
+    max-width: 2000px;
+  }
+  
+  a{
+    text-decoration-line: none;
+    
   }
   .searchButton {
-    display: none; /* 화면 너비가 800px 이하일 때 버튼 숨깁니다. */
+    background: linear-gradient(to left, #D91801, #f5af19);
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    min-width: 80px;
   }
-  .searchInput{
+  
+  .cartUserIcons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cartIcon,
+  .userIcon {
+    font-size: 24px;
+    cursor: pointer;
+    margin: 14px;
+    color: #D91801;
+  }
+  
+  
+  .navbar {
+    display: flex;
     margin: 0 auto;
+    width: 85%;
+  }
+  
+  /* navigation.css */
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .nav-list li {
+    flex: 1; /* 동일한 너비로 설정 */
+    margin-right: 20px;
+  }
+  
+  .nav-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+  
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 10px; /* 내부 여백 추가 */
+  }
+  
+  .nav-list a:hover {
+    color: #ff5e00;
+  }
+  .nav-list a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+  
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 10px; /* 내부 여백 추가 */
+  }
+  
+  .nav-list a:hover {
+    color: #ff5e00;
+  }
+  
+  
+  .category-dropdown {
+    position: relative;
+  }
+  
+  .category-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    order: 0;
+    z-index: 2; /* slider에 z-index 값을 추가 */
+  }
+  
+  .category-dropdown:hover .category-menu {
+    display: block;
+  }
+  
+  .category-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-menu li {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .category-menu a {
+    color: black;
+    text-decoration: none;
+  }
+
+  
+  
+  .keyword-dropdown {
+    position: relative;
+  }
+  
+  .keyword-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    order: 0;
+    z-index: 2; /* slider에 z-index 값을 추가 */
+  }
+  
+  
+  .keyword-menu ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    width: 1020px;
+  }
+  
+  .keyword-menu li {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+  }
+  .keyword-menu li:hover {
+    cursor: pointer;
+    color: #f5af19;
+  }
+  
+  .keyword-menu a {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  
+  }
+  html{
+    min-width: 400px;
+  }
+  .container {
+    background-color: white;
+  
+    
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navigation{
+    display: none;
+  }
+  
+  .navigation-mobile {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; 
+    padding: 10px 20px;
+    
+  }
+  .logo {
+    width: 100px;
+    height: auto;
+  }
+  .mobileContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hamburger{
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
+  }
+  .searchContainer {
+    align-items: center;
+   
+    width: 80%;
+  }
+  
+  .searchInput {
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid #D91801;
+    border-radius: 20px;
+    margin: 10px 0;
+    background-color: white;
+    width: 120%;
+  
+  }
+  
+  a{
+    text-decoration-line: none;
+    
+  }
+  .searchButton {
+    display: none;
+  }
+  
+  .cartUserIcons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cartIcon,
+  .userIcon {
+    font-size: 20px;
+    cursor: pointer;
+    margin: 14px;
+    color: #D91801;
+  }
+  .mobile{
+    display: none;
+  }
+  
+  .navbar {
+    display: flex;
+    margin: 0 auto;
+    width: 85%;
+  }
+  
+  /* navigation.css */
+  
+  .nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .nav-list li {
+    flex: 1; /* 동일한 너비로 설정 */
+    margin-right: 20px;
+  }
+  
+  .nav-list li:last-child {
+    margin-right: 0;
+  }
+  
+  .nav-list a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+  
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 10px; /* 내부 여백 추가 */
+  }
+  
+  .nav-list a:hover {
+    color: #ff5e00;
+  }
+  .nav-list a {
+    text-decoration: none;
+    color: #222;
+    font-weight: 500;
+    font-size: 20px;
+  
+    transition: color 0.3s ease;
+    display: block; /* inline 요소가 너비를 차지하도록 함 */
+    padding: 10px; /* 내부 여백 추가 */
+  }
+  
+  .nav-list a:hover {
+    color: #ff5e00;
+  }
+  
+  
+  .category-dropdown {
+    position: relative;
+  }
+  
+  .category-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    order: 0;
+    z-index: 2; /* slider에 z-index 값을 추가 */
+  }
+  
+  .category-dropdown:hover .category-menu {
+    display: block;
+  }
+  
+  .category-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .category-menu li {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+  }
+  
+  .category-menu a {
+    color: black;
+    text-decoration: none;
+  }
+
+  
+  
+  .keyword-dropdown {
+    position: relative;
+  }
+  
+  .keyword-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    order: 0;
+    z-index: 2; /* slider에 z-index 값을 추가 */
+  }
+  
+  
+  .keyword-menu ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    width: 1020px;
+  }
+  
+  .keyword-menu li {
+    margin: 0;
+    padding: 10px;
+    background-color: #fff;
+  }
+  .keyword-menu li:hover {
+    cursor: pointer;
+    color: #f5af19;
+  }
+  
+  .keyword-menu a {
+    color: black;
+    text-decoration: none;
   }
 }
