@@ -264,10 +264,10 @@
 
   
   .slider {
-    width: 100%;
+    width: 90%;
     overflow: hidden;
     position: relative;
-    margin: 0px 0;
+    margin: 0 auto;
     z-index: 1; /* slider에 z-index 값을 추가 */
   }
   
@@ -280,8 +280,10 @@
   }
   
   .sliderImage {
-    width: 120%;
+    width: 150%;
     height: auto;
+    padding: 10px;
+    border-radius: 30px;
     margin: 0 auto;
     flex: 0 0 auto;
     object-fit: cover;
