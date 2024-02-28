@@ -52,6 +52,12 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
       }
       const data = await response.json();
       console.log(data)
+      if(data.result == 'false'){
+        alert('이미 존재하는 아이디입니다.')
+      }else{
+        alert('사용 가능한 아이디입니다. ')
+      }
+ 
     } catch (error) {
       // 에러 처리
       console.error('Failed to send like request', error);
@@ -129,30 +135,27 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContent}>
+    
 
-        <div>
-          <h2>회원가입</h2>
-        </div>
+        <h2>간편 회원가입</h2>
       
-        <label className={styles.label}>이름</label>
-        <input className={styles.input} type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <label className={styles.label}>아이디</label>
-        <button className={styles.idCheck} onClick={()=>{checkId(id)}}>중복확인</button>
-        <input className={styles.input} type="text" value={id} onChange={(e) => setId(e.target.value)} />
-        <label className={styles.label}>비밀번호</label>
-        <input className={styles.input} type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
-        <label className={styles.label}>전화번호</label>
-        <input className={styles.input} type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
-        <label className={styles.label}>이메일</label>
-        <input className={styles.input} type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <label>이름</label>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <label>아이디</label><button onClick={()=>{checkId(id)}}>중복확인</button>
+        <input type="text" value={id} onChange={(e) => setId(e.target.value)} />
+        <label>비밀번호</label>
+        <input type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
+        <label>전화번호</label>
+        <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
+        <label>이메일</label>
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
         
-        <div className={styles.buttonContainer}>
-          <button className={styles.acceptButton} onClick={handleSubmit}>가입하기</button>
-        </div>
-        <div className={styles.buttonContainer}>
-          <button className={styles.cancelButton} onClick={closeModal}>취소</button>
-        </div>
 
+        
+       
+    
+        <button onClick={handleSubmit}>저장</button>
+        <button onClick={closeModal}>취소</button>
       </div>
     </div>
   );
