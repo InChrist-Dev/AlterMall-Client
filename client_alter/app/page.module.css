@@ -1,6 +1,6 @@
 /* page.module.css */
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 451px) {
   .container {
     background-color: white;
     padding: 20px;
@@ -127,7 +127,12 @@
     font-size: 35px;
     font-weight: bold;
     
-  }.categorySub {
+  }
+  .categoryTitleMobile {
+    display: none;
+     
+   }
+  .categorySub {
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 20px;
@@ -144,7 +149,10 @@
     margin: 0 auto;
     margin-bottom: 20px;
   }
-  
+  .imageButtonGridMobile {
+    display: none;
+     
+   }
   .largeButton {
     width: 100%;
     height: 100%;
@@ -224,7 +232,15 @@
 
 /* page.module.css */
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
+  .imageButtonGrid {
+    display: none;
+     
+   }
+   .categoryTitle {
+    display: none;
+     
+   }
   .container {
     background-color: white;
     padding: 20px;
@@ -264,7 +280,8 @@
 
   
   .slider {
-    width: 90%;
+    width: 85%;
+    height: 200px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -274,13 +291,13 @@
   .imageSlider {
     display: flex;
     transition: transform 0.5s;
-    width: 100%;
+    height: 100%;
     margin-bottom: 40px;
     border-radius: 10px;
   }
   
   .sliderImage {
-    width: 150%;
+    width: 100%;
     height: auto;
     padding: 10px;
     border-radius: 30px;
@@ -305,10 +322,10 @@
     right: 0;
   }
   
-  .categoryTitle {
+  .categoryTitleMobile {
     margin-bottom: 20px;
   
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     
   }.categorySub {
@@ -319,11 +336,10 @@
     
   }
   
-  .imageButtonGrid {
+  .imageButtonGridMobile {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-  
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0px;
     align-items: center;
     margin: 0 auto;
     margin-bottom: 20px;
@@ -336,7 +352,6 @@
     grid-row: span 2;
     border: 0;
     transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
-  
     /* Initial styling */
     filter: brightness(100%);
   }
@@ -346,8 +361,9 @@
   
   .smallButton {
     width: 100%;
-    height: 300px;
+    height: 350px;
     background-color: lightblue;
+    border-radius: 30px;
   }
   
   .re_largeButton {

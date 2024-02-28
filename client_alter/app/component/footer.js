@@ -5,7 +5,7 @@ import styles from './component.module.css';  // Create a separate CSS module fo
 
 const Footer = () => {
   return (
-    <span>
+    <span className={styles.footerMain}>
       <div style={{border:'0.5px solid #ddd'}}></div>
    
     <footer className={styles.footer}>

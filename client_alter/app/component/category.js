@@ -33,6 +33,25 @@ const CategoryButtons = () => {
           <ImageButton imagePath="drink.jpg" altText="음료" />
         </Link>
       </div>
+      <p className={styles.categoryTitleMobile}>
+        카테고리<span className={styles.categorySub}>|건강식품</span>
+      </p>
+      <div className={styles.imageButtonGridMobile}>
+        <Link href='/category/dessert'>
+          <ImageButton imagePath="dessert.jpg" altText="디저트" />
+        </Link>
+        <Link href='/'>
+          <ImageButton imagePath="salad.jpg" altText="샐러드" />
+        </Link>
+        <Link href='/'>
+          <ImageButton imagePath="free.jpg" altText=" 락토프리" />
+        </Link>
+        <Link href='/'>
+          <ImageButton imagePath="drink.jpg" altText="음료" />
+        </Link>
+      
+     
+      </div>
     </div>
   );
 };

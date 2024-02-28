@@ -1,7 +1,7 @@
 
 
 
-@media screen and (min-width: 401px) {
+@media screen and (min-width: 451px) {
   * {
     box-sizing: border-box;
     padding: 0;
@@ -42,6 +42,7 @@
     align-items: center;
     margin-right: 20px;
     width: 80%;
+    
   }
   
   .searchInput {
@@ -217,7 +218,7 @@
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   * {
     box-sizing: border-box;
     padding: 0;
@@ -225,7 +226,7 @@
   
   }
   html{
-    min-width: 400px;
+    min-width: 450px;
   }
   .container {
     background-color: white;
@@ -260,6 +261,7 @@
     background-color: #fff;
     border: none;
     font-size: 20px;
+    margin: 0 30%;
   }
   .searchContainer {
     align-items: center;
@@ -272,7 +274,7 @@
     font-size: 16px;
     border: 2px solid #D91801;
     border-radius: 20px;
-    margin: 10px 0;
+    margin: 3%;
     background-color: white;
     width: 128%;
   
