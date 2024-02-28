@@ -44,6 +44,7 @@
     width: 20%;
     background:#f57c19;
     color: #fff;
+    height: 30px;
     border: none;
     border-radius: 5px;
   }
@@ -72,6 +73,6 @@
     background: #fff;
     color: #191919;
     font-size: 18px;
-    border: none;
+   
     align-items: center;
   }
