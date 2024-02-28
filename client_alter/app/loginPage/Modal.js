@@ -52,7 +52,7 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
       }
       const data = await response.json();
       console.log(data)
-      if(data.result == 'false'){
+      if(data.result == false){
         alert('이미 존재하는 아이디입니다.')
       }else{
         alert('사용 가능한 아이디입니다. ')
