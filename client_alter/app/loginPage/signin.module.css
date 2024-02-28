@@ -42,6 +42,10 @@
 
   .idCheck{
     width: 20%;
+    background:#f57c19;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
   }
 
   .buttonContainer{

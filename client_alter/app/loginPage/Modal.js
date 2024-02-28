@@ -153,7 +153,7 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
 
         
        <div className={styles.buttonContainer}>
-       <button  className={styles.accessButton} onClick={handleSubmit}>저장</button>
+       <button  className={styles.acceptButton} onClick={handleSubmit}>저장</button>
         <button  className={styles.cancelButton}onClick={closeModal}>취소</button>
        </div>
     
