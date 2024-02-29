@@ -100,14 +100,11 @@ const ItemPage = (props) => {
       const currentHour = currentTime.getHours();
 
       // 현재 시간이 오후 3시 이전인 경우
-      if (currentHour < 15) {
+    
         const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
         const remainingTime = diffMinutes > 0 ? `${diffMinutes}분` : ''; // 남은 시간이 0분보다 큰 경우만 표시
         setDeliveryTime(`내일 배송까지 ${remainingTime} 남았습니다.`);
-      } else {
-        // 현재 시간이 오후 3시 이후인 경우
-        setDeliveryTime('모레 배송시작됩니다.');
-      }
+    
     };
 
     // 매 분마다 주문 가능 시간을 갱신하기 위해 setInterval을 사용
