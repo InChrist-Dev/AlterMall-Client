@@ -21,7 +21,7 @@ const Checkout = () => {
   const [info, setInfo] = useState([]);
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
-  const [save,setSave] = useState(false);
+
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -319,13 +319,16 @@ const Checkout = () => {
             onChange={handleCustomRequestChange}
           />
         )}
-          <label>공동현관문 번호(필수)</label>
+        <div>
+        <label>공동현관문 번호</label>
           <input
             className={styles.request}
             value={customRequest}
             placeholder="직접 입력해주세요"
             onChange={handleRequestChange}
           />
+        </div>
+       
       </div>
     </div>
           </div>
