@@ -11,6 +11,8 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 
 const ItemPage = (props) => {
+  const [deliveryTime, setDeliveryTime] = useState('');
+
   const [name, setName] = useState('');
   const [img, setImg] = useState('');
   const [stock, setStock] = useState(0);
@@ -93,6 +95,27 @@ const ItemPage = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
+    const calculateDeliveryTime = () => {
+      const currentTime = new Date();
+      const currentHour = currentTime.getHours();
+
+      // 현재 시간이 오후 3시 이전인 경우
+      if (currentHour < 15) {
+        const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
+        const remainingTime = diffMinutes > 0 ? `${diffMinutes}분` : ''; // 남은 시간이 0분보다 큰 경우만 표시
+        setDeliveryTime(`내일 배송까지 ${remainingTime} 남았습니다.`);
+      } else {
+        // 현재 시간이 오후 3시 이후인 경우
+        setDeliveryTime('모레 배송시작됩니다.');
+      }
+    };
+
+    // 매 분마다 주문 가능 시간을 갱신하기 위해 setInterval을 사용
+    const intervalId = setInterval(calculateDeliveryTime, 60000); // 1분마다 갱신
+    calculateDeliveryTime(); // 컴포넌트 마운트 시 한 번 호출
+
+    // 컴포넌트 언마운트 시 setInterval 정리
+    return () => clearInterval(intervalId);
   }, []);
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
@@ -163,7 +186,8 @@ const ItemPage = (props) => {
           <p><span>보관법 </span> 냉동보관</p>
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
-          <p><span>주문 가능 시간</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
+          <p><span>주문가능일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
+          <p><span>주문 가능 시간: </span>{deliveryTime}</p>
         </div>
 
         <div className={styles.productOptions}>
