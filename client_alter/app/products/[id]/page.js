@@ -163,7 +163,7 @@ const ItemPage = (props) => {
           <p><span>보관법 </span> 냉동보관</p>
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
-          <p><span>주문 가능 시간</span> 일요일 15시 ~ 금요일 15시</p>
+          <p><span>주문 가능 시간</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
         </div>
 
         <div className={styles.productOptions}>
