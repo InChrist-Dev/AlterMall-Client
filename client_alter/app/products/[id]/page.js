@@ -99,22 +99,25 @@ const ItemPage = (props) => {
     const calculateDeliveryTime = () => {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
+// 현재 시간이 오후 3시 이전인 경우
+if (currentHour < 15) {
+  const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
+  const remainingTimeHours = Math.floor(diffMinutes / 60); // 남은 시간을 시간 단위로 변환
+  const remainingTimeMinutes = diffMinutes % 60; // 남은 시간을 분 단위로 변환
+  const remainingTimeString = `${remainingTimeHours}시간 ${remainingTimeMinutes}분`; // 시간과 분을 조합하여 표시
+  setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
+} else {
+  // 현재 시간이 오후 3시 이후인 경우
+  const nextDay = new Date(currentTime);
+  nextDay.setDate(nextDay.getDate() + 1); // 내일로 설정
+  nextDay.setHours(15, 0, 0, 0); // 오후 3시로 설정
+  const diffMs = nextDay - currentTime; // 내일 오후 3시까지 남은 밀리초 계산
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
+  const remainingTimeMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // 남은 시간에서 분을 추출
+  const remainingTimeString = `${diffHours}시간 ${remainingTimeMinutes}분`; // 시간과 분을 조합하여 표시
+  setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
+}
 
-      // 현재 시간이 오후 3시 이전인 경우
-      if (currentHour < 15) {
-        const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
-        const remainingTime = diffMinutes > 0 ? `${diffMinutes}분` : ''; // 남은 시간이 0분보다 큰 경우만 표시
-        setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTime} 남았습니다.`);
-      } else {
-        // 현재 시간이 오후 3시 이후인 경우
-        const nextDay = new Date(currentTime);
-        nextDay.setDate(nextDay.getDate() + 2); // 다음날로 설정
-        nextDay.setHours(15, 0, 0, 0); // 다음날 오후 3시로 설정
-        const diffMs = nextDay - currentTime; // 다음날 오후 3시까지 남은 밀리초 계산
-        const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
-        const remainingTime = diffHours > 0 ? `${diffHours}시간` : ''; // 남은 시간이 0시간보다 큰 경우만 표시
-        setDeliveryTime(`모레(${getNextNextDayDate()}) 배송까지 ${remainingTime} 남았습니다.`);
-      }
 
     };
 
