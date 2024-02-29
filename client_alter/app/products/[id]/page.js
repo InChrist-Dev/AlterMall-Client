@@ -95,16 +95,27 @@ const ItemPage = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
+    // 주문 가능 시간을 계산하는 함수
     const calculateDeliveryTime = () => {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
 
       // 현재 시간이 오후 3시 이전인 경우
-    
+      if (currentHour < 15) {
         const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
         const remainingTime = diffMinutes > 0 ? `${diffMinutes}분` : ''; // 남은 시간이 0분보다 큰 경우만 표시
-        setDeliveryTime(`내일 배송까지 ${remainingTime} 남았습니다.`);
-    
+        setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTime} 남았습니다.`);
+      } else {
+        // 현재 시간이 오후 3시 이후인 경우
+        const nextDay = new Date(currentTime);
+        nextDay.setDate(nextDay.getDate() + 2); // 다음날로 설정
+        nextDay.setHours(15, 0, 0, 0); // 다음날 오후 3시로 설정
+        const diffMs = nextDay - currentTime; // 다음날 오후 3시까지 남은 밀리초 계산
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
+        const remainingTime = diffHours > 0 ? `${diffHours}시간` : ''; // 남은 시간이 0시간보다 큰 경우만 표시
+        setDeliveryTime(`모레(${getNextNextDayDate()}) 배송까지 ${remainingTime} 남았습니다.`);
+      }
+
     };
 
     // 매 분마다 주문 가능 시간을 갱신하기 위해 setInterval을 사용
@@ -114,6 +125,24 @@ const ItemPage = (props) => {
     // 컴포넌트 언마운트 시 setInterval 정리
     return () => clearInterval(intervalId);
   }, []);
+
+    // 내일의 날짜를 반환하는 함수
+    const getTomorrowDate = () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const month = tomorrow.getMonth() + 1;
+      const date = tomorrow.getDate();
+      return `${month}월 ${date}일`;
+    };
+  
+    // 모레의 날짜를 반환하는 함수
+    const getNextNextDayDate = () => {
+      const nextNextDay = new Date();
+      nextNextDay.setDate(nextNextDay.getDate() + 2);
+      const month = nextNextDay.getMonth() + 1;
+      const date = nextNextDay.getDate();
+      return `${month}월 ${date}일`;
+    };
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
     setPrice(newQuantity * newprice); // Adjust the price based on your business logic
@@ -184,7 +213,7 @@ const ItemPage = (props) => {
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
           <p><span>주문가능일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
-          <p><span>배송시작일 </span>{deliveryTime}</p>
+          <p><span>주문 가능 시간: </span>{deliveryTime}</p>
         </div>
 
         <div className={styles.productOptions}>
