@@ -132,7 +132,7 @@ if (currentHour < 15) {
     // 내일의 날짜를 반환하는 함수
     const getTomorrowDate = () => {
       const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setDate(tomorrow.getDate() + 2);
       const month = tomorrow.getMonth() + 1;
       const date = tomorrow.getDate();
       return `${month}월 ${date}일`;
