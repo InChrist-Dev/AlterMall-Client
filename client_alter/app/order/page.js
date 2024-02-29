@@ -35,6 +35,9 @@ const Checkout = () => {
   const handleCustomRequestChange = (e) => {
     setCustomRequest(e.target.value);
   };
+  const handleRequestChange = (e) => {
+    setCustomRequest('문앞에 두고 가주세요. 공동현관문 번호: '+e.target.value);
+  };
   const handleClick = async () => {
     let amount = 0;
     // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
@@ -316,6 +319,13 @@ const Checkout = () => {
             onChange={handleCustomRequestChange}
           />
         )}
+          <label>공동현관문 번호(필수)</label>
+          <input
+            className={styles.request}
+            value={customRequest}
+            placeholder="직접 입력해주세요"
+            onChange={handleRequestChange}
+          />
       </div>
     </div>
           </div>
