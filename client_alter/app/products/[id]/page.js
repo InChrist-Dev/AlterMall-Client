@@ -115,7 +115,7 @@ if (currentHour < 15) {
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
   const remainingTimeMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // 남은 시간에서 분을 추출
   const remainingTimeString =  `<strong>${diffHours}시간 ${remainingTimeMinutes}분</strong>`; // 시간과 분을 조합하여 표시
-  setDeliveryTime(<span>내일({getTomorrowDate()}) 배송까지 <strong>{diffHours}시간 {remainingTimeMinutes}분</strong> 남았습니다.</span>);
+  setDeliveryTime(<p>내일({getTomorrowDate()}) 배송까지 <b>{diffHours}시간 {remainingTimeMinutes}분</b> 남았습니다.</p>);
 }
 
 
