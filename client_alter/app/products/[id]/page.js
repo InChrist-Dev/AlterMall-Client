@@ -105,7 +105,7 @@ if (currentHour < 15) {
   const remainingTimeHours = Math.floor(diffMinutes / 60); // 남은 시간을 시간 단위로 변환
   const remainingTimeMinutes = diffMinutes % 60; // 남은 시간을 분 단위로 변환
   const remainingTimeString = `${remainingTimeHours}시간 ${remainingTimeMinutes}분`; // 시간과 분을 조합하여 표시
-  setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
+  setDeliveryTime(`(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
 } else {
   // 현재 시간이 오후 3시 이후인 경우
   const nextDay = new Date(currentTime);
@@ -115,7 +115,7 @@ if (currentHour < 15) {
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
   const remainingTimeMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // 남은 시간에서 분을 추출
   const remainingTimeString = `${diffHours}시간 ${remainingTimeMinutes}분`; // 시간과 분을 조합하여 표시
-  setDeliveryTime(`내일(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
+  setDeliveryTime(`(${getTomorrowDate()}) 배송까지 ${remainingTimeString} 남았습니다.`);
 }
 
 
@@ -216,7 +216,7 @@ if (currentHour < 15) {
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
           <p><span>주문가능일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
-          <p><span>주문 가능 시간: </span>{deliveryTime}</p>
+          <p><span>배송시작일 </span>{deliveryTime}</p>
         </div>
 
         <div className={styles.productOptions}>
