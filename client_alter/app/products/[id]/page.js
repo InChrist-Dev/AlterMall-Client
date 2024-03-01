@@ -100,13 +100,17 @@ const ItemPage = (props) => {
       const currentTime = new Date();
       const currentHour = currentTime.getHours();
 // 현재 시간이 오후 3시 이전인 경우
-// if (currentHour < 15) {
-//   const diffMinutes = 15 - currentHour - 1; // 현재 시간부터 오후 3시까지 남은 시간(분 단위)
-//   const remainingTimeHours = Math.floor(diffMinutes / 60); // 남은 시간을 시간 단위로 변환
-//   const remainingTimeMinutes = diffMinutes % 60; // 남은 시간을 분 단위로 변환
-//   const remainingTimeString =  `<strong>${remainingTimeHours}시간 ${remainingTimeMinutes}분</strong>`; // 시간과 분을 조합하여 표시
-//    setDeliveryTime(<p style={{'display':'inline'}}><b>{getTomorrowDate()}</b>  배송까지 <b>{diffHours}시간 {remainingTimeMinutes}분</b> 남았습니다.</p>);
-// } else {
+if (currentHour < 15) {
+  // 현재 시간이 오후 3시 이후인 경우
+  const nextDay = new Date(currentTime);
+  nextDay.setDate(nextDay.getDate()); // 내일로 설정
+  nextDay.setHours(15, 0, 0, 0); // 오후 3시로 설정
+  const diffMs = nextDay - currentTime; // 내일 오후 3시까지 남은 밀리초 계산
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // 시간 단위로 변환
+  const remainingTimeMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // 남은 시간에서 분을 추출
+  const remainingTimeString =  `<strong>${diffHours}시간 ${remainingTimeMinutes}분</strong>`; // 시간과 분을 조합하여 표시
+  setDeliveryTime(<p style={{'display':'inline'}}><b>{getTodayDate()}</b> 배송까지 <b>{diffHours}시간 {remainingTimeMinutes}분</b> 남았습니다.</p>);
+} else {
   // 현재 시간이 오후 3시 이후인 경우
   const nextDay = new Date(currentTime);
   nextDay.setDate(nextDay.getDate() + 1); // 내일로 설정
@@ -116,7 +120,7 @@ const ItemPage = (props) => {
   const remainingTimeMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60)); // 남은 시간에서 분을 추출
   const remainingTimeString =  `<strong>${diffHours}시간 ${remainingTimeMinutes}분</strong>`; // 시간과 분을 조합하여 표시
   setDeliveryTime(<p style={{'display':'inline'}}><b>{getTomorrowDate()}</b> 배송까지 <b>{diffHours}시간 {remainingTimeMinutes}분</b> 남았습니다.</p>);
-    //}
+}
 
 
     };
@@ -137,6 +141,14 @@ const ItemPage = (props) => {
       const date = tomorrow.getDate();
       return `${month}월 ${date}일`;
     };
+    const getTodayDate = () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const month = tomorrow.getMonth() + 1;
+      const date = tomorrow.getDate();
+      return `${month}월 ${date}일`;
+    };
+  
   
     // 모레의 날짜를 반환하는 함수
     const getNextNextDayDate = () => {
