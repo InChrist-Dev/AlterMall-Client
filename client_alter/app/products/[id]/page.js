@@ -132,22 +132,49 @@ if (currentHour < 15) {
     // 컴포넌트 언마운트 시 setInterval 정리
     return () => clearInterval(intervalId);
   }, []);
-
-    // 내일의 날짜를 반환하는 함수
-    const getTomorrowDate = () => {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 2);
-      const month = tomorrow.getMonth() + 1;
-      const date = tomorrow.getDate();
-      return `${month}월 ${date}일`;
-    };
-    const getTodayDate = () => {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const month = tomorrow.getMonth() + 1;
-      const date = tomorrow.getDate();
-      return `${month}월 ${date}일`;
-    };
+  const getDayOfWeek = () => {
+    const today = new Date();
+    return today.getDay(); // 0(일요일) ~ 6(토요일) 사이의 값 반환
+  };
+  
+  // 배송 가능 여부를 확인하는 함수
+  const isDeliveryAvailable = () => {
+    const dayOfWeek = getDayOfWeek();
+    // 토요일(6) 또는 일요일(0)이면 배송 불가능
+    return !(dayOfWeek === 6 || dayOfWeek === 0);
+  };
+  const getTomorrowDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 2); // 내일로 설정
+  
+    const dayOfWeek = tomorrow.getDay();
+    if (dayOfWeek === 0) { // 일요일인 경우
+      tomorrow.setDate(tomorrow.getDate() + 1); // 월요일로 설정
+    } else if (dayOfWeek === 6) { // 토요일인 경우
+      tomorrow.setDate(tomorrow.getDate() + 2); // 월요일로 설정
+    }
+  
+    const month = tomorrow.getMonth() + 1;
+    const date = tomorrow.getDate();
+  
+    return `${month}월 ${date}일`;
+  };
+  const getTodayDate = () => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1); // 내일로 설정
+  
+    const dayOfWeek = tomorrow.getDay();
+    if (dayOfWeek === 0) { // 일요일인 경우
+      tomorrow.setDate(tomorrow.getDate() + 1); // 월요일로 설정
+    } else if (dayOfWeek === 6) { // 토요일인 경우
+      tomorrow.setDate(tomorrow.getDate() + 2); // 월요일로 설정
+    }
+  
+    const month = tomorrow.getMonth() + 1;
+    const date = tomorrow.getDate();
+  
+    return `${month}월 ${date}일`;
+  };
   
   
     // 모레의 날짜를 반환하는 함수
