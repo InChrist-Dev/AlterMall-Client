@@ -43,7 +43,7 @@ const NavigationBar = () => {
     if (search.length == 0) {
       setIsKeywordMenu(true);
     } else {
-      fetch(`https://udtown.site/category/search?name=${search}`, {
+      fetch(`https://altermall.site/category/search?name=${search}`, {
 
       })
         .then((res) => res.json())

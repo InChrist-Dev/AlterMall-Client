@@ -35,7 +35,7 @@ const ImageUploader = (props) => {
       
    
       
-//       const response = await fetch(`https://udtown.site/category`, {
+//       const response = await fetch(`https://altermall.site/category`, {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const ImageUploader = (props) => {
 //   }, []);
  
   const handleConfirm = (item) => {
-    fetch(`https://udtown.site/category/${item}`, {
+    fetch(`https://altermall.site/category/${item}`, {
               method: 'DELETE',
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -143,7 +143,7 @@ const ImageUploader = (props) => {
            
             });
       
-            fetch('https://udtown.site/category', {
+            fetch('https://altermall.site/category', {
               method: 'POST',
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -223,7 +223,7 @@ const ImageUploader = (props) => {
            
     //         });
       
-    //         fetch('https://udtown.site/category/image', {
+    //         fetch('https://altermall.site/category/image', {
     //           method: 'patch',
     //           headers: {
     //             Authorization: `Bearer ${accessToken}`,

@@ -29,7 +29,7 @@ const MyPage = () => {
   const [name,setName]= useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/user/mypage`, {
+      const response = await fetch(`https://altermall.site/user/mypage`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',

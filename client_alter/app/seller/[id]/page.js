@@ -26,7 +26,7 @@ const [seller, setSeller] = useState([]);
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/user/seller/detail/${props.params.id}`);
+      const response = await fetch(`https://altermall.site/user/seller/detail/${props.params.id}`);
       const data = await response.json();
    
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -61,12 +61,12 @@ const nextSlide = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('https://udtown.site/${sellerDetail.img}') center/cover`}}></div>
+      <div className={styles.background} style={{background: `linear-gradient(rgba(0,0,0 , 0), rgba(0, 0, 0, 1)), url('https://altermall.site/${sellerDetail.img}') center/cover`}}></div>
       <div className={styles.content}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div>
             <div style={{ display: 'flex'}}>
-            <img className={styles.logo} src={`https://udtown.site/${sellerDetail.logo}`}></img>
+            <img className={styles.logo} src={`https://altermall.site/${sellerDetail.logo}`}></img>
           <h1 className={styles.title}> {sellerName} 사장님</h1>
             </div>
       
@@ -114,7 +114,7 @@ const nextSlide = () => {
             {products.map((products, i) => (
               <div key={i} className={styles.episodeCard}>
                 <a href={`/products/${products.item_id}`}>
-                <img className={styles.episodeImage} src={`https://udtown.site/${products.img}`} />
+                <img className={styles.episodeImage} src={`https://altermall.site/${products.img}`} />
 </a>
               </div>
             ))}

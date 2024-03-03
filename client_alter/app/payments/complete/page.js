@@ -13,7 +13,7 @@ export default function Complete() {
   const [name,setName] = useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/customer/order/`, {
+      const response = await fetch(`https://altermall.site/customer/order/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',

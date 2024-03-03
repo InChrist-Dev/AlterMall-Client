@@ -13,7 +13,7 @@ export function LogOutBtn() {
     // const query = params.get('code');
     // console.log(`${query} query is`)
 
-    const url = 'https://udtown.site/auth/google';
+    const url = 'https://altermall.site/auth/google';
     const fetchData = async () => {
       const response = await fetch(url, {
 

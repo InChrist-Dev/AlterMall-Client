@@ -51,7 +51,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   const handleSubmit = async () => {
     
     try {
-      const response = await fetch('https://udtown.site/customer/deliver', {
+      const response = await fetch('https://altermall.site/customer/deliver', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -86,7 +86,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
 
   const delDeliver = async (id) => {
     try {
-      const response = await fetch(`https://udtown.site/customer/deliver/${id}`, {
+      const response = await fetch(`https://altermall.site/customer/deliver/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,

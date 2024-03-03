@@ -18,7 +18,7 @@ const ItemPage = (props) => {
   console.log(props.searchParams.search);
   const fetchData = async () => {
     try {
-      const response = await   fetch(`https://udtown.site/category/search?name=${name}`);
+      const response = await   fetch(`https://altermall.site/category/search?name=${name}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -131,7 +131,7 @@ const ItemPage = (props) => {
                   <div key={item} className={styles.productCard}>
                     <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
                       <div className={styles.productLink}>
-                        <img src={`https://udtown.site/${item.img}`} />
+                        <img src={`https://altermall.site/${item.img}`} />
                         <h3> {item.item_name}</h3>
                         <p>{item.price.toLocaleString()}원</p>
                         <p>{categoryS[currentIndex]}</p>
