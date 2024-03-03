@@ -21,7 +21,7 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://udtown.site/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await fetch(`http://localhost:8000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.

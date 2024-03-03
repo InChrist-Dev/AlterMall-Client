@@ -19,7 +19,7 @@ export default function LoginPage() {
     console.log(username,password)
    
     try {
-        const response = await fetch('https://udtown.site/auth/seller', {
+        const response = await fetch('http://localhost:8000/auth/seller', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export default function LoginPage() {
         
       </span>
       <h3>소셜 로그인</h3>
-      <img className={styles.google} src='/google.png'  onClick={()=>{window.location.href="https://udtown.site/auth/google"}}/>
+      <img className={styles.google} src='/google.png'  onClick={()=>{window.location.href="http://localhost:8000/auth/google"}}/>
     </div>
   );
 }
