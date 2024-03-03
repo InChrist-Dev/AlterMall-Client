@@ -6,6 +6,7 @@ import Footer from './component/footer';
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth";
 import Cookies from 'js-cookie';
+import Recommend from './component/recommend';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
@@ -29,7 +30,7 @@ export default async function RootLayout({ children }) {
     
             
       {children}</body>
-      
+     
       <Footer/>
     
     </html>

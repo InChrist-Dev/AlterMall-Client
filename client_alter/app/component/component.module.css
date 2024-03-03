@@ -79,12 +79,14 @@
 }
 @media screen and (max-width: 450px) {
   .imageButton{
-    width: 80%;
-    height: 80%;  
+    width: 85%;
+    height: 85%;
+    margin-top: 40%;
+    margin-right: 10px;
     overflow: hidden;
     position: relative;
     border:0;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 .imageButton:hover{
     background-color: aliceblue;
