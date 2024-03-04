@@ -36,7 +36,7 @@ const Footer = () => {
     loadKakaoSDK();
   }, []);
   return (
-    <span>
+    <span className={styles.footerMain}>
       <div style={{border:'0.5px solid #ddd'}}></div>
    
     <footer className={styles.footer}>
