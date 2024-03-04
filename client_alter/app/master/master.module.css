@@ -1,5 +1,6 @@
 /* page.module.css */
-.container {
+@media screen and (min-width: 451px) {
+  .container {
     background-color: white;
     padding: 100px;
     
@@ -103,3 +104,111 @@
   }
   /* Add more styles as needed */
   
+}
+/* page.module.css */
+@media screen and (max-width: 450px) {
+  .container {
+    background-color: white;
+    padding: 100px;
+    
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .categoryTitle {
+    margin-bottom: 20px;
+  
+    font-size: 24px;
+    font-weight: bold;
+    
+  }.categorySub {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    color: grey;
+    
+  }
+  
+  .masterContainer{
+    position: relative;
+    overflow: hidden;
+    margin-top: 100px;
+  }
+
+  .leftArrow,
+  .rightArrow {
+    font-size: 40px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+ 
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
+
+
+  
+  .re_smallButton {
+    width: 248px;
+    height: 280px;
+    border-radius: 2px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    border: 0px solid #fff;
+    
+  }
+  .artisanButtons {
+    display: flex;
+    padding: 60px 10px;
+    width: 90%;
+    margin: 0 auto;
+    border-radius: 50px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    overflow-x: hidden; /* 가로 방향으로 overflow 시 숨기기 */
+  }
+  
+  .re_container {
+    margin: 0 10px; /* 좌우 간격을 조정합니다. */
+    background-color: #fff;
+    border-radius: 2px;
+    
+    width: 250px;
+    height: 360px;
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+  }
+  .artisanButtons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+  }
+ 
+
+  .recommend_title{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+  }.recommend_price{
+    color: #000;
+    
+    font-size: 17px;
+  }
+  
+  .recommend_image{
+    color: #D91801;
+    font-weight: bold;
+    font-size: 13px;
+  }
+
+  .favoriteIcon{
+    color: #D91801;
+    
+  }
+  /* Add more styles as needed */
+  
+}
