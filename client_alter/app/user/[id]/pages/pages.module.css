@@ -163,12 +163,46 @@
       background-color: #dfdfdf;
     }
     .postImage{
-      width: 100px;
+      width: 120px;
     }
     .productImage {
-      width: 100px;
+      width: 150px;
      
     }
     .detailTable{
       width:100%
+    }
+    .AddressBox{
+      border-radius: 10px;
+      border: #ccc 1px solid;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .orderBox{
+      display: flex;
+      justify-content: space-between;
+    }
+    .titleBox{
+      margin: 10px 40px;
+      justify-content: center; 
+    }
+    .title{
+      font-weight: bold;
+      font-size: 22px;
+      
+    }
+    .orderTitle{
+      display: flex;
+    }
+    .price{
+      font-size: 14px;
+      margin:5px 20px;
+      font-weight: 600;
+      color: #999;
+    }
+    .descriptBox{
+      padding: 10px;
+    }
+    .containerBox{
+  
     }

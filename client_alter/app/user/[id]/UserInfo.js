@@ -6,9 +6,9 @@ import { useEffect } from 'react';
 
 const UserInfo = (props) => {
   const fetchData = async() =>{
-    const response = await fetch(`https://altermall.site/customer/order/`, {
+    const response = await fetch(`http://localhost:8000/customer/order/`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InJhYmUiLCJpYXQiOjE3MDk1MTg0MTksImV4cCI6MTcwOTYwNDgxOX0.IDX3t-CqB-ESap8A1IiRI04oVHj0-YwTfn-2HACb_Wo`,
         'Content-Type': 'application/json',
       },
       credentials: 'include',
