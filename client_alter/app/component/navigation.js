@@ -15,9 +15,13 @@ const position = Cookies.get('position');
 const NavigationBar = () => {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false); // 메뉴를 열고 닫는 상태값 저장
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState); // 열고 닫는 메뉴의 이전 상태값을 반환하도록 설정
+  };
+  const toggleSubMenu = () => {
+    setIsSubMenuOpen(!isSubMenuOpen);
   };
   if (accessToken) {
     useEffect(() => {
@@ -175,7 +179,7 @@ const NavigationBar = () => {
             <div className="dropdown-menu">
               <ul className="nav-list">
                 <li className="category-dropdown">
-                  <a>카테고리</a>
+                  <a className="category">카테고리</a>
                   <div className="category-menu">
                     <ul>
                       <li><a href="/category/dessert">디저트</a></li>
@@ -201,25 +205,37 @@ const NavigationBar = () => {
                 {isMenuOpen ? <FontAwesomeIcon className='hamburger' icon={faBars} alt='닫기버튼' /> : <FontAwesomeIcon className='hamburger' icon={faBars} alt='햄버거 버튼' />}
               </button>
             </div>
-            {isMenuOpen && (
-              <div className=''>
-                <button className='' onClick={() => handleMenuOptionClick(menu[0])}>
-                  <span className=''>HOME</span>
-                </button>
-
-                <button className='' onClick={() => handleMenuOptionClick(menu[1])}>
-                  <span className=''>메뉴1</span>
-                </button>
-
-                <button className='' onClick={() => handleMenuOptionClick(menu[2])}>
-                  <span className=''>메뉴2</span>
-                </button>
-
-                <button className='' onClick={() => handleMenuOptionClick(menu[3])}>
-                  <span className=''>메뉴3</span>
-                </button>
-              </div>
-            )}
+              {/* 사이드 메뉴 */}
+      <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
+        <nav className="sidebar-nav">
+          <ul>
+          
+       
+              <li  className="category" onClick={toggleSubMenu}>
+              
+                카테고리 
+                {/* {isSubMenuOpen ? (
+                  <FontAwesomeIcon icon={faChevronUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faChevronDown} />
+                )} */}
+                 {isSubMenuOpen && (
+                <ul className="submenu">
+                  <li><a href="category/dessert">디저트</a></li>
+                  <li><a href="category/salad">샐러드</a></li>
+                  <li><a href="category/free">락토프리</a></li>
+                  <li><a href="category/drink">음료</a></li>
+                </ul>
+               
+              )}
+               </li>
+            <li><a href="/master">장인소개</a></li>
+            <li><a href="/menu3">건강정보</a></li>
+            <li><a href="/menu3">이벤트</a></li>
+            <li onClick={toggleMenu}>닫기</li>
+          </ul>
+        </nav>
+      </div>
           </div>
 
           {/* 로고 이미지 */}

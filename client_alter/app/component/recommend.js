@@ -44,7 +44,7 @@ export default function Recommend(){
     
     <div style={{width:'80%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
-      <p className={styles.categoryTitleMobile}>...님을 위한 추천상품</p>
+      <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
     {/* 장인 버튼 <button onClick={toggleShowMore} className={styles.moreButton}>
         더보기 ▶
       </button> */}
@@ -52,7 +52,7 @@ export default function Recommend(){
   
     <div className={styles.artisanButtons}>
       <button className={styles.re_largeButton}>
-      <img href="pro.jpg"></img></button>
+   </button>
       {recommend.length>0? recommend.map((Items, i) => {
 
             return (<a  key={Items} href={`products/${Items.data.items[0].item_id}`}>
