@@ -12,7 +12,7 @@ export default function LoginPage() {
     console.log(username,password)
    
     try {
-        const response = await fetch('https://altermall.site/auth/seller', {
+        const response = await fetch('http://localhost:8000/auth/seller', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

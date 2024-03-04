@@ -19,7 +19,7 @@ export default function LoginPage() {
     console.log(username,password)
    
     try {
-        const response = await fetch('https://altermall.site/auth/seller', {
+        const response = await fetch('http://localhost:8000/auth/seller', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export default function LoginPage() {
     console.log(username,password)
    
     try {
-        const response = await fetch('https://altermall.site/auth/local/login', {
+        const response = await fetch('http://localhost:8000/auth/local/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ export default function LoginPage() {
       <div className={styles.division}> 소셜 로그인</div>
 
       <div className={styles.form}>
-        <div className={styles.socialBox} onClick={()=>{window.location.href="https://altermall.site/auth/google"}}>
+        <div className={styles.socialBox} onClick={()=>{window.location.href="http://localhost:8000/auth/google"}}>
           <img className={styles.icon_img} src='/google_logo.webp'/>
           <div className={styles.socialText}>구글 계정으로 로그인</div>
         </div>

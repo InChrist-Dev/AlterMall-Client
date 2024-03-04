@@ -30,7 +30,7 @@ const ItemPage = (props) => {
   }, [files]);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/seller/order?time=today`, {
+      const response = await fetch(`http://localhost:8000/seller/order?time=today`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const ItemPage = (props) => {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
     try {
-      const response = await fetch(`https://altermall.site/seller/order?time=next`, {
+      const response = await fetch(`http://localhost:8000/seller/order?time=next`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const ItemPage = (props) => {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
     try {
-      const response = await fetch(`https://altermall.site/seller/items`, {
+      const response = await fetch(`http://localhost:8000/seller/items`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ const ItemPage = (props) => {
   const Cancel = useCallback(
     (id) => {
 
-      fetch(`https://altermall.site/category/${id}`, {
+      fetch(`http://localhost:8000/category/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -166,7 +166,7 @@ return formattedDate;
   const setPaid =  useCallback(
     (order) => {
 
-      fetch(`https://altermall.site/seller/order/${order.order_id}`, {
+      fetch(`http://localhost:8000/seller/order/${order.order_id}`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -200,7 +200,7 @@ return formattedDate;
         formData.append(`img`, file);
      
       });
-      fetch(`https://altermall.site/category/item`, {
+      fetch(`http://localhost:8000/category/item`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -271,7 +271,7 @@ return formattedDate;
           </div> */}
 
                   <img
-                    src={`https://altermall.site/${items.img}`}
+                    src={`http://localhost:8000/${items.img}`}
                     alt={items.item_name}
                     className={styles.productImage}
                   />

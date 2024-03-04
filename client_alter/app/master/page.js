@@ -16,7 +16,7 @@ const [favorites, setFavorites] = useState([false]); // Initialize with false fo
 
 const fetchData = async () => {
   try {
-    const response = await fetch(`https://altermall.site/User/seller`);
+    const response = await fetch(`http://localhost:8000/User/seller`);
     const data = await response.json();
 
     // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -69,7 +69,7 @@ return (
              
                   <div className={styles.re_container} style={{ transform: `translateX(${-currentIndex * 110}%)` }}>
                        <a href={`/seller/${master.id}`} key={j}>
-                    <button className={styles.re_smallButton} style={{ backgroundImage: `url('https://altermall.site/${master.User.profile}')` }}>
+                    <button className={styles.re_smallButton} style={{ backgroundImage: `url('http://localhost:8000/${master.User.profile}')` }}>
                       {/* Heart icon with conditional style based on favorite status */}
                   
                     </button>

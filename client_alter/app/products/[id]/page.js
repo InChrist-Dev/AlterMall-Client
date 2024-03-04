@@ -47,7 +47,7 @@ const ItemPage = (props) => {
       formData.append('item_id',props.params.id);
       formData.append(`img`, image);
 
-      const response = await fetch('https://altermall.site/review', {
+      const response = await fetch('http://localhost:8000/review', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -67,7 +67,7 @@ const ItemPage = (props) => {
     }};
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/category/${props.params.id}`);
+      const response = await fetch(`http://localhost:8000/category/${props.params.id}`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -80,7 +80,7 @@ const ItemPage = (props) => {
       setId(data.item_id);
       setData(data.ItemImages[0]);
 
-      const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
+      const response2 = await fetch(`http://localhost:8000/review/${props.params.id}`);
       const data2 = await response2.json();
       console.log(data2)
       setReview(data2.data.rows)
@@ -200,7 +200,7 @@ if (currentHour < 15) {
     (id) => {
       console.log(props.params.id);
       console.log(id)
-      fetch(`https://altermall.site/customer/cart/`, {
+      fetch(`http://localhost:8000/customer/cart/`, {
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -243,7 +243,7 @@ if (currentHour < 15) {
      
       <div className={styles.productImage}>
         {/* Assume productImage is a prop passed from parent component */}
-        <img src={`https://altermall.site/${img}`} alt="Product Image" />
+        <img src={`http://localhost:8000/${img}`} alt="Product Image" />
       </div>
 
       <div className={styles.productDetails}>
@@ -284,10 +284,10 @@ if (currentHour < 15) {
           <button className={styles.BuyButton} onClick={()=>{handleBuy(id,quantity)}}>바로구매</button>
         </div>
         <div className={styles.imageContainer}>
-        <img className={styles.itemImg}src={data.img1?`https://altermall.site/${data.img1}`:''}/>
-        {data.img2?<img className={styles.itemImg}src={data.img2?`https://altermall.site/${data.img2}`:''}/>:''}
-        {data.img3?<img className={styles.itemImg}src={data.img3?`https://altermall.site/${data.img3}`:''}/>:''}
-        {data.img4?<img className={styles.itemImg}src={data.img4?`https://altermall.site/${data.img4}`:''}/>:''}
+        <img className={styles.itemImg}src={data.img1?`http://localhost:8000/${data.img1}`:''}/>
+        {data.img2?<img className={styles.itemImg}src={data.img2?`http://localhost:8000/${data.img2}`:''}/>:''}
+        {data.img3?<img className={styles.itemImg}src={data.img3?`http://localhost:8000/${data.img3}`:''}/>:''}
+        {data.img4?<img className={styles.itemImg}src={data.img4?`http://localhost:8000/${data.img4}`:''}/>:''}
         </div>
       </div>
     </div>
@@ -360,19 +360,19 @@ if (currentHour < 15) {
        
       <div>
         <div className={styles.detail} id="image2" >
-          <img src={`https://altermall.site/${data.desc1}`}/>
+          <img src={`http://localhost:8000/${data.desc1}`}/>
         </div>
         <div className={styles.detail}>
-        <img src={`https://altermall.site/${data.desc2}`} />
+        <img src={`http://localhost:8000/${data.desc2}`} />
         </div>
         <div className={styles.detail}id="image3" >
-        <img src={`https://altermall.site/${data.desc3}`}  />
+        <img src={`http://localhost:8000/${data.desc3}`}  />
         </div>
         <div className={styles.detail} >
-        {data.desc4? <img src={`https://altermall.site/${data.desc4}`} />:''}
+        {data.desc4? <img src={`http://localhost:8000/${data.desc4}`} />:''}
         </div>
         <div className={styles.detail} >
-        {data.desc5? <img src={`https://altermall.site/${data.desc5}`} />:''}
+        {data.desc5? <img src={`http://localhost:8000/${data.desc5}`} />:''}
         </div>
         <div className={styles.detail} id="image1">
           <img src="/11.jpg" />
@@ -397,7 +397,7 @@ if (currentHour < 15) {
             <div className={styles.reviews}>
               {review.map((review) => (
                 <div key={review.id} className={styles.review}>
-                  <img src={`https://altermall.site/${review.img}`} alt="이미지 없음" className={styles.reviewImg} />
+                  <img src={`http://localhost:8000/${review.img}`} alt="이미지 없음" className={styles.reviewImg} />
                   <p className={styles.reviewContent}>{review.content}</p>
                   <p className={styles.maskedId}>{maskUserId(review.User.name)}</p>
                 </div>

@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 
 const UserInfo = (props) => {
   const fetchData = async() =>{
-    const response = await fetch(`https://altermall.site/customer/order/`, {
+    const response = await fetch(`http://localhost:8000/customer/order/`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',

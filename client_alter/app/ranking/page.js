@@ -22,7 +22,7 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/category/ranking`);
+      const response = await fetch(`http://localhost:8000/category/ranking`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -62,7 +62,7 @@ const ItemPage = (props) => {
     
      
 
-      fetch(`https://altermall.site/customer/cart/`, {
+      fetch(`http://localhost:8000/customer/cart/`, {
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -182,7 +182,7 @@ const ItemPage = (props) => {
                 <td>
                   <Link href={`/products/${item.item_id}`} className={styles.productLink} style={{ textDecoration: 'none' }}>
                   
-                      <img src={`https://altermall.site/${item.img}`} className={styles.img} />
+                      <img src={`http://localhost:8000/${item.img}`} className={styles.img} />
                       <h3 >{item.item_name}</h3>
                    
                   </Link>

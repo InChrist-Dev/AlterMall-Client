@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
     swcMinify: true,
-    async rewrites() {
-      return [
-        {
-          source: "/:path*",
-          destination: "https://udtown.site/:path*",
-        },
-      ];
-    },
+    // async rewrites() {
+    //   return [
+    //     {
+    //       source: "/:path*",
+    //       destination: "http://localhost:3000/:path*",
+    //     },
+    //   ];
+    // },
   };
   
 

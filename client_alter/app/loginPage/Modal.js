@@ -36,7 +36,7 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
   };
   const checkId = async(id) => {
     try {
-      const response = await fetch(`https://altermall.site/auth/idcheck?id=${id}`, {
+      const response = await fetch(`http://localhost:8000/auth/idcheck?id=${id}`, {
       
       });
 
@@ -72,7 +72,7 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
 
     
     try {
-      const response = await fetch('https://altermall.site/auth/local/signin', {
+      const response = await fetch('http://localhost:8000/auth/local/signin', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -106,7 +106,7 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
 
   const delDeliver = async () => {
     try {
-      const response = await fetch(`https://altermall.site/customer/deliver/}`, {
+      const response = await fetch(`http://localhost:8000/customer/deliver/}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
