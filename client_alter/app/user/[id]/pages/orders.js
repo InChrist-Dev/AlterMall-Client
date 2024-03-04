@@ -14,7 +14,7 @@ const OrderHistory = () => {
   const [selectedOrder,setSelectedOrder] = useState(false)
   try{
     const fetchData = async() =>{
-      const response = await fetch(`http://localhost:8000/customer/order/`, {
+      const response = await fetch(`https://altermall.site/customer/order/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const OrderHistory = () => {
     (id) => {
       const answer = confirm('주문을 취소하시겠습니까? 판매자가 수락했을 경우 취소가 불가능합니다.')
       if(answer){
-        fetch(`http://localhost:8000/customer/cancel`, {
+        fetch(`https://altermall.site/customer/cancel`, {
           method: 'PATCH',
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -86,7 +86,7 @@ const OrderHistory = () => {
                 <tr key={index} className={styles.orderRow}>
                
                   <img
-                    src={`http://localhost:8000/${order.OrderDetails[0].img}`}
+                    src={`https://altermall.site/${order.OrderDetails[0].img}`}
                     alt={order.OrderDetails[0].item_name}
                     className={styles.productImage}
                   />
@@ -147,7 +147,7 @@ const OrderHistory = () => {
                             {order.OrderDetails.map((detail, index) => (
                               <tr key={index}>
                                 <td>  <img
-                                  src={`http://localhost:8000/${detail.img} `}
+                                  src={`https://altermall.site/${detail.img} `}
                                   alt={detail.item_name}
                                   className={styles.productImage}
                                 /></td>

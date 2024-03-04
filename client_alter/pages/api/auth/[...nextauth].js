@@ -52,7 +52,7 @@ export const authOptions = {
       clientId: '1034112248015-vkavbpp4tuuchguilgb9mpgitghsimd6.apps.googleusercontent.com',
       clientSecret: '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',
       async authorize(credentials, req) {
-        const res = await fetch(`http://localhost:8000/auth/google/login/redirect`, {
+        const res = await fetch(`https://altermall.site/auth/google/login/redirect`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

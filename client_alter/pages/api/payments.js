@@ -2,7 +2,7 @@
 
 export default async function handler(req, res) {
     try {
-        await fetch('http://localhost:8000/customer/confirm/', {
+        await fetch('https://altermall.site/customer/confirm/', {
             method: 'patch',
             body: JSON.stringify({
                 "order_id": orderId,

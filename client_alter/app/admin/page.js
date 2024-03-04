@@ -35,7 +35,7 @@ const ImageUploader = (props) => {
       
    
       
-//       const response = await fetch(`http://localhost:8000/category`, {
+//       const response = await fetch(`https://altermall.site/category`, {
 //         method: 'POST',
 //         headers: {
 //           'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ const ImageUploader = (props) => {
 //   }, []);
  
   const handleConfirm = (item) => {
-    fetch(`http://localhost:8000/category/${item}`, {
+    fetch(`https://altermall.site/category/${item}`, {
               method: 'DELETE',
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -143,7 +143,7 @@ const ImageUploader = (props) => {
            
             });
       
-            fetch('http://localhost:8000/category', {
+            fetch('https://altermall.site/category', {
               method: 'POST',
               headers: {
                 Authorization: `Bearer ${accessToken}`,
@@ -223,7 +223,7 @@ const ImageUploader = (props) => {
            
     //         });
       
-    //         fetch('http://localhost:8000/category/image', {
+    //         fetch('https://altermall.site/category/image', {
     //           method: 'patch',
     //           headers: {
     //             Authorization: `Bearer ${accessToken}`,

@@ -14,10 +14,10 @@ export default function Recommend(){
     
   const fetchData = async () => {
     try {
-      const res_free = await fetch(`http://localhost:8000/category?sortby=highest&category=free&product=1`);
-      const res_dessert = await fetch(`http://localhost:8000/category?sortby=highest&category=dessert&product=1`);
-      const res_drink = await fetch(`http://localhost:8000/category?sortby=highest&category=drink&product=1`);
-      const res_salad = await fetch(`http://localhost:8000/category?sortby=highest&category=salad&product=1`);
+      const res_free = await fetch(`https://altermall.site/category?sortby=highest&category=free&product=1`);
+      const res_dessert = await fetch(`https://altermall.site/category?sortby=highest&category=dessert&product=1`);
+      const res_drink = await fetch(`https://altermall.site/category?sortby=highest&category=drink&product=1`);
+      const res_salad = await fetch(`https://altermall.site/category?sortby=highest&category=salad&product=1`);
       const free_data = await res_free.json();
       const dessert_data = await res_dessert.json();
       const drink_data = await res_drink.json();
@@ -57,7 +57,7 @@ export default function Recommend(){
 
             return (<a  key={Items} href={`products/${Items.data.items[0].item_id}`}>
                <div className={styles.re_container}>
-      <button className={styles.re_smallButton} style={{ backgroundImage: `url('http://localhost:8000/${Items.data.items[0].img}')` }}></button>
+      <button className={styles.re_smallButton} style={{ backgroundImage: `url('https://altermall.site/${Items.data.items[0].img}')` }}></button>
     
       <div className={styles.recommend_title}>{Items.data.items[0].item_name}</div>
       <div className={styles.recommend_image}>{categoryS[i]}</div>
