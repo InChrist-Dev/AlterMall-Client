@@ -229,9 +229,13 @@ const NavigationBar = () => {
                
               )}
                </li>
+               <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li><a href="/master">장인소개</a></li>
+            <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li><a href="/menu3">건강정보</a></li>
+            <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li><a href="/menu3">이벤트</a></li>
+            <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li onClick={toggleMenu}>닫기</li>
           </ul>
         </nav>
