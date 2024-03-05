@@ -52,7 +52,7 @@ const NavigationBar = () => {
     if (search.length == 0) {
       setIsKeywordMenu(true);
     } else {
-      fetch(`https://altermall.site/category/search?name=${search}`, {
+      fetch(`http://localhost:8000/category/search?name=${search}`, {
 
       })
         .then((res) => res.json())

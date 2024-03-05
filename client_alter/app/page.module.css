@@ -338,7 +338,7 @@
   
   .imageButtonGridMobile {
     display: grid;
-    grid-template-columns: repeat(4, 90px);
+    grid-template-columns: repeat(4, 82px);
     gap: 5px;
     align-items: center;
     margin: 0 auto;

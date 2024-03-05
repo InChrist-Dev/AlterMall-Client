@@ -51,7 +51,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   const handleSubmit = async () => {
     
     try {
-      const response = await fetch('https://altermall.site/customer/deliver', {
+      const response = await fetch('http://localhost:8000/customer/deliver', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -86,7 +86,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
 
   const delDeliver = async (id) => {
     try {
-      const response = await fetch(`https://altermall.site/customer/deliver/${id}`, {
+      const response = await fetch(`http://localhost:8000/customer/deliver/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,

@@ -61,7 +61,7 @@ const ItemPage = (props) => {
     
      
 
-      fetch(`https://altermall.site/customer/cart/`, {
+      fetch(`http://localhost:8000/customer/cart/`, {
         method: 'POST',
         headers: {
           "content-type": "application/json",
@@ -174,7 +174,7 @@ const ItemPage = (props) => {
       <div key={item} className={styles.productCard}>
         <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
-            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
+            <img src={`http://localhost:8000/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
               handleSubmit(item.item_id);}}>+</button>
             <h3> {item.item_name}</h3>
