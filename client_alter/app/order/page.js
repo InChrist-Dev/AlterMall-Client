@@ -306,7 +306,7 @@ const Checkout = () => {
       <label>배송시 요청사항</label>
       <div>
        {/* 옵션 선택 */}
-       <select value={requestOption} onChange={handleOptionChange}>
+       <select className={styles.selectRequest} value={requestOption} onChange={handleOptionChange}>
           <option value="">선택하세요</option>
           <option value="노크x">노크x</option>
           <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
