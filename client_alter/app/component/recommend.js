@@ -42,7 +42,7 @@ export default function Recommend(){
     };
     return (
     
-    <div style={{width:'80%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
+    <div  className={styles.titleMobile} style={{width:'80%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
     {/* 장인 버튼 <button onClick={toggleShowMore} className={styles.moreButton}>

@@ -338,13 +338,16 @@
   
   .imageButtonGridMobile {
     display: grid;
-    grid-template-columns: repeat(4, 82px);
+    grid-template-columns: repeat(2, 175px);
     gap: 5px;
     align-items: center;
     margin: 0 auto;
     margin-bottom: 20px;
   }
   
+  .titleMobile{
+    display:none;
+  }
   .largeButton {
     width: 100%;
     height: 100%;
