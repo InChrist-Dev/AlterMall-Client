@@ -1,157 +1,315 @@
 /* category.module.css */
-
-/* YourComponent.module.css */
-.sortAndScroll {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: #eee;
-  padding:5px;
-  color: #7c7c7c;
-}
-
-.sortButtons button,
-.scrollButtons button {
-  padding: 10px;
-  font-size: 15px;
-  background-color: #eee;
-  color: #7c7c7c;
-  border: none;
-
-  cursor: pointer;
-  
-}
-.sortButtons button.activeButton,
-.scrollButtons button.activeButton {
-
-  font-weight: bold;
-
-  color: #ff9100;
-  border: none;
-
-  cursor: pointer;
-  border-radius: 5px;
-  
-}
-
-
-.sortButtons button:hover,
-.scrollButtons button:hover {
-
-  color: #ff9100;
-}
-
-
-
-  .productContainer {
+@media screen and (min-width: 451px) {
+  .sortAndScroll {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin: 0 auto;
-  }
-.productLink {
-  position: relative;
-}
-
-.cartBtn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
-  width: 40px; /* 버튼의 너비 조정 */
-  height: 40px; /* 버튼의 높이 조정 */
-  border: 2px;
-
-  background-color: #ff9100;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
-  /* 다른 스타일 조정이 필요하면 추가하세요 */
-}
-.productCard button:hover {
-  background-color: #e48202;
-}
-  .productCard {
-    text-decoration: none;
-    margin: 25px;
-
-    
-    transition: transform 0.3s ease-in-out;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #eee;
+    padding:5px;
+    color: #7c7c7c;
   }
   
-  .productCard:hover {
-    transform: scale(1.05);
-  }
+  .sortButtons button,
+  .scrollButtons button {
+    padding: 10px;
+    font-size: 15px;
+    background-color: #eee;
+    color: #7c7c7c;
+    border: none;
   
-  .productCard h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
+    cursor: pointer;
     
   }
-
-  .productCard img {
-    width:300px;
-    height: 300px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    
-  }
+  .sortButtons button.activeButton,
+  .scrollButtons button.activeButton {
   
-  .productCard p {
-    font-size: 20px;
     font-weight: bold;
-    color: red;
-    margin: 5px 0;
+  
+    color: #ff9100;
+    border: none;
+  
+    cursor: pointer;
+    border-radius: 5px;
+    
   }
   
-
   
- 
-  .activeButton {
-  background-color: #1d1212;
+  .sortButtons button:hover,
+  .scrollButtons button:hover {
+  
+    color: #ff9100;
+  }
+  
+  
+  
+    .productContainer {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0 auto;
+    }
+  .productLink {
+    position: relative;
+  }
+  
+  .cartBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
+    width: 40px; /* 버튼의 너비 조정 */
+    height: 40px; /* 버튼의 높이 조정 */
+    border: 2px;
+  
+    background-color: #ff9100;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    /* 다른 스타일 조정이 필요하면 추가하세요 */
+  }
+  .productCard button:hover {
+    background-color: #e48202;
+  }
+    .productCard {
+      text-decoration: none;
+      margin: 25px;
+  
+      
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .productCard:hover {
+      transform: scale(1.05);
+    }
+    
+    .productCard h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+      
+    }
+  
+    .productCard img {
+      width:300px;
+      height: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+    .productCard p {
+      font-size: 20px;
+      font-weight: bold;
+      color: red;
+      margin: 5px 0;
+    }
+    
+  
+    
+   
+    .activeButton {
+    background-color: #1d1212;
+  }
+  
+  .caTitle{
+    font-size: 36px;
+    padding: 10px;
+  }
+  
+  .dropInput{
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    border: 0;
+    background-color: #eee;
+    color: #7c7c7c;
+    font-weight: bold;
+  }
+  
+  /* category.module.css */
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  
+  .pageNumber {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .activePage {
+    background-color: #ff9100;
+    color: #fff;
+    cursor: default;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ff9100;
+    border-radius: 5px;
+  }
+  
 }
+/* YourComponent.module.css */
+@media screen and (max-width: 450px) {
+  .sortAndScroll {
 
-.caTitle{
-  font-size: 36px;
-  padding: 10px;
-}
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #eee;
+    padding:5px;
 
-.dropInput{
-  width: 100px;
-  height: 30px;
-  border-radius: 3px;
-  margin-right: 10px;
-  border: 0;
-  background-color: #eee;
-  color: #7c7c7c;
-  font-weight: bold;
-}
-
-/* category.module.css */
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 100px;
-}
-
-.pageNumber {
-  cursor: pointer;
-  padding: 5px;
-  margin: 0 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.activePage {
-  background-color: #ff9100;
-  color: #fff;
-  cursor: default;
-  padding: 5px;
-  margin: 0 5px;
-  border: 1px solid #ff9100;
-  border-radius: 5px;
+  }
+  
+  .sortButtons button,
+  .scrollButtons button {
+    padding: 10px;
+    font-size: 15px;
+    background-color: #eee;
+    color: #7c7c7c;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+    
+  }
+  .sortButtons button.activeButton,
+  .scrollButtons button.activeButton {
+  
+    font-weight: bold;
+  
+    color: #ff9100;
+    border: none;
+  
+    cursor: pointer;
+    border-radius: 5px;
+    
+  }
+  
+  
+  .sortButtons button:hover,
+  .scrollButtons button:hover {
+  
+    color: #ff9100;
+  }
+  
+  
+  
+    .productContainer {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0 auto;
+    }
+  .productLink {
+    position: relative;
+  }
+  
+  .cartBtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
+    width: 30px; /* 버튼의 너비 조정 */
+    height: 30px; /* 버튼의 높이 조정 */
+    border: 2px;
+  
+    background-color: #ff9100;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    /* 다른 스타일 조정이 필요하면 추가하세요 */
+  }
+  .productCard button:hover {
+    background-color: #e48202;
+  }
+    .productCard {
+      text-decoration: none;
+      margin: 25px;
+  
+      
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .productCard:hover {
+      transform: scale(1.05);
+    }
+    
+    .productCard h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #333;
+      
+    }
+  
+    .productCard img {
+      width:150px;
+      height: 150px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+    .productCard p {
+      font-size: 16px;
+      font-weight: bold;
+      color: red;
+      margin: 5px 0;
+    }
+    
+  
+    
+   
+    .activeButton {
+    background-color: #1d1212;
+  }
+  
+  .caTitle{
+    font-size: 36px;
+    padding: 10px;
+  }
+  
+  .dropInput{
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    border: 0;
+    background-color: #eee;
+    color: #7c7c7c;
+    font-weight: bold;
+  }
+  
+  /* category.module.css */
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
+  
+  .pageNumber {
+    cursor: pointer;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .activePage {
+    background-color: #ff9100;
+    color: #fff;
+    cursor: default;
+    padding: 5px;
+    margin: 0 5px;
+    border: 1px solid #ff9100;
+    border-radius: 5px;
+  }
+  
 }

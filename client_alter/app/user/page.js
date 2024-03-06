@@ -29,7 +29,7 @@ const MyPage = () => {
   const [name,setName]= useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/user/mypage`, {
+      const response = await fetch(`http://localhost:8000/user/mypage`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -37,11 +37,11 @@ const MyPage = () => {
         credentials: 'include',
       });
       const data2 = await response.json();
-      if(data2.loginFail){
+      // if(data2.loginFail){
       
-        Cookies.remove('accessToken');
-        window.location.href='https://altermall.shop/loginPage';
-      }
+      //   Cookies.remove('accessToken');
+      //   window.location.href='http://localhost:8000/loginPage';
+      // }
 
       setName(data2.data.name)
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.

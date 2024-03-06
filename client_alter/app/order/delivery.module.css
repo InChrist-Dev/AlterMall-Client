@@ -1,4 +1,5 @@
- .modalOverlay {
+@media screen and (min-width: 451px) {
+  .modalOverlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -143,3 +144,157 @@
     border: none;
     align-items: center;
   }
+ }
+ 
+ @media screen and (max-width: 450px) {
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    align-items: center;
+  }
+  
+  .modalContent {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    background: white;
+    border-radius: 5px;
+    width: 90%;
+    height: 700px;
+    padding: 40px;
+  }
+
+  .addressContainer {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-block: 4px;
+    width: 100%;
+    padding: 10px;
+    border-width: 1px;
+    border-color: #acacac;
+    border-style: solid;
+    border-radius: 5px;
+  }
+
+  .deliverName{
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .elseInfo{
+    font-size: 12px;
+  }
+
+  .deleteText{
+    color: #f71e58;
+  }
+
+  .deliverContainer{
+    display: flex;
+    flex-direction: row;
+  }
+  .paddingDeliver{
+    flex-grow: 10;;
+  }
+
+  .showDeliver {
+    flex-grow: 0;
+    align-content: center;
+    margin-block: 10px;
+    font-size: 14px;
+  }
+  
+  .label {
+    margin-bottom: 5px;
+    color: #191919;
+  }
+  
+  .input {
+    margin-bottom: 20px;
+    padding: 10px;
+    height: 35px;
+    font-size: 16px;
+    border-color: #acacac;
+    border-width: 0 0 1px;
+  }
+  .input:focus {
+    outline: none;
+  }
+
+  .call{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 5px;
+  }
+
+  .inputCall {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-inline: 2px;
+    height: 35px;
+    font-size: 20px;
+    border-color: #acacac;
+    border-width: 0 0 1px;
+  }
+  .inputCall:focus {
+    outline: none;
+  }
+
+  .addressButton{
+    display: flex;
+  }
+  .serchButton{
+      width: 50%;
+      margin-block: 10px;
+      margin-inline: 10px;
+      padding: 10px;
+      background:#f57c19;
+      color: #fff;
+      border: none;
+      font-size: 14px;
+    }
+    
+  .buttonContainer{
+    display: flex;
+    
+    height: wrap;
+    align-items: center;
+  }
+
+  .acceptButton{
+    width: 50%;
+    height: 54px;
+    margin-block: 5px;
+    background:#f57c19;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    align-items: center;
+  }
+
+  .cancelButton{
+    width: 50%;
+    height: 54px;
+    border: 1px solid #888;
+    margin-block: 5px;
+    border-radius: 5px;
+    background: #fff;
+    color: #888;
+    font-size: 20px;
+ 
+    align-items: center;
+  }
+ }
+ 
+ 
