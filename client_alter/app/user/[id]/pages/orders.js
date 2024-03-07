@@ -16,7 +16,7 @@ const OrderHistory = () => {
     const fetchData = async () => {
       const response = await fetch(`http://localhost:8000/customer/order/`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InJhYmUiLCJpYXQiOjE3MDk1MTg0MTksImV4cCI6MTcwOTYwNDgxOX0.IDX3t-CqB-ESap8A1IiRI04oVHj0-YwTfn-2HACb_Wo`,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMTcyMzQ0ODU4NTY4ODIxNTA2MyIsImlhdCI6MTcwOTc5ODAxOCwiZXhwIjoxNzA5ODEyNDE4fQ.FRRKHhRKIuq8v9oqJVaTzlaeM2YGy9jBG-kCrr8kjkw`,
           'Content-Type': 'application/json',
         },
         credentials: 'include',
@@ -108,30 +108,31 @@ const OrderHistory = () => {
                 </div>
                 </div>
                 <div className={styles.descriptBox}>
-                  <div>
+                <div>
+                    {order.state != 'cancelled' ? <button className={styles.deleteButton}
+                      onClick={() => { Cancel(order.order_id) }
+                      }
+                    >주문 취소
+                    </button> : ''}
+                  </div>
+                  <div className={styles.descriptStyle}>
                     <p>{order.delivery_type === 'daily' ? (
                       <img src='../../today.jpg' className={styles.postImage} alt="따끈 배송" />
                     ) : order.delivery_type === 'normal' ? (
                       <img src='../../post.jpg' className={styles.postImage} alt="택배 배송" />
                     ) : null}</p>
-                    <p>  {order.state === 'paid' ? (
-                      <span>결제완료</span>
+                    <p className={styles.pStyle}>  {order.state === 'paid' ? (
+                      <span style={{'color':'green','fontWeight':'bold'}}>결제완료</span>
                     ) : order.state === 'accept' ? (
-                      <span>제조중</span>
+                      <span style={{'color':'red','fontWeight':'bold'}}>제조중</span>
                     ) : order.state === 'deliver' ? (
-                      <span>전송완료</span>
+                      <span style={{'color':'blue','fontWeight':'bold'}}>전송완료</span>
                     ) : order.state === 'cancelled' ? (
                       <span>결제취소</span>
                     ) : null}</p>
                   </div>
 
-                  <div>
-                    {order.state != 'cancelled' ? <button className={styles.deleteButton}
-                      onClick={() => { Cancel(order.order_id) }
-                      }
-                    >X
-                    </button> : ''}
-                  </div>
+              
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
                   <div>
                     <button
