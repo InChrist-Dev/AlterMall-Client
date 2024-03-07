@@ -376,9 +376,10 @@
   }
   
   .productImage img {
-    width: 400px;
+    width: 370px;
     object-fit: cover;
-    height: 400px;
+    margin: 0 auto;
+    height: 370px;
   }
   
   .productDetails {
