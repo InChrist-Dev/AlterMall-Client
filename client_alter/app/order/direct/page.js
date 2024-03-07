@@ -59,7 +59,7 @@ const Checkout = (props) => {
     if (delivery) {
       console.log(items);
 
-      await fetch('http://localhost:8000/customer/order', {
+      await fetch('https://altermall.site/customer/order', {
         method: 'post',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -83,7 +83,7 @@ const Checkout = (props) => {
         if (response.status == 405) {
           alert('주문 실패하였습니다');
         } else if (response.status == 201) {
-          await fetch('http://localhost:8000/customer/orderdetail',{
+          await fetch('https://altermall.site/customer/orderdetail',{
             method:'post',
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -119,7 +119,7 @@ const Checkout = (props) => {
             orderId: myUuid,
             amount: calculateTotalPrice()+4000,
             orderName: `${items.item_name}`,
-            successUrl: 'http://localhost:8000/customer/confirm',
+            successUrl: 'https://altermall.site/customer/confirm',
             failUrl: window.location.origin,
           })
         )
@@ -224,7 +224,7 @@ const Checkout = (props) => {
        
 
 
-      const response = await fetch(`http://localhost:8000/category/${props.searchParams.itemId}`);
+      const response = await fetch(`https://altermall.site/category/${props.searchParams.itemId}`);
       const data = await response.json();
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -246,7 +246,7 @@ const Checkout = (props) => {
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
 
 
-      const response2 = await fetch(`http://localhost:8000/customer/deliver`, {
+      const response2 = await fetch(`https://altermall.site/customer/deliver`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -396,7 +396,7 @@ const Checkout = (props) => {
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
-                        src={`http://localhost:8000/${items.img}`}
+                        src={`https://altermall.site/${items.img}`}
                         alt={items.item_name}
                         className={styles.productImage}
                       />

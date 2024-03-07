@@ -14,7 +14,7 @@ const OrderHistory = () => {
   const [selectedOrder, setSelectedOrder] = useState(false)
   try {
     const fetchData = async () => {
-      const response = await fetch(`http://localhost:8000/customer/order/`, {
+      const response = await fetch(`https://altermall.site/customer/order/`, {
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMTcyMzQ0ODU4NTY4ODIxNTA2MyIsImlhdCI6MTcwOTc5ODAxOCwiZXhwIjoxNzA5ODEyNDE4fQ.FRRKHhRKIuq8v9oqJVaTzlaeM2YGy9jBG-kCrr8kjkw`,
           'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const OrderHistory = () => {
               <div className={styles.orderBox}>
               <div className={styles.orderBox}>
                 <img
-                  src={`/4444.jpg`} //http://localhost:8000/${order.OrderDetails[0].img}
+                  src={`/4444.jpg`} //https://altermall.site/${order.OrderDetails[0].img}
                   alt={order.OrderDetails[0].item_name}
                   className={styles.productImage}
                 />

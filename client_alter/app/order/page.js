@@ -57,7 +57,7 @@ const Checkout = () => {
     if (delivery) {
       console.log(items);
 
-      await fetch('http://localhost:8000/customer/order', {
+      await fetch('https://altermall.site/customer/order', {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -81,7 +81,7 @@ const Checkout = () => {
         orderId: info.order_id,
         amount: amount,
         orderName: `${firstItemName}외 ${otherItemsCount}건`,
-        successUrl: 'http://localhost:8000/customer/confirm',
+        successUrl: 'https://altermall.site/customer/confirm',
         failUrl: window.location.origin,
       });
 
@@ -201,7 +201,7 @@ const Checkout = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/customer/payproduct`, {
+      const response = await fetch(`https://altermall.site/customer/payproduct`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -216,7 +216,7 @@ const Checkout = () => {
 
       setItems(data.data.rows[0].OrderDetails);
 
-      const response2 = await fetch(`http://localhost:8000/customer/deliver`, {
+      const response2 = await fetch(`https://altermall.site/customer/deliver`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -370,7 +370,7 @@ const Checkout = () => {
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
-                        src={`http://localhost:8000/${items.img}`}
+                        src={`https://altermall.site/${items.img}`}
                         alt={items.item_name}
                         className={styles.productImage}
                       />
