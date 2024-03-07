@@ -241,15 +241,15 @@
     }
     
     .productCard h3 {
-      font-size: 18px;
+      font-size: 17px;
       margin-bottom: 10px;
       color: #333;
-      width: 140px;
+      width: 130px;
     }
   
     .productCard img {
-      width:150px;
-      height: 150px;
+      width:140px;
+      height: 140px;
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       
