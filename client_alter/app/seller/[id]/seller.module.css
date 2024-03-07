@@ -1,137 +1,280 @@
 /* seller.module.css */
-
-.container {
-  position: relative;
-  width: 100%;
-  height: 1300px;
-  min-width: 1500px;
-  overflow: hidden;
-}
-.logo{
-  width: 250px;
-  height: 100px;
-  margin: 100px 20px;
-}
-
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  z-index: -1;
- 
-  filter: brightness(100%);  /* 기본 밝기 설정 */
+@media screen and (min-width: 451px) {
+  .container {
+    position: relative;
+    width: 100%;
+    height: 1300px;
+    min-width: 1500px;
+    overflow: hidden;
+  }
+  .logo{
+    width: 250px;
+    height: 100px;
+    margin: 100px 20px;
+  }
+  
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    z-index: -1;
+   
+    filter: brightness(100%);  /* 기본 밝기 설정 */
+    
+  }
+  
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    color: #fff;
+  
+  }
+  
+  .title {
+    font-size: 50px;
+    margin: 100px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .subscribeButton {
+    background: linear-gradient(to left, #D91801, #f5af19);
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 적용 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
+  }
+  .arrowButton
+  {
+    background: #333;
+    color: #fff;
+    padding: 15px 30px;
+    width: 110px;
+    font-size: 24px;
+    font-weight: 800;
+    margin: 5px;
+    cursor: pointer;
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 적용 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
+  }
+  .subscribeButton:hover,
+  .arrowButton:hover {
+    background-color: #D91801; /* hover 시 배경색 변경 */
+  }
+  
+  .episodeImage{
+    height: 100%;
+    width: 100%;
+  }
+  .description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    margin-top:300px;
+    width: 900px;
+  }
+  .slogan {
+    font-size: 30px;
+  }
+  .episodeContainer {
+    margin-top: 30px;
+  }
+  
+  .episodeTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .episodeSlider {
+    display: flex;
+  
+    gap: 20px;
+    transition: transform 0.3s ease; /* 추가: 슬라이드 애니메이션 효과 */
+    /* 여기에 추가적인 스타일링을 원하면 여기에 추가하세요 */
+  }
+  .leftArrow,
+  .rightArrow {
+    font-size: 20px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
+  
+  
+  .episodeCard {
+    flex-shrink: 0;
+    width: 400px;
+    height: 300px;
+    background-color: #333;
+  
+    border-radius: 10px;
+    /* 에피소드 카드의 스타일을 추가하세요 */
+  }
+  
+  .youtube{
+    margin:100px;
+    padding-top: 80px;
+  }
   
 }
 
-
-.content {
-  position: relative;
-  z-index: 1;
-  padding: 30px;
-  color: #fff;
-
+/* seller.module.css */
+@media screen and (max-width: 450px) {
+  .container {
+    position: relative;
+    width: 100%;
+    height: 1300px;
+    min-width: 400px;
+    overflow: hidden;
+  }
+  .logo{
+    width: 150px;
+    height: 60px;
+    margin: 100px 20px;
+  }
+  
+  
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  
+    z-index: -1;
+   
+    filter: brightness(100%);  /* 기본 밝기 설정 */
+    
+  }
+  
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    color: #fff;
+  
+  }
+  
+  .title {
+    font-size: 30px;
+    margin: 80px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  
+  .subscribeButton {
+    background: linear-gradient(to left, #D91801, #f5af19);
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    cursor: pointer;
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 적용 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
+  }
+  .arrowButton
+  {
+    background: #333;
+    color: #fff;
+    padding: 15px 20px;
+    width: 80px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 5px;
+    cursor: pointer;
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 둥근 테두리 적용 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
+  }
+  .subscribeButton:hover,
+  .arrowButton:hover {
+    background-color: #D91801; /* hover 시 배경색 변경 */
+  }
+  
+  .episodeImage{
+    height: 100%;
+    width: 100%;
+  }
+  .description {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-top:100px;
+    width: 100%;
+  }
+  .slogan {
+    font-size: 20px;
+  }
+  .episodeContainer {
+    margin-top: 30px;
+  }
+  
+  .episodeTitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .episodeSlider {
+    display: flex;
+  
+    gap: 20px;
+    transition: transform 0.3s ease; /* 추가: 슬라이드 애니메이션 효과 */
+    /* 여기에 추가적인 스타일링을 원하면 여기에 추가하세요 */
+  }
+  .leftArrow,
+  .rightArrow {
+    font-size: 16px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
+  
+  
+  .episodeCard {
+    flex-shrink: 0;
+    width: 400px;
+    height: 300px;
+    background-color: #333;
+  
+    border-radius: 10px;
+    /* 에피소드 카드의 스타일을 추가하세요 */
+  }
+  
+  .youtube{
+    margin:100px;
+    padding-top: 80px;
+  }
+  
 }
 
-.title {
-  font-size: 50px;
-  margin: 100px 0;
-  display: flex;
-  align-items: center;
-}
-
-
-.subscribeButton {
-  background: linear-gradient(to left, #D91801, #f5af19);
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 15px;
-  cursor: pointer;
-  border: none; /* 테두리 제거 */
-  border-radius: 5px; /* 둥근 테두리 적용 */
-  transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
-}
-.arrowButton
-{
-  background: #333;
-  color: #fff;
-  padding: 15px 30px;
-  width: 110px;
-  font-size: 24px;
-  font-weight: 800;
-  margin: 5px;
-  cursor: pointer;
-  border: none; /* 테두리 제거 */
-  border-radius: 5px; /* 둥근 테두리 적용 */
-  transition: background-color 0.3s ease; /* 배경색 변화에 트랜지션 효과 적용 */
-}
-.subscribeButton:hover,
-.arrowButton:hover {
-  background-color: #D91801; /* hover 시 배경색 변경 */
-}
-
-.episodeImage{
-  height: 100%;
-  width: 100%;
-}
-.description {
-  font-size: 1rem;
-  margin-bottom: 20px;
-  margin-top:300px;
-  width: 900px;
-}
-.slogan {
-  font-size: 30px;
-}
-.episodeContainer {
-  margin-top: 30px;
-}
-
-.episodeTitle {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.episodeSlider {
-  display: flex;
-
-  gap: 20px;
-  transition: transform 0.3s ease; /* 추가: 슬라이드 애니메이션 효과 */
-  /* 여기에 추가적인 스타일링을 원하면 여기에 추가하세요 */
-}
-.leftArrow,
-.rightArrow {
-  font-size: 20px;
-  cursor: pointer;
-  color: #D91801;
-  position: absolute;
-  top: 50%;
-  padding: 10px;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.rightArrow {
-  right: 0;
-}
-
-
-.episodeCard {
-  flex-shrink: 0;
-  width: 400px;
-  height: 300px;
-  background-color: #333;
-
-  border-radius: 10px;
-  /* 에피소드 카드의 스타일을 추가하세요 */
-}
-
-.youtube{
-  margin:100px;
-  padding-top: 80px;
-}

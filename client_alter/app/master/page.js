@@ -16,7 +16,7 @@ const [favorites, setFavorites] = useState([false]); // Initialize with false fo
 
 const fetchData = async () => {
   try {
-    const response = await fetch(`https://altermall.site/User/seller`);
+    const response = await fetch(`http://localhost:8000/User/seller`);
     const data = await response.json();
 
     // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
