@@ -243,7 +243,7 @@ const NavigationBar = () => {
           </div>
 
           {/* 로고 이미지 */}
-          <a href='/'><img src="/logo1.jpg" alt="로고" className="logo" /></a>
+          <a href='/'><img src="/logo2.png" alt="로고" className="logo" /></a>
           {/* 장바구니 및 유저 아이콘 */}
           <div className="cartUserIcons">
             {
