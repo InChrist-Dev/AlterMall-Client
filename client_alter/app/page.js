@@ -28,7 +28,8 @@ const HomePage = () => {
       <CategoryButtons/>
      {/* <Recommend/> */}
   
-     
+     {/* <div style={{border:'0.5px solid #ccc'}}></div> */}
+      <Recommend/>
     </div>
   );
 };

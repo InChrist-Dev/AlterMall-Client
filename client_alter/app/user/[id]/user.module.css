@@ -1,126 +1,269 @@
-.myPageContainer {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  width: 90%;
-  min-width: 1000px;
-  margin: 0 auto;
-}
-
-.menuItem{
-  text-decoration-line: none;
-  color: #111;
-}
-.menuItem:hover{
-  color: #f5af19;
-}
-
-.topArea {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin-bottom: 20px;
-  background-color: #faf5ec; /* 추가: 전체 배경색 회색 설정 */
-}
-
-.greeting {
-  font-size: 1.5rem;
-  font-weight: 500;
-  background-color: white; /* 추가: 하얀색 배경 설정 */
-  padding: 30px; /* 추가: 내부 간격 설정 */
-  border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
- width: 500px;
- height: 160px;
-
-}
-.lank{
-  font-size: 14px;
-  font-weight: 400;
-  color: #777;
-}
-
-.orderInfo {
-  display: flex;
-  font-size: 20px;
-  background-color: white; /* 추가: 하얀색 배경 설정 */
-  padding: 10px; /* 추가: 내부 간격 설정 */
-  border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
-
-  align-items: center;
-  justify-content: center;
-}
-.couInfo {
-
-  font-size: 20px;
-  background-color: white; /* 추가: 하얀색 배경 설정 */
-  text-align: center;
-  padding: 10px;
-  width: 200px;
-  height: 160px;
-  color: #777;
-}
-.coupon{
-  font-weight: 600;
-  font-size: 50px;
-  padding-top: 10px;
-  color:#111
-}
-
-
-  .middleArea {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .sideMenu {
-    width: 200px;
-    border: 1px solid #ddd; /* 추가: 테두리 추가 */
-    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
-    padding: 10px; /* 추가: 내부 간격 설정 */
-  }
-
-  
-  .sideMenu {
-    width: 200px;
-  }
-  
-  .menuCategory {
-    font-weight: bold;
-    margin-top: 15px;
-    margin-bottom: 5px;
-  }
-  
-  .sideMenu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 10px 0;
-  }
-  
-  .sideMenu li {
-    cursor: pointer;
-    margin-bottom: 5px;
-  }
-  
-  .rightArea {
-    flex-grow: 1;
+@media screen and (min-width: 451px) {
+  .myPageContainer {
     display: flex;
     flex-direction: column;
+    padding: 20px;
+    width: 90%;
+    min-width: 1000px;
+    margin: 0 auto;
   }
   
-  .recentOrders {
+  .menuItem{
+    text-decoration-line: none;
+    color: #111;
+  }
+  .menuItem:hover{
+    color: #f5af19;
+  }
+  
+  .topArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     border: 1px solid #ddd;
-    padding: 10px;
     border-radius: 5px;
-    margin-bottom: 300px;
-    margin-right: 20px; /* 추가: 오른쪽 여백 추가 */
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #faf5ec; /* 추가: 전체 배경색 회색 설정 */
   }
   
-  .recentOrders h3 {
-    font-size: 1.2rem;
+  .greeting {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 30px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+   width: 500px;
+   height: 160px;
+  
+  }
+  .lank{
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
+  }
+  
+  .orderInfo {
+    display: flex;
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 10px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+  
+    align-items: center;
+    justify-content: center;
+  }
+  .couInfo {
+  
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    height: 160px;
+    color: #777;
+  }
+  .coupon{
+    font-weight: 600;
+    font-size: 50px;
+    padding-top: 10px;
+    color:#111
+  }
+  
+  
+    .middleArea {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .sideMenu {
+      width: 200px;
+      border: 1px solid #ddd; /* 추가: 테두리 추가 */
+      border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+      padding: 10px; /* 추가: 내부 간격 설정 */
+    }
+  
+    
+    .sideMenu {
+      width: 200px;
+    }
+    
+    .menuCategory {
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    
+    .sideMenu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    
+    .sideMenu li {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    
+    .rightArea {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .recentOrders {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 300px;
+      margin-right: 20px; /* 추가: 오른쪽 여백 추가 */
+    }
+    
+    .recentOrders h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .topAreaMobile{
+    display: none;
+    }
+    .sideMenuMobile {
+      display: none;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+  .myPageContainer {
+    
+    flex-direction: column;
+    padding: 20px;
+    width: 90%;
+   
+    margin: 0 auto;
+  }
+  
+  .menuItem{
+    text-decoration-line: none;
+    color: #111;
+  }
+  .menuItem:hover{
+    color: #f5af19;
+  }
+  
+  .topArea {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
     margin-bottom: 10px;
+    background-color: #faf5ec; /* 추가: 전체 배경색 회색 설정 */
+  }
+  .topAreaMobile{
+    display: flex;
+  }
+  .greeting {
+    font-size: 20px;
+    font-weight: 500;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 30px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+   width: 300px;
+   height: 160px;
+  
+  }
+  .lank{
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
   }
   
+  .orderInfo {
+    display: flex;
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 10px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+  
+    align-items: center;
+    justify-content: center;
+  }
+  .couInfo {
+  
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    height: 160px;
+    color: #777;
+  }
+  .coupon{
+    font-weight: 600;
+    font-size: 50px;
+    padding-top: 10px;
+    color:#111
+  }
+  
+  
+    .middleArea {
+ 
+      gap: 20px;
+    }
+    
+    .sideMenuMobile {
+      display: flex;
+      width: 100%;
+      border: 1px solid #ddd; /* 추가: 테두리 추가 */
+      border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+      padding: 10px; /* 추가: 내부 간격 설정 */
+    }
+  
+    
+    .sideMenu {
+     display: none;
+    }
+    
+    .menuCategory {
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    
+    .sideMenuMobile ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    
+    .sideMenuMobile li {
+      cursor: pointer;
+      margin: 5px;
+    }
+    
+    .rightArea {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .recentOrders {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 300px;
+      margin-right: 20px; /* 추가: 오른쪽 여백 추가 */
+    }
+    
+    .recentOrders h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    
+}
+
+
+

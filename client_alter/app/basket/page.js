@@ -20,7 +20,7 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/customer/cart/`,{
+      const response = await fetch(`http://localhost:8000/customer/cart/`,{
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const ItemPage = (props) => {
      
  
     if(isStock == true){
-      await fetch('https://altermall.site/customer/order',{
+      await fetch('http://localhost:8000/customer/order',{
       method:'post',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -109,7 +109,7 @@ const ItemPage = (props) => {
     if (response.status == 405) {
       alert('주문 실패하였습니다');
     } else if (response.status == 201) {
-      await fetch('https://altermall.site/customer/orderdetail',{
+      await fetch('http://localhost:8000/customer/orderdetail',{
         method:'post',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -199,7 +199,7 @@ const ItemPage = (props) => {
   const Cancel = useCallback(
     (id) => {
      
-      fetch(`https://altermall.site/customer/cart/${id}`, {
+      fetch(`http://localhost:8000/customer/cart/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -257,10 +257,10 @@ const ItemPage = (props) => {
                     onChange={() => toggleItemSelection(index)}
                   />
                 </td>
-                <td style={{display:'flex' , alignItems: 'center',}}>
+                <td  className={styles.nameContainer} >
                   
                   <img
-                    src={`https://altermall.site/${items.Item.img}`}
+                    src={`http://localhost:8000/${items.Item.img}`}
                     alt={items.Item.item_name}
                     className={styles.productImage}
                   />

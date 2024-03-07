@@ -1,221 +1,427 @@
 /* page.module.css */
-.container {
-  background-color: white;
-  padding: 20px;
+
+@media screen and (min-width: 451px) {
+  .container {
+    background-color: white;
+    padding: 20px;
+    
+    flex-direction: column;
+    align-items: center;
+  }
   
-  flex-direction: column;
-  align-items: center;
-}
-
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.logo {
-  width: 180px;
-  height: auto;
-}
-.moreButton{
-  background-color: #ffffff;
-  border: 0;
-  padding: 15px;
-  color: #777;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.moreButton:hover{
-  background-color: #ffffff;
-  border: 0;
-  padding: 15px;
-  color: #f5af19;
-  font-weight: bold;
-  font-size: 15px;
-}
-.searchContainer {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  width: 80%;
-}
-
-.searchInput {
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid #D91801;
-  border-radius: 5px;
-  margin: 0 10px;
-  background-color: white;
-  width: 100%;
-  max-width: 1000px;
-}
-
-.searchButton {
-  background: linear-gradient(to left, #D91801, #f5af19);
-  color: #fff;
-  padding: 10px 15px;
-  font-size: 16px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  height: 45px;
-  align-items: center;
-  min-width: 80px;
-}
-
-.cartUserIcons {
-  display: flex;
-  align-items: center;
-}
-
-.cartIcon,
-.userIcon {
-  font-size: 24px;
-  cursor: pointer;
-  margin: 14px;
-  color: #D91801;
-}
-
-.slider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 0px 0;
-  z-index: 1; /* slider에 z-index 값을 추가 */
-}
-
-.imageSlider {
-  display: flex;
-  transition: transform 0.5s;
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.sliderImage {
-  width: 100%;
-  height: 450px;
-  flex: 0 0 auto;
-  object-fit: cover;
-}
-
-.leftArrow,
-.rightArrow {
-  max-width: 30px;
-  max-height: 30px;
-  cursor: pointer;
-  color: #D91801;
-  position: absolute;
-  top: 50%;
-  padding: 10px;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-.rightArrow {
-  right: 0;
-}
-
-.categoryTitle {
-  margin-bottom: 20px;
-
-  font-size: 35px;
-  font-weight: bold;
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
   
-}.categorySub {
-  margin-bottom: 10px;
-  font-weight: 600;
-  font-size: 20px;
-  color: grey;
+  .logo {
+    width: 180px;
+    height: auto;
+  }
+  .moreButton{
+    background-color: #ffffff;
+    border: 0;
+    padding: 15px;
+    color: #777;
+    font-weight: bold;
+    font-size: 15px;
+  }
   
-}
-
-.imageButtonGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-
-  align-items: center;
-  margin: 0 auto;
-  margin-bottom: 20px;
-}
-
-.largeButton {
-  width: 100%;
-  height: 100%;
-  background-color: lightcoral;
-  grid-row: span 2;
-  border: 0;
-  transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
-
-  /* Initial styling */
-  filter: brightness(100%);
-}
-.largeButton:hover{
-  filter: brightness(80%);
-}
-
-.smallButton {
-  width: 100%;
-  height: 300px;
-  background-color: lightblue;
-}
-
-.re_largeButton {
-  width: 100%;
-  height: 450px;
-  background-color: rgba(255, 255, 255, 0);
-  grid-row: span 2;
-  margin: 50px;
-  border: 0px;
+  .moreButton:hover{
+    background-color: #ffffff;
+    border: 0;
+    padding: 15px;
+    color: #f5af19;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  .searchContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    width: 80%;
+  }
   
-}
-
-.re_smallButton {
-  width: 100%;
-  height: 200px;
-  border-radius: 5px;
-  background-size: cover; /* 배경 이미지 크기 조절 */
-  border: 3px solid #fff;
-  margin:  10px 20px 0px 0px;
-}
-.re_container{
-  margin: 0 auto;
-  padding: 10px;
-  border-radius: 10px;
-  width:300px;
-  height:300px;
-  background-color: #fff
-}
-.artisanButtons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  padding: 60px 20px;
-  width: 100%;
-  height: 800px;
-  margin: 0 auto;
-  background-image:url('../public/pro.jpg');
-  border-radius: 50px;
-  background-size: cover; /* 배경 이미지 크기 조절 */
-}
-
-.recommend_title{
-  color: #000;
-  font-weight: bold;
-  font-size: 20px;
-}.recommend_price{
-  color: #000;
+  .searchInput {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #D91801;
+    border-radius: 5px;
+    margin: 0 10px;
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+  }
   
-  font-size: 17px;
+  .searchButton {
+    background: linear-gradient(to left, #D91801, #f5af19);
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    min-width: 80px;
+  }
+  
+  .cartUserIcons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cartIcon,
+  .userIcon {
+    font-size: 24px;
+    cursor: pointer;
+    margin: 14px;
+    color: #D91801;
+  }
+  
+  .slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0px 0;
+    z-index: 1; /* slider에 z-index 값을 추가 */
+  }
+  
+  .imageSlider {
+    display: flex;
+    transition: transform 0.5s;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .sliderImage {
+    width: 100%;
+    height: 450px;
+    flex: 0 0 auto;
+    object-fit: cover;
+  }
+  
+  .leftArrow,
+  .rightArrow {
+    font-size: 20px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
+  
+  .categoryTitle {
+    margin-bottom: 20px;
+  
+    font-size: 35px;
+    font-weight: bold;
+    
+  }
+  .categoryTitleMobile {
+    display: none;
+     
+   }
+  .categorySub {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: grey;
+    
+  }
+  
+  .imageButtonGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  .imageButtonGridMobile {
+    display: none;
+     
+   }
+  .largeButton {
+    width: 100%;
+    height: 100%;
+    background-color: lightcoral;
+    grid-row: span 2;
+    border: 0;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+  
+    /* Initial styling */
+    filter: brightness(100%);
+  }
+  .largeButton:hover{
+    filter: brightness(80%);
+  }
+  
+  .smallButton {
+    width: 100%;
+    height: 300px;
+    background-color: lightblue;
+  }
+  
+  .re_largeButton {
+    width: 100%;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0);
+    grid-row: span 2;
+    margin: 50px;
+    border: 0px;
+    
+  }
+  
+  .re_smallButton {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    border: 3px solid #fff;
+    margin:  10px 20px 0px 0px;
+  }
+  .re_container{
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    width:300px;
+    height:300px;
+    background-color: #fff
+  }
+  .artisanButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 60px 20px;
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+    background-image:url('../public/pro.jpg');
+    border-radius: 50px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+  }
+  
+  .recommend_title{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+  }.recommend_price{
+    color: #000;
+    
+    font-size: 17px;
+  }
+  
+  .recommend_image{
+    color: #D91801;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  /* Add more styles as needed */
 }
 
-.recommend_image{
-  color: #D91801;
-  font-weight: bold;
-  font-size: 13px;
+/* page.module.css */
+
+@media screen and (max-width: 450px) {
+  .imageButtonGrid {
+    display: none;
+     
+   }
+   .categoryTitle {
+    display: none;
+     
+   }
+  .container {
+    background-color: white;
+    padding: 20px;
+    
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+
+  .moreButton{
+    background-color: #ffffff;
+    border: 0;
+    padding: 15px;
+    color: #777;
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  .moreButton:hover{
+    background-color: #ffffff;
+    border: 0;
+    padding: 15px;
+    color: #f5af19;
+    font-weight: bold;
+    font-size: 15px;
+  }
+
+
+  
+
+  
+  .slider {
+    width: 85%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    z-index: 1; /* slider에 z-index 값을 추가 */
+  }
+  
+  .imageSlider {
+    display: flex;
+    transition: transform 0.5s;
+    height: 100%;
+    margin-bottom: 40px;
+    border-radius: 10px;
+  }
+  
+  .sliderImage {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 30px;
+    margin: 0 auto;
+    flex: 0 0 auto;
+    object-fit: cover;
+  }
+  
+  .leftArrow,
+  .rightArrow {
+    font-size: 20px;
+    cursor: pointer;
+    color: #D91801;
+    position: absolute;
+    top: 50%;
+    padding: 10px;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .rightArrow {
+    right: 0;
+  }
+  
+  .categoryTitleMobile {
+    margin-bottom: 20px;
+  
+    font-size: 20px;
+    font-weight: bold;
+    
+  }.categorySub {
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: grey;
+    
+  }
+  
+  .imageButtonGridMobile {
+    display: grid;
+    grid-template-columns: repeat(2, 175px);
+    gap: 5px;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+  
+  .titleMobile{
+    display:none;
+  }
+  .largeButton {
+    width: 100%;
+    height: 100%;
+    background-color: lightcoral;
+    grid-row: span 2;
+    border: 0;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+    /* Initial styling */
+    filter: brightness(100%);
+  }
+  .largeButton:hover{
+    filter: brightness(80%);
+  }
+  
+  .smallButton {
+    width: 100%;
+    height: 350px;
+    background-color: lightblue;
+    border-radius: 30px;
+  }
+  
+  .re_largeButton {
+    width: 100%;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0);
+    grid-row: span 2;
+    margin: 50px;
+    border: 0px;
+    
+  }
+  
+  .re_smallButton {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+    border: 3px solid #fff;
+    margin:  10px 20px 0px 0px;
+  }
+  .re_container{
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 10px;
+    width:300px;
+    height:300px;
+    background-color: #fff
+  }
+  .artisanButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 60px 20px;
+    width: 100%;
+    height: 800px;
+    margin: 0 auto;
+
+    border-radius: 50px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+  }
+  
+  .recommend_title{
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+  }.recommend_price{
+    color: #000;
+    
+    font-size: 17px;
+  }
+  
+  .recommend_image{
+    color: #D91801;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  /* Add more styles as needed */
 }
-/* Add more styles as needed */
+

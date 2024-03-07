@@ -1,9 +1,10 @@
-.myPageContainer {
+@media screen and (min-width: 451px) {
+  .myPageContainer {
     display: flex;
     flex-direction: column;
     padding: 20px;
     width: 90%;
-    min-width: 1000px;
+    min-width: 100px;
     margin: 0 auto;
   }
   
@@ -140,8 +141,8 @@
     }
     
     .deleteButton{
-      background-color: red;
-      color: #fff;
+  
+      color: #747474;
       font-weight: bold;
       padding: 4px;
       border-radius: 3px;
@@ -163,12 +164,274 @@
       background-color: #dfdfdf;
     }
     .postImage{
-      width: 100px;
+      width: 120px;
     }
     .productImage {
-      width: 100px;
+      width: 150px;
      
     }
     .detailTable{
       width:100%
     }
+    .AddressBox{
+      border-radius: 10px;
+      border: #ccc 1px solid;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .orderBox{
+      display: flex;
+      justify-content: space-between;
+    }
+    .titleBox{
+      margin: 10px 40px;
+      justify-content: center; 
+    }
+    .title{
+      font-weight: bold;
+      font-size: 22px;
+      
+    }
+    .orderTitle{
+      display: flex;
+    }
+    .price{
+      font-size: 14px;
+      margin:5px 20px;
+      font-weight: 600;
+      color: #999;
+    }
+    .descriptBox{
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items:end;
+      justify-content: right;
+    }
+    .descriptStyle{
+      display: flex;
+    flex-direction: column;
+    align-items: end;
+    }
+    .pStyle{
+      margin: 10px 0;
+    }
+}
+@media screen and (max-width: 450px) {
+  .myPageContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 90%;
+    min-width: 100px;
+    margin: 0 auto;
+  }
+  
+  .topArea {
+    display: flex;
+    
+    
+    gap: 20px;
+    border: 0 0 0 1px solid #ccc;
+  
+    padding: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #fff; /* 추가: 전체 배경색 회색 설정 */
+  }
+  .productImage{
+    width: 100px;
+    height: 100px;
+  }
+  .orderTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orderTable th,
+  .orderTable td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .orderTable th {
+    background-color: #f2f2f2;
+  }
+  
+  .orderRow:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .greeting {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 30px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+   width: 500px;
+   height: 160px;
+  
+  }
+  .lank{
+    font-size: 14px;
+    font-weight: 400;
+    color: #777;
+  }
+  
+  .orderInfo {
+    display: flex;
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    padding: 10px; /* 추가: 내부 간격 설정 */
+    border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+  
+    align-items: center;
+    justify-content: center;
+  }
+  .couInfo {
+  
+    font-size: 20px;
+    background-color: white; /* 추가: 하얀색 배경 설정 */
+    text-align: center;
+    padding: 10px;
+    width: 200px;
+    height: 160px;
+    color: #777;
+  }
+  .coupon{
+    font-weight: 600;
+    font-size: 50px;
+    padding-top: 10px;
+    color:#111
+  }
+  
+  
+    .middleArea {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .sideMenu {
+      width: 200px;
+      border: 1px solid #ddd; /* 추가: 테두리 추가 */
+      border-radius: 5px; /* 추가: 테두리 모서리 둥글게 만듦 */
+      padding: 10px; /* 추가: 내부 간격 설정 */
+    }
+  
+    
+    .sideMenu {
+      width: 200px;
+    }
+    
+    .menuCategory {
+      font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+    
+    .sideMenu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 10px 0;
+    }
+    
+    .sideMenu li {
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+    
+    .rightArea {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .recentOrders {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 300px;
+      margin-right: 20px; /* 추가: 오른쪽 여백 추가 */
+    }
+    
+    .recentOrders h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    
+    .deleteButton{
+     
+      color: #ccc;
+      font-weight: bold;
+      padding: 2px;
+      border-radius: 3px;
+      border: none;
+    }
+
+    .detailBtn{
+      background-color: #ffffff;
+      color: #333;
+      border: none;
+      font-size: 14px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+  
+    .detailBtn:hover {
+      background-color: #dfdfdf;
+    }
+    .postImage{
+      width: 80px;
+    }
+
+    .detailTable{
+      width:100%
+    }
+    .AddressBox{
+      border-radius: 10px;
+      border: #ccc 1px solid;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .orderBox{
+     
+      justify-content: space-between;
+    }
+    .titleBox{
+      margin: 10px 0px;
+      justify-content: center; 
+    }
+    .title{
+      font-weight: bold;
+      font-size: 22px;
+      
+    }
+    .orderTitle{
+      display: flex;
+    }
+    .price{
+      font-size: 14px;
+      margin:5px 20px;
+      font-weight: 600;
+      color: #999;
+    }
+    .descriptBox{
+      
+      display: flex;
+      justify-content:end;
+      align-items: end;
+    }
+    .descriptStyle{
+      display: flex;
+      justify-items: flex-end;
+    align-items: center;
+    margin: 0 13px
+
+    }
+
+}
+

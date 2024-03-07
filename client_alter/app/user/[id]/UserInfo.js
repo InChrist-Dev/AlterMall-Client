@@ -8,14 +8,14 @@ const UserInfo = (props) => {
   const fetchData = async() =>{
     const response = await fetch(`http://localhost:8000/customer/order/`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMTcyMzQ0ODU4NTY4ODIxNTA2MyIsImlhdCI6MTcwOTc5ODAxOCwiZXhwIjoxNzA5ODEyNDE4fQ.FRRKHhRKIuq8v9oqJVaTzlaeM2YGy9jBG-kCrr8kjkw`,
         'Content-Type': 'application/json',
       },
       credentials: 'include',
     });
     const data = await response.json();
     console.log(data);
-    setOrderLength(data.data.rows.length);
+
   }
   useEffect(()=>{
     fetchData();
@@ -24,7 +24,7 @@ const UserInfo = (props) => {
   return (
     <div className={styles.topArea}>
     <div className={styles.greeting}>
-      <div className={styles.lank}>프로건강러</div>
+      {/* <div className={styles.lank}>프로건강러</div> */}
       <div><b>{props.name}</b>님, 안녕하세요!</div>
     </div>
     {/* <div className={styles.couInfo}>
@@ -47,6 +47,33 @@ const UserInfo = (props) => {
       </div>
      
     </div>
+    <div className={styles.topAreaMobile}>
+    <div className={styles.greeting}>
+      {/* <div className={styles.lank}>프로건강러</div> */}
+      <div><b>{props.name}</b>님, 안녕하세요!</div>
+    </div>
+    {/* <div className={styles.couInfo}>
+      주문배송
+      <div className={styles.orderInfo}>
+      <div className={styles.coupon}>0</div>
+      </div>
+    </div> */}
+    <div className={styles.couInfoMobile}>
+      쿠폰
+      <div className={styles.orderInfoMobile}>
+      <div className={styles.coupon}>0</div>
+      </div>
+     
+    </div>
+    <div className={styles.couInfo}>
+      포인트
+      <div className={styles.orderInfo}>
+      <div className={styles.coupon}>0</div>
+      </div>
+     
+    </div>
+    </div>
+   
    
   </div>
   );

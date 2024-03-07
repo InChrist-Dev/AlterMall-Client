@@ -57,7 +57,7 @@ const Checkout = () => {
     if (delivery) {
       console.log(items);
 
-      await fetch('https://altermall.site/customer/order', {
+      await fetch('http://localhost:8000/customer/order', {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -81,7 +81,7 @@ const Checkout = () => {
         orderId: info.order_id,
         amount: amount,
         orderName: `${firstItemName}외 ${otherItemsCount}건`,
-        successUrl: 'https://altermall.site/customer/confirm',
+        successUrl: 'http://localhost:8000/customer/confirm',
         failUrl: window.location.origin,
       });
 
@@ -201,7 +201,7 @@ const Checkout = () => {
   };
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/customer/payproduct`, {
+      const response = await fetch(`http://localhost:8000/customer/payproduct`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -216,7 +216,7 @@ const Checkout = () => {
 
       setItems(data.data.rows[0].OrderDetails);
 
-      const response2 = await fetch(`https://altermall.site/customer/deliver`, {
+      const response2 = await fetch(`http://localhost:8000/customer/deliver`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -286,7 +286,7 @@ const Checkout = () => {
                 <option value="normal">택배 배송</option>
                 <option value="daily">따끈 배송</option>
               </select>
-              
+              <div style={{display:'flex'}}>
               <div className={styles.deliverContainer}> 
                 <img className ={styles.deliverIcon} src="./post.jpg" alt="배송 이미지" /> 
                 <div className={styles.deliverText}>택배로 배송받습니다.</div>
@@ -296,6 +296,8 @@ const Checkout = () => {
                 <img className ={styles.deliverIcon} src="./today.jpg" alt="배송 이미지" /> 
                 <div className={styles.deliverText}>(의정부만 가능) 제작 당일 직접 배송해드립니다.</div>
               </div>
+              </div>
+              
 
               {/* <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" /> */}
 
@@ -304,7 +306,7 @@ const Checkout = () => {
       <label>배송시 요청사항</label>
       <div>
        {/* 옵션 선택 */}
-       <select value={requestOption} onChange={handleOptionChange}>
+       <select className={styles.selectRequest} value={requestOption} onChange={handleOptionChange}>
           <option value="">선택하세요</option>
           <option value="노크x">노크x</option>
           <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
@@ -368,7 +370,7 @@ const Checkout = () => {
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
-                        src={`https://altermall.site/${items.img}`}
+                        src={`http://localhost:8000/${items.img}`}
                         alt={items.item_name}
                         className={styles.productImage}
                       />

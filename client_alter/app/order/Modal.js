@@ -51,7 +51,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   const handleSubmit = async () => {
     
     try {
-      const response = await fetch('https://altermall.site/customer/deliver', {
+      const response = await fetch('http://localhost:8000/customer/deliver', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -86,7 +86,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
 
   const delDeliver = async (id) => {
     try {
-      const response = await fetch(`https://altermall.site/customer/deliver/${id}`, {
+      const response = await fetch(`http://localhost:8000/customer/deliver/${id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -186,7 +186,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
         <label className={styles.label}>주소</label>
         <div className={styles.addressButton}>
           <input className= {styles.input} type="text" value={address} onChange={(e) => setAddress(e.target.value)} />
-          <button className={styles.serchButton} onClick={() => { addressClick() }}>주소 검색</button>
+          <button className={styles.serchButton} onClick={() => { addressClick() }}>검색</button>
         </div>
         {isAddress ? <span><DaumPostcode onComplete={handleComplete} /></span> : ''}
         <input className={styles.input} type="text" value={detailAddress} onChange={(e) => setDetailAddress(e.target.value)} />
