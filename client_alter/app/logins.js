@@ -9,5 +9,5 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 export function LoginBtn() {
-  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { window.location.href='http://localhost:3000/loginPage'}}/>)
+  return ( <FontAwesomeIcon   className="userIcon"icon={faUser} onClick={() => { window.location.href='https://altermall.shop/loginPage'}}/>)
 } 
