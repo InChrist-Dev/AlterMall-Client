@@ -87,7 +87,7 @@ const OrderHistory = () => {
               <div className={styles.orderBox}>
               <div className={styles.orderBox}>
                 <img
-                  src={`/4444.jpg`} //https://altermall.site/${order.OrderDetails[0].img}
+                  src={`https://altermall.site/${order.OrderDetails[0].img}`} 
                   alt={order.OrderDetails[0].item_name}
                   className={styles.productImage}
                 />
