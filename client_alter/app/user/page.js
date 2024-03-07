@@ -29,7 +29,7 @@ const MyPage = () => {
   const [name,setName]= useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/user/mypage`, {
+      const response = await fetch(`https://altermall.site/user/mypage`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const MyPage = () => {
       // if(data2.loginFail){
       
       //   Cookies.remove('accessToken');
-      //   window.location.href='http://localhost:8000/loginPage';
+      //   window.location.href='https://altermall.site/loginPage';
       // }
 
       setName(data2.data.name)

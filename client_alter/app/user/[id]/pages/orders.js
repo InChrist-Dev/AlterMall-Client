@@ -16,7 +16,7 @@ const OrderHistory = () => {
     const fetchData = async () => {
       const response = await fetch(`https://altermall.site/customer/order/`, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEwMTcyMzQ0ODU4NTY4ODIxNTA2MyIsImlhdCI6MTcwOTc5ODAxOCwiZXhwIjoxNzA5ODEyNDE4fQ.FRRKHhRKIuq8v9oqJVaTzlaeM2YGy9jBG-kCrr8kjkw`,
+          Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         credentials: 'include',
