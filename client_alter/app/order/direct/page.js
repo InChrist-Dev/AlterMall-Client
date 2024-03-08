@@ -17,11 +17,7 @@ const Checkout = (props) => {
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
   const [deliveryInfo, setDeliveryInfo] = useState('normal');
-  const [deliveryPay,setDeliveryPay] = useState(4000);
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
-  const [info, setInfo] = useState([]);
   const [amounts, setAmounts] = useState(1);
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
@@ -45,11 +41,7 @@ const Checkout = (props) => {
   };
   const handleClick = async () => {
     let amount = amounts;
-    // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
-    const firstItemName = items.length > 0 ? items[0].item_name : '';
-
-    // 첫 번째 상품 이외의 상품 개수를 계산합니다.
-    const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
+  
 
     const tosspayments = await loadTossPayments(
       'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
@@ -383,14 +375,7 @@ const Checkout = (props) => {
               <tbody>
                 
                   <tr className={styles.productCard}>
-                    {/* <td>
-                      <input
-                        type="checkbox"
-                        className={styles.checkbox}
-                        checked={selectedItems.includes(index)}
-                        onChange={() => toggleItemSelection(index)}
-                      />
-                    </td> */}
+               
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
@@ -412,19 +397,9 @@ const Checkout = (props) => {
                  
                     <td>
                       <div className={styles.quantityControl}>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock - 1)
-                          }
-                        >-
-                        </button> */}
+                   
                         <span>{amounts}</span>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock + 1)
-                          }
-                        >+
-                        </button> */}
+                   
                       </div>
                     </td>
                   </tr>

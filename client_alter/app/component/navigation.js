@@ -221,16 +221,16 @@ const NavigationBar = () => {
                 )} */}
                  {isSubMenuOpen && (
                 <ul className="submenu">
-                  <li><a href="category/dessert">디저트</a></li>
-                  <li><a href="category/salad">샐러드</a></li>
-                  <li><a href="category/free">락토프리</a></li>
-                  <li><a href="category/drink">음료</a></li>
+                  <li><a href="https://altermall.shop/category/dessert">디저트</a></li>
+                  <li><a href="https://altermall.shop/category/salad">샐러드</a></li>
+                  <li><a href="https://altermall.shop/category/free">락토프리</a></li>
+                  <li><a href="https://altermall.shop/category/drink">음료</a></li>
                 </ul>
                
               )}
                </li>
                <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-            <li><a href="/master">장인소개</a></li>
+            <li><a href="https://altermall.shop/master">장인소개</a></li>
             <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li><a href="/">건강정보</a></li>
             <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
