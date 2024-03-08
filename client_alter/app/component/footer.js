@@ -36,11 +36,22 @@ const Footer = () => {
     loadKakaoSDK();
   }, []);
   return (
+    <>
+     <div  className={styles.kakao}
+  id="kakao-talk-channel-chat-button"
+  data-channel-public-id="_xaxilrG"
+  data-title="consult"
+  data-size="large"
+  data-color="yellow"
+  data-shape="pc"
+  data-support-multiple-densities="true"
+ ></div>
     <span className={styles.footerMain}>
+         
       <div style={{border:'0.5px solid #ddd'}}></div>
    
     <footer className={styles.footer}>
- 
+   
           <div className={styles.column}>
             
         <img className={styles.logo} src='/logo1.jpg'></img>
@@ -62,15 +73,7 @@ const Footer = () => {
         
         <p>경기도 의정부시 민락동 692-8 A동 5층</p>
         <p>Email: altermall@naver.com</p>
-        <div
-  id="kakao-talk-channel-chat-button"
-  data-channel-public-id="_xaxilrG"
-  data-title="consult"
-  data-size="large"
-  data-color="yellow"
-  data-shape="pc"
-  data-support-multiple-densities="true"
-  className={styles.kakao}></div>
+    
       
       </div>
  
@@ -79,6 +82,7 @@ const Footer = () => {
     <p className={styles.tong}>얼터몰은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 얼터몰은 상품,거래정보 및 거래 등에 대하여 책임을 지지 않습니다.</p>
    
     </span>
+    </>
   );
 };
 

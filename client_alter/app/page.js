@@ -29,7 +29,7 @@ const HomePage = () => {
      {/* <Recommend/> */}
   
      {/* <div style={{border:'0.5px solid #ccc'}}></div> */}
-      <Recommend/>
+      {/* <Recommend/> */}
     </div>
   );
 };
