@@ -260,6 +260,7 @@
     border: none;
     font-size: 20px;
     margin: 0 30%;
+    color:black;
   }
   .searchContainer {
     align-items: center;
@@ -428,6 +429,7 @@
     color: black;
     text-decoration: none;
   }
+
   .sidebar {
     position: fixed;
     top: 0;
