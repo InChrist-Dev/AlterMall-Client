@@ -1,6 +1,6 @@
 // components/ImageSlider.js
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import styles from '.././page.module.css';
@@ -13,8 +13,15 @@ const ImageSlider = () => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className={styles.slider}>
@@ -25,8 +32,10 @@ const ImageSlider = () => {
         }}
       >
         {/* Images */}
-        <img src="/1.png" alt="이미지1" className={styles.sliderImage} />
-        <img src="/2.jpg" alt="이미지2" className={styles.sliderImage} />
+        <img src="/001.png" alt="이미지1" className={styles.sliderImage} />
+        <img src="/002.png" alt="이미지2" className={styles.sliderImage} />
+        <img src="/003.png" alt="이미지2" className={styles.sliderImage} />
+        <img src="/004.png" alt="이미지2" className={styles.sliderImage} />
        
       </div>
 
