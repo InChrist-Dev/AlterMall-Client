@@ -21,7 +21,7 @@ const Checkout = () => {
   const [info, setInfo] = useState([]);
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
-
+  const [request, setRequest] = useState(''); // 직접 입력한 요청사항
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -36,7 +36,7 @@ const Checkout = () => {
     setCustomRequest(e.target.value);
   };
   const handleRequestChange = (e) => {
-    setCustomRequest('문앞에 두고 가주세요. 공동현관문 번호: '+e.target.value);
+    setRequest('공동현관문 번호: '+e.target.value);
   };
   const handleClick = async () => {
     let amount = 0;
@@ -68,7 +68,7 @@ const Checkout = () => {
           'order_id': info.order_id,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': requestOption,
+          'requests': requestOption+customRequest+request,
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
@@ -121,15 +121,7 @@ const Checkout = () => {
     setShowModal(false);
  
   };
-  const toggleItemSelection = (index) => {
-    const newSelectedItems = [...selectedItems];
-    if (newSelectedItems.includes(index)) {
-      newSelectedItems.splice(newSelectedItems.indexOf(index), 1);
-    } else {
-      newSelectedItems.push(index);
-    }
-    setSelectedItems(newSelectedItems);
-  };
+
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
       (total, index) => total + items[index].price * items[index].stock,
@@ -137,13 +129,7 @@ const Checkout = () => {
     );
   };
 
-  const toggleAllItemsSelection = () => {
-    if (selectedItems.length === items.length) {
-      setSelectedItems([]);
-    } else {
-      setSelectedItems([...Array(items.length).keys()]);
-    }
-  };
+
 
 
   const getImageUrl = () => {

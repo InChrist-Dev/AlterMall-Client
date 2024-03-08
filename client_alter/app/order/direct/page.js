@@ -40,7 +40,7 @@ const Checkout = (props) => {
     setCustomRequest(e.target.value);
   };
   const handleRequestChange = (e) => {
-    setCustomRequest('문앞에 두고 가주세요. 공동현관문 번호: '+e.target.value);
+    setRequest('공동현관문 번호: '+e.target.value);
   };
   const handleClick = async () => {
     let amount = amounts;
@@ -70,7 +70,7 @@ const Checkout = (props) => {
           'order_id':myUuid,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': requestOption,
+          'requests':  requestOption+customRequest+request,
           'amount': calculateTotalPrice()+4000,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
@@ -337,7 +337,6 @@ const Checkout = (props) => {
           <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
           <option value="직접입력">직접입력</option>
         </select>
-        {/* 직접 입력 창 */}
         {requestOption === '직접입력' && (
           <input
             className={styles.request}
@@ -346,17 +345,15 @@ const Checkout = (props) => {
             onChange={handleCustomRequestChange}
           />
         )}
-          {requestOption === '문앞에 두고 가주세요' && (
-            <>
-            <label>공동현관문 번호(필수)</label>
+        <div>
+        <label>공동현관문 번호</label>
           <input
             className={styles.request}
             value={customRequest}
             placeholder="직접 입력해주세요"
             onChange={handleRequestChange}
           />
-          </>
-        )}
+        </div>
       </div>
     </div>
           </div>
