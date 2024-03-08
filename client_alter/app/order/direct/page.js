@@ -25,6 +25,7 @@ const Checkout = (props) => {
   const [amounts, setAmounts] = useState(1);
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
+  const [request, setRequest] = useState(''); // 직접 입력한 요청사항
   const [refresh,setRefresh] = useState(false);
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
