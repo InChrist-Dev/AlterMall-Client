@@ -598,7 +598,7 @@
 .reviewContainer {
   row-gap: 10px;
   column-gap: 10px;
-  width: 300px; /* 컨테이너의 너비를 400px로 제한합니다. */
+  width: 350px; /* 컨테이너의 너비를 400px로 제한합니다. */
   overflow-x: scroll; /* 가로 스크롤을 허용합니다. */
   white-space: nowrap;
   margin: 0 auto;
@@ -616,7 +616,7 @@
 
 .review {
   border: 1px solid #acacac;
-  width: 200px;
+  width: 250px;
   border-radius: 10px;
   padding: 20px;
   background-color: #fff;
