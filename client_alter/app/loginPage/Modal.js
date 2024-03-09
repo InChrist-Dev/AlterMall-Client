@@ -141,19 +141,19 @@ const DeliveryInfoModal = ({ closeModal,refresh  }) => {
       
         <label className={styles.label}>이름</label>
         <input  className={styles.input} type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <label className={styles.label}>아이디</label><button  className={styles.idCheck} onClick={()=>{checkId(id)}}>중복확인</button>
+        <label className={styles.label}>이메일</label><button  className={styles.idCheck} onClick={()=>{checkId(id)}}>중복확인</button>
         <input className={styles.input} type="text" value={id} onChange={(e) => setId(e.target.value)} />
         <label className={styles.label}>비밀번호</label>
         <input className={styles.input} type="text" value={pw} onChange={(e) => setPw(e.target.value)} />
-        <label className={styles.label}>전화번호</label>
+        {/* <label className={styles.label}>전화번호</label>
         <input className={styles.input} type="text" value={phone} onChange={(e) => setPhone(e.target.value)} />
         <label className={styles.label}>이메일</label>
         <input className={styles.input} type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
-        
+         */}
 
         
        <div className={styles.buttonContainer}>
-       <button  className={styles.acceptButton} onClick={handleSubmit}>저장</button>
+       <button  className={styles.acceptButton} onClick={handleSubmit}>가입</button>
         <button  className={styles.cancelButton}onClick={closeModal}>취소</button>
        </div>
     

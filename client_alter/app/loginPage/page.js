@@ -110,7 +110,7 @@ export default function LoginPage() {
         <div className={styles.groupBtn}>
           <div className={styles.registerText}>
             아직회원이 아니신가요?
-            <button className={styles.registerBtn} onClick={openModal}> 회원가입</button>
+            <button className={styles.registerBtn} onClick={openModal}> 10초 간편 회원가입</button>
           </div>
         </div> 
       
