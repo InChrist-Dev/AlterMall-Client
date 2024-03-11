@@ -36,7 +36,7 @@ const Checkout = () => {
     setCustomRequest(e.target.value);
   };
   const handleRequestChange = (e) => {
-    setRequest('공동현관문 번호: '+e.target.value);
+    setRequest(e.target.value);
   };
   const handleClick = async () => {
     let amount = 0;
@@ -68,7 +68,7 @@ const Checkout = () => {
           'order_id': info.order_id,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': requestOption+customRequest+request,
+          'requests': requestOption+'공동현관문 번호: '+customRequest+request,
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
