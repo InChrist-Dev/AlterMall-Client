@@ -342,7 +342,7 @@ const Checkout = (props) => {
         <label>공동현관문 번호</label>
           <input
             className={styles.request}
-            value={customRequest}
+            value={request}
             placeholder="직접 입력해주세요"
             onChange={handleRequestChange}
           />
