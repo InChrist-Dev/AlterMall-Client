@@ -370,7 +370,7 @@ const Checkout = () => {
                     <td style={{ display: 'flex', alignItems: 'center', }}>
 
                       <img
-                        src={`http://localhost:8000/${items.img}`}
+                        src={`https://altermall.site/${items.img}`}
                         alt={items.item_name}
                         className={styles.productImage}
                       />

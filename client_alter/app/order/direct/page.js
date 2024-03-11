@@ -40,7 +40,7 @@ const Checkout = (props) => {
     setCustomRequest(e.target.value);
   };
   const handleRequestChange = (e) => {
-    setCustomRequest('문앞에 두고 가주세요. 공동현관문 번호: '+e.target.value);
+    setCustomRequest(e.target.value);
   };
   const handleClick = async () => {
     let amount = amounts;
