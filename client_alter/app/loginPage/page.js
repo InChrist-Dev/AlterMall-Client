@@ -120,10 +120,12 @@ export default function LoginPage() {
       <div className={styles.division}> 소셜 로그인</div>
 
       <div className={styles.form}>
-        <div className={styles.socialBox} onClick={()=>{window.location.href="https://altermall.site/auth/google"}}>
-          <img className={styles.icon_img} src='/google_logo.webp'/>
-          <div className={styles.socialText}>구글 계정으로 로그인</div>
+        <div className={styles.socialBox} >
+        <img onClick={()=>{window.location.href="https://altermall.site/auth/google"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/google_logo.webp'/>
+        <img onClick={()=>{window.location.href="https://altermall.site/auth/kakao"}} className={styles.btn_social_login_kakao} style={{'background':'#fff'}} src='/kakao_icon.png'/>
+        {/* <img onClick={()=>{window.location.href="https://altermall.site/auth/google"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/google_logo.webp'/> */}
         </div>
+        
       </div>
     </div>
   );

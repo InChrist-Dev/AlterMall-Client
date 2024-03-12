@@ -84,14 +84,36 @@
   }
   
   .icon_img{
-    width: 44px;
-    height: 44px;
+    width: 100px;
+    height: 100px;
     text-align: 0;
   }
+  .btn_social_login {
+   
+    outline: 0;
+    width: 80px;
+    border: 1px solid #828181;
+   
+    border-radius: 50%;
+    color: #fff;
+    margin: 0 auto;
+  }
+  .btn_social_login:hover {
+    color: 0 0 0 .2rem rgba(0,123,255,.25);
+  }
+  .btn_social_login_kakao {
+   
+    outline: 0;
+    width: 80px;
 
+    
+    border-radius: 50%;
+    color: #fff;
+    margin: 0 auto;
+  }
   .socialBox {
     display: flex;
-    padding-inline: 10px;
+    margin-top:50px;
     justify-content: left;
     height: 44px;
     align-items: center;
@@ -99,7 +121,7 @@
     border-color: #191919;
     font-size: 14px;
     font-weight: bold;
-    border: 1px solid #828181;
+    padding: 0 100px
   }
 
   .socialText {
@@ -217,10 +239,32 @@
     height: 44px;
     text-align: 0;
   }
+  .btn_social_login {
+   
+    outline: 0;
+    width: 60px;
+    border: 1px solid #828181;
+   
+    border-radius: 50%;
+    color: #fff;
+    margin: 0 auto;
+  }
+  .btn_social_login:hover {
+    color: 0 0 0 .2rem rgba(0,123,255,.25);
+  }
+  .btn_social_login_kakao {
+   
+    outline: 0;
+    width: 60px;
 
+    
+    border-radius: 50%;
+    color: #fff;
+    margin: 0 auto;
+  }
   .socialBox {
     display: flex;
-    padding-inline: 10px;
+    margin-top:50px;
     justify-content: left;
     height: 44px;
     align-items: center;
@@ -228,8 +272,9 @@
     border-color: #191919;
     font-size: 14px;
     font-weight: bold;
-    border: 1px solid #828181;
+    padding: 0 50px
   }
+
 
   .socialText {
     flex-grow: 1;
