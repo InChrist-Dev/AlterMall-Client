@@ -96,7 +96,7 @@
    
     border-radius: 50%;
     color: #fff;
-    margin: 0 auto;
+    margin: 0 20px;
   }
   .btn_social_login:hover {
     color: 0 0 0 .2rem rgba(0,123,255,.25);
@@ -109,12 +109,12 @@
     
     border-radius: 50%;
     color: #fff;
-    margin: 0 auto;
+    margin: 0 20px;
   }
   .socialBox {
     display: flex;
     margin-top:50px;
-    justify-content: left;
+    justify-content: center;
     height: 44px;
     align-items: center;
     border-radius: 20px;
