@@ -37,7 +37,7 @@ const Checkout = (props) => {
     setCustomRequest(e.target.value);
   };
   const handleRequestChange = (e) => {
-    setRequest('공동현관문 번호: '+e.target.value);
+    setRequest(e.target.value);
   };
   const handleClick = async () => {
     let amount = amounts;
@@ -63,7 +63,7 @@ const Checkout = (props) => {
           'order_id':myUuid,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests':  requestOption+customRequest+request,
+          'requests':  requestOption+'공동현관문 번호: '+customRequest+request,
           'amount': calculateTotalPrice()+4000,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
