@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
-
+import Modal from './Modal';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 
@@ -27,7 +27,17 @@ const ItemPage = (props) => {
   const [rate, setRate] = useState(10);
   const [data, setData] = useState([]);
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedReview, setSelectedReview] = useState(null);
 
+  const openModal = (review) => {
+    setSelectedReview(review);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   // 여기에 서버에 데이터를 전송하는 코드를 추가합니다.
@@ -57,7 +67,7 @@ const ItemPage = (props) => {
         body: formData,
       });
       if (response.ok) {
-        console.log('리뷰가 성공적으로 제출되었습니다.');
+        alert('리뷰가 성공적으로 제출되었습니다.');
         // 리뷰가 성공적으로 제출되었을 때 사용자를 다른 페이지로 이동시킬 수 있습니다.
       } else {
         console.error('리뷰 제출에 실패하였습니다.');
@@ -401,7 +411,9 @@ if (currentHour < 15) {
                   <p className={styles.reviewContent}>{review.content}</p>
                   <p className={styles.maskedId}>{maskUserId(review.User.name)}</p>
                 </div>
+                
               ))}
+               {isModalOpen && <Modal review={selectedReview} closeModal={closeModal} />}
             </div>
         </div>
 
