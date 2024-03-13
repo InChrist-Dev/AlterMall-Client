@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styles from './products.module.css'
 function Modal({ review, closeModal }) {
   return (
     <div className="modal">
