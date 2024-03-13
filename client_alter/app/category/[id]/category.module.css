@@ -159,27 +159,28 @@
 /* YourComponent.module.css */
 @media screen and (max-width: 450px) {
   .sortAndScroll {
+    display: flex;
 
-    align-items: center;
     margin-bottom: 20px;
     background-color: #eee;
     padding:5px;
-
+    flex-direction: column;
   }
-  
-  .sortButtons button,
-  .scrollButtons button {
+  .sortButtons{
+    margin: 0 auto;
+  }
+  .sortButtons button {
     padding: 10px;
-    font-size: 15px;
+    font-size: 16px;
     background-color: #eee;
     color: #7c7c7c;
     border: none;
     align-items: center;
     cursor: pointer;
+   
     
   }
-  .sortButtons button.activeButton,
-  .scrollButtons button.activeButton {
+  .sortButtons button.activeButton{
   
     font-weight: bold;
   
@@ -192,13 +193,14 @@
   }
   
   
-  .sortButtons button:hover,
-  .scrollButtons button:hover {
+  .sortButtons button:hover {
   
     color: #ff9100;
   }
   
-  
+  .scrollButtons{
+    margin-left: auto;
+  }
   
     .productContainer {
       display: flex;
@@ -244,7 +246,7 @@
       font-size: 17px;
       margin-bottom: 10px;
       color: #333;
-      width: 130px;
+      width: 100%;
     }
   
     .productCard img {
@@ -283,6 +285,8 @@
     background-color: #eee;
     color: #7c7c7c;
     font-weight: bold;
+   
+    right: 0;
   }
   
   /* category.module.css */
