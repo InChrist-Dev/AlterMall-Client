@@ -2,7 +2,7 @@
   "name": "client_alter",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://udtown.site",
+  "proxy": "https://altermall.site",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
