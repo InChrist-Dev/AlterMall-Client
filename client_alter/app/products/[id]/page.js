@@ -406,7 +406,7 @@ if (currentHour < 15) {
           <h2 className={styles.division}>리뷰</h2>
             <div className={styles.reviews}>
               {review.map((review) => (
-                <div key={review.id} className={styles.review}>
+                <div key={review.id} onClick={()=> openModal(review)}className={styles.review}>
                   <img src={`https://altermall.site/${review.img}`} alt="이미지 없음" className={styles.reviewImg} />
                   <p className={styles.reviewContent}>{review.content}</p>
                   <p className={styles.maskedId}>{maskUserId(review.User.name)}</p>
