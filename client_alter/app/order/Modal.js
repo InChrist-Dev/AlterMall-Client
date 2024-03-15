@@ -49,39 +49,49 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
 
 
   const handleSubmit = async () => {
-    
-    try {
-      const response = await fetch('https://altermall.site/customer/deliver', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          "addr": address,
-          "addr_detail": detailAddress,
-          "phone": `${phoneNumber1}-${phoneNumber2}-${phoneNumber3}`,
-          "address_name":addressname,
-          "name": name
-        }), 
-      });
-
-      if (response.status == 200) {
-       
+    if(address == ''){
+      alert('주소를 입력해주세요')
+    }else if(detailAddress == ''){
+      alert('상세주소를 입력해주세요')
+    }else if(phoneNumber1 == '' || phoneNumber2 == '' || phoneNumber3 == ''){
+      alert('전화번호를 입력해주세요')
+    }else if(name == ''){
+      alert('이름을 입력해주세요')
+    }else{
+      try {
+        const response = await fetch('https://altermall.site/customer/deliver', {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+          body: JSON.stringify({
+            "addr": address,
+            "addr_detail": detailAddress,
+            "phone": `${phoneNumber1}-${phoneNumber2}-${phoneNumber3}`,
+            "address_name":addressname,
+            "name": name
+          }), 
+        });
   
-      } else if (response.status == 201) {
-        alert('저장되었습니다');
-        window.location.href='https://altermall.shop/order';
-        closeModal();
-      
-      } else {
+        if (response.status == 200) {
+         
+    
+        } else if (response.status == 201) {
+          alert('저장되었습니다');
+          window.location.href='https://altermall.shop/order';
+          closeModal();
         
+        } else {
+          
+        }
+      } catch (error) {
+        // 에러 처리
+        console.error('Failed to send like request', error);
       }
-    } catch (error) {
-      // 에러 처리
-      console.error('Failed to send like request', error);
     }
+   
   };
 
   const delDeliver = async (id) => {
