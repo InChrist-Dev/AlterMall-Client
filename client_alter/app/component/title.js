@@ -17,10 +17,10 @@ const Title = () => {
         <title>맛있는 대체식품 쇼핑몰 얼터몰 - Altermall</title>
         <meta name="description" content="맛있는 대체식품을 판매하는 쇼핑몰 얼터몰입니다"/>
         <meta property="og:type" content="website"/> 
-<meta property="og:title" content="맛있는 대체식품 쇼핑몰 얼터몰 - Altermall"/>
-<meta property="og:description" content="맛있는 대체식품을 판매하는 쇼핑몰 얼터몰입니다"/>
-<meta property="og:image" content="https://altermall.shop/alterMallicon.jpg"/>
-<meta property="og:url" content="https://altermall.shop"></meta>
+        <meta property="og:title" content="맛있는 대체식품 쇼핑몰 얼터몰 - Altermall"/>
+        <meta property="og:description" content="맛있는 대체식품을 판매하는 쇼핑몰 얼터몰입니다"/>
+        <meta property="og:image" content="https://altermall.shop/alterMallicon.jpg"/>
+        <meta property="og:url" content="https://altermall.shop"></meta>
       </head>
     )
 }
