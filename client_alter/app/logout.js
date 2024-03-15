@@ -13,15 +13,9 @@ export function LogOutBtn() {
     // const query = params.get('code');
     // console.log(`${query} query is`)
 
-    const url = 'http://localhost:3000/auth/google';
-    const fetchData = async () => {
-      const response = await fetch(url, {
 
-    });
-    const data2 = await response.status;
-    const data = await response.json();
     Cookies.remove('accessToken');
-    Cookies.remove('accessToken');
+    Cookies.remove('position');
   };
    
     
