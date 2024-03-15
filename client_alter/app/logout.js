@@ -14,10 +14,6 @@ export function LogOutBtn() {
     // console.log(`${query} query is`)
 
 
-    Cookies.remove('accessToken');
-    Cookies.remove('position');
-  };
-   
     
    
   
