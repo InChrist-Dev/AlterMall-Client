@@ -2,7 +2,7 @@
 import React, { useEffect, useState,useCallback } from 'react';
 import Link from 'next/link';
 
-import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
+import styles from './ca_seller.module.css'; // 스타일링을 위한 CSS 모듈
 // 샘플 데이터
 import Cookies from 'js-cookie';
 
@@ -18,14 +18,13 @@ const ItemPage = (props) => {
   const [categoryList,setCategoryList] = useState([])
 
   const category = props.params.id;
-  console.log(category)
+  const seller_id = props.params.seller_id;
+  console.log(category,seller_id)
   const fetchData = async () => {
     try {
-      const response2 = await fetch(`http://localhost:8000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
-      const response = await fetch(`http://localhost:8000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await fetch(`http://localhost:8000/category/seller?id=${seller_id}&p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
       const data = await response.json();
-      const data2 = await response2.json();
-      console.log(data2)
+  
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setCategoryList(data.data.items);
       setPage(data.data.totalPages);
