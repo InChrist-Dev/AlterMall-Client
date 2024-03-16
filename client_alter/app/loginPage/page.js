@@ -123,7 +123,7 @@ export default function LoginPage() {
         <div className={styles.socialBox} >
         <img onClick={()=>{window.location.href="https://altermall.site/auth/google"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/google_logo.webp'/>
         <img onClick={()=>{window.location.href="https://altermall.site/auth/kakao"}} className={styles.btn_social_login_kakao} style={{'background':'#fff'}} src='/kakao_icon.png'/>
-        {/* <img onClick={()=>{window.location.href="https://altermall.site/auth/google"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/google_logo.webp'/> */}
+        <img onClick={()=>{window.location.href="https://altermall.site/auth/naver"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/naver.png'/>
         </div>
         
       </div>

@@ -161,7 +161,7 @@
   .form {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 85%;
   }
   
   .label {
