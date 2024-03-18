@@ -64,7 +64,7 @@ const Checkout = (props) => {
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
           'requests':  requestOption+'공동현관문 번호: '+customRequest+request,
-          'amount': calculateTotalPrice()+4000,
+          'amount': calculateTotalPrice()+3500,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name':delivery.name,
@@ -110,7 +110,7 @@ const Checkout = (props) => {
        
           await tosspayments.requestPayment('카드', {
             orderId: myUuid,
-            amount: calculateTotalPrice()+4000,
+            amount: calculateTotalPrice()+3500,
             orderName: `${items.item_name}`,
             successUrl: 'https://altermall.site/customer/confirm',
             failUrl: window.location.origin,
@@ -192,18 +192,18 @@ const Checkout = (props) => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 4000+calculateTotalPrice();
+      return 3500+calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
-      return 4000+calculateTotalPrice();
+      return 3500+calculateTotalPrice();
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
   const getSub = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 4000;
+      return 3500;
     } else if (deliveryInfo == 'daily') {
-      return 4000;
+      return 3500;
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -315,7 +315,7 @@ const Checkout = (props) => {
                 onChange={(e) => setDeliveryInfo(e.target.value)}
               >
                 <option value="normal">택배 배송</option>
-                <option value="daily">따끈 배송</option>
+               
               </select>
               <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
 

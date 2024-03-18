@@ -144,18 +144,18 @@ const Checkout = () => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 4000+calculateTotalPrice();
+      return 3500+calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
-      return 4000+calculateTotalPrice();
+      return 3500+calculateTotalPrice();
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
   const getSub = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 4000;
+      return 3500;
     } else if (deliveryInfo == 'daily') {
-      return 4000;
+      return 3500;
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -270,19 +270,9 @@ const Checkout = () => {
                 onChange={(e) => setDeliveryInfo(e.target.value)}
               >
                 <option value="normal">택배 배송</option>
-                <option value="daily">따끈 배송</option>
+               
               </select>
-              <div style={{display:'flex'}}>
-              <div className={styles.deliverContainer}> 
-                <img className ={styles.deliverIcon} src="./post.jpg" alt="배송 이미지" /> 
-                <div className={styles.deliverText}>택배로 배송받습니다.</div>
-              </div>
-
-              <div className={styles.deliverContainer}> 
-                <img className ={styles.deliverIcon} src="./today.jpg" alt="배송 이미지" /> 
-                <div className={styles.deliverText}>(의정부만 가능) 제작 당일 직접 배송해드립니다.</div>
-              </div>
-              </div>
+           
               
 
               {/* <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" /> */}

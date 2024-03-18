@@ -13,11 +13,11 @@ const ImageSlider = () => {
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 1 ? 0 : prevIndex + 1));
   };
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+      setCurrentIndex((prevIndex) => (prevIndex === 1 ? 0 : prevIndex + 1));
     }, 5000);
 
     return () => clearInterval(interval);
@@ -34,8 +34,7 @@ const ImageSlider = () => {
         {/* Images */}
         <img src="/001.png" alt="이미지1" className={styles.sliderImage} />
         <img src="/002.png" alt="이미지2" className={styles.sliderImage} />
-        <img src="/003.png" alt="이미지2" className={styles.sliderImage} />
-        <img src="/004.png" alt="이미지2" className={styles.sliderImage} />
+        
        
       </div>
 
