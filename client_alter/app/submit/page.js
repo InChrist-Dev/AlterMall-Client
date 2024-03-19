@@ -23,7 +23,7 @@ const SubmitForm = () => {
       deliveryLocation
     };
   
-    fetch('http://altermall.site/submit', {
+    fetch('https://altermall.site/submit', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
