@@ -1,18 +1,28 @@
 /* submit.module.css */
-
+.submit{
+  background-color: #f0eded;
+  padding: 50px;
+}
 .formContainer {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
+    max-width: 450px;
+    margin: auto;
+    padding: 25px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    background-color: #fafafa;
   }
   
   .formContainer h1 {
     text-align: center;
     margin-bottom: 20px;
   }
+  .formContainer h3 {
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  
   
   .formGroup {
     margin-bottom: 15px;
@@ -31,7 +41,7 @@
     border-radius: 3px;
   }
   
-  .formGroup button {
+  .formContainer button {
     width: 100%;
     padding: 10px;
     border: none;
@@ -42,7 +52,7 @@
     cursor: pointer;
   }
   
-  .formGroup button:hover {
+  .formContainer button:hover {
     background-color: #0056b3;
   }
   

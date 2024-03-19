@@ -18,8 +18,10 @@ const SubmitForm = () => {
   };
 
   return (
-    <div className={styles.formContainer}>
-      <h1>납품 신청서</h1>
+    <div className={styles.submit}>
+<div className={styles.formContainer}>
+      <h1>납품 상담 신청서</h1>
+      <h3>※상담에 필요한 대략적인 정보만 기제해주세요.</h3>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
           <label htmlFor="name">이름</label>
@@ -54,6 +56,8 @@ const SubmitForm = () => {
         <button type="submit">신청하기</button>
       </form>
     </div>
+    </div>
+    
   );
 };
 

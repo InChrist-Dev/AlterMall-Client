@@ -156,9 +156,10 @@ const NavigationBar = () => {
                 </div>
               </li>
               <li><a href="/master">장인소개</a></li>
-              <li><a href="/ranking">랭킹</a></li>
-              <li><a onClick = {() => alert('준비중입니다.')} href="/">이벤트</a></li>
               <li><a onClick = {() => alert('준비중입니다.')} href="/">건강정보</a></li>
+              <li><a href="/ranking">랭킹</a></li>
+              <li><a href="/submit">납품</a></li>
+             
 
 
             </ul>
@@ -191,7 +192,7 @@ const NavigationBar = () => {
                 </li>
                 <li><a href="/master">장인소개</a></li>
                 <li><a href="/ranking">랭킹</a></li>
-                <li><a href="https://altermall.shop/">이벤트</a></li>
+                <li><a href="https://altermall.shop/submit">납품</a></li>
                 <li><a href="https://altermall.shop/">건강정보</a></li>
               </ul>
             </div>
@@ -234,7 +235,9 @@ const NavigationBar = () => {
             <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li><a href="/">건강정보</a></li>
             <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-            <li><a href="/">이벤트</a></li>
+            <li><a href="/submit">납품</a></li>
+            <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
+            <li><a href="/submit">랭킹</a></li>
             <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
             <li onClick={toggleMenu}>닫기</li>
           </ul>
