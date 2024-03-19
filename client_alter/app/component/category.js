@@ -16,18 +16,18 @@ const CategoryButtons = () => {
           <ImageButton imagePath="dessert.jpg" altText="디저트" />
         </Link>
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
-          <ImageButton imagePath="salad.jpg" altText="샐러드" />
+          <ImageButton imagePath="salad.jpg" altText="식재료" />
         </Link>
-        <button className={styles.largeButton}>
+        {/* <button className={styles.largeButton}>
           <Link href='/master'>
             <img
               src='recommend.png' // imagePath에 이미지 파일의 경로를 전달
               style={{ width: '100%', height: '100%', objectFit: 'fill' }}
             />
           </Link>
-        </button>
+        </button> */}
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
-          <ImageButton imagePath="free.jpg" altText=" 락토프리" />
+          <ImageButton imagePath="free.jpg" altText= "양념/소스" />
         </Link>
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
           <ImageButton imagePath="drink.jpg" altText="음료" />
@@ -39,10 +39,10 @@ const CategoryButtons = () => {
           <ImageButton imagePath="dessert.jpg" altText="디저트" />
         </Link>
         <Link href='/'>
-          <ImageButton imagePath="salad.jpg" altText="샐러드" />
+          <ImageButton imagePath="salad.jpg" altText="식재료" />
         </Link>
         <Link href='/'>
-          <ImageButton imagePath="free.jpg" altText=" 락토프리" />
+          <ImageButton imagePath="free.jpg" altText=" 양념/소스" />
         </Link>
         <Link href='/'>
           <ImageButton imagePath="drink.jpg" altText="음료" />

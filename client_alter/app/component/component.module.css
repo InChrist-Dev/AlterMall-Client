@@ -1,29 +1,62 @@
 @media screen and (min-width: 451px) {
   .imageButton{
     width: 100%;
-    height: 90%;  
+    height: 100%;  
     overflow: hidden;
     position: relative;
     border:0;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+
+    border-radius: 10px;
 }
 .imageButton:hover{
-    background-color: aliceblue;
+ 
+    filter: brightness(100%);
+}
+
+.buttonImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden; /* 이미지와 텍스트가 같은 영역에 들어갈 수 있도록 설정 */
+  filter: brightness(80%);
+  transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
 }
 
 
-  
+
+.buttonImage:hover {
+  filter: brightness(100%);
+}
+
+.buttonText {
+  transition: opacity 0.2s ease-in-out; /* opacity를 이용하여 천천히 사라지도록 설정 */
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  transform: translate(-0%, -0%); /* 텍스트를 가운데로 정렬 */
+  color: white; /* 텍스트 색상 */
+  font-size: 50px; /* 텍스트 크기 */
+  font-weight: bolder; /* 텍스트 굵기 */
+  pointer-events: none; /* hover가 텍스트를 포함하지 않도록 설정 */
+}
+
+.imageButton:hover .buttonText {
+  opacity: 0; /* hover 시에 텍스트가 천천히 사라지도록 설정 */
+}
+/*   
 .buttonImage{ 
     width: 100%;
     height:100%;
     object-fit: fill;
-    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
-
-    /* Initial styling */
-    filter: brightness(100%);
-}
-.buttonImage:hover{
+    transition: filter 0.2s ease-in-out; 
+    border-radius: 10px;
     filter: brightness(80%);
 }
+.buttonImage:hover{
+    filter: brightness(100%);
+} */
 
 /* Footer.module.css */
 .privacy{
@@ -83,34 +116,56 @@
 }
 @media screen and (max-width: 450px) {
   .imageButton{
-    width: 85%;
-    height: 85%;
-    margin-top: 20%;
-    margin-right: 10px;
+    width: 100%;
+    height: 100%;  
     overflow: hidden;
     position: relative;
     border:0;
-    border-radius: 20px;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+
+    border-radius: 5px;
 }
 .imageButton:hover{
-    background-color: aliceblue;
+ 
+    filter: brightness(100%);
+}
+
+.buttonImage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden; /* 이미지와 텍스트가 같은 영역에 들어갈 수 있도록 설정 */
+  filter: brightness(80%);
+  transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+}
+
+
+
+.buttonImage:hover {
+  filter: brightness(100%);
+}
+
+.buttonText {
+  transition: opacity 0.2s ease-in-out; /* opacity를 이용하여 천천히 사라지도록 설정 */
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  transform: translate(-0%, -0%); /* 텍스트를 가운데로 정렬 */
+  color: white; /* 텍스트 색상 */
+  font-size: 30px; /* 텍스트 크기 */
+  font-weight: bolder; /* 텍스트 굵기 */
+  pointer-events: none; /* hover가 텍스트를 포함하지 않도록 설정 */
+}
+
+.imageButton:hover .buttonText {
+  opacity: 0; /* hover 시에 텍스트가 천천히 사라지도록 설정 */
 }
 .footerMain {
   display: none;
   
 }
-.buttonImage{ 
-    width: 100%;
-    height:100%;
-    object-fit: fill;
-    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
 
-    /* Initial styling */
-    filter: brightness(100%);
-}
-.buttonImage:hover{
-    filter: brightness(80%);
-}
 
 /* Footer.module.css */
 .privacy{

@@ -12,6 +12,7 @@ const ImageButton = ({ imagePath, altText, onClick }) => {
         alt={altText}
         className={styles.buttonImage}
       />
+      <span className={styles.buttonText}>{altText}</span>
     </button>
   );
 };
