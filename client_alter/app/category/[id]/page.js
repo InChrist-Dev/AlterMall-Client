@@ -23,9 +23,15 @@ const ItemPage = (props) => {
     try {
       const response2 = await fetch(`http://localhost:8000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
       const response = await fetch(`http://localhost:8000/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
+      const response3 = await fetch(`http://localhost:8000/user/seller/detail/rabe`);
+      const response4 = await fetch(`http://localhost:8000/user/seller`);
       const data = await response.json();
       const data2 = await response2.json();
+      const data3 = await response3.json();
+      const data4 = await response4.json();
       console.log(data2)
+      console.log(data3)
+      console.log(data4)
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       setCategoryList(data.data.items);
       setPage(data.data.totalPages);
