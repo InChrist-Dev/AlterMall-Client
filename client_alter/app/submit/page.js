@@ -33,10 +33,10 @@ const SubmitForm = () => {
     .then(response => {
       if (response.ok) {
         alert('성공적으로 제출되었습니다!');
-        window.location.reload;
+        window.location.reload();
         // 성공적으로 제출된 후에 필요한 작업을 수행하세요.
       } else {
-        console.error('Form submission failed.');
+        alert('제출에 실패하였습니다');
       }
     })
     .catch(error => {

@@ -27,42 +27,27 @@ const ImageUploader = (props) => {
     const combinedFiles = [...files, ...acceptedFiles];
     setFiles(combinedFiles);
   }, [files]);
+  
 
 
-
-//   useEffect(() => {
-//     const fetchData = async () => {
+  useEffect(() => {
+    const fetchData = async () => {
       
    
       
-//       const response = await fetch(`https://altermall.site/category`, {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(data),
-//       }).then( (res) =>  {
-//       if(res.status == 200){
-//         console.log('새로운 컨텐츠입니다.')
-//       }else if(res.status == 300){
-//         alert('잘못된 접근입니다.');
-//         window.location.replace('/');
-//         return;
-//       }else if(res.status == 201){
-//         console.log('기존 이용자입니다.')
-//         const json = res.json();
-//         console.log(json)
-//       }})
+      const response = await fetch(`https://altermall.site/submit`);
+      const data = response.json();
+      console.log(data);
     
      
     
-//       // 데이터 처리 및 상태 업데이트 등 추가 구현
-//     };
+      // 데이터 처리 및 상태 업데이트 등 추가 구현
+    };
     
    
-//       fetchData();
+      fetchData();
     
-//   }, []);
+  }, []);
  
   const handleConfirm = (item) => {
     fetch(`https://altermall.site/category/${item}`, {
