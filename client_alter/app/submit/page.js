@@ -13,9 +13,37 @@ const SubmitForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // 여기에 폼 데이터를 처리하는 로직을 추가하세요.
-    console.log('Form submitted:', { name, email, phone, deliveryDate, deliveryTime, deliveryLocation });
+    
+    const formData = {
+      name,
+      email,
+      phone,
+      deliveryDate,
+      deliveryTime,
+      deliveryLocation
+    };
+  
+    fetch('http://altermall.site/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert('성공적으로 제출되었습니다!');
+        window.location.reload;
+        // 성공적으로 제출된 후에 필요한 작업을 수행하세요.
+      } else {
+        console.error('Form submission failed.');
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+    });
   };
+  
 
   return (
     <div className={styles.submit}>
@@ -24,7 +52,7 @@ const SubmitForm = () => {
       <h3>※상담에 필요한 대략적인 정보만 기제해주세요.</h3>
       <form onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
-          <label htmlFor="name">이름</label>
+          <label htmlFor="name">이름(회사명)</label>
           <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
 
