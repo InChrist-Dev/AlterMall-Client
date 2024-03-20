@@ -20,7 +20,7 @@
   height: 100%;
   border-radius: 10px;
   overflow: hidden; /* 이미지와 텍스트가 같은 영역에 들어갈 수 있도록 설정 */
-  filter: brightness(80%);
+  filter: brightness(90%);
   transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
 }
 
@@ -136,7 +136,7 @@
   height: 100%;
   border-radius: 5px;
   overflow: hidden; /* 이미지와 텍스트가 같은 영역에 들어갈 수 있도록 설정 */
-  filter: brightness(80%);
+  filter: brightness(94%);
   transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
 }
 
