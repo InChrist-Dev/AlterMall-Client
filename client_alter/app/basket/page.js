@@ -115,7 +115,7 @@ const ItemPage = (props) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({"order_id":myUuid,}),
+          body: JSON.stringify({"order_id":myUuid,"name":"guest"}),
         })
           .then(async (response) => {
             if (response.ok) {
