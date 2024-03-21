@@ -208,30 +208,43 @@ if (currentHour < 15) {
   };
   const handleSubmit = useCallback(
     (id) => {
-      console.log(props.params.id);
-      console.log(id)
-      fetch(`https://altermall.site/customer/cart/`, {
-        method: 'POST',
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        credentials: 'include',
-        body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
-      })
-        .then((response) => {
-    
-          if (response.status == 400) {
-            alert('장바구니에 존재하는 메뉴입니다.');
-          } else if (response.status == 201) {
-            alert('장바구니에 담겼습니다');
-          }
-
-
+      if(accessToken){
+        console.log(props.params.id);
+        console.log(id)
+        fetch(`https://altermall.site/customer/cart/`, {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: 'include',
+          body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
         })
-        .finally(() => {
-          console.log("저장완료")
-        });
+          .then((response) => {
+      
+            if (response.status == 400) {
+              alert('장바구니에 존재하는 메뉴입니다.');
+            } else if (response.status == 201) {
+              alert('장바구니에 담겼습니다');
+            }
+  
+  
+          })
+          .finally(() => {
+            console.log("저장완료")
+          });
+      }else{
+        const cartData = localStorage.getItem('cart');
+        let cartItems = [];
+        if (cartData) {
+          cartItems = JSON.parse(cartData);
+        }
+      
+        cartItems.push({ amount: quantity ,Item: item});
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+        alert('비회원 장바구니에 담겼습니다');
+      }
+  
 
     },
     [quantity, id],
