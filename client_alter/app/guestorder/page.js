@@ -315,12 +315,12 @@ const Checkout = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, [refresh]);
+  }, []);
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
       <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal refresh={refresh} closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
+        <DeliveryInfoModal  closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
