@@ -1,7 +1,7 @@
 // ItemPage.jsx
 'use client'
 import React, { useState, useEffect } from 'react';
-import styles from '../basket/basket.module.css'; // Import the CSS module
+import styles from './local.module.css'; // Import the CSS module
 
 const ItemPage = () => {
   const [items, setItems] = useState([]);

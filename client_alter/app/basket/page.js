@@ -20,29 +20,39 @@ const ItemPage = (props) => {
   console.log(myUuid);
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/customer/cart/`,{
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        }});
       
-      
-      const data = await response.json();
-        if(data.loginFail){
-      
-          Cookies.remove('accessToken');
-          window.location.href='https://altermall.shop/loginPage';
+        if(!accessToken){
+          const cartString = localStorage.getItem('cart'); // 로컬 스토리지에서 데이터 가져오기
+          const cartJson = JSON.parse(cartString); // JSON으로 변환
+          
+          console.log(cartJson);
+          setItems(cartJson);
+          
+          const initialQuantity = cartJson.map((item) => item.amount );
+        
+          setQuantity(initialQuantity);
+          setSelectedItems([...Array(cartJson.length).keys()]);
+        }else{
+          const response = await fetch(`https://altermall.site/customer/cart/`,{
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            }});
+          
+          
+          const data = await response.json();
+          console.log(data.data.rows);
+          setItems(data.data.rows);
+          
+          const initialQuantity = data.data.rows.map((item) => item.amount );
+        
+          setQuantity(initialQuantity);
+          setSelectedItems([...Array(data.data.rows.length).keys()]);
         }
 
 
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data.data.rows);
-      setItems(data.data.rows);
-      
-      const initialQuantity = data.data.rows.map((item) => item.amount );
-    
-      setQuantity(initialQuantity);
-      setSelectedItems([...Array(data.data.rows.length).keys()]);
+
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
@@ -86,66 +96,102 @@ const ItemPage = (props) => {
         return; // 함수를 빠져나옴
       }
     }
+    if(!accessToken){
      
- 
-    if(isStock == true){
-      await fetch('https://altermall.site/customer/order',{
-      method:'post',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        'order_id':myUuid,
-        'seller_id': items[0].Item.seller_id,
-      }),
-        
-        
+        // 비회원인 경우
+        const orderInfo = {
+          order_id: myUuid,
+          seller_id: items[0].Item.seller_id,
+          items: orderItems,
+          // 여기에 필요한 다른 주문 정보를 추가합니다.
+        };
       
-  
-  }).then(async (response) => {
-    const data =await  response.json();
-    console.log(data);
-    if (response.status == 405) {
-      alert('주문 실패하였습니다');
-    } else if (response.status == 201) {
-      await fetch('https://altermall.site/customer/orderdetail',{
+        // 로컬 스토리지에 주문 정보 저장
+        localStorage.setItem('order', JSON.stringify(orderInfo));
+      
+        // 비회원 주문 처리를 위한 fetch 요청
+        await fetch('https://altermall.site/auth/guest/signin', {
+          method: 'post',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({"order_id":myUuid,}),
+        })
+          .then(async (response) => {
+            if (response.ok) {
+              // 주문 정보를 서버에 성공적으로 전송한 경우
+              const data = await response.json();
+              console.log(data.accessToken);
+              Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
+              window.location.href="http://localhost:3000/guestorder"
+            } else {
+              // 주문 실패한 경우
+              alert('주문 실패하였습니다');
+            }
+          })
+          .catch((error) => {
+            console.error('주문 요청 중 오류 발생:', error);
+          });
+    }else{
+
+      if(isStock == true){
+        await fetch('https://altermall.site/customer/order',{
         method:'post',
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          items: orderItems,
+          'order_id':myUuid,
+          'seller_id': items[0].Item.seller_id,
         }),
           
           
         
     
     }).then(async (response) => {
+      const data =await  response.json();
+      console.log(data);
       if (response.status == 405) {
         alert('주문 실패하였습니다');
       } else if (response.status == 201) {
-        window.location.href='/order';
-       
+        await fetch('https://altermall.site/customer/orderdetail',{
+          method:'post',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: orderItems,
+          }),
+            
+            
+          
+      
+      }).then(async (response) => {
+        if (response.status == 405) {
+          alert('주문 실패하였습니다');
+        } else if (response.status == 201) {
+          window.location.href='/order';
+         
+          const data = await response.json();
+          console.log(data)
+        }
+    
+    
+      })
+      
+    
+        console.log(response);
         const data = await response.json();
         console.log(data)
       }
   
   
-    }).finally(
-  
-    )
-    
-  
-      console.log(response);
-      const data = await response.json();
-      console.log(data)
+    })
+      }
     }
-
-
-  })
-    }
+ 
     
     
 

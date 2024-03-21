@@ -57,31 +57,42 @@ const ItemPage = (props) => {
 
   };
   const handleSubmit= useCallback(
-    (id) => {
+    (item) => {
     
-     
-
-      fetch(`https://altermall.site/customer/cart/`, {
-        method: 'POST',
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        credentials: 'include',
-        body: JSON.stringify({ amount: 1 ,item_id: id}),
-      })
-        .then((response) => {
-          if (response.status == 400) {
-            alert('장바구니에 존재하는 메뉴입니다.');
-          } else if (response.status == 201) {
-            alert('장바구니에 담겼습니다');
-          }
-
-
+      
+      if(accessToken){
+        fetch(`https://altermall.site/customer/cart/`, {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: 'include',
+          body: JSON.stringify({ amount: 1 ,item_id: item.item_id}),
         })
-        .finally(() => {
-        
-        });
+          .then((response) => {
+            if (response.status == 400) {
+              alert('장바구니에 존재하는 메뉴입니다.');
+            } else if (response.status == 201) {
+              alert('장바구니에 담겼습니다');
+            }
+  
+  
+          })
+          .finally(() => {
+          
+          });
+      }else{
+        const cartData = localStorage.getItem('cart');
+        let cartItems = [];
+        if (cartData) {
+          cartItems = JSON.parse(cartData);
+        }
+      
+        cartItems.push({ amount: 1 ,Item: item});
+        localStorage.setItem('cart', JSON.stringify(cartItems));
+      }
+  
 
     },
     [],
@@ -176,7 +187,7 @@ const ItemPage = (props) => {
           <div className={styles.productLink}>
             <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
-              handleSubmit(item.item_id);}}>+</button>
+              handleSubmit(item);}}>+</button>
             <h3> {item.item_name}</h3>
             <p>{item.price.toLocaleString()}원</p>
             <p>{categoryS[currentIndex]}</p>
