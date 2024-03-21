@@ -67,7 +67,7 @@ const Checkout = (props) => {
 
     const tosspayments = await loadTossPayments(
       //'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
-      'test_ck_24xLea5zVAEdmQzvLW7YVQAMYNwW'
+      'test_gck_BX7zk2yd8yjp90wDbG0X3x9POLqK'
     );
     items.map((item) => {
       amount += item.price * item.stock;
