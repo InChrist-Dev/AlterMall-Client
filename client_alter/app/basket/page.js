@@ -123,6 +123,7 @@ const ItemPage = (props) => {
               const data = await response.json();
               console.log(data.accessToken);
               Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
+              Cookies.set('position', data.position, { expires: 1 });  // 1일 동안 유지되도록 설정
               window.location.href="https://altermall.shop/guestorder"
             } else {
               // 주문 실패한 경우

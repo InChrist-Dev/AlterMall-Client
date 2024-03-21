@@ -7,27 +7,48 @@ import { useState,useEffect } from 'react';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
+const position = Cookies.get('position');
 export default function Complete() {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
-  const fetchData = async () => {
+  const fetchData = async (props) => {
     try {
-      const response = await fetch(`https://altermall.site/customer/order/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-
-      });
-      const data = await response.json();
-
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data)
-      setOrder(data.data.rows[0]);
-      setOrderDetail(data.data.rows[0].OrderDetails)
-      setName(data.data.rows[0].OrderDetails[0].item_name)
+      if(position=='guest'){
+        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.params.orderId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+  
+        });
+        const data = await response.json();
+  
+        // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+        console.log(data)
+        setOrder(data.data.rows[0]);
+        setOrderDetail(data.data.rows[0].OrderDetails)
+        setName(data.data.rows[0].OrderDetails[0].item_name)
+      }
+      else{
+        const response = await fetch(`https://altermall.site/customer/order/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+  
+        });
+        const data = await response.json();
+  
+        // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+        console.log(data)
+        setOrder(data.data.rows[0]);
+        setOrderDetail(data.data.rows[0].OrderDetails)
+        setName(data.data.rows[0].OrderDetails[0].item_name)
+      }
+      
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
