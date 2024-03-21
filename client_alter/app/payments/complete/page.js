@@ -8,19 +8,15 @@ import { useState,useEffect } from 'react';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 const position = Cookies.get('position');
-const queryString = window.location.search;
-const urlParams = new URLSearchParams(queryString);
 
-// 특정 파라미터 가져오기
-const param1Value = urlParams.get('orderId');
-export default function Complete() {
+export default function Complete(props) {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
-  const fetchData = async (props) => {
+  const fetchData = async () => {
     try {
       if(position=='guest'){
-        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${param1Value}`, {
+        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
