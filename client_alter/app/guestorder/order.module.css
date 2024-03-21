@@ -284,7 +284,13 @@
   border-radius: 30px;
 }
 
-
+.serchButton{
+  width: 100%;
+  background:#f57c19;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+}
 
 /* ... (other styles) */
 
@@ -391,6 +397,42 @@
   width: 100%;
   height: 50%;
   font-size: 24px;
+}
+.label {
+  margin-bottom: 5px;
+  color: #191919;
+}
+
+.input {
+  margin-bottom: 20px;
+  padding: 10px;
+  height: 40px;
+  font-size: 20px;
+  border-color: #acacac;
+  border-width: 0 0 1px;
+}
+.input:focus {
+  outline: none;
+}
+
+.call{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+}
+
+.inputCall {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-inline: 2px;
+  height: 40px;
+  font-size: 20px;
+  border-color: #acacac;
+  border-width: 0 0 1px;
+}
+.inputCall:focus {
+  outline: none;
 }
 }
 /* styles/Checkout.module.css */
@@ -679,10 +721,10 @@
 }
 
 .addressButton button{
-  height: 45px;
-  width: 80px;
-  margin: 0px 10px;
-  border-radius: 30px;
+  height: 40px;
+  width: 70px;
+
+  border-radius: 10px;
 }
 
 /* ... (other styles) */
@@ -777,5 +819,49 @@ display: none;
   font-weight: normal;
   color: #888;
   margin-bottom: 14px;
+}
+  
+.label {
+  margin-bottom: 5px;
+  color: #191919;
+}
+
+.input {
+  margin-bottom: 20px;
+  padding: 10px;
+  height: 35px;
+  font-size: 16px;
+  border-color: #acacac;
+  border-width: 0 0 1px;
+}
+.input:focus {
+  outline: none;
+}
+
+.call{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 5px;
+}
+
+.inputCall {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-inline: 2px;
+  height: 35px;
+  font-size: 20px;
+  border-color: #acacac;
+  border-width: 0 0 1px;
+}
+.inputCall:focus {
+  outline: none;
+}
+.serchButton{
+  width: 100%;
+  background:#f57c19;
+  color: #fff;
+  border: none;
+  font-size: 15px;
 }
 }
