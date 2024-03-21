@@ -31,6 +31,8 @@ export default function Complete(props) {
         setOrder(data.data.rows[0]);
         setOrderDetail(data.data.rows[0].OrderDetails)
         setName(data.data.rows[0].OrderDetails[0].item_name)
+        Cookies.remove('accessToken');
+        Cookies.remove('position');
       }
       else{
         const response = await fetch(`https://altermall.site/customer/order/`, {
