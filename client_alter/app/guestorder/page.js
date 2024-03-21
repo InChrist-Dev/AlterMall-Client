@@ -119,23 +119,7 @@ const Checkout = (props) => {
           if (response.status == 405) {
             alert('주문 실패하였습니다');
           } else if (response.status == 201) {
-            await fetch('https://altermall.site/guest',{
-              method:'patch',
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({
-                pw: pw,
-                addr:addr,
-                addr_detail: addr_detail,
-                phone:phoneNumber1+'-'+phoneNumber2+'-'+phoneNumber3,
-              }),
-                
-                
-              
-          
-          })
+         
            
             const data = await response.json();
             console.log(data)

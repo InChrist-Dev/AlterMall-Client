@@ -115,7 +115,7 @@ const ItemPage = (props) => {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({"order_id":myUuid,}),
+          body: JSON.stringify({"id":myUuid,}),
         })
           .then(async (response) => {
             if (response.ok) {
@@ -123,7 +123,7 @@ const ItemPage = (props) => {
               const data = await response.json();
               console.log(data.accessToken);
               Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-              window.location.href="http://localhost:3000/guestorder"
+              window.location.href="https://altermall.shop/guestorder"
             } else {
               // 주문 실패한 경우
               alert('주문 실패하였습니다');
