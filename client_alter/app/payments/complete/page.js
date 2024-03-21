@@ -85,7 +85,10 @@ export default function Complete(props) {
           <span className={styles.label}>요청사항:</span>
           {order? order.requests:''}
         </li>
-      
+        <li className={styles.infoListItem}>
+          <span className={styles.labe}>※비회원일 경우 주문번호를 꼭 복사해두세요.</span>
+          
+        </li>
       </ul>
     </div>
   </div>
