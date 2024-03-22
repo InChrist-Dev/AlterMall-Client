@@ -256,8 +256,22 @@ if (currentHour < 15) {
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
   const handleBuy = (itemId,amount)=>{
-  
+  if(accessToken){
     window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
+
+  }else{
+    const cartData = localStorage.getItem('cart');
+    let cartItems = [];
+    if (cartData) {
+      cartItems = JSON.parse(cartData);
+    }
+  
+    cartItems.push({ amount: quantity ,Item: item});
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+    alert('비회원 주문페이지로 이동합니다.');
+    window.location.href=`/guestorder`;
+  
+  }
   };
  return(
     <div>
@@ -282,15 +296,7 @@ if (currentHour < 15) {
         </div>
 
         <div className={styles.productOptions}>
-          {/* <div className={styles.dropdown}>
-            <label>옵션</label>
-            <select>
-              <option>Option 1</option>
-              <option>Option 2</option>
-              {/* Add more options as needed 
-            </select>
-          </div> */}
-
+  
           <div className={styles.dropdown}>
             <label>주문수량</label>
             <select onChange={(e) => handleQuantityChange(e.target.value)}>

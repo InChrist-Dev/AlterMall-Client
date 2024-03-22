@@ -245,28 +245,32 @@ const ItemPage = (props) => {
 
   const Cancel = useCallback(
     (id) => {
-     
-      fetch(`https://altermall.site/customer/cart/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-    
-      })
-        .then((response) => {
-          if (response.status == 405) {
-            alert('삭제 실패하였습니다');
-          } else if (response.status == 201) {
-            alert('삭제되었습니다');
-            fetchData();
-          }
-
-
+      if(accessToken){
+        fetch(`https://altermall.site/customer/cart/${id}`, {
+          method: 'DELETE',
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+      
         })
-        .finally(() => {
-          // window.location.reload();
-        });
+          .then((response) => {
+            if (response.status == 405) {
+              alert('삭제 실패하였습니다');
+            } else if (response.status == 201) {
+              alert('삭제되었습니다');
+              fetchData();
+            }
+  
+  
+          })
+          .finally(() => {
+            // window.location.reload();
+          });
+      }else{
+        
+      }
+      
 
     },
     [],
