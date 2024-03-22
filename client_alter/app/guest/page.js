@@ -37,7 +37,7 @@ const Guest = (props) => {
       return (
         <div className={styles.container}>
           <h1 className={styles.title}>비회원 주문 조회</h1>
-          {data.exist ? (
+          {data ? (
             <div className={styles.orderInfo}>
               <p>주문번호: {data.data.rows[0].order_id}</p>
               <p>주문일시: {data.data.rows[0].createdAt}</p>
