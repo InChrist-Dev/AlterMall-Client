@@ -129,7 +129,7 @@ export default function LoginPage() {
       </div>
       <div className={styles.form}>
    
-        <button className={styles.guestButton}  onClick={()=>{window.location.href="https://altermall.site/guestInfo"}}>비회원 주문 조회</button>
+        <button className={styles.guestButton}  onClick={()=>{window.location.href="https://altermall.shop/guestInfo"}}>비회원 주문 조회</button>
     
         
       </div>
