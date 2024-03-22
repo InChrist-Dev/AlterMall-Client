@@ -268,7 +268,17 @@ const ItemPage = (props) => {
             // window.location.reload();
           });
       }else{
-        
+          // 비회원인 경우
+      const cartData = localStorage.getItem('cart');
+      if (cartData) {
+        let updatedCart = JSON.parse(cartData);
+        updatedCart = updatedCart.filter((item) => item.id !== id);
+        localStorage.setItem('cart', JSON.stringify(updatedCart));
+        fetchData(); // 장바구니 다시 불러오기
+        alert('삭제되었습니다');
+      } else {
+        alert('삭제 실패하였습니다');
+      }
       }
       
 
