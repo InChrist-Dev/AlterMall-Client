@@ -15,21 +15,48 @@ const Guest = (props) => {
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
           setData(data);
-     
-
-    
-    
-    
-    
-    
-          
-   
-    
         } catch (error) {
           console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
         }
       };
+      const Cancel = useCallback(
+        (id) => {
+          const answer = confirm('주문을 취소하시겠습니까? 판매자가 수락했을 경우 취소가 불가능합니다.')
+          if (answer) {
+            fetch(`https://altermall.site/customer/cancel`, {
+              method: 'PATCH',
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                'order_id': id,
+              })
     
+            })
+              .then((response) => {
+                console.log(response)
+                if (response.status == 405) {
+                  alert('삭제 실패하였습니다');
+                } else if (response.status == 201) {
+                  alert('삭제되었습니다');
+                } else if (response.status == 200) {
+                  alert('삭제되었습니다');
+                }
+    
+    
+              })
+              .finally(() => {
+                // window.location.reload();
+              });
+          } else {
+    
+          }
+    
+    
+        },
+        [],
+      );
       // useEffect 안에서 fetchData 함수를 호출합니다.
       useEffect(() => {
         fetchData();
