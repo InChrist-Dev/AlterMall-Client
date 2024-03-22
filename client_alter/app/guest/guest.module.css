@@ -1,0 +1,42 @@
+/* guest.module.css */
+.container {
+    margin: 20px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .orderInfo {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .productList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .productItem {
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .productImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .deliveryInfo {
+    margin-top: 20px;
+  }
+  
+  .noOrder {
+    font-size: 18px;
+    color: red;
+  }
+  
