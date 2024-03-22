@@ -87,6 +87,7 @@ const Guest = (props) => {
               <p>주소: {data.data.rows[0].addr} {data.data.rows[0].addr_detail}</p>
               <p>전화번호: {data.data.rows[0].phone}</p>
               <p>배송 요청사항: {data.data.rows[0].requests}</p>
+              <p><button onClick={()=>Cancel(data.data.rows[0].order_id)}></button></p>
             </div>
           </div>
         ) : (
