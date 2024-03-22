@@ -39,7 +39,7 @@ const Guest = (props) => {
         <h1 className={styles.title}>비회원 주문 조회</h1>
         {data ? (
           <div className={styles.orderInfo}>
-            <p className={styles.orderDate}>주문일시: {data.data.rows[0].createdAt}</p>
+            <p className={styles.orderDate}>주문일시: {data.data.rows[0].createdAt.slice(0, 10)}</p>
             <p className={styles.itemCount}>주문 상품 수: {data.data.totalItemCount}</p>
             <p className={styles.totalAmount}>총 주문 금액: {data.data.rows[0].amount}원</p>
             <div className={styles.productList}>
