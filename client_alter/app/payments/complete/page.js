@@ -7,27 +7,51 @@ import { useState,useEffect } from 'react';
 
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-export default function Complete() {
+const position = Cookies.get('position');
+
+export default function Complete(props) {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/customer/order/`, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-        credentials: 'include',
-
-      });
-      const data = await response.json();
-
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      console.log(data)
-      setOrder(data.data.rows[0]);
-      setOrderDetail(data.data.rows[0].OrderDetails)
-      setName(data.data.rows[0].OrderDetails[0].item_name)
+      if(position=='guest'){
+        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+  
+        });
+        const data = await response.json();
+  
+        // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+        console.log(data)
+        setOrder(data.data.rows[0]);
+        setOrderDetail(data.data.rows[0].OrderDetails)
+        setName(data.data.rows[0].OrderDetails[0].item_name)
+        Cookies.remove('accessToken');
+        Cookies.remove('position');
+      }
+      else{
+        const response = await fetch(`https://altermall.site/customer/order/`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+  
+        });
+        const data = await response.json();
+  
+        // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+        console.log(data)
+        setOrder(data.data.rows[0]);
+        setOrderDetail(data.data.rows[0].OrderDetails)
+        setName(data.data.rows[0].OrderDetails[0].item_name)
+      }
+      
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -63,7 +87,10 @@ export default function Complete() {
           <span className={styles.label}>요청사항:</span>
           {order? order.requests:''}
         </li>
-      
+        <li className={styles.infoListItem}>
+          <span className={styles.labe}>※비회원일 경우 주문번호를 꼭 복사해두세요.</span>
+          
+        </li>
       </ul>
     </div>
   </div>

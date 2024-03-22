@@ -91,6 +91,7 @@ const ItemPage = (props) => {
       
         cartItems.push({ amount: 1 ,Item: item});
         localStorage.setItem('cart', JSON.stringify(cartItems));
+        alert('비회원 장바구니에 담겼습니다');
       }
   
 
