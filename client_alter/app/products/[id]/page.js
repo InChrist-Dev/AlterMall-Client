@@ -240,7 +240,7 @@ if (currentHour < 15) {
           cartItems = JSON.parse(cartData);
         }
       
-        cartItems.push({ amount: quantity ,Item: item});
+        cartItems.push({ amount: quantity ,Item: data});
         localStorage.setItem('cart', JSON.stringify(cartItems));
         alert('비회원 장바구니에 담겼습니다');
       }
