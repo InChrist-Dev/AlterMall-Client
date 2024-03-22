@@ -2,7 +2,7 @@
 import { useEffect ,useState} from "react";
 import styles from './guest.module.css';
 const Guest = (props) => {
-  const [data,setData] = useState();
+  const [data,setData] = useState([]);
     const fetchData = async () => {
         try {
         
@@ -37,7 +37,7 @@ const Guest = (props) => {
       return (
         <div className={styles.container}>
         <h1 className={styles.title}>비회원 주문 조회</h1>
-        {data.data ? (
+        {data.length>0 ? (
           <div className={styles.orderInfo}>
             <p className={styles.orderDate}>주문일시: {data.data.rows[0].createdAt}</p>
             <p className={styles.itemCount}>주문 상품 수: {data.data.totalItemCount}</p>
