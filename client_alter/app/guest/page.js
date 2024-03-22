@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import styles from './guest.module.css';
 const Guest = (props) => {
+  const [data,setData] = useState();
     const fetchData = async () => {
         try {
         
@@ -13,7 +14,7 @@ const Guest = (props) => {
     
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-          console.log(data);
+          setData(data);
      
 
     
