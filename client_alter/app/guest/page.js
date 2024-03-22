@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from "react";
+import { useEffect ,useState} from "react";
 import styles from './guest.module.css';
 const Guest = (props) => {
   const [data,setData] = useState();
