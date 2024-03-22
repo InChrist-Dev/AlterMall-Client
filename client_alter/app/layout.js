@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
       <Title/>
 
       <body className={inter.className}> 
-      <NavigationBar session={session? session:''}/>
+      <NavigationBar session={session? session:'.'}/>
     
       {children}
       
