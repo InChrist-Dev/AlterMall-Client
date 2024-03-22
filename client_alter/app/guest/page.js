@@ -46,16 +46,18 @@ const Guest = (props) => {
               {data.data.rows[0].OrderDetails.map((detail, index) => (
                 <div key={index} className={styles.productItem}>
                   <img src={`https://altermall.site/${detail.img}`} alt={detail.item_name} className={styles.productImage} />
-                  <p className={styles.itemName}>{detail.item_name}</p>
-                  <p className={styles.itemPrice}>가격: {detail.price}원</p>
-                  <p className={styles.itemStock}>수량: {detail.stock}</p>
+                  <div className={styles.itemInfo}>
+                    <p className={styles.itemName}>{detail.item_name}</p>
+                    <p className={styles.itemPrice}>가격: {detail.price}원</p>
+                    <p className={styles.itemStock}>수량: {detail.stock}</p>
+                  </div>
                 </div>
               ))}
             </div>
             <div className={styles.deliveryInfo}>
+              <p className={styles.deliveryTitle}>배송 정보</p>
               <p>수령인: {data.data.rows[0].customer_name}</p>
-              <p>주소: {data.data.rows[0].addr}</p>
-              <p>상세주소: {data.data.rows[0].addr_detail}</p>
+              <p>주소: {data.data.rows[0].addr} {data.data.rows[0].addr_detail}</p>
               <p>전화번호: {data.data.rows[0].phone}</p>
               <p>배송 요청사항: {data.data.rows[0].requests}</p>
             </div>
