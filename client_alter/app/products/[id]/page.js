@@ -267,6 +267,13 @@ if (currentHour < 15) {
     }
   
     cartItems.push({ amount: quantity ,Item: guest});
+         // 비회원인 경우
+         const orderInfo = {
+          order_id: myUuid,
+          seller_id: guest[0].Item.seller_id,
+          items: guest,
+          // 여기에 필요한 다른 주문 정보를 추가합니다.
+        };
     localStorage.setItem('order', JSON.stringify(cartItems));
     alert('비회원 주문페이지로 이동합니다.');
     window.location.href=`/guestorder`;
