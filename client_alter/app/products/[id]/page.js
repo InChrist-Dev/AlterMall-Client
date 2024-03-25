@@ -261,24 +261,24 @@ if (currentHour < 15) {
     window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
 
   }else{
-    const cartData = localStorage.getItem('cart');
-    let cartItems = [];
-    if (cartData) {
-      cartItems = JSON.parse(cartData);
-    }
+    // const cartData = localStorage.getItem('cart');
+    // let cartItems = [];
+    // if (cartData) {
+    //   cartItems = JSON.parse(cartData);
+    // }
   
-    cartItems.push({ amount: quantity ,Item: guest});
-         // 비회원인 경우
-         const orderInfo = {
-          order_id: myUuid,
-          seller_id: guest.seller_id,
-          items: [guest],
-          // 여기에 필요한 다른 주문 정보를 추가합니다.
-        };
-    localStorage.setItem('order', JSON.stringify(orderInfo));
-    alert('비회원 주문페이지로 이동합니다.');
-    window.location.href=`/guestorder`;
-  
+    // cartItems.push({ amount: quantity ,Item: guest});
+    //      // 비회원인 경우
+    //      const orderInfo = {
+    //       order_id: myUuid,
+    //       seller_id: guest.seller_id,
+    //       items: [guest],
+    //       // 여기에 필요한 다른 주문 정보를 추가합니다.
+    //     };
+    // localStorage.setItem('order', JSON.stringify(orderInfo));
+    // alert('비회원 주문페이지로 이동합니다.');
+    // window.location.href=`/guestorder`;
+    alert('비회원 바로구매는 서비스준비중입니다. 회원구매나 비회원 장바구니를 이용해주세요');
   }
   };
  return(
