@@ -217,11 +217,11 @@ if (currentHour < 15) {
     return result;
   };
   const handleSubmit = useCallback(
-    async(id) => {
+    (id) => {
       if(accessToken){
         console.log(props.params.id);
         console.log(id)
-        await fetch(`https://altermall.site/customer/cart/`, {
+        fetch(`https://altermall.site/customer/cart/`, {
           method: 'POST',
           headers: {
             "content-type": "application/json",
@@ -271,7 +271,7 @@ if (currentHour < 15) {
 
   }else{
       // 비회원 주문 처리를 위한 fetch 요청
-      await fetch('https://altermall.site/auth/guest/signin', {
+       fetch('https://altermall.site/auth/guest/signin', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
