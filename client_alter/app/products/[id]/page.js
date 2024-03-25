@@ -36,6 +36,15 @@ const ItemPage = (props) => {
     setIsModalOpen(true);
   };
 
+    // setGuest 함수를 활용하여 첫 번째 손님의 stock 속성 설정
+  const updateStock = (quantity) => {
+    if (guest.length > 0) {
+      setGuest(prevGuest => [{ ...prevGuest[0], stock: quantity }, ...prevGuest.slice(1)]);
+    } else {
+      console.error('Guest array is empty.');
+    }
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -290,7 +299,8 @@ if (currentHour < 15) {
     if (cartData) {
       cartItems = JSON.parse(cartData);
     }
-  
+  // updateStock 함수 호출 예시
+  updateStock(quantity); // 첫 번째 손님의 stock을 10으로 설정
     cartItems.push({ amount: quantity ,Item: guest});
          // 비회원인 경우
          const orderInfo = {
