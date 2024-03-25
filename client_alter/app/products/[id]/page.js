@@ -251,7 +251,7 @@ if (currentHour < 15) {
         }
         const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
       
-        cartItems.push({ amount: quantity ,Item: [guest]});
+        cartItems.push({ amount: quantity ,Item: guest});
         localStorage.setItem('cart', JSON.stringify(cartItems));
         alert('비회원 장바구니에 담겼습니다');
       }
