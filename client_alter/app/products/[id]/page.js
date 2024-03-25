@@ -250,7 +250,7 @@ if (currentHour < 15) {
           cartItems = JSON.parse(cartData);
         }const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
       
-        cartItems.push({ amount: quantity ,Item: updatedGuest});
+        cartItems.push({ amount: quantity ,items: updatedGuest});
         localStorage.setItem('cart', JSON.stringify(cartItems));
         alert('비회원 장바구니에 담겼습니다');
       }
