@@ -248,9 +248,9 @@ if (currentHour < 15) {
         let cartItems = [];
         if (cartData) {
           cartItems = JSON.parse(cartData);
-        }
+        }const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
       
-        cartItems.push({ amount: quantity ,Item: guest});
+        cartItems.push({ amount: quantity ,Item: updatedGuest});
         localStorage.setItem('cart', JSON.stringify(cartItems));
         alert('비회원 장바구니에 담겼습니다');
       }
@@ -300,8 +300,9 @@ if (currentHour < 15) {
       cartItems = JSON.parse(cartData);
     }
   // updateStock 함수 호출 예시
-  setGuest(prevGuest => [{ ...prevGuest[0], stock: quantity }, ...prevGuest.slice(1)]);
-    cartItems.push({ amount: quantity ,Item: guest});
+  const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
+    
+    cartItems.push({ amount: quantity ,Item: updatedGuest});
          // 비회원인 경우
          const orderInfo = {
           order_id: myUuid,
