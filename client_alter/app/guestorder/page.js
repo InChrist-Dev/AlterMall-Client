@@ -6,11 +6,9 @@ import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
-import { v4 as uuidv4 } from 'uuid';
 import DaumPostcode from 'react-daum-postcode';
 // 쿠키에서 토큰을 가져오기
-const myUuid = uuidv4();
-console.log(myUuid);
+
 const accessToken = Cookies.get('accessToken');
 const Checkout = (props) => {
   const [order, setOrder] = useState([]);

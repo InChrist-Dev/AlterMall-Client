@@ -261,24 +261,48 @@ if (currentHour < 15) {
     window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
 
   }else{
-    // const cartData = localStorage.getItem('cart');
-    // let cartItems = [];
-    // if (cartData) {
-    //   cartItems = JSON.parse(cartData);
-    // }
+      // 비회원 주문 처리를 위한 fetch 요청
+      await fetch('https://altermall.site/auth/guest/signin', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"order_id":myUuid,"name":"guest"}),
+      })
+        .then(async (response) => {
+          if (response.ok) {
+            // 주문 정보를 서버에 성공적으로 전송한 경우
+            const data = await response.json();
+            console.log(data.accessToken);
+            Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
+            Cookies.set('position', data.position, { expires: 1 });  // 1일 동안 유지되도록 설정
+            window.location.href="https://altermall.shop/guestorder"
+          } else {
+            // 주문 실패한 경우
+            alert('주문 실패하였습니다');
+          }
+        })
+        .catch((error) => {
+          console.error('주문 요청 중 오류 발생:', error);
+        });
+    const cartData = localStorage.getItem('cart');
+    let cartItems = [];
+    if (cartData) {
+      cartItems = JSON.parse(cartData);
+    }
   
-    // cartItems.push({ amount: quantity ,Item: guest});
-    //      // 비회원인 경우
-    //      const orderInfo = {
-    //       order_id: myUuid,
-    //       seller_id: guest.seller_id,
-    //       items: [guest],
-    //       // 여기에 필요한 다른 주문 정보를 추가합니다.
-    //     };
-    // localStorage.setItem('order', JSON.stringify(orderInfo));
-    // alert('비회원 주문페이지로 이동합니다.');
-    // window.location.href=`/guestorder`;
-    alert('비회원 바로구매는 서비스준비중입니다. 회원구매나 비회원 장바구니를 이용해주세요');
+    cartItems.push({ amount: quantity ,Item: guest});
+         // 비회원인 경우
+         const orderInfo = {
+          order_id: myUuid,
+          seller_id: guest.seller_id,
+          items: [guest],
+          // 여기에 필요한 다른 주문 정보를 추가합니다.
+        };
+    localStorage.setItem('order', JSON.stringify(orderInfo));
+    alert('비회원 주문페이지로 이동합니다.');
+    window.location.href=`/guestorder`;
+    //alert('비회원 바로구매는 서비스준비중입니다. 회원구매나 비회원 장바구니를 이용해주세요');
   }
   };
  return(
