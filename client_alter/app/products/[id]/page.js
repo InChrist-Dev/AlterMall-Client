@@ -217,11 +217,11 @@ if (currentHour < 15) {
     return result;
   };
   const handleSubmit = useCallback(
-    (id) => {
+    async(id) => {
       if(accessToken){
         console.log(props.params.id);
         console.log(id)
-        fetch(`https://altermall.site/customer/cart/`, {
+        await fetch(`https://altermall.site/customer/cart/`, {
           method: 'POST',
           headers: {
             "content-type": "application/json",
