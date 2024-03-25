@@ -7,9 +7,10 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
 import Modal from './Modal';
+import { v4 as uuidv4 } from 'uuid';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-
+const myUuid = uuidv4();
 const ItemPage = (props) => {
   const [deliveryTime, setDeliveryTime] = useState('');
 
