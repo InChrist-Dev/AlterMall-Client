@@ -273,7 +273,7 @@ const ItemPage = (props) => {
       if (cartData) {
         let updatedCart = JSON.parse(cartData);
         console.log(updatedCart)
-        updatedCart = updatedCart.filter((item) => item.Item.item_id !== id);
+        updatedCart = updatedCart.filter((item) => item.Item.item_id == id);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
         fetchData(); // 장바구니 다시 불러오기
         alert('삭제되었습니다');
