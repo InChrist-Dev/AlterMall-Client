@@ -28,7 +28,7 @@ const Guest = (props) => {
           
               body: JSON.stringify({
                 'order_id': id,
-                'pw':pw
+              
               })
     
             })
