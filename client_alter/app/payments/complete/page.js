@@ -16,7 +16,7 @@ export default function Complete(props) {
 
   const fetchData = async () => {
     try {
-      if(position=='guest'){
+      if(!accessToken){
         const pw = localStorage.getItem('pw');
 
         const real = JSON.parse(pw);
