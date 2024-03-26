@@ -117,7 +117,8 @@ const Checkout = (props) => {
         'delivery_type': deliveryInfo,
         'phone': phoneNumber1 + '-' + phoneNumber2 + '-' + phoneNumber3,
         'customer_name': name,
-        'seller_id': items[0].seller_id
+        'seller_id': items[0].seller_id,
+        "pw": pw,
       }),
     }).then(async (response) => {
       const data = await response.json();
