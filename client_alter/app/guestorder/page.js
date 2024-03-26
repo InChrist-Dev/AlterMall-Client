@@ -7,7 +7,7 @@ import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 import DaumPostcode from 'react-daum-postcode';
-import { useRouter } from 'next/router'
+
 // 쿠키에서 토큰을 가져오기
 
 const accessToken = Cookies.get('accessToken');
@@ -41,30 +41,25 @@ const Checkout = (props) => {
     }
   };
 
-  const router = useRouter();
-
+ 
   useEffect(() => {
-    const handleUnload = () => {
+    const handleUnload = (event) => {
       // 페이지를 벗어날 때 실행할 코드 작성
       Cookies.remove('accessToken');
       Cookies.remove('position');
       console.log('페이지를 벗어났습니다.');
     };
 
-    const handleRouteChange = (url) => {
-      // 페이지 전환 시 실행할 코드 작성
-      console.log('페이지 전환:', url);
+    const beforeUnloadHandler = (event) => {
+      handleUnload(event);
     };
 
-    router.events.on('beforeHistoryChange', handleRouteChange);
-
-    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('beforeunload', beforeUnloadHandler);
 
     return () => {
-      router.events.off('beforeHistoryChange', handleRouteChange);
-      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('beforeunload', beforeUnloadHandler);
     };
-  }, [router.events]);
+  }, []);
   const calculateTotalPrice = () => {
     let amount = 0;
     items.map((item) => {
