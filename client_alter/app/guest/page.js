@@ -31,6 +31,7 @@ const Guest = (props) => {
               },
               body: JSON.stringify({
                 'order_id': id,
+                'pw':pw
               })
     
             })
@@ -100,6 +101,7 @@ const Guest = (props) => {
               <p>배송 요청사항: {data.data.rows[0].requests}</p>
               <p><button onClick={()=>Cancel(data.data.rows[0].order_id)}></button></p>
             </div>
+            <button onClick={()=>{Cancel(props.searchParams.order_id);}}>x</button>
           </div>
         ) : (
           <p className={styles.noOrder}>주문 정보가 없습니다.</p>
