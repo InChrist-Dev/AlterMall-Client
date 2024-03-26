@@ -334,6 +334,7 @@ const Checkout = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>비회원 주문/결제</div>
+          <div className={styles.infoSub}>※비회원 주문은 취소가 불가능합니다. 신중히 결제해주세요</div>
           <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
           <div className={styles.deliveryInfo}>
             <div style={{ justifyContent: 'space-between' }}>
