@@ -16,7 +16,7 @@ export default function Complete(props) {
   const pw = localStorage.getItem('pw')
   const fetchData = async () => {
     try {
-      if(position=='guest'){
+      if(!accessToken){
         const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${pw.pw}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
