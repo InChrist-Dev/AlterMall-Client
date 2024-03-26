@@ -267,7 +267,7 @@ if (currentHour < 15) {
     }
   
     cartItems.push({ amount: quantity ,Item: data});
-    localStorage.setItem('cart', JSON.stringify(cartItems));
+    localStorage.setItem('order', JSON.stringify(cartItems));
     alert('비회원 주문페이지로 이동합니다.');
     window.location.href=`/guestorder`;
   
