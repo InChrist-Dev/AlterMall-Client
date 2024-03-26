@@ -21,6 +21,7 @@ export default function Complete(props) {
         const pw = localStorage.getItem('pw');
         if(pw){
           let real = JSON.parse(pw);
+          console.log(real)
        
         const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${real.pw}`, {
           headers: {
