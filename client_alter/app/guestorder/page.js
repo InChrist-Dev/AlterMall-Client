@@ -45,9 +45,11 @@ const Checkout = (props) => {
   useEffect(() => {
     const handleUnload = (event) => {
       // 페이지를 벗어날 때 실행할 코드 작성
-      Cookies.remove('accessToken');
-      Cookies.remove('position');
-      console.log('페이지를 벗어났습니다.');
+      if (window.location.pathname !== '/payments/complete') {
+        Cookies.remove('accessToken');
+        Cookies.remove('position');
+        console.log('페이지를 벗어났습니다.');
+      }
     };
 
     const beforeUnloadHandler = (event) => {
