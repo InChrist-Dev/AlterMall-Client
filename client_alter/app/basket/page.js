@@ -272,6 +272,7 @@ const ItemPage = (props) => {
       const cartData = localStorage.getItem('cart');
       if (cartData) {
         let updatedCart = JSON.parse(cartData);
+        console.log(updatedCart)
         updatedCart = updatedCart.filter((item) => item.id !== id);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
         fetchData(); // 장바구니 다시 불러오기
