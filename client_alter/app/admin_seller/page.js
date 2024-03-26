@@ -563,7 +563,7 @@ return formattedDate;
 
 
         </div>
-        <button onClick={()=>{ Cookies.remove('accessToken');  Cookies.remove('position');}}></button>
+        <button onClick={()=>{ Cookies.remove('accessToken');  Cookies.remove('position');}}>로그아웃</button>
     </div>
   );
 };
