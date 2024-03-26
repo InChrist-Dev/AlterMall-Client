@@ -337,7 +337,7 @@ const ItemPage = (props) => {
                 <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
-                        {Cancel(items.id)}
+                        {Cancel(items.Item.item_id)}
                       }
                     >X
                     </button>
