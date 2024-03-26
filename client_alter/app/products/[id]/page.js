@@ -295,11 +295,9 @@ if (currentHour < 15) {
         .catch((error) => {
           console.error('주문 요청 중 오류 발생:', error);
         });
-    const cartData = localStorage.getItem('cart');
+
     let cartItems = [];
-    if (cartData) {
-      cartItems = JSON.parse(cartData);
-    }
+  
   // updateStock 함수 호출 예시
   const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
     
