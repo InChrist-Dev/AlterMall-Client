@@ -13,8 +13,8 @@ export default function Complete(props) {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
-  const pw = localStorage.getItem('pw')
-  console.log(pw)
+  const pw = JSON.parse(localStorage.getItem('pw'));
+
   const fetchData = async () => {
     try {
       if(position=='guest'){
