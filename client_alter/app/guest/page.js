@@ -11,7 +11,7 @@ const Guest = (props) => {
     
           const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.order_id}&pw=${props.searchParams.pw}`);
           const data = await response.json();
-    
+          console.log(data)
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
           setData(data);
@@ -75,7 +75,7 @@ const Guest = (props) => {
       return (
         <div className={styles.container}>
         <h1 className={styles.title}>비회원 주문 조회</h1>
-        {data.length>0 ? (
+        {data.data ? (
           <div className={styles.orderInfo}>
             <p className={styles.orderDate}>주문일시: {data.data.rows[0].createdAt}</p>
             <p className={styles.itemCount}>주문 상품 수: {data.data.totalItemCount}</p>
