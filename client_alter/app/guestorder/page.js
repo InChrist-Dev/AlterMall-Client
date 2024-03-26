@@ -1,7 +1,7 @@
 // seller.js
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRouter } from 'react';
 import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
@@ -39,6 +39,31 @@ const Checkout = (props) => {
       setCustomRequest('');
     }
   };
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleUnload = () => {
+      // 페이지를 벗어날 때 실행할 코드 작성
+      Cookies.remove('accessToken');
+      Cookies.remove('position');
+      console.log('페이지를 벗어났습니다.');
+    };
+
+    const handleRouteChange = (url) => {
+      // 페이지 전환 시 실행할 코드 작성
+      console.log('페이지 전환:', url);
+    };
+
+    router.events.on('beforeHistoryChange', handleRouteChange);
+
+    window.addEventListener('beforeunload', handleUnload);
+
+    return () => {
+      router.events.off('beforeHistoryChange', handleRouteChange);
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, [router.events]);
   const calculateTotalPrice = () => {
     let amount = 0;
     items.map((item) => {
