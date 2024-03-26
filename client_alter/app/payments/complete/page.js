@@ -22,7 +22,7 @@ export default function Complete(props) {
         const real = JSON.parse(pw);
         console.log(real);
         console.log(real.pw);
-        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${pw.pw}`, {
+        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${real.pw}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',
