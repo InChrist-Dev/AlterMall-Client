@@ -249,7 +249,7 @@ if (currentHour < 15) {
         if (cartData) {
           cartItems = JSON.parse(cartData);
         }
-        const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
+        
       
         cartItems.push({ amount: quantity ,Item: guest});
         localStorage.setItem('cart', JSON.stringify(cartItems));
@@ -299,7 +299,7 @@ if (currentHour < 15) {
     let cartItems = [];
   
   // updateStock 함수 호출 예시
-  const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
+  const updatedGuest = [{ ...guest[0], stock: quantity }, ...guest.slice(1)];
     
     cartItems.push({ amount: quantity ,Item: updatedGuest});
          // 비회원인 경우
