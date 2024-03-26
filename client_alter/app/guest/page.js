@@ -34,30 +34,30 @@ const Guest = (props) => {
             })
               .then((response) => {
                 console.log(response)
-              //   fetch(`https://altermall.site/user`, {
-              //     method: 'DELETE',
-              //     headers: {
-              //       Authorization: `Bearer ${accessToken}`,
-              //       'Content-Type': 'application/json',
-              //     },
-              //     body: JSON.stringify({
-              //       'id': id,
-              //     })
+                // fetch(`https://altermall.site/user`, {
+                //   method: 'DELETE',
+                //   headers: {
+                //     Authorization: `Bearer ${accessToken}`,
+                //     'Content-Type': 'application/json',
+                //   },
+                //   body: JSON.stringify({
+                //     'id': id,
+                //   })
         
-              //   })
-              //   if (response.status == 405) {
-              //     alert('삭제 실패하였습니다');
-              //   } else if (response.status == 201) {
-              //     alert('삭제되었습니다');
-              //   } else if (response.status == 200) {
-              //     alert('삭제되었습니다');
-              //   }
+                // })
+                if (response.status == 405) {
+                  alert('삭제 실패하였습니다');
+                } else if (response.status == 201) {
+                  alert('삭제되었습니다');
+                } else if (response.status == 200) {
+                  alert('삭제되었습니다');
+                }
     
     
-              // })
-              // .finally(() => {
-              //   // window.location.reload();
-              // });
+              })
+              .finally(() => {
+                // window.location.reload();
+              });
           } else {
     
           }
