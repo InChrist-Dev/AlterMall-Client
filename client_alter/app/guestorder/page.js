@@ -6,11 +6,9 @@ import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
-import { v4 as uuidv4 } from 'uuid';
 import DaumPostcode from 'react-daum-postcode';
 // 쿠키에서 토큰을 가져오기
-const myUuid = uuidv4();
-console.log(myUuid);
+
 const accessToken = Cookies.get('accessToken');
 const Checkout = (props) => {
   const [order, setOrder] = useState([]);
@@ -68,8 +66,8 @@ const Checkout = (props) => {
     const otherItemsCount = items.length > 1 ? items.length - 1 : 0;
 
     const tosspayments = await loadTossPayments(
-      //'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
-      'test_gck_BX7zk2yd8yjp90wDbG0X3x9POLqK'
+      'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
+  
     );
     items.map((item) => {
       amount += item.price * item.stock;

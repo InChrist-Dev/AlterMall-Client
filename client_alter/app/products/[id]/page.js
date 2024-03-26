@@ -7,9 +7,10 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
 import Modal from './Modal';
+import { v4 as uuidv4 } from 'uuid';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-
+const myUuid = uuidv4();
 const ItemPage = (props) => {
   const [deliveryTime, setDeliveryTime] = useState('');
 
@@ -26,13 +27,22 @@ const ItemPage = (props) => {
   const [review, setReview] = useState([]);
   const [rate, setRate] = useState(10);
   const [data, setData] = useState([]);
-
+  const [guest, setGuest] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
 
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
+  };
+
+    // setGuest 함수를 활용하여 첫 번째 손님의 stock 속성 설정
+  const updateStock = (quantity) => {
+    if (guest.length > 0) {
+     
+    } else {
+      console.error('Guest array is empty.');
+    }
   };
 
   const closeModal = () => {
@@ -89,7 +99,7 @@ const ItemPage = (props) => {
       setStock(data.stock);
       setId(data.item_id);
       setData(data.ItemImages[0]);
-
+      setGuest(data);
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
       const data2 = await response2.json();
       console.log(data2)
@@ -239,8 +249,9 @@ if (currentHour < 15) {
         if (cartData) {
           cartItems = JSON.parse(cartData);
         }
+        const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
       
-        cartItems.push({ amount: quantity ,Item: data});
+        cartItems.push({ amount: quantity ,Item: guest});
         localStorage.setItem('cart', JSON.stringify(cartItems));
         alert('비회원 장바구니에 담겼습니다');
       }
@@ -260,17 +271,50 @@ if (currentHour < 15) {
     window.location.href=`/order/direct?itemId=${itemId}&amount=${amount}`;
 
   }else{
+      // 비회원 주문 처리를 위한 fetch 요청
+       fetch('https://altermall.site/auth/guest/signin', {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({"order_id":myUuid,"name":"guest"}),
+      })
+        .then(async (response) => {
+          if (response.ok) {
+            // 주문 정보를 서버에 성공적으로 전송한 경우
+            const data = await response.json();
+            console.log(data.accessToken);
+            Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
+            Cookies.set('position', data.position, { expires: 1 });  // 1일 동안 유지되도록 설정
+            window.location.href="https://altermall.shop/guestorder"
+          } else {
+            // 주문 실패한 경우
+            alert('주문 실패하였습니다');
+          }
+        })
+        .catch((error) => {
+          console.error('주문 요청 중 오류 발생:', error);
+        });
     const cartData = localStorage.getItem('cart');
     let cartItems = [];
     if (cartData) {
       cartItems = JSON.parse(cartData);
     }
-  
-    cartItems.push({ amount: quantity ,Item: data});
-    localStorage.setItem('order', JSON.stringify(cartItems));
+  // updateStock 함수 호출 예시
+  const updatedGuest = guest.length > 0 ? [{ ...guest[0], stock: quantity }, ...guest.slice(1)] : [];
+    
+    cartItems.push({ amount: quantity ,Item: updatedGuest});
+         // 비회원인 경우
+         const orderInfo = {
+          order_id: myUuid,
+          seller_id: guest.seller_id,
+          items: [guest],
+          // 여기에 필요한 다른 주문 정보를 추가합니다.
+        };
+    localStorage.setItem('order', JSON.stringify(orderInfo));
     alert('비회원 주문페이지로 이동합니다.');
     window.location.href=`/guestorder`;
-  
+    //alert('비회원 바로구매는 서비스준비중입니다. 회원구매나 비회원 장바구니를 이용해주세요');
   }
   };
  return(
