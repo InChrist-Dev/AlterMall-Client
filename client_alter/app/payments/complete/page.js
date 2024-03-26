@@ -13,14 +13,15 @@ export default function Complete(props) {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
-  const pw = localStorage.getItem('pw');
-  if(pw){
-    let real = JSON.parse(pw);
-  }
+
  
   const fetchData = async () => {
     try {
       if(position=='guest'){
+        const pw = localStorage.getItem('pw');
+        if(pw){
+          let real = JSON.parse(pw);
+       
         const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${real.pw}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -40,6 +41,7 @@ export default function Complete(props) {
         Cookies.remove('position');
         localStorage.removeItem('cart');
         localStorage.removeItem('order');
+      }
       }
       else{
         const response = await fetch(`https://altermall.site/customer/order/`, {
