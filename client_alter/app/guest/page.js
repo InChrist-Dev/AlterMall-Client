@@ -9,7 +9,7 @@ const Guest = (props) => {
            
     
     
-          const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.order_id}`);
+          const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.order_id}&pw=${pw}`);
           const data = await response.json();
     
           // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.

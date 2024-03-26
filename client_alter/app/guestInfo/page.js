@@ -42,7 +42,7 @@ const GuestInfo = (props) => {
     if (orderNumber.trim() !== '') {
       // 주문 조회 페이지로 이동하는 로직 추가
       // 예시: history.push(`/guest/${orderNumber}`);
-      window.location.href=`https://altermall.shop/guest?order_id=${orderNumber}`;
+      window.location.href=`https://altermall.shop/guest?order_id=${orderNumber}&pw=${pw}`;
       console.log(`주문번호 ${orderNumber}로 주문 조회 페이지로 이동`);
     } else {
       alert('주문번호를 입력해주세요.');
