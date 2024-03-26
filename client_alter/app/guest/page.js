@@ -25,10 +25,7 @@ const Guest = (props) => {
           if (answer) {
             fetch(`https://altermall.site/customer/cancel`, {
               method: 'PATCH',
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
-              },
+          
               body: JSON.stringify({
                 'order_id': id,
                 'pw':pw
