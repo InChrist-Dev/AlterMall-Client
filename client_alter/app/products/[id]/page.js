@@ -306,7 +306,7 @@ if (currentHour < 15) {
          const orderInfo = {
           order_id: myUuid,
           seller_id: guest.seller_id,
-          items: [updatedGuest],
+          items: [guest],
           // 여기에 필요한 다른 주문 정보를 추가합니다.
         };
     localStorage.setItem('order', JSON.stringify(orderInfo));
