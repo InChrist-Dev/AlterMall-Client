@@ -1,12 +1,13 @@
 // seller.js
 'use client'
 
-import React, { useState, useEffect,useRouter } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 import DaumPostcode from 'react-daum-postcode';
+import { useRouter } from 'next/router'
 // 쿠키에서 토큰을 가져오기
 
 const accessToken = Cookies.get('accessToken');
