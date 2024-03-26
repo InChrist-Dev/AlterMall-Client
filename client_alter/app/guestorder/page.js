@@ -144,8 +144,8 @@ const Checkout = (props) => {
           if (response.status == 405) {
             alert('주문 실패하였습니다');
           } else if (response.status == 201) {
-
-
+           
+            localStorage.setItem('pw', JSON.stringify({"pw":pw}));
             const data = await response.json();
             console.log(data)
           }
