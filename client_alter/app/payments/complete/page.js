@@ -13,10 +13,16 @@ export default function Complete(props) {
   const [order,setOrder] = useState([]);
   const [orderDetail,setOrderDetail] = useState([]);
   const [name,setName] = useState('');
+
   const fetchData = async () => {
     try {
-      if(position=='guest'){
-        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}`, {
+      if(!accessToken){
+        const pw = localStorage.getItem('pw');
+
+        const real = JSON.parse(pw);
+        console.log(real);
+        console.log(real.pw);
+        const response = await fetch(`https://altermall.site/customer/guest_order?order_id=${props.searchParams.orderId}&pw=${real.pw}`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
             'Content-Type': 'application/json',

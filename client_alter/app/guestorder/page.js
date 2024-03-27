@@ -45,11 +45,11 @@ const Checkout = (props) => {
   useEffect(() => {
     const handleUnload = (event) => {
       // 페이지를 벗어날 때 실행할 코드 작성
-      if (window.location.pathname !== '/payments/complete') {
+     
         Cookies.remove('accessToken');
         Cookies.remove('position');
         console.log('페이지를 벗어났습니다.');
-      }
+    
     };
 
     const beforeUnloadHandler = (event) => {
@@ -95,81 +95,94 @@ const Checkout = (props) => {
     items.map((item) => {
       amount += item.price * item.stock;
     });
-    console.log(amount)
-
-
-
-    console.log(items);
-
-    await fetch('https://altermall.site/customer/order', {
-      method: 'post',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
-      body: JSON.stringify({
-        'order_id': order.order_id,
-        'addr': address,
-        'addr_detail': detailAddress,
-        'requests': requestOption + '공동현관문 번호: ' + customRequest + request,
-        'amount': calculateTotalPrice() + 3500,
-        'delivery_type': deliveryInfo,
-        'phone': phoneNumber1 + '-' + phoneNumber2 + '-' + phoneNumber3,
-        'customer_name': name,
-        'seller_id': items[0].seller_id,
-        "pw": pw,
-      }),
-    }).then(async (response) => {
-      const data = await response.json();
-      console.log(data);
-      if (response.status == 405) {
-        alert('주문 실패하였습니다');
-      } else if (response.status == 201) {
-        await fetch('https://altermall.site/customer/orderdetail', {
-          method: 'post',
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            items: items,
-          }),
-
-
-
-
-        }).then(async (response) => {
-          if (response.status == 405) {
-            alert('주문 실패하였습니다');
-          } else if (response.status == 201) {
-
-
-            const data = await response.json();
-            console.log(data)
-          }
-
-
-        }).finally(
-
-          await tosspayments.requestPayment('카드', {
-            orderId: order.order_id,
-            amount: calculateTotalPrice() + 3500,
-            orderName: `${firstItemName}외 ${otherItemsCount}건`,
-            successUrl: 'https://altermall.site/customer/confirm',
-            failUrl: window.location.origin,
-          })
-        )
-
-
-        console.log(response);
+    if(address == ''){
+      alert(`주소를 입력해주세요`)
+    }else if(detailAddress == ''){
+      alert(`상세주소를 입력해주세요`)
+    }else  if(pw == ''){
+      alert(`비밀번호를 입력해주세요`)
+    }else  if(phoneNumber1 == ''){
+      alert(`전화번호를 입력해주세요`)
+    }else if(phoneNumber2 == ''){
+      alert(`전화번호를 입력해주세요`)
+    }else if(phoneNumber3 == ''){
+      alert(`전화번호를 입력해주세요`)
+    }else if(name == ''){
+      alert(`이름을 입력해주세요`)
+    }else {
+      await fetch('https://altermall.site/customer/order', {
+        method: 'post',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          'order_id': order.order_id,
+          'addr': address,
+          'addr_detail': detailAddress,
+          'requests': requestOption + '공동현관문 번호: ' + customRequest + request,
+          'amount': calculateTotalPrice() + 3500,
+          'delivery_type': deliveryInfo,
+          'phone': phoneNumber1 + '-' + phoneNumber2 + '-' + phoneNumber3,
+          'customer_name': name,
+          'customer_id': order.order_id,
+          'seller_id': items[0].seller_id,
+          "pw": pw,
+        }),
+      }).then(async (response) => {
         const data = await response.json();
-        console.log(data)
-      }
+        console.log(data);
+        if (response.status == 405) {
+          alert('주문 실패하였습니다');
+        } else if (response.status == 201) {
+          await fetch('https://altermall.site/customer/orderdetail', {
+            method: 'post',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              items: items,
+            }),
+  
+  
+  
+  
+          }).then(async (response) => {
+            if (response.status == 405) {
+              alert('주문 실패하였습니다');
+            } else if (response.status == 201) {
+             
+              localStorage.setItem('pw', JSON.stringify({"pw":pw}));
+              const data = await response.json();
+              console.log(data)
+            }
+  
+  
+          }).finally(
+  
+            await tosspayments.requestPayment('카드', {
+              orderId: order.order_id,
+              amount: calculateTotalPrice() + 3500,
+              orderName: `${firstItemName}외 ${otherItemsCount}건`,
+              successUrl: 'https://altermall.site/customer/confirm',
+              failUrl: window.location.origin,
+            })
+          )
+  
+  
+          console.log(response);
+          const data = await response.json();
+          console.log(data)
+        }
+  
+  
+      })
+  
+    }
 
-
-    })
-
+  
 
 
 
@@ -333,6 +346,7 @@ const Checkout = (props) => {
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>비회원 주문/결제</div>
+          <div className={styles.infoSub}>※비회원 주문은 취소가 불가능합니다. 신중히 결제해주세요</div>
           <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
           <div className={styles.deliveryInfo}>
             <div style={{ justifyContent: 'space-between' }}>

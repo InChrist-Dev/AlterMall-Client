@@ -244,7 +244,7 @@ const ItemPage = (props) => {
   };
 
   const Cancel = useCallback(
-    (id) => {
+    (id,item_id) => {
       if(accessToken){
         fetch(`https://altermall.site/customer/cart/${id}`, {
           method: 'DELETE',
@@ -272,7 +272,8 @@ const ItemPage = (props) => {
       const cartData = localStorage.getItem('cart');
       if (cartData) {
         let updatedCart = JSON.parse(cartData);
-        updatedCart = updatedCart.filter((item) => item.id !== id);
+        console.log(updatedCart)
+        updatedCart = updatedCart.filter((item) => item.Item.item_id != item_id);
         localStorage.setItem('cart', JSON.stringify(updatedCart));
         fetchData(); // 장바구니 다시 불러오기
         alert('삭제되었습니다');
@@ -336,7 +337,7 @@ const ItemPage = (props) => {
                 <td>
                 <button className={styles.deleteButton}
                       onClick={() =>
-                        {Cancel(items.id)}
+                        {Cancel(items.id,items.Item.item_id)}
                       }
                     >X
                     </button>
