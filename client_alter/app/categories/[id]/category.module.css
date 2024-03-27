@@ -1,5 +1,58 @@
 /* category.module.css */
 @media screen and (min-width: 451px) {
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .intro {
+    color: #fff;
+    padding: 10px;
+  }
+  
+  .image {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 20px;
+    padding: 10px;
+ 
+  }
+  
+  .recommendations {
+    margin-top: 20px;
+  }
+  
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    width: 20%;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .itemImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .itemName {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  
+  .itemPrice {
+    margin-top: 5px;
+    color: gray;
+  }
+  
   .sortAndScroll {
     display: flex;
     justify-content: space-between;
@@ -158,6 +211,55 @@
 }
 /* YourComponent.module.css */
 @media screen and (max-width: 450px) {
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .intro {
+    text-align: center;
+  }
+  
+  .image {
+    width: 100%;
+    max-width: 1000px;
+    height: 400px;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+  
+  .recommendations {
+    margin-top: 20px;
+  }
+  
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .item {
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .itemImage {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .itemName {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+  
+  .itemPrice {
+    margin-top: 5px;
+    color: gray;
+  }
+  
   .sortAndScroll {
     display: flex;
 
