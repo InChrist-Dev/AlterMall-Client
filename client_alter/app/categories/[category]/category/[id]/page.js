@@ -120,27 +120,11 @@ const ItemPage = (props) => {
   };
 
   // id에 따라 다른 단어를 설정
-  let displayWord;
-  switch (category) {
-    case 'dessert':
-      displayWord = '디저트';
-      break;
-    case 'salad':
-      displayWord = '샐러드';
-      break;
-    case 'free':
-      displayWord = '락토프리';
-      break;
-    case 'drink':
-      displayWord = '음료';
-      break;
-    default:
-      displayWord = '알 수 없는 카테고리';
-  }
+
 
   return (
     <div>
-      <h1 className={styles.caTitle}>{displayWord}</h1>
+      {/* <h1 className={styles.caTitle}>{displayWord}</h1> */}
       <div className={styles.sortAndScroll}>
         <div className={styles.sortButtons}>
           <button
