@@ -35,7 +35,7 @@ const CategoryButtons = () => {
       </div>
    
       <div className={styles.imageButtonGridMobile}>
-        <Link href='/category/dessert'>
+        <Link href='/categories/dessert'>
           <ImageButton imagePath="dessert.jpg" altText="디저트" />
         </Link>
         <Link href='/'>
