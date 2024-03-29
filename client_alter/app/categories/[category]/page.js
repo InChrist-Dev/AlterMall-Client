@@ -154,7 +154,7 @@ const ItemPage = (props) => {
       setCategoryList(data.data.items);
       setPage(data.data.totalPages);
       console.log(data.data)
-      setData(data.data.rows)
+      setData(data.data.rows[0])
       // 데이터를 state로 업데이트하는 로직을 추가합니다.
       // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
       // 필요한 모든 state를 업데이트해야 합니다.
