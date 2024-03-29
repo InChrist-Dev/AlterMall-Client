@@ -148,10 +148,10 @@ const NavigationBar = () => {
                 <a>카테고리</a>
                 <div className="category-menu">
                   <ul>
-                    <li><a href="/category/dessert">디저트</a></li>
-                    <li><a href="/category/salad">식재료</a></li>
-                    <li><a href="/category/free">양념/소스</a></li>
-                    <li><a href="/category/drink">차,음료</a></li>
+                    <li><a href="/categories/dessert">디저트</a></li>
+                    <li><a href="/categories/salad">식재료</a></li>
+                    <li><a href="/categories/free">양념/소스</a></li>
+                    <li><a href="/categories/drink">차,음료</a></li>
                   </ul>
                 </div>
               </li>
@@ -184,10 +184,10 @@ const NavigationBar = () => {
                   <a className="category">카테고리</a>
                   <div className="category-menu">
                     <ul>
-                      <li><a href="https://altermall.shop/category/dessert">디저트</a></li>
-                      <li><a href="https://altermall.shop/category/salad">샐러드</a></li>
-                      <li><a href="https://altermall.shop/category/free">락토프리</a></li>
-                      <li><a href="https://altermall.shop/category/drink">음료</a></li>
+                      <li><a href="https://altermall.shop/categories/dessert">디저트</a></li>
+                      <li><a href="https://altermall.shop/categories/salad">샐러드</a></li>
+                      <li><a href="https://altermall.shop/categories/free">락토프리</a></li>
+                      <li><a href="https://altermall.shop/categories/drink">음료</a></li>
                     </ul>
                   </div>
                 </li>
@@ -223,10 +223,10 @@ const NavigationBar = () => {
                 )} */}
                  {isSubMenuOpen && (
                 <ul className="submenu">
-                  <li><a href="https://altermall.shop/category/dessert">디저트</a></li>
-                  <li><a href="https://altermall.shop/category/salad">샐러드</a></li>
-                  <li><a href="https://altermall.shop/category/free">락토프리</a></li>
-                  <li><a href="https://altermall.shop/category/drink">음료</a></li>
+                  <li><a href="https://altermall.shop/categories/dessert">디저트</a></li>
+                  <li><a href="https://altermall.shop/categories/salad">샐러드</a></li>
+                  <li><a href="https://altermall.shop/categories/free">락토프리</a></li>
+                  <li><a href="https://altermall.shop/categories/drink">음료</a></li>
                 </ul>
                
               )}
