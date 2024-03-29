@@ -89,211 +89,90 @@
 }
 /* YourComponent.module.css */
 @media screen and (max-width: 450px) {
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
+  .masterContainer{
+    margin: 50px auto; /* 중앙 정렬을 위해 수정 */
+    width: 95%; /* 너비 조정 */
+    max-width: 1200px; /* 최대 너비 설정 */
+
+    border-radius: 20px; /* 더 둥근 테두리 */
+    
+    background-color: #ffffff; /* 배경색 추가 */
+
   }
   
+  .banner{
+    height: 50px;
+
+    border-radius: 20px 20px 0 0; /* 상단 테두리만 둥글게 */
+    display: flex;
+    font-weight: normal;
+    align-items: center;
+  }
+  .logo{
+    width: 50px;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .name{
+    font-weight: normal;
+    margin:  0 20px;
+    font-size: 24px;
+  }
+  .logoBorder{
+    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid hsl(0, 0%, 79%);
+    border-radius: 50%; /* 동그라미 모양의 테두리 */
+  }
   .intro {
-    text-align: center;
+    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    text-align: center; /* 중앙 정렬 */
+    margin-bottom: 30px;
   }
-  
-  .image {
-    width: 100%;
-    max-width: 1000px;
-    height: 400px;
-    object-fit: cover;
-    margin-bottom: 20px;
+  .slogan{
+    padding: 15px 10px;
+    font-size: 16px;
   }
-  
   .recommendations {
-    margin-top: 20px;
+    padding: 10px 5px; /* 내부 여백 추가 */
+    border-radius: 10px;
+    box-shadow: 0px 2px 20px rgba(126, 126, 126, 0.4);
   }
   
   .items {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
   }
   
   .item {
-    width: 200px;
-    margin-right: 20px;
+    width: 23%;
+    height: 24%;
     margin-bottom: 20px;
+    border-left: 30px;
+    overflow: hidden; /* 내용이 넘칠 경우를 대비해 추가 */
+
   }
   
   .itemImage {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-  
-  .itemName {
-    margin-top: 5px;
-    font-weight: bold;
-  }
-  
-  .itemPrice {
-    margin-top: 5px;
-    color: gray;
-  }
-  
-  .sortAndScroll {
-    display: flex;
+    width: 120%;
 
-    margin-bottom: 20px;
-    background-color: #eee;
-    padding:5px;
-    flex-direction: column;
-  }
-  .sortButtons{
-    margin: 0 auto;
-  }
-  .sortButtons button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #eee;
-    color: #7c7c7c;
-    border: none;
-    align-items: center;
-    cursor: pointer;
-   
-    
-  }
-  .sortButtons button.activeButton{
-  
-    font-weight: bold;
-  
-    color: #ff9100;
-    border: none;
-  
-    cursor: pointer;
-    border-radius: 5px;
-    
+    object-fit: cover;
+    object-position: center; /* 이미지를 가운데 정렬 */
+    margin-left: -50%; /* 왼쪽 여백을 절반으로 줄임 */
+    margin-right: -50%; /* 오른쪽 여백을 절반으로 줄임 */
+    position: relative; /* 상대적 위치 설정 */
+    left: 40%; /* 이미지를 가운데로 이동 */
   }
   
   
-  .sortButtons button:hover {
-  
-    color: #ff9100;
-  }
-  
-  .scrollButtons{
-    margin-left: auto;
-  }
-  
-    .productContainer {
-      display: flex;
-      flex-wrap: wrap;
-      width: 100%;
-      margin: 0 auto;
-    }
-  .productLink {
-    position: relative;
-  }
-  
-  .cartBtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
-    width: 30px; /* 버튼의 너비 조정 */
-    height: 30px; /* 버튼의 높이 조정 */
-    border: 2px;
-  
-    background-color: #ff9100;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-    /* 다른 스타일 조정이 필요하면 추가하세요 */
-  }
-  .productCard button:hover {
-    background-color: #e48202;
-  }
-    .productCard {
-      text-decoration: none;
-      margin: 5%;
-      width: 40%;
-     
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    .productCard:hover {
-      transform: scale(1.05);
-    }
-    
-    .productCard h3 {
-      font-size: 17px;
-      margin-bottom: 10px;
-      color: #333;
-      width: 100%;
-    }
-  
-    .productCard img {
-      width:100%;
-      height: 100%;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      
-    }
-    
-    .productCard p {
-      font-size: 16px;
-      font-weight: bold;
-      color: red;
-      margin: 5px 0;
-    }
-    
-  
-    
-   
-    .activeButton {
-    background-color: #1d1212;
-  }
-  
-  .caTitle{
-    font-size: 36px;
-    padding: 10px;
-  }
-  
-  .dropInput{
-    width: 100px;
-    height: 30px;
-    border-radius: 3px;
-    margin-right: 10px;
-    border: 0;
-    background-color: #eee;
-    color: #7c7c7c;
-    font-weight: bold;
-   
-    right: 0;
-  }
-  
-  /* category.module.css */
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 100px;
-  }
-  
-  .pageNumber {
-    cursor: pointer;
-    padding: 5px;
-    margin: 0 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .activePage {
-    background-color: #ff9100;
-    color: #fff;
-    cursor: default;
-    padding: 5px;
-    margin: 0 5px;
-    border: 1px solid #ff9100;
-    border-radius: 5px;
-  }
   
 }
