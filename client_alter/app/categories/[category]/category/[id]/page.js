@@ -89,9 +89,18 @@ const ItemPage = (props) => {
           cartItems = JSON.parse(cartData);
         }
       
-        cartItems.push({ amount: 1 ,Item: item});
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-        alert('비회원 장바구니에 담겼습니다');
+// 이미 담겨있는 아이템인지 확인
+const isItemAlreadyInCart = cartItems.some(cartItem => cartItem.Item == item);
+
+if (isItemAlreadyInCart) {
+  // 이미 담겨있는 아이템이면 알림 메시지를 띄웁니다.
+  alert('이미 장바구니에 있는 상품입니다');
+} else {
+  // 담겨있지 않은 아이템이면 장바구니에 추가합니다.
+  cartItems.push({ amount: 1, Item: item });
+  localStorage.setItem('cart', JSON.stringify(cartItems));
+  alert('비회원 장바구니에 담겼습니다');
+}
       }
   
 
