@@ -17,7 +17,7 @@ const ItemPage = (props) => {
   const [page, setPage] = useState(1);
   const [categoryList, setCategoryList] = useState([])
   const [data, setData] = useState([])
-  const category = props.params.id;
+  const category = props.params.category;
   console.log(category)
   const testData = {
     "exist": true,
