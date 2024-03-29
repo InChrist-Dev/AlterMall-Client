@@ -139,7 +139,7 @@ const NavigationBar = () => {
         </div>
       </div>
       <div>
-        <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+      
         {/* 네비게이션 바 */}
         <div className="navigation">
           <nav className="navbar">
@@ -149,9 +149,9 @@ const NavigationBar = () => {
                 <div className="category-menu">
                   <ul>
                     <li><a href="/category/dessert">디저트</a></li>
-                    <li><a href="/category/salad">샐러드</a></li>
-                    <li><a href="/category/free">락토프리</a></li>
-                    <li><a href="/category/drink">음료</a></li>
+                    <li><a href="/category/salad">식재료</a></li>
+                    <li><a href="/category/free">양념/소스</a></li>
+                    <li><a href="/category/drink">차,음료</a></li>
                   </ul>
                 </div>
               </li>
@@ -165,7 +165,8 @@ const NavigationBar = () => {
             </ul>
           </nav>
         </div>
-        <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
+        <div style={{ borderBottom: '0.5px solid #ddd', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.4)', position: 'relative', zIndex: '9999' }}></div>
+
       </div>
       <div className="navigation-mobile">
         <div className="mobile">

@@ -17,11 +17,11 @@ const ItemPage = (props) => {
   const [page, setPage] = useState(1);
   const [categoryList,setCategoryList] = useState([])
 
-  const category = props.params.id;
-  console.log(category)
+  const id = props.params.id;
+  console.log(id)
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/category?p=${currentPage}&category=${category}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await fetch(`https://altermall.site/category/seller?id=${id}?p=${currentPage}&sortby=${sortBy}&product=${displayCount}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
