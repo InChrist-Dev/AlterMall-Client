@@ -17,7 +17,7 @@ const ItemPage = (props) => {
   const [page, setPage] = useState(1);
   const [categoryList, setCategoryList] = useState([])
   const [data, setData] = useState([])
-  const category = props.params.category;
+  const category = props.params.id;
   console.log(category)
   const testData = {
     "exist": true,
@@ -267,7 +267,7 @@ const ItemPage = (props) => {
    {data.length>0?data.map(data => (
     <div className={styles.masterContainer} >
       <div className={styles.banner}>  {data.SellerDetail && (
-            <Link href={`categories/${category}/category/${data.SellerDetail.id}`} style={{ textDecoration: "none",color:'black' }}>
+            <Link href={`/categories/${category}/category/${data.SellerDetail.id}`} style={{ textDecoration: "none",color:'black' }}>
         <div className={styles.intro}>
           <div className={styles.logoBorder}>
 
