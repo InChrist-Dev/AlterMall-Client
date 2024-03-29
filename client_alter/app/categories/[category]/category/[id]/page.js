@@ -21,7 +21,7 @@ const ItemPage = (props) => {
   console.log(id)
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/category/seller?id=${id}?p=${currentPage}&sortby=${sortBy}&product=${displayCount}`);
+      const response = await fetch(`https://altermall.site/category/seller?id=${id}`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
