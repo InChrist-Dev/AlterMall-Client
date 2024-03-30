@@ -12,7 +12,7 @@ const CategoryButtons = () => {
         카테고리<span className={styles.categorySub}>|건강식품</span>
       </p>
       <div className={styles.imageButtonGrid}>
-        <Link href='/category/dessert'>
+        <Link href='/categories/dessert'>
           <ImageButton imagePath="dessert.jpg" altText="디저트" />
         </Link>
         <Link onClick = {() => alert('준비중입니다.')} href='/'>

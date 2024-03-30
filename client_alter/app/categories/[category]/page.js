@@ -147,7 +147,7 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(`https://altermall.site/category/sellers/${category}`);
+      const response = await fetch(`http://localhost:8000/category/sellers/${category}`);
       const data = await response.json();
       console.log(data)
       // // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.

@@ -61,7 +61,7 @@ const ItemPage = (props) => {
     
       
       if(accessToken){
-        fetch(`https://altermall.site/customer/cart/`, {
+        fetch(`http://localhost:3000/customer/cart/`, {
           method: 'POST',
           headers: {
             "content-type": "application/json",
