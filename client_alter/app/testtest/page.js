@@ -21,7 +21,7 @@ const ItemPage = (props) => {
   console.log(id)
   const fetchData = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/category?category=dessert`);
+      const response = await fetch(`https://altermall.site/category`);
       const data = await response.json();
   
       // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
@@ -61,7 +61,7 @@ const ItemPage = (props) => {
     
       
       if(accessToken){
-        fetch(`http://localhost:8000/customer/cart/`, {
+        fetch(`https://altermall.site/customer/cart/`, {
           method: 'POST',
           headers: {
             "content-type": "application/json",
