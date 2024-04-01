@@ -168,15 +168,16 @@ const Checkout = () => {
   }
   useEffect(()=>{
     const sellerGroups = {};
-    items.forEach(product => {
-      const sellerId = product.Item.seller_id;
-      console.log(sellerId)
-      if (!sellerGroups[sellerId]) {
-        sellerGroups[sellerId] = [];
-      }
-      sellerGroups[sellerId].push(product);
-      console.log(sellerGroups)
-    });
+    console.log(items)
+    // items.forEach(product => {
+    //   const sellerId = product.Item.seller_id;
+    //   console.log(sellerId)
+    //   if (!sellerGroups[sellerId]) {
+    //     sellerGroups[sellerId] = [];
+    //   }
+    //   sellerGroups[sellerId].push(product);
+    //   console.log(sellerGroups)
+    // });
    
     // 각 판매자의 배송비 계산
     let totalFee = 0;
