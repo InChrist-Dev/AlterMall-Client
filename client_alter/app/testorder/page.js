@@ -156,7 +156,7 @@ const Checkout = () => {
   useEffect(()=>{
     const sellerGroups = {};
     console.log(items)
-    if(items.length>0){
+    if(items.length > 1){
         items.forEach(product => {
             const sellerId = product.Item.seller_id;
             console.log(sellerId)
