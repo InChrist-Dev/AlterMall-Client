@@ -133,6 +133,16 @@ const Checkout = () => {
 
 
 
+
+  const getImageUrl = () => {
+    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
+    if (deliveryInfo == 'normal') {
+      return './post.jpg';
+    } else if (deliveryInfo == 'daily') {
+      return './today.jpg';
+    }
+    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
+  };
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
@@ -151,7 +161,11 @@ const Checkout = () => {
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
+  const selDeliver = (id) => {
+    setDelivery(deliveryList[id])
 
+    closeModal();
+  }
 
   const fetchData = async () => {
     try {
@@ -162,36 +176,7 @@ const Checkout = () => {
         },
         credentials: 'include',
 
-      }).then((data)=>{
-        // 각 판매자별로 상품 그룹화
-const sellerGroups = {};
-data.data.rows[0].OrderDetails.forEach(product => {
-  const sellerId = product.Item.seller_id;
-  console.log(sellerId)
-  if (!sellerGroups[sellerId]) {
-    sellerGroups[sellerId] = [];
-  }
-  sellerGroups[sellerId].push(product);
-  console.log(sellerGroups)
-  console.log(product)
-});
-
-// 각 판매자의 배송비 계산
-let totalFee = 0;
-Object.keys(sellerGroups).forEach(sellerId => {
-  let sellerFee = 0;
-  sellerGroups[sellerId].forEach(product => {
-    if (sellerId === 'test') {
-      sellerFee += 4500;
-    } else if (sellerId === 'rabe') {
-      sellerFee += 3500;
-    }
-  });
-  totalFee += sellerFee;
-});
-console.log(totalFee)
-setTotalShippingFee(totalFee);
-   });
+      });
       const data = await response.json();
       console.log(data)
 
@@ -222,8 +207,36 @@ setTotalShippingFee(totalFee);
 
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
-    fetchData();
+    fetchData().then(()=>{
+        const sellerGroups = {};
+ items.forEach(product => {
+   const sellerId = product.Item.seller_id;
+   console.log(sellerId)
+   if (!sellerGroups[sellerId]) {
+     sellerGroups[sellerId] = [];
+   }
+   sellerGroups[sellerId].push(product);
+   console.log(sellerGroups)
+ });
 
+ // 각 판매자의 배송비 계산
+ let totalFee = 0;
+ Object.keys(sellerGroups).forEach(sellerId => {
+   let sellerFee = 0;
+   sellerGroups[sellerId].forEach(product => {
+     if (sellerId === 'test') {
+       sellerFee += 4500;
+     } else if (sellerId === 'rabe') {
+       sellerFee += 3500;
+     }
+   });
+   totalFee += sellerFee;
+ });
+ console.log(totalFee)
+ setTotalShippingFee(totalFee);
+    });
+ // 각 판매자별로 상품 그룹화
+ 
   }, []);
 
 
