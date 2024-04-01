@@ -231,6 +231,7 @@ const Checkout = () => {
    });
    totalFee += sellerFee;
  });
+ console.log(totalFee)
  setTotalShippingFee(totalFee);
   }, []);
 
