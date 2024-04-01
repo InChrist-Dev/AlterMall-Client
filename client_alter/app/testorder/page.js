@@ -134,15 +134,6 @@ const Checkout = () => {
 
 
 
-  const getImageUrl = () => {
-    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
-    if (deliveryInfo == 'normal') {
-      return './post.jpg';
-    } else if (deliveryInfo == 'daily') {
-      return './today.jpg';
-    }
-    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
-  };
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
@@ -161,23 +152,22 @@ const Checkout = () => {
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
-  const selDeliver = (id) => {
-    setDelivery(deliveryList[id])
 
-    closeModal();
-  }
   useEffect(()=>{
     const sellerGroups = {};
     console.log(items)
-    // items.forEach(product => {
-    //   const sellerId = product.Item.seller_id;
-    //   console.log(sellerId)
-    //   if (!sellerGroups[sellerId]) {
-    //     sellerGroups[sellerId] = [];
-    //   }
-    //   sellerGroups[sellerId].push(product);
-    //   console.log(sellerGroups)
-    // });
+    if(items.length>0){
+        items.forEach(product => {
+            const sellerId = product.Item.seller_id;
+            console.log(sellerId)
+            if (!sellerGroups[sellerId]) {
+              sellerGroups[sellerId] = [];
+            }
+            sellerGroups[sellerId].push(product);
+            console.log(sellerGroups)
+          });
+    }
+
    
     // 각 판매자의 배송비 계산
     let totalFee = 0;
