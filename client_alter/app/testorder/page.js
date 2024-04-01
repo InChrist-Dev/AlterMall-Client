@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './order.module.css';
-import DeliveryInfoModal from './Modal';
+// import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 
@@ -238,9 +238,9 @@ const Checkout = () => {
 
   return (
     <div className={styles.checkoutContainer}>
-      <div style={{ display: showModal ? 'block' : 'none' }}>
+      {/* <div style={{ display: showModal ? 'block' : 'none' }}>
         <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
-      </div>
+      </div> */}
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>주문/결제</div>
