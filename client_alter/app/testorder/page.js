@@ -218,6 +218,7 @@ const Checkout = () => {
    }
    sellerGroups[sellerId].push(product);
    console.log(sellerGroups)
+   console.log(product)
  });
 
  // 각 판매자의 배송비 계산
