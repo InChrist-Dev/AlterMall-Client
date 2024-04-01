@@ -165,7 +165,7 @@ const Checkout = () => {
       }).then((data)=>{
         // 각 판매자별로 상품 그룹화
 const sellerGroups = {};
-data.data.rows.forEach(product => {
+data.data.rows[0].OrderDetails.forEach(product => {
   const sellerId = product.Item.seller_id;
   console.log(sellerId)
   if (!sellerGroups[sellerId]) {
