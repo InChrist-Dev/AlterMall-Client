@@ -394,7 +394,7 @@ const Checkout = () => {
           </div>
         </div>
         {
-Object.keys(sellerGroups).forEach(sellerId => (
+Object.keys(sellerGroups).map((sellerId) => (
   <div key={sellerId}>
       <h2>{sellerId}의 상품 목록</h2>
       <table>
