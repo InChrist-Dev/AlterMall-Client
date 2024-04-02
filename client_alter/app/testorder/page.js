@@ -173,15 +173,19 @@ const Checkout = () => {
     let totalFee = 0;
     Object.keys(sellerGroups).forEach(sellerId => {
       let sellerFee = 0;
+      // 판매자별로 한 번만 배송비 계산
+      let hasCalculatedFee = false;
       sellerGroups[sellerId].forEach(product => {
-        if (sellerId === 'test') {
-          sellerFee += 4500;
-        } else if (sellerId === 'rabe') {
-          sellerFee += 3500;
-        }
+          if (!hasCalculatedFee) {
+              if (sellerId === 'test') {
+                  sellerFee += 4500;
+              } else if (sellerId === 'rabe') {
+                  sellerFee += 3500;
+              }
+              hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
+          }
       });
       totalFee += sellerFee;
-    });
     console.log(totalFee)
     setTotalShippingFee(totalFee);
   },[items])
