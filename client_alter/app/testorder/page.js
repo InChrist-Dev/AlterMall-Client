@@ -55,7 +55,7 @@ const Checkout = () => {
       amount += item.price * item.stock;
     });
     amount += getSub();
-   
+
     if (delivery) {
       console.log(items);
 
@@ -70,15 +70,15 @@ const Checkout = () => {
           'order_id': info.order_id,
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
-          'requests': requestOption+'공동현관문 번호: '+customRequest+request,
+          'requests': requestOption + '공동현관문 번호: ' + customRequest + request,
           'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
-          'customer_name':delivery.name,
-        
+          'customer_name': delivery.name,
+
         }),
       });
-    
+
       await tosspayments.requestPayment('카드', {
         orderId: info.order_id,
         amount: amount,
@@ -121,7 +121,7 @@ const Checkout = () => {
   // Function to close the modal
   const closeModal = () => {
     setShowModal(false);
- 
+
   };
 
   const calculateTotalPrice = () => {
@@ -137,9 +137,9 @@ const Checkout = () => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return totalShippingFee+calculateTotalPrice();
+      return totalShippingFee + calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
-      return totalShippingFee+calculateTotalPrice();
+      return totalShippingFee + calculateTotalPrice();
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -153,22 +153,22 @@ const Checkout = () => {
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     const sellerGroups = {};
     console.log(items)
-    if(items.length > 1){
-        items.forEach(product => {
-            const sellerId = product.seller_id;
-            console.log(sellerId)
-            if (!sellerGroups[sellerId]) {
-              sellerGroups[sellerId] = [];
-            }
-            sellerGroups[sellerId].push(product);
-            console.log(sellerGroups)
-          });
+    if (items.length > 1) {
+      items.forEach(product => {
+        const sellerId = product.seller_id;
+        console.log(sellerId)
+        if (!sellerGroups[sellerId]) {
+          sellerGroups[sellerId] = [];
+        }
+        sellerGroups[sellerId].push(product);
+        console.log(sellerGroups)
+      });
     }
     setSellerGroups(sellerGroups);
-   
+
     // 각 판매자의 배송비 계산
     let totalFee = 0;
     Object.keys(sellerGroups).forEach(sellerId => {
@@ -176,20 +176,20 @@ const Checkout = () => {
       // 판매자별로 한 번만 배송비 계산
       let hasCalculatedFee = false;
       sellerGroups[sellerId].forEach(product => {
-          if (!hasCalculatedFee) {
-              if (sellerId === 'test') {
-                  sellerFee += 4500;
-              } else if (sellerId === 'rabe') {
-                  sellerFee += 3500;
-              }
-              hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
+        if (!hasCalculatedFee) {
+          if (sellerId === 'test') {
+            sellerFee += 4500;
+          } else if (sellerId === 'rabe') {
+            sellerFee += 3500;
           }
+          hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
+        }
       });
       totalFee += sellerFee;
     });
     console.log(totalFee)
     setTotalShippingFee(totalFee);
-  },[items])
+  }, [items])
 
   const fetchData = async () => {
     try {
@@ -217,13 +217,13 @@ const Checkout = () => {
 
       });
       const data2 = await response2.json();
-     
+
       setDeliveryList(data2.data.rows);
       setDelivery(data2.data.rows[0])
       setInfo(data.data.rows[0]);
       setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
 
-  
+
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -232,8 +232,8 @@ const Checkout = () => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
- // 각 판매자별로 상품 그룹화
- 
+    // 각 판매자별로 상품 그룹화
+
   }, []);
 
 
@@ -278,45 +278,45 @@ const Checkout = () => {
                 onChange={(e) => setDeliveryInfo(e.target.value)}
               >
                 <option value="normal">택배 배송</option>
-               
+
               </select>
-           
-              
+
+
 
               {/* <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" /> */}
 
             </div>
             <div className={styles.requestBox}>
-      <label>배송시 요청사항</label>
-      <div>
-       {/* 옵션 선택 */}
-       <select className={styles.selectRequest} value={requestOption} onChange={handleOptionChange}>
-          <option value="">선택하세요</option>
-          <option value="노크x">노크x</option>
-          <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
-          <option value="직접입력">직접입력</option>
-        </select>
-        {/* 직접 입력 창 */}
-        {requestOption === '직접입력' && (
-          <input
-            className={styles.request}
-            value={customRequest}
-            placeholder="직접 입력해주세요"
-            onChange={handleCustomRequestChange}
-          />
-        )}
-        <div>
-        <label>공동현관문 번호</label>
-          <input
-            className={styles.request}
-            value={request}
-            placeholder="직접 입력해주세요"
-            onChange={handleRequestChange}
-          />
-        </div>
-       
-      </div>
-    </div>
+              <label>배송시 요청사항</label>
+              <div>
+                {/* 옵션 선택 */}
+                <select className={styles.selectRequest} value={requestOption} onChange={handleOptionChange}>
+                  <option value="">선택하세요</option>
+                  <option value="노크x">노크x</option>
+                  <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
+                  <option value="직접입력">직접입력</option>
+                </select>
+                {/* 직접 입력 창 */}
+                {requestOption === '직접입력' && (
+                  <input
+                    className={styles.request}
+                    value={customRequest}
+                    placeholder="직접 입력해주세요"
+                    onChange={handleCustomRequestChange}
+                  />
+                )}
+                <div>
+                  <label>공동현관문 번호</label>
+                  <input
+                    className={styles.request}
+                    value={request}
+                    placeholder="직접 입력해주세요"
+                    onChange={handleRequestChange}
+                  />
+                </div>
+
+              </div>
+            </div>
           </div>
 
           <div className={styles.orderItems}>
@@ -336,7 +336,7 @@ const Checkout = () => {
                   <th>이미지</th>
                   <th>상품명</th>
                   <th>가격</th>
-              
+
                   <th>수량</th>
                 </tr>
               </thead>
@@ -359,32 +359,22 @@ const Checkout = () => {
                         className={styles.productImage}
                       />
 
-                    
+
 
 
                     </td>
                     <td>
-                    {items.item_name}
+                      {items.item_name}
                     </td>
                     <td>
                       <p>{items.price}원</p>
                     </td>
-                 
+
                     <td>
                       <div className={styles.quantityControl}>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock - 1)
-                          }
-                        >-
-                        </button> */}
+                    
                         <span>{items.stock}</span>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock + 1)
-                          }
-                        >+
-                        </button> */}
+                  
                       </div>
                     </td>
                   </tr>
@@ -394,29 +384,40 @@ const Checkout = () => {
           </div>
         </div>
         {
-Object.keys(sellerGroups).map((sellerId) => (
-  <div key={sellerId}>
-      <h2>{sellerId}의 상품 목록</h2>
-      <table>
-          <thead>
-              <tr>
-                  <th>상품명</th>
-                  <th>가격</th>
-                  {/* 기타 필요한 정보 추가 */}
-              </tr>
-          </thead>
-          <tbody>
-              {sellerGroups[sellerId].map(product => (
-                  <tr key={product.item_id}>
-                      <td>{product.item_name}</td>
-                      <td>{product.price}</td>
-                      {/* 기타 필요한 정보 추가 */}
+          Object.keys(sellerGroups).map((sellerId) => (
+            <div key={sellerId}>
+              <h2>{sellerId}의 상품 목록</h2>
+              <table className={styles.productTable}>
+                <thead>
+                  <tr>
+                    <th>상품명</th>
+                    <th>가격</th>
+                    {/* 기타 필요한 정보 추가 */}
                   </tr>
-              ))}
-          </tbody>
-      </table>
-  </div>
-))}
+                </thead>
+                <tbody>
+                  {sellerGroups[sellerId].map(product => (
+                    <tr key={product.item_id} className={styles.productCard}>
+                      <td style={{ display: 'flex', alignItems: 'center', }}>
+                        <img
+                          src={`https://altermall.site/${product.img}`}
+                          alt={product.item_name}
+                          className={styles.productImage}
+                        />
+                      </td>
+                      <td>{product.item_name}</td>
+                      <td>{product.price}원</td>
+                      <div className={styles.quantityControl}>
+                    
+                    <span>{product.stock}</span>
+              
+                  </div>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ))}
       </div>
 
       <div className={styles.stickySidebar}>
