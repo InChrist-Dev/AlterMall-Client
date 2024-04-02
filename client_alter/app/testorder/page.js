@@ -172,6 +172,7 @@ const Checkout = () => {
         }
         sellerGroups[sellerId].push(product);
         console.log(sellerGroups)
+        sellerGroups[sellerId] 
       });
     }
     setSellerGroups(sellerGroups);
@@ -421,7 +422,7 @@ const Checkout = () => {
                       <td>
                       <div className={styles.quantityControl}>
                     
-                        <span>{items.stock}</span>
+                        <span>{product.stock}</span>
                   
                       </div>
                     </td>
