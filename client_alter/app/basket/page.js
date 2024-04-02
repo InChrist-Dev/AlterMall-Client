@@ -86,7 +86,8 @@ const ItemPage = (props) => {
         "price": item.Item.price, //가격
         "item_id": item.Item.item_id,
         "item_name":item.Item.item_name,
-        "img":item.Item.img
+        "img":item.Item.img,
+        "delivery":item.Item.delivery,
       };
     }); 
     for (let i = 0; i < orderItems.length; i++) {
