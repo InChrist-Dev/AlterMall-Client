@@ -271,7 +271,7 @@ const ItemPage = (props) => {
         <div className={styles.intro}>
           <div className={styles.logoBorder}>
 
-            <img src={`/image.png`} className={styles.logo} />
+            <img src={`https://altermall.site/${data.SellerDetail.img}`} className={styles.logo} />
           </div>
           <h1 className={styles.name} >{data.User.name}</h1>
 
