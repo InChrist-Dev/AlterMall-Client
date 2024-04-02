@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './direct.module.css';
-import DeliveryInfoModal from '../Modal';
+import DeliveryInfoModal from '../../order/Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
@@ -403,7 +403,14 @@ const Checkout = (props) => {
                       </div>
                     </td>
                   </tr>
-              
+                  <tr style={{"color":"#666","fontWeight":"bold","height":"100px"}}>
+                  <td>⤷</td>
+                  <td>배송비</td>
+                 
+                  <td> + {items.delivery}원</td>
+                  <td></td>
+                   
+                  </tr>
               </tbody>
             </table>
           </div>
