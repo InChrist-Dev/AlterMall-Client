@@ -298,7 +298,7 @@ const ItemPage = (props) => {
                 <input
                   type="checkbox"
                   className={styles.checkbox}
-                  checked={selectedItems.length === items.length}
+                  // checked={selectedItems.length === items.length}
                   onChange={toggleAllItemsSelection}
                 />
                 
@@ -366,6 +366,9 @@ const ItemPage = (props) => {
         </table>
      
       </div>
+      <div className={styles.info}>
+         ※배송비는 가게별로 책정됩니다
+        </div>
       <div className={styles.totalPrice}>
           총 가격: {calculateTotalPrice()}원
         </div>

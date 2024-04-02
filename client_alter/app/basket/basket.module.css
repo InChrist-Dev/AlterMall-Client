@@ -145,6 +145,14 @@
     color: red;
     width: 90%;
   }
+  .info{
+    margin-top: 20px auto;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    color: #bbb;
+    width: 90%;
+  }
   .productTable {
     width: 100%;
     border-collapse: collapse;
@@ -404,6 +412,14 @@
   .totalPrice {
     margin-top: 20px auto;
     text-align: right;
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+    width: 90%;
+  }
+  .info{
+    margin-top: 20px auto;
+    text-align: left;
     font-size: 22px;
     font-weight: bold;
     color: red;
