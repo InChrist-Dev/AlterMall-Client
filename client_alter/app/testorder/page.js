@@ -329,11 +329,7 @@ const Checkout = () => {
 
         </div>
         <div className={styles.orderItems}>
-        {
-          Object.keys(sellerGroups).map((sellerId) => (
-            <div key={sellerId}>
-              <h2>{sellerName(sellerId)} 주문 상품</h2>
-              <table className={styles.productTable}>
+        <table className={styles.productTable}>
                 <thead>
                   <tr>
                   <th>이미지</th>
@@ -344,6 +340,11 @@ const Checkout = () => {
                     {/* 기타 필요한 정보 추가 */}
                   </tr>
                 </thead>
+        {
+          Object.keys(sellerGroups).map((sellerId) => (
+            <div key={sellerId}>
+              <h2>{sellerName(sellerId)} 주문 상품</h2>
+              
                 <tbody>
                   {sellerGroups[sellerId].map(product => (
                     <tr key={product.item_id} className={styles.productCard}>
@@ -374,9 +375,10 @@ const Checkout = () => {
                    
                   </tr>
                 </tbody>
-              </table>
+            
             </div>
           ))}
+            </table>
           </div>
       </div>
 
