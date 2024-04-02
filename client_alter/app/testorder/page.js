@@ -418,13 +418,18 @@ const Checkout = () => {
                       </td>
                       <td>{product.item_name}</td>
                       <td>{product.price}원</td>
+                      <td>
                       <div className={styles.quantityControl}>
                     
-                    <span>{product.stock}</span>
-              
-                  </div>
+                        <span>{items.stock}</span>
+                  
+                      </div>
+                    </td>
                     </tr>
                   ))}
+                  <tr>
+                    배송비: {sellerGroups[sellerId][0].delivery}
+                  </tr>
                 </tbody>
               </table>
             </div>
