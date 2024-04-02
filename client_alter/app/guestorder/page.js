@@ -32,6 +32,8 @@ const Checkout = (props) => {
   const [address, setAddress] = useState('');
   const [detailAddress, setDetailAddress] = useState('');
   const [isAddress, setIsAddress] = useState(false);
+  const [totalShippingFee, setTotalShippingFee] = useState(0);
+  const [sellerGroups, setSellerGroups] = useState({});
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -40,7 +42,44 @@ const Checkout = (props) => {
       setCustomRequest('');
     }
   };
+  useEffect(() => {
+    const sellerGroups = {};
+    console.log(items)
+    if (items.length > 0) {
+      items.forEach(product => {
+        const sellerId = product.seller_id;
+        console.log(sellerId)
+        if (!sellerGroups[sellerId]) {
+          sellerGroups[sellerId] = [];
+        }
+        sellerGroups[sellerId].push(product);
+        console.log( sellerGroups[sellerId] )
+       
+      });
+    }
+    setSellerGroups(sellerGroups);
 
+    // 각 판매자의 배송비 계산
+    let totalFee = 0;
+    Object.keys(sellerGroups).forEach(sellerId => {
+      let sellerFee = 0;
+      // 판매자별로 한 번만 배송비 계산
+      let hasCalculatedFee = false;
+      sellerGroups[sellerId].forEach(product => {
+        if (!hasCalculatedFee) {
+          if (sellerId === 'test') {
+            sellerFee += 4500;
+          } else if (sellerId === 'rabe') {
+            sellerFee += 3500;
+          }
+          hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
+        }
+      });
+      totalFee += sellerFee;
+    });
+    console.log(totalFee)
+    setTotalShippingFee(totalFee);
+  }, [items])
  
   useEffect(() => {
     const handleUnload = (event) => {
@@ -251,23 +290,32 @@ const Checkout = (props) => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 3500 + calculateTotalPrice();
+      return totalShippingFee + calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
-      return 3500 + calculateTotalPrice();
+      return totalShippingFee + calculateTotalPrice();
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
   const getSub = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 3500;
+      return totalShippingFee;
     } else if (deliveryInfo == 'daily') {
-      return 3500;
+      return totalShippingFee;
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
+
   const selDeliver = (id) => {
     setDelivery(deliveryList[id])
+  }
+  const sellerName = (sellerId) =>{
+    if(sellerId =='rabe'){
+      return '라베';
+    }else if(sellerId =='mkj0719'){
+      return '그린페블';
+    }
+
   }
 
   const fetchData = async () => {
@@ -457,78 +505,47 @@ const Checkout = (props) => {
           </div>
 
           <div className={styles.orderItems}>
-            <h2>주문 물품 정보</h2>
-            <table className={styles.productTable}>
-              <thead>
-                <tr>
-                  {/* <th>
-                    <input
-                      type="checkbox"
-                      className={styles.checkbox}
-                      checked={selectedItems.length === items.length}
-                      onChange={toggleAllItemsSelection}
-                    />
-
-                  </th> */}
-                  <th>이미지</th>
-                  <th>상품명</th>
-                  <th>가격</th>
-
-                  <th>수량</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {items.length > 0 ? items.map((items, index) => (
-                  <tr key={index} className={styles.productCard}>
-                    {/* <td>
-                      <input
-                        type="checkbox"
-                        className={styles.checkbox}
-                        checked={selectedItems.includes(index)}
-                        onChange={() => toggleItemSelection(index)}
-                      />
-                    </td> */}
-                    <td style={{ display: 'flex', alignItems: 'center', }}>
-
-                      <img
-                        src={`https://altermall.site/${items.img}`}
-                        alt={items.item_name}
-                        className={styles.productImage}
-                      />
-
-
-
-
-                    </td>
-                    <td>
-                      {items.item_name}
-                    </td>
-                    <td>
-                      <p>{items.price}원</p>
-                    </td>
-
-                    <td>
+        {
+          Object.keys(sellerGroups).map((sellerId) => (
+            <div key={sellerId}>
+                 <div className={styles.SellerBox}>
+              <h2>{sellerName(sellerId)} 주문 상품</h2>
+              </div>
+              <table className={styles.productTable}>
+          
+                <tbody>
+                  {sellerGroups[sellerId].map(product => (
+                    <tr key={product.item_id} className={styles.productCard}>
+                      <td style={{ display: 'flex', alignItems: 'center', }}>
+                        <img
+                          src={`https://altermall.site/${product.img}`}
+                          alt={product.item_name}
+                          className={styles.productImage}
+                        />
+                      </td>
+                      <td>{product.item_name}</td>
+                      <td>{product.price}원</td>
+                      <td>
                       <div className={styles.quantityControl}>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock - 1)
-                          }
-                        >-
-                        </button> */}
-                        <span>{items.stock}</span>
-                        {/* <button
-                          onClick={() =>
-                            handleQuantityChange(index, items.stock + 1)
-                          }
-                        >+
-                        </button> */}
+                    
+                        <span>{product.stock}</span>
+                  
                       </div>
                     </td>
+                    </tr>
+                  ))}
+                  <tr style={{"color":"#666","fontWeight":"bold","height":"100px"}}>
+                  <td>⤷</td>
+                  <td>배송비</td>
+                 
+                  <td> + {sellerGroups[sellerId][0].delivery}원</td>
+                  <td></td>
+                   
                   </tr>
-                )) : ''}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
+          ))}
           </div>
         </div>
       </div>
