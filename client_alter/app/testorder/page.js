@@ -23,7 +23,7 @@ const Checkout = () => {
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
   const [request, setRequest] = useState(''); // 직접 입력한 요청사항
   const [totalShippingFee, setTotalShippingFee] = useState(0);
-
+  const [sellerGroups, setSellerGroups] = useState({});
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -154,19 +154,19 @@ const Checkout = () => {
   };
 
   useEffect(()=>{
-    const sellerGroups = {};
-    console.log(items)
-    if(items.length > 1){
-        items.forEach(product => {
-            const sellerId = product.seller_id;
-            console.log(sellerId)
-            if (!sellerGroups[sellerId]) {
-              sellerGroups[sellerId] = [];
-            }
-            sellerGroups[sellerId].push(product);
-            console.log(sellerGroups)
-          });
-    }
+    const calculateSellerGroups = () => {
+      const groups = {};
+      items.forEach(product => {
+        const sellerId = product.seller_id;
+        if (!groups[sellerId]) {
+          groups[sellerId] = [];
+        }
+        groups[sellerId].push(product);
+      });
+      return groups;
+    };
+
+    setSellerGroups(calculateSellerGroups());
 
    
     // 각 판매자의 배송비 계산
