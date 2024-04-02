@@ -309,6 +309,14 @@ const Checkout = (props) => {
   const selDeliver = (id) => {
     setDelivery(deliveryList[id])
   }
+  const sellerName = (sellerId) =>{
+    if(sellerId =='rabe'){
+      return '라베';
+    }else if(sellerId =='mkj0719'){
+      return '그린페블';
+    }
+
+  }
 
   const fetchData = async () => {
     try {
