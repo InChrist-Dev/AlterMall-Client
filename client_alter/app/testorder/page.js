@@ -429,7 +429,12 @@ const Checkout = () => {
                     </tr>
                   ))}
                   <tr>
-                    배송비: {sellerGroups[sellerId][0].delivery}
+                  <td></td>
+                  <td></td>
+                 
+                  <td> 배송비 {sellerGroups[sellerId][0].delivery}원</td>
+                  <td></td>
+                   
                   </tr>
                 </tbody>
               </table>
