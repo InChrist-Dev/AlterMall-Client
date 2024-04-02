@@ -171,8 +171,8 @@ const Checkout = () => {
           sellerGroups[sellerId] = [];
         }
         sellerGroups[sellerId].push(product);
-        console.log(sellerGroups)
-        sellerGroups[sellerId] 
+        console.log( sellerGroups[sellerId] )
+       
       });
     }
     setSellerGroups(sellerGroups);
