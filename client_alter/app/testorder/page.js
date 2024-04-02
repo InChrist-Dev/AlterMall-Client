@@ -158,7 +158,7 @@ const Checkout = () => {
     console.log(items)
     if(items.length > 1){
         items.forEach(product => {
-            const sellerId = product.Item.seller_id;
+            const sellerId = product.seller_id;
             console.log(sellerId)
             if (!sellerGroups[sellerId]) {
               sellerGroups[sellerId] = [];
