@@ -390,6 +390,7 @@ const Checkout = () => {
             </table>
           </div>
         </div>
+        <div className={styles.orderItems}>
         {
           Object.keys(sellerGroups).map((sellerId) => (
             <div key={sellerId}>
@@ -428,6 +429,7 @@ const Checkout = () => {
               </table>
             </div>
           ))}
+          </div>
       </div>
 
       <div className={styles.stickySidebar}>
