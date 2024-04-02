@@ -390,8 +390,11 @@ const Checkout = () => {
               <table className={styles.productTable}>
                 <thead>
                   <tr>
-                    <th>상품명</th>
-                    <th>가격</th>
+                  <th>이미지</th>
+                  <th>상품명</th>
+                  <th>가격</th>
+
+                  <th>수량</th>
                     {/* 기타 필요한 정보 추가 */}
                   </tr>
                 </thead>
