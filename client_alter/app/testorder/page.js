@@ -428,11 +428,11 @@ const Checkout = () => {
                     </td>
                     </tr>
                   ))}
-                  <tr>
-                  <td></td>
-                  <td></td>
+                  <tr style={{"color":"#666"}}>
+                  <td>⤷</td>
+                  <td>배송비</td>
                  
-                  <td> 배송비 {sellerGroups[sellerId][0].delivery}원</td>
+                  <td> + {sellerGroups[sellerId][0].delivery}원</td>
                   <td></td>
                    
                   </tr>
