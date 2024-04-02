@@ -428,7 +428,7 @@ const Checkout = () => {
                     </td>
                     </tr>
                   ))}
-                  <tr style={{"color":"#666"}}>
+                  <tr style={{"color":"#666","fontWeight":"bold"}}>
                   <td>⤷</td>
                   <td>배송비</td>
                  
