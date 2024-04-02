@@ -394,7 +394,30 @@ const Checkout = () => {
           </div>
         </div>
       </div>
-
+{// 판매자별로 그룹화된 상품 정보를 표시합니다.
+Object.keys(sellerGroups).forEach(sellerId => (
+  <div key={sellerId}>
+      <h2>{sellerId}의 상품 목록</h2>
+      <table>
+          <thead>
+              <tr>
+                  <th>상품명</th>
+                  <th>가격</th>
+                  {/* 기타 필요한 정보 추가 */}
+              </tr>
+          </thead>
+          <tbody>
+              {sellerGroups[sellerId].map(product => (
+                  <tr key={product.item_id}>
+                      <td>{product.item_name}</td>
+                      <td>{product.price}</td>
+                      {/* 기타 필요한 정보 추가 */}
+                  </tr>
+              ))}
+          </tbody>
+      </table>
+  </div>
+))}
       <div className={styles.stickySidebar}>
         <h2 >주문 결제 금액</h2>
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
