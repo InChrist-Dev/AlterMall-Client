@@ -327,75 +327,12 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className={styles.orderItems}>
-            <h2>주문 물품 정보</h2>
-            <table className={styles.productTable}>
-              <thead>
-                <tr>
-                  {/* <th>
-                    <input
-                      type="checkbox"
-                      className={styles.checkbox}
-                      checked={selectedItems.length === items.length}
-                      onChange={toggleAllItemsSelection}
-                    />
-
-                  </th> */}
-                  <th>이미지</th>
-                  <th>상품명</th>
-                  <th>가격</th>
-
-                  <th>수량</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.length > 0 ? items.map((items, index) => (
-                  <tr key={index} className={styles.productCard}>
-                    {/* <td>
-                      <input
-                        type="checkbox"
-                        className={styles.checkbox}
-                        checked={selectedItems.includes(index)}
-                        onChange={() => toggleItemSelection(index)}
-                      />
-                    </td> */}
-                    <td style={{ display: 'flex', alignItems: 'center', }}>
-
-                      <img
-                        src={`https://altermall.site/${items.img}`}
-                        alt={items.item_name}
-                        className={styles.productImage}
-                      />
-
-
-
-
-                    </td>
-                    <td>
-                      {items.item_name}
-                    </td>
-                    <td>
-                      <p>{items.price}원</p>
-                    </td>
-
-                    <td>
-                      <div className={styles.quantityControl}>
-                    
-                        <span>{items.stock}</span>
-                  
-                      </div>
-                    </td>
-                  </tr>
-                )) : ''}
-              </tbody>
-            </table>
-          </div>
         </div>
         <div className={styles.orderItems}>
         {
           Object.keys(sellerGroups).map((sellerId) => (
             <div key={sellerId}>
-              <h2>{sellerName(sellerId)}의 상품 목록</h2>
+              <h2>{sellerName(sellerId)} 주문 상품</h2>
               <table className={styles.productTable}>
                 <thead>
                   <tr>
@@ -428,7 +365,7 @@ const Checkout = () => {
                     </td>
                     </tr>
                   ))}
-                  <tr style={{"color":"#666","fontWeight":"bold","height":"100px"}}>
+                  <tr style={{"color":"#666","fontWeight":"bold","height":"100px","backgroundColor":"#ddd"}}>
                   <td>⤷</td>
                   <td>배송비</td>
                  
