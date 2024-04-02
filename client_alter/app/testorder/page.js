@@ -163,7 +163,7 @@ const Checkout = () => {
   useEffect(() => {
     const sellerGroups = {};
     console.log(items)
-    if (items.length > 1) {
+    if (items.length > 0) {
       items.forEach(product => {
         const sellerId = product.seller_id;
         console.log(sellerId)
