@@ -393,8 +393,7 @@ const Checkout = () => {
             </table>
           </div>
         </div>
-      </div>
-{// 판매자별로 그룹화된 상품 정보를 표시합니다.
+        {
 Object.keys(sellerGroups).forEach(sellerId => (
   <div key={sellerId}>
       <h2>{sellerId}의 상품 목록</h2>
@@ -418,6 +417,8 @@ Object.keys(sellerGroups).forEach(sellerId => (
       </table>
   </div>
 ))}
+      </div>
+
       <div className={styles.stickySidebar}>
         <h2 >주문 결제 금액</h2>
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
