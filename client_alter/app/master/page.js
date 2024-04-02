@@ -60,7 +60,7 @@ return (
       return (
         <div className={styles.masterContainer} key={i}>
           <p className={styles.categoryTitle}>
-            {masterCategory}
+            {/* {masterCategory} */}장인소개
             <span className={styles.categorySub}> | 얼터몰의 장인들을 소개합니다!</span>
           </p>
           <div className={styles.artisanButtons}>
