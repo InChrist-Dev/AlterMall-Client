@@ -132,7 +132,14 @@ const Checkout = () => {
   };
 
 
+  const sellerName = (sellerId) =>{
+    if(sellerId =='rabe'){
+      return '라베';
+    }else if(sellerId =='mkj0719'){
+      return '그린페블';
+    }
 
+  }
 
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
@@ -386,7 +393,7 @@ const Checkout = () => {
         {
           Object.keys(sellerGroups).map((sellerId) => (
             <div key={sellerId}>
-              <h2>{sellerId}의 상품 목록</h2>
+              <h2>{sellerName(sellerId)}의 상품 목록</h2>
               <table className={styles.productTable}>
                 <thead>
                   <tr>
