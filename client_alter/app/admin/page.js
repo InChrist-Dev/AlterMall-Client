@@ -293,7 +293,7 @@ const ImageUploader = (props) => {
    
          <label>
            아이템이미지등록
-           <input type="text" value={item} placeholder="판매자의 ID를 적어주세요" onChange={(event) => set(event.target.value)} />
+    <input type="text" value={item} placeholder="아이템ID를 적어주세요" onChange={(event) => setItem(event.target.value)} />
          </label>
          <hr />
     
