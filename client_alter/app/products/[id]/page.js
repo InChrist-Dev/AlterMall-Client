@@ -419,15 +419,11 @@ if (currentHour < 15) {
         <div className={styles.detail} id="image1">
           <img src="/11.jpg" />
         </div>
-        <div className={styles.detail} >
-          <img src="/22.jpg" />
-        </div>
+  
         <div className={styles.detail} >
           <img src="/3333.jpg" />
         </div>
-        <div className={styles.detail} >
-          <img src="/4444.jpg" />
-        </div>
+    
         <div className={styles.detail}>
           <img src="/back1.jpg" />
         </div> <div className={styles.detail} >
