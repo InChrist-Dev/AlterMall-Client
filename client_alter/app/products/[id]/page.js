@@ -416,9 +416,7 @@ if (currentHour < 15) {
         <div className={styles.detail} >
         {data.desc5? <img src={`https://altermall.site/${data.desc5}`} />:''}
         </div>
-        <div className={styles.detail} id="image1">
-          <img src="/11.jpg" />
-        </div>
+      
   
         <div className={styles.detail} >
           <img src="/3333.jpg" />
