@@ -29,7 +29,7 @@ const CategoryButtons = () => {
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
           <ImageButton imagePath="free.jpg" altText= "양념/소스" />
         </Link>
-        <Link onClick = {() => alert('준비중입니다.')} href='/'>
+        <Link href='/categories/drink'>
           <ImageButton imagePath="drink.jpg" altText="차,음료" />
         </Link>
       </div>
@@ -44,7 +44,7 @@ const CategoryButtons = () => {
         <Link href='/'>
           <ImageButton imagePath="free.jpg" altText=" 양념/소스" />
         </Link>
-        <Link href='/'>
+        <Link href='/categories/drink'>
           <ImageButton imagePath="drink.jpg" altText="차,음료" />
         </Link>
       
