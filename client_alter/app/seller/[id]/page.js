@@ -80,6 +80,7 @@ const nextSlide = () => {
     <p className={styles.slogan}>
         "{sellerDetail.title}"
         </p>
+        {sellerDetail.content}
         {/* <p className={styles.description}>
         <h3>Q. “사장님! 라베(RaBe)매장을 시작하게된 계기가 무엇인가요?”</h3>
 
