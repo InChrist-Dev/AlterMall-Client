@@ -74,10 +74,7 @@ const ItemPage = (props) => {
       alert('주문할 상품을 선택해주세요.');
       return;
     }
-    if (calculateTotalPrice() < 10000) {
-      alert('10,000원이상이 되도록 상품을 골라주세요');
-      return;
-    }
+ 
     const orderItems = selectedOrderItems.map((item) => {
       return {
         "order_id": myUuid,
