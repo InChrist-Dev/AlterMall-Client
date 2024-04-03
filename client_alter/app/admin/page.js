@@ -88,10 +88,10 @@ const ImageUploader = (props) => {
           const formData = new FormData();
           formData.append('item_id', item); // title 媛� 異붽��
         
-          formData.append(`img1`, files[0]);
-          files.forEach((file, index) => {
-            formData.append(`desc${index}`, file);
-          });
+          formData.append(`img`, files[0]);
+          
+            formData.append(`desc`, files);
+          
          
         
     
