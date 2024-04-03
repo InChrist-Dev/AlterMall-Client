@@ -88,8 +88,10 @@ const ImageUploader = (props) => {
           const formData = new FormData();
           formData.append('item_id', item); // title 媛� 異붽��
         
-        
-            formData.append(`desc`, files);
+          formData.append(`img1`, files[0]);
+          files.forEach((file, index) => {
+            formData.append(`desc${index}`, file);
+          });
          
         
     
@@ -291,7 +293,7 @@ const ImageUploader = (props) => {
    
          <label>
            아이템이미지등록
-           <input type="text" value={item} placeholder="판매자의 ID를 적어주세요" onChange={(event) => setSeller_id(event.target.value)} />
+           <input type="text" value={item} placeholder="판매자의 ID를 적어주세요" onChange={(event) => set(event.target.value)} />
          </label>
          <hr />
     
@@ -314,12 +316,7 @@ const ImageUploader = (props) => {
          )}
        </div>
        <button className={style.button} onClick={()=>{handleImage()}}>저장</button>
-     <label>
-           아이템삭제
-           <input type="text" value={item} placeholder="아이템ID를 적어주세요" onChange={(event) => setItem(event.target.value)} />
-         </label>
-       <button className={style.modalButton} onClick={()=>{handleConfirm(item)}}>확인</button>
-
+   
 
      
    </div>
