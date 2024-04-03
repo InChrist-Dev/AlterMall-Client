@@ -80,19 +80,10 @@ const nextSlide = () => {
     <p className={styles.slogan}>
         "{sellerDetail.title}"
         </p>
+        <div style={{'height':'100px'}}></div>
         <div dangerouslySetInnerHTML={{ __html: sellerDetail.content }} />
 
-        {/* <p className={styles.description}>
-        <h3>Q. “사장님! 라베(RaBe)매장을 시작하게된 계기가 무엇인가요?”</h3>
-
-        <p>A. “둘째 딸이 피부가 갈라지는 건선 피부염이 있었어요.<p></p>
-        <p>초등학교 여학생이던 딸이 디저트를 좋아했는데, 먹기만 하면 피부가 갈라져서 고민이었죠, 저도 당뇨가 있었는데 먹을 수 있는 음식이 제한되었고요"</p>
-
-        <p>“딸에게도, 저에게도 문제는 첨가물이었어요! 그래서 정제 당과 밀가루와 같은 첨가물이 안 들어간 쌀 빵을 만들었더니, 아이도 맛있어하고 건선 증상도 안정되더라고요!"
-</p>
-<p>“그러던중, 딸 건강 문제로 함께 고민하던 남편이 건강한 디저트 음식점을 열어보라고 권유해서 시작하게 되었어요”</p>
-        </p>
-        </p> */}
+   
 
           </div>
 {/* 
