@@ -185,7 +185,7 @@ const Checkout = () => {
       let hasCalculatedFee = false;
       sellerGroups[sellerId].forEach(product => {
         if (!hasCalculatedFee) {
-          if (sellerId === 'test') {
+          if (sellerId === 'mkj0719') {
             sellerFee += 4500;
           } else if (sellerId === 'rabe') {
             sellerFee += 3500;
