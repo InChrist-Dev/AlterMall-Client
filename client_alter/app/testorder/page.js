@@ -24,7 +24,7 @@ const Checkout = () => {
   const [request, setRequest] = useState(''); // 직접 입력한 요청사항
   const [totalShippingFee, setTotalShippingFee] = useState(0);
   const [sellerGroups, setSellerGroups] = useState({});
-  
+const [category, setCategory] = useState([]);
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -43,6 +43,7 @@ const Checkout = () => {
   };
   const handleClick = async () => {
     let amount = 0;
+    let categories ='';
     // 상품 목록을 표시하는 부분에서 첫 번째 상품의 이름을 추출합니다.
     const firstItemName = items.length > 0 ? items[0].item_name : '';
 
@@ -54,6 +55,9 @@ const Checkout = () => {
     );
     items.map((item) => {
       amount += item.price * item.stock;
+    });
+    category.map((category) => {
+      categories += `,${category}`;
     });
     amount += getSub();
 
@@ -76,7 +80,7 @@ const Checkout = () => {
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name': delivery.name,
-
+          'seller_id':categories,
         }),
       });
 
@@ -188,8 +192,10 @@ const Checkout = () => {
         if (!hasCalculatedFee) {
           if (sellerId === 'mkj0719') {
             sellerFee += 4500;
+            setCategory([sellerId, ...category])
           } else if (sellerId === 'rabe') {
             sellerFee += 3500;
+            setCategory([sellerId, ...category])
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
@@ -197,6 +203,7 @@ const Checkout = () => {
       totalFee += sellerFee;
     });
     console.log(totalFee)
+
     setTotalShippingFee(totalFee);
   }, [items])
 
