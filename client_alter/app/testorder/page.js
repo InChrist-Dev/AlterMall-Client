@@ -202,6 +202,7 @@ const [category, setCategory] = useState([]);
       });
       totalFee += sellerFee;
     });
+    console.log(category)
     console.log(totalFee)
 
     setTotalShippingFee(totalFee);
