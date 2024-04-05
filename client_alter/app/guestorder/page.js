@@ -34,6 +34,7 @@ const Checkout = (props) => {
   const [isAddress, setIsAddress] = useState(false);
   const [totalShippingFee, setTotalShippingFee] = useState(0);
   const [sellerGroups, setSellerGroups] = useState({});
+  const [category, setCategory] = useState([]);
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -69,8 +70,10 @@ const Checkout = (props) => {
         if (!hasCalculatedFee) {
           if (sellerId === 'mkj0719') {
             sellerFee += 4500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
           } else if (sellerId === 'rabe') {
             sellerFee += 3500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
@@ -103,6 +106,7 @@ const Checkout = (props) => {
   }, []);
   const calculateTotalPrice = () => {
     let amount = 0;
+    let categories ='';
     items.map((item) => {
       amount += item.price * item.stock;
     });
@@ -121,7 +125,7 @@ const Checkout = (props) => {
   const handleClick = async () => {
     let amount = amounts;
 
-
+    let categories ='';
     const firstItemName = items.length > 0 ? items[0].item_name : '';
 
     // 첫 번째 상품 이외의 상품 개수를 계산합니다.
@@ -134,6 +138,11 @@ const Checkout = (props) => {
     items.map((item) => {
       amount += item.price * item.stock;
     });
+    category.map((category) => {
+      categories += `,${category}`;
+    });
+    amount += getSub();
+    console.log(categories);
     if(address == ''){
       alert(`주소를 입력해주세요`)
     }else if(detailAddress == ''){
@@ -161,12 +170,12 @@ const Checkout = (props) => {
           'addr': address,
           'addr_detail': detailAddress,
           'requests': requestOption + '공동현관문 번호: ' + customRequest + request,
-          'amount': calculateTotalPrice() + 3500,
+          'amount': amount,
           'delivery_type': deliveryInfo,
           'phone': phoneNumber1 + '-' + phoneNumber2 + '-' + phoneNumber3,
           'customer_name': name,
           'customer_id': order.order_id,
-          'seller_id': items[0].seller_id,
+          'seller_id':categories,
           "pw": pw,
         }),
       }).then(async (response) => {
@@ -203,7 +212,7 @@ const Checkout = (props) => {
   
             await tosspayments.requestPayment('카드', {
               orderId: order.order_id,
-              amount: calculateTotalPrice() + 3500,
+              amount: amount ,
               orderName: `${firstItemName}외 ${otherItemsCount}건`,
               successUrl: 'https://altermall.site/customer/confirm',
               failUrl: window.location.origin,
