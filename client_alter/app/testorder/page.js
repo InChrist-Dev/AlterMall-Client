@@ -60,7 +60,7 @@ const [category, setCategory] = useState([]);
       categories += `,${category}`;
     });
     amount += getSub();
-
+    console.log(categories);
     if (delivery) {
       console.log(items);
 
