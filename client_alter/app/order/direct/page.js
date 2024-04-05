@@ -47,7 +47,7 @@ const Checkout = (props) => {
       'live_ck_E92LAa5PVbPo4JbZKdGB87YmpXyJ'
     );
    
-    amount += getSub();
+    amount += items.delivery;
    
     if (delivery) {
       console.log(items);
@@ -192,9 +192,9 @@ const Checkout = (props) => {
   const getPay = () => {
     // 이미지 주소는 사용자가 제공한 것을 사용합니다.
     if (deliveryInfo == 'normal') {
-      return 3500+calculateTotalPrice();
+      return items.delivery+calculateTotalPrice();
     } else if (deliveryInfo == 'daily') {
-      return 3500+calculateTotalPrice();
+      return items.delivery+calculateTotalPrice();
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
@@ -423,7 +423,7 @@ const Checkout = (props) => {
         <div> 상품금액:{calculateTotalPrice().toLocaleString()}원</div>
         {/* <div>할인금액: 0원</div>
         <div>상품권: 0원</div> */}
-        <div>배송비: {getSub().toLocaleString()}원</div>
+        <div>배송비: {items.delivery}원</div>
         <div>
           <strong>총 주문 가격:</strong> {getPay().toLocaleString()}원
         </div>
