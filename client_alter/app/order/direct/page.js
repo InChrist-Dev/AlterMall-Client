@@ -64,7 +64,7 @@ const Checkout = (props) => {
           'addr': delivery.addr,
           'addr_detail': delivery.addr_detail,
           'requests':  requestOption+'공동현관문 번호: '+customRequest+request,
-          'amount': calculateTotalPrice()+3500,
+          'amount': calculateTotalPrice()+items.delivery,
           'delivery_type': deliveryInfo,
           'phone': delivery.phone,
           'customer_name':delivery.name,
