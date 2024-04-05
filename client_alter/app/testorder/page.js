@@ -192,11 +192,12 @@ const [category, setCategory] = useState([]);
         if (!hasCalculatedFee) {
           if (sellerId === 'mkj0719') {
             sellerFee += 4500;
-            setCategory([sellerId, ...category])
-          } else if (sellerId === 'rabe') {
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+        } else if (sellerId === 'rabe') {
             sellerFee += 3500;
-            setCategory([sellerId, ...category])
-          }
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+        }
+        
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
       });
