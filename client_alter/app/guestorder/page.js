@@ -170,7 +170,7 @@ const Checkout = (props) => {
           'addr': address,
           'addr_detail': detailAddress,
           'requests': requestOption + '공동현관문 번호: ' + customRequest + request,
-          'amount': amount,
+          'amount': getPay(),
           'delivery_type': deliveryInfo,
           'phone': phoneNumber1 + '-' + phoneNumber2 + '-' + phoneNumber3,
           'customer_name': name,
@@ -212,7 +212,7 @@ const Checkout = (props) => {
   
             await tosspayments.requestPayment('카드', {
               orderId: order.order_id,
-              amount: amount ,
+              amount: getPay() ,
               orderName: `${firstItemName}외 ${otherItemsCount}건`,
               successUrl: 'https://altermall.site/customer/confirm',
               failUrl: window.location.origin,
