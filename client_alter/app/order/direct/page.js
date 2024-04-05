@@ -110,7 +110,7 @@ const Checkout = (props) => {
        
           await tosspayments.requestPayment('카드', {
             orderId: myUuid,
-            amount: calculateTotalPrice()+3500,
+            amount: calculateTotalPrice()+items.delivery,
             orderName: `${items.item_name}`,
             successUrl: 'https://altermall.site/customer/confirm',
             failUrl: window.location.origin,
