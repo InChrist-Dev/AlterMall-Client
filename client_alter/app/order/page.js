@@ -138,6 +138,8 @@ const Checkout = () => {
       return '라베';
     }else if(sellerId =='mkj0719'){
       return '그린페블';
+    }else if(sellerId =='h9101562'){
+      return '다품다';
     }
 
   }
@@ -190,6 +192,8 @@ const Checkout = () => {
             sellerFee += 4500;
           } else if (sellerId === 'rabe') {
             sellerFee += 3500;
+          }else if(sellerId =='h9101562'){
+            sellerFee += 4500;
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
