@@ -74,6 +74,9 @@ const Checkout = (props) => {
           } else if (sellerId === 'rabe') {
             sellerFee += 3500;
             setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }else if(sellerId =='h9101562'){
+            sellerFee += 4500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
@@ -231,28 +234,6 @@ const Checkout = (props) => {
     }
 
   
-
-
-
-
-
-
-
-
-    // }).then(async (response) => {
-    //   if (response.status == 405) {
-    //     alert('주문 실패하였습니다');
-    //   } else if (response.status == 201) {
-    //     alert('주문페이지로 넘어갑니다');
-    //     console.log(response);
-    //     const data = await response.json();
-    //     console.log(data)
-    //   }
-
-
-    // }).finally(
-
-    // )
   }
 
   // Function to open the modal
@@ -323,6 +304,8 @@ const Checkout = (props) => {
       return '라베';
     }else if(sellerId =='mkj0719'){
       return '그린페블';
+    }else if(sellerId =='h9101562'){
+      return '다품다';
     }
 
   }
