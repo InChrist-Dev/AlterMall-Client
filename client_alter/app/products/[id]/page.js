@@ -304,8 +304,8 @@ if (currentHour < 15) {
           <p><span>보관법 </span> 냉동보관</p>
           <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
           <p><span>재고 </span> {stock}</p>
-          <p><span>주문가능일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
-          <p><span>배송시작일 </span>{deliveryTime}</p>
+          <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
+          <p><span>배송기간 </span>영업일 기준 2-3일 소요</p>
         </div>
 
         <div className={styles.productOptions}>
