@@ -93,7 +93,10 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
     }
    
   };
-
+  const AllClose = (i) =>{
+    closeModal;
+    selDeliver(i)
+  }
   const delDeliver = async (id) => {
     try {
       const response = await fetch(`https://altermall.site/customer/deliver/${id}`, {
@@ -135,7 +138,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
               {deliveryList.length>0?deliveryList.map((delivery,i) => (
                 <li key={delivery.id}>
 
-                  <div className={styles.addressContainer} onClick={()=>{selDeliver(i);closeModal}}>
+                  <div className={styles.addressContainer} onClick={()=>{AllClose(i)}}>
                     <div className={styles.deliverName}>{delivery.address_name}</div>
                     <div className={styles.elseInfo}>{delivery.addr}, {delivery.addr_detail}</div>
                     <div className={styles.elseInfo}>{delivery.phone}</div>
