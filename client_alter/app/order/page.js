@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './order.module.css';
-// import DeliveryInfoModal from './Modal';
+import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 
@@ -124,7 +124,9 @@ const Checkout = () => {
     setShowModal(false);
 
   };
-
+  const selDeliver = (id) => {
+    setDelivery(deliveryList[id])
+  }
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
       (total, index) => total + items[index].price * items[index].stock,
@@ -253,9 +255,9 @@ const Checkout = () => {
 
   return (
     <div className={styles.checkoutContainer}>
-      {/* <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
-      </div> */}
+      <div style={{ display: showModal ? 'block' : 'none' }}>
+        <DeliveryInfoModal refresh={refresh} closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
+      </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>주문/결제</div>
