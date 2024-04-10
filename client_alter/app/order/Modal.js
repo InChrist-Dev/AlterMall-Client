@@ -94,7 +94,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
    
   };
   const AllClose = (i) =>{
-    closeModal;
+    closeModal();
     selDeliver(i)
   }
   const delDeliver = async (id) => {
