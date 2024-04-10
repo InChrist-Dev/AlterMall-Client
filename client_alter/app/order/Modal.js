@@ -135,7 +135,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
               {deliveryList.length>0?deliveryList.map((delivery,i) => (
                 <li key={delivery.id}>
 
-                  <div className={styles.addressContainer} onClick={()=>{selDeliver(i),closeModal}}>
+                  <div className={styles.addressContainer} onClick={()=>{selDeliver(i);closeModal}}>
                     <div className={styles.deliverName}>{delivery.address_name}</div>
                     <div className={styles.elseInfo}>{delivery.addr}, {delivery.addr_detail}</div>
                     <div className={styles.elseInfo}>{delivery.phone}</div>
