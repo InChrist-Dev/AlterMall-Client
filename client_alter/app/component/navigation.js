@@ -128,7 +128,7 @@ const NavigationBar = () => {
         <div className="cartUserIcons">
           {
             accessToken
-              ? <a href={position == 'seller' ? '/admin_seller' : '/user'}>
+              ? <a href={position == 'seller' ? '/admin_seller' : '/user#/user/orders'}>
                 <FontAwesomeIcon icon={faUser} className="cartIcon" />
               </a>
               : <LoginBtn></LoginBtn>
