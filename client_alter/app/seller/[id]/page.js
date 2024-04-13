@@ -80,7 +80,7 @@ const nextSlide = () => {
     <p className={styles.slogan}>
         "{sellerDetail.title}"
         </p>
-        <div style={{'height':'100px'}}></div>
+        <div style={{'height':'50px'}}></div>
         <div dangerouslySetInnerHTML={{ __html: sellerDetail.content }} />
 
    
