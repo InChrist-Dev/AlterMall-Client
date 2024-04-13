@@ -165,7 +165,7 @@ return formattedDate;
   }
   const setPaid =  useCallback(
     (order) => {
-
+      if(confirm('주문을 수정하시겠습니까?')){
       fetch(`https://altermall.site/seller/order/${order.order_id}`, {
         method: 'PATCH',
         headers: {
@@ -180,16 +180,17 @@ return formattedDate;
           const data = await response.json()
           console.log(data)
           if (response.status == 405) {
-            alert('수락 실패하였습니다');
+            alert('수정 실패하였습니다');
           } else if (response.status == 201) {
-            alert('해당 주문을 수락하였습니다');
+            alert('해당 주문을 수정하였습니다');
           }
 
 
         })
         .finally(() => {
           window.location.reload
-        });
+          
+        });}
 
     },
     [],
