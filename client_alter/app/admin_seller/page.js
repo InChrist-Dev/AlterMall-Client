@@ -166,7 +166,7 @@ return formattedDate;
   const setPaid =  useCallback(
     (order) => {
       if(confirm('주문을 수정하시겠습니까?')){
-      fetch(`https://altermall.site/seller/order/${order.order_id}`, {
+      fetch(`https://altermall.site/seller/order?id=${order.order_id}`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${accessToken}`,
