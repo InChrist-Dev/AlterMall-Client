@@ -27,9 +27,6 @@
    
   }
   
-  .productTable th {
-    background-color: #ffffff;
-  }
   
   .headerRow {
     display: flex;
@@ -39,10 +36,6 @@
     margin-left: 10px;
     padding: 10px;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .headerRow div{
-    margin-left: 60px;
   }
   
   .headerRow div{
@@ -89,9 +82,7 @@ font-size: 20px;
     margin-right: 60px;
   }
   
-  /* basket.module.css */
-  
-  /* 기존 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
+
   
   .checkbox {
     margin-right: 10px;
@@ -158,11 +149,10 @@ font-size: 20px;
     padding: 10px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  
-  .productTable th {
     background-color: #fff;
   }
+  
+
   /* 이전 스타일은 그대로 두고 아래의 스타일을 추가합니다. */
 
   
