@@ -22,7 +22,6 @@ const Checkout = (props) => {
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
   const [request, setRequest] = useState(''); // 직접 입력한 요청사항
-  const [refresh, setRefresh] = useState(false);
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -193,12 +192,12 @@ const Checkout = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
-  }, [refresh]);
+  }, []);
   console.log(deliveryList);
   return (
     <div className={styles.checkoutContainer}>
       <div style={{ display: showModal ? 'block' : 'none' }}>
-        <DeliveryInfoModal refresh={refresh} closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
+        <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
       </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
