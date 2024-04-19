@@ -20,8 +20,7 @@ const ItemPage = (props) => {
   const category = props.params.category;
   console.log(category)
  
-  
-  console.log(testData.data.rows[0]);
+
 
   const fetchData = async () => {
     try {
