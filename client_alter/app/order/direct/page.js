@@ -119,12 +119,11 @@ const Checkout = (props) => {
     }
   }
 
-  // Function to open the modal
   const openModal = () => {
     setShowModal(true);
   };
 
-  // Function to close the modal
+  
   const closeModal = () => {
     setShowModal(false);
 
@@ -153,15 +152,6 @@ const Checkout = (props) => {
     }
     // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
   };
-  const getSub = () => {
-    // 이미지 주소는 사용자가 제공한 것을 사용합니다.
-    if (deliveryInfo == 'normal') {
-      return 3500;
-    } else if (deliveryInfo == 'daily') {
-      return 3500;
-    }
-    // 다른 배송 방법에 대한 이미지 주소를 추가할 수 있습니다.
-  };
   const selDeliver = (id) => {
     setDelivery(deliveryList[id])
   }
@@ -171,8 +161,6 @@ const Checkout = (props) => {
       const response = await fetch(`https://altermall.site/category/${props.searchParams.itemId}`);
       const data = await response.json();
 
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
       console.log(data);
       setAmounts(props.searchParams.amount)
       setItems(data);
@@ -181,7 +169,7 @@ const Checkout = (props) => {
         Cookies.remove('accessToken');
         window.location.href = 'https://altermall.shop/loginPage';
       }
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
+
       const response2 = await fetch(`https://altermall.site/customer/deliver`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -219,7 +207,7 @@ const Checkout = (props) => {
           <div className={styles.deliveryInfo}>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <h2 className={styles.categoryTitle}>배송지 정보</h2>
-              {/* 장인 버튼 */} <button className={styles.moreButton} onClick={openModal}>
+               <button className={styles.moreButton} onClick={openModal}>
                 배송지 변경 ▶
               </button></div>
             <div className={styles.AddressBox}>
@@ -282,7 +270,6 @@ const Checkout = (props) => {
               </div>
             </div>
           </div>
-
           <div className={styles.orderItems}>
             <h2>주문 물품 정보</h2>
             <table className={styles.productTable}>
@@ -296,11 +283,8 @@ const Checkout = (props) => {
                 </tr>
               </thead>
               <tbody>
-
                 <tr className={styles.productCard}>
-
                   <td style={{ display: 'flex', alignItems: 'center', }}>
-
                     <img
                       src={`https://altermall.site/${items.img}`}
                       alt={items.item_name}
@@ -339,8 +323,6 @@ const Checkout = (props) => {
         <h2 >주문 결제 금액</h2>
         <div style={{ border: '1px solid #ddd', marginTop: '20px', marginBottom: '20px' }}></div>
         <div> 상품금액:{calculateTotalPrice().toLocaleString()}원</div>
-        {/* <div>할인금액: 0원</div>
-        <div>상품권: 0원</div> */}
         <div>배송비: {items.delivery}원</div>
         <div>
           <strong>총 주문 가격:</strong> {getPay().toLocaleString()}원
