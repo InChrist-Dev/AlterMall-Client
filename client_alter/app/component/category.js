@@ -18,14 +18,6 @@ const CategoryButtons = () => {
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
           <ImageButton imagePath="salad.jpg" altText="식재료" />
         </Link>
-        {/* <button className={styles.largeButton}>
-          <Link href='/master'>
-            <img
-              src='recommend.png' // imagePath에 이미지 파일의 경로를 전달
-              style={{ width: '100%', height: '100%', objectFit: 'fill' }}
-            />
-          </Link>
-        </button> */}
         <Link onClick = {() => alert('준비중입니다.')} href='/'>
           <ImageButton imagePath="free.jpg" altText= "양념/소스" />
         </Link>
