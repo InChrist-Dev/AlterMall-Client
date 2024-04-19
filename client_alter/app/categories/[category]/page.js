@@ -1,21 +1,14 @@
 'use client'
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
-// 샘플 데이터
-import Cookies from 'js-cookie';
 
-// 쿠키에서 토큰을 가져오기
-const accessToken = Cookies.get('accessToken');
+
 
 const ItemPage = (props) => {
-  const [categoryS, setCategoryS] = useState([]);
-  const [sortBy, setSortBy] = useState('lowest');
-  const [displayCount, setDisplayCount] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
+
   const [page, setPage] = useState(1);
-  const [categoryList, setCategoryList] = useState([])
   const [data, setData] = useState([])
   const category = props.params.category;
   console.log(category)
@@ -40,79 +33,12 @@ const ItemPage = (props) => {
     fetchData();
   }, []);
 
-  const indexOfLastProduct = currentPage * displayCount;
-  const indexOfFirstProduct = indexOfLastProduct - displayCount;
-  const currentProducts = categoryList.slice(indexOfFirstProduct, indexOfLastProduct);
-
   const pageNumbers = [];
   for (let i = 1; i <= page; i++) {
     pageNumbers.push(i);
   }
 
-  const handlePageClick = (pageNumber) => {
-    setCurrentPage(pageNumber);
-    fetchData();
 
-  };
-  const handleSubmit = useCallback(
-    (item) => {
-
-
-      if (accessToken) {
-        fetch(`https://altermall.site/customer/cart/`, {
-          method: 'POST',
-          headers: {
-            "content-type": "application/json",
-            Authorization: `Bearer ${accessToken}`,
-          },
-          credentials: 'include',
-          body: JSON.stringify({ amount: 1, item_id: item.item_id }),
-        })
-          .then((response) => {
-            if (response.status == 400) {
-              alert('장바구니에 존재하는 메뉴입니다.');
-            } else if (response.status == 201) {
-              alert('장바구니에 담겼습니다');
-            }
-
-
-          })
-          .finally(() => {
-
-          });
-      } else {
-        const cartData = localStorage.getItem('cart');
-        let cartItems = [];
-        if (cartData) {
-          cartItems = JSON.parse(cartData);
-        }
-
-        cartItems.push({ amount: 1, Item: item });
-        localStorage.setItem('cart', JSON.stringify(cartItems));
-        alert('비회원 장바구니에 담겼습니다');
-      }
-
-
-    },
-    [],
-  );
-
-
-  const sortByLowestPrice = () => {
-    setSortBy('lowest');
-    // 다른 처리 로직 추가
-  };
-
-  const sortByHighestPrice = () => {
-    setSortBy('highest');
-    // 다른 처리 로직 추가
-  };
-
-  const sortByLatest = () => {
-    setSortBy('latest');
-    // 다른 처리 로직 추가
-    console.log(sortBy);
-  };
 
   // id에 따라 다른 단어를 설정
   let displayWord;
