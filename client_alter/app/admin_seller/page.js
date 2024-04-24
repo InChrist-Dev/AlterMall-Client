@@ -17,6 +17,7 @@ const ItemPage = (props) => {
   const [next, setNext] = useState([]);
   const [pay, setPay] = useState([]);
   const [items, setItems] = useState([]);
+  const [isOrder,setIsOrder] = useState(false);
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
   const [deliveryType, setDeliveryType] = useState('all');
@@ -533,6 +534,114 @@ return formattedDate;
 
 
         </div>
+{isOrder?(<>
+        <h2 className={styles.title}>이전 주문 내역</h2>
+        <div className={styles.basketContainer}>
+        <table className={styles.orderTable}>
+          <thead>
+            <tr>
+           
+            
+              <th>상품명</th>
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>수락</th>
+              <th>상세</th>
+            </tr>
+          </thead>
+          <tbody>
+          {pay.filter(order => (orderState === 'all' || order.state === orderState) && (deliveryType === 'all' || order.delivery_type === deliveryType)).map((order, index) => (
+              <>
+                <tr key={index} className={styles.orderRow}>
+              
+                
+                  <td>{order.OrderDetails[0].item_name}외 {order.OrderDetails?order.OrderDetails.length-1:''}건</td>
+            
+
+                  <td>{setDate(order.createdAt)}</td>
+                  <td>
+                    <p>주문자명: {order.customer_name}</p>
+                    <p>연락처: {order.phone}</p>
+                   
+                    <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
+                  </td>
+                  <td>
+                    <p>{order.delivery_type === 'daily' ? (
+                       <img src="/today.jpg" className={styles.postImage} alt="따끈 배송" />
+
+                    ) : order.delivery_type === 'normal' ? (
+                      <img src='post.jpg' className={styles.postImage} alt="택배 배송" />
+
+                    ) : null}</p>
+                    <p>요청 사항: {order.requests}</p>
+                  </td>
+                  {order.state === 'paid' ? (
+                      <td style={{'color':'green','fontWeight':'bold'}}>결제완료</td>
+                    ) : order.state === 'accept' ? (
+                      <td style={{'color':'red','fontWeight':'bold'}}>제조중</td>
+                    ) : order.state === 'deliver' ? (
+                      <td style={{'color':'blue','fontWeight':'bold'}}>전송완료</td>
+                    ): null}
+                 
+                  <td>
+                    {order.state === 'paid' ? (
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
+                        수락
+                      </button>
+                    ) : order.state === 'accept' ? (
+                      <button onClick={()=>{setPaid(order)}} className={styles.accessButton}>
+                        완료
+                      </button>
+                    ) : null}
+                 
+                   
+                  </td>
+                  <td>
+                    <button
+                      className={styles.detailBtn}
+                      onClick={() => setSelectedOrder(!selectedOrder)}
+                    >
+                      상세보기
+                    </button>
+                    </td>
+                  {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+
+                </tr>
+                <tr>
+                  <td colSpan="9">
+                    {selectedOrder && (
+                      <div >
+
+                        <table className={styles.detailTable}>
+                        
+                          <tbody>
+                            {order.OrderDetails.map((detail, index) => (
+                              <tr key={index}>
+                            
+                                <td>{detail.item_name}</td>
+                                <td>{detail.price}원</td>
+                                <td>{detail.stock}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </td>
+                </tr>
+
+              </>
+            ))}
+          </tbody>
+        </table>
+    
+
+
+        </div>
+      </>):''}
+      <button onClick={setIsOrder(!isOrder)}>이전 내역</button>
         <button onClick={()=>{ Cookies.remove('accessToken');  Cookies.remove('position'); alert('로그아웃 되었습니다.'); window.location.href='/'}}>로그아웃</button>
     </div>
   );
