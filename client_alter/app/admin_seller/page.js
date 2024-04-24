@@ -1,11 +1,10 @@
 // ItemPage.jsx
 'use client'
 import React, { useEffect, useState, useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './admin_seller.module.css'; // Import the CSS module
 import { v4 as uuidv4 } from 'uuid';
 import { useDropzone } from 'react-dropzone';
-import ImageWithAnimation from '../admin/image';
+
 
 import Cookies from 'js-cookie';
 
@@ -134,33 +133,7 @@ const ItemPage = (props) => {
     setOrderState(e.target.value);
     
   };
-  const Cancel = useCallback(
-    (id) => {
-
-      fetch(`https://altermall.site/category/${id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          'Content-Type': 'application/json',
-        },
-
-      })
-        .then((response) => {
-          if (response.status == 405) {
-            alert('삭제 실패하였습니다');
-          } else if (response.status == 201) {
-            alert('삭제되었습니다');
-          }
-
-
-        })
-        .finally(() => {
-          window.location.reload();
-        });
-
-    },
-    [],
-  );
+ 
   const setDate = (data)=>{
     const dateString = data;
 
@@ -182,7 +155,7 @@ return formattedDate;
   }
   const setPaid =  useCallback(
     (order) => {
-
+      if(confirm('주문을 수정하시겠습니까?')){
       fetch(`https://altermall.site/seller/order/${order.order_id}`, {
         method: 'PATCH',
         headers: {
@@ -197,16 +170,17 @@ return formattedDate;
           const data = await response.json()
           console.log(data)
           if (response.status == 405) {
-            alert('수락 실패하였습니다');
+            alert('수정 실패하였습니다');
           } else if (response.status == 201) {
-            alert('해당 주문을 수락하였습니다');
+            alert('해당 주문을 수정하였습니다');
           }
 
 
         })
         .finally(() => {
           window.location.reload
-        });
+          
+        });}
 
     },
     [],
@@ -250,7 +224,7 @@ return formattedDate;
     [],
   );
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
+  const { } = useDropzone({ onDrop: handleDrop, multiple: true, disabled: uploadDisabled });
   return (
     <div style={{ 'marginBottom': '100px' }}>
       <h1 className={styles.title}>상품 관리</h1>
@@ -271,21 +245,7 @@ return formattedDate;
               <tr key={index} className={styles.productCard}>
 
                 <td style={{ display: 'flex', alignItems: 'center', }}>
-                {/* <div {...getRootProps()} className={styles.dropzone}>
-            <input {...getInputProps()} />
-            {files.length > 0 ? (
-              <div className={styles.preview}>
-                {files.map((file, index) => (
-                  <div key={file.name} className={styles.imageContainer}>
-                    <ImageWithAnimation src={URL.createObjectURL(file)} alt={file.name} className={styles.image} />
-                    <button type="button" className={styles.cancel} onClick={() => handleCancel(index)}>X</button>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p onClick={() => { setUploadDisabled(false); }}>이곳에 이미지를 드래그하거나 클릭하여 업로드 해주세요.</p>
-            )}
-          </div> */}
+                
 
                   <img
                     src={`https://altermall.site/${items.img}`}
@@ -300,14 +260,7 @@ return formattedDate;
                      handlePriceChange(index, e.target.value)}></input></p></td>
                 
                 </td>
-                {/* <td>
-                <button className={styles.deleteButton}
-                      onClick={() =>
-                        {Cancel(items.id)}
-                      }
-                    >X
-                    </button>
-                </td> */}
+             
                 <td>
                   <div className={styles.quantityControl}>
                     <button
@@ -504,7 +457,7 @@ return formattedDate;
                   <td>
                     <p>주문자명: {order.customer_name}</p>
                     <p>연락처: {order.phone}</p>
-                    {/* <p>우편번호: {order.post}</p> */}
+                   
                     <p>주소: <b>{order.addr} {order.addr_detail}</b></p>
                   </td>
                   <td>

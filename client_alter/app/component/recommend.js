@@ -23,10 +23,6 @@ export default function Recommend(){
       const drink_data = await res_drink.json();
       const salad_data = await res_salad.json();
       
-      //setRecommend([]) //salad_data,drink_data,free_data 심사통과 후 추가해주기
-   
-  
-
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -45,9 +41,6 @@ export default function Recommend(){
     <div  className={styles.titleMobile} style={{width:'80%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
-    {/* 장인 버튼 <button onClick={toggleShowMore} className={styles.moreButton}>
-        더보기 ▶
-      </button> */}
       </div>
   
     <div className={styles.artisanButtons}>

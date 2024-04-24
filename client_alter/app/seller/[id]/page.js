@@ -2,9 +2,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import styles from './seller.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import YouTube from 'react-youtube';
 
 
@@ -36,11 +33,7 @@ const [seller, setSeller] = useState([]);
       setSellerName(data.data.User.name);
 
       setSellerDetail(data.data.SellerDetail);
-      // setSellerImage(data.data.SellerDetail.img);
-      // setSellerLogo(data.data.SellerDetail.logo);
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
+
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -71,16 +64,11 @@ const nextSlide = () => {
             </div>
       
           
-          {/* <button
-      className={styles.subscribeButton}
-      onClick={handleSubscribeClick}
-    >
-      <FontAwesomeIcon icon={isSubscribed ? solidHeart : regularHeart} />
-    </button> */}
+  
     <p className={styles.slogan}>
         "{sellerDetail.title}"
         </p>
-        <div style={{'height':'100px'}}></div>
+        <div style={{'height':'50px'}}></div>
         <div dangerouslySetInnerHTML={{ __html: sellerDetail.content }} />
 
    

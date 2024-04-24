@@ -3,7 +3,6 @@ import React, { useEffect, useState,useCallback } from 'react';
 import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
-// 샘플 데이터
 import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
@@ -44,7 +43,6 @@ const ItemPage = (props) => {
 
   const indexOfLastProduct = currentPage * displayCount;
   const indexOfFirstProduct = indexOfLastProduct - displayCount;
-  const currentProducts = categoryList.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const pageNumbers = [];
   for (let i = 1; i <= page; i++) {
@@ -119,12 +117,9 @@ const ItemPage = (props) => {
     console.log(sortBy);
   };
 
-  // id에 따라 다른 단어를 설정
-
-
   return (
     <div>
-      {/* <h1 className={styles.caTitle}>{displayWord}</h1> */}
+
       <div className={styles.sortAndScroll}>
         <div className={styles.sortButtons}>
           <button
