@@ -16,6 +16,7 @@ const ItemPage = (props) => {
   const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
   const [next, setNext] = useState([]);
+  const [pay, setPay] = useState([]);
   const [items, setItems] = useState([]);
   const [uploadDisabled, setUploadDisabled] = useState(false);
   const [selectedOrder, setSelectedOrder] = useState(false);
@@ -39,6 +40,22 @@ const ItemPage = (props) => {
       const data = await response.json();
       console.log(data.data.rows);
       setOrders(data.data.rows);
+
+
+    } catch (error) {
+      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+    }
+
+    try {
+      const response = await fetch(`https://altermall.site/seller/paid?time=today`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setPay(data.data.rows);
 
 
     } catch (error) {
