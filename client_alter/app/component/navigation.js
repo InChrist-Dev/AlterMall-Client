@@ -206,8 +206,11 @@ const NavigationBar = () => {
 
 
                   <li className="category" onClick={toggleSubMenu}>
-
-                    카테고리
+                    <div className="listContainer">
+                    <img className="icon" src='/bread.png'/>
+                    <a>카테고리</a>
+                    </div>
+                    
 
                     {isSubMenuOpen && (
                       <ul className="submenu">
@@ -219,15 +222,23 @@ const NavigationBar = () => {
 
                     )}
                   </li>
-                  <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-                  <li><a href="https://altermall.shop/master">장인소개</a></li>
-                  <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-                  <li><a href="/">건강정보</a></li>
-                  <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-                  <li><a href="/submit">납품</a></li>
-                  <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
-                  <li><a href="/submit">랭킹</a></li>
-                  <div style={{ borderBottom: '0.5px solid #aaa' }}></div>
+                  <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
+                  
+                  <li>
+                  <div className="listContainer">
+                    <img className="icon" src='/cook.png'/>
+                    <a href="https://altermall.shop/master">장인소개</a></div></li>
+                  <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
+                  <li>
+                  <div className="listContainer">
+                    <img className="icon" src='/heart.png'/><a href="/">건강정보</a></div></li>
+                  <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
+                  <li> <div className="listContainer">
+                    <img className="icon" src='/box.png'/><a href="/submit">납품</a></div></li>
+                  <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
+                  <li> <div className="listContainer">
+                    <img className="icon" src='/rank.png'/><a href="/submit">랭킹</a></div></li>
+                  <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
                   <li onClick={toggleMenu}>닫기</li>
                 </ul>
               </nav>

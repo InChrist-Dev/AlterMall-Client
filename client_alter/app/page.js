@@ -11,7 +11,6 @@ import CategoryButtons from './component/category';
 import Recommend from './component/recommend';
 
 const HomePage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
 
 
   return (

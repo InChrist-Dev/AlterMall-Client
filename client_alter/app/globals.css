@@ -130,7 +130,7 @@
   }
 
   
-  
+
   .category-dropdown {
     position: relative;
   }
@@ -450,7 +450,7 @@
 }
 
 .sidebar-nav ul li a {
-  color: #333; /* 글자 색상 변경 */
+  color: #555; /* 글자 색상 변경 */
   text-decoration: none;
   font-size: 16px;
   font-weight: 500; /* 글꼴 두껍게 */
@@ -466,7 +466,20 @@
   cursor: pointer;
   position: relative;
 }
+.icon{
+  width: 20px;
+  margin:  0 10px 0 0;
+}
 
+.listContainer{
+  display: flex;
+
+}
+
+.listContainer:hover{
+
+  color: #000;
+}
 .sidebar-nav ul li.category .submenu {
   display: none;
   position: absolute;
