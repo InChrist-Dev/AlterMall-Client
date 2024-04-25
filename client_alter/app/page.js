@@ -13,13 +13,6 @@ import Recommend from './component/recommend';
 const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
-  };
 
   return (
     <div >
