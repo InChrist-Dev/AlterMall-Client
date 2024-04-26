@@ -29,7 +29,12 @@ export default function LoginPage() {
             "pw": password,
            
           }), 
-        }) .then((res) => res.json())
+        }) .then((res) => {  if (res.status === 204) {
+          // 204 상태 코드가 반환될 때 실행할 코드를 작성합니다.
+          alert('비밀번호가 일치하지 않습니다');
+        } else {
+          return res.json();
+        }})
         .then((json) => {
           console.log(json);
           console.log(json.accessToken)
@@ -65,7 +70,7 @@ export default function LoginPage() {
           }), 
         }) .then((res) => {  if (res.status == 204) {
           // 204 상태 코드가 반환될 때 실행할 코드를 작성합니다.
-          alert('아이디나 비밀번호가 일치하지 않습니다');
+          alert('비밀번호가 일치하지 않습니다');
         } else {
           return res.json();
         }})
