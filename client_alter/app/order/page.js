@@ -307,8 +307,9 @@ const Checkout = () => {
                 {/* 옵션 선택 */}
                 <select className={styles.selectRequest} value={requestOption} onChange={handleOptionChange}>
                   <option value="">선택하세요</option>
-                  <option value="노크x">노크x</option>
-                  <option value="문앞에 두고 가주세요">문앞에 두고 가주세요</option>
+                  <option value="노크x,문앞에 두고 가주세요">노크X, 문앞에 두고 가주세요</option>
+                  <option value="부재시 경비실에 맡겨주세요">부재시 경비실에 맡겨주세요</option>
+                  <option value="잘라서 주세요">잘라서 주세요</option>
                   <option value="직접입력">직접입력</option>
                 </select>
                 {/* 직접 입력 창 */}
