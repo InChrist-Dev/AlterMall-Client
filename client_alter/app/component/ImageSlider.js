@@ -9,15 +9,15 @@ const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
   };
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+      setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
     }, 5000);
 
     return () => clearInterval(interval);
