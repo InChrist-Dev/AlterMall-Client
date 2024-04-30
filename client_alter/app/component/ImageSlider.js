@@ -32,6 +32,7 @@ const ImageSlider = () => {
         }}
       >
         {/* Images */}
+        <img src="/dapumda.png" alt="이미지3" className={styles.sliderImage} />
         <img src="/003.png" alt="이미지3" className={styles.sliderImage} />
         <img src="/001.png" alt="이미지1" className={styles.sliderImage} />
         <img src="/002.png" alt="이미지2" className={styles.sliderImage} />
