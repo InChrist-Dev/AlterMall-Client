@@ -142,6 +142,8 @@ const Checkout = () => {
       return '그린페블';
     }else if(sellerId =='h9101562'){
       return '다품다';
+    }else if(sellerId =='janexz'){
+      return '희건';
     }
 
   }
@@ -196,6 +198,8 @@ const Checkout = () => {
             sellerFee += 3500;
           }else if(sellerId =='h9101562'){
             sellerFee += 4500;
+          }else if(sellerId =='janexz'){
+            sellerFee += 3500;
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
