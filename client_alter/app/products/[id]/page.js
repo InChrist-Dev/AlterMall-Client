@@ -30,31 +30,18 @@ const ItemPage = (props) => {
   const [guest, setGuest] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
-
+  const [likeCount,setLikeCount] = useState(0);
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
   };
 
-    // setGuest 함수를 활용하여 첫 번째 손님의 stock 속성 설정
-  const updateStock = (quantity) => {
-    if (guest.length > 0) {
-     
-    } else {
-      console.error('Guest array is empty.');
-    }
-  };
+
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   // 여기에 서버에 데이터를 전송하는 코드를 추가합니다.
-  //   const data = { title, content };
-  //   console.log(data); // 임시로 데이터를 콘솔에 출력합니다.
-  //   // 서버에 데이터를 전송하는 API 호출 등의 코드를 추가해야 합니다.
-  // };
+
   const handleReview = async (e) => {
     e.preventDefault();
 
@@ -100,13 +87,38 @@ const ItemPage = (props) => {
       setId(data.item_id);
       setData(data.ItemImages[0]);
       setGuest(data);
+      setLikeCount(data.likeCount);
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
       const data2 = await response2.json();
       console.log(data2)
       setReview(data2.data.rows)
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
+   
+
+
+      const like = await fetch(`https://altermall.site/like/${props.params.id}`, {
+      
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: 'include',
+       
+        })
+          .then((response) => {
+      
+            if (response.status == 400) {
+             
+            } else if (response.status == 201) {
+              
+            }
+  
+  
+          })
+          .finally(() => {
+            console.log("저장완료")
+          });
+
+          console.log(like)
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
     }
@@ -197,14 +209,7 @@ if (currentHour < 15) {
   };
   
   
-    // 모레의 날짜를 반환하는 함수
-    const getNextNextDayDate = () => {
-      const nextNextDay = new Date();
-      nextNextDay.setDate(nextNextDay.getDate() + 2);
-      const month = nextNextDay.getMonth() + 1;
-      const date = nextNextDay.getDate();
-      return `${month}월 ${date}일`;
-    };
+    
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
     setPrice(newQuantity * newprice); // Adjust the price based on your business logic
@@ -216,6 +221,32 @@ if (currentHour < 15) {
     }
     return result;
   };
+
+  const likeBtn = useCallback((id)=>{ 
+    
+    fetch(`https://altermall.site/like/${props.params.id}`, {
+          method: 'POST',
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
+          credentials: 'include',
+          body: JSON.stringify({ likeCount:likeCount+1}),
+        })
+          .then((response) => {
+      
+            if (response.status == 400) {
+              alert('장바구니에 존재하는 메뉴입니다.');
+            } else if (response.status == 201) {
+              alert('장바구니에 담겼습니다');
+            }
+          })
+          .finally(() => {
+            console.log("저장완료")
+          });
+  })
+
+
   const handleSubmit = useCallback(
     (id) => {
       if(accessToken){
@@ -228,7 +259,7 @@ if (currentHour < 15) {
             Authorization: `Bearer ${accessToken}`,
           },
           credentials: 'include',
-          body: JSON.stringify({ amount: quantity ,item_id: props.params.id}),
+          body: JSON.stringify({ amount: quantity, item_id: props.params.id}),
         })
           .then((response) => {
       
@@ -299,10 +330,7 @@ if (currentHour < 15) {
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
           <h1 >{name}</h1>
-          {/* <p><span>배달방법 </span> 특급배달</p>
-          <p><span>제품구성 </span> 밀가루, 버터, 우유, 달걀, 설탕포함</p>
-          <p><span>보관법 </span> 냉동보관</p>
-          <p><span>안내 </span> 해당제품은 보관 후 3일 안에 드셔주세요</p> */}
+        
           <p><span>재고 </span> {stock}</p>
           <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
           {/* <p><span>배송기간 </span>영업일 기준 2-3일 소요</p> */}
@@ -455,6 +483,7 @@ if (currentHour < 15) {
               <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
             </div>
             <button type="submit">제출</button>
+            <button onClick={()=>{likeBtn()}}></button>
           </form>
         </div>
 
