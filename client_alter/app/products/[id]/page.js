@@ -483,7 +483,7 @@ if (currentHour < 15) {
               <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
             </div>
             <button type="submit">제출</button>
-            <button onClick={()=>{likeBtn()}}></button>
+            <button onClick={()=>{likeBtn()}}>x</button>
           </form>
         </div>
 
