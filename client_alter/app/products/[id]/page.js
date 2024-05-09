@@ -31,6 +31,7 @@ const ItemPage = (props) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
   const [likeCount,setLikeCount] = useState(0);
+  const [like,setLike] = useState(false);
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
@@ -109,7 +110,8 @@ const ItemPage = (props) => {
             if (response.status == 400) {
              
             } else if (response.status == 201) {
-              console.log(response)
+              console.log(response.exist)
+              setLike(response.exist)
             }
   
   
