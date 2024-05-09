@@ -3,7 +3,8 @@
 import React, { useState, useEffect,useCallback } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
 import Modal from './Modal';
@@ -331,7 +332,7 @@ if (currentHour < 15) {
 
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
-          {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} icon="fa-solid fa-heart" />:<FontAwesomeIcon onClick={()=>{likeBtn()}} icon="fa-regular fa-heart" />}
+          {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} />:<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />}
           <h1 >{name}</h1>
         
           <p><span>재고 </span> {stock}</p>
