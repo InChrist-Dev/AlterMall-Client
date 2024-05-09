@@ -332,7 +332,7 @@ if (currentHour < 15) {
 
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
-          {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} />:<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />}
+          {/* {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} />:<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />} */}
           <h1 >{name}</h1>
         
           <p><span>재고 </span> {stock}</p>
