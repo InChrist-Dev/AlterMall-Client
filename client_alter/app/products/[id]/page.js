@@ -239,12 +239,12 @@ if (currentHour < 15) {
       
             if (response.status == 400) {
               
-            } else if (response.status == 201) {
-            
+            } else if (response.status == 200) {
+            alert('해당상품을 찜하였습니다')
             }
           })
           .finally(() => {
-            fetchData();
+          
             console.log("저장완료")
           });
   })
@@ -490,7 +490,7 @@ if (currentHour < 15) {
          
           </form>
         </div>
-        {like==true?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
+        {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
       </div>
     </div>
   );
