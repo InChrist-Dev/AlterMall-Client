@@ -109,7 +109,7 @@ const ItemPage = (props) => {
           .then((response) => {
       
             if (response.status == 400) {
-              setLike(false)
+        
             } else if (response.status == 201) {
               console.log(response)
               setLike(true)
