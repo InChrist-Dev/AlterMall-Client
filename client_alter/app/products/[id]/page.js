@@ -107,7 +107,7 @@ const ItemPage = (props) => {
        
         })
           .then((response) => {
-      
+            console.log(response.status)
             if (response.status == 400) {
         
             } else if (response.status == 201) {
