@@ -239,13 +239,12 @@ if (currentHour < 15) {
       
             if (response.status == 400) {
               
-            } else if (response.status == 200) {
+            } else if (response.status == 201) {
             alert('해당상품을 찜하였습니다')
             }
           })
           .finally(() => {
-          
-            console.log("저장완료")
+    
           });
   })
 
