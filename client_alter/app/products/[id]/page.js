@@ -110,7 +110,7 @@ const ItemPage = (props) => {
             console.log(response.status)
             if (response.status == 400) {
         
-            } else if (response.status == 201) {
+            } else if (response.status == 200) {
               console.log(response)
               setLike(true)
               console.log("저장완료")
