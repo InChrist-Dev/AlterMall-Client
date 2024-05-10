@@ -113,13 +113,12 @@ const ItemPage = (props) => {
             } else if (response.status == 201) {
               console.log(response)
               setLike(true)
+              console.log("저장완료")
             }
   
   
           })
-          .finally(() => {
-            console.log("저장완료")
-          });
+       
 
           console.log(like)
     } catch (error) {
