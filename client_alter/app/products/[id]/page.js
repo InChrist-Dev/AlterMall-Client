@@ -332,7 +332,7 @@ if (currentHour < 15) {
 
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
-          {/* {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} />:<FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />} */}
+   
           <h1 >{name}</h1>
         
           <p><span>재고 </span> {stock}</p>
@@ -487,10 +487,10 @@ if (currentHour < 15) {
               <textarea id="content" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
             </div>
             <button type="submit">제출</button>
-            <button onClick={()=>{likeBtn()}}>x</button>
+         
           </form>
         </div>
-
+        <FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} /><FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />
       </div>
     </div>
   );
