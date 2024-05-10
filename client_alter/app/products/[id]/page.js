@@ -238,12 +238,13 @@ if (currentHour < 15) {
           .then((response) => {
       
             if (response.status == 400) {
-              alert('장바구니에 존재하는 메뉴입니다.');
+              
             } else if (response.status == 201) {
-              alert('장바구니에 담겼습니다');
+            
             }
           })
           .finally(() => {
+            fetchData();
             console.log("저장완료")
           });
   })
