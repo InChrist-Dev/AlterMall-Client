@@ -111,7 +111,7 @@ const ItemPage = (props) => {
             if (response.status == 400) {
               setLike(false)
             } else if (response.status == 201) {
-              console.log(response.exist)
+              console.log(response)
               setLike(true)
             }
   
@@ -490,7 +490,7 @@ if (currentHour < 15) {
          
           </form>
         </div>
-        <FontAwesomeIcon onClick={()=>{likeBtn()}} icon={solidHeart} /><FontAwesomeIcon onClick={()=>{likeBtn()}} icon={regularHeart} />
+        {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
       </div>
     </div>
   );
