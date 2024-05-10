@@ -23,6 +23,9 @@ const ItemPage = (props) => {
 
       if (!accessToken) {
         const cartString = localStorage.getItem('cart'); // 로컬 스토리지에서 데이터 가져오기
+        if(!cartString){
+          alert('비회원은 제품을 담은 후 장바구니를 이용하실 수 있습니다.');
+        }
         const cartJson = JSON.parse(cartString); // JSON으로 변환
 
         console.log(cartJson);
