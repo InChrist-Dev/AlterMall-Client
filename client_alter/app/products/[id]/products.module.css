@@ -44,7 +44,9 @@
   .productInfo span{
     font-size: 22px;
     font-weight: bold;
-    color: #aaa;
+    display: flex;
+    justify-content: space-betweens;
+    color: #000;
   }
   
   .productOptions {
