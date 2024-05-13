@@ -386,7 +386,13 @@
   align-items: center;
   height: 100%;
 }
-
+.productInfo span{
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  color: #000;
+}
 .modalContent {
   background-color: #fefefe;
   padding: 20px;
