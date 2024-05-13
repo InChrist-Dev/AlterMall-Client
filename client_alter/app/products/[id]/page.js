@@ -331,8 +331,11 @@ if (currentHour < 15) {
 
       <div className={styles.productDetails}>
         <div className={styles.productInfo}>
-   
+          <p className={styles.productTitle}>
           <h1 >{name}</h1>
+          {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
+          </p>
+         
         
           <p><span>재고 </span> {stock}</p>
           <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
@@ -489,7 +492,7 @@ if (currentHour < 15) {
          
           </form>
         </div>
-        {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
+      
       </div>
     </div>
   );
