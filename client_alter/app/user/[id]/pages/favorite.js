@@ -6,12 +6,12 @@ import { fetchData } from 'next-auth/client/_utils';
 import Cookies from 'js-cookie';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
-const OrderHistory = () => {
+const FavoriteProductsPage  = () => {
   const [orders, setOrders] = useState([]);
   const [orderdetail, setOrderdetail] = useState([]);
   const [name, setName] = useState([]);
   const [selectedOrder, setSelectedOrder] = useState(false)
-const FavoriteProductsPage  = () => {
+
 
   
   try {
@@ -185,3 +185,7 @@ const FavoriteProductsPage  = () => {
 };
 
 export default FavoriteProductsPage ;
+
+
+
+
