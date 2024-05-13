@@ -16,7 +16,7 @@ const FavoriteProductsPage  = () => {
   
   try {
     const fetchData = async () => {
-      const response = await fetch(`https://altermall.site/customer/order/`, {
+      const response = await fetch(`https://altermall.site/like/`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const FavoriteProductsPage  = () => {
   return (
     <div>
       <div className={styles.topArea}>
-        주문내역
+        찜한 상품
 
       </div>
       {orders.map((order, index) => (
