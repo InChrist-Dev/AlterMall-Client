@@ -489,7 +489,7 @@ if (currentHour < 15) {
          
           </form>
         </div>
-        {/* {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />} */}
+        {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />}
       </div>
     </div>
   );
