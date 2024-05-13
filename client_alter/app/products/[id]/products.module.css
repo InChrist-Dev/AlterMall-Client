@@ -32,7 +32,7 @@
 
   .productTitle {
     display: flex;
-    justify-content: space-betweens;
+    justify-content: space-between;
     color: #000;
   }
   
@@ -41,14 +41,7 @@
     margin-bottom: 10px;
    
   }
-  .productInfo span{
-    font-size: 22px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    color: #000;
-  }
-  
+
   .productOptions {
     margin-top: 20px;
   }
