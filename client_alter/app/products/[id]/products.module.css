@@ -41,7 +41,11 @@
     margin-bottom: 10px;
    
   }
-
+  .productInfo span{
+    font-size: 18px;
+    font-weight: bold;
+    color: #aaa;
+  }
   .productOptions {
     margin-top: 20px;
   }
@@ -386,6 +390,8 @@
   justify-content: space-between;
   color: #000;
 }
+
+
 .modalContent {
   background-color: #fefefe;
   padding: 20px;
@@ -451,6 +457,11 @@
     font-size: 18px;
     font-weight: bold;
     color: #aaa;
+  }
+  .productTitle {
+    display: flex;
+    justify-content: space-between;
+    color: #000;
   }
   
   .productOptions {
