@@ -24,7 +24,7 @@ const FavoriteProductsPage  = () => {
         credentials: 'include',
       });
       const data = await response.json();
-      console.log(data.data.rows);
+      console.log(data.data);
       // setOrders(data.data.rows);
       // setName(data.data.rows[0].OrderDetails[0])
       // setOrderdetail(data.data.rows[0].OrderDetails)
