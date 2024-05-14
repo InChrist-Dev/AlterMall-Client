@@ -1,9 +1,8 @@
 'use client'
 // UserInfo.jsx
 import React, { useEffect, useState, useCallback } from 'react';
-import styles from './pages.module.css';
-import style from '../../../categories/[category]/category.module.css'
-import { fetchData } from 'next-auth/client/_utils';
+import styless from './pages.module.css';
+
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
@@ -74,7 +73,7 @@ const FavoriteProductsPage  = () => {
   );
   return (
     <div>
-      <div className={styles.topArea}>
+      <div className={styless.topArea}>
         찜한 상품
 
       </div>
@@ -82,10 +81,10 @@ const FavoriteProductsPage  = () => {
    
     return (
       <>
-      <div key={item} className={style.productCard}>
-        <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
-          <div className={style.productLink}>
-            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={style.cartBtn} onClick={(e)=>{
+      <div key={item} className={styles.productCard}>
+        <Link href={`/products/${item.item_id}`} styles={{ textDecoration: "none" }}>
+          <div className={styles.productLink}>
+            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
               handleSubmit(item);}}>+</button>
             <h4> {item.item_name}</h4>
