@@ -246,7 +246,7 @@ if (currentHour < 15) {
           .finally(() => {
     
           });
-  })
+  },[like])
 
 
   const handleSubmit = useCallback(
