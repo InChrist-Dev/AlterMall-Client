@@ -24,6 +24,7 @@ const OrderHistory = () => {
         console.log(response)
         if (response.status == 401) {
           alert('다시 로그인 해주세요');
+          window.location.href='/'
         }
 
 
