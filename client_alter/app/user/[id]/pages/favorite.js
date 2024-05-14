@@ -5,6 +5,8 @@ import styles from './pages.module.css';
 import style from '../../../categories/[category]/category.module.css'
 import { fetchData } from 'next-auth/client/_utils';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
+
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 const FavoriteProductsPage  = () => {
