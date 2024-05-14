@@ -25,9 +25,9 @@ const FavoriteProductsPage  = () => {
       });
       const data = await response.json();
       console.log(data.data.rows);
-      setOrders(data.data.rows);
-      setName(data.data.rows[0].OrderDetails[0])
-      setOrderdetail(data.data.rows[0].OrderDetails)
+      // setOrders(data.data.rows);
+      // setName(data.data.rows[0].OrderDetails[0])
+      // setOrderdetail(data.data.rows[0].OrderDetails)
     }
     useEffect(() => {
       fetchData();
@@ -79,7 +79,7 @@ const FavoriteProductsPage  = () => {
         찜한 상품
 
       </div>
-      {orders.map((order, index) => (
+      {/* {orders.map((order, index) => (
         <>
           <h3>{order.createdAt.slice(0, 10)}</h3>
 
@@ -179,7 +179,7 @@ const FavoriteProductsPage  = () => {
           </div>
 
         </>
-      ))}
+      ))} */}
     </div>
   );
 };
