@@ -20,18 +20,9 @@ const OrderHistory = () => {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
-      }).then((response) => {
-        console.log(response)
-        if (response.status == 401) {
-          alert('다시 로그인 해주세요');
-          Cookies.remove('accessToken');
-          window.location.href='/'
-        }
-
-
       });
       const data = await response.json();
-      console.log(data);
+      console.log(data.data.rows);
       setOrders(data.data.rows);
       setName(data.data.rows[0].OrderDetails[0])
       setOrderdetail(data.data.rows[0].OrderDetails)
