@@ -2,15 +2,13 @@
 // UserInfo.jsx
 import React, { useEffect, useState, useCallback } from 'react';
 import styles from './pages.module.css';
+import style from '../../../categories/[category]/category.module.css'
 import { fetchData } from 'next-auth/client/_utils';
 import Cookies from 'js-cookie';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 const FavoriteProductsPage  = () => {
-  const [orders, setOrders] = useState([]);
-  const [orderdetail, setOrderdetail] = useState([]);
-  const [name, setName] = useState([]);
-  const [selectedOrder, setSelectedOrder] = useState(false)
+  const [items, setItems] = useState([]);
 
 
   
@@ -25,9 +23,8 @@ const FavoriteProductsPage  = () => {
       });
       const data = await response.json();
       console.log(data.data);
-      // setOrders(data.data.rows);
-      // setName(data.data.rows[0].OrderDetails[0])
-      // setOrderdetail(data.data.rows[0].OrderDetails)
+      setItems(data.data.items);
+
     }
     useEffect(() => {
       fetchData();
@@ -79,107 +76,26 @@ const FavoriteProductsPage  = () => {
         찜한 상품
 
       </div>
-      {/* {orders.map((order, index) => (
-        <>
-          <h3>{order.createdAt.slice(0, 10)}</h3>
-
-          <div className={styles.AddressBox}>
-
-            <div className={styles.containerBox}>
-              <div className={styles.orderBox}>
-              <div className={styles.orderBox}>
-                <img
-                  src={`https://altermall.site/${order.OrderDetails[0].img}`} 
-                  alt={order.OrderDetails[0].item_name}
-                  className={styles.productImage}
-                />
-                <div className={styles.titleBox}>
-                  <div className={styles.orderTitle}>
-                  <div className={styles.title}>{order.OrderDetails[0].item_name}외 {orderdetail.length}건</div>
-                  <div className={styles.price}>{order.amount}원</div>
-                  </div>
-                  
-
-                  <div>
-                    <p>{order.customer_name}</p>
-
-                    <p>{order.addr} {order.addr_detail}</p>
-                    <p> {order.phone}</p>
-                    <p>요청사항: {order.requests}</p>
-                  </div>
-                </div>
-                </div>
-                <div className={styles.descriptBox}>
-                <div>
-                    {order.state != 'cancelled' ? <button className={styles.deleteButton}
-                      onClick={() => { Cancel(order.order_id) }
-                      }
-                    >주문 취소
-                    </button> : ''}
-                  </div>
-                  <div className={styles.descriptStyle}>
-                    <p>{order.delivery_type === 'daily' ? (
-                      <img src='../../today.jpg' className={styles.postImage} alt="따끈 배송" />
-                    ) : order.delivery_type === 'normal' ? (
-                      <img src='../../post.jpg' className={styles.postImage} alt="택배 배송" />
-                    ) : null}</p>
-                    <p className={styles.pStyle}>  {order.state === 'paid' ? (
-                      <span style={{'color':'green','fontWeight':'bold'}}>결제완료</span>
-                    ) : order.state === 'accept' ? (
-                      <span style={{'color':'red','fontWeight':'bold'}}>제조중</span>
-                    ) : order.state === 'deliver' ? (
-                      <span style={{'color':'blue','fontWeight':'bold'}}>전송완료</span>
-                    ) : order.state === 'cancelled' ? (
-                      <span>결제취소</span>
-                    ) : null}</p>
-                  </div>
-
-               */}
-                  {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
-                  {/* <div>
-                    <button
-                      className={styles.detailBtn}
-                      onClick={() => setSelectedOrder(!selectedOrder)}
-                    >
-                      상세보기
-                    </button>
-                  </div>
-                </div>
-
-              </div>
-
-
-              <tr>
-                <td colSpan="9">
-                  {selectedOrder && (
-                    <div >
-
-                      <table className={styles.detailTable}>
-
-                        <tbody>
-                          {order.OrderDetails.map((detail, index) => (
-                            <tr key={index}>
-                              <td>  <img
-                                src={`https://altermall.site/${detail.img} `}
-                                alt={detail.item_name}
-                                className={styles.productImage}
-                              /></td>
-                              <td>{detail.item_name}</td>
-                              <td>{detail.price}원</td>
-                              <td>{detail.stock}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-                </td>
-              </tr>
-            </div>
+      {items.map((item, i) => {
+    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
+    return (
+      <>
+      <div key={item} className={style.productCard}>
+        <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
+          <div className={style.productLink}>
+            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={style.cartBtn} onClick={(e)=>{
+              e.preventDefault(); // Link 클릭 이벤트 전파 중지
+              handleSubmit(item);}}>+</button>
+            <h3> {item.item_name}</h3>
+            <p>{item.price.toLocaleString()}원</p>
+            <p>{categoryS[currentIndex]}</p>
+           
           </div>
-
-        </>
-      ))} */}
+        </Link>
+      </div>
+      </>
+    );
+  })}
     </div>
   );
 };
