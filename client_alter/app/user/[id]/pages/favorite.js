@@ -77,6 +77,9 @@ const FavoriteProductsPage  = () => {
         찜한 상품
 
       </div>
+      <div className={styles.cardCell}>
+
+      
       {items.map((item, i) => {
    
     return (
@@ -94,6 +97,7 @@ const FavoriteProductsPage  = () => {
       </>
     );
   })}
+    </div>
     </div>
   );
 };
