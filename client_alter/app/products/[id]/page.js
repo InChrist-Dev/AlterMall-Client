@@ -224,7 +224,7 @@ if (currentHour < 15) {
     return result;
   };
 
-  const likeBtn = useCallback(()=>{ 
+  const likeBtn = useCallback((name,img)=>{ 
     
     fetch(`https://altermall.site/like/${props.params.id}`, {
           method: 'POST',
@@ -333,7 +333,7 @@ if (currentHour < 15) {
         <div className={styles.productInfo}>
           <div className={styles.productTitle}>
           <h1 >{name}</h1>
-          {like?<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn()}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />} 
+          {like?<FontAwesomeIcon onClick={()=>{likeBtn(name,img)}} style={{"color":"#f0571b"}} icon={solidHeart} size='2x'/>:<FontAwesomeIcon onClick={()=>{likeBtn(name,img)}} style={{"color":"#f0571b"}} icon={regularHeart} size='2x' />} 
           </div>
          
         
