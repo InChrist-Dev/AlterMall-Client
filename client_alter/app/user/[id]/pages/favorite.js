@@ -134,9 +134,9 @@ const FavoriteProductsPage  = () => {
                     ) : null}</p>
                   </div>
 
-              
+               */}
                   {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
-                  <div>
+                  {/* <div>
                     <button
                       className={styles.detailBtn}
                       onClick={() => setSelectedOrder(!selectedOrder)}
