@@ -237,8 +237,8 @@ if (currentHour < 15) {
         })
           .then((response) => {
       
-            if (response.status == 400) {
-              
+            if (response.status == 401) {
+              alert('로그인 후 이용하실 수 있습니다')
             } else if (response.status == 201) {
             alert('해당상품을 찜하였습니다')
             }
