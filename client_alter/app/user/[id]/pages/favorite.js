@@ -84,9 +84,7 @@ const FavoriteProductsPage  = () => {
       <div key={item} className={styles.productCard}>
         <Link href={`/products/${item.item_id}`} styles={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
-            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
-              e.preventDefault(); // Link 클릭 이벤트 전파 중지
-              handleSubmit(item);}}>+</button>
+            <img src={`https://altermall.site/${item.img}`} alt={name} /> 
             <h4> {item.item_name}</h4>
           
            
