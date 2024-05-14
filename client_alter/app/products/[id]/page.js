@@ -224,7 +224,7 @@ if (currentHour < 15) {
     return result;
   };
 
-  const likeBtn = useCallback((id)=>{ 
+  const likeBtn = useCallback(()=>{ 
     
     fetch(`https://altermall.site/like/${props.params.id}`, {
           method: 'POST',
@@ -233,7 +233,7 @@ if (currentHour < 15) {
             Authorization: `Bearer ${accessToken}`,
           },
           credentials: 'include',
-          body: JSON.stringify({ likeCount:likeCount+1}),
+          body: JSON.stringify({ likeCount:likeCount+1, item_name:name,img:img}),
         })
           .then((response) => {
       
