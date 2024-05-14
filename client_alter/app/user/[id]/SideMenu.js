@@ -47,10 +47,12 @@ const SideMenu = () => {
       </ul>
     </div>
      <div className={styles.sideMenuMobile}>
-    
+    <ul>
+    <li><Link to="/user/favorite-products" className={styles.menuItem}>찜한 상품</Link></li>
+    </ul>
      <ul>
        <li><Link to="/user/orders" className={styles.menuItem}>주문내역</Link></li>
-       <li><Link to="/user/favorite-products" className={styles.menuItem}>찜한 상품</Link></li>
+      
        {/* <li><Link to="/user/cancel" className={styles.menuItem}>취소/반품내역</Link></li>
        <li><Link to="/user/subscriptions" className={styles.menuItem}>정기배송 관리</Link></li>
        <li><Link to="/user/restock-alerts" className={styles.menuItem}>재입고 알림상품</Link></li> */}
