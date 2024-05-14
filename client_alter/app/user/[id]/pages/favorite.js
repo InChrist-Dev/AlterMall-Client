@@ -1,7 +1,7 @@
 'use client'
 // UserInfo.jsx
 import React, { useEffect, useState, useCallback } from 'react';
-import styless from './pages.module.css';
+import styles from './pages.module.css';
 
 import Cookies from 'js-cookie';
 import Link from 'next/link';
@@ -73,7 +73,7 @@ const FavoriteProductsPage  = () => {
   );
   return (
     <div>
-      <div className={styless.topArea}>
+      <div className={styles.topArea}>
         찜한 상품
 
       </div>
