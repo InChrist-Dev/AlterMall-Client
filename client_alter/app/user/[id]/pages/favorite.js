@@ -88,7 +88,7 @@ const FavoriteProductsPage  = () => {
         <Link href={`/products/${item.item_id}`} styles={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
             <img src={`https://altermall.site/${item.img}`} alt={name} /> 
-            <h4> {item.item_name}</h4>
+            <h4 style={{'color':'black'}}> {item.item_name}</h4>
           
            
           </div>
