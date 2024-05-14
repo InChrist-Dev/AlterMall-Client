@@ -77,7 +77,7 @@ const FavoriteProductsPage  = () => {
 
       </div>
       {items.map((item, i) => {
-    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
+   
     return (
       <>
       <div key={item} className={style.productCard}>
@@ -86,9 +86,8 @@ const FavoriteProductsPage  = () => {
             <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={style.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
               handleSubmit(item);}}>+</button>
-            <h3> {item.item_name}</h3>
-            <p>{item.price.toLocaleString()}원</p>
-            <p>{categoryS[currentIndex]}</p>
+            <h4> {item.item_name}</h4>
+          
            
           </div>
         </Link>
