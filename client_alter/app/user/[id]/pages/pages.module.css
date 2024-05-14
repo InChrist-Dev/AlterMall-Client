@@ -107,7 +107,7 @@
   }
     .productCard {
       text-decoration: none;
-      margin: 25px;
+      margin: 16px;
   
       
       transition: transform 0.3s ease-in-out;
@@ -117,12 +117,7 @@
       transform: scale(1.05);
     }
     
-    .productCard h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #333;
-      
-    }
+  
   
     .productCard img {
       width: 170px;
