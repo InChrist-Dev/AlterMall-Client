@@ -222,7 +222,15 @@ const Checkout = (props) => {
               orderName: `${firstItemName}외 ${otherItemsCount}건`,
               successUrl: 'https://altermall.site/customer/confirm',
               failUrl: window.location.origin,
-            })
+            }),
+            
+
+            
+          ).finally(
+            () => {
+              Cookies.remove('accessToken');
+              Cookies.remove('position'); 
+            }
           )
   
   
