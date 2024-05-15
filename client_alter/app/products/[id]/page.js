@@ -11,6 +11,14 @@ import Modal from './Modal';
 import { v4 as uuidv4 } from 'uuid';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
+
+
+
+const position= Cookies.get('position');
+if(position=='guest'){
+  Cookies.remove('accessToken');
+  Cookies.remove('position');
+}
 const myUuid = uuidv4();
 const ItemPage = (props) => {
   const [name, setName] = useState('');
