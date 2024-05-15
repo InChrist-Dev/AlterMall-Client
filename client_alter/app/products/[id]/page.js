@@ -15,10 +15,7 @@ const accessToken = Cookies.get('accessToken');
 
 
 const position= Cookies.get('position');
-if(position=='guest'){
-  Cookies.remove('accessToken');
-  Cookies.remove('position');
-}
+
 const myUuid = uuidv4();
 const ItemPage = (props) => {
   const [name, setName] = useState('');
@@ -135,7 +132,10 @@ const ItemPage = (props) => {
   // useEffect 안에서 fetchData 함수를 호출합니다.
   useEffect(() => {
     fetchData();
- 
+    if(position=='guest'){
+      Cookies.remove('accessToken');
+      Cookies.remove('position');
+    }
   }, []);
   
     
