@@ -11,11 +11,7 @@ import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 
-const position= Cookies.get('position');
-if(position=='guest'){
-  Cookies.remove('accessToken');
-  Cookies.remove('position');
-}
+
 const inter = Inter({ subsets: ['latin'] })
 
 
