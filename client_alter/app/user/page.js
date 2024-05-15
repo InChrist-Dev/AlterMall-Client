@@ -35,6 +35,15 @@ const MyPage = () => {
           'Content-Type': 'application/json',
         },
         credentials: 'include',
+      }) .then((response) => {
+       
+        if (response.status == 404) {
+          Cookies.remove('accessToken');
+        } else if (response.status == 201) {
+      
+        }
+
+
       });
       const data2 = await response.json();
       // if(data2.loginFail){
