@@ -7,11 +7,14 @@ import Sos from './component/sos'
 import Title from './component/title'
 import { authOptions } from "@/pages/api/auth/[...nextauth].js"
 import { getServerSession } from "next-auth";
-
-
+import Cookies from 'js-cookie';
 
 // 쿠키에서 토큰을 가져오기
 
+if(position=='guest'){
+  Cookies.remove('accessToken');
+  Cookies.remove('position');
+}
 const inter = Inter({ subsets: ['latin'] })
 
 
