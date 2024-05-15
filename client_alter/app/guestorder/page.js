@@ -226,11 +226,6 @@ const Checkout = (props) => {
             
 
             
-          ).finally(
-            () => {
-              Cookies.remove('accessToken');
-              Cookies.remove('position'); 
-            }
           )
   
   
