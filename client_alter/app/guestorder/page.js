@@ -91,23 +91,18 @@ const Checkout = (props) => {
   }, [items])
  
   useEffect(() => {
-    const handleUnload = (event) => {
-      // 페이지를 벗어날 때 실행할 코드 작성
-     
-        Cookies.remove('accessToken');
-        Cookies.remove('position');
-        console.log('페이지를 벗어났습니다.');
-    
+    const handleUnload = () => {
+      Cookies.remove('accessToken');
+      Cookies.remove('position');
+      console.log('페이지를 벗어났습니다.');
     };
 
-    const beforeUnloadHandler = (event) => {
-      handleUnload(event);
-    };
-
-    window.addEventListener('beforeunload', beforeUnloadHandler);
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('unload', handleUnload);
 
     return () => {
-      window.removeEventListener('beforeunload', beforeUnloadHandler);
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('unload', handleUnload);
     };
   }, []);
   const calculateTotalPrice = () => {
