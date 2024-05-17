@@ -142,7 +142,10 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
                     <div className={styles.deliverName}>{delivery.address_name}</div>
                     <div className={styles.elseInfo}>{delivery.addr}, {delivery.addr_detail}</div>
                     <div className={styles.elseInfo}>{delivery.phone}</div>
-                    <div className={styles.deleteText} onClick={()=>{delDeliver(delivery.id)}}>배송지 삭제</div>
+                    <div className={styles.deleteText}  onClick={(e) => {
+        e.stopPropagation();
+        delDeliver(delivery.id);
+      }}>배송지 삭제</div>
                   </div>
                 </li>
               )):''}
