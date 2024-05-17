@@ -196,6 +196,7 @@
 
   .deleteText{
     color: #f71e58;
+    display: inline-block; /* 텍스트 길이에 맞게 크기 조정 */
   }
 
   .deliverContainer{
