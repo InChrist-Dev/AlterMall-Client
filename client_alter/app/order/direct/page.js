@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './direct.module.css';
-import DeliveryInfoModal from '../../order/Modal';
+import DeliveryInfoModal from './Modal';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 import { v4 as uuidv4 } from 'uuid';
