@@ -80,7 +80,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
     
         } else if (response.status == 201) {
           alert('저장되었습니다');
-      
+          window.location.reload();
           closeModal();
         
         } else {
