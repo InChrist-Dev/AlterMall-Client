@@ -263,7 +263,7 @@
     margin: 3%;
     background-color: white;
     width: 128%;
-  
+    display: none;
   }
   
   a{
