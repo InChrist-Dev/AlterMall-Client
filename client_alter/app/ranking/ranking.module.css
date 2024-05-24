@@ -239,7 +239,7 @@
   }
   
   .productLink h3{
-    margin-left: 70px;
+   font-size: 13px;
   }
   .cartIcon{
     font-size: 20px;
@@ -259,7 +259,7 @@
     background-color: #4caf50;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 8px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
