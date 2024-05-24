@@ -69,7 +69,7 @@ const nextSlide = () => {
         "{sellerDetail.title}"
         </p>
         <div style={{'height':'50px'}}></div>
-        <div dangerouslySetInnerHTML={{ __html: sellerDetail.content }} />
+        <div className={styles.talk} dangerouslySetInnerHTML={{ __html: sellerDetail.content }} />
 
    
 
