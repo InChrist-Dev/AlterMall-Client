@@ -73,14 +73,14 @@ const ItemPage = (props) => {
             <img src={`https://altermall.site/${data.SellerDetail.logo}`} className={styles.logo} />
           </div>
           <h1 className={styles.name} >{data.User.name}</h1>
-          <div>
+        
+        </div>
+      
+        <div>
           더보기
           <FontAwesomeIcon  style={{"color":"#f0571b"}} icon={faPlusSquare} size='2x'/>
 
           </div>
-        </div>
-      
-   
 
       </div>
 
