@@ -425,7 +425,7 @@
     height: 100%;
     background-color: #fff;
     transition: all 0.3s ease; /* 사이드 메뉴가 열리고 닫히는 애니메이션 효과 */
-    z-index: 3;
+    z-index: 2;
   }
   
   .sidebar.open {
