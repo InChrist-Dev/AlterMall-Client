@@ -19,7 +19,7 @@ const DramaDetailPage = (props) => {
 const [sellerName, setSellerName] = useState('');
 const [seller, setSeller] = useState([]);
 
-  const transformValue = `translateX(${-currentSlide * 420}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
+  const transformValue = `translateX(${-currentSlide * 220}px)`; // 에피소드 카드의 너비(200px) + 간격(20px)을 기준으로 계산
 
   const fetchData = async () => {
     try {
