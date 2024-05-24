@@ -23,6 +23,9 @@
     color:#999999;
     padding: 10px;
   }
+  .plus:hover{
+    color:#e48202;
+  }
   .logo{
     width: 70px;
 
@@ -115,6 +118,9 @@
   .plus{
     color:#999999;
     padding: 10px;
+  }
+  .plus:hover{
+    color:#e48202;
   }
   .logo{
     width: 45px;
