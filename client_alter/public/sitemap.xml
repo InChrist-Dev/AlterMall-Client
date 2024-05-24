@@ -9,52 +9,57 @@
 
 <url>
   <loc>https://altermall.shop/</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://altermall.shop/basket</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://altermall.shop/category/dessert</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <loc>https://altermall.shop/categories/dessert</loc>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://altermall.shop/category/salad</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <loc>https://altermall.shop/categories/salad</loc>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://altermall.shop/category/free</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <loc>https://altermall.shop/categories/free</loc>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://altermall.shop/category/drink</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <loc>https://altermall.shop/categories/drink</loc>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://altermall.shop/master</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://altermall.shop/ranking</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://altermall.shop/submit</loc>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://altermall.shop/privacy.html</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://altermall.shop/service.html</loc>
-  <lastmod>2024-03-14T02:35:18+00:00</lastmod>
+  <lastmod>2024-05-24T10:56:43+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
