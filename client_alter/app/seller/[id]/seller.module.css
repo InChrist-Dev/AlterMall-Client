@@ -214,6 +214,9 @@
   .arrowButton:hover {
     background-color: #D91801; /* hover 시 배경색 변경 */
   }
+  .talk{
+    width: 90%;
+  }
   .talk p{
     font-size: 10px;
   }
