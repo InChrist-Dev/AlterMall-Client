@@ -200,7 +200,11 @@ const NavigationBar = () => {
               </button>
             </div>
             {/* 사이드 메뉴 */}
+            <div className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}>
             <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
+              
+
+             
               <nav className="sidebar-nav">
                 <ul>
 
@@ -242,6 +246,7 @@ const NavigationBar = () => {
                   <li onClick={toggleMenu}>닫기</li>
                 </ul>
               </nav>
+              </div>
             </div>
           </div>
           {/* 로고 이미지 */}

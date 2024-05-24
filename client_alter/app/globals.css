@@ -431,6 +431,19 @@
   .sidebar.open {
     left: 0; /* 사이드 메뉴가 열린 상태일 때의 위치 */
   }
+  .sidebar {
+    position: fixed;
+
+    width: 100%; /* 사이드 메뉴의 너비 */
+    height: 100%;
+    background-color: #63636336;
+    transition: all 0.3s ease; /* 사이드 메뉴가 열리고 닫히는 애니메이션 효과 */
+    z-index: 2;
+  }
+  
+  .sidebar.open {
+    left: 0; /* 사이드 메뉴가 열린 상태일 때의 위치 */
+  }
   
 /* 사이드바 네비게이션 스타일 */
 .sidebar-nav {
