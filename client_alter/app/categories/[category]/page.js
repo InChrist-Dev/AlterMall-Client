@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const ItemPage = (props) => {
@@ -76,9 +76,9 @@ const ItemPage = (props) => {
         
         </div>
       
-        <div>
+        <div style={{"color":"#dddd"}}>
           더보기
-          <FontAwesomeIcon  style={{"color":"#f0571b"}} icon={faPlusSquare} size='2x'/>
+          <FontAwesomeIcon   icon={faPlusCircle} size='1x'/>
 
           </div>
 
