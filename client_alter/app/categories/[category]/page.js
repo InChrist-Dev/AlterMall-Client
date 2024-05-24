@@ -74,6 +74,7 @@ const ItemPage = (props) => {
           <h1 className={styles.name} >{data.User.name}</h1>
 
         </div>
+        <div>+</div>
         </Link>
       )}
 
