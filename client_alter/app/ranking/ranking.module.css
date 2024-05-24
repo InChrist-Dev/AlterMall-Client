@@ -194,7 +194,7 @@
     border-radius: 5px;
   }
   
-  
+ 
   /* 추가된 스타일 */
   .rankContainer {
     margin: 20px;
@@ -243,7 +243,7 @@
    font-size: 12px;
   }
   .cartIcon{
-    font-size: 20px;
+    font-size: 14px;
     color: #ccc;
   }
   .productCard {
