@@ -76,7 +76,7 @@ const ItemPage = (props) => {
         
         </div>
       
-        <div style={{"color":"#dddd"}}>
+        <div className={styles.plus}>
           더보기
           <FontAwesomeIcon   icon={faPlusCircle} size='1x'/>
 

@@ -19,6 +19,10 @@
     font-weight: normal;
     align-items: center;
   }
+  .plus{
+    color:#999999;
+    padding: 10px;
+  }
   .logo{
     width: 70px;
 
@@ -107,6 +111,10 @@
     display: flex;
     font-weight: normal;
     align-items: center;
+  }
+  .plus{
+    color:#999999;
+    padding: 10px;
   }
   .logo{
     width: 45px;
