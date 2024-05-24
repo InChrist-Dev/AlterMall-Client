@@ -237,7 +237,7 @@ const NavigationBar = () => {
                     <img className="icon" src='/box.png'/><a href="/submit">납품</a></div></li>
                   <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
                   <li> <div className="listContainer">
-                    <img className="icon" src='/rank.png'/><a href="/submit">랭킹</a></div></li>
+                    <img className="icon" src='/rank.png'/><a href="/ranking">랭킹</a></div></li>
                   <div style={{ borderBottom: '0.5px dashed #ccc' }}></div>
                   <li onClick={toggleMenu}>닫기</li>
                 </ul>

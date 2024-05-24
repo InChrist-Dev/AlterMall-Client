@@ -1,7 +1,7 @@
 // DeliveryInfoModal.js
 'use client'
 import React from 'react';
-import styles from './delivery.module.css'
+import styles from '../delivery.module.css'
 import { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import Cookies from 'js-cookie';
@@ -80,7 +80,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
     
         } else if (response.status == 201) {
           alert('저장되었습니다');
-          window.location.href='https://altermall.shop/order';
+          window.location.reload();
           closeModal();
         
         } else {
@@ -114,7 +114,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
   
       } else if (response.status == 201) {
         alert('삭제되었습니다');
-        window.location.href='https://altermall.shop/order';
+        window.location.reload();
       } else {
         
       }
@@ -142,10 +142,7 @@ const DeliveryInfoModal = ({ closeModal,deliveryList,selDeliver  }) => {
                     <div className={styles.deliverName}>{delivery.address_name}</div>
                     <div className={styles.elseInfo}>{delivery.addr}, {delivery.addr_detail}</div>
                     <div className={styles.elseInfo}>{delivery.phone}</div>
-                    <div className={styles.deleteText}  onClick={(e) => {
-        e.stopPropagation();
-        delDeliver(delivery.id);
-      }}>배송지 삭제</div>
+                    <div className={styles.deleteText} onClick={()=>{delDeliver(delivery.id)}}>배송지 삭제</div>
                   </div>
                 </li>
               )):''}

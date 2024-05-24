@@ -62,10 +62,10 @@ const ItemPage = (props) => {
   return (
     <div>
   {data.length>0 && data.map(data => (
-   
+    <Link href={`/categories/${category}/category/${data.SellerDetail.id}`} style={{ textDecoration: "none",color:'black' }}>
     <div className={styles.masterContainer} >
-      <div className={styles.banner}>  {data.SellerDetail && (
-            <Link href={`/categories/${category}/category/${data.SellerDetail.id}`} style={{ textDecoration: "none",color:'black' }}>
+      <div className={styles.banner}>  
+           
         <div className={styles.intro}>
           <div className={styles.logoBorder}>
 
@@ -74,9 +74,8 @@ const ItemPage = (props) => {
           <h1 className={styles.name} >{data.User.name}</h1>
 
         </div>
-        <div>+</div>
-        </Link>
-      )}
+      
+   
 
       </div>
 
@@ -92,7 +91,9 @@ const ItemPage = (props) => {
           ))}
         </div>
       </div>
+      
     </div>
+    </Link>
     ))}
     </div>
   );
