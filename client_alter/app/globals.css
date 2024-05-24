@@ -431,7 +431,7 @@
   .sidebar.open {
     left: 0; /* 사이드 메뉴가 열린 상태일 때의 위치 */
   }
-  .sidebar {
+  .sidebar-overlay {
     position: fixed;
 
     width: 100%; /* 사이드 메뉴의 너비 */
@@ -441,7 +441,7 @@
     z-index: 2;
   }
   
-  .sidebar.open {
+  .sidebar-overlay.open {
     left: 0; /* 사이드 메뉴가 열린 상태일 때의 위치 */
   }
   
