@@ -200,7 +200,7 @@ const NavigationBar = () => {
               </button>
             </div>
             {/* 사이드 메뉴 */}
-            <div onClick={()=>{toggleMenu}}className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}>
+            <div onClick={toggleMenu} className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}>
             <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
               
 
