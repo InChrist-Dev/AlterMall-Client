@@ -50,7 +50,7 @@ const goToNextSlide = () => {
 };
 console.log(master)
 return (
-  <div style={{ width: '80%', margin: '0 auto', paddingTop: '50px' }}>
+  <div style={{ width: '91%', margin: '0 auto', paddingTop: '0px' }}>
     {/* 장인 버튼 */}
     {masterCategory.map((masterCategory, i) => {
       return (
