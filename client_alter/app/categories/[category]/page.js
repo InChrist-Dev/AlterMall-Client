@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const ItemPage = (props) => {
@@ -72,7 +73,11 @@ const ItemPage = (props) => {
             <img src={`https://altermall.site/${data.SellerDetail.logo}`} className={styles.logo} />
           </div>
           <h1 className={styles.name} >{data.User.name}</h1>
+          <div>
+          더보기
+          <FontAwesomeIcon  style={{"color":"#f0571b"}} icon={faPlusSquare} size='2x'/>
 
+          </div>
         </div>
       
    
