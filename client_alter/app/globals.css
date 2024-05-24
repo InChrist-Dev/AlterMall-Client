@@ -433,8 +433,9 @@
   }
   .sidebar-overlay {
     position: fixed;
-
-    width: 100%; /* 사이드 메뉴의 너비 */
+    left: -500px; /* 사이드 메뉴의 초기 위치 */
+    width: 500px; /* 사이드 메뉴의 너비 */
+  
     height: 100%;
     background-color: #63636336;
     transition: all 0.3s ease; /* 사이드 메뉴가 열리고 닫히는 애니메이션 효과 */
