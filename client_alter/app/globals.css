@@ -228,7 +228,11 @@
   }
   .navigation-side{
    
-      display: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; 
+      padding: 5px 0px;
     
   }
   
@@ -236,7 +240,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%; 
-    padding: 10px 10px;
+    padding: 0px 5px;
     
   }
   .logo {
@@ -315,7 +319,7 @@
   
   .nav-list li {
     flex: 1; /* 동일한 너비로 설정 */
-    margin-right: 20px;
+  
   }
   
   .nav-list li:last-child {
@@ -325,31 +329,19 @@
   .nav-list a {
     text-decoration: none;
     color: #222;
-    font-weight: 500;
-    font-size: 20px;
-  
+    font-weight: bolder;
+    font-size: 15px;
+    text-align: center;
     transition: color 0.3s ease;
     display: block; /* inline 요소가 너비를 차지하도록 함 */
-    padding: 10px; /* 내부 여백 추가 */
+    padding: 10px 0px; /* 내부 여백 추가 */
+    
   }
   
   .nav-list a:hover {
     color: #ff5e00;
   }
-  .nav-list a {
-    text-decoration: none;
-    color: #222;
-    font-weight: 500;
-    font-size: 20px;
-  
-    transition: color 0.3s ease;
-    display: block; /* inline 요소가 너비를 차지하도록 함 */
-    padding: 10px; /* 내부 여백 추가 */
-  }
-  
-  .nav-list a:hover {
-    color: #ff5e00;
-  }
+
   
   
   .category-dropdown {
@@ -362,7 +354,7 @@
     left: 0;
     display: none;
     order: 0;
-    z-index: 2; /* slider에 z-index 값을 추가 */
+    z-index: 10000; /* slider에 z-index 값을 추가 */
   }
   
   .category-dropdown:hover .category-menu {

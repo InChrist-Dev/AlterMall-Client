@@ -281,7 +281,7 @@ const NavigationBar = () => {
                 </div>
               </li>
               <li><a href="/master">장인소개</a></li>
-              <li><a onClick={() => alert('준비중입니다.')} href="/">건강정보</a></li>
+              {/* <li><a onClick={() => alert('준비중입니다.')} href="/">건강정보</a></li> */}
               <li><a href="/ranking">랭킹</a></li>
               <li><a href="/submit">납품</a></li>
 
