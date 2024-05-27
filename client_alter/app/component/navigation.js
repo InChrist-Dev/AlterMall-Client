@@ -266,7 +266,7 @@ const NavigationBar = () => {
           </div>
         </div>
           {/* 네비게이션 바 */}
-          <div className="navigation">
+          <div className="navigation-side">
           <nav className="navbar">
             <ul className="nav-list">
               <li className="category-dropdown">
