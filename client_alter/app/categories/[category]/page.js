@@ -87,7 +87,7 @@ const ItemPage = (props) => {
       <div className={styles.recommendations}>
         <p className={styles.slogan}>{data.slogan}</p>
         <div className={styles.items}>
-          {data.Items && data.Items.slice(0, 4).map(item => (
+          {data.Items && data.Items.slice(0, 3).map(item => (
             <div key={item.item_id} className={styles.item}>
               <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
                 <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />

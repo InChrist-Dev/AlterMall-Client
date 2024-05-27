@@ -168,8 +168,8 @@
   }
   
   .item {
-    width: 23%;
-    height: 24%;
+    width: 30%;
+    height: 31%;
     margin-bottom: 20px;
     border-left: 30px;
     overflow: hidden; /* 내용이 넘칠 경우를 대비해 추가 */
