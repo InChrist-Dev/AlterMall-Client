@@ -232,7 +232,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%; 
-      padding: 5px 0px;
+      padding: 8px 0px;
     
   }
   
@@ -330,7 +330,7 @@
     text-decoration: none;
     color: #222;
     font-weight: bolder;
-    font-size: 15px;
+    font-size: 17px;
     text-align: center;
     transition: color 0.3s ease;
     display: block; /* inline 요소가 너비를 차지하도록 함 */
