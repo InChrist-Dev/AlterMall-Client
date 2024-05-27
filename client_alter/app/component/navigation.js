@@ -265,38 +265,8 @@ const NavigationBar = () => {
             </a>
           </div>
         </div>
-        {/* 검색 창 */}
-        <div className="searchContainer">
-          <ul className="nav-list">
-            <li className="keyword-dropdown">
-              <input type="text" className="searchInput"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                onKeyDown={handleKeyDown} />
-              {isKeywordMenu ? <div className="keyword-menu">
-                <ul>
-                  {relatedKeywords.map((keyword, index) => (
-                    <li key={index}>{keyword.item_name}</li>
-                  ))}
-                </ul>
-              </div> :
-                <div className="keyword-menu" style={{ 'display': 'block' }}>
-                  <ul>
-                    {relatedKeywords.map((keyword, index) => (
-                      <li onClick={() => { window.location.href = `/products/${keyword.item_id}`; }} key={index}>{keyword.item_name}</li>
-                    ))}
-                  </ul>
-                </div>}
-            </li>
-            <button className="searchButton" onClick={handleSearch}>
-              <FontAwesomeIcon icon={faSearch} />
-              검색
-            </button>
-          </ul>
-        </div>
-      </div>
-        {/* 네비게이션 바 */}
-        <div className="navigation">
+          {/* 네비게이션 바 */}
+          <div className="navigation">
           <nav className="navbar">
             <ul className="nav-list">
               <li className="category-dropdown">
@@ -321,6 +291,9 @@ const NavigationBar = () => {
           </nav>
         </div>
         <div style={{ borderBottom: '0.5px solid #ddd', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.4)', position: 'relative', zIndex: '9999' }}></div>
+      
+      </div>
+      
     </span>
   );
 };
