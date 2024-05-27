@@ -295,8 +295,32 @@ const NavigationBar = () => {
           </ul>
         </div>
       </div>
-      <div>
-      </div>
+        {/* 네비게이션 바 */}
+        <div className="navigation">
+          <nav className="navbar">
+            <ul className="nav-list">
+              <li className="category-dropdown">
+                <a>카테고리</a>
+                <div className="category-menu">
+                  <ul>
+                    <li><a href="/categories/dessert">디저트</a></li>
+                    <li><a href="/categories/salad">식재료</a></li>
+                    <li><a href="/categories/free">양념/소스</a></li>
+                    <li><a href="/categories/drink">차,음료</a></li>
+                  </ul>
+                </div>
+              </li>
+              <li><a href="/master">장인소개</a></li>
+              <li><a onClick={() => alert('준비중입니다.')} href="/">건강정보</a></li>
+              <li><a href="/ranking">랭킹</a></li>
+              <li><a href="/submit">납품</a></li>
+
+
+
+            </ul>
+          </nav>
+        </div>
+        <div style={{ borderBottom: '0.5px solid #ddd', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.4)', position: 'relative', zIndex: '9999' }}></div>
     </span>
   );
 };
