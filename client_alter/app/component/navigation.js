@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { faSearch, faShoppingCart, faUser, faChevronLeft, faChevronRight, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { LoginBtn } from '../logins';
@@ -201,6 +202,8 @@ const NavigationBar = () => {
             </div>
             {/* 사이드 메뉴 */}
             <div onClick={toggleMenu} className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}>
+            <FontAwesomeIcon icon={faX} className={`delBtn ${isMenuOpen ? 'open' : ''}`} />
+            <span >X</span>
             <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
               
 

@@ -436,7 +436,7 @@
     width: 500px; /* 사이드 메뉴의 너비 */
     top:0;
     height: 100%;
-    background-color: #49494936;
+    background-color: #00000044;
   
     z-index: 2;
   }
@@ -444,6 +444,19 @@
   .sidebar-overlay.open {
     left: 0; /* 사이드 메뉴가 열린 상태일 때의 위치 */
   }
+
+  .delBtn.open{
+    font-size: 30px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 20px;
+    color: #fff;
+    font-weight: bolder;
+    cursor: pointer;
+  }
+
+
   
 /* 사이드바 네비게이션 스타일 */
 .sidebar-nav {
