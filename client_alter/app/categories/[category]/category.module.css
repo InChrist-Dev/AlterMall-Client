@@ -71,7 +71,7 @@
   }
   
   .item {
-    width: 23%;
+    width: 30%;
     height: 24%;
     margin-bottom: 20px;
     border-left: 30px;
@@ -81,7 +81,7 @@
   
   .itemImage {
     width: 120%;
-    height: 320px;
+    height: 400px;
     object-fit: cover;
     object-position: center; /* 이미지를 가운데 정렬 */
     margin-left: -50%; /* 왼쪽 여백을 절반으로 줄임 */
