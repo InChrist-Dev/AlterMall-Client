@@ -188,7 +188,7 @@ const ItemPage = (props) => {
                   </Link>
                 </td>
                 <td><b>{item.price.toLocaleString()}</b>원</td>
-                <td>{getCategory(item.category)}</td>
+                {/* <td>{getCategory(item.category)}</td> */}
                 <td><FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/></td>
              
               </tr>
