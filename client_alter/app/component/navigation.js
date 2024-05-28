@@ -203,7 +203,7 @@ const NavigationBar = () => {
             {/* 사이드 메뉴 */}
             <div onClick={toggleMenu} className={`sidebar-overlay ${isMenuOpen ? 'open' : ''}`}>
             <FontAwesomeIcon icon={faX} className={`delBtn ${isMenuOpen ? 'open' : ''}`} />
-            <span >X</span>
+            
             <div className={`sidebar ${isMenuOpen ? 'open' : ''}`}>
               
 
