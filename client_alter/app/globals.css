@@ -438,7 +438,7 @@
     height: 100%;
     background-color: #00000044;
   
-    z-index: 2;
+    z-index: 10000;
   }
   
   .sidebar-overlay.open {
