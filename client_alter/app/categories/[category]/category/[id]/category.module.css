@@ -56,10 +56,10 @@
   .cartBtn {
    
     border-radius: 3px; /* 모서리를 동그랗게 만듭니다. */
-    width: 100%; /* 버튼의 너비 조정 */
+    width: 88%; /* 버튼의 너비 조정 */
     height: 30px; /* 버튼의 높이 조정 */
     border: 1px solid #ccc;
-    display:none;
+ 
     background-color: #fff;
     color: #888;
     font-size: 17px;
@@ -223,7 +223,7 @@
     width: 100%; /* 버튼의 너비 조정 */
     height: 30px; /* 버튼의 높이 조정 */
     border: 1px solid #ccc;
-    display:none;
+ 
     background-color: #fff;
     color: #888;
     font-size: 17px;
