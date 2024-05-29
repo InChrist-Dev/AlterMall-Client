@@ -168,11 +168,12 @@ const ItemPage = (props) => {
           <div className={styles.productLink}>
             <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
-              handleSubmit(item);}}>+</button>
+              handleSubmit(item);}}><FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/>담기</button>
+              
             <h3> {item.item_name}</h3>
             <span style={{'display':'flex'}}>
             <p>{item.price.toLocaleString()}원</p>
-            <p>{categoryS[currentIndex]} <FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/></p>
+             
            
             </span>
            
