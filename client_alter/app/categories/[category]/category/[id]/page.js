@@ -170,8 +170,11 @@ const ItemPage = (props) => {
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
               handleSubmit(item);}}>+</button>
             <h3> {item.item_name}</h3>
+            <span style={{'display':'flex'}}>
             <p>{item.price.toLocaleString()}원</p>
             <p>{categoryS[currentIndex]} <FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/></p>
+           
+            </span>
            
           </div>
         </Link>
