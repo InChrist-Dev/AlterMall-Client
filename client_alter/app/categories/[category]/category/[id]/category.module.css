@@ -54,19 +54,22 @@
   }
   
   .cartBtn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-radius: 50%; /* 모서리를 동그랗게 만듭니다. */
-    width: 40px; /* 버튼의 너비 조정 */
-    height: 40px; /* 버튼의 높이 조정 */
-    border: 2px;
-  
-    background-color: #ff9100;
-    color: white;
-    font-size: 30px;
+   
+    border-radius: 3px; /* 모서리를 동그랗게 만듭니다. */
+    width: 100%; /* 버튼의 너비 조정 */
+    height: 30px; /* 버튼의 높이 조정 */
+    border: 1px solid #ccc;
+    display:none;
+    background-color: #fff;
+    color: #888;
+    font-size: 17px;
     cursor: pointer;
     /* 다른 스타일 조정이 필요하면 추가하세요 */
+  }
+
+  .cartIcon{
+    font-size: 19px;
+    color: #777;
   }
   .productCard button:hover {
     background-color: #e48202;
@@ -267,7 +270,6 @@
     .cartIcon{
       font-size: 19px;
       color: #777;
-      display: none;
     }
    
     .activeButton {
