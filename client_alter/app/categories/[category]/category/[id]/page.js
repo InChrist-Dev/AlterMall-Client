@@ -170,7 +170,7 @@ const ItemPage = (props) => {
               handleSubmit(item);}}>+</button>
             <h3> {item.item_name}</h3>
             <p>{item.price.toLocaleString()}원</p>
-            <p>{categoryS[currentIndex]}</p>
+            <p>{categoryS[currentIndex]} <FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/></p>
            
           </div>
         </Link>
