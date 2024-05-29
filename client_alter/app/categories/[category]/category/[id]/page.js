@@ -1,11 +1,9 @@
 'use client'
 import React, { useEffect, useState,useCallback } from 'react';
 import Link from 'next/link';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 import Cookies from 'js-cookie';
-
+import { IoCartOutline } from "react-icons/io5";
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 
@@ -168,7 +166,7 @@ const ItemPage = (props) => {
           <div className={styles.productLink}>
             <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
               e.preventDefault(); // Link 클릭 이벤트 전파 중지
-              handleSubmit(item);}}><FontAwesomeIcon icon={faShoppingCart} onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/>담기</button>
+              handleSubmit(item);}}><IoCartOutline onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/>담기</button>
               
             <h3> {item.item_name}</h3>
             <span style={{'display':'flex'}}>
