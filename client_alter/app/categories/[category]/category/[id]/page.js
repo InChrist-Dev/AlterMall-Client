@@ -2,6 +2,7 @@
 import React, { useEffect, useState,useCallback } from 'react';
 import Link from 'next/link';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 import Cookies from 'js-cookie';
 
