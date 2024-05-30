@@ -215,7 +215,8 @@
     background-color: #D91801; /* hover 시 배경색 변경 */
   }
   .talk{
-    width: 90%;
+    width: 98%;
+    margin: 0 auto;
     font-size: 12px;
   }
 
