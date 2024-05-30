@@ -78,9 +78,9 @@
 
     .productCard {
       text-decoration: none;
-      margin: 25px;
+      margin: 25px 0;
   
-      
+      overflow: hidden;
       transition: transform 0.3s ease-in-out;
     }
     
@@ -97,9 +97,8 @@
   
     .productCard img {
       width:300px;
-      height: 300px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      height: 40vh;
+      border-radius: 5px;
       
     }
     
@@ -238,7 +237,7 @@
       text-decoration: none;
       margin: 3%;
       width: 44%;
-     
+      overflow: hidden; 
       transition: transform 0.3s ease-in-out;
     }
     
