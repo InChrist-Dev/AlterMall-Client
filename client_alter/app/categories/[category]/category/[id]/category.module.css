@@ -67,13 +67,15 @@
     /* 다른 스타일 조정이 필요하면 추가하세요 */
   }
 
+  .cartBtn:hover{
+    border: 1px solid #ff9100;
+    color: #ff9100;
+  }
   .cartIcon{
     font-size: 19px;
     color: #777;
   }
-  .productCard button:hover {
-    background-color: #e48202;
-  }
+
     .productCard {
       text-decoration: none;
       margin: 25px;
@@ -108,9 +110,7 @@
       margin: 5px 0;
     }
     
-    .cartIcon{
-      display: none;
-    }
+ 
     
    
     .activeButton {
@@ -230,8 +230,9 @@
     cursor: pointer;
     /* 다른 스타일 조정이 필요하면 추가하세요 */
   }
-  .productCard button:hover {
-    background-color: #e48202;
+  .cartBtn:hover{
+    border: 1px solid #ff9100;
+    color: #ff9100;
   }
     .productCard {
       text-decoration: none;
