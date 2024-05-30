@@ -86,6 +86,9 @@
     
     .productCard img:hover {
       transform: scale(1.05);
+      overflow: hidden;
+      border-radius: 5px;
+      object-fit: cover;
     }
     
     .productCard h3 {
@@ -242,6 +245,9 @@
     
     .productCard img:hover {
       transform: scale(1.05);
+      overflow: hidden;
+      border-radius: 5px;
+      object-fit: cover;
     }
     
     .productCard h3 {
