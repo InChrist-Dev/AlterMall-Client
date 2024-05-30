@@ -89,10 +89,10 @@
     }
     
     .productCard h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
+      font-size: 17px;
+      font-weight: 400;
       color: #333;
-      
+      width: 100%;
     }
   
     .productCard img {
@@ -104,12 +104,10 @@
     }
     
     .productCard p {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
-      color: red;
-      margin: 5px 0;
+      color: black;
     }
-    
  
     
    
