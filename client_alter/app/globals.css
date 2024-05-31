@@ -1,13 +1,13 @@
 
-/* @font-face {
-  font-family: 'S-CoreDream-3Light';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
-  font-weight: normal;
+@font-face {
+  font-family: 'SOYOMapleBoldTTF';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/SOYOMapleBoldTTF.woff2') format('woff2');
+  font-weight: 700;
   font-style: normal;
 }
 *{
-  font-family: 'S-CoreDream-3Light';
-} */
+  font-family: 'SOYOMapleBoldTTF';
+}
 @media screen and (min-width: 451px) {
   * {
     box-sizing: border-box;
