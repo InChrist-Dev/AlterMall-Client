@@ -7,7 +7,7 @@ import styles from '../page.module.css';
 
 const CategoryButtons = () => {
   return (
-    <div style={{ width: '90%', margin: '0 auto' }}>
+    <div style={{ width: '94%', margin: '0 auto' }}>
       <p className={styles.categoryTitle}>
         카테고리<span className={styles.categorySub}>|건강식품</span>
       </p>
