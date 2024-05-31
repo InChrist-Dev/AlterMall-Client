@@ -1,11 +1,12 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
+import Slider from "react-slick";
 import styles from './category.module.css'; // 스타일링을 위한 CSS 모듈
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const ItemPage = (props) => {
 
@@ -38,7 +39,14 @@ const ItemPage = (props) => {
   for (let i = 1; i <= page; i++) {
     pageNumbers.push(i);
   }
-
+ // Slider settings
+ const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 1
+};
 
 
   // id에 따라 다른 단어를 설정
@@ -87,13 +95,15 @@ const ItemPage = (props) => {
       <div className={styles.recommendations}>
         <p className={styles.slogan}>{data.slogan}</p>
         <div className={styles.items}>
-          {data.Items && data.Items.slice(0, 3).map(item => (
-            <div key={item.item_id} className={styles.item}>
-              <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
-                <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />
-              </Link>
-            </div>
-          ))}
+        <Slider {...settings}>
+                  {data.Items && data.Items.map(item => (
+                    <div key={item.item_id} className={styles.item}>
+                      <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
+                        <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />
+                      </Link>
+                    </div>
+                  ))}
+                </Slider>
         </div>
       </div>
       
