@@ -78,11 +78,11 @@
   }
   
   .itemImage {
-    width: 120%;
+    width: 99%;
     height: 400px;
     object-fit: cover;
     object-position: center; /* 이미지를 가운데 정렬 */
-    margin-left: -50%; /* 왼쪽 여백을 절반으로 줄임 */
+    margin-left: -43%; /* 왼쪽 여백을 절반으로 줄임 */
     margin-right: -50%; /* 오른쪽 여백을 절반으로 줄임 */
     position: relative; /* 상대적 위치 설정 */
     left: 40%; /* 이미지를 가운데로 이동 */
