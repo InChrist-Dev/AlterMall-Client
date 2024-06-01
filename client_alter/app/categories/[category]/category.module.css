@@ -18,11 +18,14 @@
     align-items: center;
   }
   .plus{
-    color:#999999;
+    color:#bbb;
     padding: 10px;
   }
   .plus:hover{
     color:#e48202;
+  }
+  .plusIcon{
+    margin: 0 4px;
   }
   .logo{
     width: 70px;
@@ -114,12 +117,15 @@
     align-items: center;
   }
   .plus{
-    color:#aaa;
+    color:#bbb;
     padding: 15px;
     font-size: 19px;
   }
   .plus:hover{
     color:#e48202;
+  }
+  .plusIcon{
+    margin: 0 4px;
   }
   .logo{
     width: 45px;
