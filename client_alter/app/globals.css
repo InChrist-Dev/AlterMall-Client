@@ -1,63 +1,12 @@
 
 @font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 200;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-}@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
+  font-family: 'SUITE-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-style: normal;
-}@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-}@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'SejonghospitalBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/SejonghospitalBold.woff2') format('woff2');
-  font-weight: bolder;
   font-style: normal;
 }
 *{
-  font-family: 'SejonghospitalBold';
+  font-family: 'SUITE-Regular';
 }
 @media screen and (min-width: 451px) {
   * {
