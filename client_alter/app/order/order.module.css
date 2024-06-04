@@ -266,6 +266,25 @@
   }
   
   
+  .infoAgree{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  .infoAgree p{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .infoAgree p:hover{
+  color: #777;
+  }
+  .confirm{
+    font-weight: 600;
+    color: #555;
+  }
   
   .daum{
     width: 100px;
@@ -668,6 +687,25 @@
   
   /* Add this to your existing CSS file or create a new one */
   
+  .infoAgree{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  .infoAgree p{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .infoAgree p:hover{
+  color: #777;
+  }
+  .confirm{
+    font-weight: 600;
+    color: #555;
+  }
   
   .daum{
     width: 100px;

@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './order.module.css';
 import DeliveryInfoModal from './Modal';
+import InfoAgree from '../component/infoAgree';
+import InfoBuy from '../component/infoBuy';
 import { loadTossPayments } from '@tosspayments/payment-sdk';
 import Cookies from 'js-cookie';
 
@@ -11,6 +13,8 @@ import Cookies from 'js-cookie';
 const accessToken = Cookies.get('accessToken');
 const Checkout = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showAgree, setShowAgree] = useState(false);
+  const [showBuy, setShowBuy] = useState(false);
   const [deliveryList, setDeliveryList] = useState([]);
   const [delivery, setDelivery] = useState([]);
   // 간단한 상태 관리를 위해 useState 사용
@@ -122,6 +126,25 @@ const Checkout = () => {
   // Function to close the modal
   const closeModal = () => {
     setShowModal(false);
+
+  };
+
+  const openBuy = () => {
+    setShowBuy(true);
+  };
+
+  // Function to close the modal
+  const closeBuy = () => {
+    setShowBuy(false);
+
+  };
+  const openAgree = () => {
+    setShowAgree(true);
+  };
+
+  // Function to close the modal
+  const closeAgree = () => {
+    setShowAgree(false);
 
   };
   const selDeliver = (id) => {
@@ -262,6 +285,12 @@ const Checkout = () => {
       <div style={{ display: showModal ? 'block' : 'none' }}>
         <DeliveryInfoModal closeModal={closeModal} deliveryList={deliveryList} selDeliver={selDeliver} />
       </div>
+      <div style={{ display: showAgree ? 'block' : 'none' }}>
+      <InfoAgree closeModal={closeAgree} />
+      </div>
+      <div style={{ display: showBuy ? 'block' : 'none' }}>
+      <InfoBuy closeModal={closeBuy} />
+      </div>
       <div className={styles.infoContainer}>
         <div className={styles.verticalInfo}>
           <div className={styles.infoTitle}>주문/결제</div>
@@ -289,22 +318,7 @@ const Checkout = () => {
 
             </div>
             <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
-            <div className={styles.postBox}>
-              <label>배송방법</label>
-              <select
-                className={styles.postOption}
-                value={deliveryInfo}
-                onChange={(e) => setDeliveryInfo(e.target.value)}
-              >
-                <option value="normal">택배 배송</option>
-
-              </select>
-
-
-
-              {/* <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" /> */}
-
-            </div>
+           
             <div className={styles.requestBox}>
               <label>배송시 요청사항</label>
               <div>
@@ -337,6 +351,7 @@ const Checkout = () => {
 
               </div>
             </div>
+            
           </div>
 
         </div>
@@ -383,6 +398,20 @@ const Checkout = () => {
             </div>
           ))}
           </div>
+         
+           <div>
+            <h3>개인정보 및 결제 동의</h3>
+            <div style={{ border: '1px solid #ccc', marginTop: '20px', marginBottom: '10px' }}></div>
+            <div  className={styles.infoAgree}>
+            <div>개인정보 수집·이용 동의서</div>
+            <p onClick={openAgree} >보기</p>
+            </div>
+            {/* <div  className={styles.infoAgree}>
+            <div>전자지급 결제대행 서비스 이용약관 동의</div>
+            <p onClick={openBuy} >보기</p>
+            </div> */}
+            <div className={styles.confirm}> 상기 필수약관을 확인하였으며 결제에 동의합니다.</div>
+            </div>
       </div>
 
       <div className={styles.stickySidebar}>
