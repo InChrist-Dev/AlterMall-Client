@@ -293,8 +293,7 @@ const NavigationBar = () => {
             </ul>
           </nav>
         </div>
-        <div style={{ borderBottom: '0.5px solid #ddd', boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.4)', position: 'relative', zIndex: '9999' }}></div>
-      
+        
       </div>
       
     </span>

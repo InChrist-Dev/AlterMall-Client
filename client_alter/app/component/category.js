@@ -28,16 +28,32 @@ const CategoryButtons = () => {
    
       <div className={styles.imageButtonGridMobile}>
         <Link href='/categories/dessert'>
-          <ImageButton imagePath="dessert.jpg" altText="디저트" />
+          <div>
+          <img src="breads.png" altText="디저트" />
+          <p>디저트</p>
+          </div>
+       
         </Link>
         <Link href='/'>
-          <ImageButton imagePath="salad.jpg" altText="식재료" />
+        <div>
+        <img src="sick.png" altText="식재료" />
+          <p>식재료</p>
+          </div>
+       
         </Link>
         <Link href='/'>
-          <ImageButton imagePath="free.jpg" altText=" 양념/소스" />
+          
+          <div>
+          <img src="jam.png" altText=" 양념/소스" />
+          <p>양념/소스</p>
+          </div>
         </Link>
         <Link href='/categories/drink'>
-          <ImageButton imagePath="drink.jpg" altText="차,음료" />
+        <div>
+        <img src="drinks.png" altText="차,음료" />
+          <p>음료</p>
+          </div>
+       
         </Link>
       
      

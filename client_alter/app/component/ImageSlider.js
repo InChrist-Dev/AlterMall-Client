@@ -9,15 +9,15 @@ const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 3 : prevIndex ));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex ));
   };
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex + 1));
+      setCurrentIndex((prevIndex) => (prevIndex === 3 ? 0 : prevIndex));
     }, 5000);
 
     return () => clearInterval(interval);
@@ -32,7 +32,7 @@ const ImageSlider = () => {
         }}
       >
         {/* Images */}
-        <img src="/dapumda.png" alt="이미지3" className={styles.sliderImage} />
+        <img src="/zero.png" alt="이미지3" className={styles.sliderImage} />
         <img src="/003.png" alt="이미지3" className={styles.sliderImage} />
         <img src="/001.png" alt="이미지1" className={styles.sliderImage} />
         <img src="/002.png" alt="이미지2" className={styles.sliderImage} />
