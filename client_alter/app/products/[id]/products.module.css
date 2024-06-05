@@ -576,7 +576,11 @@
   width: 100%;
 
 }
-
+.modalContent p {
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  width: 260px;
+}
 .container {
   max-width: 600px;
   margin: 0 auto;
