@@ -45,8 +45,34 @@ export default function Recommend(){
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
       </div>
-  
-    <div className={styles.artisanButtons}>
+     <div className={styles.productContainer}>
+     {recommend.length>0? recommend.map((item, i) => {
+    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
+    return (
+      <>
+      <div key={item} className={styles.productCard}>
+        <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
+          <div className={styles.productLink}>
+            <img src={`https://altermall.site/${item.img}`} alt={name} /> <button className={styles.cartBtn} onClick={(e)=>{
+              e.preventDefault(); // Link 클릭 이벤트 전파 중지
+              handleSubmit(item);}}><IoCartOutline onClick={()=>{handleSubmit(item.item_id)}} className={styles.cartIcon}/>담기</button>
+              
+            <h3> {item.item_name}</h3>
+            <span style={{'display':'flex'}}>
+            <p>{item.price.toLocaleString()}원</p>
+             
+           
+            </span>
+           
+          </div>
+        </Link>
+      </div>
+      </>
+    );
+  }):''}
+ 
+</div>
+    {/* <div className={styles.artisanButtons}>
       <button className={styles.re_largeButton}>
    </button>
       {recommend.length>0? recommend.map((Items, i) => {
@@ -66,7 +92,7 @@ export default function Recommend(){
           }):''}
     
     
-    </div>
+    </div> */}
     </div>);
 };
 
