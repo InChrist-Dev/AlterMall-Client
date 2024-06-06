@@ -47,7 +47,7 @@ export default function Recommend(){
       </div>
      <div className={styles.productContainer}>
      {recommend.length>0? recommend.map((item, i) => {
-    const currentIndex = indexOfFirstProduct + i; // 현재 데이터의 실제 인덱스 계산
+   
     return (
       <>
       <div key={item} className={styles.productCard}>
