@@ -19,8 +19,8 @@ export default function Recommend(){
   const fetchData = async () => {
     try {
       const res_free = await fetch(`https://altermall.site/category?sortby=highest&category=free&product=1`);
-      const res_dessert = await fetch(`https://altermall.site/category?sortby=highest&category=dessert&product=3`);
-      const res_drink = await fetch(`https://altermall.site/category?sortby=highest&category=drink&product=2`);
+      const res_dessert = await fetch(`https://altermall.site/category?sortby=highest&category=dessert&product=1`);
+      const res_drink = await fetch(`https://altermall.site/category?sortby=highest&category=drink&product=1`);
       
       const free_data = await res_free.json();
       const dessert_data = await res_dessert.json();
@@ -63,7 +63,7 @@ export default function Recommend(){
               
             <h3> {item.item_name}</h3>
             <span style={{'display':'flex'}}>
-            {/* <p>{item.price.toLocaleString()}원</p> */}
+            <p>{item.price.toLocaleString()}원</p>
              
            
             </span>
