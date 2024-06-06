@@ -22,6 +22,9 @@ export default function Recommend(){
       const dessert_data = await res_dessert.json();
       const drink_data = await res_drink.json();
       const salad_data = await res_salad.json();
+
+      const combinedData = [free_data, dessert_data, drink_data, salad_data];
+      setRecommend(combinedData);
       
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
@@ -38,7 +41,7 @@ export default function Recommend(){
     };
     return (
     
-    <div  className={styles.titleMobile} style={{width:'80%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
+    <div  className={styles.titleMobile} style={{width:'94%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
       </div>
