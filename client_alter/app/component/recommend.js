@@ -3,6 +3,9 @@
 import React, { useState,useEffect } from 'react';
 import styles from '../page.module.css';
 import Link from 'next/link';
+import { IoCartOutline } from "react-icons/io5";
+
+
 export default function Recommend(){
   const [categoryName,setCategoryName] = useState(['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크']);
   const [recommend,setRecommend] = useState([]);
