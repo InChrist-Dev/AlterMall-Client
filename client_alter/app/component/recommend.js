@@ -63,7 +63,7 @@ export default function Recommend(){
               
             <h3> {item.item_name}</h3>
             <span style={{'display':'flex'}}>
-            <p>{item.price.toLocaleString()}원</p>
+            {/* <p>{item.price.toLocaleString()}원</p> */}
              
            
             </span>
