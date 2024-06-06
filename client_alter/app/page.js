@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import ImageSlider from './component/ImageSlider';
 import CategoryButtons from './component/category';
+import Recommend from './component/recommend';
 
 import Cookies from 'js-cookie';
 const HomePage = () => {
@@ -19,6 +20,7 @@ const HomePage = () => {
   
       <ImageSlider/>
       <CategoryButtons/>
+      <Recommend/>
     </div>
   );
 };
