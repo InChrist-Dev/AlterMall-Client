@@ -12,11 +12,11 @@ export default function Recommend() {
   const settings = {
     dots: false,
     infinite: false,
-    speed: 500,
+    speed: 700,
     slidesToShow: 3,
     slidesToScroll: 3,
     arrows: false,
-    swipeToSlide: true,
+   
   };
 
   const fetchData = async () => {
