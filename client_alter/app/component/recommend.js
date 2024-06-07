@@ -26,8 +26,8 @@ export default function Recommend(){
       const dessert_data = await res_dessert.json();
       const drink_data = await res_drink.json();
     
-      console.log(dessert_data)
-      console.log(drink_data)
+      console.log(dessert_data.data)
+      console.log(drink_data.data.items)
       const combinedData = [dessert_data.data.items, drink_data.data.items];
       setRecommend(combinedData);
       
