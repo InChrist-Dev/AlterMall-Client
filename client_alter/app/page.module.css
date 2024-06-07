@@ -285,7 +285,7 @@
     margin: 0 auto;
   }
   .productCard{
-    width: 95%;
+    padding: 0 4px;
   }
 
   
@@ -397,9 +397,7 @@
   
     color: #444;
   }
-  .titleMobile{
-    display:none;
-  }
+
   .largeButton {
     width: 100%;
     height: 100%;
