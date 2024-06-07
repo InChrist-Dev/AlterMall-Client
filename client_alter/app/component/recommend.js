@@ -69,6 +69,7 @@ export default function Recommend() {
                       <IoCartOutline className={styles.cartIcon} />담기
                     </button>
                     <h3>{item.item_name}</h3>
+                    <p>{item.price}</p>
                   </div>
                 </Link>
               </div>

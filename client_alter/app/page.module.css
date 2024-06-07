@@ -273,7 +273,7 @@
  
     background-color: #fff;
     color: #888;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
     /* 다른 스타일 조정이 필요하면 추가하세요 */
   }
@@ -284,10 +284,10 @@
   .productContainer {
     margin: 0 auto;
   }
-  
-  .productCard {
-    margin: 0 10px; /* 좌우 여백을 추가합니다. */
+  .productCard{
+    width: 95%;
   }
+
   
     .productCard img:hover {
       transform: scale(1.05);
@@ -297,7 +297,7 @@
     }
     
     .productCard h3 {
-      font-size: 17px;
+      font-size: 14px;
       font-weight: 400;
       color: #333;
       width: 100%;
