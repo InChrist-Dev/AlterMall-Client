@@ -281,14 +281,14 @@
     border: 1px solid #ff9100;
     color: #ff9100;
   }
-    .productCard {
-      text-decoration: none;
-      margin: 3%;
-      width: 100%;
-      overflow: hidden; 
-      transition: transform 0.3s ease-in-out;
-    }
-    
+  .productContainer {
+    margin: 0 auto;
+  }
+  
+  .productCard {
+    margin: 0 10px; /* 좌우 여백을 추가합니다. */
+  }
+  
     .productCard img:hover {
       transform: scale(1.05);
       overflow: hidden;
