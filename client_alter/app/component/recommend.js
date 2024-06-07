@@ -4,7 +4,8 @@ import styles from '../page.module.css';
 import Link from 'next/link';
 import { IoCartOutline } from "react-icons/io5";
 import Slider from "react-slick";
-
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function Recommend() {
   const [recommend, setRecommend] = useState([]);
 
