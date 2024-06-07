@@ -23,12 +23,12 @@ export default function Recommend(){
       const res_drink = await fetch(`https://altermall.site/category?sortby=highest&category=drink`);
       
       const free_data = await res_free.json();
-      const dessert_data = await res_dessert.data.json();
-      const drink_data = await res_drink.data.json();
+      const dessert_data = await res_dessert.json();
+      const drink_data = await res_drink.json();
     
       console.log(dessert_data)
       console.log(drink_data)
-      const combinedData = [dessert_data, drink_data];
+      const combinedData = [dessert_data.data.items, drink_data.data.items];
       setRecommend(combinedData);
       
     } catch (error) {
