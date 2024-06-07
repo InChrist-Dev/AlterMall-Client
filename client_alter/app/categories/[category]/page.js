@@ -44,7 +44,7 @@ const ItemPage = (props) => {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: 2.7,
   slidesToScroll: 3
 };
 
