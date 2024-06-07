@@ -28,7 +28,7 @@ export default function Recommend(){
     
       console.log(dessert_data.data)
       console.log(drink_data.data.items)
-      const combinedData = [dessert_data.data.items, drink_data.data.items];
+      const combinedData = [dessert_data.data, drink_data.data];
       setRecommend(combinedData);
       
     } catch (error) {
