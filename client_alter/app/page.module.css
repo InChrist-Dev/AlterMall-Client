@@ -346,16 +346,7 @@
     margin-bottom: 40px;
     border-radius: 10px;
   }
-  .slick-track {
-    display: flex !important;
-    gap: 10px; /* 요소 간격 조정 */
-  }
-  
-  .slick-slide {
-    display: flex;
-    justify-content: center; /* 센터 정렬 */
-    height: inherit !important;
-  }
+
   .sliderImage {
     width: 100%;
     height: auto;
