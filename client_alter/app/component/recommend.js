@@ -56,7 +56,7 @@ export default function Recommend(){
     };
     return (
     
-    <div  className={styles.titleMobile} style={{width:'94%',margin:'0 auto', paddingTop:'40px',marginBottom:'200px'}}>
+    <div  className={styles.titleMobile} style={{width:'94%',margin:'0 auto', paddingTop:'10px'}}>
       <div style={{display:'flex',justifyContent:'space-between'}}>
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
       </div>

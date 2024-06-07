@@ -305,7 +305,7 @@
   
     .productCard img {
       width:100%;
-      height: 25vh;
+      height: 18vh;
       border-radius: 3px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       object-fit: cover;
@@ -313,7 +313,7 @@
     }
     
     .productCard p {
-      font-size: 18px;
+      font-size: 15px;
       font-weight: bold;
       color: black;
     }
