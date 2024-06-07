@@ -62,10 +62,9 @@ export default function Recommend(){
       </div>
      <div className={styles.productContainer}>
      <Slider {...settings}>
-     {recommend.length>0? recommend.map((item, i) => {
+     {recommend.length>0? recommend.map(item => (
    
-    return (
-      <>
+   
       <div key={item} className={styles.productCard}>
         <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
           <div className={styles.productLink}>
@@ -83,9 +82,8 @@ export default function Recommend(){
           </div>
         </Link>
       </div>
-      </>
-    );
-  }):''}
+   
+  )):''}
   </Slider>
 </div>
     {/* <div className={styles.artisanButtons}>
