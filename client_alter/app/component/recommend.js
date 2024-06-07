@@ -25,10 +25,11 @@ export default function Recommend(){
       const free_data = await res_free.json();
       const dessert_data = await res_dessert.json();
       const drink_data = await res_drink.json();
-    
+      const dessert = dessert_data.data.items;
+      const drink = drink_data.data.items;
       console.log(dessert_data.data)
       console.log(drink_data.data.items)
-      const combinedData = [dessert_data.data.items, drink_data.data.items];
+      const combinedData = dessert_data.data.items;
       setRecommend(combinedData);
       
     } catch (error) {
