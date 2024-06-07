@@ -4,7 +4,7 @@ import React, { useState,useEffect } from 'react';
 import styles from '../page.module.css';
 import Link from 'next/link';
 import { IoCartOutline } from "react-icons/io5";
-
+import Slider from "react-slick";
 
 export default function Recommend(){
   const [categoryName,setCategoryName] = useState(['사과당근주스', '쌀 쿠키', '샐러드', '쌀 케이크']);
@@ -15,7 +15,15 @@ export default function Recommend(){
     const [categoryImage, SetCategoryImage] = useState( ['/food/nack.jpg', '/food/pizza.jpg', '/food/chicken.jpg', '/food/ham.jpg']);
     const [showMore, setShowMore] = useState(false);
 
-    
+     // Slider settings
+ const settings = {
+  dots: false,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3
+};
+
   const fetchData = async () => {
     try {
       const res_free = await fetch(`https://altermall.site/category?sortby=highest&category=free&product=1`);
@@ -52,6 +60,7 @@ export default function Recommend(){
       <p className={styles.categoryTitleMobile}>회원님을 위한 추천상품</p>
       </div>
      <div className={styles.productContainer}>
+     <Slider {...settings}>
      {recommend.length>0? recommend.map((item, i) => {
    
     return (
@@ -76,7 +85,7 @@ export default function Recommend(){
       </>
     );
   }):''}
- 
+  </Slider>
 </div>
     {/* <div className={styles.artisanButtons}>
       <button className={styles.re_largeButton}>
