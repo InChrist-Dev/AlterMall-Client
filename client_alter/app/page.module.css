@@ -1,96 +1,10 @@
-.productContainer {
-  margin: 0 auto;
-  padding: 0 10px;
-}
-
-.productCard {
-  box-sizing: border-box;
-  padding: 0 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.productLink {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: #fff;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.cartBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-  background-color: #f8f8f8;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.cartIcon {
-  margin-right: 5px;
-}
-
-.productCard img {
-  width: 100%;
-  height: 18vh;
-  border-radius: 3px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
-  transition: transform 0.3s ease-in-out;
-}
-
-.productCard img:hover {
-  transform: scale(1.05);
-  overflow: hidden;
-}
-
-.productCard h3 {
-  font-size: 17px;
-  font-weight: 400;
-  color: #333;
-  width: 100%;
-}
-
-.slider {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  margin: 0 auto;
-  z-index: 1;
-}
-
-.imageSlider {
-  display: flex;
-  transition: transform 0.5s;
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.sliderImage {
-  width: 100%;
-  height: 450px;
-  flex: 0 0 auto;
-  object-fit: cover;
-}
-
-.leftArrow,
-.rightArrow {
-  display: none;
-}
+/* page.module.css */
 
 @media screen and (min-width: 451px) {
   .container {
     background-color: white;
     padding: 20px;
+    
     flex-direction: column;
     align-items: center;
   }
@@ -106,8 +20,7 @@
     width: 180px;
     height: auto;
   }
-
-  .moreButton {
+  .moreButton{
     background-color: #ffffff;
     border: 0;
     padding: 15px;
@@ -116,7 +29,7 @@
     font-size: 15px;
   }
   
-  .moreButton:hover {
+  .moreButton:hover{
     background-color: #ffffff;
     border: 0;
     padding: 15px;
@@ -124,7 +37,6 @@
     font-weight: bold;
     font-size: 15px;
   }
-  
   .searchContainer {
     display: flex;
     align-items: center;
@@ -170,26 +82,49 @@
     margin: 14px;
     color: #D91801;
   }
-  
-  .titleMobile {
-    display: none;
+  .titleMobile{
+    display:none;
   }
+  .slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0px 0;
+    z-index: 1; /* slider에 z-index 값을 추가 */
+  }
+  
+  .imageSlider {
+    display: flex;
+    transition: transform 0.5s;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .sliderImage {
+    width: 100%;
+    height: 450px;
+    flex: 0 0 auto;
+    object-fit: cover;
+  }
+  
 
   .categoryTitle {
     margin-bottom: 20px;
+  
     font-size: 35px;
     font-weight: bold;
+    
   }
-
   .categoryTitleMobile {
     display: none;
-  }
-
+     
+   }
   .categorySub {
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 20px;
     color: grey;
+    
   }
   
   .imageButtonGrid {
@@ -200,23 +135,24 @@
     align-items: center;
     margin: 0 auto;
     margin-bottom: 20px;
+    
   }
-
   .imageButtonGridMobile {
     display: none;
-  }
-
+     
+   }
   .largeButton {
     width: 100%;
     height: 100%;
     background-color: lightcoral;
     grid-row: span 2;
     border: 0;
-    transition: filter 0.2s ease-in-out;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+  
+    /* Initial styling */
     filter: brightness(100%);
   }
-
-  .largeButton:hover {
+  .largeButton:hover{
     filter: brightness(80%);
   }
   
@@ -233,26 +169,25 @@
     grid-row: span 2;
     margin: 50px;
     border: 0px;
+    
   }
   
   .re_smallButton {
     width: 100%;
     height: 200px;
     border-radius: 5px;
-    background-size: cover;
+    background-size: cover; /* 배경 이미지 크기 조절 */
     border: 3px solid #fff;
-    margin: 10px 20px 0px 0px;
+    margin:  10px 20px 0px 0px;
   }
-
-  .re_container {
+  .re_container{
     margin: 0 auto;
     padding: 10px;
     border-radius: 10px;
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
+    width:300px;
+    height:300px;
+    background-color: #fff
   }
-
   .artisanButtons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -260,52 +195,57 @@
     width: 100%;
     height: 800px;
     margin: 0 auto;
-    background-size: cover;
+    background-image:url('../public/pro.jpg');
     border-radius: 50px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
   }
-
-  .recommend_title {
+  
+  .recommend_title{
     color: #000;
     font-weight: bold;
     font-size: 20px;
-  }
-
-  .recommend_price {
+  }.recommend_price{
     color: #000;
+    
     font-size: 17px;
   }
-
-  .recommend_image {
+  
+  .recommend_image{
     color: #D91801;
     font-weight: bold;
     font-size: 13px;
   }
+  /* Add more styles as needed */
 }
+
+/* page.module.css */
 
 @media screen and (max-width: 450px) {
   .imageButtonGrid {
     display: none;
-  }
-
-  .categoryTitle {
+     
+   }
+   .categoryTitle {
     display: none;
-  }
-
+     
+   }
   .container {
     background-color: white;
     padding: 20px;
+    
     flex-direction: column;
     align-items: center;
   }
-
+  
   .navigation {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
+  
 
-  .moreButton {
+  .moreButton{
     background-color: #ffffff;
     border: 0;
     padding: 15px;
@@ -313,8 +253,8 @@
     font-weight: bold;
     font-size: 15px;
   }
-
-  .moreButton:hover {
+  
+  .moreButton:hover{
     background-color: #ffffff;
     border: 0;
     padding: 15px;
@@ -323,80 +263,82 @@
     font-size: 15px;
   }
 
+
   .cartBtn {
-    border-radius: 3px;
-    width: 100%;
-    height: 30px;
+   
+    border-radius: 3px; /* 모서리를 동그랗게 만듭니다. */
+    width: 100%; /* 버튼의 너비 조정 */
+    height: 30px; /* 버튼의 높이 조정 */
     border: 1px solid #ccc;
+ 
     background-color: #fff;
     color: #888;
     font-size: 17px;
     cursor: pointer;
+    /* 다른 스타일 조정이 필요하면 추가하세요 */
   }
-
-  .cartBtn:hover {
+  .cartBtn:hover{
     border: 1px solid #ff9100;
     color: #ff9100;
   }
-
   .productContainer {
     margin: 0 auto;
   }
-
+  
   .productCard {
-    margin: 0 10px;
+    margin: 0 10px; /* 좌우 여백을 추가합니다. */
   }
+  
+    .productCard img:hover {
+      transform: scale(1.05);
+      overflow: hidden;
+      border-radius: 5px;
+      object-fit: cover;
+    }
+    
+    .productCard h3 {
+      font-size: 17px;
+      font-weight: 400;
+      color: #333;
+      width: 100%;
+    }
+  
+    .productCard img {
+      width:100%;
+      height: 18vh;
+      border-radius: 3px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      object-fit: cover;
+      transition: transform 0.3s ease-in-out;
+    }
+    
+    .productCard p {
+      font-size: 15px;
+      font-weight: bold;
+      color: black;
+    }
+    
+  
+    .cartIcon{
+      font-size: 19px;
+      color: #777;
+    }
 
-  .productCard img:hover {
-    transform: scale(1.05);
-    overflow: hidden;
-    border-radius: 5px;
-    object-fit: cover;
-  }
-
-  .productCard h3 {
-    font-size: 17px;
-    font-weight: 400;
-    color: #333;
-    width: 100%;
-  }
-
-  .productCard img {
-    width: 100%;
-    height: 18vh;
-    border-radius: 3px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .productCard p {
-    font-size: 15px;
-    font-weight: bold;
-    color: black;
-  }
-
-  .cartIcon {
-    font-size: 19px;
-    color: #777;
-  }
-
+  
   .slider {
     width: 100%;
     height: 370px;
     overflow: hidden;
     position: relative;
     margin: 0 auto;
-    z-index: 1;
+    z-index: 1; /* slider에 z-index 값을 추가 */
   }
-
   .productLink {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   .imageSlider {
     display: flex;
     transition: transform 0.5s;
@@ -404,33 +346,40 @@
     margin-bottom: 40px;
     border-radius: 10px;
   }
-
+  
   .sliderImage {
     width: 100%;
     height: auto;
+    
+  
     margin: 0 auto;
     flex: 0 0 auto;
     object-fit: cover;
   }
-
+  
   .leftArrow,
   .rightArrow {
-    display: none;
+  display: none;
   }
-
+  
+  .rightArrow {
+    right: 0;
+  }
+  
   .categoryTitleMobile {
     margin-bottom: 20px;
+  
     font-size: 20px;
     font-weight: bold;
-  }
-
-  .categorySub {
+    
+  }.categorySub {
     margin-bottom: 10px;
     font-weight: 600;
     font-size: 20px;
     color: grey;
+    
   }
-
+  
   .imageButtonGridMobile {
     display: flex;
     align-items: center;
@@ -438,43 +387,40 @@
     margin-bottom: 20px;
     margin-top: 20px;
   }
-
-  .imageButtonGridMobile img {
+  .imageButtonGridMobile img{
     width: 85px;
     margin: 0 6px;
   }
-
-  .imageButtonGridMobile p {
+  .imageButtonGridMobile p{
     text-align: center;
     font-size: 18px;
+  
     color: #444;
   }
-
-  .titleMobile {
-    display: none;
+  .titleMobile{
+    display:none;
   }
-
   .largeButton {
     width: 100%;
     height: 100%;
     background-color: lightcoral;
     grid-row: span 2;
     border: 0;
-    transition: filter 0.2s ease-in-out;
+    transition: filter 0.2s ease-in-out; /* Add a smooth transition effect */
+    /* Initial styling */
     filter: brightness(100%);
   }
-
-  .largeButton:hover {
+  .largeButton:hover{
     filter: brightness(80%);
   }
-
+  
   .smallButton {
     width: 100%;
     height: 350px;
     background-color: lightblue;
     border-radius: 30px;
   }
-
+  
   .re_largeButton {
     width: 100%;
     height: 450px;
@@ -482,26 +428,25 @@
     grid-row: span 2;
     margin: 50px;
     border: 0px;
+    
   }
-
+  
   .re_smallButton {
     width: 100%;
     height: 200px;
     border-radius: 5px;
-    background-size: cover;
+    background-size: cover; /* 배경 이미지 크기 조절 */
     border: 3px solid #fff;
-    margin: 10px 20px 0px 0px;
+    margin:  10px 20px 0px 0px;
   }
-
-  .re_container {
+  .re_container{
     margin: 0 auto;
     padding: 10px;
     border-radius: 10px;
-    width: 300px;
-    height: 300px;
-    background-color: #fff;
+    width:300px;
+    height:300px;
+    background-color: #fff
   }
-
   .artisanButtons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -509,26 +454,27 @@
     width: 100%;
     height: 800px;
     margin: 0 auto;
-    border-radius: 50px;
-    background-size: cover;
-  }
 
-  .recommend_title {
+    border-radius: 50px;
+    background-size: cover; /* 배경 이미지 크기 조절 */
+  }
+  
+  .recommend_title{
     color: #000;
     font-weight: bold;
     font-size: 20px;
-  }
-
-  .recommend_price {
+  }.recommend_price{
     color: #000;
+    
     font-size: 17px;
   }
-
-  .recommend_image {
+  
+  .recommend_image{
     color: #D91801;
     font-weight: bold;
     font-size: 13px;
   }
+  /* Add more styles as needed */
 }
 
 @media (max-width: 450px) {
