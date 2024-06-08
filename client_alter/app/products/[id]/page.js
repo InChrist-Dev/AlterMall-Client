@@ -252,7 +252,7 @@ const ItemPage = (props) => {
       </div>
       <div style={{ borderBottom: '0.5px solid #ddd' }}></div>
 
-      <div className={`navigation ${isSticky ? styles.sticky : ''}`}>
+      <div className={`styles.menubar ${isSticky ? styles.sticky : ''}`}>
         <nav className="navbar">
           <ul className={styles.navList}>
             <li>
