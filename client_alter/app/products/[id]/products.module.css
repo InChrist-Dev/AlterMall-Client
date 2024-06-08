@@ -490,7 +490,7 @@
     border-bottom: #222 3px solid;
     transition: color 0.3s ease;
     display: block; /* inline 요소가 너비를 차지하도록 함 */
-    padding: 4px; /* 내부 여백 추가 */
+    padding: 15px 4px; /* 내부 여백 추가 */
   }
 
   .Link:hover{
@@ -506,7 +506,7 @@
   
     transition: color 0.3s ease;
     display: block; /* inline 요소가 너비를 차지하도록 함 */
-    padding: 4px; /* 내부 여백 추가 */
+    padding: 15px 4px; /* 내부 여백 추가 */
   }
   .navList {
     list-style: none;
