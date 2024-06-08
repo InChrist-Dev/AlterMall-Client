@@ -366,10 +366,10 @@ const ItemPage = (props) => {
           <img src={`https://altermall.site/${data.desc1}`}/>
         </div>
         <div className={styles.detail}>
-        <img src={`https://altermall.site/${data.desc2}`} />
+        {data.desc2? <img src={`https://altermall.site/${data.desc2}`} />:''}
         </div>
         <div className={styles.detail}id="image3" >
-        <img src={`https://altermall.site/${data.desc3}`}  />
+        {data.desc3? <img src={`https://altermall.site/${data.desc3}`} />:''}
         </div>
         <div className={styles.detail} >
         {data.desc4? <img src={`https://altermall.site/${data.desc4}`} />:''}
