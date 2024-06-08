@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './products.module.css'; // Ensure the correct path to your CSS module
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
