@@ -6,6 +6,15 @@
     padding-top: 100px;
     margin: 100px auto;
   }
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white; /* 필요한 경우 배경색을 설정하세요 */
+  z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
+}
+
   
   .productImage {
     flex: 1;
