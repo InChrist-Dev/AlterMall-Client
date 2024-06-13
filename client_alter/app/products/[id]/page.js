@@ -220,7 +220,6 @@ const ItemPage = (props) => {
           <div className={styles.productInfo}>
             <div className={styles.productTitle}>
               <h1>{name}</h1>
-              {likeCount}
               {like ? (
                 <FontAwesomeIcon onClick={() => { likeBtn(name, img) }} style={{ "color": "#f0571b" }} icon={solidHeart} size='2x' />
               ) : (
