@@ -229,74 +229,52 @@
 
 /* styles/CustomStyles.module.css */
 
-.division {
-  grid-area: title;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  color: #acacac;
-}
-.division::before,
-.division::after {
-  content: '';
-  margin-inline: 10px;
-  height: 1px;
-  background-color: #acacac;
-  flex-grow: 1;
+.reviewContainer {
+  margin: 20px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
 }
 
-.reviewContainer {
-  row-gap: 10px;
-  column-gap: 10px;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  justify-items: center;
+.division {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .reviews {
-  display: grid;
-  grid-column: 3;
-  grid-row: 2;
-  grid-template-rows: 1fr, 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  align-content: start;
 }
 
 .review {
-  border: 1px solid #acacac;
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #fff;
-}
-
-.reviewContent{
-  font-size: 14px;
-  margin-bottom: 6px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  word-break: break-all;
-  height: 50px;
-  width: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  width: calc(33.3333% - 20px); /* 세 개의 컬럼으로 배치 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  cursor: pointer;
 }
 
 .reviewImg {
-  width: 200px;
-  height: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.review h2 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+.reviewContent {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 .maskedId {
-  font-size: 0.8rem;
-  color: #666;
+  font-size: 12px;
+  color: #aaa;
+  text-align: right;
 }
 
 .image {
