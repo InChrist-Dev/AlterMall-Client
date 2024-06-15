@@ -181,7 +181,7 @@ const Checkout = (props) => {
       console.log(data2)
 
       setDeliveryList(data2.data.rows);
-      setDelivery(data2.data.rows[0])
+      setDelivery(data2.data.rows[data2.data.rows.length - 1]);
       setInfo(data.data.rows[0]);
 
     } catch (error) {
