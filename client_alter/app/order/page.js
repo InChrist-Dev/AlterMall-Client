@@ -261,7 +261,7 @@ const Checkout = () => {
       const data2 = await response2.json();
 
       setDeliveryList(data2.data.rows);
-      setDelivery(data2.data.rows[0])
+      setDelivery(data2.data.rows[data2.data.rows.length - 1]);
       setInfo(data.data.rows[0]);
       setSelectedItems([...Array(data.data.rows[0].OrderDetails.length).keys()]);
 
