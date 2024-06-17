@@ -42,7 +42,7 @@ const ItemPage = (props) => {
  // Slider settings
  const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   speed: 500,
   slidesToShow: 2.7,
   slidesToScroll: 3
