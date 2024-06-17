@@ -183,7 +183,7 @@
   
   .itemImage {
     width: 93%;
-    height: 130px;
+    height: 145px;
     object-fit: cover;
     object-position: center; /* 이미지를 가운데 정렬 */
     margin-left: -41%; /* 왼쪽 여백을 절반으로 줄임 */
