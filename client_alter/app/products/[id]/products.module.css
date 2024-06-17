@@ -678,7 +678,8 @@
   overflow: hidden;
   word-break: break-all;
   height: 50px;
-  width: 60%;
+  width: 100%;
+  white-space: pre-wrap;
 }
 
 .reviewImg {
