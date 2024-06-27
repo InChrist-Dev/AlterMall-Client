@@ -226,19 +226,7 @@ const Checkout = (props) => {
 
             </div>
             <div style={{ border: '1px solid #ccc', marginTop: '50px', marginBottom: '20px' }}></div>
-            <div className={styles.postBox}>
-              <label>배송방법</label>
-              <select
-                className={styles.postOption}
-                value={deliveryInfo}
-                onChange={(e) => setDeliveryInfo(e.target.value)}
-              >
-                <option value="normal">택배 배송</option>
-
-              </select>
-              <img src={getImageUrl()} className={styles.postImage} alt="배송 이미지" />
-
-            </div>
+       
             <div className={styles.requestBox}>
               <label>배송시 요청사항</label>
               <div>
