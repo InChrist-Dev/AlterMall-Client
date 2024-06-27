@@ -492,8 +492,11 @@
 .reviewText {
   color: #333;
   line-height: 1.4;
-  white-space: nowrap;
+  max-height: 5.8em; /* line-height * 표시할 줄 수 */
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
 }
@@ -878,8 +881,11 @@
 .reviewText {
   color: #333;
   line-height: 1.4;
-  white-space: nowrap;
+  max-height: 5.8em; /* line-height * 표시할 줄 수 */
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
 .reviewImg {
