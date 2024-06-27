@@ -10,9 +10,10 @@ const ReviewList = ({ reviews, openModal }) => {
   };
 
   const renderStars = (rate) => {
-    const fullStars = Math.floor(rate);
-    const halfStar = rate % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+    const clampedRate = Math.min(Math.max(rate, 0), 5);  // rate를 0과 5 사이의 값으로 제한
+  const fullStars = Math.floor(clampedRate);
+  const halfStar = clampedRate % 1 >= 0.5;
+  const emptyStars = Math.max(5 - fullStars - (halfStar ? 1 : 0), 0);
 
     return (
       <>
