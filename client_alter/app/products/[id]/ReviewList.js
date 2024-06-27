@@ -9,6 +9,20 @@ const ReviewList = ({ reviews, openModal }) => {
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
 
+  const renderStars = (rate) => {
+    const fullStars = Math.floor(rate);
+    const halfStar = rate % 1 >= 0.5;
+    const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
+
+    return (
+      <>
+        {'★'.repeat(fullStars)}
+        {halfStar ? '½' : ''}
+        {'☆'.repeat(emptyStars)}
+      </>
+    );
+  };
+
   return (
     <div className={styles.reviewList}>
       {reviews.map((review) => (
@@ -23,7 +37,7 @@ const ReviewList = ({ reviews, openModal }) => {
           <div className={styles.reviewContent}>
             <div className={styles.reviewHeader}>
               <span className={styles.reviewAuthor}>{maskUserId(review.User.name)}</span>
-              <span className={styles.reviewRating}>{'★'.repeat(review.rate)}</span>
+              <span className={styles.reviewRating}>{renderStars(review.rate)}</span>
               <span className={styles.reviewDate}>{new Date(review.createdAt).toLocaleDateString()}</span>
             </div>
             <p className={styles.reviewText}>{review.content}</p>
