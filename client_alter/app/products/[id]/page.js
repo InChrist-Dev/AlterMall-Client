@@ -6,6 +6,7 @@ import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons';
 import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
+import ReviewImagePreview from './ReviewImagePreview';
 import Modal from './Modal';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
@@ -340,6 +341,7 @@ const ItemPage = (props) => {
 
         <div className={styles.reviewContainer} id="image4">
           <h2 className={styles.division}>리뷰</h2>
+          <ReviewImagePreview reviews={review} />
           <div className={styles.reviews}>
             {review.map((review) => (
               <div key={review.id} onClick={() => openModal(review)} className={styles.review}>

@@ -681,6 +681,19 @@
   width: 100%;
   white-space: pre-wrap;
 }
+.reviewImagePreview {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.previewImage {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 5px;
+}
 
 .reviewImg {
   width: 200px;
