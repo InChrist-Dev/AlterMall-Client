@@ -1,6 +1,7 @@
 'use client'
 import React from 'react';
 import styles from './products.module.css';
+import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const ReviewList = ({ reviews, openModal }) => {
   const maskUserId = (userId) => {
@@ -10,37 +11,40 @@ const ReviewList = ({ reviews, openModal }) => {
   };
 
   const renderStars = (rate) => {
-    const clampedRate = Math.min(Math.max(rate, 0), 5);  // rate를 0과 5 사이의 값으로 제한
-  const fullStars = Math.floor(clampedRate);
-  const halfStar = clampedRate % 1 >= 0.5;
-  const emptyStars = Math.max(5 - fullStars - (halfStar ? 1 : 0), 0);
+    const stars = [];
+    const fullStars = Math.floor(rate);
+    const hasHalfStar = rate % 1 >= 0.5;
 
-    return (
-      <>
-        {'★'.repeat(fullStars)}
-        {halfStar ? '½' : ''}
-        {'☆'.repeat(emptyStars)}
-      </>
-    );
+    for (let i = 0; i < 5; i++) {
+      if (i < fullStars) {
+        stars.push(<FaStar key={i} className={styles.star} />);
+      } else if (i === fullStars && hasHalfStar) {
+        stars.push(<FaStarHalfAlt key={i} className={styles.star} />);
+      } else {
+        stars.push(<FaRegStar key={i} className={styles.star} />);
+      }
+    }
+
+    return stars;
   };
 
   return (
     <div className={styles.reviewList}>
       {reviews.map((review) => (
         <div key={review.id} className={styles.reviewItem} onClick={() => openModal(review)}>
-          {review.img && (
-            <img 
-              src={`https://altermall.site/${review.img}`} 
-              alt="Review" 
-              className={styles.reviewThumbnail} 
-            />
-          )}
+          <div className={styles.reviewHeader}>
+            <span className={styles.reviewAuthor}>{maskUserId(review.User.name)}</span>
+            <div className={styles.reviewRating}>{renderStars(review.rate)}</div>
+            <span className={styles.reviewDate}>{new Date(review.createdAt).toLocaleDateString()}</span>
+          </div>
           <div className={styles.reviewContent}>
-            <div className={styles.reviewHeader}>
-              <span className={styles.reviewAuthor}>{maskUserId(review.User.name)}</span>
-              <span className={styles.reviewRating}>{renderStars(review.rate)}</span>
-              <span className={styles.reviewDate}>{new Date(review.createdAt).toLocaleDateString()}</span>
-            </div>
+            {review.img && (
+              <img 
+                src={`https://altermall.site/${review.img}`} 
+                alt="Review" 
+                className={styles.reviewThumbnail} 
+              />
+            )}
             <p className={styles.reviewText}>{review.content}</p>
           </div>
         </div>

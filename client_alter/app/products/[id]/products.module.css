@@ -448,40 +448,43 @@
 
 .reviewList {
   margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 .reviewItem {
-  display: flex;
-  border-bottom: 1px solid #eee;
-  padding: 15px 0;
-  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-.reviewThumbnail {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 15px;
-  border-radius: 5px;
-}
-
-.reviewContent {
-  flex: 1;
-  overflow: hidden;
+.reviewItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .reviewHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 }
 
 .reviewAuthor {
   font-weight: bold;
+  color: #333;
 }
 
 .reviewRating {
-  color: #f0571b;
+  display: flex;
+}
+
+.star {
+  color: #ffc107;
+  margin-right: 2px;
 }
 
 .reviewDate {
@@ -489,15 +492,80 @@
   font-size: 0.9em;
 }
 
+.reviewContent {
+  display: flex;
+  align-items: flex-start;
+}
+
+.reviewThumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
 .reviewText {
-  color: #333;
-  line-height: 1.4;
-  max-height: 5.8em; /* line-height * 표시할 줄 수 */
+  color: #555;
+  line-height: 1.6;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+}
+
+/* 리뷰 작성 폼 스타일 */
+.reviewFormContainer {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.reviewFormContainer h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.reviewFormContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewFormContainer label {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.reviewFormContainer input[type="file"],
+.reviewFormContainer textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.reviewFormContainer textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.reviewFormContainer button[type="submit"] {
+  background-color: #f0571b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.reviewFormContainer button[type="submit"]:hover {
+  background-color: #d64d16;
 }
 }
 
@@ -834,43 +902,45 @@
 .sliderButton:last-child {
   right: 10px;
 }
-
 .reviewList {
   margin-top: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
 }
 
 .reviewItem {
-  display: flex;
-  border-bottom: 1px solid #eee;
-  padding: 15px 0;
-  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-.reviewThumbnail {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 15px;
-  border-radius: 5px;
-}
-
-.reviewContent {
-  flex: 1;
-  overflow: hidden;
+.reviewItem:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .reviewHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
 }
 
 .reviewAuthor {
   font-weight: bold;
+  color: #333;
 }
 
 .reviewRating {
-  color: #f0571b;
+  display: flex;
+}
+
+.star {
+  color: #ffc107;
+  margin-right: 2px;
 }
 
 .reviewDate {
@@ -878,21 +948,81 @@
   font-size: 0.9em;
 }
 
+.reviewContent {
+  display: flex;
+  align-items: flex-start;
+}
+
+.reviewThumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 15px;
+  border-radius: 4px;
+}
+
 .reviewText {
-  color: #333;
-  line-height: 1.4;
-  max-height: 5.8em; /* line-height * 표시할 줄 수 */
+  color: #555;
+  line-height: 1.6;
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
 }
-.reviewImg {
-  width: 200px;
-  height: 200px;
+
+/* 리뷰 작성 폼 스타일 */
+.reviewFormContainer {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
 }
 
+.reviewFormContainer h1 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.reviewFormContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewFormContainer label {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.reviewFormContainer input[type="file"],
+.reviewFormContainer textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.reviewFormContainer textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.reviewFormContainer button[type="submit"] {
+  background-color: #f0571b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.reviewFormContainer button[type="submit"]:hover {
+  background-color: #d64d16;
+}
 .review h2 {
   margin-bottom: 10px;
   font-size: 1.5rem;
@@ -911,59 +1041,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.reviewFormContainer {
-  width: 100%;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
 
-.reviewFormContainer h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-
-.reviewFormContainer form {
-  display: flex;
-  flex-direction: column;
-}
-
-.reviewFormContainer label {
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.reviewFormContainer input[type="file"]{
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-
-}
-.reviewFormContainer textarea {
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 100%;
-  height: 300px;
-}
-
-.reviewFormContainer button[type="submit"] {
-  padding: 10px 20px;
-
-  background-color: #f0571b;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.reviewFormContainer button[type="submit"]:hover {
-  background-color: #c74816;
-}
 .itemImg{
   display: none;
 }
