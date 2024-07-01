@@ -212,3 +212,70 @@
     
   }
 }
+/* page.module.css */
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageSlider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.sliderImage {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.sliderButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.activeDot {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .largeOnly {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .smallOnly {
+    display: none;
+  }
+}
