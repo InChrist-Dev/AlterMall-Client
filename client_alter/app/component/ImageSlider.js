@@ -16,11 +16,11 @@ const ImageSlider = () => {
   ];
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 3 - 1 : prevIndex - 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 2 - 1 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 3 - 1 ? 0 : prevIndex + 1));
+    setCurrentIndex((prevIndex) => (prevIndex === 2 - 1 ? 0 : prevIndex + 1));
   };
 
   const handleDotClick = (index) => {
@@ -30,7 +30,7 @@ const ImageSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 5000);
+    }, 7000);
     return () => clearInterval(interval);
   }, []);
 
