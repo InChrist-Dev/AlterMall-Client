@@ -9,15 +9,18 @@ import "slick-carousel/slick/slick-theme.css";
 export default function Recommend() {
   const [recommend, setRecommend] = useState([]);
 
+
   const settings = {
     dots: false,
     infinite: false,
-    speed: 700,
+    speed: 500,
     slidesToShow: 2.5,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     arrows: false,
-   
+    swipeToSlide: true,
+    touchThreshold: 10,
   };
+
 
   const fetchData = async () => {
     try {
