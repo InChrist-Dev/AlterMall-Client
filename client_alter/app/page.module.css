@@ -382,13 +382,14 @@
   .imageButtonGridMobile {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 0 auto;
     margin-bottom: 20px;
     margin-top: 20px;
   }
   .imageButtonGridMobile img{
-    width: 85px;
-    margin: 0 6px;
+    width: 80px;
+ 
   }
   .imageButtonGridMobile p{
     text-align: center;
