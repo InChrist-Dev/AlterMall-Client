@@ -473,7 +473,6 @@
   }
   /* Add more styles as needed */
 }
-
 /* page.module.css */
 .slider {
   position: relative;
@@ -491,6 +490,7 @@
   width: 100%;
   flex-shrink: 0;
   pointer-events: none;
+  object-fit: cover; /* Ensures images cover the entire slide area */
 }
 
 .dots {
@@ -512,14 +512,13 @@
 .activeDot {
   background: white;
 }
-
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   .largeOnly {
     display: none;
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 451px) {
   .smallOnly {
     display: none;
   }

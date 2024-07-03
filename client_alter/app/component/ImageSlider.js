@@ -7,15 +7,33 @@ const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const sliderRef = useRef(null);
 
-  const images = [
-    { src: "/zero.png", alt: "이미지0", class: `${styles.sliderImage} ${styles.smallOnly}` },
-    { src: "/popup.png", alt: "이미지1", class: `${styles.sliderImage} ${styles.smallOnly}` },
-    { src: "/003.png", alt: "이미지2", class: `${styles.sliderImage} ${styles.largeOnly}` },
-    { src: "/001.png", alt: "이미지3", class: `${styles.sliderImage} ${styles.largeOnly}` },
-    { src: "/002.png", alt: "이미지4", class: `${styles.sliderImage} ${styles.largeOnly}` },
+  const smallImages = [
+    { src: "/zero.png", alt: "이미지0" },
+    { src: "/popup.png", alt: "이미지1" },
   ];
+
+  const largeImages = [
+    { src: "/003.png", alt: "이미지2" },
+    { src: "/001.png", alt: "이미지3" },
+    { src: "/002.png", alt: "이미지4" },
+  ];
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 768);
+      setCurrentIndex(0); // Reset to first image when screen size changes
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const images = isSmallScreen ? smallImages : largeImages;
 
   const handleSwipe = () => {
     if (touchStart - touchEnd > 75) {
@@ -56,7 +74,7 @@ const ImageSlider = () => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]); // Add images.length as a dependency
 
   return (
     <div className={styles.slider} ref={sliderRef}>
@@ -70,7 +88,7 @@ const ImageSlider = () => {
         onTouchEnd={handleTouchEnd}
       >
         {images.map((image, index) => (
-          <img key={index} src={image.src} alt={image.alt} className={image.class} />
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
         ))}
       </div>
       <div className={styles.dots}>
