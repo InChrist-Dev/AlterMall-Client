@@ -18,7 +18,7 @@ export default function Recommend() {
     slidesToScroll: 1,
     arrows: false,
     swipeToSlide: true,
-    touchThreshold: 10,
+    touchThreshold: 20,
   };
 
 
