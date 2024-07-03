@@ -215,6 +215,13 @@
     font-weight: bold;
     font-size: 13px;
   }
+
+  .dots {
+    position: absolute;
+    bottom: 55px;
+    right: 15px;
+    display: flex;
+  }
   /* Add more styles as needed */
 }
 
@@ -473,6 +480,13 @@
     font-size: 13px;
   }
   /* Add more styles as needed */
+
+  .dots {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+  }
 }
 /* page.module.css */
 .slider {
