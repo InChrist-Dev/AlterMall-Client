@@ -77,7 +77,7 @@ const ItemPage = (props) => {
     try {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
       const data = await response.json();
-      console.log(data.data.rows)
+      console.log(data)
       setPrice(data.price);
       setNewPrice(data.price);
       setName(data.item_name);
