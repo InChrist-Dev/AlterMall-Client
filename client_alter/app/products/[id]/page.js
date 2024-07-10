@@ -77,7 +77,6 @@ const ItemPage = (props) => {
     try {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
       const data = await response.json();
-      console.log(data.data.rows)
       setPrice(data.price);
       setNewPrice(data.price);
       setName(data.item_name);
@@ -238,18 +237,18 @@ const ItemPage = (props) => {
             <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
           </div>
           <div className={styles.productOptions}>
-            {/* <div className={styles.dropdown}>
+            <div className={styles.dropdown}>
               <label>주문수량</label>
               <select onChange={(e) => handleQuantityChange(e.target.value)}>
                 {Quantity()}
               </select>
-            </div> */}
-            <div className={styles.dropdown}>
+            </div>
+            {/* <div className={styles.dropdown}>
               <label>옵션</label>
               <select onChange={(e) => handleOptionChange(e.target.value)}>
                 {Quantity()}
               </select>
-            </div>
+            </div> */}
             <div className={styles.price}>
               <p>{price.toLocaleString()}원</p>
             </div>
