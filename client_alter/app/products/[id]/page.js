@@ -35,6 +35,7 @@ const ItemPage = (props) => {
   const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
+  const [option,setOption] = useState(0);
 
   const openModal = (review) => {
     setSelectedReview(review);
@@ -77,6 +78,7 @@ const ItemPage = (props) => {
     try {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
       const data = await response.json();
+      console.log(data)
       setPrice(data.price);
       setNewPrice(data.price);
       setName(data.item_name);
@@ -133,10 +135,9 @@ const ItemPage = (props) => {
     setQuantity(newQuantity);
     setPrice(newQuantity * newprice); // Adjust the price based on your business logic
   };
-
   const handleOptionChange = (newOption) => {
     setOption(newOption);
-    setPrice(newOption * newprice); // Adjust the price based on your business logic
+    setPrice(newOption + option); // Adjust the price based on your business logic
   };
 
   const Quantity = () => {
@@ -244,12 +245,12 @@ const ItemPage = (props) => {
                 {Quantity()}
               </select>
             </div>
-            <div className={styles.dropdown}>
-              <label>상품옵션</label>
+            {/* <div className={styles.dropdown}>
+              <label>옵션</label>
               <select onChange={(e) => handleOptionChange(e.target.value)}>
                 {Quantity()}
               </select>
-            </div>
+            </div> */}
             <div className={styles.price}>
               <p>{price.toLocaleString()}원</p>
             </div>
