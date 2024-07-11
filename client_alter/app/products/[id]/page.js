@@ -31,7 +31,8 @@ const ItemPage = (props) => {
   const [guest, setGuest] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(1);
+  const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
 
@@ -131,6 +132,11 @@ const ItemPage = (props) => {
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
     setPrice(newQuantity * newprice); // Adjust the price based on your business logic
+  };
+
+  const handleOptionChange = (newOption) => {
+    setOption(newOption);
+    setPrice(newOption * newprice); // Adjust the price based on your business logic
   };
 
   const Quantity = () => {
@@ -235,6 +241,12 @@ const ItemPage = (props) => {
             <div className={styles.dropdown}>
               <label>주문수량</label>
               <select onChange={(e) => handleQuantityChange(e.target.value)}>
+                {Quantity()}
+              </select>
+            </div>
+            <div className={styles.dropdown}>
+              <label>상품옵션</label>
+              <select onChange={(e) => handleOptionChange(e.target.value)}>
                 {Quantity()}
               </select>
             </div>
