@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { Star } from 'lucide-react';
-import styles from './products.module.css';
+import styles from './[id]/products.module.css';
 
 const EnhancedReviewForm = () => {
   const [content, setContent] = useState('');
