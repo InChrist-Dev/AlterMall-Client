@@ -18,8 +18,9 @@
     align-items: center;
   }
   .plus{
-    color:#bbb;
+    color:#aaa;
     padding: 10px;
+    font-size: 35px;
   }
   .plus:hover{
     color:#e48202;
@@ -117,9 +118,9 @@
     align-items: center;
   }
   .plus{
-    color:#bbb;
+    color:#999;
     padding: 15px;
-    font-size: 19px;
+    font-size: 22px;
   }
   .plus:hover{
     color:#e48202;

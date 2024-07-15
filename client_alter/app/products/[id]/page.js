@@ -31,10 +31,11 @@ const ItemPage = (props) => {
   const [guest, setGuest] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState(null);
-  const [likeCount, setLikeCount] = useState(0);
+  const [likeCount, setLikeCount] = useState(1);
+  const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
-  const [option,setOption] = useState(0);
+ 
 
   const openModal = (review) => {
     setSelectedReview(review);
