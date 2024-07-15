@@ -8,14 +8,32 @@ const EnhancedReviewForm = () => {
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Here you would typically send the data to your server
-    console.log({ content, rating, image });
-    // Reset form after submission
-    setContent('');
-    setRating(0);
-    setImage(null);
+
+    try {
+      const formData = new FormData();
+      formData.append('content', content);
+      formData.append('rate', rate);
+      formData.append('item_id', props.params.id);
+      formData.append('img', image);
+
+      const response = await fetch('https://altermall.site/review', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: 'include',
+        body: formData,
+      });
+      if (response.ok) {
+        alert('리뷰가 성공적으로 제출되었습니다.');
+      } else {
+        console.error('리뷰 제출에 실패하였습니다.');
+      }
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
   };
 
   return (
