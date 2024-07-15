@@ -65,8 +65,8 @@ const ItemPage = (props) => {
       });
       if (response.ok) {
         alert('리뷰가 성공적으로 제출되었습니다.');
-      } else {
-        console.error('리뷰 제출에 실패하였습니다.');
+      } else if(response.status == 401){
+        alert('로그인후 작성해주세요.');
       }
     } catch (error) {
       console.error('오류 발생:', error);
