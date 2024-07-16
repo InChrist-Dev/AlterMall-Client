@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import styles from './products.module.css';
 
-const EnhancedReviewForm = () => {
+const EnhancedReviewForm = (props) => {
   const [content, setContent] = useState('');
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
