@@ -510,13 +510,9 @@
 
 
 .modalContent {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 10px;
   max-width: 70%;
   max-height: 70%;
-  overflow-y: auto;
-  position: relative;
+  overflow-y: clip;
 }
 
 .close {
@@ -1221,13 +1217,10 @@
 }
 
 .modalContent {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 10px;
+
   max-width: 100%;
   max-height: 70%;
-  overflow-y: auto;
-  position: relative;
+
 }
 
 .close {
@@ -1246,7 +1239,6 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: white; /* 필요한 경우 배경색을 설정하세요 */
   z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
 }
 .imageModal {
