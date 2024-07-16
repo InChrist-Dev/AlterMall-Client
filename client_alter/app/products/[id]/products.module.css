@@ -135,16 +135,17 @@
   object-fit: contain;
 }
 
+
 .closeButton {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
   border: none;
   font-size: 16px;
+  color: #fff;
   cursor: pointer;
 }
-
 .reviewThumbnail {
   cursor: pointer;
   transition: transform 0.2s;
@@ -1271,9 +1272,10 @@
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: white;
+  background-color: rgba(0,0,0,0);
   border: none;
   font-size: 16px;
+  color: #fff;
   cursor: pointer;
 }
 

@@ -73,7 +73,7 @@ const ImageModal = ({ imageSrc, onClose }) => {
     <div className={styles.imageModal} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
         <img src={imageSrc} alt="Enlarged review" className={styles.enlargedImage} />
-        <button className={styles.closeButton} onClick={onClose}>Close</button>
+        <button className={styles.closeButton} onClick={onClose}>X</button>
       </div>
     </div>
   );
