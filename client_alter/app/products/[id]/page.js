@@ -9,6 +9,7 @@ import Cookies from 'js-cookie';
 import ReviewImagePreview from './ReviewImagePreview';
 import ReviewList from './ReviewList';
 import { Star } from 'lucide-react';
+
 const accessToken = Cookies.get('accessToken');
 
 const position = Cookies.get('position');
@@ -35,7 +36,7 @@ const ItemPage = (props) => {
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
 
-  
+  const [rating, setRating] = useState(0);
 
   const openModal = (review) => {
     setSelectedReview(review);
