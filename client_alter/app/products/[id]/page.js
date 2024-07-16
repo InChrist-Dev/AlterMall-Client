@@ -9,7 +9,7 @@ import Cookies from 'js-cookie';
 import ReviewImagePreview from './ReviewImagePreview';
 import ReviewList from './ReviewList';
 import Modal from './Modal';
-import EnhancedReviewForm from '../reviewForm';
+import EnhancedReviewForm from './reviewForm';
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get('accessToken');
 
