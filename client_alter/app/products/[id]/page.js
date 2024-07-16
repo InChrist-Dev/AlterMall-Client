@@ -53,7 +53,7 @@ const ItemPage = (props) => {
     try {
       const formData = new FormData();
       formData.append('content', content);
-      formData.append('rate', rate);
+      formData.append('rate', rating);
       formData.append('item_id', props.params.id);
       formData.append('img', image);
 
@@ -198,11 +198,7 @@ const ItemPage = (props) => {
     }
   }, [quantity, id]);
 
-  const maskUserId = (userId) => {
-    const maskedLength = Math.ceil(userId.length / 2);
-    const masked = '*'.repeat(maskedLength);
-    return userId.substring(0, userId.length - maskedLength) + masked;
-  };
+
 
   const handleBuy = (itemId, amount) => {
     if (accessToken) {
