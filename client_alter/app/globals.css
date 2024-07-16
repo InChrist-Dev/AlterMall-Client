@@ -312,7 +312,8 @@
   .navbar {
     display: flex;
     margin: 0 auto;
-    width: 85%;
+    width: 95%;
+    background-color: #fff;
   }
   
   /* navigation.css */
