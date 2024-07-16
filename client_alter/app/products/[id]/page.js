@@ -74,7 +74,7 @@ const ItemPage = (props) => {
       console.error('오류 발생:', error);
     }
   };
-  const deleteReview = async (review) => {
+  const deleteReview =  (review) => {
 
 
     try {
@@ -83,7 +83,7 @@ const ItemPage = (props) => {
       formData.append('id', review.id);
 
 
-      const response = await fetch('https://altermall.site/review', {
+      const response = fetch('https://altermall.site/review', {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${accessToken}`,
