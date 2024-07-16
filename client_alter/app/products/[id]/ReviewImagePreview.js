@@ -18,6 +18,10 @@ const ReviewImagePreview = ({ reviews }) => {
     );
   };
 
+  const handleImageClick = (imageSrc) => {
+    setSelectedImage(imageSrc);
+  };
+
   return (
     <div className={styles.reviewImagePreview}>
       <button onClick={prevSlide} className={styles.sliderButton}>&#10094;</button>
@@ -28,6 +32,10 @@ const ReviewImagePreview = ({ reviews }) => {
             src={`https://altermall.site/${review.img}`} 
             alt="Review preview" 
             className={`${styles.previewImage} ${index === currentIndex ? styles.active : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              handleImageClick(`https://altermall.site/${review.img}`);
+            }}
           />
         ))}
       </div>
