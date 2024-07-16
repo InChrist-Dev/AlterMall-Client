@@ -74,8 +74,8 @@ const ItemPage = (props) => {
       console.error('오류 발생:', error);
     }
   };
-  const deleteReview = async (e,review) => {
-    e.preventDefault();
+  const deleteReview = async (review) => {
+
 
     try {
       const formData = new FormData();
