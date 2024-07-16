@@ -13,7 +13,7 @@ const ReviewList = ({ reviews, openModal }) => {
   };
   const deleteReview =  (review) => {
 
-
+    console.log(review)
     try {
       const formData = new FormData();
 
