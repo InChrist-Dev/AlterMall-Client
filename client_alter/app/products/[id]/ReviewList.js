@@ -11,32 +11,28 @@ const ReviewList = ({ reviews, openModal }) => {
     const masked = '*'.repeat(maskedLength);
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
-  const deleteReview =  (review) => {
-
-    console.log(review)
+  const deleteReview = async (reviewId) => {
     try {
-      const formData = new FormData();
-
-      formData.append('id', review);
-
-
-      const response = fetch('https://altermall.site/review', {
+      const response = await fetch(`https://altermall.site/review/${reviewId}`, {
         method: 'DELETE',
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          'Authorization': `Bearer ${accessToken}`,
         },
         credentials: 'include',
-        body: JSON.stringify({
-          'id': review
-        }),
       });
+
       if (response.ok) {
         alert('성공적으로 삭제되었습니다.');
-      } else if(response.status==401){
+        onReviewDeleted(reviewId); // 부모 컴포넌트에 삭제를 알림
+      } else if (response.status === 401) {
         alert('삭제할 수 있는 권한이 없습니다.');
+      } else {
+        const errorData = await response.json();
+        alert(`삭제 실패: ${errorData.message}`);
       }
     } catch (error) {
       console.error('오류 발생:', error);
+      alert('삭제 중 오류가 발생했습니다.');
     }
   };
   const renderStars = (rate) => {
