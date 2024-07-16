@@ -299,6 +299,11 @@
   .BuyButton:hover {
     background-color: #cf4b17;
   }
+  .deleteBtn{
+    text-align: right;
+    color: #888;
+    cursor: pointer;
+  }
 .detail{
   width: 75%;
   margin: 0 auto;
@@ -1177,7 +1182,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-deleteBtn{
+.deleteBtn{
   text-align: right;
   color: #888;
   cursor: pointer;
