@@ -135,7 +135,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-
+  background-color: rgba(0,0,0,0);
   border: none;
   font-size: 16px;
   color: #fff;
@@ -1262,7 +1262,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
-
+  background-color: rgba(0,0,0,0);
   border: none;
   font-size: 16px;
   color: #fff;
