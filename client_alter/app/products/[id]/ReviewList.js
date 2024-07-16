@@ -84,7 +84,7 @@ const ReviewList = ({ reviews, openModal }) => {
             )}
             <p className={styles.reviewText}>{review.content}</p>
           </div>
-          <div onClick={()=>deleteReview(review.id)}>X</div>
+          <div className={styles.deleteBtn} onClick={()=>deleteReview(review.id)}>X</div>
         </div>
       ))}
       {selectedImage && (
