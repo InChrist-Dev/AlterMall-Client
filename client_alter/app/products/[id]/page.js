@@ -361,7 +361,7 @@ const ItemPage = (props) => {
           
         </div>
 
-     <EnhancedReviewForm/>
+     <EnhancedReviewForm  id={props.params.id}/>
       </div>
     </div>
   );

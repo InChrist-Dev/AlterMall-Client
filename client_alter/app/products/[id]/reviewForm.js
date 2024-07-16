@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Star } from 'lucide-react';
 import styles from './products.module.css';
 
-const EnhancedReviewForm = (props) => {
+const EnhancedReviewForm = (id) => {
   const [content, setContent] = useState('');
   const [rating, setRating] = useState(0);
   const [image, setImage] = useState(null);
@@ -15,7 +15,7 @@ const EnhancedReviewForm = (props) => {
       const formData = new FormData();
       formData.append('content', content);
       formData.append('rate', rating);
-      formData.append('item_id', props.params.id);
+      formData.append('item_id', id);
       formData.append('img', image);
 
       const response = await fetch('https://altermall.site/review', {
