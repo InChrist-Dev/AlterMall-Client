@@ -26,7 +26,9 @@ const ReviewList = ({ reviews, openModal }) => {
           Authorization: `Bearer ${accessToken}`,
         },
         credentials: 'include',
-        body: formData,
+        body: {
+          'id': review
+        },
       });
       if (response.ok) {
         alert('성공적으로 삭제되었습니다.');
