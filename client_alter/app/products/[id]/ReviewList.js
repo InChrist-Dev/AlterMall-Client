@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from './products.module.css';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-
+import Cookies from 'js-cookie';
 const ReviewList = ({ reviews, openModal }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const accessToken = Cookies.get('accessToken');
