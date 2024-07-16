@@ -23,7 +23,7 @@ const ReviewList = ({ reviews, openModal }) => {
 
       if (response.ok) {
         alert('성공적으로 삭제되었습니다.');
-        onReviewDeleted(reviewId); // 부모 컴포넌트에 삭제를 알림
+        
       } else if (response.status === 401) {
         alert('삭제할 수 있는 권한이 없습니다.');
       } else {
