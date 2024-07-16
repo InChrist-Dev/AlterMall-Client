@@ -109,7 +109,50 @@
   background-color: white; /* 필요한 경우 배경색을 설정하세요 */
   z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
 }
+.imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.enlargedImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reviewThumbnail {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.reviewThumbnail:hover {
+  transform: scale(1.05);
+}
   
   .productImage {
     flex: 1;
@@ -1205,6 +1248,50 @@
   width: 100%;
   background-color: white; /* 필요한 경우 배경색을 설정하세요 */
   z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
+}
+.imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.enlargedImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reviewThumbnail {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.reviewThumbnail:hover {
+  transform: scale(1.05);
 }
 }
 
