@@ -33,7 +33,7 @@ const ReviewList = ({ reviews, openModal }) => {
       {reviews.map((review) => (
         <div key={review.id} className={styles.reviewItem} onClick={() => openModal(review)}>
           <div className={styles.reviewHeader}>
-            <div className={styles.reviewHeader}>
+            <div className={styles.reviewName}>
             <span className={styles.reviewAuthor}>{maskUserId(review.User.name)}</span>
             <div className={styles.reviewRating}>{renderStars(review.rate)}</div>
             </div>
