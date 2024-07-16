@@ -5,13 +5,38 @@ import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
 const ReviewList = ({ reviews, openModal,deleteReview }) => {
   const [selectedImage, setSelectedImage] = useState(null);
-
+  const accessToken = Cookies.get('accessToken');
   const maskUserId = (userId) => {
     const maskedLength = Math.ceil(userId.length / 2);
     const masked = '*'.repeat(maskedLength);
     return userId.substring(0, userId.length - maskedLength) + masked;
   };
+  const deleteReview =  (review) => {
 
+
+    try {
+      const formData = new FormData();
+
+      formData.append('id', review);
+
+
+      const response = fetch('https://altermall.site/review', {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: 'include',
+        body: formData,
+      });
+      if (response.ok) {
+        alert('성공적으로 삭제되었습니다.');
+      } else if(response.status==401){
+        alert('삭제할 수 있는 권한이 없습니다.');
+      }
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
+  };
   const renderStars = (rate) => {
     const stars = [];
     const fullStars = Math.floor(rate);
@@ -59,7 +84,7 @@ const ReviewList = ({ reviews, openModal,deleteReview }) => {
             )}
             <p className={styles.reviewText}>{review.content}</p>
           </div>
-          <div onClick={()=>deleteReview(review)}>X</div>
+          <div onClick={()=>deleteReview(review.id)}>X</div>
         </div>
       ))}
       {selectedImage && (

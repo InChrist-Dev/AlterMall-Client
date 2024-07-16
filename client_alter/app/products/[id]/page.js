@@ -74,32 +74,7 @@ const ItemPage = (props) => {
       console.error('오류 발생:', error);
     }
   };
-  const deleteReview =  (review) => {
 
-
-    try {
-      const formData = new FormData();
-
-      formData.append('id', review.id);
-
-
-      const response = fetch('https://altermall.site/review', {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        credentials: 'include',
-        body: formData,
-      });
-      if (response.ok) {
-        alert('성공적으로 삭제되었습니다.');
-      } else if(response.status==401){
-        alert('삭제할 수 있는 권한이 없습니다.');
-      }
-    } catch (error) {
-      console.error('오류 발생:', error);
-    }
-  };
   const fetchData = async () => {
     try {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
