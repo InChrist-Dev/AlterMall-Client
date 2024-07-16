@@ -13,7 +13,7 @@ const ReviewList = ({ reviews, openModal }) => {
   };
   const deleteReview = async (reviewId) => {
     try {
-      const response = await fetch(`https://altermall.site/review/${reviewId}`, {
+      const response = await fetch(`https://altermall.site/review?id=${reviewId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${accessToken}`,
