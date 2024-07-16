@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './products.module.css';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-const ReviewList = ({ reviews, openModal }) => {
+const ReviewList = ({ reviews, openModal,deleteReview }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const maskUserId = (userId) => {
@@ -59,6 +59,7 @@ const ReviewList = ({ reviews, openModal }) => {
             )}
             <p className={styles.reviewText}>{review.content}</p>
           </div>
+          <div onClick={()=>deleteReview(review)}>X</div>
         </div>
       ))}
       {selectedImage && (

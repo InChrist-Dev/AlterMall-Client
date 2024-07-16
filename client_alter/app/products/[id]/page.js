@@ -74,7 +74,32 @@ const ItemPage = (props) => {
       console.error('오류 발생:', error);
     }
   };
+  const deleteReview = async (e,review) => {
+    e.preventDefault();
 
+    try {
+      const formData = new FormData();
+
+      formData.append('id', review.id);
+
+
+      const response = await fetch('https://altermall.site/review', {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: 'include',
+        body: formData,
+      });
+      if (response.ok) {
+        alert('성공적으로 삭제되었습니다.');
+      } else if(response.status==401){
+        alert('삭제할 수 있는 권한이 없습니다.');
+      }
+    } catch (error) {
+      console.error('오류 발생:', error);
+    }
+  };
   const fetchData = async () => {
     try {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
@@ -353,7 +378,7 @@ const ItemPage = (props) => {
         <div className={styles.reviewContainer} id="image4">
           <h2 className={styles.division}>리뷰</h2>
           <ReviewImagePreview reviews={review} />
-          <ReviewList reviews={review} openModal={openModal} />
+          <ReviewList reviews={review} openModal={openModal} deleteReview={deleteReview} />
           
         </div>
 
