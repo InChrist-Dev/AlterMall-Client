@@ -353,7 +353,7 @@ const ItemPage = (props) => {
         <div className={styles.reviewContainer} id="image4">
           <h2 className={styles.division}>리뷰</h2>
           <ReviewImagePreview reviews={review} />
-          <ReviewList reviews={review} openModal={openModal} deleteReview={deleteReview} />
+          <ReviewList reviews={review} openModal={openModal} />
           
         </div>
 

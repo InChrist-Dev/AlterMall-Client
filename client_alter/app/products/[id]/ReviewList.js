@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import styles from './products.module.css';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 
-const ReviewList = ({ reviews, openModal,deleteReview }) => {
+const ReviewList = ({ reviews, openModal }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const accessToken = Cookies.get('accessToken');
   const maskUserId = (userId) => {
