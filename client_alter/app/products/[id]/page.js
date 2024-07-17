@@ -124,6 +124,7 @@ const ItemPage = (props) => {
 
   useEffect(() => {
     fetchData();
+    console.log("Options:", options); // 옵션 로그 추가
     if (position === 'guest') {
       Cookies.remove('accessToken');
       Cookies.remove('position');
