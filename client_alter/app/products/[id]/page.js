@@ -92,7 +92,7 @@ const ItemPage = (props) => {
       setGuest(data);
       setLikeCount(data.likeCount);
 
-      if (data.options && Array.isArray(data.options)) {
+      if (data.options.options && Array.isArray(data.options.options)) {
         setOptions(data.options.options);
         // Set the first option as default if it exists
         if (data.options.options.length > 0) {
