@@ -93,11 +93,11 @@ const ItemPage = (props) => {
       setLikeCount(data.likeCount);
 
       if (data.options && Array.isArray(data.options)) {
-        setOptions(data.options);
+        setOptions(data.options.options);
         // Set the first option as default if it exists
-        if (data.options.length > 0) {
-          setSelectedOption(data.options[0].name);
-          setPrice(data.price + data.options[0].additionalPrice);
+        if (data.options.options.length > 0) {
+          setSelectedOption(data.options.options[0].name);
+          setPrice(data.price + data.options.options[0].additionalPrice);
         }
       }
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
