@@ -8,9 +8,8 @@ import { Link, scroll } from 'react-scroll';
 import Cookies from 'js-cookie';
 import ReviewImagePreview from './ReviewImagePreview';
 import ReviewList from './ReviewList';
-import Modal from './Modal';
-import EnhancedReviewForm from '../reviewForm';
-// 쿠키에서 토큰을 가져오기
+import { Star } from 'lucide-react';
+
 const accessToken = Cookies.get('accessToken');
 
 const position = Cookies.get('position');
@@ -37,7 +36,8 @@ const ItemPage = (props) => {
   const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
- 
+
+  const [rating, setRating] = useState(0);
 
   const openModal = (review) => {
     setSelectedReview(review);
@@ -54,7 +54,7 @@ const ItemPage = (props) => {
     try {
       const formData = new FormData();
       formData.append('content', content);
-      formData.append('rate', rate);
+      formData.append('rate', rating);
       formData.append('item_id', props.params.id);
       formData.append('img', image);
 
@@ -68,8 +68,8 @@ const ItemPage = (props) => {
       });
       if (response.ok) {
         alert('리뷰가 성공적으로 제출되었습니다.');
-      } else {
-        console.error('리뷰 제출에 실패하였습니다.');
+      } else if(response.status==401){
+        alert('로그인 후 작성해주세요');
       }
     } catch (error) {
       console.error('오류 발생:', error);
@@ -215,11 +215,7 @@ const ItemPage = (props) => {
     }
   }, [quantity, id]);
 
-  const maskUserId = (userId) => {
-    const maskedLength = Math.ceil(userId.length / 2);
-    const masked = '*'.repeat(maskedLength);
-    return userId.substring(0, userId.length - maskedLength) + masked;
-  };
+
 
   const handleBuy = (itemId, amount) => {
     if (accessToken) {
@@ -384,7 +380,53 @@ const ItemPage = (props) => {
           
         </div>
 
-     <EnhancedReviewForm/>
+        <div className={styles.reviewFormContainer}>
+      <h2 className={styles.reviewFormTitle}>리뷰 작성</h2>
+      <form onSubmit={handleReview} className={styles.reviewForm}>
+        <div className={styles.formGroup}>
+          <label className={styles.label}>별점</label>
+          <div className={styles.starRating}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <Star
+                key={star}
+                size={24}
+                fill={star <= rating ? "#f0571b" : "none"}
+                stroke={star <= rating ? "#f0571b" : "#ccc"}
+                className={styles.star}
+                onClick={() => setRating(star)}
+              />
+            ))}
+          </div>
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="content" className={styles.label}>내용</label>
+          <textarea
+            id="content"
+            rows={4}
+            className={styles.textarea}
+            placeholder="리뷰 내용을 입력해주세요"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          ></textarea>
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="image" className={styles.label}>이미지</label>
+          <input
+            type="file"
+            id="image"
+            accept="image/*"
+            className={styles.fileInput}
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+        </div>
+        <button
+          type="submit"
+          className={styles.submitButton}
+        >
+          리뷰 제출
+        </button>
+      </form>
+    </div>
       </div>
     </div>
   );

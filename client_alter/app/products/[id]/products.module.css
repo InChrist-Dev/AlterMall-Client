@@ -109,7 +109,46 @@
   background-color: white; /* 필요한 경우 배경색을 설정하세요 */
   z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
 }
+.imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
 
+
+
+.enlargedImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
+.reviewThumbnail {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.reviewThumbnail:hover {
+  transform: scale(1.05);
+}
   
   .productImage {
     flex: 1;
@@ -259,6 +298,11 @@
 
   .BuyButton:hover {
     background-color: #cf4b17;
+  }
+  .deleteBtn{
+    text-align: right;
+    color: #888;
+    cursor: pointer;
   }
 .detail{
   width: 75%;
@@ -467,12 +511,9 @@
 
 
 .modalContent {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 10px;
   max-width: 70%;
   max-height: 70%;
-  overflow-y: auto;
+  overflow-y: clip;
   position: relative;
 }
 
@@ -565,14 +606,21 @@
   align-items: center;
   margin-bottom: 10px;
 }
+.reviewName {
+  display: flex;
+  justify-content: space-between;
 
+}
 .reviewAuthor {
   font-weight: bold;
   color: #333;
+  margin-right: 30px;
+  font-size: 25px;
 }
 
 .reviewRating {
   display: flex;
+  font-size: 25px;
 }
 
 .star {
@@ -591,8 +639,8 @@
 }
 
 .reviewThumbnail {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
   margin-right: 15px;
   border-radius: 4px;
@@ -606,6 +654,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  font-size: 20px;
 }
 
 /* 리뷰 작성 폼 스타일 */
@@ -1133,7 +1182,11 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.deleteBtn{
+  text-align: right;
+  color: #888;
+  cursor: pointer;
+}
 
 .itemImg{
   display: none;
@@ -1170,13 +1223,10 @@
 }
 
 .modalContent {
-  background-color: #fefefe;
-  padding: 20px;
-  border-radius: 10px;
+  position: relative;
   max-width: 100%;
   max-height: 70%;
-  overflow-y: auto;
-  position: relative;
+
 }
 
 .close {
@@ -1195,8 +1245,46 @@
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: white; /* 필요한 경우 배경색을 설정하세요 */
   z-index: 1000; /* 다른 요소들보다 앞에 위치하도록 합니다 */
+}
+.imageModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.enlargedImage {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0,0,0,0);
+  border: none;
+  font-size: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.reviewThumbnail {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.reviewThumbnail:hover {
+  transform: scale(1.05);
 }
 }
 
