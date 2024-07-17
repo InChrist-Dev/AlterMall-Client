@@ -30,8 +30,9 @@ const ItemPage = (props) => {
   const [rate, setRate] = useState(10);
   const [data, setData] = useState([]);
   const [guest, setGuest] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedReview, setSelectedReview] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [options, setOptions] = useState([]);
+  const [basePrice, setBasePrice] = useState(0);
   const [likeCount, setLikeCount] = useState(1);
   const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
@@ -80,8 +81,9 @@ const ItemPage = (props) => {
       const response = await fetch(`https://altermall.site/category/${props.params.id}`);
       const data = await response.json();
       console.log(data)
-      setPrice(data.price);
+      setBasePrice(data.price);
       setNewPrice(data.price);
+      setPrice(data.price);
       setName(data.item_name);
       setImg(data.img);
       setStock(data.stock);
@@ -89,6 +91,15 @@ const ItemPage = (props) => {
       setData(data.ItemImages[0]);
       setGuest(data);
       setLikeCount(data.likeCount);
+
+      if (data.options && Array.isArray(data.options)) {
+        setOptions(data.options);
+        // Set the first option as default if it exists
+        if (data.options.length > 0) {
+          setSelectedOption(data.options[0].name);
+          setPrice(data.price + data.options[0].additionalPrice);
+        }
+      }
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
       const data2 = await response2.json();
       setReview(data2.data.rows);
@@ -136,9 +147,15 @@ const ItemPage = (props) => {
     setQuantity(newQuantity);
     setPrice(newQuantity * newprice); // Adjust the price based on your business logic
   };
-  const handleOptionChange = (newOption) => {
-    setOption(newOption);
-    setPrice(newOption + option); // Adjust the price based on your business logic
+  const handleOptionChange = (e) => {
+    const newOption = e.target.value;
+    setSelectedOption(newOption);
+    updatePrice(quantity, newOption);
+  };
+  const updatePrice = (newQuantity, newOption) => {
+    const selectedOptionObj = options.find(opt => opt.name === newOption);
+    const optionPrice = selectedOptionObj ? selectedOptionObj.additionalPrice : 0;
+    setPrice((basePrice + optionPrice) * newQuantity);
   };
 
   const Quantity = () => {
@@ -246,12 +263,18 @@ const ItemPage = (props) => {
                 {Quantity()}
               </select>
             </div>
-            {/* <div className={styles.dropdown}>
-              <label>옵션</label>
-              <select onChange={(e) => handleOptionChange(e.target.value)}>
-                {Quantity()}
-              </select>
-            </div> */}
+            {options.length > 0 && (
+          <div className={styles.dropdown}>
+            <label>옵션</label>
+            <select onChange={handleOptionChange} value={selectedOption}>
+              {options.map((option, index) => (
+                <option key={index} value={option.name}>
+                  {option.name} (+{option.additionalPrice}원)
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
             <div className={styles.price}>
               <p>{price.toLocaleString()}원</p>
             </div>
