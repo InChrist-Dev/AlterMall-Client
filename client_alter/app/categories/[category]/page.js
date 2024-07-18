@@ -17,7 +17,7 @@ const ItemPage = (props) => {
  
 
   const handleSellerClick = (sellerId) => {
-    if (sellerId === 'youngun133@naver.com'||'janexz') {
+    if (sellerId == 'youngun133@naver.com'|| sellerId == 'janexz') {
       alert('해당 매장은 7/22(월) 정식오픈 예정입니다.');
     }
   };
