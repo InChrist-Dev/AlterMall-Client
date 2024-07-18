@@ -45,9 +45,7 @@ const ItemPage = (props) => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+
 
   const handleReview = async (e) => {
     e.preventDefault();
@@ -193,6 +191,7 @@ const ItemPage = (props) => {
   }, [like]);
 
   const handleSubmit = useCallback(() => {
+    console.log(guest[0].seller_id);
     const cartItem = {
       amount: quantity,
       item_id: props.params.id,
