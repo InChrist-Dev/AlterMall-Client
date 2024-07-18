@@ -80,6 +80,9 @@ const Checkout = (props) => {
           }else if(sellerId =='janexz'){
             sellerFee += 3500;
             setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }else if(sellerId =='youngun133@naver.com'){
+            sellerFee += 4000;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
           }
           hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
         }
