@@ -20,6 +20,7 @@ const ItemPage = (props) => {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(20000); // Assume an initial price
   const [newprice, setNewPrice] = useState(20000); // Assume an initial price
+  
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState('');
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
@@ -38,7 +39,7 @@ const ItemPage = (props) => {
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
   const [currentPrice, setCurrentPrice] = useState(0);
   const [rating, setRating] = useState(0);
-
+ const [unitPrice, setUnitPrice] = useState(0);
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
@@ -158,9 +159,11 @@ const ItemPage = (props) => {
   const updatePrice = (newQuantity, newOption) => {
     const selectedOptionObj = options.find(opt => opt.name === newOption);
     const optionPrice = selectedOptionObj ? selectedOptionObj.additionalPrice : 0;
-    const newPrice = (basePrice + optionPrice) * newQuantity;
-    setCurrentPrice(newPrice);
-    setPrice(newPrice);
+    const newUnitPrice = basePrice + optionPrice;
+    setUnitPrice(newUnitPrice);
+    const newTotalPrice = newUnitPrice * newQuantity;
+    setCurrentPrice(newTotalPrice);
+    setPrice(newTotalPrice);
   };
   const Quantity = () => {
     const result = [];
@@ -194,7 +197,7 @@ const ItemPage = (props) => {
       amount: quantity,
       item_id: props.params.id,
       option: selectedOption,
-      price: currentPrice
+      price: unitPrice  // 단가를 전달
     };
 
     if (accessToken) {
@@ -217,18 +220,18 @@ const ItemPage = (props) => {
     } else {
       const cartData = localStorage.getItem('cart');
       let cartItems = cartData ? JSON.parse(cartData) : [];
-      cartItems.push({ ...cartItem, Item: { ...guest, price: currentPrice } });
+      cartItems.push({ ...cartItem, Item: { ...guest, price: unitPrice } });
       localStorage.setItem('cart', JSON.stringify(cartItems));
       alert('비회원 장바구니에 담겼습니다');
     }
-  }, [quantity, selectedOption, currentPrice, props.params.id, guest]);
+  }, [quantity, selectedOption, unitPrice, props.params.id, guest]);
 
   const handleBuy = () => {
     const orderItem = {
       itemId: props.params.id,
       amount: quantity,
       option: selectedOption,
-      price: currentPrice
+      price: unitPrice  // 단가를 전달
     };
 
     if (accessToken) {
@@ -237,7 +240,7 @@ const ItemPage = (props) => {
     } else {
       const cartData = localStorage.getItem('cart');
       let cartItems = cartData ? JSON.parse(cartData) : [];
-      cartItems.push({ ...orderItem, Item: { ...guest, price: currentPrice } });
+      cartItems.push({ ...orderItem, Item: { ...guest, price: unitPrice } });
       localStorage.setItem('cart', JSON.stringify(cartItems));
       alert('비회원 주문페이지로 이동합니다.');
       window.location.href = `/basket`;
