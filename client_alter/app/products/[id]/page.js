@@ -36,7 +36,7 @@ const ItemPage = (props) => {
   const [option, setOption] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
-
+  const [currentPrice, setCurrentPrice] = useState(0);
   const [rating, setRating] = useState(0);
 
   const openModal = (review) => {
@@ -146,19 +146,22 @@ const ItemPage = (props) => {
 
   const handleQuantityChange = (newQuantity) => {
     setQuantity(newQuantity);
-    setPrice(newQuantity * newprice); // Adjust the price based on your business logic
+    updatePrice(newQuantity, selectedOption);
   };
+
   const handleOptionChange = (e) => {
     const newOption = e.target.value;
     setSelectedOption(newOption);
     updatePrice(quantity, newOption);
   };
+
   const updatePrice = (newQuantity, newOption) => {
     const selectedOptionObj = options.find(opt => opt.name === newOption);
     const optionPrice = selectedOptionObj ? selectedOptionObj.additionalPrice : 0;
-    setPrice((basePrice + optionPrice) * newQuantity);
+    const newPrice = (basePrice + optionPrice) * newQuantity;
+    setCurrentPrice(newPrice);
+    setPrice(newPrice);
   };
-
   const Quantity = () => {
     const result = [];
     for (let i = 1; i <= stock; i++) {
@@ -186,7 +189,14 @@ const ItemPage = (props) => {
     });
   }, [like]);
 
-  const handleSubmit = useCallback((id) => {
+  const handleSubmit = useCallback(() => {
+    const cartItem = {
+      amount: quantity,
+      item_id: props.params.id,
+      option: selectedOption,
+      price: currentPrice
+    };
+
     if (accessToken) {
       fetch(`https://altermall.site/customer/cart/`, {
         method: 'POST',
@@ -195,44 +205,45 @@ const ItemPage = (props) => {
           Authorization: `Bearer ${accessToken}`,
         },
         credentials: 'include',
-        body: JSON.stringify({ amount: quantity, item_id: props.params.id }),
+        body: JSON.stringify(cartItem),
       })
       .then((response) => {
-        if (response.status == 400) {
+        if (response.status === 400) {
           alert('장바구니에 존재하는 메뉴입니다.');
-        } else if (response.status == 201) {
+        } else if (response.status === 201) {
           alert('장바구니에 담겼습니다');
         }
       });
     } else {
       const cartData = localStorage.getItem('cart');
-      let cartItems = [];
-      if (cartData) {
-        cartItems = JSON.parse(cartData);
-      }
-      cartItems.push({ amount: quantity, Item: guest });
+      let cartItems = cartData ? JSON.parse(cartData) : [];
+      cartItems.push({ ...cartItem, Item: { ...guest, price: currentPrice } });
       localStorage.setItem('cart', JSON.stringify(cartItems));
       alert('비회원 장바구니에 담겼습니다');
     }
-  }, [quantity, id]);
+  }, [quantity, selectedOption, currentPrice, props.params.id, guest]);
 
+  const handleBuy = () => {
+    const orderItem = {
+      itemId: props.params.id,
+      amount: quantity,
+      option: selectedOption,
+      price: currentPrice
+    };
 
-
-  const handleBuy = (itemId, amount) => {
     if (accessToken) {
-      window.location.href = `/order/direct?itemId=${itemId}&amount=${amount}`;
+      const queryString = new URLSearchParams(orderItem).toString();
+      window.location.href = `/order/direct?${queryString}`;
     } else {
       const cartData = localStorage.getItem('cart');
-      let cartItems = [];
-      if (cartData) {
-        cartItems = JSON.parse(cartData);
-      }
-      cartItems.push({ amount: quantity, Item: guest });
+      let cartItems = cartData ? JSON.parse(cartData) : [];
+      cartItems.push({ ...orderItem, Item: { ...guest, price: currentPrice } });
       localStorage.setItem('cart', JSON.stringify(cartItems));
       alert('비회원 주문페이지로 이동합니다.');
       window.location.href = `/basket`;
     }
   };
+
 
   return (
     <div>
@@ -254,13 +265,13 @@ const ItemPage = (props) => {
             <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
           </div>
           <div className={styles.productOptions}>
-            <div className={styles.dropdown}>
-              <label>주문수량</label>
-              <select onChange={(e) => handleQuantityChange(e.target.value)}>
-                {Quantity()}
-              </select>
-            </div>
-            {options.length > 0 && (
+        <div className={styles.dropdown}>
+          <label>주문수량</label>
+          <select onChange={(e) => handleQuantityChange(Number(e.target.value))}>
+            {Quantity()}
+          </select>
+        </div>
+        {options.length > 0 && (
           <div className={styles.dropdown}>
             <label>옵션</label>
             <select onChange={handleOptionChange} value={selectedOption}>
