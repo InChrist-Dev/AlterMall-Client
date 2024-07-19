@@ -46,7 +46,7 @@ const ItemPage = (props) => {
 
 
         const data = await response.json();
-
+        console.log(data.data.rows);
         setItems(data.data.rows);
 
         const initialQuantity = data.data.rows.map((item) => item.amount);
