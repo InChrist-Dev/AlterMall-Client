@@ -191,14 +191,19 @@ const ItemPage = (props) => {
   }, [like]);
 
   const handleSubmit = useCallback(() => {
-    // console.log(guest[0].seller_id);
     const cartItem = {
       amount: quantity,
       item_id: props.params.id,
       option: selectedOption,
-      price: unitPrice  // 단가를 전달
+      price: currentPrice / quantity, // 단위 가격
+      Item: {
+        item_name: name,
+        img: img,
+        price: basePrice,
+        options: options
+      }
     };
-
+  
     if (accessToken) {
       fetch(`https://altermall.site/customer/cart/`, {
         method: 'POST',
@@ -211,20 +216,25 @@ const ItemPage = (props) => {
       })
       .then((response) => {
         if (response.status === 400) {
-          alert('장바구니에 존재하는 메뉴입니다.');
+          alert('이미 장바구니에 존재하는 상품입니다.');
         } else if (response.status === 201) {
-          alert('장바구니에 담겼습니다');
+          alert('장바구니에 추가되었습니다.');
+          // 로컬 스토리지에도 저장
+          const cartData = localStorage.getItem('cart');
+          let cartItems = cartData ? JSON.parse(cartData) : [];
+          cartItems.push(cartItem);
+          localStorage.setItem('cart', JSON.stringify(cartItems));
         }
       });
     } else {
+      // 비회원 사용자 처리
       const cartData = localStorage.getItem('cart');
       let cartItems = cartData ? JSON.parse(cartData) : [];
-      cartItems.push({ ...cartItem, Item: { ...guest, price: unitPrice } });
+      cartItems.push(cartItem);
       localStorage.setItem('cart', JSON.stringify(cartItems));
-      alert('비회원 장바구니에 담겼습니다');
+      alert('비회원 장바구니에 추가되었습니다.');
     }
-  }, [quantity, selectedOption, unitPrice, props.params.id, guest]);
-
+  }, [quantity, selectedOption, currentPrice, props.params.id, name, img, basePrice, options, accessToken]);
   const handleBuy = () => {
     const orderItem = {
       itemId: props.params.id,
