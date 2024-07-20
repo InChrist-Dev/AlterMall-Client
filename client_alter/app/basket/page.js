@@ -205,16 +205,17 @@ const ItemPage = (props) => {
   };
 
   const getItemPrice = (item) => {
-    if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
-      return item.Item.price;
-    }
-    const selectedOption = item.Item.options.options[item.options];
-    if(!accessToken){
-      return item.price;
-    }else{
+    if (!accessToken) {
+      // 비회원인 경우
+      return item.price; // 이미 옵션이 반영된 가격
+    } else {
+      // 회원인 경우
+      if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
+        return item.Item.price;
+      }
+      const selectedOption = item.Item.options.options[item.options];
       return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
     }
-   
   };
 
   const getItemName = (item) => {
