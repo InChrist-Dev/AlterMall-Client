@@ -87,7 +87,7 @@ const ItemPage = (props) => {
         "stock": item.amount,//총 주문량
         "price": getItemPrice(item), 
         "item_id": item.Item.item_id,
-        "item_name": item.Item.item_name,
+        "item_name": getItemName(item),
         "img": item.Item.img,
         "delivery": item.Item.delivery,
       };
