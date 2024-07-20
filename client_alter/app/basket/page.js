@@ -208,7 +208,7 @@ const ItemPage = (props) => {
     if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
       return item.Item.price;
     }
-    const selectedOption = item.Item.options.options[item.options - 1];
+    const selectedOption = item.Item.options.options[item.options];
     return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
   };
 
@@ -216,8 +216,8 @@ const ItemPage = (props) => {
     if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
       return item.Item.item_name;
     }
-    const selectedOption = item.Item.options.options[item.options - 1];
-    return item.Item.price + (selectedOption ? selectedOption.name : null);
+    const selectedOption = item.Item.options.options[item.options];
+    return item.Item.item_name + (selectedOption ? selectedOption.name : null);
   };
   
   const calculateTotalPrice = () => {
