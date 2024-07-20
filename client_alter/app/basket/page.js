@@ -211,6 +211,14 @@ const ItemPage = (props) => {
     const selectedOption = item.Item.options.options[item.options - 1];
     return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
   };
+
+  const getItemName = (item) => {
+    if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
+      return item.Item.item_name;
+    }
+    const selectedOption = item.Item.options.options[item.options - 1];
+    return item.Item.price + (selectedOption ? selectedOption.name : null);
+  };
   
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
