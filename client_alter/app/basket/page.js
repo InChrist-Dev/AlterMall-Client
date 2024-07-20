@@ -209,7 +209,12 @@ const ItemPage = (props) => {
       return item.Item.price;
     }
     const selectedOption = item.Item.options.options[item.options];
-    return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
+    if(!accessToken){
+      return item.price;
+    }else{
+      return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
+    }
+   
   };
 
   const getItemName = (item) => {
