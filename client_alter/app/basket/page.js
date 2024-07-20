@@ -85,7 +85,7 @@ const ItemPage = (props) => {
         "order_id": myUuid,
         "seller_id": item.Item.seller_id,
         "stock": item.amount,//총 주문량
-        "price": item.Item.price, //가격
+        "price": getItemPrice(item), 
         "item_id": item.Item.item_id,
         "item_name": item.Item.item_name,
         "img": item.Item.img,
@@ -204,9 +204,17 @@ const ItemPage = (props) => {
     }
   };
 
+  const getItemPrice = (item) => {
+    if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
+      return item.Item.price;
+    }
+    const selectedOption = item.Item.options.options[item.options - 1];
+    return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
+  };
+  
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
-      (total, index) => total + items[index].Item.price * quantity[index],
+      (total, index) => total + getItemPrice(items[index]) * quantity[index],
       0
     );
   };
@@ -320,8 +328,8 @@ const ItemPage = (props) => {
 
                 </td>
                 <td>
-                  <p>{items.Item.price}원</p>
-                </td>
+  <p>{getItemPrice(items)}원</p>
+</td>
                 <td>
                   <button className={styles.deleteButton}
                     onClick={() => { Cancel(items.id, items.Item.item_id) }
