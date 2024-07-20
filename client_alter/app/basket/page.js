@@ -331,7 +331,7 @@ const ItemPage = (props) => {
                     className={styles.productImage}
                   />
 
-                  {items.Item.item_name}
+                  {getItemName(items)}
 
 
                 </td>
