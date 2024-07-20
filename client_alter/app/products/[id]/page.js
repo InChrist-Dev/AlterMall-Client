@@ -151,6 +151,11 @@ const ItemPage = (props) => {
   const handleOptionChange = (e) => {
     const newOption = e.target.value;
     setSelectedOption(newOption);
+    
+    // 선택된 옵션의 인덱스 찾기
+    const selectedIndex = options.findIndex(opt => opt.name === newOption);
+    setOption(selectedIndex);
+    
     updatePrice(quantity, newOption);
   };
 
