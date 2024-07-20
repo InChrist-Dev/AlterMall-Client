@@ -23,7 +23,7 @@ export async function Session() {
 
 export default async function RootLayout({ children }) {
   let session = await getServerSession(authOptions)
-  const isService = true;//점검페이지 옵션
+  const isService = false;//점검페이지 옵션
 
 
 //점검페이지
