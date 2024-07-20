@@ -196,6 +196,7 @@ const ItemPage = (props) => {
       item_id: props.params.id,
       option: currentPrice / quantity, 
       price: currentPrice / quantity, // 단위 가격
+      option_name: selectedOption,
       Item: {
         item_name: name,
         img: img,
