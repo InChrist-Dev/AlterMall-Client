@@ -309,6 +309,8 @@ const Checkout = (props) => {
       return '다품다';
     }else if(sellerId =='janexz'){
       return '희건';
+    }else if(sellerId =='youngun133@naver.com'){
+      return '당가라 과자점';
     }
 
   }
