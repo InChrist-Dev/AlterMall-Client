@@ -1,6 +1,6 @@
 // seller.js
 'use client'
-
+import { useSearchParams } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import styles from './direct.module.css';
 import DeliveryInfoModal from './Modal';
@@ -22,6 +22,9 @@ const Checkout = (props) => {
   const [requestOption, setRequestOption] = useState(''); // 선택한 요청사항
   const [customRequest, setCustomRequest] = useState(''); // 직접 입력한 요청사항
   const [request, setRequest] = useState(''); // 직접 입력한 요청사항
+
+
+  const searchParams = useSearchParams();
   // 라디오 버튼 선택 시 호출되는 함수
   const handleOptionChange = (e) => {
     setRequestOption(e.target.value);
@@ -157,9 +160,19 @@ const Checkout = (props) => {
 
   const fetchData = async () => {
     try {
+      const itemId = searchParams.get('itemId');
+      const amount = searchParams.get('amount');
+      const option = searchParams.get('option');
+      const seller_id = searchParams.get('seller_id');
+      const price = searchParams.get('price');
       const response = await fetch(`https://altermall.site/category/${props.searchParams.itemId}`);
       const data = await response.json();
-
+      setItems({
+        ...data,
+        seller_id,
+        price: parseFloat(price),
+        option,
+      });
       console.log(data);
       setAmounts(props.searchParams.amount)
       setItems(data);
