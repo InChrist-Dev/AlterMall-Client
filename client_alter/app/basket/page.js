@@ -226,7 +226,7 @@ const ItemPage = (props) => {
       return item.Item.item_name;
     }
     const selectedOption = item.Item.options.options[item.options];
-    return item.Item.item_name + '-'+(selectedOption ? selectedOption.name : null);
+    return item.Item.item_name + (selectedOption ? '-'+ selectedOption.name : null);
   };
   
   const calculateTotalPrice = () => {
