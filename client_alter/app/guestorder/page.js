@@ -64,29 +64,37 @@ const Checkout = (props) => {
     }
     setSellerGroups(sellerGroups);
 
-    // Calculate delivery fee for each seller
+    // 각 판매자의 배송비 계산
+    let totalFee = 0;
     Object.keys(sellerGroups).forEach(sellerId => {
-      if (sellerId === 'mkj0719') {
-        sellerGroups[sellerId].delivery = 4500;
-      } else if (sellerId === 'rabe') {
-        sellerGroups[sellerId].delivery = 3500;
-      } else if(sellerId === 'h9101562') {
-        sellerGroups[sellerId].delivery = 4500;
-      } else if(sellerId === 'janexz') {
-        sellerGroups[sellerId].delivery = 3500;
-      } else if(sellerId === 'youngun133@naver.com') {
-        sellerGroups[sellerId].delivery = 4000;
-      }
+      let sellerFee = 0;
+      // 판매자별로 한 번만 배송비 계산
+      let hasCalculatedFee = false;
+      sellerGroups[sellerId].forEach(product => {
+        if (!hasCalculatedFee) {
+          if (sellerId === 'mkj0719') {
+            sellerFee += 4500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+          } else if (sellerId === 'rabe') {
+            sellerFee += 3500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }else if(sellerId =='h9101562'){
+            sellerFee += 4500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }else if(sellerId =='janexz'){
+            sellerFee += 3500;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }else if(sellerId =='youngun133@naver.com'){
+            sellerFee += 4000;
+            setCategory(prevCategory => [sellerId, ...prevCategory]);
+          }
+          hasCalculatedFee = true; // 한 번만 계산되도록 플래그 설정
+        }
+      });
+      totalFee += sellerFee;
     });
-
-    setSellerGroups(sellerGroups);
-
-    // Calculate total shipping fee
-    const totalFee = Object.values(sellerGroups).reduce((total, group) => total + group.delivery, 0);
+    console.log(totalFee)
     setTotalShippingFee(totalFee);
-
-    // Set category (if you still need this)
-    setCategory(Object.keys(sellerGroups));
   }, [items])
  
   useEffect(() => {
