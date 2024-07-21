@@ -106,6 +106,7 @@ const ItemPage = (props) => {
       const orderInfo = {
         order_id: myUuid,
         seller_id: items.seller_id,
+        delivery: selectedOrderItems[0].Item.delivery,
         items: orderItems,
         // 여기에 필요한 다른 주문 정보를 추가합니다.
       };
