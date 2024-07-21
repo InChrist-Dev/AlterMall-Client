@@ -33,14 +33,14 @@ const ItemPage = (props) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [seller, setSeller] = useState('');
   const [options, setOptions] = useState([]);
-  const [basePrice, setBasePrice] = useState(0);
+  const [basePrice, setBasePrice] = useState(1);
   const [likeCount, setLikeCount] = useState(1);
-  const [delivery, setDelivery] = useState(0);
+  const [delivery, setDelivery] = useState(1);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
-  const [currentPrice, setCurrentPrice] = useState(0);
-  const [rating, setRating] = useState(0);
- const [unitPrice, setUnitPrice] = useState(0);
+  const [currentPrice, setCurrentPrice] = useState(1);
+  const [rating, setRating] = useState(1);
+ const [unitPrice, setUnitPrice] = useState(1);
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
