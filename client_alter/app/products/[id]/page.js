@@ -84,6 +84,8 @@ const ItemPage = (props) => {
       setBasePrice(data.price);
       setNewPrice(data.price);
       setPrice(data.price);
+      setCurrentPrice(data.price);  // Set initial current price
+      setUnitPrice(data.price); 
       setName(data.item_name);
       setImg(data.img);
       setStock(data.stock);
