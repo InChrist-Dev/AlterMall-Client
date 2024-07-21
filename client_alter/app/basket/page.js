@@ -219,12 +219,14 @@ const ItemPage = (props) => {
   };
 
   const getItemName = (item) => {
+    if(!accessToken){
+      return item.Item.option_name + '-' +item.option_name;
+    }
     if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
       return item.Item.item_name;
     }
     const selectedOption = item.Item.options.options[item.options];
-    console.log(selectedOption)
-    return item.Item.item_name + (selectedOption ? selectedOption.name : null);
+    return item.Item.item_name + '-'+(selectedOption ? selectedOption.name : null);
   };
   
   const calculateTotalPrice = () => {
