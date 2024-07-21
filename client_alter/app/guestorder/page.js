@@ -48,18 +48,14 @@ const Checkout = (props) => {
     console.log(items)
     if (items.length > 0) {
       items.forEach(product => {
-        console.log(product)
-        console.log(product.seller_id)
         const sellerId = product.seller_id;
         console.log(sellerId)
         if (!sellerGroups[sellerId]) {
-          sellerGroups[sellerId] = {
-            products: [],
-            delivery: 0 // Initialize delivery fee
-          };
+          sellerGroups[sellerId] = [];
         }
-        sellerGroups[sellerId].products.push(product);
-        console.log(sellerGroups[sellerId])
+        sellerGroups[sellerId].push(product);
+        console.log( sellerGroups[sellerId] )
+       
       });
     }
     setSellerGroups(sellerGroups);
