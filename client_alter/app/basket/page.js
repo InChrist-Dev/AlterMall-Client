@@ -13,6 +13,7 @@ const accessToken = Cookies.get('accessToken');
 const ItemPage = (props) => {
 
   const [selectedItems, setSelectedItems] = useState([]);
+  const [seller, setSeller] = useState('');
   const [isStock, setIsStock] = useState(true);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -104,7 +105,7 @@ const ItemPage = (props) => {
       // 비회원인 경우
       const orderInfo = {
         order_id: myUuid,
-        seller_id: items[0].Item.seller_id,
+        seller_id: items.seller_id,
         items: orderItems,
         // 여기에 필요한 다른 주문 정보를 추가합니다.
       };
