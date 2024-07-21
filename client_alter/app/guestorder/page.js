@@ -93,6 +93,7 @@ const Checkout = (props) => {
       });
       totalFee += sellerFee;
     });
+    
     console.log(totalFee)
     setTotalShippingFee(totalFee);
   }, [items])
