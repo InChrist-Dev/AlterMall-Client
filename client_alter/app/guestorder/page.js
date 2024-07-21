@@ -67,6 +67,7 @@ const Checkout = (props) => {
       // 판매자별로 한 번만 배송비 계산
       let hasCalculatedFee = false;
       sellerGroups[sellerId].forEach(product => {
+        console.log(product)
         if (!hasCalculatedFee) {
           if (sellerId === 'mkj0719') {
             sellerFee += 4500;
