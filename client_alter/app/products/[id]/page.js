@@ -205,13 +205,14 @@ const ItemPage = (props) => {
       option: options, 
       price: currentPrice / quantity, // 단위 가격
       option_name: selectedOption,
-      seller_id: seller,
+      
       delivery: delivery,
       Item: {
         item_name: name,
         img: img,
         price: basePrice,
         options: options,
+        seller_id: seller,
       }
     };
   
