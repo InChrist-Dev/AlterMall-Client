@@ -31,6 +31,7 @@ const ItemPage = (props) => {
   const [data, setData] = useState([]);
   const [guest, setGuest] = useState([]);
   const [selectedOption, setSelectedOption] = useState('');
+  const [seller, setSeller] = useState('');
   const [options, setOptions] = useState([]);
   const [basePrice, setBasePrice] = useState(0);
   const [likeCount, setLikeCount] = useState(1);
@@ -90,7 +91,7 @@ const ItemPage = (props) => {
       setData(data.ItemImages[0]);
       setGuest(data);
       setLikeCount(data.likeCount);
-
+      setSeller(data.seller_id)
       if (data.options.options && Array.isArray(data.options.options)) {
         setOptions(data.options.options);
         // Set the first option as default if it exists
@@ -203,7 +204,7 @@ const ItemPage = (props) => {
       option: option, 
       price: currentPrice / quantity, // 단위 가격
       option_name: selectedOption,
-      seller_id: data.seller_id,
+      seller_id: seller,
       Item: {
         item_name: name,
         img: img,
