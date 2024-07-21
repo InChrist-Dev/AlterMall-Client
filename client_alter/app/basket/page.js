@@ -220,7 +220,7 @@ const ItemPage = (props) => {
 
   const getItemName = (item) => {
     if(!accessToken){
-      return item.Item.option_name + '-' +item.option_name;
+      return item.Item.item_name + '-' +item.option_name;
     }
     if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
       return item.Item.item_name;
