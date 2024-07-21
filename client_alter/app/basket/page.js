@@ -80,7 +80,7 @@ const ItemPage = (props) => {
       alert('주문할 상품을 선택해주세요.');
       return;
     }
-
+    console.log(selectedOrderItems)
     const orderItems = selectedOrderItems.map((item) => {
       return {
         "order_id": myUuid,
