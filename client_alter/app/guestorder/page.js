@@ -51,7 +51,10 @@ const Checkout = (props) => {
         const sellerId = product.seller_id;
         console.log(sellerId)
         if (!sellerGroups[sellerId]) {
-          sellerGroups[sellerId] = [];
+          sellerGroups[sellerId] = {
+            products: [],
+            delivery: 0 // Initialize delivery fee
+          };
         }
         sellerGroups[sellerId].push(product);
         console.log( sellerGroups[sellerId] )
