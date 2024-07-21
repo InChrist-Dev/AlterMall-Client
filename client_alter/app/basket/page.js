@@ -223,7 +223,7 @@ const ItemPage = (props) => {
       return item.Item.item_name;
     }
     const selectedOption = item.Item.options.options[item.options];
-    console.log(selectedOptionss)
+    console.log(selectedOption)
     return item.Item.item_name + (selectedOption ? selectedOption.name : null);
   };
   
