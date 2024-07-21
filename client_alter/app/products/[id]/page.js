@@ -33,6 +33,7 @@ const ItemPage = (props) => {
   const [selectedOption, setSelectedOption] = useState('');
   const [seller, setSeller] = useState('');
   const [options, setOptions] = useState([]);
+  const [option, setOption] = useState(0);
   const [basePrice, setBasePrice] = useState(0);
   const [likeCount, setLikeCount] = useState(1);
   const [delivery, setDelivery] = useState(0);
