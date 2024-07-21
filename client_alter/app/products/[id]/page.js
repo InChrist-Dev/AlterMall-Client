@@ -212,7 +212,7 @@ const ItemPage = (props) => {
       Item: {
         item_name: name,
         img: img,
-        price: basePrice,
+        price: unitPrice,
         options: option,
         seller_id: seller,
       }
