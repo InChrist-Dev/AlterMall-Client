@@ -49,6 +49,7 @@ const Checkout = (props) => {
     if (items.length > 0) {
       items.forEach(product => {
         console.log(product)
+        console.log(product.seller_id)
         const sellerId = product.seller_id;
         console.log(sellerId)
         if (!sellerGroups[sellerId]) {
