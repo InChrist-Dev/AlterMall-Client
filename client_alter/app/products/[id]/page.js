@@ -197,7 +197,7 @@ const ItemPage = (props) => {
   }, [like]);
 
   const handleSubmit = useCallback(() => {
-    console.log(data);
+    console.log(seller);
     const cartItem = {
       amount: quantity,
       item_id: props.params.id,
