@@ -35,7 +35,7 @@ const ItemPage = (props) => {
   const [options, setOptions] = useState([]);
   const [basePrice, setBasePrice] = useState(0);
   const [likeCount, setLikeCount] = useState(1);
-  const [option, setOption] = useState(0);
+  const [delivery, setDelivery] = useState(0);
   const [like, setLike] = useState(false);
   const [isSticky, setIsSticky] = useState(false); // sticky 상태를 추적하기 위한 상태 추가
   const [currentPrice, setCurrentPrice] = useState(0);
@@ -90,6 +90,7 @@ const ItemPage = (props) => {
       setId(data.item_id);
       setData(data.ItemImages[0]);
       setGuest(data);
+      setDelivery(data.delivery)
       setLikeCount(data.likeCount);
       setSeller(data.seller_id)
       if (data.options.options && Array.isArray(data.options.options)) {
@@ -205,11 +206,12 @@ const ItemPage = (props) => {
       price: currentPrice / quantity, // 단위 가격
       option_name: selectedOption,
       seller_id: seller,
+      delivery: delivery,
       Item: {
         item_name: name,
         img: img,
         price: basePrice,
-        options: option
+        options: options,
       }
     };
   
