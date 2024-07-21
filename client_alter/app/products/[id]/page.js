@@ -249,6 +249,7 @@ const ItemPage = (props) => {
       itemId: props.params.id,
       amount: quantity,
       option: selectedOption,
+      seller_id: seller,
       price: unitPrice  // 단가를 전달
     };
 
