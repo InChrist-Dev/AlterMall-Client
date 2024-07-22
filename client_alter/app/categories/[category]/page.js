@@ -18,8 +18,8 @@ const ItemPage = (props) => {
 
   const handleSellerClick = (sellerId) => {
     if (sellerId == 'youngun133@naver.com'|| sellerId == 'janexz') {
-      alert('해당 매장은 7/22(월) 정식오픈 예정입니다.');
-      window.location.reload();
+      // alert('해당 매장은 7/22(월) 정식오픈 예정입니다.');
+      // window.location.reload();
     }
   };
 
@@ -81,39 +81,7 @@ const ItemPage = (props) => {
     <div>
       {data.length > 0 && data.map(data => (
         <div key={data.SellerDetail.id} onClick={() => handleSellerClick(data.SellerDetail.id)}>
-          {data.SellerDetail.id !== 'janexz' ||data.SellerDetail.id !== 'youngun133@naver.com'  ? (
-            <Link href={`/categories/${category}/category/${data.SellerDetail.id}`} style={{ textDecoration: "none", color: 'black' }}>
-              <div className={styles.masterContainer}>
-                {/* 기존 컨텐츠 */}
-                <div className={styles.banner}>  
-                  <div className={styles.intro}>
-                    <div className={styles.logoBorder}>
-                      <img src={`https://altermall.site/${data.SellerDetail.logo}`} className={styles.logo} alt={data.User.name} />
-                    </div>
-                    <h1 className={styles.name}>{data.User.name}</h1>
-                  </div>
-                  <div className={styles.plus}>
-                    더보기 
-                    <FontAwesomeIcon className={styles.plusIcon} icon={faPlusCircle} size='1x'/>
-                  </div>
-                </div>
-                <div className={styles.recommendations}>
-                  <p className={styles.slogan}>{data.slogan}</p>
-                  <div className={styles.items}>
-                    <Slider {...settings}>
-                      {data.Items && data.Items.map(item => (
-                        <div key={item.item_id} className={styles.item}>
-                          <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
-                            <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />
-                          </Link>
-                        </div>
-                      ))}
-                    </Slider>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ) : (
+   
             <div className={styles.masterContainer}>
             {/* 기존 컨텐츠 */}
             <div className={styles.banner}>  
@@ -143,7 +111,6 @@ const ItemPage = (props) => {
               </div>
             </div>
           </div>
-          )}
         </div>
       ))}
     </div>
