@@ -11,7 +11,8 @@ const ImageSlider = () => {
   const sliderRef = useRef(null);
 
   const smallImages = [
-
+    { src: "/04.png", alt: "이미지0" },
+    { src: "/05.png", alt: "이미지0" },
     { src: "/zero.png", alt: "이미지0" },
     { src: "/popup.png", alt: "이미지1" },
   ];
