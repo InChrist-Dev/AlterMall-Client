@@ -255,7 +255,8 @@ const ItemPage = (props) => {
       amount: quantity,
       option: selectedOption,
       seller_id: seller,
-      price: unitPrice  // 단가를 전달
+      price: unitPrice,  // 단가를 전달
+      option_name: selectedOption,
     };
 
     if (accessToken) {
