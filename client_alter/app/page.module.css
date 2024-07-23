@@ -1,19 +1,4 @@
 /* page.module.css */
-.sliderImageWrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.sliderLink {
-  display: block;
-  text-decoration: none; /* 링크 아래 밑줄 제거 */
-}
-
-.sliderImage {
-  display: block;
-  width: 100%; /* 이미지 크기를 부모 요소에 맞춤 */
-  height: auto;
-}
 
 @media screen and (min-width: 451px) {
   .container {
