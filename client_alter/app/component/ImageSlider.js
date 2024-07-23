@@ -11,10 +11,10 @@ const ImageSlider = () => {
   const sliderRef = useRef(null);
 
   const smallImages = [
-    { src: "/04.png", alt: "이미지0" },
-    { src: "/05.png", alt: "이미지0" },
-    { src: "/zero.png", alt: "이미지0" },
-    { src: "/popup.png", alt: "이미지1" },
+    { link:'/categories/dessert/category/youngun133@naver.com',src: "/04.png", alt: "이미지0" },
+    { link:'/categories/dessert/category/janexz',src: "/05.png", alt: "이미지0" },
+    {  link:'/categories/dessert/category/rabe',src: "/zero.png", alt: "이미지0" },
+    { link:'https://www.instagram.com/bs_hospital/', src: "/popup.png", alt: "이미지1" },
   ];
 
   const largeImages = [
@@ -90,7 +90,8 @@ const ImageSlider = () => {
         onTouchEnd={handleTouchEnd}
       >
         {images.map((image, index) => (
-          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
+          <a href={image.link}>
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} /></a>
         ))}
       </div>
       <div className={styles.dots}>
