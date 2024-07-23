@@ -91,8 +91,8 @@ const ImageSlider = () => {
         onTouchEnd={handleTouchEnd}
       >
         {images.map((image, index) => (
-          <a href={image.link}>
-          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} /></a>
+      
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
         ))}
       </div>
       <div className={styles.dots}>
