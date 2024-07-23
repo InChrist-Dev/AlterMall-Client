@@ -59,7 +59,9 @@ const ImageSlider = () => {
   const handleTouchEnd = () => {
     handleSwipe();
   };
-
+  const handleLink = (link) => {
+    window.location.href= link;
+  };
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
@@ -92,7 +94,7 @@ const ImageSlider = () => {
       >
         {images.map((image, index) => (
       
-          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} onClick={()=>handleLink(image.link)} />
         ))}
       </div>
       <div className={styles.dots}>
