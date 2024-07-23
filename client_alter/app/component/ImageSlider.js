@@ -18,7 +18,8 @@ const ImageSlider = () => {
   ];
 
   const largeImages = [
- 
+    { src: "/4.png", alt: "이미지0" },
+    { src: "/5.png", alt: "이미지0" },
     { src: "/001.png", alt: "이미지3" },
     { src: "/002.png", alt: "이미지4" },
   ];
