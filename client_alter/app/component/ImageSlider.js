@@ -95,7 +95,14 @@ const ImageSlider = () => {
       >
         {images.map((image, index) => (
       
-          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} onClick={()=>handleLink(image.link)} />
+
+      <div
+            key={index}
+            className={styles.sliderImageContainer}
+            onClick={() => handleLink(image.link)}
+          >
+            <img src={image.src} alt={image.alt} className={styles.sliderImage} />
+          </div>
         ))}
       </div>
       <div className={styles.dots}>
