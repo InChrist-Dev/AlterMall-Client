@@ -61,6 +61,7 @@ const ImageSlider = () => {
   };
   const handleLink = (link) => {
     window.location.href= link;
+    console.log(link);
   };
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
