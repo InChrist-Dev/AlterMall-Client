@@ -11,15 +11,14 @@ const ImageSlider = () => {
   const sliderRef = useRef(null);
 
   const smallImages = [
-    { link:'/categories/dessert/category/youngun133@naver.com',src: "/04.png", alt: "이미지0" },
-    { link:'/categories/dessert/category/janexz',src: "/05.png", alt: "이미지0" },
-    {  link:'/categories/dessert/category/rabe',src: "/zero.png", alt: "이미지0" },
-    { link:'https://www.instagram.com/bs_hospital/', src: "/popup.png", alt: "이미지1" },
+    { src: "/04.png", alt: "이미지0" },
+    { src: "/05.png", alt: "이미지0" },
+    { src: "/zero.png", alt: "이미지0" },
+    { src: "/popup.png", alt: "이미지1" },
   ];
 
   const largeImages = [
-    { src: "/4.png", alt: "이미지0" },
-    { src: "/5.png", alt: "이미지0" },
+ 
     { src: "/001.png", alt: "이미지3" },
     { src: "/002.png", alt: "이미지4" },
   ];
@@ -59,10 +58,7 @@ const ImageSlider = () => {
   const handleTouchEnd = () => {
     handleSwipe();
   };
-  const handleLink = (link) => {
-    window.location.href= link;
-    console.log(link);
-  };
+
   const handlePrev = () => {
     setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
@@ -74,11 +70,7 @@ const ImageSlider = () => {
   const handleDotClick = (index) => {
     setCurrentIndex(index);
   };
-  const handleImageClick = (link) => {
-    if (link) {
-      window.location.href = link;
-    }
-  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -93,14 +85,12 @@ const ImageSlider = () => {
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
-      
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {images.map((image, index) => (
-      
-
-      <img src={image.src} alt={image.alt} className={styles.sliderImage}   onClick={() => handleImageClick(image.link)}
-      style={{ cursor: image.link ? 'pointer' : 'default' }}/>
-
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
         ))}
       </div>
       <div className={styles.dots}>
