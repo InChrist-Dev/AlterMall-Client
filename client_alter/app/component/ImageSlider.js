@@ -74,7 +74,11 @@ const ImageSlider = () => {
   const handleDotClick = (index) => {
     setCurrentIndex(index);
   };
-
+  const handleImageClick = (link) => {
+    if (link) {
+      window.location.href = link;
+    }
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
@@ -96,7 +100,8 @@ const ImageSlider = () => {
         {images.map((image, index) => (
       
 
-      <img src={image.src} alt={image.alt} className={styles.sliderImage} />
+      <img src={image.src} alt={image.alt} className={styles.sliderImage}   onClick={() => handleImageClick(image.link)}
+      style={{ cursor: image.link ? 'pointer' : 'default' }}/>
 
         ))}
       </div>
