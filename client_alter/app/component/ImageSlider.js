@@ -93,9 +93,7 @@ const ImageSlider = () => {
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+      
       >
         {images.map((image, index) => (
       
