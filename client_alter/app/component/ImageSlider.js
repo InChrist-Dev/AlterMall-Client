@@ -1,14 +1,13 @@
-// components/ImageSlider.js
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '.././page.module.css';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const sliderRef = useRef(null);
+  const startXRef = useRef(null);
+  const swipeThreshold = 50; // 스와이프 감도 조절 (낮을수록 민감)
 
   const smallImages = [
     { src: "/04.png", alt: "이미지0" },
@@ -18,7 +17,6 @@ const ImageSlider = () => {
   ];
 
   const largeImages = [
- 
     { src: "/001.png", alt: "이미지3" },
     { src: "/002.png", alt: "이미지4" },
   ];
@@ -26,10 +24,10 @@ const ImageSlider = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 768);
-      setCurrentIndex(0); // Reset to first image when screen size changes
+      setCurrentIndex(0);
     };
 
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -37,26 +35,29 @@ const ImageSlider = () => {
 
   const images = isSmallScreen ? smallImages : largeImages;
 
-  const handleSwipe = () => {
-    if (touchStart - touchEnd > 75) {
-      handleNext();
+  const handlePointerDown = (e) => {
+    startXRef.current = e.clientX;
+  };
+
+  const handlePointerUp = (e) => {
+    if (startXRef.current === null) return;
+    
+    const endX = e.clientX;
+    const diffX = startXRef.current - endX;
+
+    if (Math.abs(diffX) > swipeThreshold) {
+      if (diffX > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
     }
 
-    if (touchStart - touchEnd < -75) {
-      handlePrev();
-    }
+    startXRef.current = null;
   };
 
-  const handleTouchStart = (e) => {
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchMove = (e) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleTouchEnd = () => {
-    handleSwipe();
+  const handlePointerLeave = () => {
+    startXRef.current = null;
   };
 
   const handlePrev = () => {
@@ -76,7 +77,7 @@ const ImageSlider = () => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [images.length]); // Add images.length as a dependency
+  }, [images.length]);
 
   return (
     <div className={styles.slider} ref={sliderRef}>
@@ -85,9 +86,9 @@ const ImageSlider = () => {
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerLeave}
       >
         {images.map((image, index) => (
           <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
