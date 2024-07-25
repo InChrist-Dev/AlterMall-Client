@@ -1,5 +1,9 @@
 /* products.module.css */
-
+.sliderLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 .reviewFormContainer {
   background-color: #ffffff;
   border-radius: 8px;
