@@ -1,22 +1,25 @@
+// components/ImageSlider.js
 'use client'
 import React, { useState, useEffect, useRef } from 'react';
 import styles from '.././page.module.css';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const sliderRef = useRef(null);
-  const startXRef = useRef(null);
-  const swipeThreshold = 50; // 스와이프 감도 조절 (낮을수록 민감)
 
   const smallImages = [
-    { src: "/04.png", alt: "이미지0" },
+    { link:'https://altermall.shop/categories/dessert',src: "/04.png", alt: "이미지0" },
     { src: "/05.png", alt: "이미지0" },
     { src: "/zero.png", alt: "이미지0" },
     { src: "/popup.png", alt: "이미지1" },
   ];
 
   const largeImages = [
+    { src: "/4.png", alt: "이미지0" },
+    { src: "/5.png", alt: "이미지0" },
     { src: "/001.png", alt: "이미지3" },
     { src: "/002.png", alt: "이미지4" },
   ];
@@ -24,10 +27,10 @@ const ImageSlider = () => {
   useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth <= 768);
-      setCurrentIndex(0);
+      setCurrentIndex(0); // Reset to first image when screen size changes
     };
 
-    handleResize();
+    handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -35,29 +38,26 @@ const ImageSlider = () => {
 
   const images = isSmallScreen ? smallImages : largeImages;
 
-  const handlePointerDown = (e) => {
-    startXRef.current = e.clientX;
-  };
-
-  const handlePointerUp = (e) => {
-    if (startXRef.current === null) return;
-    
-    const endX = e.clientX;
-    const diffX = startXRef.current - endX;
-
-    if (Math.abs(diffX) > swipeThreshold) {
-      if (diffX > 0) {
-        handleNext();
-      } else {
-        handlePrev();
-      }
+  const handleSwipe = () => {
+    if (touchStart - touchEnd > 75) {
+      handleNext();
     }
 
-    startXRef.current = null;
+    if (touchStart - touchEnd < -75) {
+      handlePrev();
+    }
   };
 
-  const handlePointerLeave = () => {
-    startXRef.current = null;
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    handleSwipe();
   };
 
   const handlePrev = () => {
@@ -69,7 +69,7 @@ const ImageSlider = () => {
   };
 
   const handleDotClick = (index) => {
-    setCurrentIndex(index);
+    window.location.href = index;
   };
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const ImageSlider = () => {
       handleNext();
     }, 5000);
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length]); // Add images.length as a dependency
 
   return (
     <div className={styles.slider} ref={sliderRef}>
@@ -86,12 +86,10 @@ const ImageSlider = () => {
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onPointerLeave={handlePointerLeave}
+     
       >
         {images.map((image, index) => (
-          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} />
+          <img key={index} src={image.src} alt={image.alt} className={styles.sliderImage} onClick={()=>handleDotClick(image.link)}/>
         ))}
       </div>
       <div className={styles.dots}>
