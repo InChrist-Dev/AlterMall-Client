@@ -358,7 +358,7 @@
   .sliderImage {
     width: 100%;
     height: auto;
-    
+    pointer-events: auto; /* 수정: 클릭 이벤트가 작동하도록 설정 */
   
     margin: 0 auto;
     flex: 0 0 auto;
@@ -488,6 +488,7 @@
     bottom: 10px;
     right: 10px;
     display: flex;
+    pointer-events: auto; /* 수정: 클릭 이벤트가 작동하도록 설정 */
   }
 }
 /* page.module.css */
