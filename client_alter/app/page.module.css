@@ -98,7 +98,7 @@
     transition: transform 0.5s;
     width: 100%;
     margin-bottom: 40px;
-    z-index: 100;
+    z-index: 1000;
   }
   
   .sliderImage {
@@ -352,7 +352,7 @@
     height: 100%;
     margin-bottom: 40px;
     border-radius: 10px;
-    z-index: 100;
+    z-index: 1000;
   }
 
   .sliderImage {
@@ -501,7 +501,7 @@
 .imageSlider {
   display: flex;
   transition: transform 0.3s ease-in-out;
-  z-index: 100;
+  z-index: 1000;
 }
 
 .sliderImage {
