@@ -196,3 +196,40 @@
   
   
 }
+.itemContainer {
+  position: relative;
+  overflow: hidden;
+}
+
+.itemImage {
+  transition: transform 0.3s ease;
+}
+
+.itemOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.itemName {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.itemContainer:hover .itemOverlay {
+  opacity: 1;
+}
+
+.itemContainer:hover .itemImage {
+  transform: scale(1.05);
+}

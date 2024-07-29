@@ -99,14 +99,19 @@ const ItemPage = (props) => {
         <p className={styles.slogan}>{data.slogan}</p>
         <div className={styles.items}>
         <Slider {...settings}>
-                  {data.Items && data.Items.map(item => (
-                    <div key={item.item_id} className={styles.item}>
-                      <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
-                        <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />
-                      </Link>
-                    </div>
-                  ))}
-                </Slider>
+  {data.Items && data.Items.map(item => (
+    <div key={item.item_id} className={styles.item}>
+      <Link href={`/products/${item.item_id}`} style={{ textDecoration: "none" }}>
+        <div className={styles.itemContainer}>
+          <img src={`https://altermall.site/${item.img}`} alt={item.item_name} className={styles.itemImage} />
+          <div className={styles.itemOverlay}>
+            <span className={styles.itemName}>{item.item_name}</span>
+          </div>
+        </div>
+      </Link>
+    </div>
+  ))}
+</Slider>
         </div>
       </div>
       
