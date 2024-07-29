@@ -293,13 +293,7 @@ const ItemPage = (props) => {
             <p><span>제작일</span> 일요일 15시 ~ 금요일 15시(공휴일 제외)</p>
           </div>
           <div className={styles.productOptions}>
-        <div className={styles.dropdown}>
-          <label>주문수량</label>
-          <select onChange={(e) => handleQuantityChange(Number(e.target.value))}>
-            {Quantity()}
-          </select>
-        </div>
-        {options.length > 0 && (
+          {options.length > 0 && (
           <div className={styles.dropdown}>
             <label>옵션</label>
             <select onChange={handleOptionChange} value={selectedOption}>
@@ -311,6 +305,13 @@ const ItemPage = (props) => {
             </select>
           </div>
         )}
+        <div className={styles.dropdown}>
+          <label>주문수량</label>
+          <select onChange={(e) => handleQuantityChange(Number(e.target.value))}>
+            {Quantity()}
+          </select>
+        </div>
+     
             <div className={styles.price}>
               <p>{price.toLocaleString()}원</p>
             </div>
