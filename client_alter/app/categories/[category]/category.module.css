@@ -8,7 +8,13 @@
     border-radius: 20px; /* 더 둥근 테두리 */
     background-color: #ffffff; /* 배경색 추가 */
   }
-  
+  .itemName {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+  }
   .banner{
     height: 90px;
     justify-content: space-between;
@@ -108,7 +114,13 @@
     background-color: #ffffff; /* 배경색 추가 */
 
   }
-  
+  .itemName {
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+  }
   .banner{
     height: 50px;
     justify-content: space-between;
@@ -219,17 +231,8 @@
   transition: opacity 0.3s ease;
 }
 
-.itemName {
-  color: white;
-  padding: 10px;
-  text-align: center;
-  font-weight: bold;
-}
+
 
 .itemContainer:hover .itemOverlay {
   opacity: 1;
-}
-
-.itemContainer:hover .itemImage {
-  transform: scale(1.05);
 }
