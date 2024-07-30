@@ -157,14 +157,14 @@ const ItemPage = (props) => {
     setSelectedOption(newOption);
     
     // 선택된 옵션의 인덱스 찾기
-    const selectedIndex = options.findIndex(opt => opt.name === newOption);
+    const selectedIndex = options?options.findIndex(opt => opt.name === newOption):null;
     setOption(selectedIndex);
     
     updatePrice(quantity, newOption);
   };
 
   const updatePrice = (newQuantity, newOption) => {
-    const selectedOptionObj = options.find(opt => opt.name === newOption);
+    const selectedOptionObj = options?options.find(opt => opt.name === newOption):null;
     const optionPrice = selectedOptionObj ? selectedOptionObj.additionalPrice : 0;
     const newUnitPrice = basePrice + optionPrice;
     setUnitPrice(newUnitPrice);
