@@ -95,14 +95,6 @@ const ItemPage = (props) => {
       setDelivery(data.delivery)
       setLikeCount(data.likeCount);
       setSeller(data.seller_id)
-      if (data.options.options && Array.isArray(data.options.options)) {
-        setOptions(data.options.options);
-        // Set the first option as default if it exists
-        if (data.options.options.length > 0) {
-          setSelectedOption(data.options.options[0].name);
-          setPrice(data.price + data.options.options[0].additionalPrice);
-        }
-      }
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
       const data2 = await response2.json();
       setReview(data2.data.rows);
@@ -119,6 +111,15 @@ const ItemPage = (props) => {
           setLike(true);
         }
       });
+      if (data.options.options && Array.isArray(data.options.options)) {
+        setOptions(data.options.options);
+        // Set the first option as default if it exists
+        if (data.options.options.length > 0) {
+          setSelectedOption(data.options.options[0].name);
+          setPrice(data.price + data.options.options[0].additionalPrice);
+        }
+      }
+  
 
     } catch (error) {
       console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
