@@ -5,6 +5,7 @@ import styles from './products.module.css';
 const ReviewImagePreview = ({ reviews }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const reviewsWithImages = reviews.filter(review => review.img);
+  console.log(reviews)
   const [selectedImage, setSelectedImage] = useState(null);
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => 

@@ -106,7 +106,7 @@ const ItemPage = (props) => {
       const response2 = await fetch(`https://altermall.site/review/${props.params.id}`);
       const data2 = await response2.json();
       setReview(data2.data.rows);
-
+      console.log(data2.data.rows)
       const like = await fetch(`https://altermall.site/like/${props.params.id}`, {
         headers: {
           "content-type": "application/json",
