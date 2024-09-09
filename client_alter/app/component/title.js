@@ -21,6 +21,7 @@ const Title = () => {
         <meta property="og:description" content="맛있는 대체식품을 판매하는 쇼핑몰 얼터몰입니다"/>
         <meta property="og:image" content="https://altermall.shop/alterMallicon.jpg"/>
         <meta property="og:url" content="https://altermall.shop"></meta>
+        <meta name="naver-site-verification" content="da3b53e14791bed2a92d3ea0f5265548f10796d7" />
       </head>
     )
 }
