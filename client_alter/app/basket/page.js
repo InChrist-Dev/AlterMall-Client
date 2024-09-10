@@ -1,19 +1,17 @@
 // ItemPage.jsx
-'use client'
-import React, { useEffect, useState, useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './basket.module.css'; // Import the CSS module
-import { v4 as uuidv4 } from 'uuid';
-import Cookies from 'js-cookie';
+"use client";
+import React, { useEffect, useState, useCallback } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./basket.module.css"; // Import the CSS module
+import { v4 as uuidv4 } from "uuid";
+import Cookies from "js-cookie";
 
 // 쿠키에서 토큰을 가져오기
-const accessToken = Cookies.get('accessToken');
-
+const accessToken = Cookies.get("accessToken");
 
 const ItemPage = (props) => {
-
   const [selectedItems, setSelectedItems] = useState([]);
-  const [seller, setSeller] = useState('');
+  const [seller, setSeller] = useState("");
   const [isStock, setIsStock] = useState(true);
   const [quantity, setQuantity] = useState([]);
   const [items, setItems] = useState([]);
@@ -21,12 +19,11 @@ const ItemPage = (props) => {
 
   const fetchData = async () => {
     try {
-
       if (!accessToken) {
-        const cartString = localStorage.getItem('cart'); // 로컬 스토리지에서 데이터 가져오기
-        if(!cartString){
-          alert('비회원은 제품을 담은 후 장바구니를 이용하실 수 있습니다.');
-          window.location.href='/';
+        const cartString = localStorage.getItem("cart"); // 로컬 스토리지에서 데이터 가져오기
+        if (!cartString) {
+          alert("비회원은 제품을 담은 후 장바구니를 이용하실 수 있습니다.");
+          window.location.href = "/";
         }
         const cartJson = JSON.parse(cartString); // JSON으로 변환
 
@@ -41,10 +38,9 @@ const ItemPage = (props) => {
         const response = await fetch(`https://altermall.site/customer/cart/`, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          }
+            "Content-Type": "application/json",
+          },
         });
-
 
         const data = await response.json();
         console.log(data.data.rows);
@@ -55,15 +51,8 @@ const ItemPage = (props) => {
         setQuantity(initialQuantity);
         setSelectedItems([...Array(data.data.rows.length).keys()]);
       }
-
-
-      // 데이터를 성공적으로 가져왔을 때 처리 로직을 추가합니다.
-
-      // 데이터를 state로 업데이트하는 로직을 추가합니다.
-      // 예를 들어, setCategoryName(data.data.items.map(item => item.item_name));
-      // 필요한 모든 state를 업데이트해야 합니다.
     } catch (error) {
-      console.error('데이터를 불러오는 중 오류가 발생했습니다:', error);
+      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
   };
 
@@ -73,24 +62,26 @@ const ItemPage = (props) => {
   }, []);
 
   const handleSubmit = async () => {
-    const selectedOrderItems = items.filter((item, index) => selectedItems.includes(index));
+    const selectedOrderItems = items.filter((item, index) =>
+      selectedItems.includes(index)
+    );
 
     // 선택된 상품이 없으면 아무 동작도 하지 않습니다.
     if (selectedOrderItems.length === 0) {
-      alert('주문할 상품을 선택해주세요.');
+      alert("주문할 상품을 선택해주세요.");
       return;
     }
-    console.log(selectedOrderItems)
+    console.log(selectedOrderItems);
     const orderItems = selectedOrderItems.map((item) => {
       return {
-        "order_id": myUuid,
-        "seller_id": item.Item.seller_id,
-        "stock": item.amount,//총 주문량
-        "price": getItemPrice(item), 
-        "item_id": item.Item.item_id,
-        "item_name": getItemName(item),
-        "img": item.Item.img,
-        "delivery": item.Item.delivery,
+        order_id: myUuid,
+        seller_id: item.Item.seller_id,
+        stock: item.amount, //총 주문량
+        price: getItemPrice(item),
+        item_id: item.Item.item_id,
+        item_name: getItemName(item),
+        img: item.Item.img,
+        delivery: item.Item.delivery,
       };
     });
     for (let i = 0; i < orderItems.length; i++) {
@@ -101,7 +92,6 @@ const ItemPage = (props) => {
       }
     }
     if (!accessToken) {
-
       // 비회원인 경우
       const orderInfo = {
         order_id: myUuid,
@@ -112,82 +102,77 @@ const ItemPage = (props) => {
       };
 
       // 로컬 스토리지에 주문 정보 저장
-      localStorage.setItem('order', JSON.stringify(orderInfo));
+      localStorage.setItem("order", JSON.stringify(orderInfo));
 
       // 비회원 주문 처리를 위한 fetch 요청
-      await fetch('https://altermall.site/auth/guest/signin', {
-        method: 'post',
+      await fetch("https://altermall.site/auth/guest/signin", {
+        method: "post",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ "order_id": myUuid, "name": "guest" }),
+        body: JSON.stringify({ order_id: myUuid, name: "guest" }),
       })
         .then(async (response) => {
           if (response.ok) {
             // 주문 정보를 서버에 성공적으로 전송한 경우
             const data = await response.json();
             console.log(data.accessToken);
-            Cookies.set('accessToken', data.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-            Cookies.set('position', data.position, { expires: 1 });  // 1일 동안 유지되도록 설정
-            window.location.href = "https://altermall.shop/guestorder"
+            Cookies.set("accessToken", data.accessToken, { expires: 1 }); // 1일 동안 유지되도록 설정
+            Cookies.set("position", data.position, { expires: 1 }); // 1일 동안 유지되도록 설정
+            window.location.href = "https://altermall.shop/guestorder";
           } else {
             // 주문 실패한 경우
-            alert('주문 실패하였습니다');
+            alert("주문 실패하였습니다");
           }
         })
         .catch((error) => {
-          console.error('주문 요청 중 오류 발생:', error);
+          console.error("주문 요청 중 오류 발생:", error);
         });
     } else {
-
       if (isStock == true) {
-        await fetch('https://altermall.site/customer/order', {
-          method: 'post',
+        await fetch("https://altermall.site/customer/order", {
+          method: "post",
           headers: {
             Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            'order_id': myUuid,
-            'seller_id': items[0].Item.seller_id,
+            order_id: myUuid,
+            seller_id: items[0].Item.seller_id,
           }),
         }).then(async (response) => {
           const data = await response.json();
           console.log(data);
           if (response.status == 405) {
-            alert('주문 실패하였습니다');
+            alert("주문 실패하였습니다");
           } else if (response.status == 201) {
-            await fetch('https://altermall.site/customer/orderdetail', {
-              method: 'post',
+            await fetch("https://altermall.site/customer/orderdetail", {
+              method: "post",
               headers: {
                 Authorization: `Bearer ${accessToken}`,
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
               },
               body: JSON.stringify({
                 items: orderItems,
               }),
             }).then(async (response) => {
               if (response.status == 405) {
-                alert('주문 실패하였습니다');
+                alert("주문 실패하였습니다");
               } else if (response.status == 201) {
-                window.location.href = '/order';
+                window.location.href = "/order";
 
                 const data = await response.json();
-                console.log(data)
+                console.log(data);
               }
-            })
+            });
             console.log(response);
             const data = await response.json();
-            console.log(data)
+            console.log(data);
           }
-        })
+        });
       }
     }
-
-
-
-
-  }
+  };
   const toggleItemSelection = (index) => {
     const newSelectedItems = [...selectedItems];
     if (newSelectedItems.includes(index)) {
@@ -212,25 +197,37 @@ const ItemPage = (props) => {
       return item.price; // 이미 옵션이 반영된 가격
     } else {
       // 회원인 경우
-      if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
+      if (
+        item.options === 0 ||
+        !item.Item.options ||
+        !item.Item.options.options
+      ) {
         return item.Item.price;
       }
       const selectedOption = item.Item.options.options[item.options];
-      return item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0);
+      return (
+        item.Item.price + (selectedOption ? selectedOption.additionalPrice : 0)
+      );
     }
   };
 
   const getItemName = (item) => {
-    if(!accessToken){
-      return item.Item.item_name + '-' +item.option_name;
+    if (!accessToken) {
+      return item.Item.item_name + "-" + item.option_name;
     }
-    if (item.options === 0 || !item.Item.options || !item.Item.options.options) {
+    if (
+      item.options === 0 ||
+      !item.Item.options ||
+      !item.Item.options.options
+    ) {
       return item.Item.item_name;
     }
     const selectedOption = item.Item.options.options[item.options];
-    return item.Item.item_name + (selectedOption ? '-'+ selectedOption.name : null);
+    return (
+      item.Item.item_name + (selectedOption ? "-" + selectedOption.name : null)
+    );
   };
-  
+
   const calculateTotalPrice = () => {
     return selectedItems.reduce(
       (total, index) => total + getItemPrice(items[index]) * quantity[index],
@@ -239,7 +236,6 @@ const ItemPage = (props) => {
   };
 
   const handleQuantityChange = (index, newAmount) => {
-
     if (newAmount >= 1) {
       const newQuantity = { ...quantity };
       newQuantity[index] = newAmount;
@@ -259,51 +255,45 @@ const ItemPage = (props) => {
     }
   };
 
-  const Cancel = useCallback(
-    (id, item_id) => {
-      if (accessToken) {
-        fetch(`https://altermall.site/customer/cart/${id}`, {
-          method: 'DELETE',
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            'Content-Type': 'application/json',
-          },
-
+  const Cancel = useCallback((id, item_id) => {
+    if (accessToken) {
+      fetch(`https://altermall.site/customer/cart/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.status == 405) {
+            alert("삭제 실패하였습니다");
+          } else if (response.status == 201) {
+            alert("삭제되었습니다");
+            fetchData();
+          }
         })
-          .then((response) => {
-            if (response.status == 405) {
-              alert('삭제 실패하였습니다');
-            } else if (response.status == 201) {
-              alert('삭제되었습니다');
-              fetchData();
-            }
-
-
-          })
-          .finally(() => {
-            // window.location.reload();
-          });
+        .finally(() => {
+          // window.location.reload();
+        });
+    } else {
+      // 비회원인 경우
+      const cartData = localStorage.getItem("cart");
+      if (cartData) {
+        let updatedCart = JSON.parse(cartData);
+        console.log(updatedCart);
+        updatedCart = updatedCart.filter(
+          (item) => item.Item.item_id != item_id
+        );
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        fetchData(); // 장바구니 다시 불러오기
+        alert("삭제되었습니다");
       } else {
-        // 비회원인 경우
-        const cartData = localStorage.getItem('cart');
-        if (cartData) {
-          let updatedCart = JSON.parse(cartData);
-          console.log(updatedCart)
-          updatedCart = updatedCart.filter((item) => item.Item.item_id != item_id);
-          localStorage.setItem('cart', JSON.stringify(updatedCart));
-          fetchData(); // 장바구니 다시 불러오기
-          alert('삭제되었습니다');
-        } else {
-          alert('삭제 실패하였습니다');
-        }
+        alert("삭제 실패하였습니다");
       }
-
-
-    },
-    [],
-  );
+    }
+  }, []);
   return (
-    <div style={{ 'marginBottom': '100px' }}>
+    <div style={{ marginBottom: "100px" }}>
       <h1 className={styles.title}>장바구니</h1>
       <div className={styles.basketContainer}>
         <table className={styles.productTable}>
@@ -315,7 +305,6 @@ const ItemPage = (props) => {
                   className={styles.checkbox}
                   onChange={toggleAllItemsSelection}
                 />
-
               </th>
               <th>상품</th>
               <th>가격</th>
@@ -334,8 +323,7 @@ const ItemPage = (props) => {
                     onChange={() => toggleItemSelection(index)}
                   />
                 </td>
-                <td className={styles.nameContainer} >
-
+                <td className={styles.nameContainer}>
                   <img
                     src={`https://altermall.site/${items.Item.img}`}
                     alt={items.Item.item_name}
@@ -343,17 +331,18 @@ const ItemPage = (props) => {
                   />
 
                   {getItemName(items)}
-
-
                 </td>
                 <td>
-  <p>{getItemPrice(items)}원</p>
-</td>
+                  <p>{getItemPrice(items)}원</p>
+                </td>
                 <td>
-                  <button className={styles.deleteButton}
-                    onClick={() => { Cancel(items.id, items.Item.item_id) }
-                    }
-                  >X
+                  <button
+                    className={styles.deleteButton}
+                    onClick={() => {
+                      Cancel(items.id, items.Item.item_id);
+                    }}
+                  >
+                    X
                   </button>
                 </td>
                 <td>
@@ -362,14 +351,16 @@ const ItemPage = (props) => {
                       onClick={() =>
                         handleQuantityChange(index, items.amount - 1)
                       }
-                    >-
+                    >
+                      -
                     </button>
                     <span>{items.amount}</span>
                     <button
                       onClick={() =>
                         handleQuantityChange(index, items.amount + 1)
                       }
-                    >+
+                    >
+                      +
                     </button>
                   </div>
                 </td>
@@ -377,19 +368,29 @@ const ItemPage = (props) => {
             ))}
           </tbody>
         </table>
-
       </div>
-      <div className={styles.info}>
-        ※배송비는 가게별로 책정됩니다
-      </div>
+      <div className={styles.info}>※배송비는 가게별로 책정됩니다</div>
       <div className={styles.totalPrice}>
         총 가격: {calculateTotalPrice()}원
       </div>
       <div className={styles.Buttons}>
-        <button className={styles.addToCartButton} onClick={() => { location.href = '/' }}>쇼핑 계속하기</button>
-        <button className={styles.BuyButton} onClick={() => { handleSubmit() }}>바로구매</button>
+        <button
+          className={styles.addToCartButton}
+          onClick={() => {
+            location.href = "/";
+          }}
+        >
+          쇼핑 계속하기
+        </button>
+        <button
+          className={styles.BuyButton}
+          onClick={() => {
+            handleSubmit();
+          }}
+        >
+          바로구매
+        </button>
       </div>
-
     </div>
   );
 };
