@@ -1,148 +1,181 @@
-'use client'
-import { useState } from 'react';
-import styles from './login_selller.module.css';
-import Cookies from 'js-cookie';
-import DeliveryInfoModal from './Modal';
+"use client";
+import { useState } from "react";
+import styles from "./login_selller.module.css";
+import Cookies from "js-cookie";
+import DeliveryInfoModal from "./Modal";
+import { auth, db } from "@/fire-config"; // 실제 경로에 맞게 수정하세요.
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [showModal, setShowModal] = useState(false);
+
   const openModal = () => {
     setShowModal(true);
   };
   const closeModal = () => {
     setShowModal(false);
   };
-  const handleSubmit = async () => {
-  
-    console.log(username,password)
-   
+
+  // 사장님 로그인 함수
+  const handleSellerLogin = async () => {
     try {
-        const response = await fetch('https://altermall.site/auth/seller', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "id": username,
-            "pw": password,
-           
-          }), 
-        }) .then((res) => {  if (res.status === 204) {
-          // 204 상태 코드가 반환될 때 실행할 코드를 작성합니다.
-          alert('비밀번호가 일치하지 않습니다');
-        } else {
-          return res.json();
-        }})
-        .then((json) => {
-          console.log(json);
-          console.log(json.accessToken)
-          console.log(json.position)
-          Cookies.set('position', json.position, { expires: 1 });  // 1일 동안 유지되도록 설정
-          Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-          if(json.position == 'seller'){
-            window.location.href="https://altermall.shop/admin_seller"
-          }else{
-            alert('사장님 계정이 아닙니다. 다시 확인해주세요')
+      await signInWithEmailAndPassword(auth, username, password);
+      const user = auth.currentUser;
+
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(userRef);
+
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          if (userData.position === "seller") {
+            Cookies.set("position", userData.position, { expires: 1 });
+            window.location.href = "https://altermall.shop/admin_seller";
+          } else {
+            alert("사장님 계정이 아닙니다. 다시 확인해주세요");
           }
-         
-        });
-      } catch (error) {
-        // 에러 처리
-        console.error('Failed to send like request', error);
+        } else {
+          alert("사용자 정보를 찾을 수 없습니다.");
+        }
       }
+    } catch (error) {
+      console.error("로그인 실패:", error);
+      alert("로그인에 실패했습니다: " + error.message);
+    }
   };
-  const handleSubmit1 = async () => {
-  
-    console.log(username,password)
-   
+
+  // 회원 로그인 함수
+  const handleCustomerLogin = async () => {
     try {
-        const response = await fetch('https://altermall.site/auth/local/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "id": username,
-            "pw": password,
-           
-          }), 
-        }) .then((res) => {  if (res.status == 204) {
-          // 204 상태 코드가 반환될 때 실행할 코드를 작성합니다.
-          alert('비밀번호가 일치하지 않습니다');
-        } else {
-          return res.json();
-        }})
-        .then((json) => {
-          console.log(json)
-          Cookies.set('position', json.position, { expires: 1 });  // 1일 동안 유지되도록 설정
-          Cookies.set('accessToken', json.accessToken, { expires: 1 });  // 1일 동안 유지되도록 설정
-          if(json.position == 'customer'){
-            window.location.href="https://altermall.shop/user"
-          }else{
-            alert('구매자 계정이 아닙니다. 다시 확인해주세요')
+      await signInWithEmailAndPassword(auth, username, password);
+      const user = auth.currentUser;
+
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(userRef);
+
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+          if (userData.position === "customer") {
+            Cookies.set("position", userData.position, { expires: 1 });
+            window.location.href = `${process.env.URL}/user`;
+          } else {
+            alert("구매자 계정이 아닙니다. 다시 확인해주세요");
           }
-       
-        });
-      } catch (error) {
-        // 에러 처리
-        console.error('Failed to send like request', error);
+        } else {
+          alert("사용자 정보를 찾을 수 없습니다.");
+        }
       }
+    } catch (error) {
+      console.error("로그인 실패:", error);
+      alert("로그인에 실패했습니다: " + error.message);
+    }
   };
-  
+
+  // Google 로그인 함수
+  const handleGoogleLogin = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(userRef);
+
+        if (!docSnap.exists()) {
+          // 새로운 사용자이므로 Firestore에 데이터 저장
+          await setDoc(userRef, {
+            email: user.email,
+            position: "customer", // 기본적으로 회원으로 설정
+            // 기타 필요한 정보
+          });
+        }
+
+        const userData = (await getDoc(userRef)).data();
+        Cookies.set("position", userData.position, { expires: 1 });
+
+        if (userData.position === "seller") {
+          window.location.href = "https://altermall.shop/admin_seller";
+        } else {
+          window.location.href = `${process.env.NEXT_PUBLIC_URL}/user`;
+        }
+      }
+    } catch (error) {
+      console.error("Google 로그인 실패:", error);
+      alert("Google 로그인에 실패했습니다: " + error.message);
+    }
+  };
 
   return (
     <div className={styles.container}>
-       <div style={{ display: showModal ? 'block' : 'none' }}>
+      <div style={{ display: showModal ? "block" : "none" }}>
         <DeliveryInfoModal closeModal={closeModal} />
       </div>
       <h1>로그인</h1>
-      <span  className={styles.form}>
-        <label className={styles.label} htmlFor="username">아이디</label>
-        <input className={styles.input}
-          type="text"
+      <span className={styles.form}>
+        <label className={styles.label} htmlFor="username">
+          아이디
+        </label>
+        <input
+          className={styles.input}
+          type="email"
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label className={styles.label} htmlFor="password">비밀번호</label>
-        <input className={styles.input}
+        <label className={styles.label} htmlFor="password">
+          비밀번호
+        </label>
+        <input
+          className={styles.input}
           type="password"
           id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
 
-         <button className={styles.localButton}  onClick={handleSubmit1}>회원 로그인</button>
-         <button className={styles.sellerButton}  onClick={handleSubmit}>사장님 로그인</button>
-        
+        <button className={styles.localButton} onClick={handleCustomerLogin}>
+          회원 로그인
+        </button>
+        <button className={styles.sellerButton} onClick={handleSellerLogin}>
+          사장님 로그인
+        </button>
+
         <div className={styles.groupBtn}>
           <div className={styles.registerText}>
             아직 회원이 아니신가요?
-            <button className={styles.registerBtn} onClick={openModal}> 10초 간편 회원가입</button>
+            <button className={styles.registerBtn} onClick={openModal}>
+              {" "}
+              10초 간편 회원가입
+            </button>
           </div>
-        </div> 
-      
-        
+        </div>
       </span>
 
-      <div className={styles.division}> 소셜 로그인</div>
+      <div className={styles.division}>소셜 로그인</div>
 
       <div className={styles.form}>
-        <div className={styles.socialBox} >
-        <img onClick={()=>{window.location.href="https://altermall.site/auth/google"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/google_logo.webp'/>
-        <img onClick={()=>{window.location.href="https://altermall.site/auth/kakao"}} className={styles.btn_social_login_kakao} style={{'background':'#fff'}} src='/kakao_icon.png'/>
-        <img onClick={()=>{window.location.href="https://altermall.site/auth/naver"}} className={styles.btn_social_login} style={{'background':'#fff'}} src='/naver.png'/>
+        <div className={styles.socialBox}>
+          <img
+            onClick={handleGoogleLogin}
+            className={styles.btn_social_login}
+            style={{ background: "#fff" }}
+            src="/google_logo.webp"
+            alt="Google Login"
+          />
+          {/* Kakao 및 Naver 로그인은 별도로 처리해야 합니다 */}
         </div>
-        
       </div>
-      <div className={styles.form}>
-   
-        <button className={styles.guestButton}  onClick={()=>{window.location.href="https://altermall.shop/guestInfo"}}>비회원 주문 조회</button>
-    
-        
-      </div>
+
+      {/* 기타 요소들 */}
     </div>
   );
 }
