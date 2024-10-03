@@ -93,9 +93,12 @@ export default function LoginPage() {
         if (!docSnap.exists()) {
           // 새로운 사용자이므로 Firestore에 데이터 저장
           await setDoc(userRef, {
-            email: user.email,
-            position: "customer", // 기본적으로 회원으로 설정
-            // 기타 필요한 정보
+            id: user.uid,
+            name: user.displayName || "",
+            email: user.email || "",
+            profile: user.photoURL || "",
+            provider: "google",
+            position: "customer",
           });
         }
 
