@@ -1,13 +1,32 @@
 /* category.module.css */
+.sortButtonContainer {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.sortButton {
+  background-color: #f0571b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sortButton:hover {
+  background-color: #d64d16;
+}
+
 @media screen and (min-width: 451px) {
-  .masterContainer{
-    margin: 50px auto; /* 중앙 정렬을 위해 수정 */
-    width: 90%; /* 너비 조정 */
-    max-width: 1200px; /* 최대 너비 설정 */
-    min-width: 900px; /* 최대 너비 설정 */
-    border-radius: 20px; /* 더 둥근 테두리 */
-    background-color: #ffffff; /* 배경색 추가 */
+  .masterContainer {
+    margin: 50px auto;
+    width: 90%;
+    max-width: 1200px;
+    min-width: 900px;
+    border-radius: 20px;
+    background-color: #ffffff;
   }
+
   .itemName {
     color: white;
     padding: 10px;
@@ -15,105 +34,202 @@
     font-weight: bold;
     font-size: 30px;
   }
-  .banner{
+
+  .banner {
     height: 90px;
     justify-content: space-between;
-    border-radius: 20px 20px 0 0; /* 상단 테두리만 둥글게 */
+    border-radius: 20px 20px 0 0;
     display: flex;
     font-weight: normal;
     align-items: center;
   }
-  .plus{
-    color:#aaa;
+
+  .plus {
+    color: #aaa;
     padding: 10px;
     font-size: 35px;
   }
-  .plus:hover{
-    color:#e48202;
+
+  .plus:hover {
+    color: #e48202;
   }
-  .plusIcon{
+
+  .plusIcon {
     margin: 0 4px;
   }
-  .logo{
-    width: 70px;
 
+  .logo {
+    width: 70px;
     align-items: center;
     justify-content: center;
   }
-  .name{
+
+  .name {
     font-weight: normal;
-    margin:  0 20px;
+    margin: 0 20px;
   }
-  .logoBorder{
-    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+
+  .logoBorder {
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 100px;
     height: 100px;
     border: 1px solid hsl(0, 0%, 79%);
-    border-radius: 50%; /* 동그라미 모양의 테두리 */
+    border-radius: 50%;
   }
+
   .intro {
-    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+    display: flex;
     align-items: center;
     justify-content: center;
-
-    text-align: center; /* 중앙 정렬 */
+    text-align: center;
     margin-bottom: 40px;
   }
-  .slogan{
+
+  .slogan {
     padding: 20px 10px;
     font-size: 20px;
   }
+
   .recommendations {
-    padding: 10px 40px; /* 내부 여백 추가 */
+    padding: 10px 40px;
     border-radius: 10px;
     box-shadow: 0px 2px 20px rgba(126, 126, 126, 0.4);
   }
-  
+
   .items {
- 
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
   }
-  
+
   .item {
     width: 30%;
     height: 24%;
     margin-bottom: 20px;
-    border-left: 30px;
-    overflow: hidden; /* 내용이 넘칠 경우를 대비해 추가 */
-
+    overflow: hidden;
   }
-  
+
+  .itemContainer {
+    position: relative;
+    overflow: hidden;
+  }
+
   .itemImage {
     width: 98%;
     height: 470px;
     object-fit: cover;
-    object-position: center; /* 이미지를 가운데 정렬 */
-    margin-left: -43%; /* 왼쪽 여백을 절반으로 줄임 */
-    margin-right: -50%; /* 오른쪽 여백을 절반으로 줄임 */
-    position: relative; /* 상대적 위치 설정 */
-    left: 40%; /* 이미지를 가운데로 이동 */
+    object-position: center;
+    margin-left: -43%;
+    margin-right: -50%;
+    position: relative;
+    left: 40%;
+    transition: transform 0.3s ease;
   }
-  
-  
- 
-  
+
+  .itemOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-right: 14px;
+    padding: 10px;
+  }
+
+  .itemContainer:hover .itemOverlay {
+    opacity: 1;
+  }
+
+  /* 건강 지수 스타일 */
+  .healthRatingContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .healthRating {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .appleIcon {
+    font-size: 18px;
+    margin-right: 2px;
+  }
+
+  .healthRatingValue {
+    margin-left: 4px;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .infoButton {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 4px;
+    position: relative;
+    color: #fff;
+  }
+
+  .infoButton:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip {
+    visibility: hidden;
+    width: 180px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -90px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
 }
-/* YourComponent.module.css */
+
 @media screen and (max-width: 450px) {
-  .masterContainer{
-    margin: 50px auto; /* 중앙 정렬을 위해 수정 */
-    width: 95%; /* 너비 조정 */
-    max-width: 1200px; /* 최대 너비 설정 */
-
-    border-radius: 20px; /* 더 둥근 테두리 */
-    
-    background-color: #ffffff; /* 배경색 추가 */
-
+  .masterContainer {
+    margin: 50px auto;
+    width: 95%;
+    max-width: 1200px;
+    border-radius: 20px;
+    background-color: #ffffff;
   }
+
   .itemName {
     color: white;
     padding: 10px;
@@ -121,119 +237,190 @@
     font-weight: bold;
     font-size: 15px;
   }
-  .banner{
+
+  .banner {
     height: 50px;
     justify-content: space-between;
-    border-radius: 20px 20px 0 0; /* 상단 테두리만 둥글게 */
+    border-radius: 20px 20px 0 0;
     display: flex;
     font-weight: normal;
     align-items: center;
   }
-  .plus{
-    color:#999;
+
+  .plus {
+    color: #999;
     padding: 15px;
     font-size: 22px;
   }
-  .plus:hover{
-    color:#e48202;
+
+  .plus:hover {
+    color: #e48202;
   }
-  .plusIcon{
+
+  .plusIcon {
     margin: 0 4px;
   }
-  .logo{
-    width: 45px;
 
+  .logo {
+    width: 45px;
     align-items: center;
     justify-content: center;
   }
-  .name{
+
+  .name {
     font-weight: normal;
-    margin:  0 20px;
+    margin: 0 20px;
     font-size: 24px;
   }
-  .logoBorder{
-    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+
+  .logoBorder {
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 60px;
     height: 60px;
     border: 1px solid hsl(0, 0%, 79%);
-    border-radius: 50%; /* 동그라미 모양의 테두리 */
+    border-radius: 50%;
   }
+
   .intro {
-    display: flex; /* 자식 요소들을 가로로 나열하기 위해 */
+    display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
-    text-align: center; /* 중앙 정렬 */
+    text-align: center;
     margin-bottom: 30px;
   }
-  .slogan{
+
+  .slogan {
     padding: 15px 10px;
     font-size: 16px;
   }
+
   .recommendations {
-    padding: 10px 5px; /* 내부 여백 추가 */
+    padding: 10px 5px;
     border-radius: 10px;
     box-shadow: 0px 2px 20px rgba(126, 126, 126, 0.4);
   }
-  
-  .items {
 
+  .items {
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 10px;
   }
-  
+
   .item {
     width: 30%;
     height: 33%;
     margin-bottom: 20px;
-    border-left: 30px;
-    overflow: hidden; /* 내용이 넘칠 경우를 대비해 추가 */
-
+    overflow: hidden;
   }
-  
+
+  .itemContainer {
+    position: relative;
+    overflow: hidden;
+  }
+
   .itemImage {
     width: 93%;
     height: 145px;
     object-fit: cover;
-    object-position: center; /* 이미지를 가운데 정렬 */
-    margin-left: -41%; /* 왼쪽 여백을 절반으로 줄임 */
-    margin-right: -50%; /* 오른쪽 여백을 절반으로 줄임 */
-    position: relative; /* 상대적 위치 설정 */
-    left: 40%; /* 이미지를 가운데로 이동 */
+    object-position: center;
+    margin-left: -41%;
+    margin-right: -50%;
+    position: relative;
+    left: 40%;
+    transition: transform 0.3s ease;
   }
-  
-  
-  
-}
-.itemContainer {
-  position: relative;
-  overflow: hidden;
-}
 
-.itemImage {
-  transition: transform 0.3s ease;
-}
+  .itemOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-right: 14px;
+    padding: 10px;
+  }
 
-.itemOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  margin-right: 14px;
-}
+  .itemContainer:hover .itemOverlay {
+    opacity: 1;
+  }
 
+  /* 건강 지수 스타일 */
+  .healthRatingContainer {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
 
+  .healthRating {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
 
-.itemContainer:hover .itemOverlay {
-  opacity: 1;
+  .appleIcon {
+    font-size: 14px;
+    margin-right: 2px;
+  }
+
+  .healthRatingValue {
+    margin-left: 2px;
+    font-size: 12px;
+    color: #fff;
+  }
+
+  .infoButton {
+    background: none;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 2px;
+    position: relative;
+    color: #fff;
+  }
+
+  .infoButton:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip {
+    visibility: hidden;
+    width: 150px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
 }
