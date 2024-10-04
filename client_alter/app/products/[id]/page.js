@@ -1,19 +1,20 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
-import styles from "./products.module.css"; // Ensure the correct path to your CSS module
+import styles from "./products.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import {
+  faHeart as solidHeart,
+  faAppleWhole,
+  faCircleQuestion,
+} from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
-import { Link, scroll } from "react-scroll";
-import { faAppleWhole } from "@fortawesome/free-solid-svg-icons"; // 사과 아이콘 import
-
+import { Link } from "react-scroll";
 import Cookies from "js-cookie";
 import ReviewImagePreview from "./ReviewImagePreview";
 import ReviewList from "./ReviewList";
 import { Star } from "lucide-react";
 
 const accessToken = Cookies.get("accessToken");
-
 const position = Cookies.get("position");
 
 const ItemPage = (props) => {
@@ -22,7 +23,6 @@ const ItemPage = (props) => {
   const [stock, setStock] = useState(0);
   const [price, setPrice] = useState(20000); // Assume an initial price
   const [newprice, setNewPrice] = useState(20000); // Assume an initial price
-  const [healthRating, setHealthRating] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [id, setId] = useState("");
   const [activeLink, setActiveLink] = useState("image1"); // 기본값으로 첫 번째 섹션을 설정
@@ -44,6 +44,8 @@ const ItemPage = (props) => {
   const [currentPrice, setCurrentPrice] = useState(0);
   const [rating, setRating] = useState(0);
   const [unitPrice, setUnitPrice] = useState(0);
+  const [healthRating, setHealthRating] = useState(0); // healthRating 상태 추가
+
   const openModal = (review) => {
     setSelectedReview(review);
     setIsModalOpen(true);
@@ -97,7 +99,8 @@ const ItemPage = (props) => {
       setDelivery(data.delivery);
       setLikeCount(data.likeCount);
       setSeller(data.seller_id);
-      setHealthRating(data.healthRating);
+      setHealthRating(data.healthRating); // healthRating 설정
+
       const response2 = await fetch(
         `https://altermall.site/review/${props.params.id}`
       );
@@ -141,7 +144,6 @@ const ItemPage = (props) => {
 
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        // 스크롤 위치에 따라 값을 조정하세요
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -185,6 +187,7 @@ const ItemPage = (props) => {
     setCurrentPrice(newTotalPrice);
     setPrice(newTotalPrice);
   };
+
   const Quantity = () => {
     const result = [];
     for (let i = 1; i <= stock; i++) {
@@ -230,7 +233,6 @@ const ItemPage = (props) => {
       option: option,
       price: unitPrice, // 단위 가격
       option_name: selectedOption,
-
       delivery: delivery,
       Item: {
         item_name: name,
@@ -281,6 +283,7 @@ const ItemPage = (props) => {
     options,
     accessToken,
   ]);
+
   const handleBuy = () => {
     const orderItem = {
       itemId: props.params.id,
@@ -334,6 +337,8 @@ const ItemPage = (props) => {
                 />
               )}
             </div>
+
+            {/* 건강 지수 표시 */}
             {healthRating && (
               <div className={styles.healthRatingContainer}>
                 <label className={styles.label}>건강 지수</label>
@@ -351,9 +356,20 @@ const ItemPage = (props) => {
                   <span className={styles.healthRatingValue}>
                     {healthRating.toFixed(1)}
                   </span>
+
+                  {/* '?' 버튼 추가 */}
+                  <button className={styles.infoButton}>
+                    <FontAwesomeIcon icon={faCircleQuestion} />
+                    {/* 툴팁 */}
+                    <div className={styles.tooltip}>
+                      이 상품의 건강 지수는 영양 성분과 원재료를 기반으로
+                      평가되었습니다.
+                    </div>
+                  </button>
                 </div>
               </div>
             )}
+
             <p>
               <span>재고 </span> {stock}
             </p>
@@ -382,7 +398,6 @@ const ItemPage = (props) => {
                 {Quantity()}
               </select>
             </div>
-
             <div className={styles.price}>
               <p>{price.toLocaleString()}원</p>
             </div>
