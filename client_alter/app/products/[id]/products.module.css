@@ -17,10 +17,11 @@
 }
 
 .label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: #555;
-  margin-bottom: 8px;
+  margin-right: 8px;
+  margin-top: 4px;
 }
 
 /* 건강 지수 스타일 */
