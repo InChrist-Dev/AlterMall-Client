@@ -190,7 +190,7 @@ const ItemPage = (props) => {
                           icon={faAppleWhole}
                           className={styles.appleIcon}
                         />
-                        <span>{item.healthRating.toFixed(1)}</span>
+                        <span>{item.healthRating}</span>
                       </div>
                     )}
                   </span>
