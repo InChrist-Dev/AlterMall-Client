@@ -54,8 +54,8 @@ const ItemPage = (props) => {
     }
     // 정산표 데이터 가져오기
     try {
-      let url = `https://altermall.site/seller/paidSummary?period=${period}`;
-      if (period === "custom") {
+      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
+      if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
       const response = await fetch(url, {
