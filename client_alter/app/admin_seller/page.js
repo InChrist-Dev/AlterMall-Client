@@ -21,6 +21,10 @@ const ItemPage = (props) => {
   const [selectedOrder, setSelectedOrder] = useState(false);
   const [deliveryType, setDeliveryType] = useState("all");
   const [orderState, setOrderState] = useState("all");
+  const [selectedPeriod, setSelectedPeriod] = useState("today"); // 기간 선택을 위한 상태 추가
+  const [startDate, setStartDate] = useState(""); // 커스텀 시작일
+  const [endDate, setEndDate] = useState(""); // 커스텀 종료일
+  const [paySummary, setPaySummary] = useState([]); // 정산표 데이터를 위한 상태 추가
   const myUuid = uuidv4();
   console.log(myUuid);
   const handleDrop = useCallback(
