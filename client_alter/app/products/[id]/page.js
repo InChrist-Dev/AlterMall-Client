@@ -354,7 +354,7 @@ const ItemPage = (props) => {
                     />
                   ))}
                   <span className={styles.healthRatingValue}>
-                    {healthRating.toFixed(1)}
+                    {healthRating}
                   </span>
 
                   {/* '?' 버튼 추가 */}
