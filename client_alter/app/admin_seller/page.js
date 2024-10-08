@@ -58,6 +58,7 @@ const ItemPage = (props) => {
       if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
+      console.log(selectedPeriod);
       const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
