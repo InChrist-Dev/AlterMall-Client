@@ -59,41 +59,6 @@ const ItemPage = (props) => {
       if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      console.log(data);
-      setPaySummary(data.data.rows);
-    } catch (error) {
-      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
-    }
-
-    try {
-      const response = await fetch(
-        `https://altermall.site/seller/order?time=today`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      console.log(data.data.rows);
-      setOrders(data.data.rows);
-    } catch (error) {
-      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
-    }
-    // 정산표 데이터 가져오기
-    try {
-      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
-      if (selectedPeriod === "custom") {
-        url += `&startDate=${startDate}&endDate=${endDate}`;
-      }
       console.log(selectedPeriod);
       const response = await fetch(url, {
         headers: {
@@ -724,7 +689,70 @@ const ItemPage = (props) => {
       ) : (
         ""
       )}
+      {/* 정산표 섹션 시작 */}
+      <h2 className={styles.title}>정산표</h2>
+      <div className={styles.paySummaryContainer}>
+        {/* 기간 선택 옵션 */}
+        <div className={styles.periodSelector}>
+          <label>
+            기간 선택:
+            <select
+              value={selectedPeriod}
+              onChange={(e) => setSelectedPeriod(e.target.value)}
+            >
+              <option value="today">오늘</option>
+              <option value="thisMonth">이번 달</option>
+              <option value="lastMonth">지난 달</option>
+              <option value="custom">커스텀</option>
+            </select>
+          </label>
+          {selectedPeriod === "custom" && (
+            <div>
+              <label>
+                시작일:
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+              </label>
+              <label>
+                종료일:
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
+              </label>
+            </div>
+          )}
+        </div>
 
+        {/* 정산표 테이블 */}
+        <table className={styles.summaryTable}>
+          <thead>
+            <tr>
+              <th>월</th>
+              <th>총 금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paySummary.length > 0 ? (
+              paySummary.map((summary, index) => (
+                <tr key={index}>
+                  <td>{summary.month}</td>
+                  <td>{summary.totalAmount}원</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2">데이터가 없습니다.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      {/* 정산표 섹션 끝 */}
       <button onClick={() => setIsOrder(!isOrder)}>이전 내역</button>
 
       <button
