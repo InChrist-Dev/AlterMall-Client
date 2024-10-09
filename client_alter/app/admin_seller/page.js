@@ -139,7 +139,7 @@ const ItemPage = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedPeriod]);
+  }, [selectedPeriod, startDate, endDate]);
   const handleDisplayCountChange = (e) => {
     setDeliveryType(e.target.value);
   };
