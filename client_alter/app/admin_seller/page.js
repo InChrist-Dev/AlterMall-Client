@@ -19,7 +19,10 @@ const ItemPage = (props) => {
   const [selectedOrder, setSelectedOrder] = useState(false);
   const [deliveryType, setDeliveryType] = useState("all");
   const [orderState, setOrderState] = useState("all");
-
+  const [selectedPeriod, setSelectedPeriod] = useState("today"); // 기간 선택을 위한 상태 추가
+  const [startDate, setStartDate] = useState(""); // 커스텀 시작일
+  const [endDate, setEndDate] = useState(""); // 커스텀 종료일
+  const [paySummary, setPaySummary] = useState([]); // 정산표 데이터를 위한 상태 추가
   const myUuid = uuidv4();
 
   console.log(myUuid);
@@ -46,6 +49,24 @@ const ItemPage = (props) => {
       );
       const data = await response.json();
       setOrders(data.data.rows);
+    } catch (error) {
+      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+    }
+
+    // 정산표 데이터 가져오기
+    try {
+      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
+      if (selectedPeriod === "custom") {
+        url += `&startDate=${startDate}&endDate=${endDate}`;
+      }
+      const response = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setPaySummary(data.data.rows);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
@@ -103,6 +124,14 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleDisplayCountChange = (e) => {
+    setDeliveryType(e.target.value);
+  };
+
+  const handleDisplayChange = (e) => {
+    setOrderState(e.target.value);
+  };
 
   const setDate = (data) => {
     const date = new Date(data);
@@ -174,6 +203,17 @@ const ItemPage = (props) => {
     disabled: uploadDisabled,
   });
 
+  const handlePeriodChange = (period) => {
+    setSelectedPeriod(period);
+    fetchData(period);
+  };
+
+  const handleCustomDateChange = () => {
+    if (startDate && endDate) {
+      fetchData("custom");
+    }
+  };
+
   return (
     <div style={{ marginBottom: "100px" }}>
       <h1 className={styles.title}>상품 관리</h1>
@@ -236,6 +276,53 @@ const ItemPage = (props) => {
                     </button>
                   </div>
                 </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 className={styles.title}>정산표</h2>
+      <div className={styles.periodButtons}>
+        <button onClick={() => handlePeriodChange("weekly")}>주별 보기</button>
+        <button onClick={() => handlePeriodChange("monthly")}>월별 보기</button>
+        <button onClick={() => handlePeriodChange("custom")}>기간 선택</button>
+      </div>
+
+      {selectedPeriod === "custom" && (
+        <div className={styles.customDatePicker}>
+          <input
+            type="date"
+            value={startDate}
+            onChange={(e) => setStartDate(e.target.value)}
+          />
+          ~
+          <input
+            type="date"
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
+          />
+          <button onClick={handleCustomDateChange}>조회</button>
+        </div>
+      )}
+
+      <div className={styles.basketContainer}>
+        <table className={styles.summaryTable}>
+          <thead>
+            <tr>
+              <th>기간</th>
+              <th>매출액</th>
+              <th>현금영수증(소득공제)</th>
+              <th>현금영수증(지출증빙)</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paySummary.map((summary, index) => (
+              <tr key={index}>
+                <td>{summary.period}</td>
+                <td>{summary.total_sales}원</td>
+                <td>{summary.income_receipt}원</td>
+                <td>{summary.expense_receipt}원</td>
               </tr>
             ))}
           </tbody>
@@ -372,39 +459,7 @@ const ItemPage = (props) => {
       ) : (
         ""
       )}
-      {/* 정산표 표시 영역 추가 */}
-      <div>
-        <h2 className={styles.title}>정산표</h2>
-        {isSummary && (
-          <div className={styles.basketContainer}>
-            <table className={styles.summaryTable}>
-              <thead>
-                <tr>
-                  <th>상품명</th>
-                  <th>수량</th>
-                  <th>총 금액</th>
-                  <th>정산 일자</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pay.map((order, index) => (
-                  <tr key={index} className={styles.summaryRow}>
-                    <td>{order.OrderDetails[0].item_name}</td>
-                    <td>{order.OrderDetails.length} 건</td>
-                    <td>{order.total_price}원</td>
-                    <td>{setDate(order.createdAt)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
 
-      {/* 정산표 버튼 추가 */}
-      <button onClick={() => setIsSummary(!isSummary)}>
-        {isSummary ? "정산표 숨기기" : "정산표 보기"}
-      </button>
       <button onClick={() => setIsOrder(!isOrder)}>이전 내역</button>
 
       <button
