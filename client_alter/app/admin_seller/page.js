@@ -55,7 +55,7 @@ const ItemPage = (props) => {
 
     // 정산표 데이터 가져오기
     try {
-      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
+      let url = `https://altermall.site/seller/paidSummary?time=${selectedPeriod}`;
       if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
@@ -67,7 +67,7 @@ const ItemPage = (props) => {
       });
       const data = await response.json();
       console.log(data);
-      setPaySummary(data.data.rows);
+      setPaySummary(data.monthlyAmounts);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
@@ -124,7 +124,7 @@ const ItemPage = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [selectedPeriod, startDate, endDate]); // 기간 선택 상태가 변경되면 데이터 재요청
 
   const setDate = (data) => {
     const date = new Date(data);
@@ -164,6 +164,7 @@ const ItemPage = (props) => {
   }, []);
 
   const Update = useCallback((id, stock, name, price) => {
+    const formData = new FormData();
     files.forEach((file, index) => {
       formData.append(`img`, file);
     });
@@ -171,14 +172,9 @@ const ItemPage = (props) => {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json", // 파일 업로드 시 Content-Type 제거
       },
-      body: JSON.stringify({
-        stock: stock,
-        item_name: name,
-        price: price,
-        item_id: id,
-      }),
+      body: formData,
     }).then(async (response) => {
       const data = await response.json();
       if (response.status == 405) {
@@ -190,7 +186,7 @@ const ItemPage = (props) => {
     });
   }, []);
 
-  const {} = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop: handleDrop,
     multiple: true,
     disabled: uploadDisabled,
@@ -210,26 +206,26 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.map((items, index) => (
+            {items.map((item, index) => (
               <tr key={index} className={styles.productCard}>
                 <td style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={`https://altermall.site/${items.img}`}
-                    alt={items.item_name}
+                    src={`https://altermall.site/${item.img}`}
+                    alt={item.item_name}
                     className={styles.productImage}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={items.item_name}
+                    placeholder={item.item_name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={items.price + "원"}
+                    placeholder={item.price + "원"}
                     onChange={(e) => handlePriceChange(index, e.target.value)}
                   />
                 </td>
@@ -237,21 +233,21 @@ const ItemPage = (props) => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.stock - 1)
+                        handleQuantityChange(index, item.stock - 1)
                       }
                     >
                       -
                     </button>
                     <input
                       className={styles.quantityInput}
-                      placeholder={items.stock}
+                      placeholder={item.stock}
                       onChange={(e) =>
                         handleQuantityChange(index, e.target.value)
                       }
                     />
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.stock + 1)
+                        handleQuantityChange(index, item.stock + 1)
                       }
                     >
                       +
@@ -263,6 +259,71 @@ const ItemPage = (props) => {
           </tbody>
         </table>
       </div>
+
+      {/* 정산표 섹션 시작 */}
+      <h2 className={styles.title}>정산표</h2>
+      <div className={styles.paySummaryContainer}>
+        {/* 기간 선택 옵션 */}
+        <div className={styles.periodSelector}>
+          <label>
+            기간 선택:
+            <select
+              value={selectedPeriod}
+              onChange={(e) => setSelectedPeriod(e.target.value)}
+            >
+              <option value="today">오늘</option>
+              <option value="thisMonth">이번 달</option>
+              <option value="lastMonth">지난 달</option>
+              <option value="custom">커스텀</option>
+            </select>
+          </label>
+          {selectedPeriod === "custom" && (
+            <div>
+              <label>
+                시작일:
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                />
+              </label>
+              <label>
+                종료일:
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                />
+              </label>
+            </div>
+          )}
+        </div>
+
+        {/* 정산표 테이블 */}
+        <table className={styles.summaryTable}>
+          <thead>
+            <tr>
+              <th>월</th>
+              <th>총 금액</th>
+            </tr>
+          </thead>
+          <tbody>
+            {paySummary.length > 0 ? (
+              paySummary.map((summary, index) => (
+                <tr key={index}>
+                  <td>{summary.month}</td>
+                  <td>{summary.totalAmount}원</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="2">데이터가 없습니다.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+      {/* 정산표 섹션 끝 */}
 
       {isOrder ? (
         <>
@@ -289,8 +350,8 @@ const ItemPage = (props) => {
                         order.delivery_type === deliveryType)
                   )
                   .map((order, index) => (
-                    <>
-                      <tr key={index} className={styles.orderRow}>
+                    <React.Fragment key={index}>
+                      <tr className={styles.orderRow}>
                         <td>
                           {order.OrderDetails[0].item_name}외{" "}
                           {order.OrderDetails
@@ -360,20 +421,24 @@ const ItemPage = (props) => {
                         <td>
                           <button
                             className={styles.detailBtn}
-                            onClick={() => setSelectedOrder(!selectedOrder)}
+                            onClick={() =>
+                              setSelectedOrder(
+                                selectedOrder === index ? null : index
+                              )
+                            }
                           >
                             상세보기
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <td colSpan="9">
-                          {selectedOrder && (
+                      {selectedOrder === index && (
+                        <tr>
+                          <td colSpan="9">
                             <div>
                               <table className={styles.detailTable}>
                                 <tbody>
-                                  {order.OrderDetails.map((detail, index) => (
-                                    <tr key={index}>
+                                  {order.OrderDetails.map((detail, idx) => (
+                                    <tr key={idx}>
                                       <td>{detail.item_name}</td>
                                       <td>{detail.price}원</td>
                                       <td>{detail.stock}</td>
@@ -382,18 +447,16 @@ const ItemPage = (props) => {
                                 </tbody>
                               </table>
                             </div>
-                          )}
-                        </td>
-                      </tr>
-                    </>
+                          </td>
+                        </tr>
+                      )}
+                    </React.Fragment>
                   ))}
               </tbody>
             </table>
           </div>
         </>
-      ) : (
-        ""
-      )}
+      ) : null}
 
       <button onClick={() => setIsOrder(!isOrder)}>이전 내역</button>
 
