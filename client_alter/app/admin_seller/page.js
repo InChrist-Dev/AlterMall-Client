@@ -97,7 +97,7 @@ const ItemPage = (props) => {
       console.log(selectedPeriod);
       const response = await fetch(url, {
         headers: {
-          Authorization: Bearer ${accessToken},
+          Authorization: `Bearer ${accessToken}`,
           "Content-Type": "application/json",
         },
       });
