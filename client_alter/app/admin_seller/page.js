@@ -8,10 +8,9 @@ import Cookies from "js-cookie";
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get("accessToken");
 
-const ItemPage = (props) => {
+const ItemPage = () => {
   const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
-  const [next, setNext] = useState([]);
   const [pay, setPay] = useState([]);
   const [items, setItems] = useState([]);
   const [isOrder, setIsOrder] = useState(false);
@@ -19,10 +18,7 @@ const ItemPage = (props) => {
   const [selectedOrder, setSelectedOrder] = useState(false);
   const [deliveryType, setDeliveryType] = useState("all");
   const [orderState, setOrderState] = useState("all");
-  const [selectedPeriod, setSelectedPeriod] = useState("today"); // 기간 선택을 위한 상태 추가
-  const [startDate, setStartDate] = useState(""); // 커스텀 시작일
-  const [endDate, setEndDate] = useState(""); // 커스텀 종료일
-  const [paySummary, setPaySummary] = useState([]); // 정산표 데이터를 위한 상태 추가
+
   const myUuid = uuidv4();
 
   console.log(myUuid);
@@ -35,11 +31,11 @@ const ItemPage = (props) => {
     [files]
   );
 
-  const fetchData = async () => {
+  const fetchOrders = async (time) => {
     // 주문 데이터 가져오기
     try {
       const response = await fetch(
-        `https://altermall.site/seller/order?time=today`,
+        `https://altermall.site/seller/order?time=${time}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -52,29 +48,13 @@ const ItemPage = (props) => {
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
+  };
 
-    // 정산표 데이터 가져오기
-    try {
-      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
-      if (selectedPeriod === "custom") {
-        url += `&startDate=${startDate}&endDate=${endDate}`;
-      }
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      setPaySummary(data.data.rows);
-    } catch (error) {
-      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
-    }
-
-    // 오늘의 정산표 가져오기
+  const fetchSummary = async (time) => {
+    // 주문 요약 데이터 가져오기
     try {
       const response = await fetch(
-        `https://altermall.site/seller/paid?time=today`,
+        `https://altermall.site/seller/paid?time=${time}`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -87,7 +67,9 @@ const ItemPage = (props) => {
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
+  };
 
+  const fetchItems = async () => {
     // 상품 데이터 가져오기
     try {
       const response = await fetch(`https://altermall.site/seller/items`, {
@@ -122,16 +104,10 @@ const ItemPage = (props) => {
   };
 
   useEffect(() => {
-    fetchData();
+    fetchOrders("today"); // 오늘의 주문 목록 불러오기
+    fetchSummary("today"); // 오늘의 주문 요약 불러오기
+    fetchItems(); // 상품 목록 불러오기
   }, []);
-
-  const handleDisplayCountChange = (e) => {
-    setDeliveryType(e.target.value);
-  };
-
-  const handleDisplayChange = (e) => {
-    setOrderState(e.target.value);
-  };
 
   const setDate = (data) => {
     const date = new Date(data);
@@ -203,17 +179,6 @@ const ItemPage = (props) => {
     disabled: uploadDisabled,
   });
 
-  const handlePeriodChange = (period) => {
-    setSelectedPeriod(period);
-    fetchData(period);
-  };
-
-  const handleCustomDateChange = () => {
-    if (startDate && endDate) {
-      fetchData("custom");
-    }
-  };
-
   return (
     <div style={{ marginBottom: "100px" }}>
       <h1 className={styles.title}>상품 관리</h1>
@@ -228,26 +193,26 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.map((items, index) => (
+            {items.map((item, index) => (
               <tr key={index} className={styles.productCard}>
                 <td style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={`https://altermall.site/${items.img}`}
-                    alt={items.item_name}
+                    src={`https://altermall.site/${item.img}`}
+                    alt={item.item_name}
                     className={styles.productImage}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={items.item_name}
+                    placeholder={item.item_name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={items.price + "원"}
+                    placeholder={item.price + "원"}
                     onChange={(e) => handlePriceChange(index, e.target.value)}
                   />
                 </td>
@@ -255,74 +220,27 @@ const ItemPage = (props) => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.stock - 1)
+                        handleQuantityChange(index, item.stock - 1)
                       }
                     >
                       -
                     </button>
                     <input
                       className={styles.quantityInput}
-                      placeholder={items.stock}
+                      placeholder={item.stock}
                       onChange={(e) =>
                         handleQuantityChange(index, e.target.value)
                       }
                     />
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, items.stock + 1)
+                        handleQuantityChange(index, item.stock + 1)
                       }
                     >
                       +
                     </button>
                   </div>
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 className={styles.title}>정산표</h2>
-      <div className={styles.periodButtons}>
-        <button onClick={() => handlePeriodChange("weekly")}>주별 보기</button>
-        <button onClick={() => handlePeriodChange("monthly")}>월별 보기</button>
-        <button onClick={() => handlePeriodChange("custom")}>기간 선택</button>
-      </div>
-
-      {selectedPeriod === "custom" && (
-        <div className={styles.customDatePicker}>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-          ~
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-          <button onClick={handleCustomDateChange}>조회</button>
-        </div>
-      )}
-
-      <div className={styles.basketContainer}>
-        <table className={styles.summaryTable}>
-          <thead>
-            <tr>
-              <th>기간</th>
-              <th>매출액</th>
-              <th>현금영수증(소득공제)</th>
-              <th>현금영수증(지출증빙)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paySummary.map((summary, index) => (
-              <tr key={index}>
-                <td>{summary.period}</td>
-                <td>{summary.total_sales}원</td>
-                <td>{summary.income_receipt}원</td>
-                <td>{summary.expense_receipt}원</td>
               </tr>
             ))}
           </tbody>
