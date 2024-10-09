@@ -282,53 +282,6 @@ const ItemPage = (props) => {
         </table>
       </div>
 
-      <h2 className={styles.title}>정산표</h2>
-      <div className={styles.periodButtons}>
-        <button onClick={() => handlePeriodChange("weekly")}>주별 보기</button>
-        <button onClick={() => handlePeriodChange("monthly")}>월별 보기</button>
-        <button onClick={() => handlePeriodChange("custom")}>기간 선택</button>
-      </div>
-
-      {selectedPeriod === "custom" && (
-        <div className={styles.customDatePicker}>
-          <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
-          />
-          ~
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-          />
-          <button onClick={handleCustomDateChange}>조회</button>
-        </div>
-      )}
-
-      <div className={styles.basketContainer}>
-        <table className={styles.summaryTable}>
-          <thead>
-            <tr>
-              <th>기간</th>
-              <th>매출액</th>
-              <th>현금영수증(소득공제)</th>
-              <th>현금영수증(지출증빙)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {paySummary.map((summary, index) => (
-              <tr key={index}>
-                <td>{summary.period}</td>
-                <td>{summary.total_sales}원</td>
-                <td>{summary.income_receipt}원</td>
-                <td>{summary.expense_receipt}원</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
       {isOrder ? (
         <>
           <h2 className={styles.title}>이전 주문 내역</h2>
