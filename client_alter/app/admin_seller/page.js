@@ -55,7 +55,7 @@ const ItemPage = (props) => {
 
     // 정산표 데이터 가져오기
     try {
-      let url = `https://altermall.site/seller/paidSummary?time=${selectedPeriod}`;
+      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
       if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
@@ -67,15 +67,14 @@ const ItemPage = (props) => {
       });
       const data = await response.json();
       console.log(data);
-      setPaySummary(data.monthlyAmounts);
+      setPaySummary(data.data.rows);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
 
-    // 오늘의 정산표 가져오기
     try {
       const response = await fetch(
-        `https://altermall.site/seller/paid?time=today`,
+        `https://altermall.site/seller/order?time=today`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -84,7 +83,44 @@ const ItemPage = (props) => {
         }
       );
       const data = await response.json();
-      setPay(data.data.rows);
+      console.log(data.data.rows);
+      setOrders(data.data.rows);
+    } catch (error) {
+      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+    }
+    // 정산표 데이터 가져오기
+    try {
+      let url = `https://altermall.site/seller/paidSummary?period=${selectedPeriod}`;
+      if (selectedPeriod === "custom") {
+        url += `&startDate=${startDate}&endDate=${endDate}`;
+      }
+      console.log(selectedPeriod);
+      const response = await fetch(url, {
+        headers: {
+          Authorization: Bearer ${accessToken},
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      console.log(data.data.rows);
+      setPaySummary(data.data.rows); // 정산표 데이터 상태에 저장
+    } catch (error) {
+      console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
+    }
+
+    try {
+      const response = await fetch(
+        `https://altermall.site/seller/order?time=next`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data.data.rows);
+      setNext(data.data.rows);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
@@ -124,7 +160,7 @@ const ItemPage = (props) => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedPeriod, startDate, endDate]); // 기간 선택 상태가 변경되면 데이터 재요청
+  }, []);
 
   const setDate = (data) => {
     const date = new Date(data);
@@ -164,7 +200,6 @@ const ItemPage = (props) => {
   }, []);
 
   const Update = useCallback((id, stock, name, price) => {
-    const formData = new FormData();
     files.forEach((file, index) => {
       formData.append(`img`, file);
     });
@@ -172,9 +207,14 @@ const ItemPage = (props) => {
       method: "PATCH",
       headers: {
         Authorization: `Bearer ${accessToken}`,
-        // "Content-Type": "application/json", // 파일 업로드 시 Content-Type 제거
+        "Content-Type": "application/json",
       },
-      body: formData,
+      body: JSON.stringify({
+        stock: stock,
+        item_name: name,
+        price: price,
+        item_id: id,
+      }),
     }).then(async (response) => {
       const data = await response.json();
       if (response.status == 405) {
@@ -186,7 +226,7 @@ const ItemPage = (props) => {
     });
   }, []);
 
-  const { getRootProps, getInputProps } = useDropzone({
+  const {} = useDropzone({
     onDrop: handleDrop,
     multiple: true,
     disabled: uploadDisabled,
@@ -206,26 +246,26 @@ const ItemPage = (props) => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item, index) => (
+            {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={`https://altermall.site/${item.img}`}
-                    alt={item.item_name}
+                    src={`https://altermall.site/${items.img}`}
+                    alt={items.item_name}
                     className={styles.productImage}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={item.item_name}
+                    placeholder={items.item_name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={item.price + "원"}
+                    placeholder={items.price + "원"}
                     onChange={(e) => handlePriceChange(index, e.target.value)}
                   />
                 </td>
@@ -233,21 +273,21 @@ const ItemPage = (props) => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, item.stock - 1)
+                        handleQuantityChange(index, items.stock - 1)
                       }
                     >
                       -
                     </button>
                     <input
                       className={styles.quantityInput}
-                      placeholder={item.stock}
+                      placeholder={items.stock}
                       onChange={(e) =>
                         handleQuantityChange(index, e.target.value)
                       }
                     />
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, item.stock + 1)
+                        handleQuantityChange(index, items.stock + 1)
                       }
                     >
                       +
@@ -259,72 +299,296 @@ const ItemPage = (props) => {
           </tbody>
         </table>
       </div>
-
-      {/* 정산표 섹션 시작 */}
-      <h2 className={styles.title}>정산표</h2>
-      <div className={styles.paySummaryContainer}>
-        {/* 기간 선택 옵션 */}
-        <div className={styles.periodSelector}>
-          <label>
-            기간 선택:
-            <select
-              value={selectedPeriod}
-              onChange={(e) => setSelectedPeriod(e.target.value)}
-            >
-              <option value="today">오늘</option>
-              <option value="thisMonth">이번 달</option>
-              <option value="lastMonth">지난 달</option>
-              <option value="custom">커스텀</option>
-            </select>
-          </label>
-          {selectedPeriod === "custom" && (
-            <div>
-              <label>
-                시작일:
-                <input
-                  type="date"
-                  value={startDate}
-                  onChange={(e) => setStartDate(e.target.value)}
-                />
-              </label>
-              <label>
-                종료일:
-                <input
-                  type="date"
-                  value={endDate}
-                  onChange={(e) => setEndDate(e.target.value)}
-                />
-              </label>
-            </div>
-          )}
+      <h1 className={styles.title}>관리자 주문 조회</h1>
+      <div className={styles.sortAndScroll}>
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={deliveryType}
+            onChange={handleDisplayCountChange}
+          >
+            <option value={"all"}>모두보기</option>
+            <option value={"daily"}>당일배송</option>
+            <option value={"normal"}>택배배송</option>
+          </select>
+          <label htmlFor="displayCount"></label>
         </div>
-
-        {/* 정산표 테이블 */}
-        <table className={styles.summaryTable}>
+        <div className={styles.scrollButtons}>
+          <select
+            id="displayCount"
+            className={styles.dropInput}
+            value={orderState}
+            onChange={handleDisplayChange}
+          >
+            <option value={"all"}>모두보기</option>
+            <option value={"paid"}>결제완료</option>
+            <option value={"accept"}>제조중</option>
+            <option value={"deliver"}>전송완료</option>
+          </select>
+          <label htmlFor="displayCount"></label>
+        </div>
+      </div>
+      <h2 className={styles.title}>당일 주문</h2>
+      <div className={styles.basketContainer}>
+        <table className={styles.orderTable}>
           <thead>
             <tr>
-              <th>월</th>
-              <th>총 금액</th>
+              <th>상품명</th>
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>수락</th>
+              <th>상세</th>
             </tr>
           </thead>
           <tbody>
-            {paySummary.length > 0 ? (
-              paySummary.map((summary, index) => (
-                <tr key={index}>
-                  <td>{summary.month}</td>
-                  <td>{summary.totalAmount}원</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="2">데이터가 없습니다.</td>
-              </tr>
-            )}
+            {orders
+              .filter(
+                (order) =>
+                  (orderState === "all" || order.state === orderState) &&
+                  (deliveryType === "all" ||
+                    order.delivery_type === deliveryType)
+              )
+              .map((order, index) => (
+                <>
+                  <tr key={index} className={styles.orderRow}>
+                    <td>
+                      {order.OrderDetails[0].item_name}외{" "}
+                      {order.OrderDetails ? order.OrderDetails.length - 1 : ""}
+                      건
+                    </td>
+
+                    <td>{setDate(order.createdAt)}</td>
+                    <td>
+                      <p>주문자명: {order.customer_name}</p>
+                      <p>연락처: {order.phone}</p>
+                      {/* <p>우편번호: {order.post}</p> */}
+                      <p>
+                        주소:{" "}
+                        <b>
+                          {order.addr} {order.addr_detail}
+                        </b>
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        {order.delivery_type === "daily" ? (
+                          <img
+                            src="/today.jpg"
+                            className={styles.postImage}
+                            alt="따끈 배송"
+                          />
+                        ) : order.delivery_type === "normal" ? (
+                          <img
+                            src="post.jpg"
+                            className={styles.postImage}
+                            alt="택배 배송"
+                          />
+                        ) : null}
+                      </p>
+                      <p>요청 사항: {order.requests}</p>
+                    </td>
+                    {order.state === "paid" ? (
+                      <td style={{ color: "green", fontWeight: "bold" }}>
+                        결제완료
+                      </td>
+                    ) : order.state === "accept" ? (
+                      <td style={{ color: "red", fontWeight: "bold" }}>
+                        제조중
+                      </td>
+                    ) : order.state === "deliver" ? (
+                      <td style={{ color: "blue", fontWeight: "bold" }}>
+                        전송완료
+                      </td>
+                    ) : null}
+
+                    <td>
+                      {order.state === "paid" ? (
+                        <button
+                          onClick={() => {
+                            setPaid(order);
+                          }}
+                          className={styles.accessButton}
+                        >
+                          수락
+                        </button>
+                      ) : order.state === "accept" ? (
+                        <button
+                          onClick={() => {
+                            setPaid(order);
+                          }}
+                          className={styles.accessButton}
+                        >
+                          완료
+                        </button>
+                      ) : null}
+                    </td>
+                    <td>
+                      <button
+                        className={styles.detailBtn}
+                        onClick={() => setSelectedOrder(!selectedOrder)}
+                      >
+                        상세보기
+                      </button>
+                    </td>
+                    {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+                  </tr>
+                  <tr>
+                    <td colSpan="9">
+                      {selectedOrder && (
+                        <div>
+                          <table className={styles.detailTable}>
+                            <tbody>
+                              {order.OrderDetails.map((detail, index) => (
+                                <tr key={index}>
+                                  <td>{detail.item_name}</td>
+                                  <td>{detail.price}원</td>
+                                  <td>{detail.stock}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                </>
+              ))}
           </tbody>
         </table>
       </div>
-      {/* 정산표 섹션 끝 */}
+      <h2 className={styles.title}>내일 주문</h2>
+      <div className={styles.basketContainer}>
+        <table className={styles.orderTable}>
+          <thead>
+            <tr>
+              <th>상품명</th>
+              <th>주문 일자</th>
+              <th>주문자 정보</th>
+              <th>배송 정보</th>
+              <th>상태</th>
+              <th>수락</th>
+              <th>상세</th>
+            </tr>
+          </thead>
+          <tbody>
+            {next
+              .filter(
+                (order) =>
+                  (orderState === "all" || order.state === orderState) &&
+                  (deliveryType === "all" ||
+                    order.delivery_type === deliveryType)
+              )
+              .map((order, index) => (
+                <>
+                  <tr key={index} className={styles.orderRow}>
+                    <td>
+                      {order.OrderDetails[0].item_name}외{" "}
+                      {order.OrderDetails ? order.OrderDetails.length - 1 : ""}
+                      건
+                    </td>
 
+                    <td>{setDate(order.createdAt)}</td>
+                    <td>
+                      <p>주문자명: {order.customer_name}</p>
+                      <p>연락처: {order.phone}</p>
+
+                      <p>
+                        주소:{" "}
+                        <b>
+                          {order.addr} {order.addr_detail}
+                        </b>
+                      </p>
+                    </td>
+                    <td>
+                      <p>
+                        {order.delivery_type === "daily" ? (
+                          <img
+                            src="/today.jpg"
+                            className={styles.postImage}
+                            alt="따끈 배송"
+                          />
+                        ) : order.delivery_type === "normal" ? (
+                          <img
+                            src="post.jpg"
+                            className={styles.postImage}
+                            alt="택배 배송"
+                          />
+                        ) : null}
+                      </p>
+                      <p>요청 사항: {order.requests}</p>
+                    </td>
+                    {order.state === "paid" ? (
+                      <td style={{ color: "green", fontWeight: "bold" }}>
+                        결제완료
+                      </td>
+                    ) : order.state === "accept" ? (
+                      <td style={{ color: "red", fontWeight: "bold" }}>
+                        제조중
+                      </td>
+                    ) : order.state === "deliver" ? (
+                      <td style={{ color: "blue", fontWeight: "bold" }}>
+                        전송완료
+                      </td>
+                    ) : null}
+
+                    <td>
+                      {order.state === "paid" ? (
+                        <button
+                          onClick={() => {
+                            setPaid(order);
+                          }}
+                          className={styles.accessButton}
+                        >
+                          수락
+                        </button>
+                      ) : order.state === "accept" ? (
+                        <button
+                          onClick={() => {
+                            setPaid(order);
+                          }}
+                          className={styles.accessButton}
+                        >
+                          완료
+                        </button>
+                      ) : null}
+                    </td>
+                    <td>
+                      <button
+                        className={styles.detailBtn}
+                        onClick={() => setSelectedOrder(!selectedOrder)}
+                      >
+                        상세보기
+                      </button>
+                    </td>
+                    {/* 선택된 주문에 대한 상세 정보를 나타내는 부분 */}
+                  </tr>
+                  <tr>
+                    <td colSpan="9">
+                      {selectedOrder && (
+                        <div>
+                          <table className={styles.detailTable}>
+                            <tbody>
+                              {order.OrderDetails.map((detail, index) => (
+                                <tr key={index}>
+                                  <td>{detail.item_name}</td>
+                                  <td>{detail.price}원</td>
+                                  <td>{detail.stock}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                </>
+              ))}
+          </tbody>
+        </table>
+      </div>
       {isOrder ? (
         <>
           <h2 className={styles.title}>이전 주문 내역</h2>
@@ -350,8 +614,8 @@ const ItemPage = (props) => {
                         order.delivery_type === deliveryType)
                   )
                   .map((order, index) => (
-                    <React.Fragment key={index}>
-                      <tr className={styles.orderRow}>
+                    <>
+                      <tr key={index} className={styles.orderRow}>
                         <td>
                           {order.OrderDetails[0].item_name}외{" "}
                           {order.OrderDetails
@@ -421,24 +685,20 @@ const ItemPage = (props) => {
                         <td>
                           <button
                             className={styles.detailBtn}
-                            onClick={() =>
-                              setSelectedOrder(
-                                selectedOrder === index ? null : index
-                              )
-                            }
+                            onClick={() => setSelectedOrder(!selectedOrder)}
                           >
                             상세보기
                           </button>
                         </td>
                       </tr>
-                      {selectedOrder === index && (
-                        <tr>
-                          <td colSpan="9">
+                      <tr>
+                        <td colSpan="9">
+                          {selectedOrder && (
                             <div>
                               <table className={styles.detailTable}>
                                 <tbody>
-                                  {order.OrderDetails.map((detail, idx) => (
-                                    <tr key={idx}>
+                                  {order.OrderDetails.map((detail, index) => (
+                                    <tr key={index}>
                                       <td>{detail.item_name}</td>
                                       <td>{detail.price}원</td>
                                       <td>{detail.stock}</td>
@@ -447,16 +707,18 @@ const ItemPage = (props) => {
                                 </tbody>
                               </table>
                             </div>
-                          </td>
-                        </tr>
-                      )}
-                    </React.Fragment>
+                          )}
+                        </td>
+                      </tr>
+                    </>
                   ))}
               </tbody>
             </table>
           </div>
         </>
-      ) : null}
+      ) : (
+        ""
+      )}
 
       <button onClick={() => setIsOrder(!isOrder)}>이전 내역</button>
 
