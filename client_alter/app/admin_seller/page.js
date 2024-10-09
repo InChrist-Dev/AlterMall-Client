@@ -161,7 +161,12 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const handleDisplayCountChange = (e) => {
+    setDeliveryType(e.target.value);
+  };
+  const handleDisplayChange = (e) => {
+    setOrderState(e.target.value);
+  };
   const setDate = (data) => {
     const date = new Date(data);
     const formattedDate = date.toLocaleString("ko-KR", {
