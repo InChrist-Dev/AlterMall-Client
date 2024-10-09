@@ -66,6 +66,7 @@ const ItemPage = (props) => {
         },
       });
       const data = await response.json();
+      console.log(data);
       setPaySummary(data.data.rows);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
@@ -124,14 +125,6 @@ const ItemPage = (props) => {
   useEffect(() => {
     fetchData();
   }, []);
-
-  const handleDisplayCountChange = (e) => {
-    setDeliveryType(e.target.value);
-  };
-
-  const handleDisplayChange = (e) => {
-    setOrderState(e.target.value);
-  };
 
   const setDate = (data) => {
     const date = new Date(data);
@@ -202,17 +195,6 @@ const ItemPage = (props) => {
     multiple: true,
     disabled: uploadDisabled,
   });
-
-  const handlePeriodChange = (period) => {
-    setSelectedPeriod(period);
-    fetchData(period);
-  };
-
-  const handleCustomDateChange = () => {
-    if (startDate && endDate) {
-      fetchData("custom");
-    }
-  };
 
   return (
     <div style={{ marginBottom: "100px" }}>
