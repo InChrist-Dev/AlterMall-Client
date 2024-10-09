@@ -701,8 +701,8 @@ const ItemPage = (props) => {
               onChange={(e) => setSelectedPeriod(e.target.value)}
             >
               <option value="today">오늘</option>
-              <option value="thisMonth">이번 달</option>
-              <option value="lastMonth">지난 달</option>
+              <option value="month">이번 달</option>
+
               <option value="custom">커스텀</option>
             </select>
           </label>
