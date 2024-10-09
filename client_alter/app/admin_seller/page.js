@@ -74,7 +74,6 @@ const ItemPage = (props) => {
       if (selectedPeriod === "custom") {
         url += `&startDate=${startDate}&endDate=${endDate}`;
       }
-      console.log(selectedPeriod);
       const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -82,8 +81,8 @@ const ItemPage = (props) => {
         },
       });
       const data = await response.json();
-      console.log(data.monthlyAmounts);
-      setPaySummary(data.monthlyAmounts); // 정산표 데이터 상태에 저장
+      console.log(data);
+      setPaySummary(data.monthlyAmounts);
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
