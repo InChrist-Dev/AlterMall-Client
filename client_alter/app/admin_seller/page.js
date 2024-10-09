@@ -8,9 +8,10 @@ import Cookies from "js-cookie";
 // 쿠키에서 토큰을 가져오기
 const accessToken = Cookies.get("accessToken");
 
-const ItemPage = () => {
+const ItemPage = (props) => {
   const [files, setFiles] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [next, setNext] = useState([]);
   const [pay, setPay] = useState([]);
   const [items, setItems] = useState([]);
   const [isOrder, setIsOrder] = useState(false);
@@ -31,11 +32,11 @@ const ItemPage = () => {
     [files]
   );
 
-  const fetchOrders = async (time) => {
+  const fetchData = async () => {
     // 주문 데이터 가져오기
     try {
       const response = await fetch(
-        `https://altermall.site/seller/order?time=${time}`,
+        `https://altermall.site/seller/order?time=today`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -48,13 +49,11 @@ const ItemPage = () => {
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
-  };
 
-  const fetchSummary = async (time) => {
-    // 주문 요약 데이터 가져오기
+    // 오늘의 정산표 가져오기
     try {
       const response = await fetch(
-        `https://altermall.site/seller/paid?time=${time}`,
+        `https://altermall.site/seller/paid?time=today`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -67,9 +66,7 @@ const ItemPage = () => {
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
-  };
 
-  const fetchItems = async () => {
     // 상품 데이터 가져오기
     try {
       const response = await fetch(`https://altermall.site/seller/items`, {
@@ -104,9 +101,7 @@ const ItemPage = () => {
   };
 
   useEffect(() => {
-    fetchOrders("today"); // 오늘의 주문 목록 불러오기
-    fetchSummary("today"); // 오늘의 주문 요약 불러오기
-    fetchItems(); // 상품 목록 불러오기
+    fetchData();
   }, []);
 
   const setDate = (data) => {
@@ -193,26 +188,26 @@ const ItemPage = () => {
             </tr>
           </thead>
           <tbody>
-            {items.map((item, index) => (
+            {items.map((items, index) => (
               <tr key={index} className={styles.productCard}>
                 <td style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={`https://altermall.site/${item.img}`}
-                    alt={item.item_name}
+                    src={`https://altermall.site/${items.img}`}
+                    alt={items.item_name}
                     className={styles.productImage}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={item.item_name}
+                    placeholder={items.item_name}
                     onChange={(e) => handleNameChange(index, e.target.value)}
                   />
                 </td>
                 <td>
                   <input
                     className={styles.nameInput}
-                    placeholder={item.price + "원"}
+                    placeholder={items.price + "원"}
                     onChange={(e) => handlePriceChange(index, e.target.value)}
                   />
                 </td>
@@ -220,21 +215,21 @@ const ItemPage = () => {
                   <div className={styles.quantityControl}>
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, item.stock - 1)
+                        handleQuantityChange(index, items.stock - 1)
                       }
                     >
                       -
                     </button>
                     <input
                       className={styles.quantityInput}
-                      placeholder={item.stock}
+                      placeholder={items.stock}
                       onChange={(e) =>
                         handleQuantityChange(index, e.target.value)
                       }
                     />
                     <button
                       onClick={() =>
-                        handleQuantityChange(index, item.stock + 1)
+                        handleQuantityChange(index, items.stock + 1)
                       }
                     >
                       +
@@ -377,7 +372,39 @@ const ItemPage = () => {
       ) : (
         ""
       )}
+      {/* 정산표 표시 영역 추가 */}
+      <div>
+        <h2 className={styles.title}>정산표</h2>
+        {isSummary && (
+          <div className={styles.basketContainer}>
+            <table className={styles.summaryTable}>
+              <thead>
+                <tr>
+                  <th>상품명</th>
+                  <th>수량</th>
+                  <th>총 금액</th>
+                  <th>정산 일자</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pay.map((order, index) => (
+                  <tr key={index} className={styles.summaryRow}>
+                    <td>{order.OrderDetails[0].item_name}</td>
+                    <td>{order.OrderDetails.length} 건</td>
+                    <td>{order.total_price}원</td>
+                    <td>{setDate(order.createdAt)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
 
+      {/* 정산표 버튼 추가 */}
+      <button onClick={() => setIsSummary(!isSummary)}>
+        {isSummary ? "정산표 숨기기" : "정산표 보기"}
+      </button>
       <button onClick={() => setIsOrder(!isOrder)}>이전 내역</button>
 
       <button
