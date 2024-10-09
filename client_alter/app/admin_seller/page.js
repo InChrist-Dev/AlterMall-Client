@@ -82,8 +82,8 @@ const ItemPage = (props) => {
         },
       });
       const data = await response.json();
-      console.log(data.data.rows);
-      setPaySummary(data.data.rows); // 정산표 데이터 상태에 저장
+      console.log(data.monthlyAmounts);
+      setPaySummary(data.monthlyAmounts); // 정산표 데이터 상태에 저장
     } catch (error) {
       console.error("데이터를 불러오는 중 오류가 발생했습니다:", error);
     }
