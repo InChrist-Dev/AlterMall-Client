@@ -1,7 +1,7 @@
 // components/ImageSlider.js
-"use client";
-import React, { useState, useEffect, useRef } from "react";
-import styles from ".././page.module.css";
+'use client'
+import React, { useState, useEffect, useRef } from 'react';
+import styles from '.././page.module.css';
 
 const ImageSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,41 +11,17 @@ const ImageSlider = () => {
   const sliderRef = useRef(null);
 
   const smallImages = [
-    {
-      link: "https://www.instagram.com/bs_hospital/",
-      src: "/health.png",
-      alt: "이미지3",
-    },
-    {
-      link: "https://altermall.shop/categories/dessert/category/youngun133@naver.com",
-      src: "/04.png",
-      alt: "이미지0",
-    },
-    {
-      link: "https://altermall.shop/categories/dessert/category/janexz",
-      src: "/05.png",
-      alt: "이미지1",
-    },
-    {
-      link: "https://altermall.shop/categories/dessert/category/rabe",
-      src: "/zero.png",
-      alt: "이미지2",
-    },
+    { link:'https://altermall.shop/categories/dessert/category/youngun133@naver.com',src: "/04.png", alt: "이미지0" },
+    { link: 'https://altermall.shop/categories/dessert/category/janexz', src: "/05.png", alt: "이미지1" },
+    { link: 'https://altermall.shop/categories/dessert/category/rabe', src: "/zero.png", alt: "이미지2" },
+    { link: 'https://www.instagram.com/bs_hospital/', src: "/popup.png", alt: "이미지3" },
   ];
 
   const largeImages = [
-    {
-      link: "https://altermall.shop/categories/dessert/category/youngun133@naver.com",
-      src: "/4.png",
-      alt: "이미지0",
-    },
-    {
-      link: "https://altermall.shop/categories/dessert/category/janexz",
-      src: "/5.png",
-      alt: "이미지1",
-    },
-    { link: "/", src: "/001.png", alt: "이미지2" },
-    { link: "/", src: "/002.png", alt: "이미지3" },
+    { link: 'https://altermall.shop/categories/dessert/category/youngun133@naver.com', src: "/4.png", alt: "이미지0" },
+    { link: 'https://altermall.shop/categories/dessert/category/janexz', src: "/5.png", alt: "이미지1" },
+    { link: '/', src: "/001.png", alt: "이미지2" },
+    { link: '/', src: "/002.png", alt: "이미지3" },
   ];
 
   useEffect(() => {
@@ -55,9 +31,9 @@ const ImageSlider = () => {
     };
 
     handleResize(); // Initial check
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const images = isSmallScreen ? smallImages : largeImages;
@@ -85,15 +61,11 @@ const ImageSlider = () => {
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
+    setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
   };
 
   const handleImageClick = (link) => {
@@ -131,7 +103,7 @@ const ImageSlider = () => {
             alt={image.alt}
             className={styles.sliderImage}
             onClick={() => handleImageClick(image.link)}
-            style={{ pointerEvents: "auto" }} // 추가: 클릭 이벤트가 작동하도록 설정
+            style={{ pointerEvents: 'auto' }} // 추가: 클릭 이벤트가 작동하도록 설정
           />
         ))}
       </div>
@@ -139,11 +111,9 @@ const ImageSlider = () => {
         {images.map((_, index) => (
           <span
             key={index}
-            className={`${styles.dot} ${
-              index === currentIndex ? styles.activeDot : ""
-            }`}
+            className={`${styles.dot} ${index === currentIndex ? styles.activeDot : ''}`}
             onClick={() => handleDotClick(index)}
-            style={{ pointerEvents: "auto" }} // 추가: 클릭 이벤트가 작동하도록 설정
+            style={{ pointerEvents: 'auto' }} // 추가: 클릭 이벤트가 작동하도록 설정
           ></span>
         ))}
       </div>

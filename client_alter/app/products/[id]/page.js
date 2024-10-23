@@ -61,17 +61,14 @@ const ItemPage = (props) => {
       formData.append("item_id", props.params.id);
       formData.append("img", image);
 
-      const response = await fetch(
-        "http://localhost:5000/altermall-99041/us-central1/api/review",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          credentials: "include",
-          body: formData,
-        }
-      );
+      const response = await fetch("https://altermall.site/review", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        credentials: "include",
+        body: formData,
+      });
       if (response.ok) {
         alert("리뷰가 성공적으로 제출되었습니다.");
       } else if (response.status == 401) {

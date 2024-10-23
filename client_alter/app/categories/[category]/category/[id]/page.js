@@ -24,7 +24,7 @@ const ItemPage = (props) => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/altermall-99041/us-central1/api/category?seller=${id}&sortby=${sortBy}&p=${currentPage}`
+        `https://altermall.site/category/seller?id=${id}&sortby=${sortBy}&p=${currentPage}`
       );
       const data = await response.json();
 
@@ -57,7 +57,7 @@ const ItemPage = (props) => {
 
   const handleSubmit = useCallback((item) => {
     if (accessToken) {
-      fetch(`http://localhost:5000/altermall-99041/us-central1/api/cart/`, {
+      fetch(`https://altermall.site/customer/cart/`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -71,8 +71,6 @@ const ItemPage = (props) => {
             alert("장바구니에 존재하는 메뉴입니다.");
           } else if (response.status == 201) {
             alert("장바구니에 담겼습니다");
-          } else {
-            console.log(response);
           }
         })
         .finally(() => {});
