@@ -17,7 +17,7 @@ const ItemPage = (props) => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `https://altermall.site/category/sellers/${category}`
+        `http://localhost:5000/altermall-99041/us-central1/api/category/sellers/${category}`
       );
       const data = await response.json();
       console.log(data);
