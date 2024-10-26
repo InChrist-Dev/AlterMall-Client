@@ -34,6 +34,7 @@ const ImageSlider = () => {
   ];
 
   const largeImages = [
+    { link: "/", src: "/pc.png", alt: "이미지3" },
     {
       link: "https://altermall.shop/categories/dessert/category/youngun133@naver.com",
       src: "/4.png",
@@ -45,7 +46,6 @@ const ImageSlider = () => {
       alt: "이미지1",
     },
     { link: "/", src: "/001.png", alt: "이미지2" },
-    { link: "/", src: "/002.png", alt: "이미지3" },
   ];
 
   useEffect(() => {
